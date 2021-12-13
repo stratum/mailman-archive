@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [stratum-dev] Is there a limit on the # of ECMP groups stratum_bmv2 can handle?
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Is%20there%20a%20limit%20on%20the%20%23%20of%20ECMP%20groups%0A%20stratum_bmv2%20can%20handle%3F&In-Reply-To=%3CCAFh9Y_PLyQARQmUkgxR_%2BwOQ%3DEU4PHg_oxB7n0Du_Tb7O3r0ng%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <LINK REL="Previous"  HREF="000214.html">
+   <LINK REL="Next"  HREF="000218.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[stratum-dev] Is there a limit on the # of ECMP groups stratum_bmv2 can handle?</H1>
+    <B>Maximilian Pudelko</B> 
+    <A HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Is%20there%20a%20limit%20on%20the%20%23%20of%20ECMP%20groups%0A%20stratum_bmv2%20can%20handle%3F&In-Reply-To=%3CCAFh9Y_PLyQARQmUkgxR_%2BwOQ%3DEU4PHg_oxB7n0Du_Tb7O3r0ng%40mail.gmail.com%3E"
+       TITLE="[stratum-dev] Is there a limit on the # of ECMP groups stratum_bmv2 can handle?">max at opennetworking.org
+       </A><BR>
+    <I>Tue May 11 00:36:16 UTC 2021</I>
+    <P><UL>
+        <LI>Previous message (by thread): <A HREF="000214.html">[stratum-dev] Is there a limit on the # of ECMP groups stratum_bmv2	can handle?
+</A></li>
+        <LI>Next message (by thread): <A HREF="000218.html">[stratum-dev] Is there a limit on the # of ECMP groups stratum_bmv2 can handle?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#216">[ date ]</a>
+              <a href="thread.html#216">[ thread ]</a>
+              <a href="subject.html#216">[ subject ]</a>
+              <a href="author.html#216">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Syd,
+
+I have not observed this error before. Stratum-bmv2 is backed by PI (
+<A HREF="https://github.com/p4lang/PI">https://github.com/p4lang/PI</A>).
+All P4RT messages are passed to it nearly unmodified, so the issue must lie
+there.
+
+Max
+
+On Mon, May 10, 2021 at 1:47 PM A Sydney via stratum-dev &lt;
+<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>&gt; wrote:
+
+&gt;<i> Hi Stratum folks,
+</I>&gt;<i>
+</I>&gt;<i> # Context:
+</I>&gt;<i> I have created a pipeline that enables IPv4-ECMP (P4 snippet shown in
+</I>&gt;<i> attached file action_selector*) and I am able to build and push p4info.txt
+</I>&gt;<i> and bmv2.json to the switches.
+</I>&gt;<i>
+</I>&gt;<i> # Issue:
+</I>&gt;<i> When I attempt to add groups, the first one moves to the &quot;ADDED&quot; state.
+</I>&gt;<i> When I attempt to add a second, the first group and the second both move to
+</I>&gt;<i> the &quot;PENDING_ADD_RETRY&quot; state.
+</I>&gt;<i>
+</I>&gt;<i> # ONOS logs:
+</I>&gt;<i> At the same time, P4RuntimeClientImpl throws the error &quot;Error while
+</I>&gt;<i> performing READ on device:spine2...Unexpected error in RPC handling&quot;. Then
+</I>&gt;<i> ONOS spirals into this cycle of attempting to reinstall all flows on the
+</I>&gt;<i> switch (See debug.log for details.).
+</I>&gt;<i>
+</I>&gt;<i> # Logs on one of the bmv2 switches:
+</I>&gt;<i> I then see the following error on the switch:
+</I>&gt;<i> [libprotobuf FATAL
+</I>&gt;<i> external/com_google_protobuf/src/google/protobuf/repeated_field.h:1694]
+</I>&gt;<i> CHECK failed: (index) &lt; (current_size_):
+</I>&gt;<i>
+</I>&gt;<i> # Question:
+</I>&gt;<i> Have you ever come across this one?  Are there any obvious mistakes that
+</I>&gt;<i> I'm running into (Perhaps my P4 ECMP definition attached is incorrect?)?
+</I>&gt;<i> Any suggestions on how to debug further?
+</I>&gt;<i>
+</I>&gt;<i> Thanks!
+</I>&gt;<i> -Syd
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> stratum-dev mailing list
+</I>&gt;<i> <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>
+</I>&gt;<i> <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">https://lists.stratumproject.org/listinfo/stratum-dev</A>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.stratumproject.org/archives/stratum-dev/attachments/20210510/a9b6c615/attachment.html">https://lists.stratumproject.org/archives/stratum-dev/attachments/20210510/a9b6c615/attachment.html</A>&gt;
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message (by thread): <A HREF="000214.html">[stratum-dev] Is there a limit on the # of ECMP groups stratum_bmv2	can handle?
+</A></li>
+	<LI>Next message (by thread): <A HREF="000218.html">[stratum-dev] Is there a limit on the # of ECMP groups stratum_bmv2 can handle?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#216">[ date ]</a>
+              <a href="thread.html#216">[ thread ]</a>
+              <a href="subject.html#216">[ subject ]</a>
+              <a href="author.html#216">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.stratumproject.org/listinfo/stratum-dev">More information about the stratum-dev
+mailing list</a><br>
+</body></html>

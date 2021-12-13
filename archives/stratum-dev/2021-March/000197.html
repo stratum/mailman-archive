@@ -1,0 +1,130 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [stratum-dev] Question about building stratum standalone
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Question%20about%20building%20stratum%20standalone&In-Reply-To=%3CCAM-ym_exfRah%3D%2BT85sM1TrSKJscvcYLoL-z4uX-Za82keX6TeQ%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <LINK REL="Previous"  HREF="000196.html">
+   <LINK REL="Next"  HREF="000198.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[stratum-dev] Question about building stratum standalone</H1>
+    <B>A Sydney</B> 
+    <A HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Question%20about%20building%20stratum%20standalone&In-Reply-To=%3CCAM-ym_exfRah%3D%2BT85sM1TrSKJscvcYLoL-z4uX-Za82keX6TeQ%40mail.gmail.com%3E"
+       TITLE="[stratum-dev] Question about building stratum standalone">asydney007 at gmail.com
+       </A><BR>
+    <I>Fri Mar 26 01:48:43 UTC 2021</I>
+    <P><UL>
+        <LI>Previous message (by thread): <A HREF="000196.html">[stratum-dev] Question about building stratum standalone
+</A></li>
+        <LI>Next message (by thread): <A HREF="000198.html">[stratum-dev] Question about building stratum standalone
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#197">[ date ]</a>
+              <a href="thread.html#197">[ thread ]</a>
+              <a href="subject.html#197">[ subject ]</a>
+              <a href="author.html#197">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ah great! I was able to build the package, yay! But I'm having a few
+dependency issues:
+
+On the vm which hosts the stratum switch, I'm running Debian 10.
+Unfortunately, I could not find &quot;libboost1.55-all-dev.
+However, libboost1.67-all-dev did exist, so I attempted to install this
+version but no success. It appears that &quot;libboost1.55-all-dev&quot; is a hard
+requirement?
+
+&quot;&quot;&quot;
+sudo apt-get install --reinstall ./stratum_bmv2_debian.deb
+...
+Note, selecting 'stratum_bmv2' instead of './stratum_bmv2_debian.deb'
+...
+stratum_bmv2 : Depends: libboost1.55-all-dev but it is not installable
+...
+&quot;&quot;&quot;
+
+Any suggestions on how to work around this one? If this version is truly a
+hard requirement, what linux distributions would you suggest (e.g. what
+distributions have you tried the install)?
+
+Thanks,
+-Syd
+
+On Thu, Mar 25, 2021 at 4:17 PM Maximilian Pudelko &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">max at opennetworking.org</A>&gt;
+wrote:
+
+&gt;<i> Hi Syd,
+</I>&gt;<i>
+</I>&gt;<i> As you have found out, the P4Runtime/gNMI ports have to be exposed from
+</I>&gt;<i> inside the container
+</I>&gt;<i> to be reachable from outside.
+</I>&gt;<i> We have a start-stratum-container.sh script that takes care of that, or
+</I>&gt;<i> you map them manually with -p,
+</I>&gt;<i> like you did.
+</I>&gt;<i>
+</I>&gt;<i> &gt; I didn't quite get this one. Where can I get the associated *.deb
+</I>&gt;<i> package for the install?
+</I>&gt;<i>
+</I>&gt;<i> What I linked is the Bazel target that *builds* the .deb package. Build
+</I>&gt;<i> it with
+</I>&gt;<i> `bazel build --stamp //stratum/hal/bin/bmv2:stratum_bmv2_debian`.
+</I>&gt;<i> The resulting file will be under
+</I>&gt;<i> `bazel-bin/stratum/hal/bin/bmv2/stratum_bmv2_debian.deb`
+</I>&gt;<i> and can be installed on most Ubuntu and Debian systems:
+</I>&gt;<i> `apt-get install --reinstall ./stratum_bmv2_debian.deb`
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Best,
+</I>&gt;<i> Max
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> On Thu, Mar 25, 2021 at 12:06 PM A Sydney &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">asydney007 at gmail.com</A>&gt; wrote:
+</I>&gt;<i>
+</I>&gt;&gt;<i> But instead of building Stratum many times, check if the Debian package might not be more convenient:
+</I>&gt;&gt;&gt;<i> <A HREF="https://github.com/stratum/stratum/blob/main/stratum/hal/bin/bmv2/BUILD#L81-L98">https://github.com/stratum/stratum/blob/main/stratum/hal/bin/bmv2/BUILD#L81-L98</A>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;<i> I didn't quite get this one. Where can I get the associated *.deb package
+</I>&gt;&gt;<i> for the install?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Thanks,
+</I>&gt;&gt;<i> -Syd
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.stratumproject.org/archives/stratum-dev/attachments/20210325/5d9ccf0d/attachment.html">https://lists.stratumproject.org/archives/stratum-dev/attachments/20210325/5d9ccf0d/attachment.html</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message (by thread): <A HREF="000196.html">[stratum-dev] Question about building stratum standalone
+</A></li>
+	<LI>Next message (by thread): <A HREF="000198.html">[stratum-dev] Question about building stratum standalone
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#197">[ date ]</a>
+              <a href="thread.html#197">[ thread ]</a>
+              <a href="subject.html#197">[ subject ]</a>
+              <a href="author.html#197">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.stratumproject.org/listinfo/stratum-dev">More information about the stratum-dev
+mailing list</a><br>
+</body></html>

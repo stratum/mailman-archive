@@ -1,0 +1,265 @@
+From bocon at opennetworking.org  Tue Oct 12 02:06:23 2021
+From: bocon at opennetworking.org (Brian O'Connor)
+Date: Mon, 11 Oct 2021 22:06:23 -0400
+Subject: [stratum-announce] Stratum 2021-10-09 Release and Call to Action
+Message-ID: <CACKOpD=FdaeK_T_ux1Q=4AryenqPnG=9K1aWEUMoN+jz7L7_iA@mail.gmail.com>
+
+Dear Stratum Community!
+
+We would first like to thank you for being a member of this community and
+for your contributions. Over the past four years, the Stratum community has
+achieved a lot:
+
+   -
+
+   Demonstrated how P4 can be used to model fixed-pipeline ASICs,
+   -
+
+   Used P4 to program a variety of flexible targets, including ASICs,
+   FPGAs, and CPUs,
+   -
+
+   Controlled a multi-vendor, multi-ASIC leaf-spine fabric using ONOS and
+   the Trellis control applications,
+   -
+
+   Read statistics and configured peripherals using gNMI, including
+   long-range optical transceivers,
+   -
+
+   Automated device testing using TestVectors enabling CI/CD for the switch
+   OS,
+   -
+
+   Deployed Stratum in a variety of production environments, including
+   ONF’s Aether fabric,
+   -
+
+   Improved and evolved P4Runtime using real world use cases with the P4
+   API working group,
+   -
+
+   Educated community on the benefits of P4Runtime and gNMI.
+
+
+In addition, Stratum is part of ONF’s Continuous Certification Program
+<https://opennetworking.org/continuous-certification-program/> and a few
+companies have certified their switches
+<https://opennetworking.org/marketplace/?_product_project=stratum> with
+Stratum. Stratum switches have been taken into commercial deployments by a
+number of users.
+
+Today, we are pleased to announce the Stratum 2021-10-09 release (or 21.10
+for short). This release contains several new features and fixes for
+Stratum's Intel Barefoot Tofino target and will be part of the upcoming
+first ONF SD-Fabric release; stratum_bfrt is now the default and
+recommended target for Tofino users. This release makes debugging easier on
+all Stratum targets by stamping version information into binaries when they
+are compiled and logging that information on Stratum startup. It also
+contains first time contributions from Pier Luigi Ventre.
+
+Pre-built Docker images and Debian packages, along with a more extensive
+changelist, are available in the GitHub release page:
+
+https://github.com/stratum/stratum/releases/tag/2021-10-09
+
+However over the past several months, ONF has observed that the community
+is not getting adequate support from its members. While we have a number of
+code contributors, we have recently been lacking code maintainers who help
+triage bugs and issues, work with contributors on feature designs, and
+review code contributions. Unfortunately, our previously active maintainers
+have moved on to new projects/companies, and we feel that the core of the
+community is at risk of shrinking.
+
+As with every community, it is only as active as its members. With this
+message, we would like to issue a call to action to all interested
+community members to step up their participation in the Stratum community.
+Open source communities are healthiest when multiple companies are
+represented from the user level all the way up through leadership, and we
+are asking ONF member companies for your support!
+
+We are looking for new maintainers to step up from our community. A new
+maintainer is someone who climbs the developer learning curve through
+multiple code submissions, then starts taking responsibility for the
+contributions of others through design/code review, work with authors, etc.
+Ultimately, *we would like to add at least a few new maintainers by the end
+of this year*; there are further growth opportunities that will emerge in
+the future (e.g. becoming a TST member).
+
+If you would like to become a maintainer or explore other ways you can
+contribute to the Stratum community, please reach out to Ain Indermitte
+<ain at opennetworking.org> and Brian O'Connor <bocon at opennetworking.org>.
+
+As always, we thank you for your continued support of this community!
+
+On behalf of the Stratum TST,
+
+Brian O’Connor (Lead, ONF)
+
+Alireza Ghaffarkhah (Google)
+
+Craig Stevens (Dell/EMC)
+
+Max Pudelko (ONF)
+
+Yi Tseng (ONF)
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-announce/attachments/20211011/104cf363/attachment.html>
+
+From ain at opennetworking.org  Wed Oct 20 17:24:01 2021
+From: ain at opennetworking.org (Ain Indermitte)
+Date: Wed, 20 Oct 2021 11:24:01 -0600
+Subject: [stratum-announce] Stratum 2021-10-09 Release and Call to Action
+In-Reply-To: <CACKOpD=FdaeK_T_ux1Q=4AryenqPnG=9K1aWEUMoN+jz7L7_iA@mail.gmail.com>
+References: <CACKOpD=FdaeK_T_ux1Q=4AryenqPnG=9K1aWEUMoN+jz7L7_iA@mail.gmail.com>
+Message-ID: <CACZfwXvZL=_yZ949JwK2L7qXtYrAWsyiYfcg3rZ2rdBrss7EHg@mail.gmail.com>
+
+Dear Stratum Community!
+
+Last week Brian sent an email asking for your help in keeping the Stratum
+community alive and kicking (see below). Since we have not received any
+responses yet, we think the Call-to-Action part may have been overlooked in
+the long email.
+
+We would like to repeat the Call-to-Action from last week!
+
+We are looking for new maintainers to step up from our community. A
+maintainer is someone who has climbed the developer learning curve through
+multiple code submissions, and starts taking responsibility for the
+contributions of others through design/code review, work with authors, etc.
+Ultimately, we would like to add a few new maintainers by the end of this
+year, and there are further growth opportunities that will emerge in the
+future (e.g., becoming a TST member).
+
+If you would like to become a maintainer or explore other ways you can
+contribute to the Stratum community, please reach out to Ain Indermitte
+<ain at opennetworking.org> and Brian O'Connor <bocon at opennetworking.org>.
+
+As always, we thank you for your continued support of this community!
+
+On behalf of the Stratum TST,
+
+Brian O’Connor (Lead, ONF)
+
+Alireza Ghaffarkhah (Google)
+
+Craig Stevens (Dell/EMC)
+
+Max Pudelko (ONF)
+
+Yi Tseng (ONF)
+
+
+On Mon, Oct 11, 2021 at 8:06 PM Brian O'Connor <bocon at opennetworking.org>
+wrote:
+
+> Dear Stratum Community!
+>
+> We would first like to thank you for being a member of this community and
+> for your contributions. Over the past four years, the Stratum community has
+> achieved a lot:
+>
+>    -
+>
+>    Demonstrated how P4 can be used to model fixed-pipeline ASICs,
+>    -
+>
+>    Used P4 to program a variety of flexible targets, including ASICs,
+>    FPGAs, and CPUs,
+>    -
+>
+>    Controlled a multi-vendor, multi-ASIC leaf-spine fabric using ONOS and
+>    the Trellis control applications,
+>    -
+>
+>    Read statistics and configured peripherals using gNMI, including
+>    long-range optical transceivers,
+>    -
+>
+>    Automated device testing using TestVectors enabling CI/CD for the
+>    switch OS,
+>    -
+>
+>    Deployed Stratum in a variety of production environments, including
+>    ONF’s Aether fabric,
+>    -
+>
+>    Improved and evolved P4Runtime using real world use cases with the P4
+>    API working group,
+>    -
+>
+>    Educated community on the benefits of P4Runtime and gNMI.
+>
+>
+> In addition, Stratum is part of ONF’s Continuous Certification Program
+> <https://opennetworking.org/continuous-certification-program/> and a few
+> companies have certified their switches
+> <https://opennetworking.org/marketplace/?_product_project=stratum> with
+> Stratum. Stratum switches have been taken into commercial deployments by a
+> number of users.
+>
+> Today, we are pleased to announce the Stratum 2021-10-09 release (or 21.10
+> for short). This release contains several new features and fixes for
+> Stratum's Intel Barefoot Tofino target and will be part of the upcoming
+> first ONF SD-Fabric release; stratum_bfrt is now the default and
+> recommended target for Tofino users. This release makes debugging easier on
+> all Stratum targets by stamping version information into binaries when they
+> are compiled and logging that information on Stratum startup. It also
+> contains first time contributions from Pier Luigi Ventre.
+>
+> Pre-built Docker images and Debian packages, along with a more extensive
+> changelist, are available in the GitHub release page:
+>
+> https://github.com/stratum/stratum/releases/tag/2021-10-09
+>
+> However over the past several months, ONF has observed that the community
+> is not getting adequate support from its members. While we have a number of
+> code contributors, we have recently been lacking code maintainers who help
+> triage bugs and issues, work with contributors on feature designs, and
+> review code contributions. Unfortunately, our previously active maintainers
+> have moved on to new projects/companies, and we feel that the core of the
+> community is at risk of shrinking.
+>
+> As with every community, it is only as active as its members. With this
+> message, we would like to issue a call to action to all interested
+> community members to step up their participation in the Stratum community.
+> Open source communities are healthiest when multiple companies are
+> represented from the user level all the way up through leadership, and we
+> are asking ONF member companies for your support!
+>
+> We are looking for new maintainers to step up from our community. A new
+> maintainer is someone who climbs the developer learning curve through
+> multiple code submissions, then starts taking responsibility for the
+> contributions of others through design/code review, work with authors, etc.
+> Ultimately, *we would like to add at least a few new maintainers by the
+> end of this year*; there are further growth opportunities that will
+> emerge in the future (e.g. becoming a TST member).
+>
+> If you would like to become a maintainer or explore other ways you can
+> contribute to the Stratum community, please reach out to Ain Indermitte
+> <ain at opennetworking.org> and Brian O'Connor <bocon at opennetworking.org>.
+>
+> As always, we thank you for your continued support of this community!
+>
+> On behalf of the Stratum TST,
+>
+> Brian O’Connor (Lead, ONF)
+>
+> Alireza Ghaffarkhah (Google)
+>
+> Craig Stevens (Dell/EMC)
+>
+> Max Pudelko (ONF)
+>
+> Yi Tseng (ONF)
+>
+>
+
+-- 
+--
+Ain
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-announce/attachments/20211020/8423d1a3/attachment.html>
+

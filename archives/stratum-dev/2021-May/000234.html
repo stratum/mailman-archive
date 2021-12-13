@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [stratum-dev] Possible issue with stratum_bmv2/ONOS hostdiscovery
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Possible%20issue%20with%20stratum_bmv2/ONOS%20hostdiscovery&In-Reply-To=%3CCAM-ym_f%3D9T-FJnSYq_j0jHhccdAsF7FK03Q6p_-z9DVMA7xntA%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <LINK REL="Previous"  HREF="000233.html">
+   <LINK REL="Next"  HREF="000235.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[stratum-dev] Possible issue with stratum_bmv2/ONOS hostdiscovery</H1>
+    <B>A Sydney</B> 
+    <A HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Possible%20issue%20with%20stratum_bmv2/ONOS%20hostdiscovery&In-Reply-To=%3CCAM-ym_f%3D9T-FJnSYq_j0jHhccdAsF7FK03Q6p_-z9DVMA7xntA%40mail.gmail.com%3E"
+       TITLE="[stratum-dev] Possible issue with stratum_bmv2/ONOS hostdiscovery">asydney007 at gmail.com
+       </A><BR>
+    <I>Wed May 26 17:32:53 UTC 2021</I>
+    <P><UL>
+        <LI>Previous message (by thread): <A HREF="000233.html">[stratum-dev] Table entry from stratum_bmv2 different from ONOS	store
+</A></li>
+        <LI>Next message (by thread): <A HREF="000235.html">[stratum-dev] Stratum on Wedge100BF-32X
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#234">[ date ]</a>
+              <a href="thread.html#234">[ thread ]</a>
+              <a href="subject.html#234">[ subject ]</a>
+              <a href="author.html#234">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Stratum folks,
+                          I came across this intermittent issue:
+
+I'm running standalone bmv2 instances and I've installed rules to clone all
+ARP traffic to the ONOS controller. When the ARP packet gets to the
+controller (i.e. pinging between hosts), an ONOS app listening for new
+hosts installs flow rules. However, I've seen the following situations:
+
+1. An ARP request hits the switch and it is cloned to the controller (i.e.
+as logged from the switch). The host is automatically discovered by ONOS
+and flow rules installed.
+
+2. An ARP request hits the switch, and is cloned to the controller, but
+flow rules are not installed immediately. I have observed that it can take
+from 30s to 4 minutes for the host to be discovered by ONOS. I have also
+observed situations where the host was not discovered &gt; 7 or so minutes.
+
+Any thoughts?
+
+PS. I've also got the lldpprovider app running, and links are discovered
+immediately and this behavior is always consistent (so the issue may not be
+with packet-ins/outs?).
+
+Thanks,
+-Syd
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.stratumproject.org/archives/stratum-dev/attachments/20210526/fbcacb99/attachment.html">https://lists.stratumproject.org/archives/stratum-dev/attachments/20210526/fbcacb99/attachment.html</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message (by thread): <A HREF="000233.html">[stratum-dev] Table entry from stratum_bmv2 different from ONOS	store
+</A></li>
+	<LI>Next message (by thread): <A HREF="000235.html">[stratum-dev] Stratum on Wedge100BF-32X
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#234">[ date ]</a>
+              <a href="thread.html#234">[ thread ]</a>
+              <a href="subject.html#234">[ subject ]</a>
+              <a href="author.html#234">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.stratumproject.org/listinfo/stratum-dev">More information about the stratum-dev
+mailing list</a><br>
+</body></html>

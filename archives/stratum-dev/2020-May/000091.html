@@ -1,0 +1,156 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [stratum-dev] Docker image older version for stratum
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Docker%20image%20older%20version%20for%20stratum&In-Reply-To=%3C66b00cc1ec08478f928881c92ccee216%40kau.se%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <LINK REL="Previous"  HREF="000100.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[stratum-dev] Docker image older version for stratum</H1>
+    <B>Deval Bhamare</B> 
+    <A HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Docker%20image%20older%20version%20for%20stratum&In-Reply-To=%3C66b00cc1ec08478f928881c92ccee216%40kau.se%3E"
+       TITLE="[stratum-dev] Docker image older version for stratum">Deval.Bhamare at kau.se
+       </A><BR>
+    <I>Fri May 15 18:56:38 UTC 2020</I>
+    <P><UL>
+        <LI>Previous message (by thread): <A HREF="000100.html">[stratum-dev] Docker image 8.9.2-3.16.56-OpenNetworkLinux older version for stratum
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#91">[ date ]</a>
+              <a href="thread.html#91">[ thread ]</a>
+              <a href="subject.html#91">[ subject ]</a>
+              <a href="author.html#91">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+
+thanks for your reply.
+
+
+Below is the output of uname -r command:
+
+
+3.16.64-OpenNetworkLinux
+
+
+I installed it using  ONL-HEAD_ONL-OS8_2019-07-17.1445-8b1dfdb_AMD64 installer from stordis.
+
+
+Now, I updated stratum and docker image again and tried it with both options  stratumproject/stratum-bf:8.9.2 and stratumproject/stratum-bf:8.9.2-3.16.56-OpenNetworkLinux, but now I get the error.
+
+
+Error:
+
+Cannot find flag file /etc/stratum/stratum.flags
+
+
+
+Also, I tried on Ubuntu with latest stratum with docker image 8.9.2 and I get same error
+
+
+Error:
+
+Cannot find flag file /etc/stratum/stratum.flags
+
+
+Thanks,
+Deval.
+
+
+
+
+________________________________
+From: Yi Tseng &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">yi at opennetworking.org</A>&gt;
+Sent: Friday, May 15, 2020 8:53:34 PM
+To: Deval Bhamare
+Subject: Re: Docker image older version for stratum
+
+Hi Deval,
+
+According to the log, you are trying to run the container on the system which is not OpenNetworkingLinux with Linux kernel 3.16.56
+
+The docker image with &quot;-OpenNetworkingLinux&quot; tag postfix is now only built for OpenNetworkLinux (which requires ONLP library). If you want to use other systems like Ubuntu or Fedora, you can use images without &quot;-OpenNetworkingLinux&quot; postfix. For example &quot;stratumproject/stratum-bf:8.9.2&quot;
+
+Yi
+
+On Thu, May 14, 2020 at 1:49 AM Deval Bhamare &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">Deval.Bhamare at kau.se</A>&lt;mailto:<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">Deval.Bhamare at kau.se</A>&gt;&gt; wrote:
+
+Hello Yi,
+
+
+As I have mentioned earlier, the docker container image 8.9.2-3.16.56-OpenNetworkLinux&lt;<A HREF="https://hub.docker.com/layers/stratumproject/stratum-bf/8.9.2-3.16.56-OpenNetworkLinux/images/sha256-3a52ec68005041b4d69b676c9584133a34652910514272165f09f443fb2975d8?context=explore">https://hub.docker.com/layers/stratumproject/stratum-bf/8.9.2-3.16.56-OpenNetworkLinux/images/sha256-3a52ec68005041b4d69b676c9584133a34652910514272165f09f443fb2975d8?context=explore</A>&gt; was working for our tofino switch, until I had to pull the image again, due to some crash. However, after pulling the new image, things have stopped working. I now get the error:
+
+
+loading bf_kdrv_mod...
+insmod: ERROR: could not insert module /usr/lib/modules/bf_kdrv.ko: Invalid module format
+/usr/bin/stratum_bf: error while loading shared libraries: libonlp.so.1: cannot open shared object file: No such file or directory
+
+
+
+As I can see the docker image is build very recently and I doubt it may have changed something. Is it possible for you to provide the older version of this image (approx 2 months old, when the missing json issue was solved). Else, how can I fix the above problem?
+
+
+
+Thanks,
+
+Deval.
+
+
+
+
+--
+Yi Tseng
+Member of Technical Staff
+Open Networking Foundation
+<A HREF="https://www.opennetworking.org/">https://www.opennetworking.org/</A>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.stratumproject.org/archives/stratum-dev/attachments/20200515/2f582c01/attachment-0001.html">https://lists.stratumproject.org/archives/stratum-dev/attachments/20200515/2f582c01/attachment-0001.html</A>&gt;
+</PRE>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message (by thread): <A HREF="000100.html">[stratum-dev] Docker image 8.9.2-3.16.56-OpenNetworkLinux older version for stratum
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#91">[ date ]</a>
+              <a href="thread.html#91">[ thread ]</a>
+              <a href="subject.html#91">[ subject ]</a>
+              <a href="author.html#91">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.stratumproject.org/listinfo/stratum-dev">More information about the stratum-dev
+mailing list</a><br>
+</body></html>

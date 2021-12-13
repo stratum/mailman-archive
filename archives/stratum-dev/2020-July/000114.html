@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [stratum-dev] Confused about how to run Stratum
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Confused%20about%20how%20to%20run%20Stratum&In-Reply-To=%3CVI1PR06MB5214BE4129F113D74CDD0BA1B5600%40VI1PR06MB5214.eurprd06.prod.outlook.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <LINK REL="Previous"  HREF="000112.html">
+   <LINK REL="Next"  HREF="000115.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[stratum-dev] Confused about how to run Stratum</H1>
+    <B>David Lake</B> 
+    <A HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Confused%20about%20how%20to%20run%20Stratum&In-Reply-To=%3CVI1PR06MB5214BE4129F113D74CDD0BA1B5600%40VI1PR06MB5214.eurprd06.prod.outlook.com%3E"
+       TITLE="[stratum-dev] Confused about how to run Stratum">d.lake at surrey.ac.uk
+       </A><BR>
+    <I>Mon Jul 13 21:20:52 UTC 2020</I>
+    <P><UL>
+        <LI>Previous message (by thread): <A HREF="000112.html">[stratum-dev] Confused about how to run Stratum
+</A></li>
+        <LI>Next message (by thread): <A HREF="000115.html">[stratum-dev] Confused about how to run Stratum
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#114">[ date ]</a>
+              <a href="thread.html#114">[ thread ]</a>
+              <a href="subject.html#114">[ subject ]</a>
+              <a href="author.html#114">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>OK – I followed the instructions from David Gengenbach (thank you) and I now have a Stratum agent running on the switch.
+
+I then built the pipeline in ONOS and loaded it:
+
+2020-07-13T22:10:58,999 | INFO  | onos-store-app-app-activation | ApplicationManager               | 193 - org.onosproject.onos-core-net - 2.2.3 | Application org.opencord.fabric-tofino has been activated
+<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">root at ONOS</A>:~/fabric-tofino#
+
+But when I add the netfcfg, I see this message in the ONOS log:
+
+2020-07-13T22:15:42,571 | ERROR | onos-gdp-6       | DeviceTaskExecutor               | 225 - org.onosproject.onos-providers-general-device - 2.2.3 | Unable to complete task CONNECTION_SETUP for device:my-tofino-switch: pipeconf org.opencord.fabric.tofino.montara_sde_9_0_0 not registered
+
+
+My switch is a Montara but I don’t see where the pipeconf is built?
+
+On my ONOS system I have ONOS 2.2.3 and bf-sde-9.0.0.  I have not built anything with the bf-sde.
+
+Do I need to run p4studio_build in the BF-SDE first?
+
+Thanks
+
+David
+
+From: Alireza Ghaffarkhah &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">aghaffar at google.com</A>&gt;
+Sent: 13 July 2020 07:01
+To: David Gengenbach &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">davidgengenbach at gmx.de</A>&gt;; Brian O'Connor &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">brian at opennetworking.org</A>&gt;; Yi Tseng &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">yi at opennetworking.org</A>&gt;; Maximilian Pudelko &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">max at opennetworking.org</A>&gt;
+Cc: Lake, David (PG/R - Elec Electronic Eng) &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">d.lake at surrey.ac.uk</A>&gt;; <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>
+Subject: Re: [stratum-dev] Confused about how to run Stratum
+
++Brian O'Connor&lt;mailto:<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">brian at opennetworking.org</A>&gt; +Yi Tseng&lt;mailto:<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">yi at opennetworking.org</A>&gt; +Maximilian Pudelko&lt;mailto:<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">max at opennetworking.org</A>&gt; in case they can provide more input.
+
+On Sun, Jul 12, 2020 at 5:00 PM David Gengenbach via stratum-dev &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>&lt;mailto:<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>&gt;&gt; wrote:
+I created a setup guide for this exact use-case. The PR for it has not
+been merged but should work: <A HREF="https://github.com/stratum/stratum/pull/280&lt;https://eur02.safelinks.protection.outlook.com/?url=https%3A%2F%2Fgithub.com%2Fstratum%2Fstratum%2Fpull%2F280&amp;data=02%7C01%7Cd.lake%40surrey.ac.uk%7C4f4583ab6704455b169c08d826f2263a%7C6b902693107440aa9e21d89446a2ebb5%7C0%7C1%7C637302168754861486&amp;sdata=lOeajVrVj9WuLmwrXJxoY79aJVD7amgmxaFeZ5SPQSU%3D&amp;reserved=0">https://github.com/stratum/stratum/pull/280&lt;https://eur02.safelinks.protection.outlook.com/?url=https%3A%2F%2Fgithub.com%2Fstratum%2Fstratum%2Fpull%2F280&amp;data=02%7C01%7Cd.lake%40surrey.ac.uk%7C4f4583ab6704455b169c08d826f2263a%7C6b902693107440aa9e21d89446a2ebb5%7C0%7C1%7C637302168754861486&amp;sdata=lOeajVrVj9WuLmwrXJxoY79aJVD7amgmxaFeZ5SPQSU%3D&amp;reserved=0</A>&gt;
+
+_______________________________________________
+stratum-dev mailing list
+<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>&lt;mailto:<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>&gt;
+<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev&lt;https://eur02.safelinks.protection.outlook.com/?url=https%3A%2F%2Flists.stratumproject.org%2Flistinfo%2Fstratum-dev&amp;data=02%7C01%7Cd.lake%40surrey.ac.uk%7C4f4583ab6704455b169c08d826f2263a%7C6b902693107440aa9e21d89446a2ebb5%7C0%7C1%7C637302168754861486&amp;sdata=48TwOOswQ5trT99bjjnm30vSYpid0ObqjsxDOhjPPRk%3D&amp;reserved=0">https://lists.stratumproject.org/listinfo/stratum-dev&lt;https://eur02.safelinks.protection.outlook.com/?url=https%3A%2F%2Flists.stratumproject.org%2Flistinfo%2Fstratum-dev&amp;data=02%7C01%7Cd.lake%40surrey.ac.uk%7C4f4583ab6704455b169c08d826f2263a%7C6b902693107440aa9e21d89446a2ebb5%7C0%7C1%7C637302168754861486&amp;sdata=48TwOOswQ5trT99bjjnm30vSYpid0ObqjsxDOhjPPRk%3D&amp;reserved=0</A>&gt;
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.stratumproject.org/archives/stratum-dev/attachments/20200713/d794dbff/attachment.html">https://lists.stratumproject.org/archives/stratum-dev/attachments/20200713/d794dbff/attachment.html</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message (by thread): <A HREF="000112.html">[stratum-dev] Confused about how to run Stratum
+</A></li>
+	<LI>Next message (by thread): <A HREF="000115.html">[stratum-dev] Confused about how to run Stratum
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#114">[ date ]</a>
+              <a href="thread.html#114">[ thread ]</a>
+              <a href="subject.html#114">[ subject ]</a>
+              <a href="author.html#114">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.stratumproject.org/listinfo/stratum-dev">More information about the stratum-dev
+mailing list</a><br>
+</body></html>

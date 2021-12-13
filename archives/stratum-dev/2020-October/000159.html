@@ -1,0 +1,136 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [stratum-dev] Can I build stratum_bf with dynamic load of the grpc library?
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Can%20I%20build%20stratum_bf%20with%20dynamic%20load%20of%20the%0A%20grpc%20library%3F&In-Reply-To=%3CBY5PR04MB63424A8FA1FB0FF8F1C9CF36AD040%40BY5PR04MB6342.namprd04.prod.outlook.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <LINK REL="Previous"  HREF="000158.html">
+   <LINK REL="Next"  HREF="000160.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[stratum-dev] Can I build stratum_bf with dynamic load of the grpc library?</H1>
+    <B>Narada Hess</B> 
+    <A HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Can%20I%20build%20stratum_bf%20with%20dynamic%20load%20of%20the%0A%20grpc%20library%3F&In-Reply-To=%3CBY5PR04MB63424A8FA1FB0FF8F1C9CF36AD040%40BY5PR04MB6342.namprd04.prod.outlook.com%3E"
+       TITLE="[stratum-dev] Can I build stratum_bf with dynamic load of the grpc library?">NHESS at extremenetworks.com
+       </A><BR>
+    <I>Tue Oct 13 18:49:27 UTC 2020</I>
+    <P><UL>
+        <LI>Previous message (by thread): <A HREF="000158.html">[stratum-dev] Can I build stratum_bf with dynamic load of the grpc library?
+</A></li>
+        <LI>Next message (by thread): <A HREF="000160.html">[stratum-dev] Can I build stratum_bf with dynamic load of the grpc library?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#159">[ date ]</a>
+              <a href="thread.html#159">[ thread ]</a>
+              <a href="subject.html#159">[ subject ]</a>
+              <a href="author.html#159">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Thanks, Max
+I googled it and found lots of references to ‘protobuf File already exists in database’. There were various ideas, but the common solution in all threads was to factor out the code using protobuf into a separate library for use by both modules.
+
+Sure I can re-factor my own code, but refactoring protobuf out of stratum and BF-SDE into a separate dynamic library, that’s a lot bigger project! And probably not advisable.
+
+There were other suggestions like using dlopen() with RLTD_GLOBAL and linking with -fvisibility=hidden. I didn’t find any instances of dlopen() in the stratum code, and bazel seems only to support hints about linking, not fine-grained options.
+
+So scratching my head about this right now. N
+
+From: Maximilian Pudelko &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">max at opennetworking.org</A>&gt;
+Sent: Tuesday, October 13, 2020 11:36 AM
+To: Narada Hess &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">NHESS at extremenetworks.com</A>&gt;
+Cc: <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>
+Subject: Re: [stratum-dev] Can I build stratum_bf with dynamic load of the grpc library?
+
+External Email: Use caution in opening links or attachments.
+Thanks for the update.
+
+I think if you use bazel run directly on the switch, all the shared libraries should be taken care of by Bazel.
+
+To my knowledge, nobody had success running both gRPC services at the same time yet. We internally tried a while ago,
+but hit the same roadblocks as you.
+
+Max
+
+On Tue, Oct 13, 2020 at 8:04 AM Narada Hess &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">NHESS at extremenetworks.com</A>&lt;mailto:<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">NHESS at extremenetworks.com</A>&gt;&gt; wrote:
+Thanks Max,
+Setting linkstatic to False results in a set of missing libraries. I am using compatible versions of grpc and protobuf, so that is not the issue.
+
+Has anyone reported being able to run stratum with the Barefoot SDE BFRT server enabled?
+
+I have not thus far solved the issue of the duplicate references (protobuf, etc). Thanks, N
+
+From: Maximilian Pudelko &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">max at opennetworking.org</A>&lt;mailto:<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">max at opennetworking.org</A>&gt;&gt;
+Sent: Monday, October 12, 2020 12:31 PM
+To: Narada Hess &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">NHESS at extremenetworks.com</A>&lt;mailto:<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">NHESS at extremenetworks.com</A>&gt;&gt;
+Cc: <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>&lt;mailto:<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>&gt;
+Subject: Re: [stratum-dev] Can I build stratum_bf with dynamic load of the grpc library?
+
+External Email: Use caution in opening links or attachments.
+Hi Narada,
+
+Bazel heavily favors static linking, but there are some options around that: <A HREF="https://docs.bazel.build/versions/master/be/c-cpp.html#cc_binary.linkstatic&lt;https://nam05.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.bazel.build%2Fversions%2Fmaster%2Fbe%2Fc-cpp.html%23cc_binary.linkstatic&amp;data=02%7C01%7CNHESS%40extremenetworks.com%7Ccde6702c8b3d426c6b8408d86fa6d49d%7Cfc8c2bf6914d4c1fb35246a9adb87030%7C0%7C0%7C637382109618752174&amp;sdata=eramESx8rpGfpPV4Iu4wpWVbxhPnNt2j5VYVmPmsDs0%3D&amp;reserved=0">https://docs.bazel.build/versions/master/be/c-cpp.html#cc_binary.linkstatic&lt;https://nam05.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.bazel.build%2Fversions%2Fmaster%2Fbe%2Fc-cpp.html%23cc_binary.linkstatic&amp;data=02%7C01%7CNHESS%40extremenetworks.com%7Ccde6702c8b3d426c6b8408d86fa6d49d%7Cfc8c2bf6914d4c1fb35246a9adb87030%7C0%7C0%7C637382109618752174&amp;sdata=eramESx8rpGfpPV4Iu4wpWVbxhPnNt2j5VYVmPmsDs0%3D&amp;reserved=0</A>&gt;
+Try adding this label on the stratum_bf target and rebuild.
+Another potential source of problems could be the different versions of gRPC and Protobuf between Stratum and the SDE. Adjusting it in Stratum is as
+easy as swapping the urls in the deps.bzl file.
+
+Max
+
+On Sun, Oct 11, 2020 at 8:35 AM Narada Hess via stratum-dev &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>&lt;mailto:<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>&gt;&gt; wrote:
+Hi,
+I’m trying to build stratum_bf with the BF SDE BF-Runtime server enabled. That requires building the SDE with gRPC. Of course, when I try to run stratum_bf, it crashes because of the two instances of the gRPC library (see below).
+
+Is there any way to build stratum_bf with dynamic linking of the gRPC (and protobuf too, I’m guessing) library? I saw half a dozen files in the bazel directory referencing gRPC. Just removing the references of course did not work.
+
+Thanks for any suggestions on how to proceed. N
+
+
+/usr/local/bin/stratum_bf -flagfile=/etc/service/stratum/stratum-tofino-model.flags
+
+[libprotobuf ERROR external/com_google_protobuf/src/google/protobuf/descriptor_database.cc:120] File already exists in database: google/protobuf/descriptor.proto [libprotobuf FATAL external/com_google_protobuf/src/google/protobuf/descriptor.cc:1382] CHECK failed: GeneratedDatabase()-\u003eAdd(encoded_file_descriptor, size):
+
+terminate called after throwing an instance of 'google::protobuf::FatalException'
+
+  what():  CHECK failed: GeneratedDatabase()-\u003eAdd(encoded_file_descriptor, size):
+
+Aborted (core dumped)
+
+_______________________________________________
+stratum-dev mailing list
+<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>&lt;mailto:<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>&gt;
+<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev&lt;https://nam05.safelinks.protection.outlook.com/?url=https%3A%2F%2Flists.stratumproject.org%2Flistinfo%2Fstratum-dev&amp;data=02%7C01%7CNHESS%40extremenetworks.com%7Ccde6702c8b3d426c6b8408d86fa6d49d%7Cfc8c2bf6914d4c1fb35246a9adb87030%7C0%7C0%7C637382109618752174&amp;sdata=w4pk0dKTPQJRR2JJoWeHMZAIAEEsWwOZb0iMgzpKCoE%3D&amp;reserved=0">https://lists.stratumproject.org/listinfo/stratum-dev&lt;https://nam05.safelinks.protection.outlook.com/?url=https%3A%2F%2Flists.stratumproject.org%2Flistinfo%2Fstratum-dev&amp;data=02%7C01%7CNHESS%40extremenetworks.com%7Ccde6702c8b3d426c6b8408d86fa6d49d%7Cfc8c2bf6914d4c1fb35246a9adb87030%7C0%7C0%7C637382109618752174&amp;sdata=w4pk0dKTPQJRR2JJoWeHMZAIAEEsWwOZb0iMgzpKCoE%3D&amp;reserved=0</A>&gt;
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.stratumproject.org/archives/stratum-dev/attachments/20201013/c3aaf89c/attachment-0001.html">https://lists.stratumproject.org/archives/stratum-dev/attachments/20201013/c3aaf89c/attachment-0001.html</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message (by thread): <A HREF="000158.html">[stratum-dev] Can I build stratum_bf with dynamic load of the grpc library?
+</A></li>
+	<LI>Next message (by thread): <A HREF="000160.html">[stratum-dev] Can I build stratum_bf with dynamic load of the grpc library?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#159">[ date ]</a>
+              <a href="thread.html#159">[ thread ]</a>
+              <a href="subject.html#159">[ subject ]</a>
+              <a href="author.html#159">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.stratumproject.org/listinfo/stratum-dev">More information about the stratum-dev
+mailing list</a><br>
+</body></html>

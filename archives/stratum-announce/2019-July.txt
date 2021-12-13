@@ -1,0 +1,177 @@
+From bocon at opennetworking.org  Tue Jul  2 22:25:24 2019
+From: bocon at opennetworking.org (Brian O'Connor)
+Date: Tue, 2 Jul 2019 15:25:24 -0700
+Subject: [stratum-announce] Invitation to P4 + Stratum Workshop at Infosys
+	(Jul 24, 2019)
+Message-ID: <CACKOpDkR5yYbrvaxEwxn_Gk+MdYmH2WY4Fqu7wwLXcKx8hD_+Q@mail.gmail.com>
+
+Hi everyone,
+
+We will be having an event in India that will focus on Stratum and P4.
+There are also a few speaking slots still available; if you are interested,
+please let me know.
+
+Looking forward to seeing you there!
+Brian
+
+
+
+*Hello, *
+You are invited to the following event:
+P4 + STRATUM WORKSHOP AT INFOSYS
+<https://www.eventbrite.com/e/p4-stratum-workshop-at-infosys-tickets-63351830029?ref=enivtefor001&invite=MTY3ODI1ODkvYm9jb25Ab3Blbm5ldHdvcmtpbmcub3JnLzA%3D%0A&utm_source=eb_email&utm_medium=email&utm_campaign=inviteformalv2&utm_term=eventpage>
+[image: divider]
+<https://www.eventbrite.com/e/p4-stratum-workshop-at-infosys-tickets-63351830029?ref=enivtefor001&invite=MTY3ODI1ODkvYm9jb25Ab3Blbm5ldHdvcmtpbmcub3JnLzA%3D%0A&utm_source=eb_email&utm_medium=email&utm_campaign=inviteformalv2&utm_term=eventimage&ref=enivtefor001>
+
+Event to be held at the following time, date, and location:
+
+Wednesday, July 24, 2019 from 9:00 AM to 4:30 PM (IST)
+
+*Infosys*
+Infosys Drive
+Bengaluru 560100
+India
+View Map
+<http://maps.google.com/maps?q=Infosys+Drive,+Bengaluru,+KA+560100+India&hl=en>
+*Attend Event*
+<https://www.eventbrite.com/e/p4-stratum-workshop-at-infosys-tickets-63351830029?ref=enivtefor001&invite=MTY3ODI1ODkvYm9jb25Ab3Blbm5ldHdvcmtpbmcub3JnLzA%3D%0A&utm_source=eb_email&utm_medium=email&utm_campaign=inviteformalv2&utm_term=attend>
+[image: divider]
+
+Hosted by Infosys and the Open Networking Foundation, the P4
+<https://www.opennetworking.org/p4/> + Stratum
+<https://www.opennetworking.org/stratum/> Workshop will introduce attendees
+to P4, a programming language used to model or define packet fowarding
+planes, and Stratum, an open source switch operating system that enables
+P4-defined forwarding along with a standard set of OpenConfig models for
+interoperable management.
+
+
+
+The morning session will include leading networking vendors explaining some
+of the features and benefits of this new approach to networking, as well as
+introduce some of the next-generation hardware that is making it possible.
+The afternoon portion of the workshop will have local network operators who
+will provide insights into the use cases for this new technology.
+
+
+
+The event will be technical in nature and is targeted at network architects
+and developers. It is free without admission and ticket charges; online
+registration is required.
+
+
+
+
+
+Learn more about Stratum here <https://www.opennetworking.org/stratum/>.
+
+
+
+Learn more about P4 here <https://www.opennetworking.org/p4/>.
+
+
+
+We hope you can make it!
+
+
+
+Cheers,
+
+
+
+Infosys and the Open Networking Foundation
+[image: eventbrite]
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-announce/attachments/20190702/02466ded/attachment.html>
+
+From invite at eventbrite.com  Mon Jul 15 22:14:25 2019
+From: invite at eventbrite.com (Infosys and the Open Networking Foundation)
+Date: Mon, 15 Jul 2019 15:14:25 -0700 (PDT)
+Subject: [stratum-announce] Last Chance! You're invited to P4 + Stratum
+	Workshop at Infosys (Jul 24, 2019)
+Message-ID: <20190715221425.F2231138B33@prod-task-app13.aws-us-east-1.evbops.com>
+
+Registration ends July 18th, don't miss out!
+ 
+Hosted by Infosys and the Open Networking Foundation, the P4 + Stratum Workshop will introduce attendees to P4, a programming language used to model or define packet fowarding planes, and Stratum, an open source switch operating system that enables P4-defined forwarding along with a standard set of OpenConfig models for interoperable management. 
+ 
+The morning session will include leading networking vendors explaining some of the features and benefits of this new approach to networking, as well as introduce some of the next-generation hardware that is making it possible. The afternoon portion of the workshop will have local network operators who will provide insights into the use cases for this new technology. 
+ 
+The event will be technical in nature and is targeted at network architects and developers. It is free without admission and ticket charges; online registration is required. 
+ 
+ 
+Learn more about Stratum here.
+Learn more about P4 here. 
+
+We hope you can make it!
+ 
+Cheers,
+ 
+Infosys and the Open Networking Foundation
+
+------------------------------
+Event Summary:
+------------------------------
+
+Event: P4 + Stratum Workshop at Infosys
+Date: Wednesday, July 24, 2019 from 9:00 AM to 4:00 PM (IST)
+Location: &lt;b&gt;Infosys&lt;/b&gt;&lt;br /&gt;Infosys Drive&lt;br /&gt;Bengaluru 560100&lt;br /&gt;India
+
+------------------------------
+Event Details:
+------------------------------
+
+Hosted by Infosys and the Open Networking Foundation, the P4 + Stratum Workshop will introduce attendees to P4, a programming language used to model or define packet fowarding planes, and Stratum, an open source switch operating system that enables P4-defined forwarding along with a standard set of OpenConfig models for interoperable management. 
+The morning session will include leading networking vendors explaining some of the features and benefits of this new approach to networking, as well as introduce some of the next-generation hardware that is making it possible. The afternoon portion of the workshop will have local network operators who will provide insights into the use cases for this new technology. 
+The event will be technical in nature and is targeted at network architects and developers. It is free without admission and ticket charges; online registration is required. 
+
+Agenda:
+
+Learn more about Stratum here.
+Learn more about P4 here. 
+
+------------------------------
+Hosted By:
+------------------------------
+Infosys and the Open Networking Foundation
+
+The Open Networking Conference Asia 2019 is hosted by Infosys in collaboration with the ONF.
+
+
+
+
+
+Infosys is a global leader in next-generation digital services and consulting. We enable clients in 45 countries to navigate their digital transformation.
+
+
+
+With over three decades of experience in managing the systems and workings of global enterprises, we expertly steer our clients through their digital journey. We do it by enabling the enterprise with an AI-powered core that helps prioritize the execution of change. We also empower the business with agile digital at scale to deliver unprecedented levels of performance and customer delight. Our always-on learning agenda drives their continuous improvement through building and transferring digital skills, expertise, and ideas from our innovation ecosystem.
+
+
+
+
+
+
+
+
+
+The Open Networking Foundation (ONF) is a non-profit operator led consortium driving transformation of network infrastructure and carrier business models.
+We are an open, collaborative, community of communities.  The ONF serves as the umbrella for a number of projects building solutions by leveraging network disaggregation, white box economics, open source software and software defined standards to revolutionize the carrier industry.
+
+
+------------------------------
+Register Online:
+------------------------------
+
+More information and online registration are available here:
+https://www.eventbrite.com/e/p4-stratum-workshop-at-infosys-tickets-63351830029?ref=enivtefor001&invite=MTY4NjI2MzUvc3RyYXR1bS1hbm5vdW5jZUBsaXN0cy5zdHJhdHVtcHJvamVjdC5vcmcvMA%3D%3D%0A
+
+----------------------------------------------------------------------
+
+Collect event fees online with Eventbrite
+http://www.eventbrite.com
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-announce/attachments/20190715/7d90cf9f/attachment.html>
+

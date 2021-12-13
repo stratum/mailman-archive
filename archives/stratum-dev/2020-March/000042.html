@@ -1,0 +1,189 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [stratum-dev] Update Bazel version to 2.2.0
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Update%20Bazel%20version%20to%202.2.0&In-Reply-To=%3C280d12daac4a4957b30144e3b7720db4%40kau.se%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <LINK REL="Previous"  HREF="000039.html">
+   <LINK REL="Next"  HREF="000043.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[stratum-dev] Update Bazel version to 2.2.0</H1>
+    <B>Deval Bhamare</B> 
+    <A HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Update%20Bazel%20version%20to%202.2.0&In-Reply-To=%3C280d12daac4a4957b30144e3b7720db4%40kau.se%3E"
+       TITLE="[stratum-dev] Update Bazel version to 2.2.0">Deval.Bhamare at kau.se
+       </A><BR>
+    <I>Sat Mar  7 10:00:55 UTC 2020</I>
+    <P><UL>
+        <LI>Previous message (by thread): <A HREF="000039.html">[stratum-dev] Update Bazel version to 2.2.0
+</A></li>
+        <LI>Next message (by thread): <A HREF="000043.html">[stratum-dev] Update Bazel version to 2.2.0
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#42">[ date ]</a>
+              <a href="thread.html#42">[ thread ]</a>
+              <a href="subject.html#42">[ subject ]</a>
+              <a href="author.html#42">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello Yi,
+
+
+I am answering all your question here. Yes, libbf_switchd_lib.so exists in/bf-sde-8.9.0/install/lib/. That error is resolved now.
+
+
+As I have mentioned, I am stuck at the GCC error mentioned earlier (and below).
+
+
+&quot;The BSP is optional for Stratum, you can have the BSP installed in your SDE_INSTALL directory or not.&quot;
+
+
+&gt;&gt;<i> So it means even if I am using --define phal_with_onlp=false and relying on BSP, nothing different needs to be done besides compiling BF SDE with BSP, which i have already done.
+</I>
+
+So what can be the issue with the GCC error I am getting and how to resolve it (pasting below again)
+
+
+ERROR: /stratum/stratum/hal/bin/barefoot/BUILD:26:1: Linking of rule '//stratum/hal/bin/barefoot:stratum_bf' failed (Exit 1) gcc failed: error executing command /usr/bin/gcc @bazel-out/k8-fastbuild/bin/stratum/hal/bin/barefoot/stratum_bf-2.params
+
+Use --sandbox_debug to see verbose messages from the sandbox
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi.pic.o:pi.c:function pi_init: error: undefined reference to '_pi_init'
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi.pic.o:pi.c:function pi_assign_device: error: undefined reference to '_pi_assign_device'
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi.pic.o:pi.c:function pi_update_device_start: error: undefined reference to '_pi_update_device_start'
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi.pic.o:pi.c:function pi_update_device_end: error: undefined reference to '_pi_update_device_end'
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi.pic.o:pi.c:function pi_remove_device: error: undefined reference to '_pi_remove_device'
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi.pic.o:pi.c:function pi_session_init: error: undefined reference to '_pi_session_init'
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi.pic.o:pi.c:function pi_session_cleanup: error: undefined reference to '_pi_session_cleanup'
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi.pic.o:pi.c:function pi_batch_begin: error: undefined reference to '_pi_batch_begin'
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi.pic.o:pi.c:function pi_batch_end: error: undefined reference to '_pi_batch_end'
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi.pic.o:pi.c:function pi_destroy: error: undefined reference to '_pi_destroy'
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi.pic.o:pi.c:function pi_packetout_send: error: undefined reference to '_pi_packetout_send'
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi.pic.o:pi.c:function pi_port_status_get: error: undefined reference to '_pi_port_status_get'
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_act_prof.pic.o:pi_act_prof.c:function pi_act_prof_mbr_create: error: undefined reference to '_pi_act_prof_mbr_create'
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_act_prof.pic.o:pi_act_prof.c:function pi_act_prof_mbr_delete: error: undefined reference to '_pi_act_prof_mbr_delete'
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_act_prof.pic.o:pi_act_prof.c:function pi_act_prof_mbr_modify: error: undefined reference to '_pi_act_prof_mbr_modify'
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_act_prof.pic.o:pi_act_prof.c:function pi_act_prof_grp_create: error: undefined reference to '_pi_act_prof_grp_create'
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_act_prof.pic.o:pi_act_prof.c:function pi_act_prof_grp_delete: error: undefined reference to '_pi_act_prof_grp_delete'
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_act_prof.pic.o:pi_act_prof.c:function pi_act_prof_grp_add_mbr: error: undefined reference to '_pi_act_prof_grp_add_mbr'
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_act_prof.pic.o:pi_act_prof.c:function pi_act_prof_grp_remove_mbr: error: undefined reference to '_pi_act_prof_grp_remove_mbr'
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_act_prof.pic.o:pi_act_prof.c:function pi_act_prof_grp_set_mbrs: error: undefined reference to '_pi_act_prof_grp_set_mbrs'
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_act_prof.pic.o:pi_act_prof.c:function pi_act_prof_grp_activate_mbr: error: undefined reference to '_pi_act_prof_grp_activate_mbr'
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_act_prof.pic.o:pi_act_prof.c:function pi_act_prof_grp_deactivate_mbr: error: undefined reference to '_pi_act_prof_grp_deactivate_mbr'
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_act_prof.pic.o:pi_act_prof.c:function pi_act_prof_entries_fetch: error: undefined reference to '_pi_act_prof_entries_fetch'
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_act_prof.pic.o:pi_act_prof.c:function pi_act_prof_mbr_fetch: error: undefined reference to '_pi_act_prof_mbr_fetch'
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_act_prof.pic.o:pi_act_prof.c:function pi_act_prof_grp_fetch: error: undefined reference to '_pi_act_prof_grp_fetch'
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_act_prof.pic.o:pi_act_prof.c:function pi_act_prof_entries_fetch_done: error: undefined reference to '_pi_act_prof_entries_fetch_done'
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_act_prof.pic.o:pi_act_prof.c:function pi_act_prof_api_support: error: undefined reference to '_pi_act_prof_api_support'
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_tables.pic.o:pi_tables.c:function pi_table_entry_add: error: undefined reference to '_pi_table_entry_add'
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_tables.pic.o:pi_tables.c:function pi_table_default_action_set: error: undefined reference to '_pi_table_default_action_set'
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_tables.pic.o:pi_tables.c:function pi_table_default_action_reset: error: undefined reference to '_pi_table_default_action_reset'
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_tables.pic.o:pi_tables.c:function pi_table_default_action_get: error: undefined reference to '_pi_table_default_action_get'
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_tables.pic.o:pi_tables.c:function pi_table_default_action_done: error: undefined reference to '_pi_table_default_action_done'
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_tables.pic.o:pi_tables.c:function pi_table_default_action_get_handle: error: undefined reference to '_pi_table_default_action_get_handle'
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_tables.pic.o:pi_tables.c:function pi_table_entry_delete: error: undefined reference to '_pi_table_entry_delete'
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_tables.pic.o:pi_tables.c:function pi_table_entry_delete_wkey: error: undefined reference to '_pi_table_entry_delete_wkey'
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_tables.pic.o:pi_tables.c:function pi_table_entry_modify: error: undefined reference to '_pi_table_entry_modify'
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_tables.pic.o:pi_tables.c:function pi_table_entry_modify_wkey: error: undefined reference to '_pi_table_entry_modify_wkey'
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_tables.pic.o:pi_tables.c:function pi_table_entries_fetch: error: undefined reference to '_pi_table_entries_fetch'
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_tables.pic.o:pi_tables.c:function pi_table_entries_fetch_one: error: undefined reference to '_pi_table_entries_fetch_one'
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_tables.pic.o:pi_tables.c:function pi_table_entries_fetch_wkey: error: undefined reference to '_pi_table_entries_fetch_wkey'
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_tables.pic.o:pi_tables.c:function pi_table_entries_fetch_done: error: undefined reference to '_pi_table_entries_fetch_done'
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_tables.pic.o:pi_tables.c:function pi_table_idle_timeout_config_set: error: undefined reference to '_pi_table_idle_timeout_config_set'
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_tables.pic.o:pi_tables.c:function pi_table_entry_get_remaining_ttl: error: undefined reference to '_pi_table_entry_get_remaining_ttl'
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_meter.pic.o:pi_meter.c:function pi_meter_read: error: undefined reference to '_pi_meter_read'
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_meter.pic.o:pi_meter.c:function pi_meter_set: error: undefined reference to '_pi_meter_set'
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_meter.pic.o:pi_meter.c:function pi_meter_read_direct: error: undefined reference to '_pi_meter_read_direct'
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_meter.pic.o:pi_meter.c:function pi_meter_set_direct: error: undefined reference to '_pi_meter_set_direct'
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_mc.pic.o:pi_mc.c:function pi_mc_session_init: error: undefined reference to '_pi_mc_session_init'
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_mc.pic.o:pi_mc.c:function pi_mc_session_cleanup: error: undefined reference to '_pi_mc_session_cleanup'
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_mc.pic.o:pi_mc.c:function pi_mc_grp_create: error: undefined reference to '_pi_mc_grp_create'
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_mc.pic.o:pi_mc.c:function pi_mc_grp_delete: error: undefined reference to '_pi_mc_grp_delete'
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_mc.pic.o:pi_mc.c:function pi_mc_node_create: error: undefined reference to '_pi_mc_node_create'
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_mc.pic.o:pi_mc.c:function pi_mc_node_modify: error: undefined reference to '_pi_mc_node_modify'
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_mc.pic.o:pi_mc.c:function pi_mc_node_delete: error: undefined reference to '_pi_mc_node_delete'
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_mc.pic.o:pi_mc.c:function pi_mc_grp_attach_node: error: undefined reference to '_pi_mc_grp_attach_node'
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_mc.pic.o:pi_mc.c:function pi_mc_grp_detach_node: error: undefined reference to '_pi_mc_grp_detach_node'
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_learn.pic.o:pi_learn.c:function pi_learn_config_set: error: undefined reference to '_pi_learn_config_set'
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_learn.pic.o:pi_learn.c:function pi_learn_msg_ack: error: undefined reference to '_pi_learn_msg_ack'
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_learn.pic.o:pi_learn.c:function pi_learn_msg_done: error: undefined reference to '_pi_learn_msg_done'
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_counter.pic.o:pi_counter.c:function pi_counter_read: error: undefined reference to '_pi_counter_read'
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_counter.pic.o:pi_counter.c:function pi_counter_write: error: undefined reference to '_pi_counter_write'
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_counter.pic.o:pi_counter.c:function pi_counter_read_direct: error: undefined reference to '_pi_counter_read_direct'
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_counter.pic.o:pi_counter.c:function pi_counter_write_direct: error: undefined reference to '_pi_counter_write_direct'
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_counter.pic.o:pi_counter.c:function pi_counter_hw_sync: error: undefined reference to '_pi_counter_hw_sync'
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_clone.pic.o:pi_clone.c:function pi_clone_session_set: error: undefined reference to '_pi_clone_session_set'
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_clone.pic.o:pi_clone.c:function pi_clone_session_reset: error: undefined reference to '_pi_clone_session_reset'
+collect2: error: ld returned 1 exit status
+Target //stratum/hal/bin/barefoot:stratum_bf failed to build
+Use --verbose_failures to see the command lines of failed build steps.
+INFO: Elapsed time: 95.850s, Critical Path: 56.95s
+INFO: 1141 processes: 1141 processwrapper-sandbox.
+FAILED: Build did NOT complete successfully
+
+
+
+Thanks,
+
+Deval.
+
+________________________________
+From: Yi Tseng &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">yi at opennetworking.org</A>&gt;
+Sent: Saturday, March 7, 2020 4:46:10 AM
+To: Deval Bhamare
+Subject: Re: [stratum-dev] Update Bazel version to 2.2.0
+
+Hi Deval,
+
+The BSP is optional for Stratum, you can have the BSP installed in your SDE_INSTALL directory or not.
+
+On Fri, Mar 6, 2020 at 2:34 AM Deval Bhamare &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">Deval.Bhamare at kau.se</A>&lt;mailto:<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">Deval.Bhamare at kau.se</A>&gt;&gt; wrote:
+
+Hello Yi,
+
+
+I just want to add that, I am doing it without ONLP support  (--define phal_with_onlp=false)
+
+
+We have built the BF SDE 8.9.0 with BF2556X-1T_BSP_8.9.0-master and I have copied the BF SDE folder to Stratum Container. Do I have to copy the BSP folder as well?
+
+
+Thanks,
+
+Deval.
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.stratumproject.org/archives/stratum-dev/attachments/20200307/a5a7808d/attachment-0001.html">https://lists.stratumproject.org/archives/stratum-dev/attachments/20200307/a5a7808d/attachment-0001.html</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message (by thread): <A HREF="000039.html">[stratum-dev] Update Bazel version to 2.2.0
+</A></li>
+	<LI>Next message (by thread): <A HREF="000043.html">[stratum-dev] Update Bazel version to 2.2.0
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#42">[ date ]</a>
+              <a href="thread.html#42">[ thread ]</a>
+              <a href="subject.html#42">[ subject ]</a>
+              <a href="author.html#42">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.stratumproject.org/listinfo/stratum-dev">More information about the stratum-dev
+mailing list</a><br>
+</body></html>

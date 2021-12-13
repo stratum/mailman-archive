@@ -1,0 +1,83 @@
+BEGIN:VCALENDAR
+PRODID:-//Google Inc//Google Calendar 70.9054//EN
+VERSION:2.0
+CALSCALE:GREGORIAN
+METHOD:REQUEST
+BEGIN:VTIMEZONE
+TZID:America/Los_Angeles
+X-LIC-LOCATION:America/Los_Angeles
+BEGIN:DAYLIGHT
+TZOFFSETFROM:-0800
+TZOFFSETTO:-0700
+TZNAME:PDT
+DTSTART:19700308T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:-0700
+TZOFFSETTO:-0800
+TZNAME:PST
+DTSTART:19701101T020000
+RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+DTSTART;TZID=America/Los_Angeles:20190919T100000
+DTEND;TZID=America/Los_Angeles:20190919T103000
+RRULE:FREQ=WEEKLY;UNTIL=20200123T075959Z;INTERVAL=2
+DTSTAMP:20200116T201759Z
+ORGANIZER;CN=Stratum Members:mailto:opennetworking.org_f5b14b1b8quk3slm38ra
+ spotto@group.calendar.google.com
+UID:354pmsr7ekd5mp3r18tvjf6hib_R20190919T170000@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=TENTATIVE;RSVP=TRU
+ E;CN=stratum-members@lists.stratumproject.org;X-NUM-GUESTS=0:mailto:stratum
+ -members@lists.stratumproject.org
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=TENTATIVE;RSVP=TRU
+ E;CN=bill@opennetworking.org;X-NUM-GUESTS=0:mailto:bill@opennetworking.org
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;RSVP=TRUE
+ ;CN=Arkadiy Shapiro;X-NUM-GUESTS=0:mailto:ashapiro@barefootnetworks.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;RSVP=TRUE
+ ;CN=Devjit Gopalpur;X-NUM-GUESTS=0:mailto:devjitg@google.com
+ATTENDEE;CUTYPE=RESOURCE;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;RSVP=TRUE;C
+ N=SVL-MAT3-4-Ulysses (5) [GVC];X-NUM-GUESTS=0:mailto:google.com_726f6f6d5f7
+ 5735f73766c5f6d6174335f345f346c31@resource.calendar.google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;RSVP=
+ TRUE;CN=Alireza Ghaffarkhah;X-NUM-GUESTS=0:mailto:aghaffar@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;RSVP=
+ TRUE;CN=carmelo@opennetworking.org;X-NUM-GUESTS=0:mailto:carmelo@opennetwor
+ king.org
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;RSVP=
+ TRUE;CN=stratum-dev@lists.stratumproject.org;X-NUM-GUESTS=0:mailto:stratum-
+ dev@lists.stratumproject.org
+X-MICROSOFT-CDO-OWNERAPPTID:-884765213
+CREATED:20190130T012731Z
+DESCRIPTION:Stratum Team Meeting\n\nAgenda for meetings - https://docs.goog
+ le.com/document/d/1-bHfORugMPEdcj3I9M_CJKhszrmARcmvPQu0vDQRD5Y/edit?usp=sha
+ ring \n\nMeeting notes/presentations - https://drive.google.com/drive/folde
+ rs/1YLKEc80r3R9hpAb2A5YZdhdz30u2jEBn?usp=sharing \n\nPlease join my meeting
+  from your computer\, tablet or smartphone. \nhttps://global.gotomeeting.co
+ m/join/274603861 \n\nYou can also dial in using your phone. \nUnited States
+ : +1 (571) 317-3129 \n\nAccess Code: 274-603-861 \n\nMore phone numbers \nA
+ ustria: +43 7 2081 5427 \nCanada: +1 (647) 497-9391 \nFrance: +33 170 950 5
+ 94 \nGermany: +49 691 7489 928 \nItaly: +39 0 247 92 13 01 \nNetherlands: +
+ 31 202 251 017 \nSpain: +34 932 75 2004 \nSwitzerland: +41 225 4599 78 \nUn
+ ited Kingdom: +44 20 3713 5028 \n\nJoining from a video-conferencing room o
+ r system? \nDial: 67.217.95.2##274603861 \nCisco devices: 274603861@67.217.
+ 95.2 \n\nFirst GoToMeeting? Let's do a quick system check: https://link.got
+ omeeting.com/system-check\n\n-::~:~::~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:
+ ~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~::~:~::-\nPlease do not edit this section 
+ of the description.\n\nView your event at https://www.google.com/calendar/e
+ vent?action=VIEW&eid=MzU0cG1zcjdla2Q1bXAzcjE4dHZqZjZoaWJfUjIwMTkwOTE5VDE3MD
+ AwMCBzdHJhdHVtLWRldkBsaXN0cy5zdHJhdHVtcHJvamVjdC5vcmc&tok=NzEjb3Blbm5ldHdvc
+ mtpbmcub3JnX2Y1YjE0YjFiOHF1azNzbG0zOHJhc3BvdHRvQGdyb3VwLmNhbGVuZGFyLmdvb2ds
+ ZS5jb204OTI3MDQ5MzFmMDZjMzM4NWVmYjg0OTQ5OWYyZDRhMTU5NjJjMDg0&ctz=America%2F
+ Los_Angeles&hl=en&es=0.\n-::~:~::~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:
+ ~:~:~:~:~:~:~:~:~:~:~:~:~:~:~::~:~::-
+LAST-MODIFIED:20200116T201758Z
+LOCATION:SVL-MAT3-4-Ulysses (5) [GVC]
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Stratum Project Team
+TRANSP:OPAQUE
+END:VEVENT
+END:VCALENDAR

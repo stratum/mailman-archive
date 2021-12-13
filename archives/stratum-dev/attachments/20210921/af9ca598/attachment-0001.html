@@ -1,0 +1,638 @@
+<tt>
+&lt;html&gt;<br>
+&nbsp;&nbsp;&lt;head&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;meta&nbsp;http-equiv=&quot;content-type&quot;&nbsp;content=&quot;text/html;&nbsp;charset=UTF-8&quot;&gt;<br>
+&nbsp;&nbsp;&lt;/head&gt;<br>
+&nbsp;&nbsp;&lt;body&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Good&nbsp;day&nbsp;team.,&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;I&nbsp;am&nbsp;trying&nbsp;to&nbsp;install&nbsp;stratum&nbsp;on&nbsp;a&nbsp;Edgecore&nbsp;AS7716-24SC&nbsp;Cassini,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i've&nbsp;installed&nbsp;ONLv2 &nbsp;&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;root@localhost:/stratum/stratum/hal/bin/bcm/standalone/docker#<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;uname&nbsp;-a&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Linux&nbsp;localhost&nbsp;4.14.49-OpenNetworkLinux&nbsp;#1&nbsp;SMP&nbsp;Fri&nbsp;Jul&nbsp;16<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;22:03:27&nbsp;UTC&nbsp;2021&nbsp;x86_64&nbsp;GNU/Linux&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;root@localhost:/stratum/stratum/hal/bin/bcm/standalone/docker#&nbsp;cat<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/etc/onl/SWI&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;images:ONL-onf-ONLPv2_ONL-OS_2021-07-16.2159-5195444_AMD64.swi&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;from&nbsp;the&nbsp;&lt;span&nbsp;style=&quot;color:&nbsp;rgb(36,&nbsp;41,&nbsp;47);&nbsp;font-family:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-apple-system,&nbsp;BlinkMacSystemFont,&nbsp;&quot;Segoe&nbsp;UI&quot;,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Helvetica,&nbsp;Arial,&nbsp;sans-serif,&nbsp;&quot;Apple&nbsp;Color&nbsp;Emoji&quot;,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;Segoe&nbsp;UI&nbsp;Emoji&quot;;&nbsp;font-size:&nbsp;16px;&nbsp;font-style:&nbsp;normal;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;font-variant-ligatures:&nbsp;normal;&nbsp;font-variant-caps:&nbsp;normal;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;font-weight:&nbsp;400;&nbsp;letter-spacing:&nbsp;normal;&nbsp;orphans:&nbsp;2;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text-align:&nbsp;left;&nbsp;text-indent:&nbsp;0px;&nbsp;text-transform:&nbsp;none;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;white-space:&nbsp;normal;&nbsp;widows:&nbsp;2;&nbsp;word-spacing:&nbsp;0px;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-webkit-text-stroke-width:&nbsp;0px;&nbsp;background-color:&nbsp;rgb(255,&nbsp;255,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;255);&nbsp;text-decoration-thickness:&nbsp;initial;&nbsp;text-decoration-style:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;initial;&nbsp;text-decoration-color:&nbsp;initial;&nbsp;display:&nbsp;inline<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;!important;&nbsp;float:&nbsp;none;&quot;&gt;(&lt;a&nbsp;class=&quot;moz-txt-link-freetext&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;href=&quot;https://github.com/stratum/stratum&quot;&gt;https://github.com/stratum/stratum&lt;/a&gt;)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;it&nbsp;supports&nbsp;using&nbsp;SDKLT&nbsp;and&nbsp;OpenNSA&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;style=&quot;color:&nbsp;rgb(36,&nbsp;41,&nbsp;47);&nbsp;font-family:&nbsp;-apple-system,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BlinkMacSystemFont,&nbsp;&quot;Segoe&nbsp;UI&quot;,&nbsp;Helvetica,&nbsp;Arial,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sans-serif,&nbsp;&quot;Apple&nbsp;Color&nbsp;Emoji&quot;,&nbsp;&quot;Segoe&nbsp;UI<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Emoji&quot;;&nbsp;font-size:&nbsp;16px;&nbsp;font-style:&nbsp;normal;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;font-variant-ligatures:&nbsp;normal;&nbsp;font-variant-caps:&nbsp;normal;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;font-weight:&nbsp;400;&nbsp;letter-spacing:&nbsp;normal;&nbsp;orphans:&nbsp;2;&nbsp;text-align:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;left;&nbsp;text-indent:&nbsp;0px;&nbsp;text-transform:&nbsp;none;&nbsp;white-space:&nbsp;normal;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;widows:&nbsp;2;&nbsp;word-spacing:&nbsp;0px;&nbsp;-webkit-text-stroke-width:&nbsp;0px;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;background-color:&nbsp;rgb(255,&nbsp;255,&nbsp;255);&nbsp;text-decoration-thickness:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;initial;&nbsp;text-decoration-style:&nbsp;initial;&nbsp;text-decoration-color:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;initial;&nbsp;display:&nbsp;inline&nbsp;!important;&nbsp;float:&nbsp;none;&quot;&gt;&lt;/span&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;blockquote&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ul&nbsp;style=&quot;box-sizing:&nbsp;border-box;&nbsp;padding-left:&nbsp;2em;&nbsp;margin-top:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0px;&nbsp;margin-bottom:&nbsp;0px;&nbsp;color:&nbsp;rgb(36,&nbsp;41,&nbsp;47);&nbsp;font-family:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-apple-system,&nbsp;BlinkMacSystemFont,&nbsp;&quot;Segoe&nbsp;UI&quot;,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Helvetica,&nbsp;Arial,&nbsp;sans-serif,&nbsp;&quot;Apple&nbsp;Color&nbsp;Emoji&quot;,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;Segoe&nbsp;UI&nbsp;Emoji&quot;;&nbsp;font-size:&nbsp;16px;&nbsp;font-style:&nbsp;normal;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;font-variant-ligatures:&nbsp;normal;&nbsp;font-variant-caps:&nbsp;normal;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;font-weight:&nbsp;400;&nbsp;letter-spacing:&nbsp;normal;&nbsp;orphans:&nbsp;2;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text-align:&nbsp;left;&nbsp;text-indent:&nbsp;0px;&nbsp;text-transform:&nbsp;none;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;white-space:&nbsp;normal;&nbsp;widows:&nbsp;2;&nbsp;word-spacing:&nbsp;0px;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-webkit-text-stroke-width:&nbsp;0px;&nbsp;background-color:&nbsp;rgb(255,&nbsp;255,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;255);&nbsp;text-decoration-thickness:&nbsp;initial;&nbsp;text-decoration-style:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;initial;&nbsp;text-decoration-color:&nbsp;initial;&quot;&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&nbsp;style=&quot;box-sizing:&nbsp;border-box;&quot;&gt;Edgecore&nbsp;AS7716-24SC&nbsp;Cassini&lt;/li&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ul&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/blockquote&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;root@localhost:/stratum/stratum/hal/bin/bcm/standalone/docker#<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cat&nbsp;/etc/onl/platform&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x86-64-accton-as7716-24sc-r0&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;em&gt;But&nbsp;when&nbsp;running&nbsp;Stratum&nbsp;using&nbsp;docker&nbsp;it&nbsp;appears&nbsp;that&nbsp;only<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;support&nbsp;openNSA&nbsp;but&nbsp;still&nbsp;having&nbsp;problems,&nbsp;i&nbsp;attach&nbsp;below&nbsp;some<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;logs:&lt;/em&gt;&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;&lt;em&gt;/////////////////////   &nbsp;LOG   <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//////////////////////////////////&lt;/em&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;&lt;em&gt;root@localhost:/stratum/stratum/hal/bin/bcm/standalone/docker#<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DOCKER_IMAGE_TAG=20.12-sdklt&nbsp;./start-stratum-container.sh&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;++&nbsp;awk&nbsp;'{print&nbsp;&quot;-v&nbsp;&quot;&nbsp;$1&nbsp;&quot;:&quot;&nbsp;$1&nbsp;&quot;&nbsp;&quot;&nbsp;}'&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;++&nbsp;ls&nbsp;/lib/x86_64-linux-gnu/libonlp-platform-defaults.so<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/lib/x86_64-linux-gnu/libonlp-platform-defaults.so.1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/lib/x86_64-linux-gnu/libonlp-platform.so<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/lib/x86_64-linux-gnu/libonlp-platform.so.1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/lib/x86_64-linux-gnu/libonlp.so<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/lib/x86_64-linux-gnu/libonlp.so.1&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;ONLP_MOUNT='-v<br>
+/lib/x86_64-linux-gnu/libonlp-platform-defaults.so:/lib/x86_64-linux-gnu/libonlp-platform-defaults.so&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-v<br>
+/lib/x86_64-linux-gnu/libonlp-platform-defaults.so.1:/lib/x86_64-linux-gnu/libonlp-platform-defaults.so.1&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-v<br>
+/lib/x86_64-linux-gnu/libonlp-platform.so:/lib/x86_64-linux-gnu/libonlp-platform.so&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-v<br>
+/lib/x86_64-linux-gnu/libonlp-platform.so.1:/lib/x86_64-linux-gnu/libonlp-platform.so.1&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-v<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/lib/x86_64-linux-gnu/libonlp.so:/lib/x86_64-linux-gnu/libonlp.so&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-v<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/lib/x86_64-linux-gnu/libonlp.so.1:/lib/x86_64-linux-gnu/libonlp.so.1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;LOG_DIR=/var/log/stratum&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;++&nbsp;uname&nbsp;-r&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;KERNEL_VERSION=4.14.49-OpenNetworkLinux&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;DOCKER_IMAGE=stratumproject/stratum-bcm&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;DOCKER_IMAGE_TAG=20.12-sdklt&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;++&nbsp;cat&nbsp;/etc/onl/platform&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;PLATFORM=x86-64-accton-as7716-24sc-r0&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;'['&nbsp;-n&nbsp;''&nbsp;']'&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;++&nbsp;uname&nbsp;-r&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;++&nbsp;uname&nbsp;-r&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;docker&nbsp;run&nbsp;-it&nbsp;--rm&nbsp;--privileged&nbsp;--cap-add&nbsp;ALL&nbsp;--shm-size=512m<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--network&nbsp;host&nbsp;-v&nbsp;/dev:/dev&nbsp;-v&nbsp;/sys:/sys&nbsp;-v&nbsp;/run:/run&nbsp;-v<br>
+/lib/modules/4.14.49-OpenNetworkLinux:/lib/modules/4.14.49-OpenNetworkLinux<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-v<br>
+/lib/x86_64-linux-gnu/libonlp-platform-defaults.so:/lib/x86_64-linux-gnu/libonlp-platform-defaults.so<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-v<br>
+/lib/x86_64-linux-gnu/libonlp-platform-defaults.so.1:/lib/x86_64-linux-gnu/libonlp-platform-defaults.so.1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-v<br>
+/lib/x86_64-linux-gnu/libonlp-platform.so:/lib/x86_64-linux-gnu/libonlp-platform.so<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-v<br>
+/lib/x86_64-linux-gnu/libonlp-platform.so.1:/lib/x86_64-linux-gnu/libonlp-platform.so.1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-v<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/lib/x86_64-linux-gnu/libonlp.so:/lib/x86_64-linux-gnu/libonlp.so<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-v<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/lib/x86_64-linux-gnu/libonlp.so.1:/lib/x86_64-linux-gnu/libonlp.so.1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-v&nbsp;/lib/platform-config:/lib/platform-config&nbsp;-v<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/etc/onl:/etc/onl&nbsp;-v&nbsp;/var/log/stratum:/var/log/stratum<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stratumproject/stratum-bcm:20.12-sdklt&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;rmmod&nbsp;linux_bcm_knet&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;rmmod&nbsp;linux_user_bde&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;rmmod&nbsp;linux_kernel_bde&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;rmmod&nbsp;linux_ngknet&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rmmod:&nbsp;ERROR:&nbsp;Module&nbsp;linux_ngknet&nbsp;is&nbsp;not&nbsp;currently&nbsp;loaded&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;true&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;rmmod&nbsp;linux_ngbde&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rmmod:&nbsp;ERROR:&nbsp;Module&nbsp;linux_ngbde&nbsp;is&nbsp;not&nbsp;currently&nbsp;loaded&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;true&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;pushd&nbsp;/usr/lib/stratum/&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/lib/stratum&nbsp;/&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;insmod&nbsp;linux_ngbde.ko&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;insmod&nbsp;linux_ngknet.ko&nbsp;default_mtu=3000&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;popd&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;sleep&nbsp;1&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;mkdir&nbsp;-p&nbsp;/var/run/stratum&nbsp;/var/log/stratum&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;++&nbsp;cat&nbsp;/etc/onl/platform&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;PLATFORM=x86-64-accton-as7716-24sc-r0&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;exec&nbsp;stratum_bcm_sdklt<br>
+-base_bcm_chassis_map_file=/etc/stratum/x86-64-accton-as7716-24sc-r0/base_bcm_chassis_map.pb.txt<br>
+-chassis_config_file=/etc/stratum/x86-64-accton-as7716-24sc-r0/chassis_config.pb.txt<br>
+-bcm_sdk_config_file=/etc/stratum/x86-64-accton-as7716-24sc-r0/SDKLT.yml<br>
+-phal_config_file=/etc/stratum/x86-64-accton-as7716-24sc-r0/phal_config.pb.txt<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-bcm_sdk_checkpoint_dir=/tmp/bcm_chkpt&nbsp;-log_dir=/var/log/stratum<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-v=0&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I20210921&nbsp;10:56:45.051519    &nbsp;1&nbsp;main.cc:75]&nbsp;Starting&nbsp;Stratum&nbsp;in<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;STANDALONE&nbsp;mode&nbsp;for&nbsp;a&nbsp;Broadcom-based&nbsp;switch...&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;W20210921&nbsp;10:56:45.051666    &nbsp;1&nbsp;credentials_manager.cc:45]&nbsp;Using<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;insecure&nbsp;server&nbsp;credentials&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I20210921&nbsp;10:56:45.051842    &nbsp;1&nbsp;hal.cc:122]&nbsp;HAL&nbsp;sanity&nbsp;checks<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;all&nbsp;passed.&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I20210921&nbsp;10:56:45.051857    &nbsp;1&nbsp;hal.cc:128]&nbsp;Setting&nbsp;up&nbsp;HAL&nbsp;in<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;COLDBOOT&nbsp;mode...&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I20210921&nbsp;10:56:45.051929    &nbsp;1&nbsp;config_monitoring_service.cc:94]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pushing&nbsp;the&nbsp;saved&nbsp;chassis&nbsp;config&nbsp;read&nbsp;from<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/etc/stratum/x86-64-accton-as7716-24sc-r0/chassis_config.pb.txt...&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I20210921&nbsp;10:56:45.055892    &nbsp;1&nbsp;bcm_switch.cc:548]&nbsp;Chassis<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;config&nbsp;verified&nbsp;successfully.&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I20210921&nbsp;10:56:45.056475    &nbsp;1&nbsp;onlp_wrapper.cc:99]&nbsp;Initializing<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ONLP.&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I20210921&nbsp;10:56:47.094169    &nbsp;1&nbsp;attribute_database.cc:213]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PhalDB&nbsp;service&nbsp;is&nbsp;listening&nbsp;to&nbsp;localhost:28003...&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I20210921&nbsp;10:56:47.100003    &nbsp;1&nbsp;bcm_chassis_manager.cc:1080]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Portmap:&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Panel,&nbsp;logical&nbsp;(PORT_ID),&nbsp;physical&nbsp;(PC_PHYS_PORT_ID)&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;1, &nbsp;68, &nbsp;65&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;2, &nbsp;72, &nbsp;69&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;3, &nbsp;76, &nbsp;73&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;4, &nbsp;80, &nbsp;77&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;5, &nbsp;96, &nbsp;93&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;6,&nbsp;106,&nbsp;101&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;7,&nbsp;110,&nbsp;105&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;8,&nbsp;114,&nbsp;109&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;9,&nbsp;118,&nbsp;113&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 10,&nbsp;122,&nbsp;117&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 11,&nbsp;126,&nbsp;121&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 12,&nbsp;130,&nbsp;125&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 13, &nbsp;84, &nbsp;81&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 14, &nbsp;88, &nbsp;85&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 15, &nbsp;92, &nbsp;89&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 16,&nbsp;102, &nbsp;97&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 17, &nbsp;38, &nbsp;37&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 18, &nbsp;34, &nbsp;33&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 19, &nbsp;46, &nbsp;45&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 20, &nbsp;42, &nbsp;41&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 21, &nbsp;54, &nbsp;53&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 22, &nbsp;50, &nbsp;49&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 23, &nbsp;62, &nbsp;61&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 24, &nbsp;58, &nbsp;57&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 25,  &nbsp;5,  &nbsp;5&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 26,  &nbsp;1,  &nbsp;1&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 27, &nbsp;13, &nbsp;13&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 28,  &nbsp;9,  &nbsp;9&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 29, &nbsp;21, &nbsp;21&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 30, &nbsp;17, &nbsp;17&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 31, &nbsp;25, &nbsp;25&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 32, &nbsp;29, &nbsp;29&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[&lt;nounit&gt;]&nbsp;bcma/sys/probe/ngbde/bcma_sys_probe.c:721<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bcma_sys_probe():&nbsp;Warn:&nbsp;No&nbsp;devices&nbsp;found.&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E20210921&nbsp;10:56:47.106837    &nbsp;1&nbsp;bcm_sdk_wrapper.cc:985]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;StratumErrorSpace::ERR_INTERNAL:&nbsp;Could&nbsp;not&nbsp;find&nbsp;any&nbsp;supported<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;device.&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E20210921&nbsp;10:56:47.107417    &nbsp;1&nbsp;bcm_chassis_manager.cc:1093]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Return&nbsp;Error:&nbsp;bcm_sdk_interface_-&gt;InitializeSdk(<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FLAGS_bcm_sdk_config_file,&nbsp;FLAGS_bcm_sdk_config_flush_file,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FLAGS_bcm_sdk_shell_log_file)&nbsp;failed&nbsp;with<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;StratumErrorSpace::ERR_INTERNAL:&nbsp;Could&nbsp;not&nbsp;find&nbsp;any&nbsp;supported<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;device.&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E20210921&nbsp;10:56:47.107460    &nbsp;1&nbsp;bcm_chassis_manager.cc:163]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Return&nbsp;Error:&nbsp;InitializeBcmChips(base_bcm_chassis_map,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;target_bcm_chassis_map)&nbsp;failed&nbsp;with<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;StratumErrorSpace::ERR_INTERNAL:&nbsp;Could&nbsp;not&nbsp;find&nbsp;any&nbsp;supported<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;device.&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E20210921&nbsp;10:56:47.107530    &nbsp;1&nbsp;bcm_switch.cc:52]&nbsp;Return&nbsp;Error:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bcm_chassis_manager_-&gt;PushChassisConfig(config)&nbsp;failed&nbsp;with<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;StratumErrorSpace::ERR_INTERNAL:&nbsp;Could&nbsp;not&nbsp;find&nbsp;any&nbsp;supported<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;device.&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E20210921&nbsp;10:56:47.107575    &nbsp;1&nbsp;error_buffer.cc:30]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(config_monitoring_service.cc:124):&nbsp;Pushing&nbsp;saved&nbsp;chassis&nbsp;config<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;failed:&nbsp;Could&nbsp;not&nbsp;find&nbsp;any&nbsp;supported&nbsp;device.&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E20210921&nbsp;10:56:47.107643    &nbsp;1&nbsp;hal.cc:136]&nbsp;Return&nbsp;Error:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;config_monitoring_service_-&gt;Setup(FLAGS_warmboot)&nbsp;failed&nbsp;with<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;StratumErrorSpace::ERR_INTERNAL:&nbsp;Could&nbsp;not&nbsp;find&nbsp;any&nbsp;supported<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;device.&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E20210921&nbsp;10:56:47.107697    &nbsp;1&nbsp;main.cc:115]&nbsp;Error&nbsp;when&nbsp;setting<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;up&nbsp;Stratum&nbsp;HAL&nbsp;(but&nbsp;we&nbsp;will&nbsp;continue&nbsp;running):&nbsp;Could&nbsp;not&nbsp;find<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;any&nbsp;supported&nbsp;device.&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E20210921&nbsp;10:56:47.108387    &nbsp;1&nbsp;hal.cc:221]&nbsp;Stratum&nbsp;external<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;facing&nbsp;services&nbsp;are&nbsp;listening&nbsp;to&nbsp;0.0.0.0:28000,&nbsp;0.0.0.0:9339,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.0.0.0:9559,&nbsp;localhost:28000...&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E20210921&nbsp;10:56:47.121865    &nbsp;1&nbsp;hal.cc:363]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;StratumErrorSpace::ERR_INTERNAL:&nbsp;Failed&nbsp;to&nbsp;check&nbsp;in&nbsp;with<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;procmon:&nbsp;failed&nbsp;to&nbsp;connect&nbsp;to&nbsp;all&nbsp;addresses&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E20210921&nbsp;10:56:47.122002    &nbsp;1&nbsp;hal.cc:231]&nbsp;Error&nbsp;when&nbsp;checking<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;in&nbsp;with&nbsp;procmon:&nbsp;Failed&nbsp;to&nbsp;check&nbsp;in&nbsp;with&nbsp;procmon:&nbsp;failed&nbsp;to<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;connect&nbsp;to&nbsp;all&nbsp;addresses.&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;br&gt;<br>
+/////////////////////////////////////////////////////////////////////////////////////////&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;root@localhost:/stratum/stratum/hal/bin/bcm/standalone/docker#<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;docker&nbsp;ps&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CONTAINER&nbsp;ID       &nbsp;IMAGE                               <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;COMMAND             &nbsp;CREATED            &nbsp;STATUS             <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PORTS              &nbsp;NAMES&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;749ea4456822       &nbsp;stratumproject/stratum-bcm:opennsa  <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;start-stratum.sh&quot;  &nbsp;45&nbsp;seconds&nbsp;ago     &nbsp;Up&nbsp;44<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;seconds                          &nbsp;wizardly_mclean&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;root@localhost:/stratum/stratum/hal/bin/bcm/standalone/docker#<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DOCKER_IMAGE_TAG=opennsa&nbsp;./start-stratum-container.sh&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;++&nbsp;awk&nbsp;'{print&nbsp;&quot;-v&nbsp;&quot;&nbsp;$1&nbsp;&quot;:&quot;&nbsp;$1&nbsp;&quot;&nbsp;&quot;&nbsp;}'&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;++&nbsp;ls&nbsp;/lib/x86_64-linux-gnu/libonlp-platform-defaults.so<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/lib/x86_64-linux-gnu/libonlp-platform-defaults.so.1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/lib/x86_64-linux-gnu/libonlp-platform.so<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/lib/x86_64-linux-gnu/libonlp-platform.so.1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/lib/x86_64-linux-gnu/libonlp.so<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/lib/x86_64-linux-gnu/libonlp.so.1&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;ONLP_MOUNT='-v<br>
+/lib/x86_64-linux-gnu/libonlp-platform-defaults.so:/lib/x86_64-linux-gnu/libonlp-platform-defaults.so&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-v<br>
+/lib/x86_64-linux-gnu/libonlp-platform-defaults.so.1:/lib/x86_64-linux-gnu/libonlp-platform-defaults.so.1&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-v<br>
+/lib/x86_64-linux-gnu/libonlp-platform.so:/lib/x86_64-linux-gnu/libonlp-platform.so&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-v<br>
+/lib/x86_64-linux-gnu/libonlp-platform.so.1:/lib/x86_64-linux-gnu/libonlp-platform.so.1&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-v<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/lib/x86_64-linux-gnu/libonlp.so:/lib/x86_64-linux-gnu/libonlp.so&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-v<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/lib/x86_64-linux-gnu/libonlp.so.1:/lib/x86_64-linux-gnu/libonlp.so.1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;LOG_DIR=/var/log/stratum&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;++&nbsp;uname&nbsp;-r&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;KERNEL_VERSION=4.14.49-OpenNetworkLinux&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;DOCKER_IMAGE=stratumproject/stratum-bcm&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;DOCKER_IMAGE_TAG=opennsa&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;++&nbsp;cat&nbsp;/etc/onl/platform&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;PLATFORM=x86-64-accton-as7716-24sc-r0&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;'['&nbsp;-n&nbsp;''&nbsp;']'&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;++&nbsp;uname&nbsp;-r&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;++&nbsp;uname&nbsp;-r&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;docker&nbsp;run&nbsp;-it&nbsp;--rm&nbsp;--privileged&nbsp;--cap-add&nbsp;ALL&nbsp;--shm-size=512m<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--network&nbsp;host&nbsp;-v&nbsp;/dev:/dev&nbsp;-v&nbsp;/sys:/sys&nbsp;-v&nbsp;/run:/run&nbsp;-v<br>
+/lib/modules/4.14.49-OpenNetworkLinux:/lib/modules/4.14.49-OpenNetworkLinux<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-v<br>
+/lib/x86_64-linux-gnu/libonlp-platform-defaults.so:/lib/x86_64-linux-gnu/libonlp-platform-defaults.so<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-v<br>
+/lib/x86_64-linux-gnu/libonlp-platform-defaults.so.1:/lib/x86_64-linux-gnu/libonlp-platform-defaults.so.1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-v<br>
+/lib/x86_64-linux-gnu/libonlp-platform.so:/lib/x86_64-linux-gnu/libonlp-platform.so<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-v<br>
+/lib/x86_64-linux-gnu/libonlp-platform.so.1:/lib/x86_64-linux-gnu/libonlp-platform.so.1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-v<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/lib/x86_64-linux-gnu/libonlp.so:/lib/x86_64-linux-gnu/libonlp.so<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-v<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/lib/x86_64-linux-gnu/libonlp.so.1:/lib/x86_64-linux-gnu/libonlp.so.1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-v&nbsp;/lib/platform-config:/lib/platform-config&nbsp;-v<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/etc/onl:/etc/onl&nbsp;-v&nbsp;/var/log/stratum:/var/log/stratum<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stratumproject/stratum-bcm:opennsa&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;rmmod&nbsp;linux_ngknet&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rmmod:&nbsp;ERROR:&nbsp;Module&nbsp;linux_ngknet&nbsp;is&nbsp;not&nbsp;currently&nbsp;loaded&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;true&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;rmmod&nbsp;linux_ngbde&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rmmod:&nbsp;ERROR:&nbsp;Module&nbsp;linux_ngbde&nbsp;is&nbsp;not&nbsp;currently&nbsp;loaded&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;true&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;rmmod&nbsp;linux_bcm_knet&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;rmmod&nbsp;linux_user_bde&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;rmmod&nbsp;linux_kernel_bde&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;pushd&nbsp;/usr/lib/stratum/&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/lib/stratum&nbsp;/&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;insmod&nbsp;linux-kernel-bde.ko&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;insmod&nbsp;linux-user-bde.ko&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;insmod&nbsp;linux-bcm-knet.ko&nbsp;default_mtu=3000&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;popd&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;mknod&nbsp;/dev/linux-bcm-knet&nbsp;c&nbsp;122&nbsp;0&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mknod:&nbsp;/dev/linux-bcm-knet:&nbsp;File&nbsp;exists&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;true&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;mknod&nbsp;/dev/linux-bcm-net&nbsp;c&nbsp;123&nbsp;0&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mknod:&nbsp;/dev/linux-bcm-net:&nbsp;File&nbsp;exists&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;true&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;mknod&nbsp;/dev/linux-bcm-diag&nbsp;c&nbsp;124&nbsp;0&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mknod:&nbsp;/dev/linux-bcm-diag:&nbsp;File&nbsp;exists&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;true&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;ln&nbsp;-sf&nbsp;/dev/linux-bcm-diag&nbsp;/dev/linux-bcm-diag-full&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;mknod&nbsp;/dev/linux-uk-proxy&nbsp;c&nbsp;125&nbsp;0&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mknod:&nbsp;/dev/linux-uk-proxy:&nbsp;File&nbsp;exists&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;true&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;mknod&nbsp;/dev/linux-bcm-core&nbsp;c&nbsp;126&nbsp;0&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mknod:&nbsp;/dev/linux-bcm-core:&nbsp;File&nbsp;exists&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;true&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;mknod&nbsp;/dev/linux-kernel-bde&nbsp;c&nbsp;127&nbsp;0&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mknod:&nbsp;/dev/linux-kernel-bde:&nbsp;File&nbsp;exists&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;true&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;ln&nbsp;-sf&nbsp;/dev/linux-bcm-core&nbsp;/dev/linux-user-bde&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;sleep&nbsp;1&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;mkdir&nbsp;-p&nbsp;/var/run/stratum&nbsp;/var/log/stratum&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;++&nbsp;cat&nbsp;/etc/onl/platform&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;PLATFORM=x86-64-accton-as7716-24sc-r0&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;exec&nbsp;stratum_bcm_opennsa<br>
+-base_bcm_chassis_map_file=/etc/stratum/x86-64-accton-as7716-24sc-r0/base_bcm_chassis_map.pb.txt<br>
+-chassis_config_file=/etc/stratum/x86-64-accton-as7716-24sc-r0/chassis_config.pb.txt<br>
+-bcm_sdk_config_file=/etc/stratum/x86-64-accton-as7716-24sc-r0/SDKLT.yml<br>
+-phal_config_file=/etc/stratum/x86-64-accton-as7716-24sc-r0/phal_config.pb.txt<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-bcm_sdk_checkpoint_dir=/tmp/bcm_chkpt&nbsp;-log_dir=/var/log/stratum<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-v=0&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I20210921&nbsp;10:51:41.514292    &nbsp;1&nbsp;logging.cc:63]&nbsp;Stratum&nbsp;version&nbsp;0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;built&nbsp;at&nbsp;1970-01-01T00:00:00+00:00&nbsp;on&nbsp;host&nbsp;redacted&nbsp;by&nbsp;user<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;redacted.&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I20210921&nbsp;10:51:41.514493    &nbsp;1&nbsp;main.cc:75]&nbsp;Starting&nbsp;Stratum&nbsp;in<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;STANDALONE&nbsp;mode&nbsp;for&nbsp;a&nbsp;Broadcom-based&nbsp;switch...&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;W20210921&nbsp;10:51:41.514609    &nbsp;1&nbsp;credentials_manager.cc:44]&nbsp;Using<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;insecure&nbsp;server&nbsp;credentials&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I20210921&nbsp;10:51:41.515112    &nbsp;1&nbsp;hal.cc:132]&nbsp;HAL&nbsp;sanity&nbsp;checks<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;all&nbsp;passed.&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I20210921&nbsp;10:51:41.515130    &nbsp;1&nbsp;hal.cc:138]&nbsp;Setting&nbsp;up&nbsp;HAL&nbsp;in<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;COLDBOOT&nbsp;mode...&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I20210921&nbsp;10:51:41.515214    &nbsp;1&nbsp;config_monitoring_service.cc:94]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pushing&nbsp;the&nbsp;saved&nbsp;chassis&nbsp;config&nbsp;read&nbsp;from<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/etc/stratum/x86-64-accton-as7716-24sc-r0/chassis_config.pb.txt...&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I20210921&nbsp;10:51:41.529116    &nbsp;1&nbsp;bcm_switch.cc:550]&nbsp;Chassis<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;config&nbsp;verified&nbsp;successfully.&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I20210921&nbsp;10:51:41.531240    &nbsp;1&nbsp;onlp_wrapper.cc:99]&nbsp;Initializing<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ONLP.&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I20210921&nbsp;10:51:43.126675    &nbsp;1&nbsp;attribute_database.cc:210]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PhalDB&nbsp;service&nbsp;is&nbsp;listening&nbsp;to&nbsp;localhost:28003...&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I20210921&nbsp;10:51:43.144853    &nbsp;1&nbsp;bcm_chassis_manager.cc:1080]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Portmap:&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Panel,&nbsp;logical&nbsp;(PORT_ID),&nbsp;physical&nbsp;(PC_PHYS_PORT_ID)&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;1, &nbsp;68, &nbsp;65&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;2, &nbsp;72, &nbsp;69&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;3, &nbsp;76, &nbsp;73&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;4, &nbsp;80, &nbsp;77&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;5, &nbsp;96, &nbsp;93&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;6,&nbsp;106,&nbsp;101&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;7,&nbsp;110,&nbsp;105&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;8,&nbsp;114,&nbsp;109&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;9,&nbsp;118,&nbsp;113&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 10,&nbsp;122,&nbsp;117&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 11,&nbsp;126,&nbsp;121&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 12,&nbsp;130,&nbsp;125&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 13, &nbsp;84, &nbsp;81&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 14, &nbsp;88, &nbsp;85&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 15, &nbsp;92, &nbsp;89&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 16,&nbsp;102, &nbsp;97&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 17, &nbsp;38, &nbsp;37&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 18, &nbsp;34, &nbsp;33&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 19, &nbsp;46, &nbsp;45&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 20, &nbsp;42, &nbsp;41&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 21, &nbsp;54, &nbsp;53&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 22, &nbsp;50, &nbsp;49&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 23, &nbsp;62, &nbsp;61&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 24, &nbsp;58, &nbsp;57&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 25,  &nbsp;5,  &nbsp;5&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 26,  &nbsp;1,  &nbsp;1&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 27, &nbsp;13, &nbsp;13&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 28,  &nbsp;9,  &nbsp;9&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 29, &nbsp;21, &nbsp;21&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 30, &nbsp;17, &nbsp;17&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 31, &nbsp;25, &nbsp;25&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 32, &nbsp;29, &nbsp;29&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DMA&nbsp;pool&nbsp;size:&nbsp;16777216&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Broadcom&nbsp;Command&nbsp;Monitor:&nbsp;Copyright&nbsp;(c)&nbsp;1998-2020&nbsp;Broadcom&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Release:&nbsp;opennsa-6.5.19&nbsp;built&nbsp;20200910&nbsp;(Thu&nbsp;Sep&nbsp;10&nbsp;18:16:19<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2020)&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;From<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;root@lc-sj1-5908:/projects/ntsw_sw18_scratch/sdkrel/openbcm/sdk&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Platform:&nbsp;X86&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OS:&nbsp;Unix&nbsp;(Posix)&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E20210921&nbsp;10:51:43.176681    &nbsp;1&nbsp;bcm_sdk_wrapper.cc:1152]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;StratumErrorSpace::ERR_FEATURE_UNAVAILABLE:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'soc_cm_device_supported(dev-&gt;device,&nbsp;dev-&gt;rev)'&nbsp;failed<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with&nbsp;error&nbsp;message:&nbsp;Feature&nbsp;unavailable.&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E20210921&nbsp;10:51:43.177083    &nbsp;1&nbsp;bcm_chassis_manager.cc:1100]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Return&nbsp;Error:&nbsp;bcm_sdk_interface_-&gt;FindUnit(bcm_chip.unit(),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bcm_chip.pci_bus(),&nbsp;bcm_chip.pci_slot(),&nbsp;bcm_chip.type())&nbsp;failed<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with&nbsp;StratumErrorSpace::ERR_FEATURE_UNAVAILABLE:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'soc_cm_device_supported(dev-&gt;device,&nbsp;dev-&gt;rev)'&nbsp;failed<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with&nbsp;error&nbsp;message:&nbsp;Feature&nbsp;unavailable.&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E20210921&nbsp;10:51:43.177101    &nbsp;1&nbsp;bcm_chassis_manager.cc:163]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Return&nbsp;Error:&nbsp;InitializeBcmChips(base_bcm_chassis_map,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;target_bcm_chassis_map)&nbsp;failed&nbsp;with<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;StratumErrorSpace::ERR_FEATURE_UNAVAILABLE:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'soc_cm_device_supported(dev-&gt;device,&nbsp;dev-&gt;rev)'&nbsp;failed<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with&nbsp;error&nbsp;message:&nbsp;Feature&nbsp;unavailable.&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E20210921&nbsp;10:51:43.177136    &nbsp;1&nbsp;bcm_switch.cc:52]&nbsp;Return&nbsp;Error:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bcm_chassis_manager_-&gt;PushChassisConfig(config)&nbsp;failed&nbsp;with<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;StratumErrorSpace::ERR_FEATURE_UNAVAILABLE:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'soc_cm_device_supported(dev-&gt;device,&nbsp;dev-&gt;rev)'&nbsp;failed<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with&nbsp;error&nbsp;message:&nbsp;Feature&nbsp;unavailable.&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E20210921&nbsp;10:51:43.177158    &nbsp;1&nbsp;error_buffer.cc:30]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(config_monitoring_service.cc:124):&nbsp;Pushing&nbsp;saved&nbsp;chassis&nbsp;config<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;failed:&nbsp;'soc_cm_device_supported(dev-&gt;device,&nbsp;dev-&gt;rev)'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;failed&nbsp;with&nbsp;error&nbsp;message:&nbsp;Feature&nbsp;unavailable.&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E20210921&nbsp;10:51:43.177199    &nbsp;1&nbsp;hal.cc:146]&nbsp;Return&nbsp;Error:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;config_monitoring_service_-&gt;Setup(FLAGS_warmboot)&nbsp;failed&nbsp;with<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;StratumErrorSpace::ERR_FEATURE_UNAVAILABLE:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'soc_cm_device_supported(dev-&gt;device,&nbsp;dev-&gt;rev)'&nbsp;failed<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with&nbsp;error&nbsp;message:&nbsp;Feature&nbsp;unavailable.&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E20210921&nbsp;10:51:43.177212    &nbsp;1&nbsp;main.cc:115]&nbsp;Error&nbsp;when&nbsp;setting<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;up&nbsp;Stratum&nbsp;HAL&nbsp;(but&nbsp;we&nbsp;will&nbsp;continue&nbsp;running):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'soc_cm_device_supported(dev-&gt;device,&nbsp;dev-&gt;rev)'&nbsp;failed<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with&nbsp;error&nbsp;message:&nbsp;Feature&nbsp;unavailable.&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E20210921&nbsp;10:51:43.177973    &nbsp;1&nbsp;hal.cc:231]&nbsp;Stratum&nbsp;external<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;facing&nbsp;services&nbsp;are&nbsp;listening&nbsp;to&nbsp;0.0.0.0:9339,&nbsp;0.0.0.0:9559,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;localhost:9559...&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E20210921&nbsp;10:51:43.192323    &nbsp;1&nbsp;hal.cc:386]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;StratumErrorSpace::ERR_INTERNAL:&nbsp;Failed&nbsp;to&nbsp;check&nbsp;in&nbsp;with<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;procmon:&nbsp;failed&nbsp;to&nbsp;connect&nbsp;to&nbsp;all&nbsp;addresses&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E20210921&nbsp;10:51:43.192685    &nbsp;1&nbsp;hal.cc:241]&nbsp;Error&nbsp;when&nbsp;checking<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;in&nbsp;with&nbsp;procmon:&nbsp;Failed&nbsp;to&nbsp;check&nbsp;in&nbsp;with&nbsp;procmon:&nbsp;failed&nbsp;to<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;connect&nbsp;to&nbsp;all&nbsp;addresses.&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;br&gt;<br>
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;root@localhost:/stratum/stratum/hal/bin/bcm/standalone/docker#<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;docker&nbsp;ps&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CONTAINER&nbsp;ID       &nbsp;IMAGE                                     <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;COMMAND             &nbsp;CREATED            &nbsp;STATUS             <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PORTS              &nbsp;NAMES&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;33acae8744da       &nbsp;stratumproject/stratum-bcm:21.06-opennsa  <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;start-stratum.sh&quot;  &nbsp;8&nbsp;minutes&nbsp;ago      &nbsp;Up&nbsp;8<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;minutes                           &nbsp;nifty_keller&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;root@localhost:/stratum/stratum/hal/bin/bcm/standalone/docker#<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;docker&nbsp;logs&nbsp;33acae8744da&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;rmmod&nbsp;linux_ngknet&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rmmod:&nbsp;ERROR:&nbsp;Module&nbsp;linux_ngknet&nbsp;is&nbsp;not&nbsp;currently&nbsp;loaded&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;true&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;rmmod&nbsp;linux_ngbde&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rmmod:&nbsp;ERROR:&nbsp;Module&nbsp;linux_ngbde&nbsp;is&nbsp;not&nbsp;currently&nbsp;loaded&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;true&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;rmmod&nbsp;linux_bcm_knet&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;rmmod&nbsp;linux_user_bde&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;rmmod&nbsp;linux_kernel_bde&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;pushd&nbsp;/usr/lib/stratum/&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/lib/stratum&nbsp;/&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;insmod&nbsp;linux-kernel-bde.ko&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;insmod&nbsp;linux-user-bde.ko&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;insmod&nbsp;linux-bcm-knet.ko&nbsp;default_mtu=3000&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;popd&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;mknod&nbsp;/dev/linux-bcm-knet&nbsp;c&nbsp;122&nbsp;0&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mknod:&nbsp;/dev/linux-bcm-knet:&nbsp;File&nbsp;exists&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;true&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;mknod&nbsp;/dev/linux-bcm-net&nbsp;c&nbsp;123&nbsp;0&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mknod:&nbsp;/dev/linux-bcm-net:&nbsp;File&nbsp;exists&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;true&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;mknod&nbsp;/dev/linux-bcm-diag&nbsp;c&nbsp;124&nbsp;0&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mknod:&nbsp;/dev/linux-bcm-diag:&nbsp;File&nbsp;exists&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;true&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;ln&nbsp;-sf&nbsp;/dev/linux-bcm-diag&nbsp;/dev/linux-bcm-diag-full&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;mknod&nbsp;/dev/linux-uk-proxy&nbsp;c&nbsp;125&nbsp;0&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mknod:&nbsp;/dev/linux-uk-proxy:&nbsp;File&nbsp;exists&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;true&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;mknod&nbsp;/dev/linux-bcm-core&nbsp;c&nbsp;126&nbsp;0&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mknod:&nbsp;/dev/linux-bcm-core:&nbsp;File&nbsp;exists&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;true&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;mknod&nbsp;/dev/linux-kernel-bde&nbsp;c&nbsp;127&nbsp;0&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mknod:&nbsp;/dev/linux-kernel-bde:&nbsp;File&nbsp;exists&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;true&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;ln&nbsp;-sf&nbsp;/dev/linux-bcm-core&nbsp;/dev/linux-user-bde&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;sleep&nbsp;1&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;mkdir&nbsp;-p&nbsp;/var/run/stratum&nbsp;/var/log/stratum&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;++&nbsp;cat&nbsp;/etc/onl/platform&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;PLATFORM=x86-64-accton-as7716-24sc-r0&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;exec&nbsp;stratum_bcm_opennsa<br>
+-base_bcm_chassis_map_file=/etc/stratum/x86-64-accton-as7716-24sc-r0/base_bcm_chassis_map.pb.txt<br>
+-chassis_config_file=/etc/stratum/x86-64-accton-as7716-24sc-r0/chassis_config.pb.txt<br>
+-bcm_sdk_config_file=/etc/stratum/x86-64-accton-as7716-24sc-r0/SDKLT.yml<br>
+-phal_config_file=/etc/stratum/x86-64-accton-as7716-24sc-r0/phal_config.pb.txt<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-bcm_sdk_checkpoint_dir=/tmp/bcm_chkpt&nbsp;-log_dir=/var/log/stratum<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-v=0&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I20210921&nbsp;10:38:53.986915    &nbsp;1&nbsp;main.cc:75]&nbsp;Starting&nbsp;Stratum&nbsp;in<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;STANDALONE&nbsp;mode&nbsp;for&nbsp;a&nbsp;Broadcom-based&nbsp;switch...&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;W20210921&nbsp;10:38:53.987057    &nbsp;1&nbsp;credentials_manager.cc:45]&nbsp;Using<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;insecure&nbsp;server&nbsp;credentials&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I20210921&nbsp;10:38:53.987232    &nbsp;1&nbsp;hal.cc:122]&nbsp;HAL&nbsp;sanity&nbsp;checks<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;all&nbsp;passed.&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I20210921&nbsp;10:38:53.987246    &nbsp;1&nbsp;hal.cc:128]&nbsp;Setting&nbsp;up&nbsp;HAL&nbsp;in<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;COLDBOOT&nbsp;mode...&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I20210921&nbsp;10:38:53.987311    &nbsp;1&nbsp;config_monitoring_service.cc:94]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pushing&nbsp;the&nbsp;saved&nbsp;chassis&nbsp;config&nbsp;read&nbsp;from<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/etc/stratum/x86-64-accton-as7716-24sc-r0/chassis_config.pb.txt...&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I20210921&nbsp;10:38:53.991032    &nbsp;1&nbsp;bcm_switch.cc:548]&nbsp;Chassis<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;config&nbsp;verified&nbsp;successfully.&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I20210921&nbsp;10:38:53.991549    &nbsp;1&nbsp;onlp_wrapper.cc:99]&nbsp;Initializing<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ONLP.&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I20210921&nbsp;10:38:56.135704    &nbsp;1&nbsp;attribute_database.cc:213]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PhalDB&nbsp;service&nbsp;is&nbsp;listening&nbsp;to&nbsp;localhost:28003...&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I20210921&nbsp;10:38:56.141291    &nbsp;1&nbsp;bcm_chassis_manager.cc:1080]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Portmap:&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Panel,&nbsp;logical&nbsp;(PORT_ID),&nbsp;physical&nbsp;(PC_PHYS_PORT_ID)&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;1, &nbsp;68, &nbsp;65&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;2, &nbsp;72, &nbsp;69&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;3, &nbsp;76, &nbsp;73&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;4, &nbsp;80, &nbsp;77&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;5, &nbsp;96, &nbsp;93&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;6,&nbsp;106,&nbsp;101&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;7,&nbsp;110,&nbsp;105&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;8,&nbsp;114,&nbsp;109&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;9,&nbsp;118,&nbsp;113&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 10,&nbsp;122,&nbsp;117&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 11,&nbsp;126,&nbsp;121&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 12,&nbsp;130,&nbsp;125&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 13, &nbsp;84, &nbsp;81&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 14, &nbsp;88, &nbsp;85&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 15, &nbsp;92, &nbsp;89&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 16,&nbsp;102, &nbsp;97&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 17, &nbsp;38, &nbsp;37&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 18, &nbsp;34, &nbsp;33&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 19, &nbsp;46, &nbsp;45&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 20, &nbsp;42, &nbsp;41&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 21, &nbsp;54, &nbsp;53&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 22, &nbsp;50, &nbsp;49&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 23, &nbsp;62, &nbsp;61&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 24, &nbsp;58, &nbsp;57&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 25,  &nbsp;5,  &nbsp;5&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 26,  &nbsp;1,  &nbsp;1&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 27, &nbsp;13, &nbsp;13&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 28,  &nbsp;9,  &nbsp;9&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 29, &nbsp;21, &nbsp;21&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 30, &nbsp;17, &nbsp;17&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 31, &nbsp;25, &nbsp;25&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 32, &nbsp;29, &nbsp;29&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DMA&nbsp;pool&nbsp;size:&nbsp;16777216&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Broadcom&nbsp;Command&nbsp;Monitor:&nbsp;Copyright&nbsp;(c)&nbsp;1998-2020&nbsp;Broadcom&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Release:&nbsp;opennsa-6.5.19&nbsp;built&nbsp;20200910&nbsp;(Thu&nbsp;Sep&nbsp;10&nbsp;18:16:19<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2020)&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;From<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;root@lc-sj1-5908:/projects/ntsw_sw18_scratch/sdkrel/openbcm/sdk&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Platform:&nbsp;X86&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OS:&nbsp;Unix&nbsp;(Posix)&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E20210921&nbsp;10:38:56.175861    &nbsp;1&nbsp;bcm_sdk_wrapper.cc:1151]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;StratumErrorSpace::ERR_FEATURE_UNAVAILABLE:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'soc_cm_device_supported(dev-&gt;device,&nbsp;dev-&gt;rev)'&nbsp;failed<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with&nbsp;error&nbsp;message:&nbsp;Feature&nbsp;unavailable.&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E20210921&nbsp;10:38:56.176177    &nbsp;1&nbsp;bcm_chassis_manager.cc:1100]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Return&nbsp;Error:&nbsp;bcm_sdk_interface_-&gt;FindUnit(bcm_chip.unit(),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bcm_chip.pci_bus(),&nbsp;bcm_chip.pci_slot(),&nbsp;bcm_chip.type())&nbsp;failed<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with&nbsp;StratumErrorSpace::ERR_FEATURE_UNAVAILABLE:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'soc_cm_device_supported(dev-&gt;device,&nbsp;dev-&gt;rev)'&nbsp;failed<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with&nbsp;error&nbsp;message:&nbsp;Feature&nbsp;unavailable.&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E20210921&nbsp;10:38:56.176189    &nbsp;1&nbsp;bcm_chassis_manager.cc:163]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Return&nbsp;Error:&nbsp;InitializeBcmChips(base_bcm_chassis_map,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;target_bcm_chassis_map)&nbsp;failed&nbsp;with<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;StratumErrorSpace::ERR_FEATURE_UNAVAILABLE:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'soc_cm_device_supported(dev-&gt;device,&nbsp;dev-&gt;rev)'&nbsp;failed<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with&nbsp;error&nbsp;message:&nbsp;Feature&nbsp;unavailable.&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E20210921&nbsp;10:38:56.176213    &nbsp;1&nbsp;bcm_switch.cc:52]&nbsp;Return&nbsp;Error:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bcm_chassis_manager_-&gt;PushChassisConfig(config)&nbsp;failed&nbsp;with<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;StratumErrorSpace::ERR_FEATURE_UNAVAILABLE:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'soc_cm_device_supported(dev-&gt;device,&nbsp;dev-&gt;rev)'&nbsp;failed<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with&nbsp;error&nbsp;message:&nbsp;Feature&nbsp;unavailable.&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E20210921&nbsp;10:38:56.176230    &nbsp;1&nbsp;error_buffer.cc:30]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(config_monitoring_service.cc:124):&nbsp;Pushing&nbsp;saved&nbsp;chassis&nbsp;config<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;failed:&nbsp;'soc_cm_device_supported(dev-&gt;device,&nbsp;dev-&gt;rev)'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;failed&nbsp;with&nbsp;error&nbsp;message:&nbsp;Feature&nbsp;unavailable.&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E20210921&nbsp;10:38:56.176254    &nbsp;1&nbsp;hal.cc:136]&nbsp;Return&nbsp;Error:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;config_monitoring_service_-&gt;Setup(FLAGS_warmboot)&nbsp;failed&nbsp;with<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;StratumErrorSpace::ERR_FEATURE_UNAVAILABLE:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'soc_cm_device_supported(dev-&gt;device,&nbsp;dev-&gt;rev)'&nbsp;failed<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with&nbsp;error&nbsp;message:&nbsp;Feature&nbsp;unavailable.&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E20210921&nbsp;10:38:56.176263    &nbsp;1&nbsp;main.cc:115]&nbsp;Error&nbsp;when&nbsp;setting<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;up&nbsp;Stratum&nbsp;HAL&nbsp;(but&nbsp;we&nbsp;will&nbsp;continue&nbsp;running):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'soc_cm_device_supported(dev-&gt;device,&nbsp;dev-&gt;rev)'&nbsp;failed<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with&nbsp;error&nbsp;message:&nbsp;Feature&nbsp;unavailable.&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E20210921&nbsp;10:38:56.176653    &nbsp;1&nbsp;hal.cc:221]&nbsp;Stratum&nbsp;external<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;facing&nbsp;services&nbsp;are&nbsp;listening&nbsp;to&nbsp;0.0.0.0:28000,&nbsp;0.0.0.0:9339,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.0.0.0:9559,&nbsp;localhost:28000...&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E20210921&nbsp;10:38:56.190089    &nbsp;1&nbsp;hal.cc:363]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;StratumErrorSpace::ERR_INTERNAL:&nbsp;Failed&nbsp;to&nbsp;check&nbsp;in&nbsp;with<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;procmon:&nbsp;failed&nbsp;to&nbsp;connect&nbsp;to&nbsp;all&nbsp;addresses&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E20210921&nbsp;10:38:56.190270    &nbsp;1&nbsp;hal.cc:231]&nbsp;Error&nbsp;when&nbsp;checking<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;in&nbsp;with&nbsp;procmon:&nbsp;Failed&nbsp;to&nbsp;check&nbsp;in&nbsp;with&nbsp;procmon:&nbsp;failed&nbsp;to<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;connect&nbsp;to&nbsp;all&nbsp;addresses.&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/em&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;&lt;em&gt;//////////////////////////////////////////////////////&lt;/em&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;&lt;em&gt;also&nbsp;all&nbsp;the&nbsp;modules&nbsp;are&nbsp;added&nbsp;in&nbsp;the&nbsp;kermel&nbsp;:&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/em&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;&lt;em&gt;root@localhost:/stratum/stratum/hal/bin/bcm/standalone/docker#<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lsmod&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Module                 &nbsp;Size &nbsp;Used&nbsp;by&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;linux_ngknet         &nbsp;356352 &nbsp;0&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;linux_ngbde           &nbsp;36864 &nbsp;1&nbsp;linux_ngknet&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/em&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;&lt;em&gt;If&nbsp;you&nbsp;guys&nbsp;can&nbsp;help&nbsp;me&nbsp;why&nbsp;is&nbsp;it&nbsp;not&nbsp;running&nbsp;properly&nbsp;in&nbsp;any<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;it&nbsp;will&nbsp;be&nbsp;helpfull,&nbsp;from&nbsp;the&nbsp;logs&nbsp;i&nbsp;can&nbsp;tell&nbsp;that&nbsp;opoenNSA<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;recgnizases&nbsp;the&nbsp;shipset&nbsp;at&nbsp;least&nbsp;but&nbsp;still&nbsp;having&nbsp;problems&nbsp;when<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;running&nbsp;the&nbsp;code.&lt;/em&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;&lt;em&gt;Thanks&nbsp;in&nbsp;advance&nbsp;guys.&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/em&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;em&gt;Andy&lt;/em&gt;<br>
+&nbsp;&nbsp;&lt;/body&gt;<br>
+&lt;/html&gt;<br>
+
+</tt>

@@ -1,0 +1,326 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [stratum-dev] Update Bazel version to 2.2.0
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Update%20Bazel%20version%20to%202.2.0&In-Reply-To=%3CCAOyFVR0wZCAN%2BRQQybzGydK6rNwyyjqmdy9kBrk8wSBGASYDRQ%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <LINK REL="Previous"  HREF="000061.html">
+   <LINK REL="Next"  HREF="000063.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[stratum-dev] Update Bazel version to 2.2.0</H1>
+    <B>Yi Tseng</B> 
+    <A HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Update%20Bazel%20version%20to%202.2.0&In-Reply-To=%3CCAOyFVR0wZCAN%2BRQQybzGydK6rNwyyjqmdy9kBrk8wSBGASYDRQ%40mail.gmail.com%3E"
+       TITLE="[stratum-dev] Update Bazel version to 2.2.0">yi at opennetworking.org
+       </A><BR>
+    <I>Thu Mar 26 19:10:49 UTC 2020</I>
+    <P><UL>
+        <LI>Previous message (by thread): <A HREF="000061.html">[stratum-dev] Update Bazel version to 2.2.0
+</A></li>
+        <LI>Next message (by thread): <A HREF="000063.html">[stratum-dev] Update Bazel version to 2.2.0
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#62">[ date ]</a>
+              <a href="thread.html#62">[ thread ]</a>
+              <a href="subject.html#62">[ subject ]</a>
+              <a href="author.html#62">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Deval,
+
+Where you are running the ONOS controller? If you are running the ONOS
+controller on a server, you need to set the management address to your
+switch IP address.
+
+For example, you run the ONOS on a server with IP address 192.168.0.100 and
+running the Stratum on a switch with IP address 192.168.0.101. (And I
+assume that you have connectivity between the server and the switch)
+
+The netcfg.json will look like:
+
+{
+  &quot;devices&quot;: {
+    &quot;device:tofino&quot;: {
+      &quot;basic&quot;: {
+        &quot;managementAddress&quot;: &quot;<A HREF="grpc://192.168.0.101:28000?device_id=1">grpc://192.168.0.101:28000?device_id=1</A>&quot;,
+        &quot;driver&quot;: &quot;stratum-tofino&quot;,
+        &quot;pipeconf&quot;: &quot;[your pipeconf name]&quot;
+       }
+    }
+   }
+}
+
+Please also note that the device ID is 1 in the Stratum
+
+Yi
+
+
+On Thu, Mar 26, 2020 at 6:13 AM Deval Bhamare &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">Deval.Bhamare at kau.se</A>&gt; wrote:
+
+&gt;<i> Hello Yi,
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> We have received a reply from Stordis and as per their suggestion, we can
+</I>&gt;<i> ignore the syseeprom error
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> *You see only syseeprom errorr please ignore that :*
+</I>&gt;<i> *Tcl server: listen socket created*
+</I>&gt;<i> *Tcl server: bind done on port 8008, listening...*
+</I>&gt;<i> *Tcl server: waiting for incoming connections...*
+</I>&gt;<i> *sh: 1: onie-syseeprom: not found &lt;Ignore this error&gt;*
+</I>&gt;<i> *Health monitor started *
+</I>&gt;<i> *Operational mode set to ASIC*
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> So, now when I try to push the netcfg.json for our device to Onos, I get
+</I>&gt;<i> following message:
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> 2020-03-25T21:59:01,255 | INFO  | onos-gdp-0       | StreamClientImpl
+</I>&gt;<i>             | 237 - org.onosproject.onos-protocols-p4runtime-ctl -
+</I>&gt;<i> 2.4.0.SNAPSHOT | Setting mastership on device:tofino... master=true,
+</I>&gt;<i> newElectionId=20, masterElectionId=null, sessionOpen=false
+</I>&gt;<i>
+</I>&gt;<i> 2020-03-25T21:59:01,258 | WARN  | onos-event-dispatch-default0 |
+</I>&gt;<i> ModelCache                       | 211 -
+</I>&gt;<i> org.onosproject._onos-gui2-base-jar - 2.4.0.SNAPSHOT | DeviceID
+</I>&gt;<i> device:tofino not found as a UiDevice
+</I>&gt;<i>
+</I>&gt;<i> 2020-03-25T21:59:01,258 | WARN  | onos-event-dispatch-default0 |
+</I>&gt;<i> ModelCache                       | 211 -
+</I>&gt;<i> org.onosproject._onos-gui2-base-jar - 2.4.0.SNAPSHOT | DeviceID
+</I>&gt;<i> device:tofino not found as a UiDevice
+</I>&gt;<i>
+</I>&gt;<i> 2020-03-25T21:59:01,263 | WARN  | onos-event-dispatch-default0 |
+</I>&gt;<i> ModelCache                       | 211 -
+</I>&gt;<i> org.onosproject._onos-gui2-base-jar - 2.4.0.SNAPSHOT | DeviceID
+</I>&gt;<i> device:tofino not found as a UiDevice
+</I>&gt;<i>
+</I>&gt;<i> 2020-03-25T21:59:01,276 | INFO  | onos-topo-build-1 | TopologyManager
+</I>&gt;<i>               | 193 - org.onosproject.onos-core-net - 2.4.0.SNAPSHOT |
+</I>&gt;<i> Topology DefaultTopology{time=20452353961040, creationTime=1585173541276,
+</I>&gt;<i> computeCost=427068, clusters=0, devices=0, links=0} changed
+</I>&gt;<i>
+</I>&gt;<i> 2020-03-25T21:59:01,308 | INFO  | onos-gdp-0       | DeviceManager
+</I>&gt;<i>             | 193 - org.onosproject.onos-core-net - 2.4.0.SNAPSHOT |*
+</I>&gt;<i> Device device:tofino registered*
+</I>&gt;<i>
+</I>&gt;<i> 2020-03-25T21:59:01,317 | WARN  | grpc-default-executor-1 |
+</I>&gt;<i> StreamClientImpl                 | 237 -
+</I>&gt;<i> org.onosproject.onos-protocols-p4runtime-ctl - 2.4.0.SNAPSHOT |* Error on
+</I>&gt;<i> StreamChannel RPC for device:tofino: UNAVAILABLE: Network closed for
+</I>&gt;<i> unknown reason*
+</I>&gt;<i>
+</I>&gt;<i> 2020-03-25T21:59:01,319 | INFO  | onos-topo-build-2 | TopologyManager
+</I>&gt;<i>               | 193 - org.onosproject.onos-core-net - 2.4.0.SNAPSHOT |
+</I>&gt;<i> Topology DefaultTopology{time=20452397561034, creationTime=1585173541319,
+</I>&gt;<i> computeCost=112832, clusters=0, devices=0, links=0} changed
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> ONOS CLI show, device available=false.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">tofino at root</A> &gt; devices
+</I>&gt;<i>     21:58:49
+</I>&gt;<i>
+</I>&gt;<i> id=device:tofino, *available=false*, local-status=disconnected 37s ago,
+</I>&gt;<i> role=NONE, type=SWITCH, mfr=Barefoot Networks, hw=Tofino, sw=Stratum,
+</I>&gt;<i> serial=unknown, chassis=0, driver=stratum-tofino:vepg-pipeconf,
+</I>&gt;<i> locType=none, managementAddress=<A HREF="grpc://127.0.0.1:28000?device_id=0,">grpc://127.0.0.1:28000?device_id=0,</A>
+</I>&gt;<i> name=device:tofino, p4DeviceId=0, protocol=P4Runtime, gNMI, gNOI
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Netcfg.json contents are:
+</I>&gt;<i>
+</I>&gt;<i> {
+</I>&gt;<i> &quot;devices&quot;: {
+</I>&gt;<i> &quot;device:tofino&quot;: {
+</I>&gt;<i> &quot;basic&quot;: {
+</I>&gt;<i> &quot;managementAddress&quot;: &quot;<A HREF="grpc://127.0.0.1?device_id=0">grpc://127.0.0.1?device_id=0</A>&quot;,
+</I>&gt;<i> &quot;driver&quot;: &quot;stratum-tofino&quot;,
+</I>&gt;<i> &quot;pipeconf&quot;: &quot;vepg-pipeconf&quot;
+</I>&gt;<i> }
+</I>&gt;<i> }
+</I>&gt;<i> }
+</I>&gt;<i> }
+</I>&gt;<i>
+</I>&gt;<i> Command is:
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> curl --fail -sSL --user onos:rocks --noproxy localhost -v -X POST -H
+</I>&gt;<i> 'Content-Type:application/json' '
+</I>&gt;<i> <A HREF="http://localhost:8181/onos/v1/network/configuration">http://localhost:8181/onos/v1/network/configuration</A>' <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">-d at .</A>/netcfg.json
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Any idea what may be the issue?
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Thanks,
+</I>&gt;<i>
+</I>&gt;<i> Deval.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> ------------------------------
+</I>&gt;<i> *From:* Yi Tseng &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">yi at opennetworking.org</A>&gt;
+</I>&gt;<i> *Sent:* Tuesday, March 24, 2020 3:25:06 PM
+</I>&gt;<i> *To:* Deval Bhamare
+</I>&gt;<i> *Cc:* <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>
+</I>&gt;<i> *Subject:* Re: [stratum-dev] Update Bazel version to 2.2.0
+</I>&gt;<i>
+</I>&gt;<i> Hi Deval,
+</I>&gt;<i>
+</I>&gt;<i> I am now working on updating the script to support the custom platform
+</I>&gt;<i> parameter &lt;<A HREF="https://github.com/stratum/stratum/pull/150">https://github.com/stratum/stratum/pull/150</A>&gt; since the Stratum
+</I>&gt;<i> cannot detect the platform without the ONLP.
+</I>&gt;<i>
+</I>&gt;<i> Should be merged soon.
+</I>&gt;<i>
+</I>&gt;<i> On Sat, Mar 21, 2020 at 1:28 AM Deval Bhamare &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">Deval.Bhamare at kau.se</A>&gt;
+</I>&gt;<i> wrote:
+</I>&gt;<i>
+</I>&gt;&gt;<i> Hello Yi,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I tried with the new image stratum-bf:8.9.1-3.16.56-OpenNetworkLinux,
+</I>&gt;&gt;<i> however, the error still persists:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> + KERNEL_VERSION=3.16.64-OpenNetworkLinux
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> + DOCKER_IMAGE=stratumproject/stratum-bf
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> + DOCKER_IMAGE_TAG=9.0.0-3.16.64-OpenNetworkLinux
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> ++ uname -r
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> ++ uname -r
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> + docker run -it --privileged -v /dev:/dev -v /sys:/sys -v
+</I>&gt;&gt;<i> /lib/modules/3.16.64-OpenNetworkLinux:/lib/modules/3.16.64-OpenNetworkLinux
+</I>&gt;&gt;<i> -v
+</I>&gt;&gt;<i> /lib/x86_64-linux-gnu/libonlp-platform-defaults.so:/lib/x86_64-linux-gnu/libonlp-platform-defaults.so
+</I>&gt;&gt;<i> -v
+</I>&gt;&gt;<i> /lib/x86_64-linux-gnu/libonlp-platform-defaults.so.1:/lib/x86_64-linux-gnu/libonlp-platform-defaults.so.1
+</I>&gt;&gt;<i> -v
+</I>&gt;&gt;<i> /lib/x86_64-linux-gnu/libonlp-platform.so:/lib/x86_64-linux-gnu/libonlp-platform.so
+</I>&gt;&gt;<i> -v
+</I>&gt;&gt;<i> /lib/x86_64-linux-gnu/libonlp-platform.so.1:/lib/x86_64-linux-gnu/libonlp-platform.so.1
+</I>&gt;&gt;<i> -v /lib/x86_64-linux-gnu/libonlp.so:/lib/x86_64-linux-gnu/libonlp.so -v
+</I>&gt;&gt;<i> /lib/x86_64-linux-gnu/libonlp.so.1:/lib/x86_64-linux-gnu/libonlp.so.1 -v
+</I>&gt;&gt;<i> /lib/platform-config:/lib/platform-config -v /etc/onl:/etc/onl -p
+</I>&gt;&gt;<i> 28000:28000 -v /root:/stratum_configs -v /var/log:/stratum_logs
+</I>&gt;&gt;<i> stratumproject/stratum-bf:8.9.1-3.16.56-OpenNetworkLinux
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> *Use default flag file*
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> *Cannot find /usr/local/share/stratum/x86-64-stordis-bf2556x-1t-r0.json*
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I also had peek at the script *start-stratum-container.sh* and found an
+</I>&gt;&gt;<i> option of *ONLP_ARG=&quot;--env WITH_ONLP=false&quot;*
+</I>&gt;&gt;<i> . So I wanted to ask whether I can set this option with Docker to force
+</I>&gt;&gt;<i> BSP usage, let us say, by hard-coding it in the script itself (also similar
+</I>&gt;&gt;<i> approach to set PORT_MAP in *stratume_entrypoint.sh*). I tried this and
+</I>&gt;&gt;<i> the error message in this case is:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> *Use default flag file*
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> *Cannot find /usr/local/share/stratum/.json *
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Please suggest.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Thanks,
+</I>&gt;&gt;<i> Deval.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> ------------------------------
+</I>&gt;&gt;<i> *From:* Yi Tseng &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">yi at opennetworking.org</A>&gt;
+</I>&gt;&gt;<i> *Sent:* Thursday, March 12, 2020 6:57 AM
+</I>&gt;&gt;<i> *To:* Deval Bhamare
+</I>&gt;&gt;<i> *Cc:* Narada Hess; <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>
+</I>&gt;&gt;<i> *Subject:* Re: [stratum-dev] Update Bazel version to 2.2.0
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Hi Deval,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> We don't support Barefoot thrift APIs in Stratum. We support some
+</I>&gt;&gt;<i> Barefoot API like port API via gNMI and the chassis config.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> For missing JSON file, I can confirm that our internal CI did not include
+</I>&gt;&gt;<i> the latest Stratum with kernel 3.16.56
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I just rebuild it and uploaded the new container image to the Docker hub
+</I>&gt;&gt;<i> &lt;<A HREF="https://hub.docker.com/layers/stratumproject/stratum-bf/8.9.2-3.16.56-OpenNetworkLinux/images/sha256-c9d64c1a7c2853150532a5d3e14dac94aa79b63a4dffba16018322d971d65300?context=explore">https://hub.docker.com/layers/stratumproject/stratum-bf/8.9.2-3.16.56-OpenNetworkLinux/images/sha256-c9d64c1a7c2853150532a5d3e14dac94aa79b63a4dffba16018322d971d65300?context=explore</A>&gt;,
+</I>&gt;&gt;<i> feel free to let me know if the issue still exists.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> About the missing library, can you run this command in your shell?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> *LD_LIBRARY_PATH=$BF_SDE_INSTALL/lib ldd
+</I>&gt;&gt;<i> ./bazel-bin/stratum/hal/bin/barefoot/stratum_bf*
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I think the system linker may have some issue to find the library.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> The *libavago.so.0 *is a symbolic link to *libavago.so*. the libavago.so
+</I>&gt;&gt;<i> must also exists.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> *ls -al $BF_SDE_INSTALL/lib/libavago* -rwxr-xr-x 1 root root 1185264 Mar
+</I>&gt;&gt;<i> 12 04:19 libavago.so lrwxrwxrwx 1 root root      11 Mar 12 04:19
+</I>&gt;&gt;<i> libavago.so.0 -&gt; libavago.so lrwxrwxrwx 1 root root      11 Mar 12 04:19
+</I>&gt;&gt;<i> libavago.so.0.0.0 -&gt; libavago.so*
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i> Yi Tseng
+</I>&gt;<i> Member of Technical Staff
+</I>&gt;<i> Open Networking Foundation
+</I>&gt;<i> <A HREF="https://www.opennetworking.org/">https://www.opennetworking.org/</A>
+</I>&gt;<i>
+</I>
+
+-- 
+Yi Tseng
+Member of Technical Staff
+Open Networking Foundation
+<A HREF="https://www.opennetworking.org/">https://www.opennetworking.org/</A>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.stratumproject.org/archives/stratum-dev/attachments/20200327/3d004d78/attachment-0001.html">https://lists.stratumproject.org/archives/stratum-dev/attachments/20200327/3d004d78/attachment-0001.html</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message (by thread): <A HREF="000061.html">[stratum-dev] Update Bazel version to 2.2.0
+</A></li>
+	<LI>Next message (by thread): <A HREF="000063.html">[stratum-dev] Update Bazel version to 2.2.0
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#62">[ date ]</a>
+              <a href="thread.html#62">[ thread ]</a>
+              <a href="subject.html#62">[ subject ]</a>
+              <a href="author.html#62">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.stratumproject.org/listinfo/stratum-dev">More information about the stratum-dev
+mailing list</a><br>
+</body></html>

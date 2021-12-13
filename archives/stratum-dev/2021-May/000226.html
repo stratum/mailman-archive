@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [stratum-dev] Table entry from stratum_bmv2 different from ONOS	store
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Table%20entry%20from%20stratum_bmv2%20different%20from%20ONOS%0A%09store&In-Reply-To=%3CCAM-ym_cuRAFmUifBSP3%3Dmj4W-F1%3DoP3cZauNRTV-vy4Q4Kczyg%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <LINK REL="Previous"  HREF="000228.html">
+   <LINK REL="Next"  HREF="000229.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[stratum-dev] Table entry from stratum_bmv2 different from ONOS	store</H1>
+    <B>A Sydney</B> 
+    <A HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Table%20entry%20from%20stratum_bmv2%20different%20from%20ONOS%0A%09store&In-Reply-To=%3CCAM-ym_cuRAFmUifBSP3%3Dmj4W-F1%3DoP3cZauNRTV-vy4Q4Kczyg%40mail.gmail.com%3E"
+       TITLE="[stratum-dev] Table entry from stratum_bmv2 different from ONOS	store">asydney007 at gmail.com
+       </A><BR>
+    <I>Thu May 13 03:06:36 UTC 2021</I>
+    <P><UL>
+        <LI>Previous message (by thread): <A HREF="000228.html">[stratum-dev] How to set log levels with -vmodule
+</A></li>
+        <LI>Next message (by thread): <A HREF="000229.html">[stratum-dev] Table entry from stratum_bmv2 different from ONOS	store
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#226">[ date ]</a>
+              <a href="thread.html#226">[ thread ]</a>
+              <a href="subject.html#226">[ subject ]</a>
+              <a href="author.html#226">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Stratum folks,
+
+# Context: I'm running standalone stratum_bmv2 instances on Debian 10
+connected to ONOS where I've got a custom pipeconfig and app.
+
+# Problem:
+When I install flows, ONOS logs an error that table entries in
+&quot;l2_exact_table&quot; on the switch are different from what's recorded in the
+ONOS store. However, if you take a look at the rules, they are identical as
+shown here: <A HREF="https://pastebin.com/i4Jkt26i">https://pastebin.com/i4Jkt26i</A>
+
+I activated the debugger and set a breakpoint near &quot;if
+(!translatedEntity.get().translated().equals(entry))&quot; (i.e. in
+P4RuntimeFlowRuleProgrammable.java) and both &quot;translated&quot; and &quot;entry&quot; have
+the same values.
+
+Have you come across this one? If not, perhaps I should take this up with
+ONOS folks?
+
+PS. I don't see this issue for other tables.
+
+Thanks,
+-Syd
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.stratumproject.org/archives/stratum-dev/attachments/20210512/e6cdbcb7/attachment.html">https://lists.stratumproject.org/archives/stratum-dev/attachments/20210512/e6cdbcb7/attachment.html</A>&gt;
+</PRE>
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message (by thread): <A HREF="000228.html">[stratum-dev] How to set log levels with -vmodule
+</A></li>
+	<LI>Next message (by thread): <A HREF="000229.html">[stratum-dev] Table entry from stratum_bmv2 different from ONOS	store
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#226">[ date ]</a>
+              <a href="thread.html#226">[ thread ]</a>
+              <a href="subject.html#226">[ subject ]</a>
+              <a href="author.html#226">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.stratumproject.org/listinfo/stratum-dev">More information about the stratum-dev
+mailing list</a><br>
+</body></html>

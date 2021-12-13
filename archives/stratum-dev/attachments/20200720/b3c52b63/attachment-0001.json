@@ -1,0 +1,375 @@
+{
+  "devices": {
+    "device:leaf1": {
+      "basic": {
+        "managementAddress": "grpc://10.5.23.21:28000?device_id=1",
+        "driver": "stratum-tofino",
+        "pipeconf": "org.opencord.fabric.tofino.montara_sde_9_0_0"
+      },
+      "segmentrouting": {
+        "name": "leaf1",
+        "ipv4NodeSid": 100,
+        "ipv4Loopback": "192.168.0.100",
+        "ipv6NodeSid": 101,
+        "ipv6Loopback": "2000::c0a8:0100",
+        "routerMac": "00:00:00:00:01:00",
+        "isEdgeRouter": true,
+        "adjacencySids": []
+      }
+    }
+  },
+  "ports": {
+    "device:leaf/128": {
+      "interfaces": [
+        {
+          "name": "port1",
+          "ips": [
+            "10.0.1.254/24"
+          ],
+          "vlan-untagged": 100
+        }
+      ]
+    },
+    "device:leaf/136": {
+      "interfaces": [
+        {
+          "name": "port2",
+          "ips": [
+            "10.0.1.254/24"
+          ],
+          "vlan-untagged": 100
+        }
+      ]
+    },
+    "device:leaf/144": {
+      "interfaces": [
+        {
+          "name": "port3",
+          "ips": [
+            "10.0.1.254/24"
+          ],
+          "vlan-untagged": 100
+        }
+      ]
+    },
+    "device:leaf/152": {
+      "interfaces": [
+        {
+          "name": "port4",
+          "ips": [
+            "10.0.1.254/24"
+          ],
+          "vlan-untagged": 100
+        }
+      ]
+    },
+    "device:leaf/160": {
+      "interfaces": [
+        {
+          "name": "port5",
+          "ips": [
+            "10.0.1.254/24"
+          ],
+          "vlan-untagged": 100
+        }
+      ]
+    },
+    "device:leaf/168": {
+      "interfaces": [
+        {
+          "name": "port6",
+          "ips": [
+            "10.0.1.254/24"
+          ],
+          "vlan-untagged": 100
+        }
+      ]
+    },
+    "device:leaf/176": {
+      "interfaces": [
+        {
+          "name": "port7",
+          "ips": [
+            "10.0.1.254/24"
+          ],
+          "vlan-untagged": 100
+        }
+      ]
+    },
+    "device:leaf/184": {
+      "interfaces": [
+        {
+          "name": "port8",
+          "ips": [
+            "10.0.1.254/24"
+          ],
+          "vlan-untagged": 100
+        }
+      ]
+    },
+    "device:leaf/60": {
+      "interfaces": [
+        {
+          "name": "port9",
+          "ips": [
+            "10.0.2.254/24"
+          ],
+          "vlan-untagged": 200
+        }
+      ]
+    },
+    "device:leaf/52": {
+      "interfaces": [
+        {
+          "name": "port10",
+          "ips": [
+            "10.0.2.254/24"
+          ],
+          "vlan-untagged": 200
+        }
+      ]
+    },
+    "device:leaf/44": {
+      "interfaces": [
+        {
+          "name": "port11",
+          "ips": [
+            "10.0.2.254/24"
+          ],
+          "vlan-untagged": 200
+        }
+      ]
+    },
+    "device:leaf/36": {
+      "interfaces": [
+        {
+          "name": "port12",
+          "ips": [
+            "10.0.2.254/24"
+          ],
+          "vlan-untagged": 200
+        }
+      ]
+    },
+    "device:leaf/28": {
+      "interfaces": [
+        {
+          "name": "port13",
+          "ips": [
+            "10.0.2.254/24"
+          ],
+          "vlan-untagged": 200
+        }
+      ]
+    },
+    "device:leaf/20": {
+      "interfaces": [
+        {
+          "name": "port14",
+          "ips": [
+            "10.0.2.254/24"
+          ],
+          "vlan-untagged": 200
+        }
+      ]
+    },
+    "device:leaf/12": {
+      "interfaces": [
+        {
+          "name": "port15",
+          "ips": [
+            "10.0.2.254/24"
+          ],
+          "vlan-untagged": 200
+        }
+      ]
+    },
+    "device:leaf/4": {
+      "interfaces": [
+        {
+          "name": "port16",
+          "ips": [
+            "10.0.2.254/24"
+          ],
+          "vlan-untagged": 200
+        }
+      ]
+    },
+    "device:leaf/0": {
+      "interfaces": [
+        {
+          "name": "port17",
+          "ips": [
+            "10.0.3.254/24"
+          ],
+          "vlan-untagged": 300
+        }
+      ]
+    },
+    "device:leaf/8": {
+      "interfaces": [
+        {
+          "name": "port18",
+          "ips": [
+            "10.0.3.254/24"
+          ],
+          "vlan-untagged": 300
+        }
+      ]
+    },
+    "device:leaf/16": {
+      "interfaces": [
+        {
+          "name": "port19",
+          "ips": [
+            "10.0.3.254/24"
+          ],
+          "vlan-untagged": 300
+        }
+      ]
+    },
+    "device:leaf/24": {
+      "interfaces": [
+        {
+          "name": "port20",
+          "ips": [
+            "10.0.3.254/24"
+          ],
+          "vlan-untagged": 300
+        }
+      ]
+    },
+    "device:leaf/32": {
+      "interfaces": [
+        {
+          "name": "port21",
+          "ips": [
+            "10.0.3.254/24"
+          ],
+          "vlan-untagged": 300
+        }
+      ]
+    },
+    "device:leaf/40": {
+      "interfaces": [
+        {
+          "name": "port22",
+          "ips": [
+            "10.0.3.254/24"
+          ],
+          "vlan-untagged": 300
+        }
+      ]
+    },
+    "device:leaf/48": {
+      "interfaces": [
+        {
+          "name": "port23",
+          "ips": [
+            "10.0.3.254/24"
+          ],
+          "vlan-untagged": 300
+        }
+      ]
+    },
+    "device:leaf/56": {
+      "interfaces": [
+        {
+          "name": "port24",
+          "ips": [
+            "10.0.3.254/24"
+          ],
+          "vlan-untagged": 300
+        }
+      ]
+    },
+    "device:leaf/188": {
+      "interfaces": [
+        {
+          "name": "port25",
+          "ips": [
+            "10.0.4.254/24"
+          ],
+          "vlan-untagged": 400
+        }
+      ]
+    },
+    "device:leaf/180": {
+      "interfaces": [
+        {
+          "name": "port26",
+          "ips": [
+            "10.0.4.254/24"
+          ],
+          "vlan-untagged": 400
+        }
+      ]
+    },
+    "device:leaf/172": {
+      "interfaces": [
+        {
+          "name": "port27",
+          "ips": [
+            "10.0.4.254/24"
+          ],
+          "vlan-untagged": 400
+        }
+      ]
+    },
+    "device:leaf/164": {
+      "interfaces": [
+        {
+          "name": "port28",
+          "ips": [
+            "10.0.4.254/24"
+          ],
+          "vlan-untagged": 400
+        }
+      ]
+    },
+    "device:leaf/148": {
+      "interfaces": [
+        {
+          "name": "port29",
+          "ips": [
+            "10.0.4.254/24"
+          ],
+          "vlan-untagged": 400
+        }
+      ]
+    },
+    "device:leaf/156": {
+      "interfaces": [
+        {
+          "name": "port30",
+          "ips": [
+            "10.0.4.254/24"
+          ],
+          "vlan-untagged": 400
+        }
+      ]
+    },
+    "device:leaf/132": {
+      "interfaces": [
+        {
+          "name": "port31",
+          "ips": [
+            "10.0.4.254/24"
+          ],
+          "vlan-untagged": 400
+        }
+      ]
+    },
+    "device:leaf/140": {
+      "interfaces": [
+        {
+          "name": "port32",
+          "ips": [
+            "10.0.4.254/24"
+          ],
+          "vlan-untagged": 400
+        }
+      ]
+    }
+  }
+}

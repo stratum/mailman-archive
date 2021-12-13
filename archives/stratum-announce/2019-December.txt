@@ -1,0 +1,166 @@
+From bocon at opennetworking.org  Wed Dec 11 23:44:44 2019
+From: bocon at opennetworking.org (Brian O'Connor)
+Date: Wed, 11 Dec 2019 15:44:44 -0800
+Subject: [stratum-announce] TestVectors now available!
+Message-ID: <CACKOpD=Pcq_NmsTjNb8oLf93x57VX22inhESf1RKVF9nSCGgaQ@mail.gmail.com>
+
+Hi everyone,
+
+I am happy to announce the availability of TestVectors.
+
+There are two parts:
+
+   1. A set of initial test cases (called TestVectors) for bmv2, Broadcom
+   Tomahawk, and Barefoot Tofino targets:
+   https://github.com/stratum/testvectors
+   2. A runner that can be used to put a target switch under test:
+   https://github.com/stratum/testvectors-runner
+
+We will be working to integrate TestVectors into Stratum CI system to
+enable system test coverage of software and hardware switches. TestVectors
+are also useful vehicles for operators to formally specify requirements.
+
+To learn more, you can watch a few talks on TestVectors:
+
+   - Introduction and Rationale  (Alireza Ghaffarkhah & Tomek Madejski)
+   https://vimeo.com/307167637/e1117a14ac
+   - Architecture and Implementation Details (Abhilash Endurthi & You Wang)
+   https://vimeo.com/361225907 (slides
+   <https://www.opennetworking.org/wp-content/uploads/2019/09/3.00pm-Abhilash-Endurthi-Test-Vectors.pdf>
+   )
+
+If you have any questions or want to contribute, please join the *#test*
+channel on the Stratum Slack <https://stratumproject.slack.com> (or invite
+yourself <https://slackin.stratumproject.org/> if you aren't already on
+Slack). You can also direct questions at the dev mailing list:
+*stratum-dev at lists.stratumproject.org
+<stratum-dev at lists.stratumproject.org>*
+
+Finally, a big thank you to Ali, Devjit, Tomek and team at Google for
+kicking things off, and to Abhilash and You at ONF for bringing this to
+open source.
+
+Thanks!
+Brian
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-announce/attachments/20191211/a589cd61/attachment.html>
+
+From aghaffar at google.com  Wed Dec 11 23:58:42 2019
+From: aghaffar at google.com (Alireza Ghaffarkhah)
+Date: Wed, 11 Dec 2019 15:58:42 -0800
+Subject: [stratum-announce] TestVectors now available!
+In-Reply-To: <CACKOpD=Pcq_NmsTjNb8oLf93x57VX22inhESf1RKVF9nSCGgaQ@mail.gmail.com>
+References: <CACKOpD=Pcq_NmsTjNb8oLf93x57VX22inhESf1RKVF9nSCGgaQ@mail.gmail.com>
+Message-ID: <CA+kiLHGwQpvS=Dhr0Kky4Oj+-GnuVxTr=i5-3veHsMxwd4c0Vw@mail.gmail.com>
+
+Congratulations, this is a great milestone. Thanks all.
+
+On Wed, Dec 11, 2019 at 3:44 PM Brian O'Connor <bocon at opennetworking.org>
+wrote:
+
+> Hi everyone,
+>
+> I am happy to announce the availability of TestVectors.
+>
+> There are two parts:
+>
+>    1. A set of initial test cases (called TestVectors) for bmv2, Broadcom
+>    Tomahawk, and Barefoot Tofino targets:
+>    https://github.com/stratum/testvectors
+>    2. A runner that can be used to put a target switch under test:
+>    https://github.com/stratum/testvectors-runner
+>
+> We will be working to integrate TestVectors into Stratum CI system to
+> enable system test coverage of software and hardware switches. TestVectors
+> are also useful vehicles for operators to formally specify requirements.
+>
+> To learn more, you can watch a few talks on TestVectors:
+>
+>    - Introduction and Rationale  (Alireza Ghaffarkhah & Tomek Madejski)
+>    https://vimeo.com/307167637/e1117a14ac
+>    - Architecture and Implementation Details (Abhilash Endurthi & You
+>    Wang)
+>    https://vimeo.com/361225907 (slides
+>    <https://www.opennetworking.org/wp-content/uploads/2019/09/3.00pm-Abhilash-Endurthi-Test-Vectors.pdf>
+>    )
+>
+> If you have any questions or want to contribute, please join the *#test*
+> channel on the Stratum Slack <https://stratumproject.slack.com> (or invite
+> yourself <https://slackin.stratumproject.org/> if you aren't already on
+> Slack). You can also direct questions at the dev mailing list: *stratum-dev at lists.stratumproject.org
+> <stratum-dev at lists.stratumproject.org>*
+>
+> Finally, a big thank you to Ali, Devjit, Tomek and team at Google for
+> kicking things off, and to Abhilash and You at ONF for bringing this to
+> open source.
+>
+> Thanks!
+> Brian
+>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-announce/attachments/20191211/ba879a3f/attachment.html>
+
+From antonin.bas at gmail.com  Thu Dec 12 04:47:42 2019
+From: antonin.bas at gmail.com (Antonin Bas)
+Date: Wed, 11 Dec 2019 23:47:42 -0500
+Subject: [stratum-announce] TestVectors now available!
+In-Reply-To: <0101016ef75a5250-a24fabc5-edab-452e-98d3-c7f650463bee-000000@us-west-2.amazonses.com>
+References: <0101016ef75a5250-a24fabc5-edab-452e-98d3-c7f650463bee-000000@us-west-2.amazonses.com>
+Message-ID: <CAAkB0aDU6XyWQFjhT4jJ1bY+d4UQMpFdGFZyR9MKxTk6bAmPoQ@mail.gmail.com>
+
+Congrats to everyone in the ONF team who worked on this!
+It would be great for these tests to be unified across targets as much
+as possible in the future - or at least have a solid core of common tests.
+
+Le mer. 11 déc. 2019 à 18:45, Brian O'Connor via stratum-announce <
+stratum-announce at lists.stratumproject.org> a écrit :
+
+> Hi everyone,
+>
+> I am happy to announce the availability of TestVectors.
+>
+> There are two parts:
+>
+>    1. A set of initial test cases (called TestVectors) for bmv2, Broadcom
+>    Tomahawk, and Barefoot Tofino targets:
+>    https://github.com/stratum/testvectors
+>    2. A runner that can be used to put a target switch under test:
+>    https://github.com/stratum/testvectors-runner
+>
+> We will be working to integrate TestVectors into Stratum CI system to
+> enable system test coverage of software and hardware switches. TestVectors
+> are also useful vehicles for operators to formally specify requirements.
+>
+> To learn more, you can watch a few talks on TestVectors:
+>
+>    - Introduction and Rationale  (Alireza Ghaffarkhah & Tomek Madejski)
+>    https://vimeo.com/307167637/e1117a14ac
+>    - Architecture and Implementation Details (Abhilash Endurthi & You
+>    Wang)
+>    https://vimeo.com/361225907 (slides
+>    <https://www.opennetworking.org/wp-content/uploads/2019/09/3.00pm-Abhilash-Endurthi-Test-Vectors.pdf>
+>    )
+>
+> If you have any questions or want to contribute, please join the *#test*
+> channel on the Stratum Slack <https://stratumproject.slack.com> (or invite
+> yourself <https://slackin.stratumproject.org/> if you aren't already on
+> Slack). You can also direct questions at the dev mailing list: *stratum-dev at lists.stratumproject.org
+> <stratum-dev at lists.stratumproject.org>*
+>
+> Finally, a big thank you to Ali, Devjit, Tomek and team at Google for
+> kicking things off, and to Abhilash and You at ONF for bringing this to
+> open source.
+>
+> Thanks!
+> Brian
+> _______________________________________________
+> stratum-announce mailing list
+> stratum-announce at lists.stratumproject.org
+> https://lists.stratumproject.org/listinfo/stratum-announce
+>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-announce/attachments/20191211/63f4faef/attachment.html>
+

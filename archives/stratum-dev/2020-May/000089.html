@@ -1,0 +1,168 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [stratum-dev] Docker image 8.9.2-3.16.56-OpenNetworkLinux older version for stratum
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Docker%20image%208.9.2-3.16.56-OpenNetworkLinux%20older%0A%20version%20for%20stratum&In-Reply-To=%3C61d3dc537ed44747a8b89d88bede753f%40kau.se%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <LINK REL="Previous"  HREF="000088.html">
+   <LINK REL="Next"  HREF="000090.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[stratum-dev] Docker image 8.9.2-3.16.56-OpenNetworkLinux older version for stratum</H1>
+    <B>Deval Bhamare</B> 
+    <A HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Docker%20image%208.9.2-3.16.56-OpenNetworkLinux%20older%0A%20version%20for%20stratum&In-Reply-To=%3C61d3dc537ed44747a8b89d88bede753f%40kau.se%3E"
+       TITLE="[stratum-dev] Docker image 8.9.2-3.16.56-OpenNetworkLinux older version for stratum">Deval.Bhamare at kau.se
+       </A><BR>
+    <I>Thu May 14 14:56:08 UTC 2020</I>
+    <P><UL>
+        <LI>Previous message (by thread): <A HREF="000088.html">[stratum-dev] [stratum-announce] Stratum TST Election Results
+</A></li>
+        <LI>Next message (by thread): <A HREF="000090.html">[stratum-dev] Docker image 8.9.2-3.16.56-OpenNetworkLinux older	version for stratum
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#89">[ date ]</a>
+              <a href="thread.html#89">[ thread ]</a>
+              <a href="subject.html#89">[ subject ]</a>
+              <a href="author.html#89">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello Yi,
+
+
+Sending a reminder.
+
+
+Please let me know the cause of the error below in the newly updated container image  8.9.2-3.16.56-OpenNetworkLinux&lt;<A HREF="https://hub.docker.com/layers/stratumproject/stratum-bf/8.9.2-3.16.56-OpenNetworkLinux/images/sha256-3a52ec68005041b4d69b676c9584133a34652910514272165f09f443fb2975d8?context=explore">https://hub.docker.com/layers/stratumproject/stratum-bf/8.9.2-3.16.56-OpenNetworkLinux/images/sha256-3a52ec68005041b4d69b676c9584133a34652910514272165f09f443fb2975d8?context=explore</A>&gt;
+
+
+/usr/bin/stratum_bf: error while loading shared libraries: libonlp.so.1: cannot open shared object file: No such file or directory
+
+
+Note: I am using below values in the start_container script (which was working earlier)
+
+
+--env WITH_ONLP=false \
+--env PLATFORM=x86-64-stordis-bf2556x-1t-r0 \
+
+
+ With original  start_container script, however, I get error of
+
+
+Cannot find flag file /etc/stratum/stratum.flags
+
+
+
+Is it possible to get access to the earlier version of the container image? Also, I tried to build the container locally with old Docker.runtime, but it fails as well, with error log below.
+
+
+PLease suggest.
+
+
+ERROR: /stratum/stratum/hal/bin/barefoot/BUILD:26:1: Linking of rule '//stratum/hal/bin/barefoot:stratum_bf' failed (Exit 1) gcc failed: error executing command /usr/bin/gcc @bazel-out/k8-fastbuild/bin/stratum/hal/bin/barefoot/stratum_bf-2.params
+
+
+Use --sandbox_debug to see verbose messages from the sandbox
+
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi.pic.o:pi.c:function pi_port_status_get: error: undefined reference to '_pi_port_status_get'
+
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_act_prof.pic.o:pi_act_prof.c:function pi_act_prof_grp_activate_mbr: error: undefined reference to '_pi_act_prof_grp_activate_mbr'
+
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_act_prof.pic.o:pi_act_prof.c:function pi_act_prof_grp_deactivate_mbr: error: undefined reference to '_pi_act_prof_grp_deactivate_mbr'
+
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_act_prof.pic.o:pi_act_prof.c:function pi_act_prof_mbr_fetch: error: undefined reference to '_pi_act_prof_mbr_fetch'
+
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_act_prof.pic.o:pi_act_prof.c:function pi_act_prof_grp_fetch: error: undefined reference to '_pi_act_prof_grp_fetch'
+
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_tables.pic.o:pi_tables.c:function pi_table_default_action_get_handle: error: undefined reference to '_pi_table_default_action_get_handle'
+
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_tables.pic.o:pi_tables.c:function pi_table_entries_fetch_one: error: undefined reference to '_pi_table_entries_fetch_one'
+
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_tables.pic.o:pi_tables.c:function pi_table_entries_fetch_wkey: error: undefined reference to '_pi_table_entries_fetch_wkey'
+
+collect2: error: ld returned 1 exit status
+
+Target //stratum/hal/bin/barefoot:stratum_bf failed to build
+
+Use --verbose_failures to see the command lines of failed build steps.
+
+INFO: Elapsed time: 281.155s, Critical Path: 81.05s
+
+INFO: 1513 processes: 1513 processwrapper-sandbox.
+
+FAILED: Build did NOT complete successfully
+
+FAILED: Build did NOT complete successfully
+
+The command '/bin/sh -c bazel build //stratum/hal/bin/barefoot:stratum_bf     --define sde_ver=$(cat $SDE_INSTALL/share/VERSION)     --define phal_with_onlp=false &amp;&amp;     cp bazel-bin/stratum/hal/bin/barefoot/stratum_bf /tmp/stratum_bf_no_onlp' returned a non-zero code: 1
+
+
+
+Thanks,
+
+
+Deval
+
+________________________________
+From: Deval Bhamare
+Sent: Wednesday, May 13, 2020 8:49:24 PM
+To: Yi Tseng
+Subject: Docker image older version for stratum
+
+
+Hello Yi,
+
+
+As I have mentioned earlier, the docker container image 8.9.2-3.16.56-OpenNetworkLinux&lt;<A HREF="https://hub.docker.com/layers/stratumproject/stratum-bf/8.9.2-3.16.56-OpenNetworkLinux/images/sha256-3a52ec68005041b4d69b676c9584133a34652910514272165f09f443fb2975d8?context=explore">https://hub.docker.com/layers/stratumproject/stratum-bf/8.9.2-3.16.56-OpenNetworkLinux/images/sha256-3a52ec68005041b4d69b676c9584133a34652910514272165f09f443fb2975d8?context=explore</A>&gt; was working for our tofino switch, until I had to pull the image again, due to some crash. However, after pulling the new image, things have stopped working. I now get the error:
+
+
+loading bf_kdrv_mod...
+insmod: ERROR: could not insert module /usr/lib/modules/bf_kdrv.ko: Invalid module format
+/usr/bin/stratum_bf: error while loading shared libraries: libonlp.so.1: cannot open shared object file: No such file or directory
+
+
+
+As I can see the docker image is build very recently and I doubt it may have changed something. Is it possible for you to provide the older version of this image (approx 2 months old, when the missing json issue was solved). Else, how can I fix the above problem?
+
+
+
+Thanks,
+
+Deval.
+
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.stratumproject.org/archives/stratum-dev/attachments/20200514/2ca7b4a6/attachment.html">https://lists.stratumproject.org/archives/stratum-dev/attachments/20200514/2ca7b4a6/attachment.html</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message (by thread): <A HREF="000088.html">[stratum-dev] [stratum-announce] Stratum TST Election Results
+</A></li>
+	<LI>Next message (by thread): <A HREF="000090.html">[stratum-dev] Docker image 8.9.2-3.16.56-OpenNetworkLinux older	version for stratum
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#89">[ date ]</a>
+              <a href="thread.html#89">[ thread ]</a>
+              <a href="subject.html#89">[ subject ]</a>
+              <a href="author.html#89">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.stratumproject.org/listinfo/stratum-dev">More information about the stratum-dev
+mailing list</a><br>
+</body></html>

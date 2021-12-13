@@ -1,0 +1,200 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [stratum-dev] Question about building stratum standalone
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Question%20about%20building%20stratum%20standalone&In-Reply-To=%3CCAFh9Y_MxE0DgtXW1kW_n5SscuxL7wYtQZKab%3DA_VhOnrWveLkQ%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <LINK REL="Previous"  HREF="000191.html">
+   <LINK REL="Next"  HREF="000193.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[stratum-dev] Question about building stratum standalone</H1>
+    <B>Maximilian Pudelko</B> 
+    <A HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Question%20about%20building%20stratum%20standalone&In-Reply-To=%3CCAFh9Y_MxE0DgtXW1kW_n5SscuxL7wYtQZKab%3DA_VhOnrWveLkQ%40mail.gmail.com%3E"
+       TITLE="[stratum-dev] Question about building stratum standalone">max at opennetworking.org
+       </A><BR>
+    <I>Mon Mar 22 21:04:34 UTC 2021</I>
+    <P><UL>
+        <LI>Previous message (by thread): <A HREF="000191.html">[stratum-dev] Question about building stratum standalone
+</A></li>
+        <LI>Next message (by thread): <A HREF="000193.html">[stratum-dev] Question about building stratum standalone
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#192">[ date ]</a>
+              <a href="thread.html#192">[ thread ]</a>
+              <a href="subject.html#192">[ subject ]</a>
+              <a href="author.html#192">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i> Is my workflow for starting the bmv2 switch and
+</I>generating pipeline_cfg.pb.txt correct?
+looks ok to me. You might still want to set the
+--forwarding_pipeline_configs_file to somewhere
+writable by Stratum.
+
+&gt;<i> Should I hop onto the container and run the install? Or is there an
+</I>easier way around this issue?
+The update_config.py scripts are pretty old, unmaintained and broken as you
+just found out. I'd recommend
+using the P4Runtime-shell instead.
+
+&gt;<i> If &quot;c&quot; was correct, then &quot;pipeline_cfg.pb.txt&quot; would automatically be
+</I>generated and inserted in the switch. Would I also have to perform c) for
+all switches?
+Yes, each switch needs to have a pipeline.
+
+Max
+
+On Mon, Mar 22, 2021 at 12:58 PM A Sydney &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">asydney007 at gmail.com</A>&gt; wrote:
+
+&gt;<i> I'm still having a few issues:
+</I>&gt;<i>
+</I>&gt;<i> 1. Please take note of the following:
+</I>&gt;<i>  a) On my host, I've created ~/stratum/bmv2_config (i.e. in the top level
+</I>&gt;<i> stratum directory) where I've added bmv2.json and p4info.txt for
+</I>&gt;<i> loopback.p4. I've also added config.txt which contains the ports I would
+</I>&gt;<i> like stratum to use.
+</I>&gt;<i>  b) In the stratum container (/stratum), I run the following:
+</I>&gt;<i> stratum&gt; sudo ./bazel-bin/stratum/hal/bin/bmv2/stratum_bmv2 \
+</I>&gt;<i>     --persistent_config_dir=/stratum/bmv2_config \
+</I>&gt;<i>     --chassis_config_file=/stratum/bmv2_config/config.txt  \
+</I>&gt;<i>     --bmv2_log_level=debug
+</I>&gt;<i>
+</I>&gt;<i> And see the following expected error (i.e. &quot;expected&quot;, since we will
+</I>&gt;<i> generate this file subsequently):
+</I>&gt;<i> &quot;&quot;&quot;
+</I>&gt;<i> /var/run/stratum/pipeline_cfg.pb.txt not found..
+</I>&gt;<i> &quot;&quot;&quot;
+</I>&gt;<i> c) Now back on my host system, I do the following:
+</I>&gt;<i> '&quot;&quot;&quot;
+</I>&gt;<i> host&gt; cp stratum/hal/bin/bmv2/update_config.py /tmp/ &amp;&amp; \
+</I>&gt;<i> docker run -v /tmp:/tmp -w /tmp p4lang/pi ./update_config.py \
+</I>&gt;<i> --grpc-addr 52.117.10.174:9559 --json bmv2_config/bmv2.json --p4info
+</I>&gt;<i> bmv2_config/p4info.txt
+</I>&gt;<i> &quot;&quot;&quot;
+</I>&gt;<i> And get the following error:
+</I>&gt;<i>
+</I>&gt;<i> &quot;&quot;&quot;
+</I>&gt;<i> Traceback (most recent call last):
+</I>&gt;<i>   File &quot;./update_config.py&quot;, line 10, in &lt;module&gt;
+</I>&gt;<i>     from p4.v1 import p4runtime_pb2
+</I>&gt;<i> ImportError: No module named p4.v1
+</I>&gt;<i> &quot;&quot;&quot;
+</I>&gt;<i> I Googled this error and looks like folks have come across this (
+</I>&gt;<i> <A HREF="https://github.com/p4lang/tutorials/issues/178">https://github.com/p4lang/tutorials/issues/178</A>) and it appears that
+</I>&gt;<i> perhaps P4Runtime is not installed properly?
+</I>&gt;<i>
+</I>&gt;<i> Questions:
+</I>&gt;<i> * Is my workflow for starting the bmv2 switch and
+</I>&gt;<i> generating pipeline_cfg.pb.txt correct?
+</I>&gt;<i> * Should I hop onto the container and run the install? Or is there an
+</I>&gt;<i> easier way around this issue?
+</I>&gt;<i> * If &quot;c&quot; was correct, then &quot;pipeline_cfg.pb.txt&quot; would automatically be
+</I>&gt;<i> generated and inserted in the switch. Would I also have to perform c) for
+</I>&gt;<i> all switches?
+</I>&gt;<i>
+</I>&gt;<i> Thanks,
+</I>&gt;<i> -Syd
+</I>&gt;<i>
+</I>&gt;<i> On Thu, Mar 18, 2021 at 10:12 PM Maximilian Pudelko &lt;
+</I>&gt;<i> <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">max at opennetworking.org</A>&gt; wrote:
+</I>&gt;<i>
+</I>&gt;&gt;<i> Hi Syd,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> &gt; 1. Where can I find &quot;p4_pipeline.pb.txt&quot; to run the binary?
+</I>&gt;&gt;<i> That file is the place where Stratum will store a pushed pipeline. It can
+</I>&gt;&gt;<i> only be set via the P4Runtime SetForwardingPipelineConfig RPC call.
+</I>&gt;&gt;<i> The Running the stratum_bmv2 binary section
+</I>&gt;&gt;<i> &lt;<A HREF="https://github.com/stratum/stratum/blob/main/stratum/hal/bin/bmv2/README.md#running-the-stratum_bmv2-binary">https://github.com/stratum/stratum/blob/main/stratum/hal/bin/bmv2/README.md#running-the-stratum_bmv2-binary</A>&gt;
+</I>&gt;&gt;<i> of the README gives an example:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> # run P4Runtime client
+</I>&gt;&gt;<i> cp stratum/hal/bin/bmv2/update_config.py /tmp/ &amp;&amp; \
+</I>&gt;&gt;<i> [sudo] docker run -v /tmp:/tmp -w /tmp p4lang/pi ./update_config.py \
+</I>&gt;&gt;<i>     --grpc-addr &lt;YOUR_HOST_IP_ADDRESS&gt;:9559 --json &lt;prog&gt;.json --p4info &lt;prog&gt;.proto.txt
+</I>&gt;&gt;<i> You could also use the p4runtime-shell &lt;<A HREF="https://github.com/p4lang/p4runtime-shell">https://github.com/p4lang/p4runtime-shell</A>&gt;.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> &gt; 2 .
+</I>&gt;&gt;<i> Yes, the bmv2 binary should bind to all interfaces given in the chassis_config.pb.txt.
+</I>&gt;&gt;<i> With some wiring it should be possible to build a web of software switches.
+</I>&gt;&gt;<i> But instead of building Stratum many times, check if the Debian package might not be more convenient:
+</I>&gt;&gt;<i> <A HREF="https://github.com/stratum/stratum/blob/main/stratum/hal/bin/bmv2/BUILD#L81-L98">https://github.com/stratum/stratum/blob/main/stratum/hal/bin/bmv2/BUILD#L81-L98</A>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> There is also a Stratum-enabled Mininet version, which takes care of a
+</I>&gt;&gt;<i> lot of these setup tasks. The
+</I>&gt;&gt;<i> NGSDN tutorial you linked uses it, too.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Best,
+</I>&gt;&gt;<i> Max
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> On Thu, Mar 18, 2021 at 10:10 AM A Sydney via stratum-dev &lt;
+</I>&gt;&gt;<i> <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>&gt; wrote:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Hi Stratum folks,
+</I>&gt;&gt;&gt;<i>                           I'm attempting to use the stratum standalone
+</I>&gt;&gt;&gt;<i> instance (
+</I>&gt;&gt;&gt;<i> <A HREF="https://github.com/stratum/stratum/blob/main/stratum/hal/bin/bmv2/README.md">https://github.com/stratum/stratum/blob/main/stratum/hal/bin/bmv2/README.md</A>)
+</I>&gt;&gt;&gt;<i> to setup a topology on a baremetal server. Can you kindly provide feedback
+</I>&gt;&gt;&gt;<i> to the following:
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> 1. Where can I find &quot;p4_pipeline.pb.txt&quot; to run the binary? In
+</I>&gt;&gt;&gt;<i> particular, as a simple test, I'm attempting to use the main.p4 file
+</I>&gt;&gt;&gt;<i> shipped with the ngsdn-tutorial (
+</I>&gt;&gt;&gt;<i> <A HREF="https://github.com/opennetworkinglab/ngsdn-tutorial">https://github.com/opennetworkinglab/ngsdn-tutorial</A>). On the tutorial
+</I>&gt;&gt;&gt;<i> VM, generated the corresponding bmv2.json and p4info.txt (i.e. using make
+</I>&gt;&gt;&gt;<i> p4-build). Was there some other &quot;p4_pipeline.pb.txt&quot; file generated that I
+</I>&gt;&gt;&gt;<i> can use on the bare metal setup? Or perhaps, I have to run bmv2.json
+</I>&gt;&gt;&gt;<i> through some postprocess to get &quot;p4_pipeline.pb.txt&quot;?
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> 2. Assuming I've got a running binary with all the arguments sorted, how
+</I>&gt;&gt;&gt;<i> can I go about creating a topology of switches? Can I simply create
+</I>&gt;&gt;&gt;<i> containers/VMs (i.e. with an linux OS), clone the stratum repo on each
+</I>&gt;&gt;&gt;<i> device, add container/VM interfaces in &quot;chassis_config.pb.txt&quot;, and run the
+</I>&gt;&gt;&gt;<i> bmv2 executable from each device?
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Thanks!
+</I>&gt;&gt;&gt;<i> -Syd
+</I>&gt;&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;&gt;<i> stratum-dev mailing list
+</I>&gt;&gt;&gt;<i> <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>
+</I>&gt;&gt;&gt;<i> <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">https://lists.stratumproject.org/listinfo/stratum-dev</A>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.stratumproject.org/archives/stratum-dev/attachments/20210322/8d78a91c/attachment-0001.html">https://lists.stratumproject.org/archives/stratum-dev/attachments/20210322/8d78a91c/attachment-0001.html</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message (by thread): <A HREF="000191.html">[stratum-dev] Question about building stratum standalone
+</A></li>
+	<LI>Next message (by thread): <A HREF="000193.html">[stratum-dev] Question about building stratum standalone
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#192">[ date ]</a>
+              <a href="thread.html#192">[ thread ]</a>
+              <a href="subject.html#192">[ subject ]</a>
+              <a href="author.html#192">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.stratumproject.org/listinfo/stratum-dev">More information about the stratum-dev
+mailing list</a><br>
+</body></html>

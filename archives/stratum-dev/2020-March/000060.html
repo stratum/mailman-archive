@@ -1,0 +1,173 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [stratum-dev] Update Bazel version to 2.2.0
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Update%20Bazel%20version%20to%202.2.0&In-Reply-To=%3CCAOyFVR3-vjAwOKDuQ1R5%2Bz9s1Y3zZUD%2BUX_AQoK8-jJ3q5T5_g%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <LINK REL="Previous"  HREF="000059.html">
+   <LINK REL="Next"  HREF="000061.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[stratum-dev] Update Bazel version to 2.2.0</H1>
+    <B>Yi Tseng</B> 
+    <A HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Update%20Bazel%20version%20to%202.2.0&In-Reply-To=%3CCAOyFVR3-vjAwOKDuQ1R5%2Bz9s1Y3zZUD%2BUX_AQoK8-jJ3q5T5_g%40mail.gmail.com%3E"
+       TITLE="[stratum-dev] Update Bazel version to 2.2.0">yi at opennetworking.org
+       </A><BR>
+    <I>Tue Mar 24 13:25:06 UTC 2020</I>
+    <P><UL>
+        <LI>Previous message (by thread): <A HREF="000059.html">[stratum-dev] Update Bazel version to 2.2.0
+</A></li>
+        <LI>Next message (by thread): <A HREF="000061.html">[stratum-dev] Update Bazel version to 2.2.0
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#60">[ date ]</a>
+              <a href="thread.html#60">[ thread ]</a>
+              <a href="subject.html#60">[ subject ]</a>
+              <a href="author.html#60">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Deval,
+
+I am now working on updating the script to support the custom platform
+parameter &lt;<A HREF="https://github.com/stratum/stratum/pull/150">https://github.com/stratum/stratum/pull/150</A>&gt; since the Stratum
+cannot detect the platform without the ONLP.
+
+Should be merged soon.
+
+On Sat, Mar 21, 2020 at 1:28 AM Deval Bhamare &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">Deval.Bhamare at kau.se</A>&gt; wrote:
+
+&gt;<i> Hello Yi,
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> I tried with the new image stratum-bf:8.9.1-3.16.56-OpenNetworkLinux,
+</I>&gt;<i> however, the error still persists:
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> + KERNEL_VERSION=3.16.64-OpenNetworkLinux
+</I>&gt;<i>
+</I>&gt;<i> + DOCKER_IMAGE=stratumproject/stratum-bf
+</I>&gt;<i>
+</I>&gt;<i> + DOCKER_IMAGE_TAG=9.0.0-3.16.64-OpenNetworkLinux
+</I>&gt;<i>
+</I>&gt;<i> ++ uname -r
+</I>&gt;<i>
+</I>&gt;<i> ++ uname -r
+</I>&gt;<i>
+</I>&gt;<i> + docker run -it --privileged -v /dev:/dev -v /sys:/sys -v
+</I>&gt;<i> /lib/modules/3.16.64-OpenNetworkLinux:/lib/modules/3.16.64-OpenNetworkLinux
+</I>&gt;<i> -v
+</I>&gt;<i> /lib/x86_64-linux-gnu/libonlp-platform-defaults.so:/lib/x86_64-linux-gnu/libonlp-platform-defaults.so
+</I>&gt;<i> -v
+</I>&gt;<i> /lib/x86_64-linux-gnu/libonlp-platform-defaults.so.1:/lib/x86_64-linux-gnu/libonlp-platform-defaults.so.1
+</I>&gt;<i> -v
+</I>&gt;<i> /lib/x86_64-linux-gnu/libonlp-platform.so:/lib/x86_64-linux-gnu/libonlp-platform.so
+</I>&gt;<i> -v
+</I>&gt;<i> /lib/x86_64-linux-gnu/libonlp-platform.so.1:/lib/x86_64-linux-gnu/libonlp-platform.so.1
+</I>&gt;<i> -v /lib/x86_64-linux-gnu/libonlp.so:/lib/x86_64-linux-gnu/libonlp.so -v
+</I>&gt;<i> /lib/x86_64-linux-gnu/libonlp.so.1:/lib/x86_64-linux-gnu/libonlp.so.1 -v
+</I>&gt;<i> /lib/platform-config:/lib/platform-config -v /etc/onl:/etc/onl -p
+</I>&gt;<i> 28000:28000 -v /root:/stratum_configs -v /var/log:/stratum_logs
+</I>&gt;<i> stratumproject/stratum-bf:8.9.1-3.16.56-OpenNetworkLinux
+</I>&gt;<i>
+</I>&gt;<i> *Use default flag file*
+</I>&gt;<i>
+</I>&gt;<i> *Cannot find /usr/local/share/stratum/x86-64-stordis-bf2556x-1t-r0.json*
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> I also had peek at the script *start-stratum-container.sh* and found an
+</I>&gt;<i> option of *ONLP_ARG=&quot;--env WITH_ONLP=false&quot;*
+</I>&gt;<i> . So I wanted to ask whether I can set this option with Docker to force
+</I>&gt;<i> BSP usage, let us say, by hard-coding it in the script itself (also similar
+</I>&gt;<i> approach to set PORT_MAP in *stratume_entrypoint.sh*). I tried this and
+</I>&gt;<i> the error message in this case is:
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> *Use default flag file*
+</I>&gt;<i>
+</I>&gt;<i> *Cannot find /usr/local/share/stratum/.json *
+</I>&gt;<i>
+</I>&gt;<i> Please suggest.
+</I>&gt;<i>
+</I>&gt;<i> Thanks,
+</I>&gt;<i> Deval.
+</I>&gt;<i>
+</I>&gt;<i> ------------------------------
+</I>&gt;<i> *From:* Yi Tseng &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">yi at opennetworking.org</A>&gt;
+</I>&gt;<i> *Sent:* Thursday, March 12, 2020 6:57 AM
+</I>&gt;<i> *To:* Deval Bhamare
+</I>&gt;<i> *Cc:* Narada Hess; <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>
+</I>&gt;<i> *Subject:* Re: [stratum-dev] Update Bazel version to 2.2.0
+</I>&gt;<i>
+</I>&gt;<i> Hi Deval,
+</I>&gt;<i>
+</I>&gt;<i> We don't support Barefoot thrift APIs in Stratum. We support some Barefoot
+</I>&gt;<i> API like port API via gNMI and the chassis config.
+</I>&gt;<i>
+</I>&gt;<i> For missing JSON file, I can confirm that our internal CI did not include
+</I>&gt;<i> the latest Stratum with kernel 3.16.56
+</I>&gt;<i>
+</I>&gt;<i> I just rebuild it and uploaded the new container image to the Docker hub
+</I>&gt;<i> &lt;<A HREF="https://hub.docker.com/layers/stratumproject/stratum-bf/8.9.2-3.16.56-OpenNetworkLinux/images/sha256-c9d64c1a7c2853150532a5d3e14dac94aa79b63a4dffba16018322d971d65300?context=explore">https://hub.docker.com/layers/stratumproject/stratum-bf/8.9.2-3.16.56-OpenNetworkLinux/images/sha256-c9d64c1a7c2853150532a5d3e14dac94aa79b63a4dffba16018322d971d65300?context=explore</A>&gt;,
+</I>&gt;<i> feel free to let me know if the issue still exists.
+</I>&gt;<i>
+</I>&gt;<i> About the missing library, can you run this command in your shell?
+</I>&gt;<i>
+</I>&gt;<i> *LD_LIBRARY_PATH=$BF_SDE_INSTALL/lib ldd
+</I>&gt;<i> ./bazel-bin/stratum/hal/bin/barefoot/stratum_bf*
+</I>&gt;<i>
+</I>&gt;<i> I think the system linker may have some issue to find the library.
+</I>&gt;<i>
+</I>&gt;<i> The *libavago.so.0 *is a symbolic link to *libavago.so*. the libavago.so
+</I>&gt;<i> must also exists.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> *ls -al $BF_SDE_INSTALL/lib/libavago* -rwxr-xr-x 1 root root 1185264 Mar
+</I>&gt;<i> 12 04:19 libavago.so lrwxrwxrwx 1 root root      11 Mar 12 04:19
+</I>&gt;<i> libavago.so.0 -&gt; libavago.so lrwxrwxrwx 1 root root      11 Mar 12 04:19
+</I>&gt;<i> libavago.so.0.0.0 -&gt; libavago.so*
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>
+-- 
+Yi Tseng
+Member of Technical Staff
+Open Networking Foundation
+<A HREF="https://www.opennetworking.org/">https://www.opennetworking.org/</A>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.stratumproject.org/archives/stratum-dev/attachments/20200324/c4ee22d8/attachment.html">https://lists.stratumproject.org/archives/stratum-dev/attachments/20200324/c4ee22d8/attachment.html</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message (by thread): <A HREF="000059.html">[stratum-dev] Update Bazel version to 2.2.0
+</A></li>
+	<LI>Next message (by thread): <A HREF="000061.html">[stratum-dev] Update Bazel version to 2.2.0
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#60">[ date ]</a>
+              <a href="thread.html#60">[ thread ]</a>
+              <a href="subject.html#60">[ subject ]</a>
+              <a href="author.html#60">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.stratumproject.org/listinfo/stratum-dev">More information about the stratum-dev
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [stratum-dev] How to set log levels with -vmodule
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20How%20to%20set%20log%20levels%20with%20-vmodule&In-Reply-To=%3CCAFh9Y_NZ-d%3D-9sweNuGS0N3t4oUW5Qo_8BL1ANSycfgQtio0gw%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <LINK REL="Previous"  HREF="000224.html">
+   <LINK REL="Next"  HREF="000227.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[stratum-dev] How to set log levels with -vmodule</H1>
+    <B>Maximilian Pudelko</B> 
+    <A HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20How%20to%20set%20log%20levels%20with%20-vmodule&In-Reply-To=%3CCAFh9Y_NZ-d%3D-9sweNuGS0N3t4oUW5Qo_8BL1ANSycfgQtio0gw%40mail.gmail.com%3E"
+       TITLE="[stratum-dev] How to set log levels with -vmodule">max at opennetworking.org
+       </A><BR>
+    <I>Thu May 13 00:49:49 UTC 2021</I>
+    <P><UL>
+        <LI>Previous message (by thread): <A HREF="000224.html">[stratum-dev] How to set log levels with -vmodule
+</A></li>
+        <LI>Next message (by thread): <A HREF="000227.html">[stratum-dev] How to set log levels with -vmodule
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#225">[ date ]</a>
+              <a href="thread.html#225">[ thread ]</a>
+              <a href="subject.html#225">[ subject ]</a>
+              <a href="author.html#225">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>According to this SO &lt;<A HREF="https://stackoverflow.com/a/45920794">https://stackoverflow.com/a/45920794</A>&gt; post the
+-vmodule parameter is based on the source code file name. So
+-vmodule=p4_service=2
+should print all VLOG(2) and below messages. I don't see a way to limit
+ERROR/WARNING/INFO on a per-module
+basis, though.
+
+The BFRT code is an entire different topic as it uses its own logging
+library without any hooks for us. We're pretty much
+limited to letting bfrt print to stdout. The current code enables logging
+of a few select modules:
+<A HREF="https://github.com/stratum/stratum/blob/main/stratum/hal/lib/barefoot/bf_sde_wrapper.cc#L1514-L1528">https://github.com/stratum/stratum/blob/main/stratum/hal/lib/barefoot/bf_sde_wrapper.cc#L1514-L1528</A>
+But that happened on a as-needed basis without any major planing. Full
+integration will require code
+changes on the SDE side to allow something like callbacks or streams. Feel
+free to lobby for that at Intel :D
+
+
+Max
+
+On Wed, May 12, 2021 at 3:39 PM Narada Hess via stratum-dev &lt;
+<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>&gt; wrote:
+
+&gt;<i> Hi All,
+</I>&gt;<i>
+</I>&gt;<i> I have used -v=&lt;level&gt; successfully in the stratum flags file. But when I
+</I>&gt;<i> add -vmodule=&lt;x=y&gt;, it does not seem to take effect. What am I doing wrong?
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Also, how do you set the log levels for the barefoot modules (as opposed
+</I>&gt;<i> to the stratum code per se)? Thanks, N
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Separate examples:
+</I>&gt;<i>
+</I>&gt;<i> -v=5
+</I>&gt;<i>
+</I>&gt;<i> -vmodule=p4_service=0
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> -v=5
+</I>&gt;<i>
+</I>&gt;<i> -vmodule=”p4_service=0”
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> -v=5
+</I>&gt;<i>
+</I>&gt;<i> -vmodule=bfrt_*=0
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> stratum-dev mailing list
+</I>&gt;<i> <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>
+</I>&gt;<i> <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">https://lists.stratumproject.org/listinfo/stratum-dev</A>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.stratumproject.org/archives/stratum-dev/attachments/20210512/f92f4466/attachment.html">https://lists.stratumproject.org/archives/stratum-dev/attachments/20210512/f92f4466/attachment.html</A>&gt;
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message (by thread): <A HREF="000224.html">[stratum-dev] How to set log levels with -vmodule
+</A></li>
+	<LI>Next message (by thread): <A HREF="000227.html">[stratum-dev] How to set log levels with -vmodule
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#225">[ date ]</a>
+              <a href="thread.html#225">[ thread ]</a>
+              <a href="subject.html#225">[ subject ]</a>
+              <a href="author.html#225">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.stratumproject.org/listinfo/stratum-dev">More information about the stratum-dev
+mailing list</a><br>
+</body></html>

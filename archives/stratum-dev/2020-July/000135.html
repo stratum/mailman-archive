@@ -1,0 +1,399 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [stratum-dev] Issues with Configuring Wedge 100bf-32x with ONOS
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Issues%20with%20Configuring%20Wedge%20100bf-32x%20with%20ONOS&In-Reply-To=%3CCAOyFVR1N8Oq7qMeo%3D8ANP1UkYRuBNGmhC0mhWJk2o47njkraow%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <LINK REL="Previous"  HREF="000134.html">
+   <LINK REL="Next"  HREF="000136.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[stratum-dev] Issues with Configuring Wedge 100bf-32x with ONOS</H1>
+    <B>Yi Tseng</B> 
+    <A HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Issues%20with%20Configuring%20Wedge%20100bf-32x%20with%20ONOS&In-Reply-To=%3CCAOyFVR1N8Oq7qMeo%3D8ANP1UkYRuBNGmhC0mhWJk2o47njkraow%40mail.gmail.com%3E"
+       TITLE="[stratum-dev] Issues with Configuring Wedge 100bf-32x with ONOS">yi at opennetworking.org
+       </A><BR>
+    <I>Fri Jul 24 02:57:30 UTC 2020</I>
+    <P><UL>
+        <LI>Previous message (by thread): <A HREF="000134.html">[stratum-dev] Issues with Configuring Wedge 100bf-32x with ONOS
+</A></li>
+        <LI>Next message (by thread): <A HREF="000136.html">[stratum-dev] Issues with Configuring Wedge 100bf-32x with ONOS
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#135">[ date ]</a>
+              <a href="thread.html#135">[ thread ]</a>
+              <a href="subject.html#135">[ subject ]</a>
+              <a href="author.html#135">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi David,
+
+Please try *&quot;locations&quot;: [&quot;device:my-tofino-switch/136&quot;]*
+
+Yi
+
+On Thu, Jul 23, 2020 at 3:16 PM David Lake &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">d.lake at surrey.ac.uk</A>&gt; wrote:
+
+&gt;<i> Hi Yi
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> I’m making very good progress thanks to the excellent support here – thank
+</I>&gt;<i> you.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> I have one problem.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> One host I have does not “talk” first and therefore I need to configure
+</I>&gt;<i> the MAC address and port manually.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> I’ve tried to do this by including the MAC address and IP address in the
+</I>&gt;<i> tofin-netcfg.json but I get this response from ONOS:
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">root at ONOS</A>:~/fabric-tofino# make netcfg ONOS_HOST=localhost
+</I>&gt;<i>
+</I>&gt;<i> *** Pushing tofino-netcfg.json to ONOS at localhost...
+</I>&gt;<i>
+</I>&gt;<i> curl --fail -sSL --user onos:rocks --noproxy localhost -X POST -H
+</I>&gt;<i> 'Content-Type:application/json' \
+</I>&gt;<i>
+</I>&gt;<i>         <A HREF="http://localhost:8181/onos/v1/network/configuration">http://localhost:8181/onos/v1/network/configuration</A> -d@
+</I>&gt;<i> ./tofino-netcfg.json
+</I>&gt;<i>
+</I>&gt;<i> {&quot;code&quot;:207,&quot;message&quot;:[&quot;Error parsing config
+</I>&gt;<i> hosts/24:8A:07:B8:71:DB/None/basic: Field \&quot;location\&quot; is invalid: Field is
+</I>&gt;<i> not allowed&quot;]}
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> This is the Tofino-netcfg.json file:
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> {
+</I>&gt;<i>
+</I>&gt;<i>   &quot;layouts&quot; : { },
+</I>&gt;<i>
+</I>&gt;<i>   &quot;devices&quot; : {
+</I>&gt;<i>
+</I>&gt;<i>     &quot;device:my-tofino-switch&quot; : {
+</I>&gt;<i>
+</I>&gt;<i>       &quot;basic&quot; : {
+</I>&gt;<i>
+</I>&gt;<i>         &quot;managementAddress&quot; : &quot;<A HREF="grpc://10.5.23.21:28000?device_id=1">grpc://10.5.23.21:28000?device_id=1</A>&quot;,
+</I>&gt;<i>
+</I>&gt;<i>         &quot;driver&quot; : &quot;stratum-tofino&quot;,
+</I>&gt;<i>
+</I>&gt;<i>         &quot;pipeconf&quot; : &quot;org.opencord.fabric-spgw.tofino.montara_sde_9_0_0&quot;
+</I>&gt;<i>
+</I>&gt;<i>       },
+</I>&gt;<i>
+</I>&gt;<i>   &quot;segmentrouting&quot;: {
+</I>&gt;<i>
+</I>&gt;<i>     &quot;name&quot;: &quot;edge1&quot;,
+</I>&gt;<i>
+</I>&gt;<i>     &quot;ipv4NodeSid&quot;: 101,
+</I>&gt;<i>
+</I>&gt;<i>     &quot;ipv4Loopback&quot;: &quot;192.168.1.1&quot;,
+</I>&gt;<i>
+</I>&gt;<i>     &quot;routerMac&quot;: &quot;00:AA:00:00:00:01&quot;,
+</I>&gt;<i>
+</I>&gt;<i>     &quot;isEdgeRouter&quot;: true,
+</I>&gt;<i>
+</I>&gt;<i>     &quot;adjacencySids&quot;: []
+</I>&gt;<i>
+</I>&gt;<i>   }
+</I>&gt;<i>
+</I>&gt;<i>   }
+</I>&gt;<i>
+</I>&gt;<i>   },
+</I>&gt;<i>
+</I>&gt;<i>   &quot;hosts&quot; : {
+</I>&gt;<i>
+</I>&gt;<i>     &quot;24:8a:07:b8:71:db/None&quot;: {
+</I>&gt;<i>
+</I>&gt;<i>       &quot;basic&quot;:{
+</I>&gt;<i>
+</I>&gt;<i>        &quot;ips&quot;:[&quot;10.0.40.3&quot;],
+</I>&gt;<i>
+</I>&gt;<i>        &quot;location&quot;: &quot;device:my-tofino-switch/136&quot;
+</I>&gt;<i>
+</I>&gt;<i>       }
+</I>&gt;<i>
+</I>&gt;<i>     }
+</I>&gt;<i>
+</I>&gt;<i>   },
+</I>&gt;<i>
+</I>&gt;<i>   &quot;apps&quot; : { },
+</I>&gt;<i>
+</I>&gt;<i>   &quot;ports&quot; : {
+</I>&gt;<i>
+</I>&gt;<i>   &quot;device:my-tofino-switch/128&quot; : {
+</I>&gt;<i>
+</I>&gt;<i>       &quot;interfaces&quot; : [{
+</I>&gt;<i>
+</I>&gt;<i>         &quot;name&quot; : &quot;Port 1&quot;,
+</I>&gt;<i>
+</I>&gt;<i>         &quot;ips&quot; : [ &quot;10.0.30.254/24&quot;],
+</I>&gt;<i>
+</I>&gt;<i>         &quot;vlan-untagged&quot;: 30,
+</I>&gt;<i>
+</I>&gt;<i>         &quot;mac&quot; : &quot;00:AA:00:00:00:01&quot;
+</I>&gt;<i>
+</I>&gt;<i>       }]
+</I>&gt;<i>
+</I>&gt;<i>     },
+</I>&gt;<i>
+</I>&gt;<i>   &quot;device:my-tofino-switch/136&quot; : {
+</I>&gt;<i>
+</I>&gt;<i>       &quot;interfaces&quot; : [{
+</I>&gt;<i>
+</I>&gt;<i>         &quot;name&quot; : &quot;Port 2 &quot;,
+</I>&gt;<i>
+</I>&gt;<i>         &quot;ips&quot; : [ &quot;10.0.40.254/24&quot;],
+</I>&gt;<i>
+</I>&gt;<i>         &quot;vlan-untagged&quot;: 40,
+</I>&gt;<i>
+</I>&gt;<i>         &quot;mac&quot; : &quot;00:AA:00:00:00:01&quot;
+</I>&gt;<i>
+</I>&gt;<i>       }]
+</I>&gt;<i>
+</I>&gt;<i>     },
+</I>&gt;<i>
+</I>&gt;<i>   &quot;device:my-tofino-switch/144&quot; : {
+</I>&gt;<i>
+</I>&gt;<i>       &quot;interfaces&quot; : [{
+</I>&gt;<i>
+</I>&gt;<i>         &quot;name&quot; : &quot;Port 3 &quot;,
+</I>&gt;<i>
+</I>&gt;<i>         &quot;ips&quot; : [ &quot;10.0.10.254/24&quot;],
+</I>&gt;<i>
+</I>&gt;<i>         &quot;vlan-untagged&quot;: 10,
+</I>&gt;<i>
+</I>&gt;<i>         &quot;mac&quot; : &quot;00:AA:00:00:00:01&quot;
+</I>&gt;<i>
+</I>&gt;<i>       }]
+</I>&gt;<i>
+</I>&gt;<i>     },
+</I>&gt;<i>
+</I>&gt;<i>   &quot;device:my-tofino-switch/152&quot; : {
+</I>&gt;<i>
+</I>&gt;<i>       &quot;interfaces&quot; : [{
+</I>&gt;<i>
+</I>&gt;<i>         &quot;name&quot; : &quot;Port 4 &quot;,
+</I>&gt;<i>
+</I>&gt;<i>         &quot;ips&quot; : [ &quot;10.0.20.254/24&quot;],
+</I>&gt;<i>
+</I>&gt;<i>         &quot;vlan-untagged&quot;: 20,
+</I>&gt;<i>
+</I>&gt;<i>         &quot;mac&quot; : &quot;00:AA:00:00:00:01&quot;
+</I>&gt;<i>
+</I>&gt;<i>       }]
+</I>&gt;<i>
+</I>&gt;<i>     },
+</I>&gt;<i>
+</I>&gt;<i>   &quot;device:my-tofino-switch/12&quot; : {
+</I>&gt;<i>
+</I>&gt;<i>       &quot;interfaces&quot; : [{
+</I>&gt;<i>
+</I>&gt;<i>         &quot;name&quot; : &quot;Port 15/1&quot;,
+</I>&gt;<i>
+</I>&gt;<i>         &quot;ips&quot; : [ &quot;10.0.30.254/24&quot;],
+</I>&gt;<i>
+</I>&gt;<i>         &quot;vlan-untagged&quot;: 30,
+</I>&gt;<i>
+</I>&gt;<i>         &quot;mac&quot; : &quot;00:AA:00:00:00:01&quot;
+</I>&gt;<i>
+</I>&gt;<i>       }]
+</I>&gt;<i>
+</I>&gt;<i>     },
+</I>&gt;<i>
+</I>&gt;<i>     &quot;device:my-tofino-switch/48&quot; : {
+</I>&gt;<i>
+</I>&gt;<i>       &quot;interfaces&quot; : [{
+</I>&gt;<i>
+</I>&gt;<i>         &quot;name&quot; : &quot;Port 23/1&quot;,
+</I>&gt;<i>
+</I>&gt;<i>         &quot;ips&quot; : [ &quot;10.0.40.254/24&quot;],
+</I>&gt;<i>
+</I>&gt;<i>         &quot;vlan-untagged&quot;: 40,
+</I>&gt;<i>
+</I>&gt;<i>         &quot;mac&quot; : &quot;00:AA:00:00:00:01&quot;
+</I>&gt;<i>
+</I>&gt;<i>       }]
+</I>&gt;<i>
+</I>&gt;<i>     }
+</I>&gt;<i>
+</I>&gt;<i>    },
+</I>&gt;<i>
+</I>&gt;<i>   &quot;regions&quot; : { },
+</I>&gt;<i>
+</I>&gt;<i>   &quot;links&quot; : { }
+</I>&gt;<i>
+</I>&gt;<i> }
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Thank you
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> David
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> *From:* Yi Tseng &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">yi at opennetworking.org</A>&gt;
+</I>&gt;<i> *Sent:* 20 July 2020 19:13
+</I>&gt;<i> *To:* Lake, David (PG/R - Elec Electronic Eng) &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">d.lake at surrey.ac.uk</A>&gt;
+</I>&gt;<i> *Cc:* <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>; P4 brigade &lt;
+</I>&gt;<i> <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">brigade-p4 at onosproject.org</A>&gt;; Vural, Serdar Dr (Elec Electronic Eng) &lt;
+</I>&gt;<i> <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">s.vural at surrey.ac.uk</A>&gt;
+</I>&gt;<i> *Subject:* Re: [stratum-dev] Issues with Configuring Wedge 100bf-32x with
+</I>&gt;<i> ONOS
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Hi David,
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Please find the config file attached, and modify it based on your
+</I>&gt;<i> requirements.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Also, you can follow the Trellis Configuration Guide
+</I>&gt;<i> &lt;<A HREF="https://eur02.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.trellisfabric.org%2F1.12%2Fconfiguration%2Fbridging-unicast.html&amp;data=02%7C01%7Cd.lake%40surrey.ac.uk%7C332a2c06e850489acee808d82cd890d3%7C6b902693107440aa9e21d89446a2ebb5%7C0%7C0%7C637308655942152951&amp;sdata=0XiJAlBLBKGdcFboHXxC1JA19u9vdhorxIe%2BbQAtRBU%3D&amp;reserved=0">https://eur02.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.trellisfabric.org%2F1.12%2Fconfiguration%2Fbridging-unicast.html&amp;data=02%7C01%7Cd.lake%40surrey.ac.uk%7C332a2c06e850489acee808d82cd890d3%7C6b902693107440aa9e21d89446a2ebb5%7C0%7C0%7C637308655942152951&amp;sdata=0XiJAlBLBKGdcFboHXxC1JA19u9vdhorxIe%2BbQAtRBU%3D&amp;reserved=0</A>&gt; for
+</I>&gt;<i> more information about how to config the ONOS Trellis application.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Yi
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> On Sat, Jul 18, 2020 at 12:55 PM David Lake via stratum-dev &lt;
+</I>&gt;<i> <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>&gt; wrote:
+</I>&gt;<i>
+</I>&gt;<i> Hello
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Thank you for you help so far.  I now need some more guidance please.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> I have a Wedge 100BF-32x running ONL and the Stratum Docker container with
+</I>&gt;<i> ONOS 2.2.3 and the fabric-tofino pipeconf.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> When I set the CHASSIS_CONFIG for the switch and start the container, I
+</I>&gt;<i> see errors regarding the fan configuration from the switch (see
+</I>&gt;<i> “start-stratum2.txt” log file).
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Eventually, these timeout and the switch becomes available (about 10
+</I>&gt;<i> minutes to start).
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> However, when I add to ONOS using the netcfg command I see errors and the
+</I>&gt;<i> ports show as “Enabled – False” in ONOS.   My netfg log is attached as
+</I>&gt;<i> “necfg.txt.”
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> What I need to do is to set up the switch with 4 subnets across the 32
+</I>&gt;<i> ports.  I’m trying to find an example configuration and some worked
+</I>&gt;<i> tutorials/user-guides.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Can someone please point me to some sample configs for similar
+</I>&gt;<i> environments please and tell me where I am going wrong with the
+</I>&gt;<i> configuration?
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Thanks
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> David
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> stratum-dev mailing list
+</I>&gt;<i> <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>
+</I>&gt;<i> <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">https://lists.stratumproject.org/listinfo/stratum-dev</A>
+</I>&gt;<i> &lt;<A HREF="https://eur02.safelinks.protection.outlook.com/?url=https%3A%2F%2Flists.stratumproject.org%2Flistinfo%2Fstratum-dev&amp;data=02%7C01%7Cd.lake%40surrey.ac.uk%7C332a2c06e850489acee808d82cd890d3%7C6b902693107440aa9e21d89446a2ebb5%7C0%7C0%7C637308655942162957&amp;sdata=LKbjNn9ncfyafhujC4LRKDak7yr7yI0wgeQDJBbKS4U%3D&amp;reserved=0">https://eur02.safelinks.protection.outlook.com/?url=https%3A%2F%2Flists.stratumproject.org%2Flistinfo%2Fstratum-dev&amp;data=02%7C01%7Cd.lake%40surrey.ac.uk%7C332a2c06e850489acee808d82cd890d3%7C6b902693107440aa9e21d89446a2ebb5%7C0%7C0%7C637308655942162957&amp;sdata=LKbjNn9ncfyafhujC4LRKDak7yr7yI0wgeQDJBbKS4U%3D&amp;reserved=0</A>&gt;
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i>
+</I>&gt;<i> Yi Tseng
+</I>&gt;<i>
+</I>&gt;<i> Member of Technical Staff
+</I>&gt;<i>
+</I>&gt;<i> Open Networking Foundation
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="https://www.opennetworking.org/">https://www.opennetworking.org/</A>
+</I>&gt;<i> &lt;<A HREF="https://eur02.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.opennetworking.org%2F&amp;data=02%7C01%7Cd.lake%40surrey.ac.uk%7C332a2c06e850489acee808d82cd890d3%7C6b902693107440aa9e21d89446a2ebb5%7C0%7C0%7C637308655942162957&amp;sdata=96%2Be%2FD4cwSaW9%2FLObmhpFCcjQm%2BeVujcLVwcnwGDlFU%3D&amp;reserved=0">https://eur02.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.opennetworking.org%2F&amp;data=02%7C01%7Cd.lake%40surrey.ac.uk%7C332a2c06e850489acee808d82cd890d3%7C6b902693107440aa9e21d89446a2ebb5%7C0%7C0%7C637308655942162957&amp;sdata=96%2Be%2FD4cwSaW9%2FLObmhpFCcjQm%2BeVujcLVwcnwGDlFU%3D&amp;reserved=0</A>&gt;
+</I>&gt;<i>
+</I>
+
+-- 
+Yi Tseng
+Member of Technical Staff
+Open Networking Foundation
+<A HREF="https://www.opennetworking.org/">https://www.opennetworking.org/</A>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.stratumproject.org/archives/stratum-dev/attachments/20200723/d60901ed/attachment.html">https://lists.stratumproject.org/archives/stratum-dev/attachments/20200723/d60901ed/attachment.html</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message (by thread): <A HREF="000134.html">[stratum-dev] Issues with Configuring Wedge 100bf-32x with ONOS
+</A></li>
+	<LI>Next message (by thread): <A HREF="000136.html">[stratum-dev] Issues with Configuring Wedge 100bf-32x with ONOS
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#135">[ date ]</a>
+              <a href="thread.html#135">[ thread ]</a>
+              <a href="subject.html#135">[ subject ]</a>
+              <a href="author.html#135">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.stratumproject.org/listinfo/stratum-dev">More information about the stratum-dev
+mailing list</a><br>
+</body></html>

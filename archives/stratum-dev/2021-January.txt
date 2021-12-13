@@ -1,0 +1,186 @@
+From ain at opennetworking.org  Wed Jan  6 17:49:58 2021
+From: ain at opennetworking.org (Ain Indermitte)
+Date: Wed, 6 Jan 2021 10:49:58 -0700
+Subject: [stratum-dev] Developer Economics Survey is now open
+Message-ID: <CACZfwXuQhgsab4TDEGA+sf+pxorPGS7zhZyNsP9AUtnZLRg_PQ@mail.gmail.com>
+
+[image: survey_728x90.png]
+
+Hey ONF Developer Community!
+
+What will 2021 be like for developers like you? In order to better
+understand and improve our developer communities, ONF has partnered with
+SlashData in creating the Developer Economics survey. This is actually the
+20th edition of this global SlashData survey where you can share your views
+about programming languages, tools, platforms, technologies, and frameworks.
+
+What's in it for you? Everyone who signs up and completes the survey will
+get a virtual goodie bag packed with resources and data to help you develop
+your skills and improve your career. You will also enter a prize draw worth
+$17,000+ where you could win a Samsung Galaxy S20 Plus, Acer Predator
+Helios 300 Gaming Laptop, JetBrains All Products license, gear for your
+workstation, swag, Amazon vouchers, and more. There are also cash prizes
+worth up to $1,000 if you invite other developers to take part.
+
+For every completed response, SlashData is donating money to the Black
+Girls Code organization. The goal is to reach $2,000 in donation, so help
+them out by taking the survey.
+
+The survey closes on February 8th, so please don't delay!
+
+Take the survey <https://developereconomics.net/?member_id=onf> (note that
+in order to win prizes you will have to Sign Up, but if that is of no
+interest to you, you can take the survey without signing up).
+
+-- 
+Ain Indermitte
+Senior Director, Developer Relations & Program Management
+Open Networking Foundation
++1-408-431-9939
+ain at opennetworking.org
+
+[this email is sent to various ONF developer mailing lists, apologies if
+you are receiving multiple copies since you might be signed up for multiple
+lists]
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20210106/1a8b7703/attachment-0001.html>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: survey_728x90.png
+Type: image/png
+Size: 95074 bytes
+Desc: not available
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20210106/1a8b7703/attachment-0001.png>
+
+From bocon at opennetworking.org  Wed Jan 20 15:00:00 2021
+From: bocon at opennetworking.org (Brian O'Connor)
+Date: Wed, 20 Jan 2021 10:00:00 -0500
+Subject: [stratum-dev] Stratum User Survey
+Message-ID: <CACKOpDk4Nn1K-fZBmVi_Lj_ymaEuGYM6sKHxgDm5rQRdpzMRzw@mail.gmail.com>
+
+Hi Stratum users,
+
+The ONF is gathering information to build a better census of the Stratum
+user community. This survey should only take a few minutes, and it will
+help prioritize how the ONF team and broader Stratum developer community
+allocate their time and resources over the coming year.
+
+Please take a moment to help us shape the future of Stratum:
+https://forms.gle/EHDGUhpvCPX7goou8
+
+Thanks in advance!
+Brian and the Stratum team
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20210120/4c99c723/attachment.html>
+
+From asydney007 at gmail.com  Fri Jan 29 15:03:43 2021
+From: asydney007 at gmail.com (A Sydney)
+Date: Fri, 29 Jan 2021 10:03:43 -0500
+Subject: [stratum-dev] Questions about OVS, FPM, and supported hardware
+Message-ID: <CAM-ym_dYqGXpcoMOn3JFcPK+keCx5G5Br2uhZTcL53YeQQrHGA@mail.gmail.com>
+
+Hi Stratum guys,
+                          I'm not sure of the right forum to ask these
+questions, so it would be great if you could provide suggestions (I did
+ping a few contacts listed on the repo, but no replies as yet, so I'm
+posting it here). Can you kindly provide feedback to the following:
+
+1. From the documentation on your github repo (in addition to tutorials and
+presentations), it appears that the BMv2 is the virtual switch supported.
+Does Stratum also support OVS (Or any other production grade virtual
+switch?)? If not, is this on the roadmap?
+
+2. From Brian's presentation in 2019 (https://youtu.be/I83VdrZtkyM), he
+mentioned that the Stratum FPM compiler does not support MPLS and QinQ. Can
+you kindly share documentation about what all is supported?
+
+3.  Is support for Broadcom's D7264 on the roadmap?
+
+Thanks!
+-Syd
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20210129/49c73398/attachment.html>
+
+From bocon at opennetworking.org  Fri Jan 29 19:39:02 2021
+From: bocon at opennetworking.org (Brian O'Connor)
+Date: Fri, 29 Jan 2021 14:39:02 -0500
+Subject: [stratum-dev] Questions about OVS, FPM, and supported hardware
+In-Reply-To: <010101774eac1ce7-81a6b418-b103-479a-a8c7-f4c9b1047c2c-000000@us-west-2.amazonses.com>
+References: <010101774eac1ce7-81a6b418-b103-479a-a8c7-f4c9b1047c2c-000000@us-west-2.amazonses.com>
+Message-ID: <CACKOpDk8R+eBNDkPGLEYDgHAwXpus4ZP+aZQOjDbTqzoUsyESw@mail.gmail.com>
+
+Hi Syd,
+
+Thanks for your questions! I've provided some answers inline.
+
+Brian
+
+On Fri, Jan 29, 2021 at 10:04 AM A Sydney via stratum-dev <
+stratum-dev at lists.stratumproject.org> wrote:
+
+> Hi Stratum guys,
+>                           I'm not sure of the right forum to ask these
+> questions, so it would be great if you could provide suggestions (I did
+> ping a few contacts listed on the repo, but no replies as yet, so I'm
+> posting it here). Can you kindly provide feedback to the following:
+>
+> 1. From the documentation on your github repo (in addition to tutorials
+> and presentations), it appears that the BMv2 is the virtual switch
+> supported. Does Stratum also support OVS (Or any other production grade
+> virtual switch?)? If not, is this on the roadmap?
+>
+
+Stratum does not support OVS or any production grade software switch for
+now. We have some community members that have been looking into this, and
+there are a few promising options. Support for a production grade switch is
+not on the official roadmap at this point, but we would certainly welcome a
+community contribution in this area!
+
+>
+> 2. From Brian's presentation in 2019 (https://youtu.be/I83VdrZtkyM), he
+> mentioned that the Stratum FPM compiler does not support MPLS and QinQ. Can
+> you kindly share documentation about what all is supported?
+>
+
+Sorry that this isn't spelled out in a README. The FPM compiler only
+applies to the Broadcom target. For bmv2 and Tofino, you can use MPLS,
+QinQ, and everything else that you can express in P4 and compile using the
+bmv2 and Tofino compilers.
+
+Here is a list of the supported pipeline stages for Broadcom:
+https://github.com/stratum/stratum/blob/master/stratum/public/proto/p4_annotation.proto
+
+Here is a list of the supported tables and entry types for Broadcom:
+https://github.com/stratum/stratum/blob/master/stratum/public/proto/p4_table_defs.proto
+
+If you need a new features to FPM, I would highly recommend this talk:
+P4 on FPM Switches with Stratum Max Pudelko (ONF) Slides
+<https://www.opennetworking.org/wp-content/uploads/2019/09/3.30pm-Max-Pudelko-Stratum-FPM-Compiler.pdf>
+, Video <https://vimeo.com/360365536>
+and this document:
+https://github.com/stratum/stratum/blob/master/stratum/docs/extenting_stratum_bcm.md
+
+
+> 3.  Is support for Broadcom's D7264 on the roadmap?
+>
+
+ Are you referring to the Inventec D7264 switch? If so, you'd have to check
+with Inventec for specifics, but they might be working on it.
+
+It's a Broadcom Tomahawk 2 switch that should be supported by the Stratum
+OpenNSA target.
+
+>
+> Thanks!
+> -Syd
+> _______________________________________________
+> stratum-dev mailing list
+> stratum-dev at lists.stratumproject.org
+> https://lists.stratumproject.org/listinfo/stratum-dev
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20210129/26c6dd8e/attachment.html>
+

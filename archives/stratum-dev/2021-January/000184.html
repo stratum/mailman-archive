@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [stratum-dev] Questions about OVS, FPM, and supported hardware
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Questions%20about%20OVS%2C%20FPM%2C%20and%20supported%20hardware&In-Reply-To=%3CCACKOpDk8R%2BeBNDkPGLEYDgHAwXpus4ZP%2BaZQOjDbTqzoUsyESw%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <LINK REL="Previous"  HREF="000183.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[stratum-dev] Questions about OVS, FPM, and supported hardware</H1>
+    <B>Brian O'Connor</B> 
+    <A HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Questions%20about%20OVS%2C%20FPM%2C%20and%20supported%20hardware&In-Reply-To=%3CCACKOpDk8R%2BeBNDkPGLEYDgHAwXpus4ZP%2BaZQOjDbTqzoUsyESw%40mail.gmail.com%3E"
+       TITLE="[stratum-dev] Questions about OVS, FPM, and supported hardware">bocon at opennetworking.org
+       </A><BR>
+    <I>Fri Jan 29 19:39:02 UTC 2021</I>
+    <P><UL>
+        <LI>Previous message (by thread): <A HREF="000183.html">[stratum-dev] Questions about OVS, FPM, and supported hardware
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#184">[ date ]</a>
+              <a href="thread.html#184">[ thread ]</a>
+              <a href="subject.html#184">[ subject ]</a>
+              <a href="author.html#184">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Syd,
+
+Thanks for your questions! I've provided some answers inline.
+
+Brian
+
+On Fri, Jan 29, 2021 at 10:04 AM A Sydney via stratum-dev &lt;
+<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>&gt; wrote:
+
+&gt;<i> Hi Stratum guys,
+</I>&gt;<i>                           I'm not sure of the right forum to ask these
+</I>&gt;<i> questions, so it would be great if you could provide suggestions (I did
+</I>&gt;<i> ping a few contacts listed on the repo, but no replies as yet, so I'm
+</I>&gt;<i> posting it here). Can you kindly provide feedback to the following:
+</I>&gt;<i>
+</I>&gt;<i> 1. From the documentation on your github repo (in addition to tutorials
+</I>&gt;<i> and presentations), it appears that the BMv2 is the virtual switch
+</I>&gt;<i> supported. Does Stratum also support OVS (Or any other production grade
+</I>&gt;<i> virtual switch?)? If not, is this on the roadmap?
+</I>&gt;<i>
+</I>
+Stratum does not support OVS or any production grade software switch for
+now. We have some community members that have been looking into this, and
+there are a few promising options. Support for a production grade switch is
+not on the official roadmap at this point, but we would certainly welcome a
+community contribution in this area!
+
+&gt;<i>
+</I>&gt;<i> 2. From Brian's presentation in 2019 (<A HREF="https://youtu.be/I83VdrZtkyM">https://youtu.be/I83VdrZtkyM</A>), he
+</I>&gt;<i> mentioned that the Stratum FPM compiler does not support MPLS and QinQ. Can
+</I>&gt;<i> you kindly share documentation about what all is supported?
+</I>&gt;<i>
+</I>
+Sorry that this isn't spelled out in a README. The FPM compiler only
+applies to the Broadcom target. For bmv2 and Tofino, you can use MPLS,
+QinQ, and everything else that you can express in P4 and compile using the
+bmv2 and Tofino compilers.
+
+Here is a list of the supported pipeline stages for Broadcom:
+<A HREF="https://github.com/stratum/stratum/blob/master/stratum/public/proto/p4_annotation.proto">https://github.com/stratum/stratum/blob/master/stratum/public/proto/p4_annotation.proto</A>
+
+Here is a list of the supported tables and entry types for Broadcom:
+<A HREF="https://github.com/stratum/stratum/blob/master/stratum/public/proto/p4_table_defs.proto">https://github.com/stratum/stratum/blob/master/stratum/public/proto/p4_table_defs.proto</A>
+
+If you need a new features to FPM, I would highly recommend this talk:
+P4 on FPM Switches with Stratum Max Pudelko (ONF) Slides
+&lt;<A HREF="https://www.opennetworking.org/wp-content/uploads/2019/09/3.30pm-Max-Pudelko-Stratum-FPM-Compiler.pdf">https://www.opennetworking.org/wp-content/uploads/2019/09/3.30pm-Max-Pudelko-Stratum-FPM-Compiler.pdf</A>&gt;
+, Video &lt;<A HREF="https://vimeo.com/360365536">https://vimeo.com/360365536</A>&gt;
+and this document:
+<A HREF="https://github.com/stratum/stratum/blob/master/stratum/docs/extenting_stratum_bcm.md">https://github.com/stratum/stratum/blob/master/stratum/docs/extenting_stratum_bcm.md</A>
+
+
+&gt;<i> 3.  Is support for Broadcom's D7264 on the roadmap?
+</I>&gt;<i>
+</I>
+ Are you referring to the Inventec D7264 switch? If so, you'd have to check
+with Inventec for specifics, but they might be working on it.
+
+It's a Broadcom Tomahawk 2 switch that should be supported by the Stratum
+OpenNSA target.
+
+&gt;<i>
+</I>&gt;<i> Thanks!
+</I>&gt;<i> -Syd
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> stratum-dev mailing list
+</I>&gt;<i> <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>
+</I>&gt;<i> <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">https://lists.stratumproject.org/listinfo/stratum-dev</A>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.stratumproject.org/archives/stratum-dev/attachments/20210129/26c6dd8e/attachment.html">https://lists.stratumproject.org/archives/stratum-dev/attachments/20210129/26c6dd8e/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message (by thread): <A HREF="000183.html">[stratum-dev] Questions about OVS, FPM, and supported hardware
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#184">[ date ]</a>
+              <a href="thread.html#184">[ thread ]</a>
+              <a href="subject.html#184">[ subject ]</a>
+              <a href="author.html#184">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.stratumproject.org/listinfo/stratum-dev">More information about the stratum-dev
+mailing list</a><br>
+</body></html>

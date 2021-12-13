@@ -1,0 +1,218 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [stratum-dev] Docker image 8.9.2-3.16.56-OpenNetworkLinux older version for stratum
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Docker%20image%208.9.2-3.16.56-OpenNetworkLinux%20older%0A%20version%20for%20stratum&In-Reply-To=%3CCACXs9cPcXfidLfNHUTSvqBLbBU1g4Mv4RmwWuzNn-7P9zzt%2BQA%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <LINK REL="Previous"  HREF="000102.html">
+   <LINK REL="Next"  HREF="000099.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[stratum-dev] Docker image 8.9.2-3.16.56-OpenNetworkLinux older version for stratum</H1>
+    <B>Daniel Velasco</B> 
+    <A HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Docker%20image%208.9.2-3.16.56-OpenNetworkLinux%20older%0A%20version%20for%20stratum&In-Reply-To=%3CCACXs9cPcXfidLfNHUTSvqBLbBU1g4Mv4RmwWuzNn-7P9zzt%2BQA%40mail.gmail.com%3E"
+       TITLE="[stratum-dev] Docker image 8.9.2-3.16.56-OpenNetworkLinux older version for stratum">dvelben at gmail.com
+       </A><BR>
+    <I>Mon May 18 14:18:31 UTC 2020</I>
+    <P><UL>
+        <LI>Previous message (by thread): <A HREF="000102.html">[stratum-dev] Docker image 8.9.2-3.16.56-OpenNetworkLinux older version for stratum
+</A></li>
+        <LI>Next message (by thread): <A HREF="000099.html">[stratum-dev] Docker image 8.9.2-3.16.56-OpenNetworkLinux older version for stratum
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#98">[ date ]</a>
+              <a href="thread.html#98">[ thread ]</a>
+              <a href="subject.html#98">[ subject ]</a>
+              <a href="author.html#98">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+we are doing out first tests with stratum and we are getting same failure
+with 9.1.0, are we missing something?
+
+<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">root at localhost</A>:~/stratum-configs# PLATFORM=x86-64-stordis-bf2556x-1t-r0
+SDE_VERSION=9.1.0 CONFIG_DIR=$PWD LOG_DIR=$PWD ./start-stratum-container.sh
++ PLATFORM_ARGS=
++ '[' -n x86-64-stordis-bf2556x-1t-r0 ']'
++ PLATFORM_ARGS='--env PLATFORM=x86-64-stordis-bf2556x-1t-r0'
++ CONFIG_DIR=/root/stratum-configs
++ LOG_DIR=/root/stratum-configs
++ SDE_VERSION=9.1.0
+++ uname -r
++ KERNEL_VERSION=4.14.49-OpenNetworkLinux
++ DOCKER_IMAGE=stratumproject/stratum-bf
++ DOCKER_IMAGE_TAG=9.1.0-4.14.49-OpenNetworkLinux
+++ uname -r
+++ uname -r
++ docker run -it --privileged -v /dev:/dev -v /sys:/sys -v
+/lib/modules/4.14.49-OpenNetworkLinux:/lib/modules/4.14.49-OpenNetworkLinux
+--env PLATFORM=x86-64-stordis-bf2556x-1t-r0 -p 28000:28000 -p 9339:9339 -v
+/root/stratum-configs:/etc/stratum -v
+/root/stratum-configs:/var/log/stratum
+stratumproject/stratum-bf:9.1.0-4.14.49-OpenNetworkLinux
+Unable to find image
+'stratumproject/stratum-bf:9.1.0-4.14.49-OpenNetworkLinux' locally
+9.1.0-4.14.49-OpenNetworkLinux: Pulling from stratumproject/stratum-bf
+3401a574d84f: Pull complete
+26b758f54741: Pull complete
+97d203f02ea3: Pull complete
+Digest:
+sha256:6c372f84b3ba56cd877afd2f049a80d7b97425b45c21358a6edf2396c5d11e19
+Status: Downloaded newer image for
+stratumproject/stratum-bf:9.1.0-4.14.49-OpenNetworkLinux
+bf_kdrv_mod found! Unloading first...
+loading bf_kdrv_mod...
+/usr/bin/stratum_bf: error while loading shared libraries: libonlp.so.1:
+cannot open shared object file: No such file or directory
+<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">root at localhost</A>:~/stratum-configs#
+
+Thanks a lot!
+
+BR / Dani
+
+El dom., 17 may. 2020 a las 20:42, Deval Bhamare via stratum-dev (&lt;
+<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>&gt;) escribió:
+
+&gt;<i> Hello Yi,
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> I downloaded the image again and this time it looks like working. Below
+</I>&gt;<i> are the logs.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> However, as you suggested, I modified *stratum.flags  to r*emove
+</I>&gt;<i> &quot;-bf_switchd_background=true&quot; from stratum.flags file to use the command
+</I>&gt;<i> line from bf_switchd.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> But *command prompt doesn't appear*. Any suggestions?
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Thanks,
+</I>&gt;<i>
+</I>&gt;<i> Deval.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> *Logs*:
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> bf_switchd: dev_id 0 initialized
+</I>&gt;<i>
+</I>&gt;<i> bf_switchd: initialized 1 devices
+</I>&gt;<i> Skip p4 lib init
+</I>&gt;<i> Skip mav diag lib init
+</I>&gt;<i> bf_switchd: spawning cli server thread
+</I>&gt;<i> bf_switchd: running in background; driver shell is disabled
+</I>&gt;<i> bf_switchd: server started - listening on port 9999
+</I>&gt;<i> E0517 18:08:29.853154     8 utils.cc:109]
+</I>&gt;<i> StratumErrorSpace::ERR_FILE_NOT_FOUND: /etc/stratum/chassis_config.pb.txt
+</I>&gt;<i> not found.
+</I>&gt;<i> E0517 18:08:29.853606     8 utils.cc:65] Return Error:
+</I>&gt;<i> ReadFileToString(filename, &amp;text) failed with
+</I>&gt;<i> StratumErrorSpace::ERR_FILE_NOT_FOUND: /etc/stratum/chassis_config.pb.txt
+</I>&gt;<i> not found.
+</I>&gt;<i> E0517 18:08:29.853675     8 utils.cc:109]
+</I>&gt;<i> StratumErrorSpace::ERR_FILE_NOT_FOUND: /etc/stratum/pipeline_config.pb.txt
+</I>&gt;<i> not found.
+</I>&gt;<i> E0517 18:08:29.853701     8 utils.cc:65] Return Error:
+</I>&gt;<i> ReadFileToString(filename, &amp;text) failed with
+</I>&gt;<i> StratumErrorSpace::ERR_FILE_NOT_FOUND: /etc/stratum/pipeline_config.pb.txt
+</I>&gt;<i> not found.
+</I>&gt;<i> E0517 18:08:29.854777685       8 server_chttp2.cc:40]
+</I>&gt;<i> {&quot;created&quot;:&quot;@1589738909.854734733&quot;,&quot;description&quot;:&quot;Only 1 addresses added
+</I>&gt;<i> out of total 2
+</I>&gt;<i> resolved&quot;,&quot;file&quot;:&quot;external/com_github_grpc_grpc/src/core/ext/transport/chttp2/server/chttp2_server.cc&quot;,&quot;file_line&quot;:406,&quot;referenced_errors&quot;:[{&quot;created&quot;:&quot;@1589738909.854731483&quot;,&quot;description&quot;:&quot;Address
+</I>&gt;<i> family not supported by
+</I>&gt;<i> protocol&quot;,&quot;errno&quot;:97,&quot;file&quot;:&quot;external/com_github_grpc_grpc/src/core/lib/iomgr/socket_utils_common_posix.cc&quot;,&quot;file_line&quot;:420,&quot;os_error&quot;:&quot;Address
+</I>&gt;<i> family not supported by
+</I>&gt;<i> protocol&quot;,&quot;syscall&quot;:&quot;socket&quot;,&quot;target_address&quot;:&quot;[::1]:28000&quot;}]}
+</I>&gt;<i> E0517 18:08:29.854998     8 hal.cc:223] Stratum external facing services
+</I>&gt;<i> are listening to 0.0.0.0:28000, 0.0.0.0:9339, localhost:28000...
+</I>&gt;<i> E0517 18:08:29.855722     8 hal.cc:365] StratumErrorSpace::ERR_INTERNAL:
+</I>&gt;<i> Failed to check in with procmon: failed to connect to all addresses
+</I>&gt;<i> E0517 18:08:29.855825     8 hal.cc:233] Error when checking in with
+</I>&gt;<i> procmon: Failed to check in with procmon: failed to connect to all
+</I>&gt;<i> addresses.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> ------------------------------
+</I>&gt;<i> *From:* Yi Tseng &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">yi at opennetworking.org</A>&gt;
+</I>&gt;<i> *Sent:* Sunday, May 17, 2020 1:48:54 PM
+</I>&gt;<i> *To:* Deval Bhamare
+</I>&gt;<i> *Cc:* <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>
+</I>&gt;<i> *Subject:* Re: [stratum-dev] Docker image 8.9.2-3.16.56-OpenNetworkLinux
+</I>&gt;<i> older version for stratum
+</I>&gt;<i>
+</I>&gt;<i> Hi Deval,
+</I>&gt;<i>
+</I>&gt;<i> Based on the email you send:
+</I>&gt;<i>
+</I>&gt;&gt;<i> Hello Yi,
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Thank you for the reply. So I tried the steps below on *ONL *
+</I>&gt;&gt;&gt;<i> *3.16.64-OpenNetworkLinux*. I still get below error:
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> + docker run -it --privileged -v /dev:/dev -v /sys:/sys -v
+</I>&gt;&gt;&gt;<i> /lib/modules/3.16.64-OpenNetworkLinux:/lib/modules/3.16.64-OpenNetworkLinux
+</I>&gt;&gt;&gt;<i> --env WITH_ONLP=false --env PLATFORM=x86-64-stordis-bf2556x-1t-r0 -p
+</I>&gt;&gt;&gt;<i> 28000:28000 -v /root:/stratum_configs -v /var/log:/stratum_logs
+</I>&gt;&gt;&gt;<i> stratumproject/stratum-bf:8.9.2-3.16.56-OpenNetworkLinux
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;<i> We are no longer using &quot;WITH_ONLP&quot; variable and we expose additional TCP
+</I>&gt;<i> port 9339
+</I>&gt;<i>
+</I>&gt;<i> For SDE 8.9.0, we tested it several months ago and moved to version 8.9.2
+</I>&gt;<i> since Barefoot upgraded the version.
+</I>&gt;<i>
+</I>&gt;<i> Are you still getting the ONLP library issue when you are using the
+</I>&gt;<i> container image &quot;stratumproject/stratum-bf:8.9.2&quot; ?
+</I>&gt;<i> Can you try delete your local container image cache and pull it again?
+</I>&gt;<i>
+</I>&gt;<i> Yi
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> stratum-dev mailing list
+</I>&gt;<i> <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>
+</I>&gt;<i> <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">https://lists.stratumproject.org/listinfo/stratum-dev</A>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.stratumproject.org/archives/stratum-dev/attachments/20200518/f3fe703d/attachment.html">https://lists.stratumproject.org/archives/stratum-dev/attachments/20200518/f3fe703d/attachment.html</A>&gt;
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message (by thread): <A HREF="000102.html">[stratum-dev] Docker image 8.9.2-3.16.56-OpenNetworkLinux older version for stratum
+</A></li>
+	<LI>Next message (by thread): <A HREF="000099.html">[stratum-dev] Docker image 8.9.2-3.16.56-OpenNetworkLinux older version for stratum
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#98">[ date ]</a>
+              <a href="thread.html#98">[ thread ]</a>
+              <a href="subject.html#98">[ subject ]</a>
+              <a href="author.html#98">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.stratumproject.org/listinfo/stratum-dev">More information about the stratum-dev
+mailing list</a><br>
+</body></html>

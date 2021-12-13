@@ -1,0 +1,163 @@
+BEGIN:VCALENDAR
+PRODID:-//Google Inc//Google Calendar 70.9054//EN
+VERSION:2.0
+CALSCALE:GREGORIAN
+METHOD:CANCEL
+BEGIN:VTIMEZONE
+TZID:America/Los_Angeles
+X-LIC-LOCATION:America/Los_Angeles
+BEGIN:DAYLIGHT
+TZOFFSETFROM:-0800
+TZOFFSETTO:-0700
+TZNAME:PDT
+DTSTART:19700308T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:-0700
+TZOFFSETTO:-0800
+TZNAME:PST
+DTSTART:19701101T020000
+RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+DTSTART;TZID=America/Los_Angeles:20201210T123000
+DTEND;TZID=America/Los_Angeles:20201210T130000
+DTSTAMP:20201203T235057Z
+ORGANIZER;CN=Stratum Project:mailto:opennetworking.org_vv3lft89e794b4jlmr3j
+ 9p1pes@group.calendar.google.com
+UID:15qttke7h8ckdorpv3h2hguodj_R20201022T193000@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=ma
+ x@opennetworking.org;X-NUM-GUESTS=0:mailto:max@opennetworking.org
+ATTENDEE;CUTYPE=RESOURCE;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=(Onl
+ ine conference room)-Zoom-3;X-NUM-GUESTS=0:mailto:opennetworking.org_18833o
+ jkrf5b0grhgo1u6fpg6k1rc6ga70oj4cpn60rj2chi@resource.calendar.google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=bi
+ ll@opennetworking.org;X-NUM-GUESTS=0:mailto:bill@opennetworking.org
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=mo
+ hammed.habeeb@inventec.com;X-NUM-GUESTS=0:mailto:mohammed.habeeb@inventec.c
+ om
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=yi
+ @opennetworking.org;X-NUM-GUESTS=0:mailto:yi@opennetworking.org
+ATTENDEE;CUTYPE=RESOURCE;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=MP-1
+ -Large Conference Room (25);X-NUM-GUESTS=0:mailto:opennetworking.org_373231
+ 3632373538393031@resource.calendar.google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=ca
+ rmelo@opennetworking.org;X-NUM-GUESTS=0:mailto:carmelo@opennetworking.org
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=xi
+ ao.david@inventec.com;X-NUM-GUESTS=0:mailto:xiao.david@inventec.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=Ri
+ ch Renner;X-NUM-GUESTS=0:mailto:renner@osi.io
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=De
+ vjit Gopalpur;X-NUM-GUESTS=0:mailto:devjitg@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=Al
+ ireza Ghaffarkhah;X-NUM-GUESTS=0:mailto:aghaffar@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=bo
+ con@opennetworking.org;X-NUM-GUESTS=0:mailto:bocon@opennetworking.org
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=Le
+ onid Khedyk;X-NUM-GUESTS=0:mailto:leonid.khedyk@plvision.eu
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=ni
+ loofar@opennetworking.org;X-NUM-GUESTS=0:mailto:niloofar@opennetworking.org
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=hs
+ uanchung.lee@qct.io;X-NUM-GUESTS=0:mailto:hsuanchung.lee@qct.io
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=Ar
+ kadiy Shapiro;X-NUM-GUESTS=0:mailto:ashapiro@barefootnetworks.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=yo
+ u@opennetworking.org;X-NUM-GUESTS=0:mailto:you@opennetworking.org
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=ab
+ hilash@opennetworking.org;X-NUM-GUESTS=0:mailto:abhilash@opennetworking.org
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=Da
+ vid Gengenbach;X-NUM-GUESTS=0:mailto:davidgengenbach@gmx.de
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=st
+ ratum-dev@lists.stratumproject.org;X-NUM-GUESTS=0:mailto:stratum-dev@lists.
+ stratumproject.org
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=ma
+ ksym.kovaliov@plvision.eu;X-NUM-GUESTS=0:mailto:maksym.kovaliov@plvision.eu
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=cr
+ aig.stevens@dell.com;X-NUM-GUESTS=0:mailto:craig.stevens@dell.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=ma
+ ksym.tropets@plvision.eu;X-NUM-GUESTS=0:mailto:maksym.tropets@plvision.eu
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=je
+ ff_catlin@edge-core.com;X-NUM-GUESTS=0:mailto:jeff_catlin@edge-core.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=ch
+ ris.sommers@keysight.com;X-NUM-GUESTS=0:mailto:chris.sommers@keysight.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=Jo
+ hn L;X-NUM-GUESTS=0:mailto:jl@extremenetworks.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=cm
+ ace@extremenetworks.com;X-NUM-GUESTS=0:mailto:cmace@extremenetworks.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=Po
+ ongovan Ponnavaikko;X-NUM-GUESTS=0:mailto:pponnava@extremenetworks.com
+RECURRENCE-ID;TZID=America/Los_Angeles:20201210T123000
+CREATED:20200114T021359Z
+DESCRIPTION:<b>Stratum Technical Steering Team Meeting</b><br><b><br></b><b
+ r>Join Zoom Meeting<br>https://onf.zoom.us/j/787501745?pwd=OHdtQVA3eXdoeThx
+ Z0UzS1VVWEtxQT09<br><br>Meeting ID: 787 501 745<br><b><i>Passcode: 258532</
+ i></b><br>One tap mobile<br>+13126266799\,\,787501745# US (Chicago)<br>+192
+ 92056099\,\,787501745# US (New York)<br><br>Agenda and Meeting Notes<br><a 
+ href="https://docs.google.com/document/d/1ret8Vbnl-xbLgNsnDEH-jWP2_WwDYym4z
+ Dn6me3tiTA/edit">https://docs.google.com/document/d/1ret8Vbnl-xbLgNsnDEH-jW
+ P2_WwDYym4zDn6me3tiTA/edit</a><br><br>The plan is to reserve the <b>1st and
+  3rd Thursdays</b> of each month for presentations and community updates. I
+ f you can only attend some of these meetings\, those will be more interesti
+ ng. The other meetings will be more informal&nbsp\;sync ups to discuss curr
+ ent issues\, progress\, and status. You can see what presentations are plan
+ ned by checking the agenda above.<br><br>Supporting Slides and Previous Rec
+ ordings<br><a href="https://drive.google.com/drive/folders/1ZeYp6RwIGYi9VnI
+ ctvnKF1c1NxiAXeOT">https://drive.google.com/drive/folders/1ZeYp6RwIGYi9VnIc
+ tvnKF1c1NxiAXeOT</a><br><br>-----------------------------------------------
+ -----------------<br><br>Dial by your location<br>&nbsp\; &nbsp\; &nbsp\; &
+ nbsp\; +1 312 626 6799 US (Chicago)<br>&nbsp\; &nbsp\; &nbsp\; &nbsp\; +1 9
+ 29 205 6099 US (New York)<br>&nbsp\; &nbsp\; &nbsp\; &nbsp\; +1 301 715 859
+ 2 US (Germantown)<br>&nbsp\; &nbsp\; &nbsp\; &nbsp\; +1 346 248 7799 US (Ho
+ uston)<br>&nbsp\; &nbsp\; &nbsp\; &nbsp\; +1 669 900 6833 US (San Jose)<br>
+ &nbsp\; &nbsp\; &nbsp\; &nbsp\; +1 253 215 8782 US (Tacoma)<br>&nbsp\; &nbs
+ p\; &nbsp\; &nbsp\; 888 788 0099 US Toll-free<br>&nbsp\; &nbsp\; &nbsp\; &n
+ bsp\; 877 853 5247 US Toll-free<br>&nbsp\; &nbsp\; &nbsp\; &nbsp\; +61 2 80
+ 15 6011 Australia<br>&nbsp\; &nbsp\; &nbsp\; &nbsp\; +61 3 7018 2005 Austra
+ lia<br>&nbsp\; &nbsp\; &nbsp\; &nbsp\; +61 7 3185 3730 Australia<br>&nbsp\;
+  &nbsp\; &nbsp\; &nbsp\; +61 8 6119 3900 Australia<br>&nbsp\; &nbsp\; &nbsp
+ \; &nbsp\; +61 8 7150 1149 Australia<br>&nbsp\; &nbsp\; &nbsp\; &nbsp\; 180
+ 0 945 157 Australia Toll-free<br>&nbsp\; &nbsp\; &nbsp\; &nbsp\; 1800 893 4
+ 23 Australia Toll-free<br>&nbsp\; &nbsp\; &nbsp\; &nbsp\; +81 363 628 317 J
+ apan<br>&nbsp\; &nbsp\; &nbsp\; &nbsp\; +81 524 564 439 Japan<br>&nbsp\; &n
+ bsp\; &nbsp\; &nbsp\; +81 3 4578 1488 Japan<br>&nbsp\; &nbsp\; &nbsp\; &nbs
+ p\; 0 800 100 5040 Japan Toll-free<br>&nbsp\; &nbsp\; &nbsp\; &nbsp\; 00 66
+ 3 381 4092 Japan Toll-free<br>&nbsp\; &nbsp\; &nbsp\; &nbsp\; +49 69 7104 9
+ 922 Germany<br>&nbsp\; &nbsp\; &nbsp\; &nbsp\; +49 30 5679 5800 Germany<br>
+ &nbsp\; &nbsp\; &nbsp\; &nbsp\; +49 69 3807 9883 Germany<br>&nbsp\; &nbsp\;
+  &nbsp\; &nbsp\; +49 695 050 2596 Germany<br>&nbsp\; &nbsp\; &nbsp\; &nbsp\
+ ; 0 800 1800 150 Germany Toll-free<br>&nbsp\; &nbsp\; &nbsp\; &nbsp\; 0 800
+  000 6954 Germany Toll-free<br>&nbsp\; &nbsp\; &nbsp\; &nbsp\; +886 (2) 774
+ 1 7473 Taiwan<br>&nbsp\; &nbsp\; &nbsp\; &nbsp\; 08 0909 9864 Taiwan Toll-f
+ ree<br>&nbsp\; &nbsp\; &nbsp\; &nbsp\; +48 22 307 3488 Poland<br>&nbsp\; &n
+ bsp\; &nbsp\; &nbsp\; +48 22 398 7356 Poland<br>&nbsp\; &nbsp\; &nbsp\; &nb
+ sp\; +48 22 306 5342 Poland<br>&nbsp\; &nbsp\; &nbsp\; &nbsp\; 00 800 321 1
+ 464 Poland Toll-free<br>&nbsp\; &nbsp\; &nbsp\; &nbsp\; 00 800 112 5171 Pol
+ and Toll-free<br>&nbsp\; &nbsp\; &nbsp\; &nbsp\; +44 208 080 6592 United Ki
+ ngdom<br>&nbsp\; &nbsp\; &nbsp\; &nbsp\; +44 330 088 5830 United Kingdom<br
+ >&nbsp\; &nbsp\; &nbsp\; &nbsp\; +44 131 460 1196 United Kingdom<br>&nbsp\;
+  &nbsp\; &nbsp\; &nbsp\; +44 203 481 5237 United Kingdom<br>&nbsp\; &nbsp\;
+  &nbsp\; &nbsp\; +44 203 481 5240 United Kingdom<br>&nbsp\; &nbsp\; &nbsp\;
+  &nbsp\; +44 203 901 7895 United Kingdom<br>&nbsp\; &nbsp\; &nbsp\; &nbsp\;
+  +44 208 080 6591 United Kingdom<br>&nbsp\; &nbsp\; &nbsp\; &nbsp\; 0 800 2
+ 60 5801 United Kingdom Toll-free<br>&nbsp\; &nbsp\; &nbsp\; &nbsp\; 0 800 0
+ 31 5717 United Kingdom Toll-free<br>&nbsp\; &nbsp\; &nbsp\; &nbsp\; +353 1 
+ 536 9320 Ireland<br>&nbsp\; &nbsp\; &nbsp\; &nbsp\; +353 1 653 3895 Ireland
+ <br>&nbsp\; &nbsp\; &nbsp\; &nbsp\; +353 1 653 3897 Ireland<br>&nbsp\; &nbs
+ p\; &nbsp\; &nbsp\; +353 1 653 3898 Ireland<br>&nbsp\; &nbsp\; &nbsp\; &nbs
+ p\; +353 6 163 9031 Ireland<br>&nbsp\; &nbsp\; &nbsp\; &nbsp\; +353 1 240 8
+ 941 Ireland<br>&nbsp\; &nbsp\; &nbsp\; &nbsp\; 1800 949 238 Ireland Toll-fr
+ ee<br>&nbsp\; &nbsp\; &nbsp\; &nbsp\; 1800 901 561 Ireland Toll-free<br>Mee
+ ting ID: 787 501 745<br>Find your local number: https://onf.zoom.us/u/ad1os
+ SbywU<br><br>--------------------------------------------------------------
+ --<br><br>If you would like to get added to the calendar invite\, please as
+ k Brian.
+LAST-MODIFIED:20201203T235055Z
+LOCATION:(Online conference room)-Zoom-3\, MP-1-Large Conference Room (25)
+SEQUENCE:3
+STATUS:CANCELLED
+SUMMARY:Stratum TST Meeting
+TRANSP:OPAQUE
+END:VEVENT
+END:VCALENDAR

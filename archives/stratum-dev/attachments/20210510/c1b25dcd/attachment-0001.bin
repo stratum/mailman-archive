@@ -1,0 +1,77 @@
+1. Group "0x4054" is addedd successfully.
+
+onos > groups any  device:spine2                                                                                                                                                          20:10:50
+deviceId=device:spine2, groupCount=2
+   id=0x63, state=ADDED, type=CLONE, bytes=0, packets=0, appId=org.onosproject.core, referenceCount=0
+       id=0x63, bucket=1, bytes=0, packets=0, weight=-1, actions=[OUTPUT:CONTROLLER]
+   id=0x4054, state=ADDED, type=SELECT, bytes=0, packets=0, appId=org.onosproject.mosaic, referenceCount=0
+       id=0x4054, bucket=1, bytes=0, packets=0, weight=1, actions=[IngressPipeImpl.set_next_hop(dmac=0x525400001200)]
+
+
+2. When attempting to add a second group "0x4154", the existing group and the new group both move to the "PENDING_ADD_RETRY"
+state:
+ 
+onos > groups any device:spine2                                                                                                                                                          20:11:47
+deviceId=device:spine2, groupCount=3
+   id=0x63, state=ADDED, type=CLONE, bytes=0, packets=0, appId=org.onosproject.core, referenceCount=0
+       id=0x63, bucket=1, bytes=0, packets=0, weight=-1, actions=[OUTPUT:CONTROLLER]
+   id=0x4054, state=PENDING_ADD_RETRY, type=SELECT, bytes=0, packets=0, appId=org.onosproject.mosaic, referenceCount=0
+       id=0x4054, bucket=1, bytes=0, packets=0, weight=1, actions=[IngressPipeImpl.set_next_hop(dmac=0x525400001200)]
+   id=0x4154, state=PENDING_ADD_RETRY, type=SELECT, bytes=0, packets=0, appId=org.onosproject.mosaic, referenceCount=0
+       id=0x4154, bucket=1, bytes=0, packets=0, weight=1, actions=[IngressPipeImpl.set_next_hop(dmac=0x525400001300)]
+
+
+3. Also, all subsequent flows that rely on the existence of these groups are also in the "PENDIND_ADD" state:
+
+onos > flows any device:spine2                                                                                                                                                           20:12:08
+deviceId=device:spine2, flowRuleCount=8
+    id=1000010a5cc8c, state=ADDED, bytes=22755, packets=185, duration=285, liveType=UNKNOWN, priority=40000, tableId=IngressPipeImpl.acl_table, appId=org.onosproject.core, selector=[ETH_TYPE:lldp], treatment=DefaultTrafficTreatment{immediate=[IngressPipeImpl.clone_to_cpu()], deferred=[], transition=None, meter=[], cleared=false, StatTrigger=null, metadata=null}
+    id=1000037c6f64c, state=ADDED, bytes=0, packets=0, duration=285, liveType=UNKNOWN, priority=40000, tableId=IngressPipeImpl.acl_table, appId=org.onosproject.core, selector=[ETH_TYPE:arp], treatment=DefaultTrafficTreatment{immediate=[IngressPipeImpl.clone_to_cpu()], deferred=[], transition=None, meter=[], cleared=false, StatTrigger=null, metadata=null}
+    id=1000044445b4a, state=ADDED, bytes=22755, packets=185, duration=285, liveType=UNKNOWN, priority=40000, tableId=IngressPipeImpl.acl_table, appId=org.onosproject.core, selector=[ETH_TYPE:bddp], treatment=DefaultTrafficTreatment{immediate=[IngressPipeImpl.clone_to_cpu()], deferred=[], transition=None, meter=[], cleared=false, StatTrigger=null, metadata=null}
+    id=80000012f56a58, state=PENDING_ADD, bytes=0, packets=0, duration=0, liveType=UNKNOWN, priority=10, tableId=IngressPipeImpl.l2_exact_table, appId=org.onosproject.mosaic, selector=[hdr.ethernet.dst_addr=0x525400001300], treatment=DefaultTrafficTreatment{immediate=[IngressPipeImpl.set_egress_port(port_num=0x6)], deferred=[], transition=None, meter=[], cleared=false, StatTrigger=null, metadata=null}
+    id=800000a24b56a3, state=PENDING_ADD, bytes=0, packets=0, duration=0, liveType=UNKNOWN, priority=10, tableId=IngressPipeImpl.l2_exact_table, appId=org.onosproject.mosaic, selector=[hdr.ethernet.dst_addr=0x525400001200], treatment=DefaultTrafficTreatment{immediate=[IngressPipeImpl.set_egress_port(port_num=0x5)], deferred=[], transition=None, meter=[], cleared=false, StatTrigger=null, metadata=null}
+    id=800000263ee9c4, state=ADDED, bytes=0, packets=0, duration=44, liveType=UNKNOWN, priority=10, tableId=IngressPipeImpl.routing_v4_table, appId=org.onosproject.mosaic, selector=[hdr.ipv4.dst_addr=0xa0a0102/31], treatment=DefaultTrafficTreatment{immediate=[GROUP:0x4054], deferred=[], transition=None, meter=[], cleared=false, StatTrigger=null, metadata=null}
+    id=8000005a4826c4, state=PENDING_ADD, bytes=0, packets=0, duration=0, liveType=UNKNOWN, priority=10, tableId=IngressPipeImpl.routing_v4_table, appId=org.onosproject.mosaic, selector=[hdr.ipv4.dst_addr=0xa0a0202/31], treatment=DefaultTrafficTreatment{immediate=[GROUP:0x4154], deferred=[], transition=None, meter=[], cleared=false, StatTrigger=null, metadata=null}
+    id=80000029507681, state=ADDED, bytes=0, packets=0, duration=285, liveType=UNKNOWN, priority=10, tableId=IngressPipeImpl.switch_table, appId=org.onosproject.mosaic, selector=[hdr.ethernet.dst_addr=0x525400001100], treatment=DefaultTrafficTreatment{immediate=[NoAction()], deferred=[], transition=None, meter=[], cleared=false, StatTrigger=null, metadata=null}
+
+4. ONOS logs:
+
+2021-05-10T20:12:51,098 | WARN  | grpc-default-executor-5 | P4RuntimeClientImpl              | 230 - org.onosproject.onos-protocols-grpc-ctl - 2.5.0.SNAPSHOT | Error while performing READ on device:spine2: UNKNOWN: Unexpected error in RPC handling
+2021-05-10T20:12:51,098 | DEBUG | grpc-default-executor-5 | P4RuntimeClientImpl              | 230 - org.onosproject.onos-protocols-grpc-ctl - 2.5.0.SNAPSHOT | 
+io.grpc.StatusRuntimeException: UNKNOWN: Unexpected error in RPC handling
+	at io.grpc.Status.asRuntimeException(Status.java:533) ~[!/:?]
+	at io.grpc.stub.ClientCalls$StreamObserverToCallListenerAdapter.onClose(ClientCalls.java:442) [!/:?]
+	at io.grpc.PartialForwardingClientCallListener.onClose(PartialForwardingClientCallListener.java:39) [!/:?]
+	at io.grpc.ForwardingClientCallListener.onClose(ForwardingClientCallListener.java:23) [!/:?]
+	at org.onosproject.grpc.ctl.GrpcLoggingInterceptor$1$1.onClose(GrpcLoggingInterceptor.java:181) [!/:?]
+	at io.grpc.PartialForwardingClientCallListener.onClose(PartialForwardingClientCallListener.java:39) [!/:?]
+	at io.grpc.ForwardingClientCallListener.onClose(ForwardingClientCallListener.java:23) [!/:?]
+	at io.grpc.ForwardingClientCallListener$SimpleForwardingClientCallListener.onClose(ForwardingClientCallListener.java:40) [!/:?]
+	at io.grpc.internal.CensusStatsModule$StatsClientInterceptor$1$1.onClose(CensusStatsModule.java:700) [!/:?]
+	at io.grpc.PartialForwardingClientCallListener.onClose(PartialForwardingClientCallListener.java:39) [!/:?]
+	at io.grpc.ForwardingClientCallListener.onClose(ForwardingClientCallListener.java:23) [!/:?]
+	at io.grpc.ForwardingClientCallListener$SimpleForwardingClientCallListener.onClose(ForwardingClientCallListener.java:40) [!/:?]
+	at io.grpc.internal.CensusTracingModule$TracingClientInterceptor$1$1.onClose(CensusTracingModule.java:399) [!/:?]
+	at io.grpc.internal.ClientCallImpl.closeObserver(ClientCallImpl.java:507) [!/:?]
+	at io.grpc.internal.ClientCallImpl$ClientStreamListenerImpl.close(ClientCallImpl.java:627) [!/:?]
+	at io.grpc.internal.ClientCallImpl$ClientStreamListenerImpl$1StreamClosed.runInternal(ClientCallImpl.java:686) [!/:?]
+	at io.grpc.internal.ClientCallImpl$ClientStreamListenerImpl$1StreamClosed.runInContext(ClientCallImpl.java:675) [!/:?]
+	at io.grpc.internal.ContextRunnable.run(ContextRunnable.java:37) [!/:?]
+	at io.grpc.internal.SerializingExecutor.run(SerializingExecutor.java:123) [!/:?]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128) [?:?]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) [?:?]
+	at java.lang.Thread.run(Thread.java:834) [?:?]
+2021-05-10T20:12:51,100 | DEBUG | FlowRuleDriverProvider-0 | FlowRuleManager                  | 193 - org.onosproject.onos-core-net - 2.5.0.SNAPSHOT | Adding the rule that is present in store but not on switch : DefaultFlowEntry{rule=DefaultFlowEntry{id=800000263ee9c4, deviceId=device:spine2, priority=10, selector=[hdr.ipv4.dst_addr=0xa0a0102/31], treatment=DefaultTrafficTreatment{immediate=[GROUP:0x4054], deferred=[], transition=None, meter=[], cleared=false, StatTrigger=null, metadata=null}, tableId=IngressPipeImpl.routing_v4_table, created=1620677470131}, state=ADDED, life=44000000000, liveType=UNKNOWN, packets=0, bytes=0, errCode=-1, errType=-1, lastSeen=1620677515052}
+2021-05-10T20:12:51,104 | DEBUG | GroupDriverProvider-0 | DistributedGroupStore            | 192 - org.onosproject.onos-core-dist - 2.5.0.SNAPSHOT | Group AUDIT: group GroupId{id=0x4154} missing in data plane for device device:spine2
+2021-05-10T20:12:51,105 | DEBUG | GroupDriverProvider-0 | DistributedGroupStore            | 192 - org.onosproject.onos-core-dist - 2.5.0.SNAPSHOT | groupMissing: group entry GroupId{id=0x4154} in device device:spine2 moving from PENDING_ADD_RETRY to PENDING_ADD_RETRY
+2021-05-10T20:12:51,105 | DEBUG | FlowRuleDriverProvider-0 | FlowRuleManager                  | 193 - org.onosproject.onos-core-net - 2.5.0.SNAPSHOT | Adding the rule that is present in store but not on switch : DefaultFlowEntry{rule=DefaultFlowEntry{id=1000010a5cc8c, deviceId=device:spine2, priority=40000, selector=[ETH_TYPE:lldp], treatment=DefaultTrafficTreatment{immediate=[IngressPipeImpl.clone_to_cpu()], deferred=[], transition=None, meter=[], cleared=false, StatTrigger=null, metadata=null}, tableId=IngressPipeImpl.acl_table, created=1620677229623}, state=ADDED, life=285000000000, liveType=UNKNOWN, packets=185, bytes=22755, errCode=-1, errType=-1, lastSeen=1620677515052}
+2021-05-10T20:12:51,107 | DEBUG | FlowRuleDriverProvider-0 | FlowRuleManager                  | 193 - org.onosproject.onos-core-net - 2.5.0.SNAPSHOT | Adding the rule that is present in store but not on switch : DefaultFlowEntry{rule=DefaultFlowEntry{id=800000a24b56a3, deviceId=device:spine2, priority=10, selector=[hdr.ethernet.dst_addr=0x525400001200], treatment=DefaultTrafficTreatment{immediate=[IngressPipeImpl.set_egress_port(port_num=0x5)], deferred=[], transition=None, meter=[], cleared=false, StatTrigger=null, metadata=null}, tableId=IngressPipeImpl.l2_exact_table, created=1620677517837}, state=PENDING_ADD, life=0, liveType=UNKNOWN, packets=0, bytes=0, errCode=-1, errType=-1, lastSeen=1620677517837}
+2021-05-10T20:12:51,108 | DEBUG | GroupDriverProvider-0 | DistributedGroupStore            | 192 - org.onosproject.onos-core-dist - 2.5.0.SNAPSHOT | Group AUDIT: group GroupId{id=0x4054} missing in data plane for device device:spine2
+2021-05-10T20:12:51,108 | DEBUG | GroupDriverProvider-0 | DistributedGroupStore            | 192 - org.onosproject.onos-core-dist - 2.5.0.SNAPSHOT | groupMissing: group entry GroupId{id=0x4054} in device device:spine2 moving from PENDING_ADD_RETRY to PENDING_ADD_RETRY
+2021-05-10T20:12:51,110 | DEBUG | FlowRuleDriverProvider-0 | FlowRuleManager                  | 193 - org.onosproject.onos-core-net - 2.5.0.SNAPSHOT | Adding the rule that is present in store but not on switch : DefaultFlowEntry{rule=DefaultFlowEntry{id=80000012f56a58, deviceId=device:spine2, priority=10, selector=[hdr.ethernet.dst_addr=0x525400001300], treatment=DefaultTrafficTreatment{immediate=[IngressPipeImpl.set_egress_port(port_num=0x6)], deferred=[], transition=None, meter=[], cleared=false, StatTrigger=null, metadata=null}, tableId=IngressPipeImpl.l2_exact_table, created=1620677517837}, state=PENDING_ADD, life=0, liveType=UNKNOWN, packets=0, bytes=0, errCode=-1, errType=-1, lastSeen=1620677517837}
+2021-05-10T20:12:51,112 | DEBUG | FlowRuleDriverProvider-0 | FlowRuleManager                  | 193 - org.onosproject.onos-core-net - 2.5.0.SNAPSHOT | Adding the rule that is present in store but not on switch : DefaultFlowEntry{rule=DefaultFlowEntry{id=80000029507681, deviceId=device:spine2, priority=10, selector=[hdr.ethernet.dst_addr=0x525400001100], treatment=DefaultTrafficTreatment{immediate=[NoAction()], deferred=[], transition=None, meter=[], cleared=false, StatTrigger=null, metadata=null}, tableId=IngressPipeImpl.switch_table, created=1620677229617}, state=ADDED, life=285000000000, liveType=UNKNOWN, packets=0, bytes=0, errCode=-1, errType=-1, lastSeen=1620677515052}
+2021-05-10T20:12:51,112 | DEBUG | GroupDriverProvider-0 | ReadRequestImpl                  | 237 - org.onosproject.onos-protocols-p4runtime-ctl - 2.5.0.SNAPSHOT | Sending read request to device:leaf2 for 2 entities...
+2021-05-10T20:12:51,114 | DEBUG | FlowRuleDriverProvider-0 | FlowRuleManager                  | 193 - org.onosproject.onos-core-net - 2.5.0.SNAPSHOT | Adding the rule that is present in store but not on switch : DefaultFlowEntry{rule=DefaultFlowEntry{id=1000044445b4a, deviceId=device:spine2, priority=40000, selector=[ETH_TYPE:bddp], treatment=DefaultTrafficTreatment{immediate=[IngressPipeImpl.clone_to_cpu()], deferred=[], transition=None, meter=[], cleared=false, StatTrigger=null, metadata=null}, tableId=IngressPipeImpl.acl_table, created=1620677229625}, state=ADDED, life=285000000000, liveType=UNKNOWN, packets=185, bytes=22755, errCode=-1, errType=-1, lastSeen=1620677515052}
+2021-05-10T20:12:51,115 | DEBUG | FlowRuleDriverProvider-0 | FlowRuleManager                  | 193 - org.onosproject.onos-core-net - 2.5.0.SNAPSHOT | Adding the rule that is present in store but not on switch : DefaultFlowEntry{rule=DefaultFlowEntry{id=1000037c6f64c, deviceId=device:spine2, priority=40000, selector=[ETH_TYPE:arp], treatment=DefaultTrafficTreatment{immediate=[IngressPipeImpl.clone_to_cpu()], deferred=[], transition=None, meter=[], cleared=false, StatTrigger=null, metadata=null}, tableId=IngressPipeImpl.acl_table, created=1620677229625}, state=ADDED, life=285000000000, liveType=UNKNOWN, packets=0, bytes=0, errCode=-1, errType=-1, lastSeen=1620677515052}
+
+

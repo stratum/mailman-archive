@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [stratum-dev] Questions regarding pushing pipeline configs to barefoot Tofino switch
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Questions%20regarding%20pushing%20pipeline%20configs%20to%0A%20barefoot%20Tofino%20switch&In-Reply-To=%3CCAOyFVR1Nt%3DhHtFgg67dVsLzZMizez3iOBJ2px6JhBe9tLh%3DQeQ%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <LINK REL="Previous"  HREF="000170.html">
+   <LINK REL="Next"  HREF="000172.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[stratum-dev] Questions regarding pushing pipeline configs to barefoot Tofino switch</H1>
+    <B>Yi Tseng</B> 
+    <A HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Questions%20regarding%20pushing%20pipeline%20configs%20to%0A%20barefoot%20Tofino%20switch&In-Reply-To=%3CCAOyFVR1Nt%3DhHtFgg67dVsLzZMizez3iOBJ2px6JhBe9tLh%3DQeQ%40mail.gmail.com%3E"
+       TITLE="[stratum-dev] Questions regarding pushing pipeline configs to barefoot Tofino switch">yi at opennetworking.org
+       </A><BR>
+    <I>Mon Oct 26 21:24:01 UTC 2020</I>
+    <P><UL>
+        <LI>Previous message (by thread): <A HREF="000170.html">[stratum-dev] Questions regarding pushing pipeline configs to barefoot Tofino switch
+</A></li>
+        <LI>Next message (by thread): <A HREF="000172.html">[stratum-dev] Questions regarding pushing pipeline configs to barefoot Tofino switch
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#171">[ date ]</a>
+              <a href="thread.html#171">[ thread ]</a>
+              <a href="subject.html#171">[ subject ]</a>
+              <a href="author.html#171">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Zoey,
+
+We believed that Barefoot will add support for converting Register extern
+to the standard one in the next Barefoot's SDE release.
+
+Also, the current stratum_bf doesn't support register since the PI
+framework doesn't support it (Implementation here
+&lt;<A HREF="https://github.com/p4lang/PI/blob/master/proto/frontend/src/device_mgr.cpp#L2059-L2061">https://github.com/p4lang/PI/blob/master/proto/frontend/src/device_mgr.cpp#L2059-L2061</A>&gt;
+)
+
+Currently, we are working on a new Stratum target called stratum_bfrt which
+is based on Barefoot's BfRt C++ API (Pull request here
+&lt;<A HREF="https://github.com/stratum/stratum/pull/337">https://github.com/stratum/stratum/pull/337</A>&gt;).
+And it should support the native P4Runtime register messages.
+
+Yi
+
+On Mon, Oct 26, 2020 at 9:26 AM zzha via stratum-dev &lt;
+<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>&gt; wrote:
+
+&gt;<i> Hi there,
+</I>&gt;<i>
+</I>&gt;<i> I have built and started Stratum on a Tofino switch. But when I was trying
+</I>&gt;<i> to install a pipeline configuration through p4runtime-shell, Stratum
+</I>&gt;<i> reports a segmentation fault if the P4 program is compiled without
+</I>&gt;<i> &quot;--p4runtime-force-std-externs&quot; flag. However, with this p4c compilation
+</I>&gt;<i> flag, for programs that use Tofino specific externs like registers, the
+</I>&gt;<i> compiler will report a warning that says &quot;No known conversion to standard
+</I>&gt;<i> P4Info for 'Register' extern type&quot;. Any suggestions on how to fix this
+</I>&gt;<i> would be greatly appreciated!
+</I>&gt;<i>
+</I>&gt;<i> Best regards,
+</I>&gt;<i> Zoey
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> stratum-dev mailing list
+</I>&gt;<i> <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>
+</I>&gt;<i> <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">https://lists.stratumproject.org/listinfo/stratum-dev</A>
+</I>
+
+
+-- 
+Yi Tseng
+Member of Technical Staff
+Open Networking Foundation
+<A HREF="https://www.opennetworking.org/">https://www.opennetworking.org/</A>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.stratumproject.org/archives/stratum-dev/attachments/20201026/c0300390/attachment.html">https://lists.stratumproject.org/archives/stratum-dev/attachments/20201026/c0300390/attachment.html</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message (by thread): <A HREF="000170.html">[stratum-dev] Questions regarding pushing pipeline configs to barefoot Tofino switch
+</A></li>
+	<LI>Next message (by thread): <A HREF="000172.html">[stratum-dev] Questions regarding pushing pipeline configs to barefoot Tofino switch
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#171">[ date ]</a>
+              <a href="thread.html#171">[ thread ]</a>
+              <a href="subject.html#171">[ subject ]</a>
+              <a href="author.html#171">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.stratumproject.org/listinfo/stratum-dev">More information about the stratum-dev
+mailing list</a><br>
+</body></html>

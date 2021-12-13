@@ -1,0 +1,374 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [stratum-dev] Docker image 8.9.2-3.16.56-OpenNetworkLinux older version for stratum
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Docker%20image%208.9.2-3.16.56-OpenNetworkLinux%20older%0A%20version%20for%20stratum&In-Reply-To=%3CCAOyFVR2wB%2BrC-1GtB4cHu2w3-271N3mEDuKFZPW0oCLm00sL_Q%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <LINK REL="Previous"  HREF="000093.html">
+   <LINK REL="Next"  HREF="000095.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[stratum-dev] Docker image 8.9.2-3.16.56-OpenNetworkLinux older version for stratum</H1>
+    <B>Yi Tseng</B> 
+    <A HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Docker%20image%208.9.2-3.16.56-OpenNetworkLinux%20older%0A%20version%20for%20stratum&In-Reply-To=%3CCAOyFVR2wB%2BrC-1GtB4cHu2w3-271N3mEDuKFZPW0oCLm00sL_Q%40mail.gmail.com%3E"
+       TITLE="[stratum-dev] Docker image 8.9.2-3.16.56-OpenNetworkLinux older version for stratum">yi at opennetworking.org
+       </A><BR>
+    <I>Sat May 16 17:21:00 UTC 2020</I>
+    <P><UL>
+        <LI>Previous message (by thread): <A HREF="000093.html">[stratum-dev] Docker image 8.9.2-3.16.56-OpenNetworkLinux older version for stratum
+</A></li>
+        <LI>Next message (by thread): <A HREF="000095.html">[stratum-dev] Docker image 8.9.2-3.16.56-OpenNetworkLinux older version for stratum
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#94">[ date ]</a>
+              <a href="thread.html#94">[ thread ]</a>
+              <a href="subject.html#94">[ subject ]</a>
+              <a href="author.html#94">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Deval,
+
+I tried to run the container on my BF2556X device and it works fine. Here
+is what I did (by following these steps
+&lt;<A HREF="https://github.com/stratum/stratum/tree/master/stratum/hal/bin/barefoot/docker#run-the-container-on-the-device">https://github.com/stratum/stratum/tree/master/stratum/hal/bin/barefoot/docker#run-the-container-on-the-device</A>&gt;
+):
+
+1. Set up the huge page (only needs to be done once)
+
+
+
+*sudo echo &quot;vm.nr_hugepages = 128&quot; &gt;&gt; /etc/sysctl.confsudo sysctl -p
+/etc/sysctl.confsudo mkdir /mnt/hugesudo mount -t hugetlbfs nodev /mnt/huge*
+
+2. Create a directory for configurations and logs and enter this dir:
+*mkdir stratum-configs &amp;&amp; cd stratum-configs*
+
+3. Place start script, chassis config file and stratum flag file in this
+directory.
+
+*curl -o start-stratum-container.sh
+<A HREF="https://raw.githubusercontent.com/stratum/stratum/master/stratum/hal/bin/barefoot/docker/start-stratum-container.sh">https://raw.githubusercontent.com/stratum/stratum/master/stratum/hal/bin/barefoot/docker/start-stratum-container.sh</A>
+&lt;<A HREF="https://raw.githubusercontent.com/stratum/stratum/master/stratum/hal/bin/barefoot/docker/start-stratum-container.sh">https://raw.githubusercontent.com/stratum/stratum/master/stratum/hal/bin/barefoot/docker/start-stratum-container.sh</A>&gt;*
+*chmod +x start-stratum-container.sh*
+*curl -o chassis_config.pb.txt
+<A HREF="https://raw.githubusercontent.com/stratum/stratum/master/stratum/hal/config/x86-64-stordis-bf2556x-1t-r0/chassis_config.pb.txt">https://raw.githubusercontent.com/stratum/stratum/master/stratum/hal/config/x86-64-stordis-bf2556x-1t-r0/chassis_config.pb.txt</A>
+&lt;<A HREF="https://raw.githubusercontent.com/stratum/stratum/master/stratum/hal/config/x86-64-stordis-bf2556x-1t-r0/chassis_config.pb.txt">https://raw.githubusercontent.com/stratum/stratum/master/stratum/hal/config/x86-64-stordis-bf2556x-1t-r0/chassis_config.pb.txt</A>&gt;*
+
+*curl -o stratum.flags
+<A HREF="https://raw.githubusercontent.com/stratum/stratum/master/stratum/hal/bin/barefoot/deb/stratum.flags">https://raw.githubusercontent.com/stratum/stratum/master/stratum/hal/bin/barefoot/deb/stratum.flags</A>
+&lt;<A HREF="https://raw.githubusercontent.com/stratum/stratum/master/stratum/hal/bin/barefoot/deb/stratum.flags">https://raw.githubusercontent.com/stratum/stratum/master/stratum/hal/bin/barefoot/deb/stratum.flags</A>&gt;*
+
+4. Start Stratum with the script and some environment variable
+*PLATFORM=x86-64-stordis-bf2556x-1t-r0 DOCKER_IMAGE_TAG=9.1.0
+CONFIG_DIR=$PWD LOG_DIR=$PWD ./start-stratum-container.sh*
+
+*Note: Remove &quot;-bf_switchd_background=true&quot; from stratum.flags file if you
+want to use the command line from bf_switchd*
+
+Yi
+
+On Sat, May 16, 2020 at 4:08 AM Deval Bhamare &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">Deval.Bhamare at kau.se</A>&gt; wrote:
+
+&gt;<i> Hi ,
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> I changed it, and this results into below error:
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> /usr/bin/stratum_bf: symbol lookup error: /usr/bin/stratum_bf: undefined
+</I>&gt;<i> symbol: onlp_sw_init
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> thanks,
+</I>&gt;<i>
+</I>&gt;<i> Deval.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> ------------------------------
+</I>&gt;<i> *From:* Maximilian Pudelko &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">max at opennetworking.org</A>&gt;
+</I>&gt;<i> *Sent:* Friday, May 15, 2020 11:03:04 PM
+</I>&gt;<i> *To:* Deval Bhamare
+</I>&gt;<i> *Cc:* Yi Tseng
+</I>&gt;<i> *Subject:* Re: [stratum-dev] Docker image 8.9.2-3.16.56-OpenNetworkLinux
+</I>&gt;<i> older version for stratum
+</I>&gt;<i>
+</I>&gt;<i> &gt; -v /root:/etc/stratum
+</I>&gt;<i>
+</I>&gt;<i> That's the issue. Unless you have a copy of the stratum config files in
+</I>&gt;<i> /root, this will overwrite them inside the container.
+</I>&gt;<i> You can remove this line
+</I>&gt;<i> &lt;<A HREF="https://github.com/stratum/stratum/blob/master/stratum/hal/bin/barefoot/docker/start-stratum-container.sh#L32">https://github.com/stratum/stratum/blob/master/stratum/hal/bin/barefoot/docker/start-stratum-container.sh#L32</A>&gt;
+</I>&gt;<i> for now, until we figure something out.
+</I>&gt;<i>
+</I>&gt;<i> Max
+</I>&gt;<i>
+</I>&gt;<i> On Fri, May 15, 2020 at 12:54 PM Deval Bhamare &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">Deval.Bhamare at kau.se</A>&gt;
+</I>&gt;<i> wrote:
+</I>&gt;<i>
+</I>&gt;&gt;<i> The docker run command unfolds into below, if that might help.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Also, do I have to use the below options with modified container as well?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>     --env WITH_ONLP=false \
+</I>&gt;&gt;<i>     --env PLATFORM=x86-64-stordis-bf2556x-1t-r0 \
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Docker run:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>  docker run -it --privileged -v /dev:/dev -v /sys:/sys -v
+</I>&gt;&gt;<i> /lib/modules/3.16.64-OpenNetworkLinux:/lib/modules/3.16.64-OpenNetworkLinux
+</I>&gt;&gt;<i> -v
+</I>&gt;&gt;<i> /lib/x86_64-linux-gnu/libonlp-platform-defaults.so:/lib/x86_64-linux-gnu/libonlp-platform-defaults.so
+</I>&gt;&gt;<i> -v
+</I>&gt;&gt;<i> /lib/x86_64-linux-gnu/libonlp-platform-defaults.so.1:/lib/x86_64-linux-gnu/libonlp-platform-defaults.so.1
+</I>&gt;&gt;<i> -v
+</I>&gt;&gt;<i> /lib/x86_64-linux-gnu/libonlp-platform.so:/lib/x86_64-linux-gnu/libonlp-platform.so
+</I>&gt;&gt;<i> -v
+</I>&gt;&gt;<i> /lib/x86_64-linux-gnu/libonlp-platform.so.1:/lib/x86_64-linux-gnu/libonlp-platform.so.1
+</I>&gt;&gt;<i> -v /lib/x86_64-linux-gnu/libonlp.so:/lib/x86_64-linux-gnu/libonlp.so -v
+</I>&gt;&gt;<i> /lib/x86_64-linux-gnu/libonlp.so.1:/lib/x86_64-linux-gnu/libonlp.so.1 -v
+</I>&gt;&gt;<i> /lib/platform-config:/lib/platform-config -v /etc/onl:/etc/onl -p
+</I>&gt;&gt;<i> 28000:28000 -p 9339:9339 -v /root:/etc/stratum -v /var/log:/var/log/stratum
+</I>&gt;&gt;<i> stratumproject/stratum-bf:8.9.2-3.16.56-OpenNetworkLinux
+</I>&gt;&gt;<i> ------------------------------
+</I>&gt;&gt;<i> *From:* Maximilian Pudelko &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">max at opennetworking.org</A>&gt;
+</I>&gt;&gt;<i> *Sent:* Friday, May 15, 2020 10:41:03 PM
+</I>&gt;&gt;<i> *To:* Yi Tseng
+</I>&gt;&gt;<i> *Cc:* Deval Bhamare; <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>
+</I>&gt;&gt;<i> *Subject:* Re: [stratum-dev] Docker image 8.9.2-3.16.56-OpenNetworkLinux
+</I>&gt;&gt;<i> older version for stratum
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Hi Deval,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> &gt;
+</I>&gt;&gt;<i> *Cannot find flag file /etc/stratum/stratum.flags *
+</I>&gt;&gt;<i> I think this error comes from the way you start the container. Can you
+</I>&gt;&gt;<i> give us the full command for `start-stratum-container.sh`?
+</I>&gt;&gt;<i> By default the script will mount your /root folder to /etc/stratum,
+</I>&gt;&gt;<i> hiding everything inside:
+</I>&gt;&gt;<i> <A HREF="https://github.com/stratum/stratum/blob/master/stratum/hal/bin/barefoot/docker/start-stratum-container.sh#L19">https://github.com/stratum/stratum/blob/master/stratum/hal/bin/barefoot/docker/start-stratum-container.sh#L19</A>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> @Yi Tseng &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">yi at opennetworking.org</A>&gt; Maybe we should revise this logic a
+</I>&gt;&gt;<i> bit and only mount it if the env var is set.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Max
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> On Fri, May 15, 2020 at 11:37 AM Yi Tseng via stratum-dev &lt;
+</I>&gt;&gt;<i> <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>&gt; wrote:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Hi Deval,
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> According to the log, you are trying to run the container on the system
+</I>&gt;&gt;&gt;<i> which is not OpenNetworkingLinux with Linux kernel 3.16.56
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> The docker image with &quot;-OpenNetworkingLinux&quot; tag postfix is now only
+</I>&gt;&gt;&gt;<i> built for OpenNetworkLinux (which requires ONLP library). If you want to
+</I>&gt;&gt;&gt;<i> use other systems like Ubuntu or Fedora, you can use images without
+</I>&gt;&gt;&gt;<i> &quot;-OpenNetworkingLinux&quot; postfix. For example
+</I>&gt;&gt;&gt;<i> &quot;stratumproject/stratum-bf:8.9.2&quot;
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Yi
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> On Thu, May 14, 2020 at 10:56 PM Deval Bhamare &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">Deval.Bhamare at kau.se</A>&gt;
+</I>&gt;&gt;&gt;<i> wrote:
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> Hello Yi,
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> Sending a reminder.
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> Please let me know the cause of the error below in the newly updated
+</I>&gt;&gt;&gt;&gt;<i> container image  8.9.2-3.16.56-OpenNetworkLinux
+</I>&gt;&gt;&gt;&gt;<i> &lt;<A HREF="https://hub.docker.com/layers/stratumproject/stratum-bf/8.9.2-3.16.56-OpenNetworkLinux/images/sha256-3a52ec68005041b4d69b676c9584133a34652910514272165f09f443fb2975d8?context=explore">https://hub.docker.com/layers/stratumproject/stratum-bf/8.9.2-3.16.56-OpenNetworkLinux/images/sha256-3a52ec68005041b4d69b676c9584133a34652910514272165f09f443fb2975d8?context=explore</A>&gt;
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> */usr/bin/stratum_bf: error while loading shared libraries:
+</I>&gt;&gt;&gt;&gt;<i> libonlp.so.1: cannot open shared object file: No such file or directory*
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> Note: I am using below values in the start_container script (which was
+</I>&gt;&gt;&gt;&gt;<i> working earlier)
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> --env WITH_ONLP=false \
+</I>&gt;&gt;&gt;&gt;<i> --env PLATFORM=x86-64-stordis-bf2556x-1t-r0 \
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>  With original  start_container script, however, I get error of
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> *Cannot find flag file /etc/stratum/stratum.flags*
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> Is it possible to get access to the earlier version of the container
+</I>&gt;&gt;&gt;&gt;<i> image? Also, I tried to build the container locally with old
+</I>&gt;&gt;&gt;&gt;<i> Docker.runtime, but it fails as well, with error log below.
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> PLease suggest.
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> ERROR: /stratum/stratum/hal/bin/barefoot/BUILD:26:1: Linking of rule
+</I>&gt;&gt;&gt;&gt;<i> '//stratum/hal/bin/barefoot:stratum_bf' failed (Exit 1) gcc failed: error
+</I>&gt;&gt;&gt;&gt;<i> executing command /usr/bin/gcc
+</I>&gt;&gt;&gt;&gt;<i> @bazel-out/k8-fastbuild/bin/stratum/hal/bin/barefoot/stratum_bf-2.params
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> Use --sandbox_debug to see verbose messages from the sandbox
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi.pic.o:pi.c:function
+</I>&gt;&gt;&gt;&gt;<i> pi_port_status_get: error: undefined reference to '_pi_port_status_get'
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_act_prof.pic.o:pi_act_prof.c:function
+</I>&gt;&gt;&gt;&gt;<i> pi_act_prof_grp_activate_mbr: error: undefined reference to
+</I>&gt;&gt;&gt;&gt;<i> '_pi_act_prof_grp_activate_mbr'
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_act_prof.pic.o:pi_act_prof.c:function
+</I>&gt;&gt;&gt;&gt;<i> pi_act_prof_grp_deactivate_mbr: error: undefined reference to
+</I>&gt;&gt;&gt;&gt;<i> '_pi_act_prof_grp_deactivate_mbr'
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_act_prof.pic.o:pi_act_prof.c:function
+</I>&gt;&gt;&gt;&gt;<i> pi_act_prof_mbr_fetch: error: undefined reference to
+</I>&gt;&gt;&gt;&gt;<i> '_pi_act_prof_mbr_fetch'
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_act_prof.pic.o:pi_act_prof.c:function
+</I>&gt;&gt;&gt;&gt;<i> pi_act_prof_grp_fetch: error: undefined reference to
+</I>&gt;&gt;&gt;&gt;<i> '_pi_act_prof_grp_fetch'
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_tables.pic.o:pi_tables.c:function
+</I>&gt;&gt;&gt;&gt;<i> pi_table_default_action_get_handle: error: undefined reference to
+</I>&gt;&gt;&gt;&gt;<i> '_pi_table_default_action_get_handle'
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_tables.pic.o:pi_tables.c:function
+</I>&gt;&gt;&gt;&gt;<i> pi_table_entries_fetch_one: error: undefined reference to
+</I>&gt;&gt;&gt;&gt;<i> '_pi_table_entries_fetch_one'
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_tables.pic.o:pi_tables.c:function
+</I>&gt;&gt;&gt;&gt;<i> pi_table_entries_fetch_wkey: error: undefined reference to
+</I>&gt;&gt;&gt;&gt;<i> '_pi_table_entries_fetch_wkey'
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> collect2: error: ld returned 1 exit status
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> Target //stratum/hal/bin/barefoot:stratum_bf failed to build
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> Use --verbose_failures to see the command lines of failed build steps.
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> INFO: Elapsed time: 281.155s, Critical Path: 81.05s
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> INFO: 1513 processes: 1513 processwrapper-sandbox.
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> FAILED: Build did NOT complete successfully
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> FAILED: Build did NOT complete successfully
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> The command '/bin/sh -c bazel build
+</I>&gt;&gt;&gt;&gt;<i> //stratum/hal/bin/barefoot:stratum_bf     --define sde_ver=$(cat
+</I>&gt;&gt;&gt;&gt;<i> $SDE_INSTALL/share/VERSION)     --define phal_with_onlp=false &amp;&amp;     cp
+</I>&gt;&gt;&gt;&gt;<i> bazel-bin/stratum/hal/bin/barefoot/stratum_bf /tmp/stratum_bf_no_onlp'
+</I>&gt;&gt;&gt;&gt;<i> returned a non-zero code: 1
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> Thanks,
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> Deval
+</I>&gt;&gt;&gt;&gt;<i> ------------------------------
+</I>&gt;&gt;&gt;&gt;<i> *From:* Deval Bhamare
+</I>&gt;&gt;&gt;&gt;<i> *Sent:* Wednesday, May 13, 2020 8:49:24 PM
+</I>&gt;&gt;&gt;&gt;<i> *To:* Yi Tseng
+</I>&gt;&gt;&gt;&gt;<i> *Subject:* Docker image older version for stratum
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> Hello Yi,
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> As I have mentioned earlier, the docker container image
+</I>&gt;&gt;&gt;&gt;<i> 8.9.2-3.16.56-OpenNetworkLinux
+</I>&gt;&gt;&gt;&gt;<i> &lt;<A HREF="https://hub.docker.com/layers/stratumproject/stratum-bf/8.9.2-3.16.56-OpenNetworkLinux/images/sha256-3a52ec68005041b4d69b676c9584133a34652910514272165f09f443fb2975d8?context=explore">https://hub.docker.com/layers/stratumproject/stratum-bf/8.9.2-3.16.56-OpenNetworkLinux/images/sha256-3a52ec68005041b4d69b676c9584133a34652910514272165f09f443fb2975d8?context=explore</A>&gt; was
+</I>&gt;&gt;&gt;&gt;<i> working for our tofino switch, until I had to pull the image again, due to
+</I>&gt;&gt;&gt;&gt;<i> some crash. However, after pulling the new image, things have stopped
+</I>&gt;&gt;&gt;&gt;<i> working. I now get the error:
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> *loading bf_kdrv_mod...*
+</I>&gt;&gt;&gt;&gt;<i> *insmod: ERROR: could not insert module /usr/lib/modules/bf_kdrv.ko:
+</I>&gt;&gt;&gt;&gt;<i> Invalid module format*
+</I>&gt;&gt;&gt;&gt;<i> */usr/bin/stratum_bf: error while loading shared libraries:
+</I>&gt;&gt;&gt;&gt;<i> libonlp.so.1: cannot open shared object file: No such file or directory*
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> As I can see the docker image is build very recently and I doubt it may
+</I>&gt;&gt;&gt;&gt;<i> have changed something. Is it possible for you to provide the older version
+</I>&gt;&gt;&gt;&gt;<i> of this image (approx 2 months old, when the missing json issue was
+</I>&gt;&gt;&gt;&gt;<i> solved). Else, how can I fix the above problem?
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> Thanks,
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> Deval.
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> --
+</I>&gt;&gt;&gt;<i> Yi Tseng
+</I>&gt;&gt;&gt;<i> Member of Technical Staff
+</I>&gt;&gt;&gt;<i> Open Networking Foundation
+</I>&gt;&gt;&gt;<i> <A HREF="https://www.opennetworking.org/">https://www.opennetworking.org/</A>
+</I>&gt;&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;&gt;<i> stratum-dev mailing list
+</I>&gt;&gt;&gt;<i> <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>
+</I>&gt;&gt;&gt;<i> <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">https://lists.stratumproject.org/listinfo/stratum-dev</A>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>
+-- 
+Yi Tseng
+Member of Technical Staff
+Open Networking Foundation
+<A HREF="https://www.opennetworking.org/">https://www.opennetworking.org/</A>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.stratumproject.org/archives/stratum-dev/attachments/20200517/c6a596c0/attachment-0001.html">https://lists.stratumproject.org/archives/stratum-dev/attachments/20200517/c6a596c0/attachment-0001.html</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message (by thread): <A HREF="000093.html">[stratum-dev] Docker image 8.9.2-3.16.56-OpenNetworkLinux older version for stratum
+</A></li>
+	<LI>Next message (by thread): <A HREF="000095.html">[stratum-dev] Docker image 8.9.2-3.16.56-OpenNetworkLinux older version for stratum
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#94">[ date ]</a>
+              <a href="thread.html#94">[ thread ]</a>
+              <a href="subject.html#94">[ subject ]</a>
+              <a href="author.html#94">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.stratumproject.org/listinfo/stratum-dev">More information about the stratum-dev
+mailing list</a><br>
+</body></html>

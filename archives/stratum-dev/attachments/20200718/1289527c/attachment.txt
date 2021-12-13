@@ -1,0 +1,328 @@
+0718 17:35:53.106055    40 p4_service.cc:695] Controller (connection_id: 1, election_id: 160, uri: ipv4:10.5.23.32:55912) is connected as MASTER for node (aka device) with ID 1.
+I0718 17:35:53.111474    40 p4_service.cc:695] Controller (connection_id: 1, election_id: 160, uri: ipv4:10.5.23.32:55912) is connected as MASTER for node (aka device) with ID 1.
+bf_switchd: starting warm init for dev_id 0 mode 1 serdes_upgrade 0
+Skip diag lib deinit
+\I0718 17:35:54.020951    44 bf_chassis_manager.cc:525] Replaying ports for node 1.
+I0718 17:35:54.993454    44 bf_switch.cc:77] P4-based forwarding pipeline config pushed successfully to node with ID 1.
+E0718 17:35:55.262060    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+E0718 17:35:55.262337    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+I0718 17:35:55.262584    44 bf_chassis_manager.cc:489] Querying state of port 128 in node 1.
+I0718 17:35:55.262634    44 bf_chassis_manager.cc:493] State of port 128 in node 1: DOWN
+E0718 17:35:55.264686    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+E0718 17:35:55.264930    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+I0718 17:35:55.265583    44 bf_chassis_manager.cc:489] Querying state of port 128 in node 1.
+I0718 17:35:55.265635    44 bf_chassis_manager.cc:493] State of port 128 in node 1: DOWN
+E0718 17:35:55.266769    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+E0718 17:35:55.266985    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+I0718 17:35:55.267244    44 bf_chassis_manager.cc:489] Querying state of port 52 in node 1.
+I0718 17:35:55.267293    44 bf_chassis_manager.cc:493] State of port 52 in node 1: DOWN
+E0718 17:35:55.269500    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+E0718 17:35:55.269717    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+I0718 17:35:55.270323    44 bf_chassis_manager.cc:489] Querying state of port 52 in node 1.
+I0718 17:35:55.270370    44 bf_chassis_manager.cc:493] State of port 52 in node 1: DOWN
+E0718 17:35:55.271132    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+E0718 17:35:55.271255    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+I0718 17:35:55.271389    44 bf_chassis_manager.cc:489] Querying state of port 44 in node 1.
+I0718 17:35:55.271420    44 bf_chassis_manager.cc:493] State of port 44 in node 1: DOWN
+E0718 17:35:55.272567    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+E0718 17:35:55.272680    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+I0718 17:35:55.273007    44 bf_chassis_manager.cc:489] Querying state of port 44 in node 1.
+I0718 17:35:55.273037    44 bf_chassis_manager.cc:493] State of port 44 in node 1: DOWN
+E0718 17:35:55.273558    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+E0718 17:35:55.273677    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+I0718 17:35:55.273797    44 bf_chassis_manager.cc:489] Querying state of port 36 in node 1.
+I0718 17:35:55.273824    44 bf_chassis_manager.cc:493] State of port 36 in node 1: DOWN
+E0718 17:35:55.274971    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+E0718 17:35:55.275089    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+I0718 17:35:55.275398    44 bf_chassis_manager.cc:489] Querying state of port 36 in node 1.
+I0718 17:35:55.275426    44 bf_chassis_manager.cc:493] State of port 36 in node 1: DOWN
+E0718 17:35:55.275979    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+E0718 17:35:55.276096    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+I0718 17:35:55.276237    44 bf_chassis_manager.cc:489] Querying state of port 28 in node 1.
+I0718 17:35:55.276273    44 bf_chassis_manager.cc:493] State of port 28 in node 1: DOWN
+E0718 17:35:55.277426    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+E0718 17:35:55.277539    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+I0718 17:35:55.277845    44 bf_chassis_manager.cc:489] Querying state of port 28 in node 1.
+I0718 17:35:55.277873    44 bf_chassis_manager.cc:493] State of port 28 in node 1: DOWN
+E0718 17:35:55.278472    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+E0718 17:35:55.278594    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+I0718 17:35:55.278735    44 bf_chassis_manager.cc:489] Querying state of port 20 in node 1.
+I0718 17:35:55.278781    44 bf_chassis_manager.cc:493] State of port 20 in node 1: DOWN
+E0718 17:35:55.279956    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+E0718 17:35:55.280078    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+I0718 17:35:55.280406    44 bf_chassis_manager.cc:489] Querying state of port 20 in node 1.
+I0718 17:35:55.280437    44 bf_chassis_manager.cc:493] State of port 20 in node 1: DOWN
+E0718 17:35:55.280949    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+E0718 17:35:55.281059    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+I0718 17:35:55.281194    44 bf_chassis_manager.cc:489] Querying state of port 12 in node 1.
+I0718 17:35:55.281224    44 bf_chassis_manager.cc:493] State of port 12 in node 1: DOWN
+E0718 17:35:55.282382    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+E0718 17:35:55.282490    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+I0718 17:35:55.282841    44 bf_chassis_manager.cc:489] Querying state of port 12 in node 1.
+I0718 17:35:55.282871    44 bf_chassis_manager.cc:493] State of port 12 in node 1: DOWN
+E0718 17:35:55.283393    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+E0718 17:35:55.283509    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+I0718 17:35:55.283648    44 bf_chassis_manager.cc:489] Querying state of port 4 in node 1.
+I0718 17:35:55.283680    44 bf_chassis_manager.cc:493] State of port 4 in node 1: DOWN
+E0718 17:35:55.284873    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+E0718 17:35:55.284991    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+I0718 17:35:55.285297    44 bf_chassis_manager.cc:489] Querying state of port 4 in node 1.
+I0718 17:35:55.285324    44 bf_chassis_manager.cc:493] State of port 4 in node 1: DOWN
+E0718 17:35:55.285929    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+E0718 17:35:55.286044    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+I0718 17:35:55.286197    44 bf_chassis_manager.cc:489] Querying state of port 0 in node 1.
+I0718 17:35:55.286232    44 bf_chassis_manager.cc:493] State of port 0 in node 1: DOWN
+E0718 17:35:55.287370    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+E0718 17:35:55.287479    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+I0718 17:35:55.287801    44 bf_chassis_manager.cc:489] Querying state of port 0 in node 1.
+I0718 17:35:55.287832    44 bf_chassis_manager.cc:493] State of port 0 in node 1: DOWN
+E0718 17:35:55.288362    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+E0718 17:35:55.288497    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+I0718 17:35:55.288638    44 bf_chassis_manager.cc:489] Querying state of port 8 in node 1.
+I0718 17:35:55.288671    44 bf_chassis_manager.cc:493] State of port 8 in node 1: DOWN
+E0718 17:35:55.289816    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+E0718 17:35:55.289948    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+I0718 17:35:55.290251    44 bf_chassis_manager.cc:489] Querying state of port 8 in node 1.
+I0718 17:35:55.290282    44 bf_chassis_manager.cc:493] State of port 8 in node 1: DOWN
+E0718 17:35:55.290853    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+E0718 17:35:55.290977    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+I0718 17:35:55.291128    44 bf_chassis_manager.cc:489] Querying state of port 16 in node 1.
+I0718 17:35:55.291159    44 bf_chassis_manager.cc:493] State of port 16 in node 1: DOWN
+E0718 17:35:55.292346    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+E0718 17:35:55.292476    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+I0718 17:35:55.292809    44 bf_chassis_manager.cc:489] Querying state of port 16 in node 1.
+I0718 17:35:55.292837    44 bf_chassis_manager.cc:493] State of port 16 in node 1: DOWN
+E0718 17:35:55.293391    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+E0718 17:35:55.293520    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+I0718 17:35:55.293686    44 bf_chassis_manager.cc:489] Querying state of port 136 in node 1.
+I0718 17:35:55.293716    44 bf_chassis_manager.cc:493] State of port 136 in node 1: DOWN
+E0718 17:35:55.294787    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+E0718 17:35:55.294903    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+I0718 17:35:55.295202    44 bf_chassis_manager.cc:489] Querying state of port 136 in node 1.
+I0718 17:35:55.295230    44 bf_chassis_manager.cc:493] State of port 136 in node 1: DOWN
+E0718 17:35:55.295764    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+E0718 17:35:55.295882    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+I0718 17:35:55.296005    44 bf_chassis_manager.cc:489] Querying state of port 24 in node 1.
+I0718 17:35:55.296032    44 bf_chassis_manager.cc:493] State of port 24 in node 1: DOWN
+E0718 17:35:55.297183    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+E0718 17:35:55.297297    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+I0718 17:35:55.297583    44 bf_chassis_manager.cc:489] Querying state of port 24 in node 1.
+I0718 17:35:55.297610    44 bf_chassis_manager.cc:493] State of port 24 in node 1: DOWN
+E0718 17:35:55.298123    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+E0718 17:35:55.298240    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+I0718 17:35:55.298352    44 bf_chassis_manager.cc:489] Querying state of port 32 in node 1.
+I0718 17:35:55.298377    44 bf_chassis_manager.cc:493] State of port 32 in node 1: DOWN
+E0718 17:35:55.299520    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+E0718 17:35:55.299623    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+I0718 17:35:55.299942    44 bf_chassis_manager.cc:489] Querying state of port 32 in node 1.
+I0718 17:35:55.299971    44 bf_chassis_manager.cc:493] State of port 32 in node 1: DOWN
+E0718 17:35:55.300491    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+E0718 17:35:55.300614    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+I0718 17:35:55.300737    44 bf_chassis_manager.cc:489] Querying state of port 40 in node 1.
+I0718 17:35:55.300771    44 bf_chassis_manager.cc:493] State of port 40 in node 1: DOWN
+E0718 17:35:55.301977    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+E0718 17:35:55.302089    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+I0718 17:35:55.302390    44 bf_chassis_manager.cc:489] Querying state of port 40 in node 1.
+I0718 17:35:55.302418    44 bf_chassis_manager.cc:493] State of port 40 in node 1: DOWN
+E0718 17:35:55.302992    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+E0718 17:35:55.303110    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+I0718 17:35:55.303232    44 bf_chassis_manager.cc:489] Querying state of port 48 in node 1.
+I0718 17:35:55.303262    44 bf_chassis_manager.cc:493] State of port 48 in node 1: DOWN
+E0718 17:35:55.304436    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+E0718 17:35:55.304544    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+I0718 17:35:55.304843    44 bf_chassis_manager.cc:489] Querying state of port 48 in node 1.
+I0718 17:35:55.304870    44 bf_chassis_manager.cc:493] State of port 48 in node 1: DOWN
+E0718 17:35:55.305426    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+E0718 17:35:55.305541    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+I0718 17:35:55.305656    44 bf_chassis_manager.cc:489] Querying state of port 56 in node 1.
+I0718 17:35:55.305681    44 bf_chassis_manager.cc:493] State of port 56 in node 1: DOWN
+E0718 17:35:55.306859    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+E0718 17:35:55.306963    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+I0718 17:35:55.307260    44 bf_chassis_manager.cc:489] Querying state of port 56 in node 1.
+I0718 17:35:55.307287    44 bf_chassis_manager.cc:493] State of port 56 in node 1: DOWN
+E0718 17:35:55.307840    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+E0718 17:35:55.307961    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+I0718 17:35:55.308104    44 bf_chassis_manager.cc:489] Querying state of port 188 in node 1.
+I0718 17:35:55.308133    44 bf_chassis_manager.cc:493] State of port 188 in node 1: DOWN
+E0718 17:35:55.309314    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+E0718 17:35:55.309418    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+I0718 17:35:55.309738    44 bf_chassis_manager.cc:489] Querying state of port 188 in node 1.
+I0718 17:35:55.309767    44 bf_chassis_manager.cc:493] State of port 188 in node 1: DOWN
+E0718 17:35:55.310298    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+E0718 17:35:55.310428    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+I0718 17:35:55.310564    44 bf_chassis_manager.cc:489] Querying state of port 180 in node 1.
+I0718 17:35:55.310600    44 bf_chassis_manager.cc:493] State of port 180 in node 1: DOWN
+E0718 17:35:55.311815    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+E0718 17:35:55.311937    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+I0718 17:35:55.312244    44 bf_chassis_manager.cc:489] Querying state of port 180 in node 1.
+I0718 17:35:55.312273    44 bf_chassis_manager.cc:493] State of port 180 in node 1: DOWN
+E0718 17:35:55.312808    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+E0718 17:35:55.312916    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+I0718 17:35:55.313056    44 bf_chassis_manager.cc:489] Querying state of port 172 in node 1.
+I0718 17:35:55.313084    44 bf_chassis_manager.cc:493] State of port 172 in node 1: DOWN
+E0718 17:35:55.314267    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+E0718 17:35:55.314383    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+I0718 17:35:55.314682    44 bf_chassis_manager.cc:489] Querying state of port 172 in node 1.
+I0718 17:35:55.314709    44 bf_chassis_manager.cc:493] State of port 172 in node 1: DOWN
+E0718 17:35:55.315271    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+E0718 17:35:55.315410    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+I0718 17:35:55.315546    44 bf_chassis_manager.cc:489] Querying state of port 164 in node 1.
+I0718 17:35:55.315575    44 bf_chassis_manager.cc:493] State of port 164 in node 1: DOWN
+E0718 17:35:55.316766    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+E0718 17:35:55.316884    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+I0718 17:35:55.317188    44 bf_chassis_manager.cc:489] Querying state of port 164 in node 1.
+I0718 17:35:55.317217    44 bf_chassis_manager.cc:493] State of port 164 in node 1: DOWN
+E0718 17:35:55.317766    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+E0718 17:35:55.317896    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+I0718 17:35:55.318024    44 bf_chassis_manager.cc:489] Querying state of port 148 in node 1.
+I0718 17:35:55.318068    44 bf_chassis_manager.cc:493] State of port 148 in node 1: DOWN
+E0718 17:35:55.319259    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+E0718 17:35:55.319376    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+I0718 17:35:55.319696    44 bf_chassis_manager.cc:489] Querying state of port 148 in node 1.
+I0718 17:35:55.319725    44 bf_chassis_manager.cc:493] State of port 148 in node 1: DOWN
+E0718 17:35:55.320245    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+E0718 17:35:55.320365    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+I0718 17:35:55.320485    44 bf_chassis_manager.cc:489] Querying state of port 144 in node 1.
+I0718 17:35:55.320518    44 bf_chassis_manager.cc:493] State of port 144 in node 1: DOWN
+E0718 17:35:55.321581    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+E0718 17:35:55.321691    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+I0718 17:35:55.322007    44 bf_chassis_manager.cc:489] Querying state of port 144 in node 1.
+I0718 17:35:55.322036    44 bf_chassis_manager.cc:493] State of port 144 in node 1: DOWN
+E0718 17:35:55.322588    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+E0718 17:35:55.322707    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+I0718 17:35:55.322839    44 bf_chassis_manager.cc:489] Querying state of port 156 in node 1.
+I0718 17:35:55.322873    44 bf_chassis_manager.cc:493] State of port 156 in node 1: DOWN
+E0718 17:35:55.324112    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+E0718 17:35:55.324221    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+I0718 17:35:55.324532    44 bf_chassis_manager.cc:489] Querying state of port 156 in node 1.
+I0718 17:35:55.324559    44 bf_chassis_manager.cc:493] State of port 156 in node 1: DOWN
+E0718 17:35:55.325096    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+E0718 17:35:55.325232    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+I0718 17:35:55.325364    44 bf_chassis_manager.cc:489] Querying state of port 132 in node 1.
+I0718 17:35:55.325390    44 bf_chassis_manager.cc:493] State of port 132 in node 1: DOWN
+E0718 17:35:55.326596    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+E0718 17:35:55.326705    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+I0718 17:35:55.327036    44 bf_chassis_manager.cc:489] Querying state of port 132 in node 1.
+I0718 17:35:55.327064    44 bf_chassis_manager.cc:493] State of port 132 in node 1: DOWN
+E0718 17:35:55.327623    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+E0718 17:35:55.327750    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+I0718 17:35:55.327891    44 bf_chassis_manager.cc:489] Querying state of port 140 in node 1.
+I0718 17:35:55.327919    44 bf_chassis_manager.cc:493] State of port 140 in node 1: DOWN
+E0718 17:35:55.329125    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+E0718 17:35:55.329248    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+I0718 17:35:55.329574    44 bf_chassis_manager.cc:489] Querying state of port 140 in node 1.
+I0718 17:35:55.329603    44 bf_chassis_manager.cc:493] State of port 140 in node 1: DOWN
+E0718 17:35:55.330127    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+E0718 17:35:55.330250    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+I0718 17:35:55.330392    44 bf_chassis_manager.cc:489] Querying state of port 152 in node 1.
+I0718 17:35:55.330421    44 bf_chassis_manager.cc:493] State of port 152 in node 1: DOWN
+E0718 17:35:55.331841    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+E0718 17:35:55.332023    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+I0718 17:35:55.332453    44 bf_chassis_manager.cc:489] Querying state of port 152 in node 1.
+I0718 17:35:55.332510    44 bf_chassis_manager.cc:493] State of port 152 in node 1: DOWN
+E0718 17:35:55.333288    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+E0718 17:35:55.333451    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+I0718 17:35:55.333606    44 bf_chassis_manager.cc:489] Querying state of port 160 in node 1.
+I0718 17:35:55.333639    44 bf_chassis_manager.cc:493] State of port 160 in node 1: DOWN
+E0718 17:35:55.335019    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+E0718 17:35:55.335129    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+I0718 17:35:55.335408    44 bf_chassis_manager.cc:489] Querying state of port 160 in node 1.
+I0718 17:35:55.335434    44 bf_chassis_manager.cc:493] State of port 160 in node 1: DOWN
+E0718 17:35:55.335938    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+E0718 17:35:55.336052    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+I0718 17:35:55.336186    44 bf_chassis_manager.cc:489] Querying state of port 168 in node 1.
+I0718 17:35:55.336217    44 bf_chassis_manager.cc:493] State of port 168 in node 1: DOWN
+E0718 17:35:55.337282    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+E0718 17:35:55.337388    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+I0718 17:35:55.337718    44 bf_chassis_manager.cc:489] Querying state of port 168 in node 1.
+I0718 17:35:55.337746    44 bf_chassis_manager.cc:493] State of port 168 in node 1: DOWN
+E0718 17:35:55.338296    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+E0718 17:35:55.338420    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+I0718 17:35:55.338552    44 bf_chassis_manager.cc:489] Querying state of port 176 in node 1.
+I0718 17:35:55.338580    44 bf_chassis_manager.cc:493] State of port 176 in node 1: DOWN
+E0718 17:35:55.339653    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+E0718 17:35:55.339773    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+I0718 17:35:55.340091    44 bf_chassis_manager.cc:489] Querying state of port 176 in node 1.
+I0718 17:35:55.340118    44 bf_chassis_manager.cc:493] State of port 176 in node 1: DOWN
+E0718 17:35:55.340696    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+E0718 17:35:55.340822    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+I0718 17:35:55.340957    44 bf_chassis_manager.cc:489] Querying state of port 184 in node 1.
+I0718 17:35:55.340986    44 bf_chassis_manager.cc:493] State of port 184 in node 1: DOWN
+E0718 17:35:55.342092    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+E0718 17:35:55.342218    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+I0718 17:35:55.342523    44 bf_chassis_manager.cc:489] Querying state of port 184 in node 1.
+I0718 17:35:55.342550    44 bf_chassis_manager.cc:493] State of port 184 in node 1: DOWN
+E0718 17:35:55.343086    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+E0718 17:35:55.343200    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+I0718 17:35:55.343328    44 bf_chassis_manager.cc:489] Querying state of port 60 in node 1.
+I0718 17:35:55.343358    44 bf_chassis_manager.cc:493] State of port 60 in node 1: DOWN
+E0718 17:35:55.344466    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+E0718 17:35:55.344583    44 bf_switch.cc:204] StratumErrorSpace::ERR_INTERNAL: Not supported yet
+I0718 17:35:55.344878    44 bf_chassis_manager.cc:489] Querying state of port 60 in node 1.
+I0718 17:35:55.344907    44 bf_chassis_manager.cc:493] State of port 60 in node 1: DOWN
+I0718 17:35:55.393144    46 config_monitoring_service.cc:377] Initial Subscribe request from ipv4:10.5.23.32:55914 over stream 0x7fa1c7bd67d0.
+I0718 17:35:55.393496    46 bf_chassis_manager.cc:489] Querying state of port 0 in node 1.
+I0718 17:35:55.393577    46 bf_chassis_manager.cc:493] State of port 0 in node 1: DOWN
+I0718 17:35:55.394048    46 bf_chassis_manager.cc:489] Querying state of port 128 in node 1.
+I0718 17:35:55.394096    46 bf_chassis_manager.cc:493] State of port 128 in node 1: DOWN
+I0718 17:35:55.394508    46 bf_chassis_manager.cc:489] Querying state of port 4 in node 1.
+I0718 17:35:55.394556    46 bf_chassis_manager.cc:493] State of port 4 in node 1: DOWN
+I0718 17:35:55.394992    46 bf_chassis_manager.cc:489] Querying state of port 132 in node 1.
+I0718 17:35:55.395040    46 bf_chassis_manager.cc:493] State of port 132 in node 1: DOWN
+I0718 17:35:55.395444    46 bf_chassis_manager.cc:489] Querying state of port 136 in node 1.
+I0718 17:35:55.395493    46 bf_chassis_manager.cc:493] State of port 136 in node 1: DOWN
+I0718 17:35:55.395895    46 bf_chassis_manager.cc:489] Querying state of port 8 in node 1.
+I0718 17:35:55.395941    46 bf_chassis_manager.cc:493] State of port 8 in node 1: DOWN
+I0718 17:35:55.396332    46 bf_chassis_manager.cc:489] Querying state of port 12 in node 1.
+I0718 17:35:55.396379    46 bf_chassis_manager.cc:493] State of port 12 in node 1: DOWN
+I0718 17:35:55.396778    46 bf_chassis_manager.cc:489] Querying state of port 140 in node 1.
+I0718 17:35:55.396826    46 bf_chassis_manager.cc:493] State of port 140 in node 1: DOWN
+I0718 17:35:55.397230    46 bf_chassis_manager.cc:489] Querying state of port 144 in node 1.
+I0718 17:35:55.397277    46 bf_chassis_manager.cc:493] State of port 144 in node 1: DOWN
+I0718 17:35:55.397701    46 bf_chassis_manager.cc:489] Querying state of port 16 in node 1.
+I0718 17:35:55.397748    46 bf_chassis_manager.cc:493] State of port 16 in node 1: DOWN
+I0718 17:35:55.398145    46 bf_chassis_manager.cc:489] Querying state of port 20 in node 1.
+I0718 17:35:55.398193    46 bf_chassis_manager.cc:493] State of port 20 in node 1: DOWN
+I0718 17:35:55.398591    46 bf_chassis_manager.cc:489] Querying state of port 148 in node 1.
+I0718 17:35:55.398639    46 bf_chassis_manager.cc:493] State of port 148 in node 1: DOWN
+I0718 17:35:55.399052    46 bf_chassis_manager.cc:489] Querying state of port 24 in node 1.
+I0718 17:35:55.399098    46 bf_chassis_manager.cc:493] State of port 24 in node 1: DOWN
+I0718 17:35:55.399441    46 bf_chassis_manager.cc:489] Querying state of port 152 in node 1.
+I0718 17:35:55.399482    46 bf_chassis_manager.cc:493] State of port 152 in node 1: DOWN
+I0718 17:35:55.399917    46 bf_chassis_manager.cc:489] Querying state of port 28 in node 1.
+I0718 17:35:55.399961    46 bf_chassis_manager.cc:493] State of port 28 in node 1: DOWN
+I0718 17:35:55.400312    46 bf_chassis_manager.cc:489] Querying state of port 156 in node 1.
+I0718 17:35:55.400354    46 bf_chassis_manager.cc:493] State of port 156 in node 1: DOWN
+I0718 17:35:55.400754    46 bf_chassis_manager.cc:489] Querying state of port 160 in node 1.
+I0718 17:35:55.400800    46 bf_chassis_manager.cc:493] State of port 160 in node 1: DOWN
+I0718 17:35:55.401161    46 bf_chassis_manager.cc:489] Querying state of port 32 in node 1.
+I0718 17:35:55.401202    46 bf_chassis_manager.cc:493] State of port 32 in node 1: DOWN
+I0718 17:35:55.401554    46 bf_chassis_manager.cc:489] Querying state of port 36 in node 1.
+I0718 17:35:55.401597    46 bf_chassis_manager.cc:493] State of port 36 in node 1: DOWN
+I0718 17:35:55.401957    46 bf_chassis_manager.cc:489] Querying state of port 164 in node 1.
+I0718 17:35:55.401999    46 bf_chassis_manager.cc:493] State of port 164 in node 1: DOWN
+I0718 17:35:55.402335    46 bf_chassis_manager.cc:489] Querying state of port 168 in node 1.
+I0718 17:35:55.402375    46 bf_chassis_manager.cc:493] State of port 168 in node 1: DOWN
+I0718 17:35:55.402721    46 bf_chassis_manager.cc:489] Querying state of port 40 in node 1.
+I0718 17:35:55.402778    46 bf_chassis_manager.cc:493] State of port 40 in node 1: DOWN
+I0718 17:35:55.403132    46 bf_chassis_manager.cc:489] Querying state of port 44 in node 1.
+I0718 17:35:55.403173    46 bf_chassis_manager.cc:493] State of port 44 in node 1: DOWN
+I0718 17:35:55.403525    46 bf_chassis_manager.cc:489] Querying state of port 172 in node 1.
+I0718 17:35:55.403591    46 bf_chassis_manager.cc:493] State of port 172 in node 1: DOWN
+I0718 17:35:55.403936    46 bf_chassis_manager.cc:489] Querying state of port 176 in node 1.
+I0718 17:35:55.403977    46 bf_chassis_manager.cc:493] State of port 176 in node 1: DOWN
+I0718 17:35:55.404322    46 bf_chassis_manager.cc:489] Querying state of port 48 in node 1.
+I0718 17:35:55.404363    46 bf_chassis_manager.cc:493] State of port 48 in node 1: DOWN
+I0718 17:35:55.404728    46 bf_chassis_manager.cc:489] Querying state of port 52 in node 1.
+I0718 17:35:55.404770    46 bf_chassis_manager.cc:493] State of port 52 in node 1: DOWN
+I0718 17:35:55.405138    46 bf_chassis_manager.cc:489] Querying state of port 180 in node 1.
+I0718 17:35:55.405179    46 bf_chassis_manager.cc:493] State of port 180 in node 1: DOWN
+I0718 17:35:55.405529    46 bf_chassis_manager.cc:489] Querying state of port 184 in node 1.
+I0718 17:35:55.405570    46 bf_chassis_manager.cc:493] State of port 184 in node 1: DOWN
+I0718 17:35:55.405918    46 bf_chassis_manager.cc:489] Querying state of port 56 in node 1.
+I0718 17:35:55.405959    46 bf_chassis_manager.cc:493] State of port 56 in node 1: DOWN
+I0718 17:35:55.406299    46 bf_chassis_manager.cc:489] Querying state of port 60 in node 1.
+I0718 17:35:55.406340    46 bf_chassis_manager.cc:493] State of port 60 in node 1: DOWN
+I0718 17:35:55.406697    46 bf_chassis_manager.cc:489] Querying state of port 188 in node 1.
+I0718 17:35:55.406738    46 bf_chassis_manager.cc:493] State of port 188 in node 1: DOWN
+I0718 17:35:55.417729    40 p4_service.cc:695] Controller (connection_id: 1, election_id: 160, uri: ipv4:10.5.23.32:55912) is connected as MASTER for node (aka device) with ID 1.

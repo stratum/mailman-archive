@@ -1,0 +1,198 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [stratum-dev] Is there a limit on the # of ECMP groups stratum_bmv2 can handle?
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Is%20there%20a%20limit%20on%20the%20%23%20of%20ECMP%20groups%0A%20stratum_bmv2%20can%20handle%3F&In-Reply-To=%3CCAFh9Y_M-%3D0RWhETeihJY7h3uQ8fvpLVLEUE6z%2BP%3Dt-WjXKOggA%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <LINK REL="Previous"  HREF="000219.html">
+   <LINK REL="Next"  HREF="000221.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[stratum-dev] Is there a limit on the # of ECMP groups stratum_bmv2 can handle?</H1>
+    <B>Maximilian Pudelko</B> 
+    <A HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Is%20there%20a%20limit%20on%20the%20%23%20of%20ECMP%20groups%0A%20stratum_bmv2%20can%20handle%3F&In-Reply-To=%3CCAFh9Y_M-%3D0RWhETeihJY7h3uQ8fvpLVLEUE6z%2BP%3Dt-WjXKOggA%40mail.gmail.com%3E"
+       TITLE="[stratum-dev] Is there a limit on the # of ECMP groups stratum_bmv2 can handle?">max at opennetworking.org
+       </A><BR>
+    <I>Wed May 12 17:05:50 UTC 2021</I>
+    <P><UL>
+        <LI>Previous message (by thread): <A HREF="000219.html">[stratum-dev] Is there a limit on the # of ECMP groups stratum_bmv2 can handle?
+</A></li>
+        <LI>Next message (by thread): <A HREF="000221.html">[stratum-dev] Is there a limit on the # of ECMP groups stratum_bmv2 can handle?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#220">[ date ]</a>
+              <a href="thread.html#220">[ thread ]</a>
+              <a href="subject.html#220">[ subject ]</a>
+              <a href="author.html#220">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Syd,
+
+That's an issue on the ONOS side, more specifically the fabric-interpreter:
+<A HREF="https://github.com/opennetworkinglab/onos/blob/master/pipelines/fabric/impl/src/main/java/org/onosproject/pipelines/fabric/impl/behaviour/FabricInterpreter.java#L262-L265">https://github.com/opennetworkinglab/onos/blob/master/pipelines/fabric/impl/src/main/java/org/onosproject/pipelines/fabric/impl/behaviour/FabricInterpreter.java#L262-L265</A>
+We fixed something similar in our internal version very recently. In short,
+byte strings returned by
+Stratum are not zero-padded and ONOS has to handle them accordingly.
+Here is a snippet of the new code:
+
+        if (packetMetadata.isPresent()) {
+            try {
+                ImmutableByteSequence portByteSequence =
+packetMetadata.get()
+                        .value().fit(P4InfoConstants.INGRESS_PORT_BITWIDTH);
+                short s = portByteSequence.asReadOnlyBuffer().getShort();
+                ConnectPoint receivedFrom = new ConnectPoint(deviceId,
+PortNumber.portNumber(s));
+                ByteBuffer rawData =
+ByteBuffer.wrap(packetIn.data().asArray());
+                return new DefaultInboundPacket(receivedFrom, ethPkt,
+rawData);
+            } catch (ImmutableByteSequence.ByteSequenceTrimException e) {
+                throw new PiInterpreterException(format(
+                        &quot;Malformed metadata '%s' in packet-in received from
+'%s': %s&quot;,
+                        P4InfoConstants.INGRESS_PORT, deviceId, packetIn));
+            }
+        } else {
+            throw new PiInterpreterException(format(
+                    &quot;Missing metadata '%s' in packet-in received from '%s':
+%s&quot;,
+                    P4InfoConstants.INGRESS_PORT, deviceId, packetIn));
+        }
+
+Feel free to submit this as a fix to ONOS.
+
+Max
+
+
+On Wed, May 12, 2021 at 9:54 AM A Sydney via stratum-dev &lt;
+<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>&gt; wrote:
+
+&gt;<i> Hi Stratum folks,
+</I>&gt;<i>                          @Max, thanks a bunch! I updated the package in
+</I>&gt;<i> and indeed, this particular error has been fixed.
+</I>&gt;<i>
+</I>&gt;<i> However, I'm getting this new error where LLDP pkt-ins are causing a
+</I>&gt;<i> buffer underflow exception in ONOS. When I disable the lldpprovider at
+</I>&gt;<i> ONOS, the error is gone. Can you kindly take a look at the following log
+</I>&gt;<i> and provide feedback (i.e. Have you seen this one before, is stratum the
+</I>&gt;<i> source of the issue, or should I take it up with ONOS folks)?
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="https://pastebin.com/SuS2ZhtV">https://pastebin.com/SuS2ZhtV</A>
+</I>&gt;<i>
+</I>&gt;<i> Cheers!
+</I>&gt;<i> -Syd
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> On Tue, May 11, 2021 at 11:38 PM Maximilian Pudelko &lt;
+</I>&gt;<i> <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">max at opennetworking.org</A>&gt; wrote:
+</I>&gt;<i>
+</I>&gt;&gt;<i> Hi Syd,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> After some investigation I found the root cause to this issue:
+</I>&gt;&gt;<i> <A HREF="https://github.com/stratum/stratum/pull/687">https://github.com/stratum/stratum/pull/687</A>
+</I>&gt;&gt;<i> I expect this to get merged soon.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Max
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> On Mon, May 10, 2021 at 5:36 PM Maximilian Pudelko via stratum-dev &lt;
+</I>&gt;&gt;<i> <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>&gt; wrote:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Hi Syd,
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> I have not observed this error before. Stratum-bmv2 is backed by PI (
+</I>&gt;&gt;&gt;<i> <A HREF="https://github.com/p4lang/PI">https://github.com/p4lang/PI</A>).
+</I>&gt;&gt;&gt;<i> All P4RT messages are passed to it nearly unmodified, so the issue must
+</I>&gt;&gt;&gt;<i> lie there.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Max
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> On Mon, May 10, 2021 at 1:47 PM A Sydney via stratum-dev &lt;
+</I>&gt;&gt;&gt;<i> <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>&gt; wrote:
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> Hi Stratum folks,
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> # Context:
+</I>&gt;&gt;&gt;&gt;<i> I have created a pipeline that enables IPv4-ECMP (P4 snippet shown in
+</I>&gt;&gt;&gt;&gt;<i> attached file action_selector*) and I am able to build and push p4info.txt
+</I>&gt;&gt;&gt;&gt;<i> and bmv2.json to the switches.
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> # Issue:
+</I>&gt;&gt;&gt;&gt;<i> When I attempt to add groups, the first one moves to the &quot;ADDED&quot; state.
+</I>&gt;&gt;&gt;&gt;<i> When I attempt to add a second, the first group and the second both move to
+</I>&gt;&gt;&gt;&gt;<i> the &quot;PENDING_ADD_RETRY&quot; state.
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> # ONOS logs:
+</I>&gt;&gt;&gt;&gt;<i> At the same time, P4RuntimeClientImpl throws the error &quot;Error while
+</I>&gt;&gt;&gt;&gt;<i> performing READ on device:spine2...Unexpected error in RPC handling&quot;. Then
+</I>&gt;&gt;&gt;&gt;<i> ONOS spirals into this cycle of attempting to reinstall all flows on the
+</I>&gt;&gt;&gt;&gt;<i> switch (See debug.log for details.).
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> # Logs on one of the bmv2 switches:
+</I>&gt;&gt;&gt;&gt;<i> I then see the following error on the switch:
+</I>&gt;&gt;&gt;&gt;<i> [libprotobuf FATAL
+</I>&gt;&gt;&gt;&gt;<i> external/com_google_protobuf/src/google/protobuf/repeated_field.h:1694]
+</I>&gt;&gt;&gt;&gt;<i> CHECK failed: (index) &lt; (current_size_):
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> # Question:
+</I>&gt;&gt;&gt;&gt;<i> Have you ever come across this one?  Are there any obvious mistakes
+</I>&gt;&gt;&gt;&gt;<i> that I'm running into (Perhaps my P4 ECMP definition attached is
+</I>&gt;&gt;&gt;&gt;<i> incorrect?)? Any suggestions on how to debug further?
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> Thanks!
+</I>&gt;&gt;&gt;&gt;<i> -Syd
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;&gt;&gt;<i> stratum-dev mailing list
+</I>&gt;&gt;&gt;&gt;<i> <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>
+</I>&gt;&gt;&gt;&gt;<i> <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">https://lists.stratumproject.org/listinfo/stratum-dev</A>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;&gt;<i> stratum-dev mailing list
+</I>&gt;&gt;&gt;<i> <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>
+</I>&gt;&gt;&gt;<i> <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">https://lists.stratumproject.org/listinfo/stratum-dev</A>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;<i> stratum-dev mailing list
+</I>&gt;<i> <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>
+</I>&gt;<i> <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">https://lists.stratumproject.org/listinfo/stratum-dev</A>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.stratumproject.org/archives/stratum-dev/attachments/20210512/16bbf82d/attachment.html">https://lists.stratumproject.org/archives/stratum-dev/attachments/20210512/16bbf82d/attachment.html</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message (by thread): <A HREF="000219.html">[stratum-dev] Is there a limit on the # of ECMP groups stratum_bmv2 can handle?
+</A></li>
+	<LI>Next message (by thread): <A HREF="000221.html">[stratum-dev] Is there a limit on the # of ECMP groups stratum_bmv2 can handle?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#220">[ date ]</a>
+              <a href="thread.html#220">[ thread ]</a>
+              <a href="subject.html#220">[ subject ]</a>
+              <a href="author.html#220">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.stratumproject.org/listinfo/stratum-dev">More information about the stratum-dev
+mailing list</a><br>
+</body></html>

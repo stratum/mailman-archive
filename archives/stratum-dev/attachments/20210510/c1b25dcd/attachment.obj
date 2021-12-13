@@ -1,0 +1,20 @@
+    action_selector(HashAlgorithm.crc16, 32w64, 32w16) ecmp_selector;
+    action set_next_hop(mac_addr_t dmac) {
+    ...
+    }
+    table routing_v4_table {
+      key = {
+          hdr.ipv4.dst_addr:          lpm;
+          hdr.ipv4.dst_addr:          selector;
+          hdr.ipv4.src_addr:          selector;
+          hdr.ipv4.protocol:          selector;      
+          local_metadata.l4_src_port: selector;
+          local_metadata.l4_dst_port: selector;
+      }
+      actions = {
+          set_next_hop;
+      }
+      implementation = ecmp_selector;
+      @name("routing_v4_table_counter")
+      counters = direct_counter(CounterType.packets_and_bytes);
+    }

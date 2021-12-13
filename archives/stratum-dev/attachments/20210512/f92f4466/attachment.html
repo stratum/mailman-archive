@@ -1,0 +1,33 @@
+<tt>
+&lt;div&nbsp;dir=&quot;ltr&quot;&gt;&lt;div&gt;According&nbsp;to&nbsp;this&nbsp;&lt;a&nbsp;href=&quot;https://stackoverflow.com/a/45920794&quot;&gt;SO&lt;/a&gt;&nbsp;post&nbsp;the&nbsp;-vmodule&nbsp;parameter&nbsp;is&nbsp;based&nbsp;on&nbsp;the&nbsp;source&nbsp;code&nbsp;file&nbsp;name.&nbsp;So&nbsp;-vmodule=p4_service=2&lt;/div&gt;&lt;div&gt;should&nbsp;print&nbsp;all&nbsp;VLOG(2)&nbsp;and&nbsp;below&nbsp;messages.&nbsp;I&nbsp;don&#39;t&nbsp;see&nbsp;a&nbsp;way&nbsp;to&nbsp;limit&nbsp;ERROR/WARNING/INFO&nbsp;on&nbsp;a&nbsp;per-module&lt;/div&gt;&lt;div&gt;basis,&nbsp;though.&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;The&nbsp;BFRT&nbsp;code&nbsp;is&nbsp;an&nbsp;entire&nbsp;different&nbsp;topic&nbsp;as&nbsp;it&nbsp;uses&nbsp;its&nbsp;own&nbsp;logging&nbsp;library&nbsp;without&nbsp;any&nbsp;hooks&nbsp;for&nbsp;us.&nbsp;We&#39;re&nbsp;pretty&nbsp;much&lt;/div&gt;&lt;div&gt;limited&nbsp;to&nbsp;letting&nbsp;bfrt&nbsp;print&nbsp;to&nbsp;stdout.&nbsp;The&nbsp;current&nbsp;code&nbsp;enables&nbsp;logging&nbsp;of&nbsp;a&nbsp;few&nbsp;select&nbsp;modules:&lt;/div&gt;&lt;div&gt;&lt;a&nbsp;href=&quot;https://github.com/stratum/stratum/blob/main/stratum/hal/lib/barefoot/bf_sde_wrapper.cc#L1514-L1528&quot;&gt;https://github.com/stratum/stratum/blob/main/stratum/hal/lib/barefoot/bf_sde_wrapper.cc#L1514-L1528&lt;/a&gt;&lt;/div&gt;&lt;div&gt;But&nbsp;that&nbsp;happened&nbsp;on&nbsp;a&nbsp;as-needed&nbsp;basis&nbsp;without&nbsp;any&nbsp;major&nbsp;planing.&nbsp;Full&nbsp;integration&nbsp;will&nbsp;require&nbsp;code&lt;/div&gt;&lt;div&gt;&nbsp;changes&nbsp;on&nbsp;the&nbsp;SDE&nbsp;side&nbsp;to&nbsp;allow&nbsp;something&nbsp;like&nbsp;callbacks&nbsp;or&nbsp;streams.&nbsp;Feel&nbsp;free&nbsp;to&nbsp;lobby&nbsp;for&nbsp;that&nbsp;at&nbsp;Intel&nbsp;:D&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Max&lt;br&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;div&nbsp;class=&quot;gmail_quote&quot;&gt;&lt;div&nbsp;dir=&quot;ltr&quot;&nbsp;class=&quot;gmail_attr&quot;&gt;On&nbsp;Wed,&nbsp;May&nbsp;12,&nbsp;2021&nbsp;at&nbsp;3:39&nbsp;PM&nbsp;Narada&nbsp;Hess&nbsp;via&nbsp;stratum-dev&nbsp;&lt;&lt;a&nbsp;href=&quot;mailto:stratum-dev@lists.stratumproject.org&quot;&gt;stratum-dev@lists.stratumproject.org&lt;/a&gt;&gt;&nbsp;wrote:&lt;br&gt;&lt;/div&gt;&lt;blockquote&nbsp;class=&quot;gmail_quote&quot;&nbsp;style=&quot;margin:0px&nbsp;0px&nbsp;0px&nbsp;0.8ex;border-left:1px&nbsp;solid&nbsp;rgb(204,204,204);padding-left:1ex&quot;&gt;<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+&lt;div&nbsp;style=&quot;overflow-wrap:&nbsp;break-word;&quot;&nbsp;lang=&quot;EN-US&quot;&gt;<br>
+&lt;div&nbsp;class=&quot;gmail-m_754167967265156768WordSection1&quot;&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;Hi&nbsp;All,&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;I&nbsp;have&nbsp;used&nbsp;-v=&lt;level&gt;&nbsp;successfully&nbsp;in&nbsp;the&nbsp;stratum&nbsp;flags&nbsp;file.&nbsp;But&nbsp;when&nbsp;I&nbsp;add&nbsp;-vmodule=&lt;x=y&gt;,&nbsp;it&nbsp;does&nbsp;not&nbsp;seem&nbsp;to&nbsp;take&nbsp;effect.&nbsp;What&nbsp;am&nbsp;I&nbsp;doing&nbsp;wrong?&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;u&gt;&lt;/u&gt; &lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;Also,&nbsp;how&nbsp;do&nbsp;you&nbsp;set&nbsp;the&nbsp;log&nbsp;levels&nbsp;for&nbsp;the&nbsp;barefoot&nbsp;modules&nbsp;(as&nbsp;opposed&nbsp;to&nbsp;the&nbsp;stratum&nbsp;code&nbsp;per&nbsp;se)?&nbsp;Thanks,&nbsp;N&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;u&gt;&lt;/u&gt; &lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;Separate&nbsp;examples:&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;font-family:&quot;Courier&nbsp;New&quot;&quot;&gt;-v=5&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;font-family:&quot;Courier&nbsp;New&quot;&quot;&gt;-vmodule=p4_service=0&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;font-family:&quot;Courier&nbsp;New&quot;&quot;&gt;&lt;u&gt;&lt;/u&gt; &lt;u&gt;&lt;/u&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;font-family:&quot;Courier&nbsp;New&quot;&quot;&gt;-v=5&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;font-family:&quot;Courier&nbsp;New&quot;&quot;&gt;-vmodule=”p4_service=0”&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;font-family:&quot;Courier&nbsp;New&quot;&quot;&gt;&lt;u&gt;&lt;/u&gt; &lt;u&gt;&lt;/u&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;font-family:&quot;Courier&nbsp;New&quot;&quot;&gt;-v=5&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;font-family:&quot;Courier&nbsp;New&quot;&quot;&gt;-vmodule=bfrt_*=0&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;font-family:&quot;Courier&nbsp;New&quot;&quot;&gt;&lt;u&gt;&lt;/u&gt; &lt;u&gt;&lt;/u&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&lt;/div&gt;<br>
+&lt;/div&gt;<br>
+<br>
+_______________________________________________&lt;br&gt;<br>
+stratum-dev&nbsp;mailing&nbsp;list&lt;br&gt;<br>
+&lt;a&nbsp;href=&quot;mailto:stratum-dev@lists.stratumproject.org&quot;&nbsp;target=&quot;_blank&quot;&gt;stratum-dev@lists.stratumproject.org&lt;/a&gt;&lt;br&gt;<br>
+&lt;a&nbsp;href=&quot;https://lists.stratumproject.org/listinfo/stratum-dev&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;https://lists.stratumproject.org/listinfo/stratum-dev&lt;/a&gt;&lt;/blockquote&gt;&lt;/div&gt;<br>
+
+</tt>

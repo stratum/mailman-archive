@@ -1,0 +1,1655 @@
+From yi at opennetworking.org  Thu Dec  2 20:56:42 2021
+From: yi at opennetworking.org (yi at opennetworking.org)
+Date: Thu, 02 Dec 2021 20:56:42 +0000
+Subject: [stratum-dev] Canceled event with note: Stratum TST Meeting @ Thu
+ Dec 2, 2021 1:30pm - 2pm (PST) (stratum-dev@lists.stratumproject.org)
+Message-ID: <0000000000000d54e005d2300756@google.com>
+
+This event has been canceled with this note:
+"No new topics this week. See you next time!"
+
+Title: Stratum TST Meeting
+Stratum Technical Steering Team MeetingJoin Zoom  
+Meetinghttps://onf.zoom.us/j/787501745?pwd=OHdtQVA3eXdoeThxZ0UzS1VVWEtxQT09Meeting  
+ID: 787 501 745Passcode: 258532One tap mobile+13126266799,,787501745# US  
+(Chicago)+19292056099,,787501745# US (New York)Agenda and Meeting  
+Noteshttps://docs.google.com/document/d/1ret8Vbnl-xbLgNsnDEH-jWP2_WwDYym4zDn6me3tiTA/editThe  
+plan is to reserve the 1st and 3rd Thursdays of each month for  
+presentations and community updates. If you can only attend some of these  
+meetings, those will be more interesting. The other meetings will be more  
+informal&nbsp;sync ups to discuss current issues, progress, and status. You  
+can see what presentations are planned by checking the agenda  
+above.Supporting Slides and Previous  
+Recordingshttps://drive.google.com/drive/folders/1ZeYp6RwIGYi9VnIctvnKF1c1NxiAXeOT----------------------------------------------------------------Dial  
+by your location&nbsp; &nbsp; &nbsp; &nbsp; +1 312 626 6799 US  
+(Chicago)&nbsp; &nbsp; &nbsp; &nbsp; +1 929 205 6099 US (New York)&nbsp;  
+&nbsp; &nbsp; &nbsp; +1 301 715 8592 US (Germantown)&nbsp; &nbsp; &nbsp;  
+&nbsp; +1 346 248 7799 US (Houston)&nbsp; &nbsp; &nbsp; &nbsp; +1 669 900  
+6833 US (San Jose)&nbsp; &nbsp; &nbsp; &nbsp; +1 253 215 8782 US  
+(Tacoma)&nbsp; &nbsp; &nbsp; &nbsp; 888 788 0099 US Toll-free&nbsp; &nbsp;  
+&nbsp; &nbsp; 877 853 5247 US Toll-free&nbsp; &nbsp; &nbsp; &nbsp; +61 2  
+8015 6011 Australia&nbsp; &nbsp; &nbsp; &nbsp; +61 3 7018 2005  
+Australia&nbsp; &nbsp; &nbsp; &nbsp; +61 7 3185 3730 Australia&nbsp; &nbsp;  
+&nbsp; &nbsp; +61 8 6119 3900 Australia&nbsp; &nbsp; &nbsp; &nbsp; +61 8  
+7150 1149 Australia&nbsp; &nbsp; &nbsp; &nbsp; 1800 945 157 Australia  
+Toll-free&nbsp; &nbsp; &nbsp; &nbsp; 1800 893 423 Australia Toll-free&nbsp;  
+&nbsp; &nbsp; &nbsp; +81 363 628 317 Japan&nbsp; &nbsp; &nbsp; &nbsp; +81  
+524 564 439 Japan&nbsp; &nbsp; &nbsp; &nbsp; +81 3 4578 1488 Japan&nbsp;  
+&nbsp; &nbsp; &nbsp; 0 800 100 5040 Japan Toll-free&nbsp; &nbsp; &nbsp;  
+&nbsp; 00 663 381 4092 Japan Toll-free&nbsp; &nbsp; &nbsp; &nbsp; +49 69  
+7104 9922 Germany&nbsp; &nbsp; &nbsp; &nbsp; +49 30 5679 5800 Germany&nbsp;  
+&nbsp; &nbsp; &nbsp; +49 69 3807 9883 Germany&nbsp; &nbsp; &nbsp; &nbsp;  
++49 695 050 2596 Germany&nbsp; &nbsp; &nbsp; &nbsp; 0 800 1800 150 Germany  
+Toll-free&nbsp; &nbsp; &nbsp; &nbsp; 0 800 000 6954 Germany Toll-free&nbsp;  
+&nbsp; &nbsp; &nbsp; +886 (2) 7741 7473 Taiwan&nbsp; &nbsp; &nbsp; &nbsp;  
+08 0909 9864 Taiwan Toll-free&nbsp; &nbsp; &nbsp; &nbsp; +48 22 307 3488  
+Poland&nbsp; &nbsp; &nbsp; &nbsp; +48 22 398 7356 Poland&nbsp; &nbsp;  
+&nbsp; &nbsp; +48 22 306 5342 Poland&nbsp; &nbsp; &nbsp; &nbsp; 00 800 321  
+1464 Poland Toll-free&nbsp; &nbsp; &nbsp; &nbsp; 00 800 112 5171 Poland  
+Toll-free&nbsp; &nbsp; &nbsp; &nbsp; +44 208 080 6592 United Kingdom&nbsp;  
+&nbsp; &nbsp; &nbsp; +44 330 088 5830 United Kingdom&nbsp; &nbsp; &nbsp;  
+&nbsp; +44 131 460 1196 United Kingdom&nbsp; &nbsp; &nbsp; &nbsp; +44 203  
+481 5237 United Kingdom&nbsp; &nbsp; &nbsp; &nbsp; +44 203 481 5240 United  
+Kingdom&nbsp; &nbsp; &nbsp; &nbsp; +44 203 901 7895 United Kingdom&nbsp;  
+&nbsp; &nbsp; &nbsp; +44 208 080 6591 United Kingdom&nbsp; &nbsp; &nbsp;  
+&nbsp; 0 800 260 5801 United Kingdom Toll-free&nbsp; &nbsp; &nbsp; &nbsp; 0  
+800 031 5717 United Kingdom Toll-free&nbsp; &nbsp; &nbsp; &nbsp; +353 1 536  
+9320 Ireland&nbsp; &nbsp; &nbsp; &nbsp; +353 1 653 3895 Ireland&nbsp;  
+&nbsp; &nbsp; &nbsp; +353 1 653 3897 Ireland&nbsp; &nbsp; &nbsp; &nbsp;  
++353 1 653 3898 Ireland&nbsp; &nbsp; &nbsp; &nbsp; +353 6 163 9031  
+Ireland&nbsp; &nbsp; &nbsp; &nbsp; +353 1 240 8941 Ireland&nbsp; &nbsp;  
+&nbsp; &nbsp; 1800 949 238 Ireland Toll-free&nbsp; &nbsp; &nbsp; &nbsp;  
+1800 901 561 Ireland Toll-freeMeeting ID: 787 501 745Find your local  
+number:  
+https://onf.zoom.us/u/ad1osSbywU----------------------------------------------------------------If  
+you would like to get added to the calendar invite, please ask Brian.
+When: Thu Dec 2, 2021 1:30pm – 2pm Pacific Time - Los Angeles
+Where: (Online conference room)-Zoom-3, MP-1-Large Conference Room (25)
+Calendar: stratum-dev at lists.stratumproject.org
+Who:
+     * bocon at opennetworking.org - creator
+     * max at opennetworking.org
+     * bill at opennetworking.org
+     * mohammed.habeeb at inventec.com
+     * yi at opennetworking.org
+     * carmelo at opennetworking.org
+     * xiao.david at inventec.com
+     * Rich Renner
+     * Devjit Gopalpur
+     * Alireza Ghaffarkhah
+     * Leonid Khedyk
+     * niloofar at opennetworking.org
+     * hsuanchung.lee at qct.io
+     * Arkadiy Shapiro
+     * you at opennetworking.org
+     * abhilash at opennetworking.org
+     * David Gengenbach
+     * siddesh at opennetworking.org
+     * craig.stevens at dell.com
+     * asydney007 at gmail.com
+     * stratum-dev at lists.stratumproject.org
+     * maksym.kovaliov at plvision.eu
+     * maksym.tropets at plvision.eu
+     * jeff_catlin at edge-core.com
+     * chris.sommers at keysight.com
+     * John L
+     * cmace at extremenetworks.com
+     * Poongovan Ponnavaikko
+
+
+Invitation from Google Calendar: https://calendar.google.com/calendar/
+
+You are receiving this courtesy email at the account  
+stratum-dev at lists.stratumproject.org because you are an attendee of this  
+event.
+
+To stop receiving future updates for this event, decline this event.  
+Alternatively you can sign up for a Google account at  
+https://calendar.google.com/calendar/ and control your notification  
+settings for your entire calendar.
+
+Forwarding this invitation could allow any recipient to send a response to  
+the organizer and be added to the guest list, or invite others regardless  
+of their own invitation status, or to modify your RSVP. Learn more at  
+https://support.google.com/calendar/answer/37135#forwarding
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20211202/9adc3996/attachment-0001.html>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: not available
+Type: text/calendar
+Size: 10331 bytes
+Desc: not available
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20211202/9adc3996/attachment-0001.ics>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: invite.ics
+Type: application/ics
+Size: 10498 bytes
+Desc: not available
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20211202/9adc3996/attachment-0001.bin>
+
+From bocon at opennetworking.org  Sun Dec 12 07:19:35 2021
+From: bocon at opennetworking.org (bocon at opennetworking.org)
+Date: Sun, 12 Dec 2021 07:19:35 +0000
+Subject: [stratum-dev] Canceled event: Stratum TST Meeting @ Thu Dec 30,
+ 2021 4:30pm - 5pm (EST) (stratum-dev@lists.stratumproject.org)
+Message-ID: <0000000000003f967005d2edc735@google.com>
+
+This event has been canceled.
+
+Title: Stratum TST Meeting
+Stratum Technical Steering Team MeetingJoin Zoom  
+Meetinghttps://onf.zoom.us/j/787501745?pwd=OHdtQVA3eXdoeThxZ0UzS1VVWEtxQT09Meeting  
+ID: 787 501 745Passcode: 258532One tap mobile+13126266799,,787501745# US  
+(Chicago)+19292056099,,787501745# US (New York)Agenda and Meeting  
+Noteshttps://docs.google.com/document/d/1ret8Vbnl-xbLgNsnDEH-jWP2_WwDYym4zDn6me3tiTA/editThe  
+plan is to reserve the 1st and 3rd Thursdays of each month for  
+presentations and community updates. If you can only attend some of these  
+meetings, those will be more interesting. The other meetings will be more  
+informal&nbsp;sync ups to discuss current issues, progress, and status. You  
+can see what presentations are planned by checking the agenda  
+above.Supporting Slides and Previous  
+Recordingshttps://drive.google.com/drive/folders/1ZeYp6RwIGYi9VnIctvnKF1c1NxiAXeOT----------------------------------------------------------------Dial  
+by your location&nbsp; &nbsp; &nbsp; &nbsp; +1 312 626 6799 US  
+(Chicago)&nbsp; &nbsp; &nbsp; &nbsp; +1 929 205 6099 US (New York)&nbsp;  
+&nbsp; &nbsp; &nbsp; +1 301 715 8592 US (Germantown)&nbsp; &nbsp; &nbsp;  
+&nbsp; +1 346 248 7799 US (Houston)&nbsp; &nbsp; &nbsp; &nbsp; +1 669 900  
+6833 US (San Jose)&nbsp; &nbsp; &nbsp; &nbsp; +1 253 215 8782 US  
+(Tacoma)&nbsp; &nbsp; &nbsp; &nbsp; 888 788 0099 US Toll-free&nbsp; &nbsp;  
+&nbsp; &nbsp; 877 853 5247 US Toll-free&nbsp; &nbsp; &nbsp; &nbsp; +61 2  
+8015 6011 Australia&nbsp; &nbsp; &nbsp; &nbsp; +61 3 7018 2005  
+Australia&nbsp; &nbsp; &nbsp; &nbsp; +61 7 3185 3730 Australia&nbsp; &nbsp;  
+&nbsp; &nbsp; +61 8 6119 3900 Australia&nbsp; &nbsp; &nbsp; &nbsp; +61 8  
+7150 1149 Australia&nbsp; &nbsp; &nbsp; &nbsp; 1800 945 157 Australia  
+Toll-free&nbsp; &nbsp; &nbsp; &nbsp; 1800 893 423 Australia Toll-free&nbsp;  
+&nbsp; &nbsp; &nbsp; +81 363 628 317 Japan&nbsp; &nbsp; &nbsp; &nbsp; +81  
+524 564 439 Japan&nbsp; &nbsp; &nbsp; &nbsp; +81 3 4578 1488 Japan&nbsp;  
+&nbsp; &nbsp; &nbsp; 0 800 100 5040 Japan Toll-free&nbsp; &nbsp; &nbsp;  
+&nbsp; 00 663 381 4092 Japan Toll-free&nbsp; &nbsp; &nbsp; &nbsp; +49 69  
+7104 9922 Germany&nbsp; &nbsp; &nbsp; &nbsp; +49 30 5679 5800 Germany&nbsp;  
+&nbsp; &nbsp; &nbsp; +49 69 3807 9883 Germany&nbsp; &nbsp; &nbsp; &nbsp;  
++49 695 050 2596 Germany&nbsp; &nbsp; &nbsp; &nbsp; 0 800 1800 150 Germany  
+Toll-free&nbsp; &nbsp; &nbsp; &nbsp; 0 800 000 6954 Germany Toll-free&nbsp;  
+&nbsp; &nbsp; &nbsp; +886 (2) 7741 7473 Taiwan&nbsp; &nbsp; &nbsp; &nbsp;  
+08 0909 9864 Taiwan Toll-free&nbsp; &nbsp; &nbsp; &nbsp; +48 22 307 3488  
+Poland&nbsp; &nbsp; &nbsp; &nbsp; +48 22 398 7356 Poland&nbsp; &nbsp;  
+&nbsp; &nbsp; +48 22 306 5342 Poland&nbsp; &nbsp; &nbsp; &nbsp; 00 800 321  
+1464 Poland Toll-free&nbsp; &nbsp; &nbsp; &nbsp; 00 800 112 5171 Poland  
+Toll-free&nbsp; &nbsp; &nbsp; &nbsp; +44 208 080 6592 United Kingdom&nbsp;  
+&nbsp; &nbsp; &nbsp; +44 330 088 5830 United Kingdom&nbsp; &nbsp; &nbsp;  
+&nbsp; +44 131 460 1196 United Kingdom&nbsp; &nbsp; &nbsp; &nbsp; +44 203  
+481 5237 United Kingdom&nbsp; &nbsp; &nbsp; &nbsp; +44 203 481 5240 United  
+Kingdom&nbsp; &nbsp; &nbsp; &nbsp; +44 203 901 7895 United Kingdom&nbsp;  
+&nbsp; &nbsp; &nbsp; +44 208 080 6591 United Kingdom&nbsp; &nbsp; &nbsp;  
+&nbsp; 0 800 260 5801 United Kingdom Toll-free&nbsp; &nbsp; &nbsp; &nbsp; 0  
+800 031 5717 United Kingdom Toll-free&nbsp; &nbsp; &nbsp; &nbsp; +353 1 536  
+9320 Ireland&nbsp; &nbsp; &nbsp; &nbsp; +353 1 653 3895 Ireland&nbsp;  
+&nbsp; &nbsp; &nbsp; +353 1 653 3897 Ireland&nbsp; &nbsp; &nbsp; &nbsp;  
++353 1 653 3898 Ireland&nbsp; &nbsp; &nbsp; &nbsp; +353 6 163 9031  
+Ireland&nbsp; &nbsp; &nbsp; &nbsp; +353 1 240 8941 Ireland&nbsp; &nbsp;  
+&nbsp; &nbsp; 1800 949 238 Ireland Toll-free&nbsp; &nbsp; &nbsp; &nbsp;  
+1800 901 561 Ireland Toll-freeMeeting ID: 787 501 745Find your local  
+number:  
+https://onf.zoom.us/u/ad1osSbywU----------------------------------------------------------------If  
+you would like to get added to the calendar invite, please ask Brian.
+When: Thu Dec 30, 2021 4:30pm – 5pm Eastern Time - New York
+Where: (Online conference room)-Zoom-3, MP-1-Large Conference Room (25)
+Calendar: stratum-dev at lists.stratumproject.org
+Who:
+     * bocon at opennetworking.org - creator
+     * max at opennetworking.org
+     * bill at opennetworking.org
+     * mohammed.habeeb at inventec.com
+     * yi at opennetworking.org
+     * carmelo at opennetworking.org
+     * xiao.david at inventec.com
+     * Rich Renner
+     * Devjit Gopalpur
+     * Alireza Ghaffarkhah
+     * Leonid Khedyk
+     * niloofar at opennetworking.org
+     * hsuanchung.lee at qct.io
+     * Arkadiy Shapiro
+     * you at opennetworking.org
+     * abhilash at opennetworking.org
+     * David Gengenbach
+     * siddesh at opennetworking.org
+     * craig.stevens at dell.com
+     * asydney007 at gmail.com
+     * stratum-dev at lists.stratumproject.org
+     * maksym.kovaliov at plvision.eu
+     * maksym.tropets at plvision.eu
+     * jeff_catlin at edge-core.com
+     * chris.sommers at keysight.com
+     * John L
+     * cmace at extremenetworks.com
+     * Poongovan Ponnavaikko
+
+
+Invitation from Google Calendar: https://calendar.google.com/calendar/
+
+You are receiving this courtesy email at the account  
+stratum-dev at lists.stratumproject.org because you are an attendee of this  
+event.
+
+To stop receiving future updates for this event, decline this event.  
+Alternatively you can sign up for a Google account at  
+https://calendar.google.com/calendar/ and control your notification  
+settings for your entire calendar.
+
+Forwarding this invitation could allow any recipient to send a response to  
+the organizer and be added to the guest list, or invite others regardless  
+of their own invitation status, or to modify your RSVP. Learn more at  
+https://support.google.com/calendar/answer/37135#forwarding
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20211212/33192132/attachment-0001.html>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: not available
+Type: text/calendar
+Size: 9901 bytes
+Desc: not available
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20211212/33192132/attachment-0001.ics>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: invite.ics
+Type: application/ics
+Size: 10050 bytes
+Desc: not available
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20211212/33192132/attachment-0001.bin>
+
+From bocon at opennetworking.org  Sun Dec 12 07:19:35 2021
+From: bocon at opennetworking.org (bocon at opennetworking.org)
+Date: Sun, 12 Dec 2021 07:19:35 +0000
+Subject: [stratum-dev] Canceled event: Stratum TST Meeting @ Thu Jan 6,
+ 2022 4:30pm - 5pm (EST) (stratum-dev@lists.stratumproject.org)
+Message-ID: <0000000000003be09e05d2edc790@google.com>
+
+This event has been canceled.
+
+Title: Stratum TST Meeting
+Stratum Technical Steering Team MeetingJoin Zoom  
+Meetinghttps://onf.zoom.us/j/787501745?pwd=OHdtQVA3eXdoeThxZ0UzS1VVWEtxQT09Meeting  
+ID: 787 501 745Passcode: 258532One tap mobile+13126266799,,787501745# US  
+(Chicago)+19292056099,,787501745# US (New York)Agenda and Meeting  
+Noteshttps://docs.google.com/document/d/1ret8Vbnl-xbLgNsnDEH-jWP2_WwDYym4zDn6me3tiTA/editThe  
+plan is to reserve the 1st and 3rd Thursdays of each month for  
+presentations and community updates. If you can only attend some of these  
+meetings, those will be more interesting. The other meetings will be more  
+informal&nbsp;sync ups to discuss current issues, progress, and status. You  
+can see what presentations are planned by checking the agenda  
+above.Supporting Slides and Previous  
+Recordingshttps://drive.google.com/drive/folders/1ZeYp6RwIGYi9VnIctvnKF1c1NxiAXeOT----------------------------------------------------------------Dial  
+by your location&nbsp; &nbsp; &nbsp; &nbsp; +1 312 626 6799 US  
+(Chicago)&nbsp; &nbsp; &nbsp; &nbsp; +1 929 205 6099 US (New York)&nbsp;  
+&nbsp; &nbsp; &nbsp; +1 301 715 8592 US (Germantown)&nbsp; &nbsp; &nbsp;  
+&nbsp; +1 346 248 7799 US (Houston)&nbsp; &nbsp; &nbsp; &nbsp; +1 669 900  
+6833 US (San Jose)&nbsp; &nbsp; &nbsp; &nbsp; +1 253 215 8782 US  
+(Tacoma)&nbsp; &nbsp; &nbsp; &nbsp; 888 788 0099 US Toll-free&nbsp; &nbsp;  
+&nbsp; &nbsp; 877 853 5247 US Toll-free&nbsp; &nbsp; &nbsp; &nbsp; +61 2  
+8015 6011 Australia&nbsp; &nbsp; &nbsp; &nbsp; +61 3 7018 2005  
+Australia&nbsp; &nbsp; &nbsp; &nbsp; +61 7 3185 3730 Australia&nbsp; &nbsp;  
+&nbsp; &nbsp; +61 8 6119 3900 Australia&nbsp; &nbsp; &nbsp; &nbsp; +61 8  
+7150 1149 Australia&nbsp; &nbsp; &nbsp; &nbsp; 1800 945 157 Australia  
+Toll-free&nbsp; &nbsp; &nbsp; &nbsp; 1800 893 423 Australia Toll-free&nbsp;  
+&nbsp; &nbsp; &nbsp; +81 363 628 317 Japan&nbsp; &nbsp; &nbsp; &nbsp; +81  
+524 564 439 Japan&nbsp; &nbsp; &nbsp; &nbsp; +81 3 4578 1488 Japan&nbsp;  
+&nbsp; &nbsp; &nbsp; 0 800 100 5040 Japan Toll-free&nbsp; &nbsp; &nbsp;  
+&nbsp; 00 663 381 4092 Japan Toll-free&nbsp; &nbsp; &nbsp; &nbsp; +49 69  
+7104 9922 Germany&nbsp; &nbsp; &nbsp; &nbsp; +49 30 5679 5800 Germany&nbsp;  
+&nbsp; &nbsp; &nbsp; +49 69 3807 9883 Germany&nbsp; &nbsp; &nbsp; &nbsp;  
++49 695 050 2596 Germany&nbsp; &nbsp; &nbsp; &nbsp; 0 800 1800 150 Germany  
+Toll-free&nbsp; &nbsp; &nbsp; &nbsp; 0 800 000 6954 Germany Toll-free&nbsp;  
+&nbsp; &nbsp; &nbsp; +886 (2) 7741 7473 Taiwan&nbsp; &nbsp; &nbsp; &nbsp;  
+08 0909 9864 Taiwan Toll-free&nbsp; &nbsp; &nbsp; &nbsp; +48 22 307 3488  
+Poland&nbsp; &nbsp; &nbsp; &nbsp; +48 22 398 7356 Poland&nbsp; &nbsp;  
+&nbsp; &nbsp; +48 22 306 5342 Poland&nbsp; &nbsp; &nbsp; &nbsp; 00 800 321  
+1464 Poland Toll-free&nbsp; &nbsp; &nbsp; &nbsp; 00 800 112 5171 Poland  
+Toll-free&nbsp; &nbsp; &nbsp; &nbsp; +44 208 080 6592 United Kingdom&nbsp;  
+&nbsp; &nbsp; &nbsp; +44 330 088 5830 United Kingdom&nbsp; &nbsp; &nbsp;  
+&nbsp; +44 131 460 1196 United Kingdom&nbsp; &nbsp; &nbsp; &nbsp; +44 203  
+481 5237 United Kingdom&nbsp; &nbsp; &nbsp; &nbsp; +44 203 481 5240 United  
+Kingdom&nbsp; &nbsp; &nbsp; &nbsp; +44 203 901 7895 United Kingdom&nbsp;  
+&nbsp; &nbsp; &nbsp; +44 208 080 6591 United Kingdom&nbsp; &nbsp; &nbsp;  
+&nbsp; 0 800 260 5801 United Kingdom Toll-free&nbsp; &nbsp; &nbsp; &nbsp; 0  
+800 031 5717 United Kingdom Toll-free&nbsp; &nbsp; &nbsp; &nbsp; +353 1 536  
+9320 Ireland&nbsp; &nbsp; &nbsp; &nbsp; +353 1 653 3895 Ireland&nbsp;  
+&nbsp; &nbsp; &nbsp; +353 1 653 3897 Ireland&nbsp; &nbsp; &nbsp; &nbsp;  
++353 1 653 3898 Ireland&nbsp; &nbsp; &nbsp; &nbsp; +353 6 163 9031  
+Ireland&nbsp; &nbsp; &nbsp; &nbsp; +353 1 240 8941 Ireland&nbsp; &nbsp;  
+&nbsp; &nbsp; 1800 949 238 Ireland Toll-free&nbsp; &nbsp; &nbsp; &nbsp;  
+1800 901 561 Ireland Toll-freeMeeting ID: 787 501 745Find your local  
+number:  
+https://onf.zoom.us/u/ad1osSbywU----------------------------------------------------------------If  
+you would like to get added to the calendar invite, please ask Brian.
+When: Thu Jan 6, 2022 4:30pm – 5pm Eastern Time - New York
+Where: (Online conference room)-Zoom-3, MP-1-Large Conference Room (25)
+Calendar: stratum-dev at lists.stratumproject.org
+Who:
+     * bocon at opennetworking.org - creator
+     * max at opennetworking.org
+     * bill at opennetworking.org
+     * mohammed.habeeb at inventec.com
+     * yi at opennetworking.org
+     * carmelo at opennetworking.org
+     * xiao.david at inventec.com
+     * Rich Renner
+     * Devjit Gopalpur
+     * Alireza Ghaffarkhah
+     * Leonid Khedyk
+     * niloofar at opennetworking.org
+     * hsuanchung.lee at qct.io
+     * Arkadiy Shapiro
+     * you at opennetworking.org
+     * abhilash at opennetworking.org
+     * David Gengenbach
+     * siddesh at opennetworking.org
+     * craig.stevens at dell.com
+     * asydney007 at gmail.com
+     * stratum-dev at lists.stratumproject.org
+     * maksym.kovaliov at plvision.eu
+     * maksym.tropets at plvision.eu
+     * jeff_catlin at edge-core.com
+     * chris.sommers at keysight.com
+     * John L
+     * cmace at extremenetworks.com
+     * Poongovan Ponnavaikko
+
+
+Invitation from Google Calendar: https://calendar.google.com/calendar/
+
+You are receiving this courtesy email at the account  
+stratum-dev at lists.stratumproject.org because you are an attendee of this  
+event.
+
+To stop receiving future updates for this event, decline this event.  
+Alternatively you can sign up for a Google account at  
+https://calendar.google.com/calendar/ and control your notification  
+settings for your entire calendar.
+
+Forwarding this invitation could allow any recipient to send a response to  
+the organizer and be added to the guest list, or invite others regardless  
+of their own invitation status, or to modify your RSVP. Learn more at  
+https://support.google.com/calendar/answer/37135#forwarding
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20211212/a4db7693/attachment-0001.html>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: not available
+Type: text/calendar
+Size: 9901 bytes
+Desc: not available
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20211212/a4db7693/attachment-0001.ics>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: invite.ics
+Type: application/ics
+Size: 10050 bytes
+Desc: not available
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20211212/a4db7693/attachment-0001.bin>
+
+From bocon at opennetworking.org  Sun Dec 12 07:19:35 2021
+From: bocon at opennetworking.org (bocon at opennetworking.org)
+Date: Sun, 12 Dec 2021 07:19:35 +0000
+Subject: [stratum-dev] Canceled event: Stratum TST Meeting @ Thu Jan 27,
+ 2022 4:30pm - 5pm (EST) (stratum-dev@lists.stratumproject.org)
+Message-ID: <00000000000041741c05d2edc7dd@google.com>
+
+This event has been canceled.
+
+Title: Stratum TST Meeting
+Stratum Technical Steering Team MeetingJoin Zoom  
+Meetinghttps://onf.zoom.us/j/787501745?pwd=OHdtQVA3eXdoeThxZ0UzS1VVWEtxQT09Meeting  
+ID: 787 501 745Passcode: 258532One tap mobile+13126266799,,787501745# US  
+(Chicago)+19292056099,,787501745# US (New York)Agenda and Meeting  
+Noteshttps://docs.google.com/document/d/1ret8Vbnl-xbLgNsnDEH-jWP2_WwDYym4zDn6me3tiTA/editThe  
+plan is to reserve the 1st and 3rd Thursdays of each month for  
+presentations and community updates. If you can only attend some of these  
+meetings, those will be more interesting. The other meetings will be more  
+informal&nbsp;sync ups to discuss current issues, progress, and status. You  
+can see what presentations are planned by checking the agenda  
+above.Supporting Slides and Previous  
+Recordingshttps://drive.google.com/drive/folders/1ZeYp6RwIGYi9VnIctvnKF1c1NxiAXeOT----------------------------------------------------------------Dial  
+by your location&nbsp; &nbsp; &nbsp; &nbsp; +1 312 626 6799 US  
+(Chicago)&nbsp; &nbsp; &nbsp; &nbsp; +1 929 205 6099 US (New York)&nbsp;  
+&nbsp; &nbsp; &nbsp; +1 301 715 8592 US (Germantown)&nbsp; &nbsp; &nbsp;  
+&nbsp; +1 346 248 7799 US (Houston)&nbsp; &nbsp; &nbsp; &nbsp; +1 669 900  
+6833 US (San Jose)&nbsp; &nbsp; &nbsp; &nbsp; +1 253 215 8782 US  
+(Tacoma)&nbsp; &nbsp; &nbsp; &nbsp; 888 788 0099 US Toll-free&nbsp; &nbsp;  
+&nbsp; &nbsp; 877 853 5247 US Toll-free&nbsp; &nbsp; &nbsp; &nbsp; +61 2  
+8015 6011 Australia&nbsp; &nbsp; &nbsp; &nbsp; +61 3 7018 2005  
+Australia&nbsp; &nbsp; &nbsp; &nbsp; +61 7 3185 3730 Australia&nbsp; &nbsp;  
+&nbsp; &nbsp; +61 8 6119 3900 Australia&nbsp; &nbsp; &nbsp; &nbsp; +61 8  
+7150 1149 Australia&nbsp; &nbsp; &nbsp; &nbsp; 1800 945 157 Australia  
+Toll-free&nbsp; &nbsp; &nbsp; &nbsp; 1800 893 423 Australia Toll-free&nbsp;  
+&nbsp; &nbsp; &nbsp; +81 363 628 317 Japan&nbsp; &nbsp; &nbsp; &nbsp; +81  
+524 564 439 Japan&nbsp; &nbsp; &nbsp; &nbsp; +81 3 4578 1488 Japan&nbsp;  
+&nbsp; &nbsp; &nbsp; 0 800 100 5040 Japan Toll-free&nbsp; &nbsp; &nbsp;  
+&nbsp; 00 663 381 4092 Japan Toll-free&nbsp; &nbsp; &nbsp; &nbsp; +49 69  
+7104 9922 Germany&nbsp; &nbsp; &nbsp; &nbsp; +49 30 5679 5800 Germany&nbsp;  
+&nbsp; &nbsp; &nbsp; +49 69 3807 9883 Germany&nbsp; &nbsp; &nbsp; &nbsp;  
++49 695 050 2596 Germany&nbsp; &nbsp; &nbsp; &nbsp; 0 800 1800 150 Germany  
+Toll-free&nbsp; &nbsp; &nbsp; &nbsp; 0 800 000 6954 Germany Toll-free&nbsp;  
+&nbsp; &nbsp; &nbsp; +886 (2) 7741 7473 Taiwan&nbsp; &nbsp; &nbsp; &nbsp;  
+08 0909 9864 Taiwan Toll-free&nbsp; &nbsp; &nbsp; &nbsp; +48 22 307 3488  
+Poland&nbsp; &nbsp; &nbsp; &nbsp; +48 22 398 7356 Poland&nbsp; &nbsp;  
+&nbsp; &nbsp; +48 22 306 5342 Poland&nbsp; &nbsp; &nbsp; &nbsp; 00 800 321  
+1464 Poland Toll-free&nbsp; &nbsp; &nbsp; &nbsp; 00 800 112 5171 Poland  
+Toll-free&nbsp; &nbsp; &nbsp; &nbsp; +44 208 080 6592 United Kingdom&nbsp;  
+&nbsp; &nbsp; &nbsp; +44 330 088 5830 United Kingdom&nbsp; &nbsp; &nbsp;  
+&nbsp; +44 131 460 1196 United Kingdom&nbsp; &nbsp; &nbsp; &nbsp; +44 203  
+481 5237 United Kingdom&nbsp; &nbsp; &nbsp; &nbsp; +44 203 481 5240 United  
+Kingdom&nbsp; &nbsp; &nbsp; &nbsp; +44 203 901 7895 United Kingdom&nbsp;  
+&nbsp; &nbsp; &nbsp; +44 208 080 6591 United Kingdom&nbsp; &nbsp; &nbsp;  
+&nbsp; 0 800 260 5801 United Kingdom Toll-free&nbsp; &nbsp; &nbsp; &nbsp; 0  
+800 031 5717 United Kingdom Toll-free&nbsp; &nbsp; &nbsp; &nbsp; +353 1 536  
+9320 Ireland&nbsp; &nbsp; &nbsp; &nbsp; +353 1 653 3895 Ireland&nbsp;  
+&nbsp; &nbsp; &nbsp; +353 1 653 3897 Ireland&nbsp; &nbsp; &nbsp; &nbsp;  
++353 1 653 3898 Ireland&nbsp; &nbsp; &nbsp; &nbsp; +353 6 163 9031  
+Ireland&nbsp; &nbsp; &nbsp; &nbsp; +353 1 240 8941 Ireland&nbsp; &nbsp;  
+&nbsp; &nbsp; 1800 949 238 Ireland Toll-free&nbsp; &nbsp; &nbsp; &nbsp;  
+1800 901 561 Ireland Toll-freeMeeting ID: 787 501 745Find your local  
+number:  
+https://onf.zoom.us/u/ad1osSbywU----------------------------------------------------------------If  
+you would like to get added to the calendar invite, please ask Brian.
+When: Thu Jan 27, 2022 4:30pm – 5pm Eastern Time - New York
+Where: (Online conference room)-Zoom-3, MP-1-Large Conference Room (25)
+Calendar: stratum-dev at lists.stratumproject.org
+Who:
+     * bocon at opennetworking.org - creator
+     * max at opennetworking.org
+     * bill at opennetworking.org
+     * mohammed.habeeb at inventec.com
+     * yi at opennetworking.org
+     * carmelo at opennetworking.org
+     * xiao.david at inventec.com
+     * Rich Renner
+     * Devjit Gopalpur
+     * Alireza Ghaffarkhah
+     * Leonid Khedyk
+     * niloofar at opennetworking.org
+     * hsuanchung.lee at qct.io
+     * Arkadiy Shapiro
+     * you at opennetworking.org
+     * abhilash at opennetworking.org
+     * David Gengenbach
+     * siddesh at opennetworking.org
+     * craig.stevens at dell.com
+     * asydney007 at gmail.com
+     * stratum-dev at lists.stratumproject.org
+     * maksym.kovaliov at plvision.eu
+     * maksym.tropets at plvision.eu
+     * jeff_catlin at edge-core.com
+     * chris.sommers at keysight.com
+     * John L
+     * cmace at extremenetworks.com
+     * Poongovan Ponnavaikko
+
+
+Invitation from Google Calendar: https://calendar.google.com/calendar/
+
+You are receiving this courtesy email at the account  
+stratum-dev at lists.stratumproject.org because you are an attendee of this  
+event.
+
+To stop receiving future updates for this event, decline this event.  
+Alternatively you can sign up for a Google account at  
+https://calendar.google.com/calendar/ and control your notification  
+settings for your entire calendar.
+
+Forwarding this invitation could allow any recipient to send a response to  
+the organizer and be added to the guest list, or invite others regardless  
+of their own invitation status, or to modify your RSVP. Learn more at  
+https://support.google.com/calendar/answer/37135#forwarding
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20211212/ff3aed12/attachment-0001.html>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: not available
+Type: text/calendar
+Size: 9901 bytes
+Desc: not available
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20211212/ff3aed12/attachment-0001.ics>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: invite.ics
+Type: application/ics
+Size: 10050 bytes
+Desc: not available
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20211212/ff3aed12/attachment-0001.bin>
+
+From bocon at opennetworking.org  Sun Dec 12 07:19:35 2021
+From: bocon at opennetworking.org (bocon at opennetworking.org)
+Date: Sun, 12 Dec 2021 07:19:35 +0000
+Subject: [stratum-dev] Canceled event: Stratum TST Meeting @ Thu Feb 3,
+ 2022 4:30pm - 5pm (EST) (stratum-dev@lists.stratumproject.org)
+Message-ID: <000000000000443ac305d2edc7b4@google.com>
+
+This event has been canceled.
+
+Title: Stratum TST Meeting
+Stratum Technical Steering Team MeetingJoin Zoom  
+Meetinghttps://onf.zoom.us/j/787501745?pwd=OHdtQVA3eXdoeThxZ0UzS1VVWEtxQT09Meeting  
+ID: 787 501 745Passcode: 258532One tap mobile+13126266799,,787501745# US  
+(Chicago)+19292056099,,787501745# US (New York)Agenda and Meeting  
+Noteshttps://docs.google.com/document/d/1ret8Vbnl-xbLgNsnDEH-jWP2_WwDYym4zDn6me3tiTA/editThe  
+plan is to reserve the 1st and 3rd Thursdays of each month for  
+presentations and community updates. If you can only attend some of these  
+meetings, those will be more interesting. The other meetings will be more  
+informal&nbsp;sync ups to discuss current issues, progress, and status. You  
+can see what presentations are planned by checking the agenda  
+above.Supporting Slides and Previous  
+Recordingshttps://drive.google.com/drive/folders/1ZeYp6RwIGYi9VnIctvnKF1c1NxiAXeOT----------------------------------------------------------------Dial  
+by your location&nbsp; &nbsp; &nbsp; &nbsp; +1 312 626 6799 US  
+(Chicago)&nbsp; &nbsp; &nbsp; &nbsp; +1 929 205 6099 US (New York)&nbsp;  
+&nbsp; &nbsp; &nbsp; +1 301 715 8592 US (Germantown)&nbsp; &nbsp; &nbsp;  
+&nbsp; +1 346 248 7799 US (Houston)&nbsp; &nbsp; &nbsp; &nbsp; +1 669 900  
+6833 US (San Jose)&nbsp; &nbsp; &nbsp; &nbsp; +1 253 215 8782 US  
+(Tacoma)&nbsp; &nbsp; &nbsp; &nbsp; 888 788 0099 US Toll-free&nbsp; &nbsp;  
+&nbsp; &nbsp; 877 853 5247 US Toll-free&nbsp; &nbsp; &nbsp; &nbsp; +61 2  
+8015 6011 Australia&nbsp; &nbsp; &nbsp; &nbsp; +61 3 7018 2005  
+Australia&nbsp; &nbsp; &nbsp; &nbsp; +61 7 3185 3730 Australia&nbsp; &nbsp;  
+&nbsp; &nbsp; +61 8 6119 3900 Australia&nbsp; &nbsp; &nbsp; &nbsp; +61 8  
+7150 1149 Australia&nbsp; &nbsp; &nbsp; &nbsp; 1800 945 157 Australia  
+Toll-free&nbsp; &nbsp; &nbsp; &nbsp; 1800 893 423 Australia Toll-free&nbsp;  
+&nbsp; &nbsp; &nbsp; +81 363 628 317 Japan&nbsp; &nbsp; &nbsp; &nbsp; +81  
+524 564 439 Japan&nbsp; &nbsp; &nbsp; &nbsp; +81 3 4578 1488 Japan&nbsp;  
+&nbsp; &nbsp; &nbsp; 0 800 100 5040 Japan Toll-free&nbsp; &nbsp; &nbsp;  
+&nbsp; 00 663 381 4092 Japan Toll-free&nbsp; &nbsp; &nbsp; &nbsp; +49 69  
+7104 9922 Germany&nbsp; &nbsp; &nbsp; &nbsp; +49 30 5679 5800 Germany&nbsp;  
+&nbsp; &nbsp; &nbsp; +49 69 3807 9883 Germany&nbsp; &nbsp; &nbsp; &nbsp;  
++49 695 050 2596 Germany&nbsp; &nbsp; &nbsp; &nbsp; 0 800 1800 150 Germany  
+Toll-free&nbsp; &nbsp; &nbsp; &nbsp; 0 800 000 6954 Germany Toll-free&nbsp;  
+&nbsp; &nbsp; &nbsp; +886 (2) 7741 7473 Taiwan&nbsp; &nbsp; &nbsp; &nbsp;  
+08 0909 9864 Taiwan Toll-free&nbsp; &nbsp; &nbsp; &nbsp; +48 22 307 3488  
+Poland&nbsp; &nbsp; &nbsp; &nbsp; +48 22 398 7356 Poland&nbsp; &nbsp;  
+&nbsp; &nbsp; +48 22 306 5342 Poland&nbsp; &nbsp; &nbsp; &nbsp; 00 800 321  
+1464 Poland Toll-free&nbsp; &nbsp; &nbsp; &nbsp; 00 800 112 5171 Poland  
+Toll-free&nbsp; &nbsp; &nbsp; &nbsp; +44 208 080 6592 United Kingdom&nbsp;  
+&nbsp; &nbsp; &nbsp; +44 330 088 5830 United Kingdom&nbsp; &nbsp; &nbsp;  
+&nbsp; +44 131 460 1196 United Kingdom&nbsp; &nbsp; &nbsp; &nbsp; +44 203  
+481 5237 United Kingdom&nbsp; &nbsp; &nbsp; &nbsp; +44 203 481 5240 United  
+Kingdom&nbsp; &nbsp; &nbsp; &nbsp; +44 203 901 7895 United Kingdom&nbsp;  
+&nbsp; &nbsp; &nbsp; +44 208 080 6591 United Kingdom&nbsp; &nbsp; &nbsp;  
+&nbsp; 0 800 260 5801 United Kingdom Toll-free&nbsp; &nbsp; &nbsp; &nbsp; 0  
+800 031 5717 United Kingdom Toll-free&nbsp; &nbsp; &nbsp; &nbsp; +353 1 536  
+9320 Ireland&nbsp; &nbsp; &nbsp; &nbsp; +353 1 653 3895 Ireland&nbsp;  
+&nbsp; &nbsp; &nbsp; +353 1 653 3897 Ireland&nbsp; &nbsp; &nbsp; &nbsp;  
++353 1 653 3898 Ireland&nbsp; &nbsp; &nbsp; &nbsp; +353 6 163 9031  
+Ireland&nbsp; &nbsp; &nbsp; &nbsp; +353 1 240 8941 Ireland&nbsp; &nbsp;  
+&nbsp; &nbsp; 1800 949 238 Ireland Toll-free&nbsp; &nbsp; &nbsp; &nbsp;  
+1800 901 561 Ireland Toll-freeMeeting ID: 787 501 745Find your local  
+number:  
+https://onf.zoom.us/u/ad1osSbywU----------------------------------------------------------------If  
+you would like to get added to the calendar invite, please ask Brian.
+When: Thu Feb 3, 2022 4:30pm – 5pm Eastern Time - New York
+Where: (Online conference room)-Zoom-3, MP-1-Large Conference Room (25)
+Calendar: stratum-dev at lists.stratumproject.org
+Who:
+     * bocon at opennetworking.org - creator
+     * max at opennetworking.org
+     * bill at opennetworking.org
+     * mohammed.habeeb at inventec.com
+     * yi at opennetworking.org
+     * carmelo at opennetworking.org
+     * xiao.david at inventec.com
+     * Rich Renner
+     * Devjit Gopalpur
+     * Alireza Ghaffarkhah
+     * Leonid Khedyk
+     * niloofar at opennetworking.org
+     * hsuanchung.lee at qct.io
+     * Arkadiy Shapiro
+     * you at opennetworking.org
+     * abhilash at opennetworking.org
+     * David Gengenbach
+     * siddesh at opennetworking.org
+     * craig.stevens at dell.com
+     * asydney007 at gmail.com
+     * stratum-dev at lists.stratumproject.org
+     * maksym.kovaliov at plvision.eu
+     * maksym.tropets at plvision.eu
+     * jeff_catlin at edge-core.com
+     * chris.sommers at keysight.com
+     * John L
+     * cmace at extremenetworks.com
+     * Poongovan Ponnavaikko
+
+
+Invitation from Google Calendar: https://calendar.google.com/calendar/
+
+You are receiving this courtesy email at the account  
+stratum-dev at lists.stratumproject.org because you are an attendee of this  
+event.
+
+To stop receiving future updates for this event, decline this event.  
+Alternatively you can sign up for a Google account at  
+https://calendar.google.com/calendar/ and control your notification  
+settings for your entire calendar.
+
+Forwarding this invitation could allow any recipient to send a response to  
+the organizer and be added to the guest list, or invite others regardless  
+of their own invitation status, or to modify your RSVP. Learn more at  
+https://support.google.com/calendar/answer/37135#forwarding
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20211212/5b21ca62/attachment-0001.html>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: not available
+Type: text/calendar
+Size: 9901 bytes
+Desc: not available
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20211212/5b21ca62/attachment-0001.ics>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: invite.ics
+Type: application/ics
+Size: 10050 bytes
+Desc: not available
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20211212/5b21ca62/attachment-0001.bin>
+
+From bocon at opennetworking.org  Sun Dec 12 07:19:35 2021
+From: bocon at opennetworking.org (bocon at opennetworking.org)
+Date: Sun, 12 Dec 2021 07:19:35 +0000
+Subject: [stratum-dev] Canceled event: Stratum TST Meeting @ Thu Dec 23,
+ 2021 4:30pm - 5pm (EST) (stratum-dev@lists.stratumproject.org)
+Message-ID: <00000000000045d40105d2edc7db@google.com>
+
+This event has been canceled.
+
+Title: Stratum TST Meeting
+Stratum Technical Steering Team MeetingJoin Zoom  
+Meetinghttps://onf.zoom.us/j/787501745?pwd=OHdtQVA3eXdoeThxZ0UzS1VVWEtxQT09Meeting  
+ID: 787 501 745Passcode: 258532One tap mobile+13126266799,,787501745# US  
+(Chicago)+19292056099,,787501745# US (New York)Agenda and Meeting  
+Noteshttps://docs.google.com/document/d/1ret8Vbnl-xbLgNsnDEH-jWP2_WwDYym4zDn6me3tiTA/editThe  
+plan is to reserve the 1st and 3rd Thursdays of each month for  
+presentations and community updates. If you can only attend some of these  
+meetings, those will be more interesting. The other meetings will be more  
+informal&nbsp;sync ups to discuss current issues, progress, and status. You  
+can see what presentations are planned by checking the agenda  
+above.Supporting Slides and Previous  
+Recordingshttps://drive.google.com/drive/folders/1ZeYp6RwIGYi9VnIctvnKF1c1NxiAXeOT----------------------------------------------------------------Dial  
+by your location&nbsp; &nbsp; &nbsp; &nbsp; +1 312 626 6799 US  
+(Chicago)&nbsp; &nbsp; &nbsp; &nbsp; +1 929 205 6099 US (New York)&nbsp;  
+&nbsp; &nbsp; &nbsp; +1 301 715 8592 US (Germantown)&nbsp; &nbsp; &nbsp;  
+&nbsp; +1 346 248 7799 US (Houston)&nbsp; &nbsp; &nbsp; &nbsp; +1 669 900  
+6833 US (San Jose)&nbsp; &nbsp; &nbsp; &nbsp; +1 253 215 8782 US  
+(Tacoma)&nbsp; &nbsp; &nbsp; &nbsp; 888 788 0099 US Toll-free&nbsp; &nbsp;  
+&nbsp; &nbsp; 877 853 5247 US Toll-free&nbsp; &nbsp; &nbsp; &nbsp; +61 2  
+8015 6011 Australia&nbsp; &nbsp; &nbsp; &nbsp; +61 3 7018 2005  
+Australia&nbsp; &nbsp; &nbsp; &nbsp; +61 7 3185 3730 Australia&nbsp; &nbsp;  
+&nbsp; &nbsp; +61 8 6119 3900 Australia&nbsp; &nbsp; &nbsp; &nbsp; +61 8  
+7150 1149 Australia&nbsp; &nbsp; &nbsp; &nbsp; 1800 945 157 Australia  
+Toll-free&nbsp; &nbsp; &nbsp; &nbsp; 1800 893 423 Australia Toll-free&nbsp;  
+&nbsp; &nbsp; &nbsp; +81 363 628 317 Japan&nbsp; &nbsp; &nbsp; &nbsp; +81  
+524 564 439 Japan&nbsp; &nbsp; &nbsp; &nbsp; +81 3 4578 1488 Japan&nbsp;  
+&nbsp; &nbsp; &nbsp; 0 800 100 5040 Japan Toll-free&nbsp; &nbsp; &nbsp;  
+&nbsp; 00 663 381 4092 Japan Toll-free&nbsp; &nbsp; &nbsp; &nbsp; +49 69  
+7104 9922 Germany&nbsp; &nbsp; &nbsp; &nbsp; +49 30 5679 5800 Germany&nbsp;  
+&nbsp; &nbsp; &nbsp; +49 69 3807 9883 Germany&nbsp; &nbsp; &nbsp; &nbsp;  
++49 695 050 2596 Germany&nbsp; &nbsp; &nbsp; &nbsp; 0 800 1800 150 Germany  
+Toll-free&nbsp; &nbsp; &nbsp; &nbsp; 0 800 000 6954 Germany Toll-free&nbsp;  
+&nbsp; &nbsp; &nbsp; +886 (2) 7741 7473 Taiwan&nbsp; &nbsp; &nbsp; &nbsp;  
+08 0909 9864 Taiwan Toll-free&nbsp; &nbsp; &nbsp; &nbsp; +48 22 307 3488  
+Poland&nbsp; &nbsp; &nbsp; &nbsp; +48 22 398 7356 Poland&nbsp; &nbsp;  
+&nbsp; &nbsp; +48 22 306 5342 Poland&nbsp; &nbsp; &nbsp; &nbsp; 00 800 321  
+1464 Poland Toll-free&nbsp; &nbsp; &nbsp; &nbsp; 00 800 112 5171 Poland  
+Toll-free&nbsp; &nbsp; &nbsp; &nbsp; +44 208 080 6592 United Kingdom&nbsp;  
+&nbsp; &nbsp; &nbsp; +44 330 088 5830 United Kingdom&nbsp; &nbsp; &nbsp;  
+&nbsp; +44 131 460 1196 United Kingdom&nbsp; &nbsp; &nbsp; &nbsp; +44 203  
+481 5237 United Kingdom&nbsp; &nbsp; &nbsp; &nbsp; +44 203 481 5240 United  
+Kingdom&nbsp; &nbsp; &nbsp; &nbsp; +44 203 901 7895 United Kingdom&nbsp;  
+&nbsp; &nbsp; &nbsp; +44 208 080 6591 United Kingdom&nbsp; &nbsp; &nbsp;  
+&nbsp; 0 800 260 5801 United Kingdom Toll-free&nbsp; &nbsp; &nbsp; &nbsp; 0  
+800 031 5717 United Kingdom Toll-free&nbsp; &nbsp; &nbsp; &nbsp; +353 1 536  
+9320 Ireland&nbsp; &nbsp; &nbsp; &nbsp; +353 1 653 3895 Ireland&nbsp;  
+&nbsp; &nbsp; &nbsp; +353 1 653 3897 Ireland&nbsp; &nbsp; &nbsp; &nbsp;  
++353 1 653 3898 Ireland&nbsp; &nbsp; &nbsp; &nbsp; +353 6 163 9031  
+Ireland&nbsp; &nbsp; &nbsp; &nbsp; +353 1 240 8941 Ireland&nbsp; &nbsp;  
+&nbsp; &nbsp; 1800 949 238 Ireland Toll-free&nbsp; &nbsp; &nbsp; &nbsp;  
+1800 901 561 Ireland Toll-freeMeeting ID: 787 501 745Find your local  
+number:  
+https://onf.zoom.us/u/ad1osSbywU----------------------------------------------------------------If  
+you would like to get added to the calendar invite, please ask Brian.
+When: Thu Dec 23, 2021 4:30pm – 5pm Eastern Time - New York
+Where: (Online conference room)-Zoom-3, MP-1-Large Conference Room (25)
+Calendar: stratum-dev at lists.stratumproject.org
+Who:
+     * bocon at opennetworking.org - creator
+     * max at opennetworking.org
+     * bill at opennetworking.org
+     * mohammed.habeeb at inventec.com
+     * yi at opennetworking.org
+     * carmelo at opennetworking.org
+     * xiao.david at inventec.com
+     * Rich Renner
+     * Devjit Gopalpur
+     * Alireza Ghaffarkhah
+     * Leonid Khedyk
+     * niloofar at opennetworking.org
+     * hsuanchung.lee at qct.io
+     * Arkadiy Shapiro
+     * you at opennetworking.org
+     * abhilash at opennetworking.org
+     * David Gengenbach
+     * siddesh at opennetworking.org
+     * craig.stevens at dell.com
+     * asydney007 at gmail.com
+     * stratum-dev at lists.stratumproject.org
+     * maksym.kovaliov at plvision.eu
+     * maksym.tropets at plvision.eu
+     * jeff_catlin at edge-core.com
+     * chris.sommers at keysight.com
+     * John L
+     * cmace at extremenetworks.com
+     * Poongovan Ponnavaikko
+
+
+Invitation from Google Calendar: https://calendar.google.com/calendar/
+
+You are receiving this courtesy email at the account  
+stratum-dev at lists.stratumproject.org because you are an attendee of this  
+event.
+
+To stop receiving future updates for this event, decline this event.  
+Alternatively you can sign up for a Google account at  
+https://calendar.google.com/calendar/ and control your notification  
+settings for your entire calendar.
+
+Forwarding this invitation could allow any recipient to send a response to  
+the organizer and be added to the guest list, or invite others regardless  
+of their own invitation status, or to modify your RSVP. Learn more at  
+https://support.google.com/calendar/answer/37135#forwarding
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20211212/56b1d476/attachment-0001.html>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: not available
+Type: text/calendar
+Size: 9901 bytes
+Desc: not available
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20211212/56b1d476/attachment-0001.ics>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: invite.ics
+Type: application/ics
+Size: 10050 bytes
+Desc: not available
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20211212/56b1d476/attachment-0001.bin>
+
+From bocon at opennetworking.org  Sun Dec 12 07:19:36 2021
+From: bocon at opennetworking.org (bocon at opennetworking.org)
+Date: Sun, 12 Dec 2021 07:19:36 +0000
+Subject: [stratum-dev] Updated invitation with note: Stratum TST Meeting @
+ Weekly from 4:30pm to 5pm on Thursday from Thu Oct 21 to Thu Dec 16 (EDT)
+ (stratum-dev@lists.stratumproject.org)
+Message-ID: <00000000000048f6e105d2edc7be@google.com>
+
+This event has been changed with this note:
+"Canceling through the end of the year. I'll send a new invite for 2022"
+
+Title: Stratum TST Meeting
+Stratum Technical Steering Team MeetingJoin Zoom  
+Meetinghttps://onf.zoom.us/j/787501745?pwd=OHdtQVA3eXdoeThxZ0UzS1VVWEtxQT09Meeting  
+ID: 787 501 745Passcode: 258532One tap mobile+13126266799,,787501745# US  
+(Chicago)+19292056099,,787501745# US (New York)Agenda and Meeting  
+Noteshttps://docs.google.com/document/d/1ret8Vbnl-xbLgNsnDEH-jWP2_WwDYym4zDn6me3tiTA/editThe  
+plan is to reserve the 1st and 3rd Thursdays of each month for  
+presentations and community updates. If you can only attend some of these  
+meetings, those will be more interesting. The other meetings will be more  
+informal&nbsp;sync ups to discuss current issues, progress, and status. You  
+can see what presentations are planned by checking the agenda  
+above.Supporting Slides and Previous  
+Recordingshttps://drive.google.com/drive/folders/1ZeYp6RwIGYi9VnIctvnKF1c1NxiAXeOT----------------------------------------------------------------Dial  
+by your location&nbsp; &nbsp; &nbsp; &nbsp; +1 312 626 6799 US  
+(Chicago)&nbsp; &nbsp; &nbsp; &nbsp; +1 929 205 6099 US (New York)&nbsp;  
+&nbsp; &nbsp; &nbsp; +1 301 715 8592 US (Germantown)&nbsp; &nbsp; &nbsp;  
+&nbsp; +1 346 248 7799 US (Houston)&nbsp; &nbsp; &nbsp; &nbsp; +1 669 900  
+6833 US (San Jose)&nbsp; &nbsp; &nbsp; &nbsp; +1 253 215 8782 US  
+(Tacoma)&nbsp; &nbsp; &nbsp; &nbsp; 888 788 0099 US Toll-free&nbsp; &nbsp;  
+&nbsp; &nbsp; 877 853 5247 US Toll-free&nbsp; &nbsp; &nbsp; &nbsp; +61 2  
+8015 6011 Australia&nbsp; &nbsp; &nbsp; &nbsp; +61 3 7018 2005  
+Australia&nbsp; &nbsp; &nbsp; &nbsp; +61 7 3185 3730 Australia&nbsp; &nbsp;  
+&nbsp; &nbsp; +61 8 6119 3900 Australia&nbsp; &nbsp; &nbsp; &nbsp; +61 8  
+7150 1149 Australia&nbsp; &nbsp; &nbsp; &nbsp; 1800 945 157 Australia  
+Toll-free&nbsp; &nbsp; &nbsp; &nbsp; 1800 893 423 Australia Toll-free&nbsp;  
+&nbsp; &nbsp; &nbsp; +81 363 628 317 Japan&nbsp; &nbsp; &nbsp; &nbsp; +81  
+524 564 439 Japan&nbsp; &nbsp; &nbsp; &nbsp; +81 3 4578 1488 Japan&nbsp;  
+&nbsp; &nbsp; &nbsp; 0 800 100 5040 Japan Toll-free&nbsp; &nbsp; &nbsp;  
+&nbsp; 00 663 381 4092 Japan Toll-free&nbsp; &nbsp; &nbsp; &nbsp; +49 69  
+7104 9922 Germany&nbsp; &nbsp; &nbsp; &nbsp; +49 30 5679 5800 Germany&nbsp;  
+&nbsp; &nbsp; &nbsp; +49 69 3807 9883 Germany&nbsp; &nbsp; &nbsp; &nbsp;  
++49 695 050 2596 Germany&nbsp; &nbsp; &nbsp; &nbsp; 0 800 1800 150 Germany  
+Toll-free&nbsp; &nbsp; &nbsp; &nbsp; 0 800 000 6954 Germany Toll-free&nbsp;  
+&nbsp; &nbsp; &nbsp; +886 (2) 7741 7473 Taiwan&nbsp; &nbsp; &nbsp; &nbsp;  
+08 0909 9864 Taiwan Toll-free&nbsp; &nbsp; &nbsp; &nbsp; +48 22 307 3488  
+Poland&nbsp; &nbsp; &nbsp; &nbsp; +48 22 398 7356 Poland&nbsp; &nbsp;  
+&nbsp; &nbsp; +48 22 306 5342 Poland&nbsp; &nbsp; &nbsp; &nbsp; 00 800 321  
+1464 Poland Toll-free&nbsp; &nbsp; &nbsp; &nbsp; 00 800 112 5171 Poland  
+Toll-free&nbsp; &nbsp; &nbsp; &nbsp; +44 208 080 6592 United Kingdom&nbsp;  
+&nbsp; &nbsp; &nbsp; +44 330 088 5830 United Kingdom&nbsp; &nbsp; &nbsp;  
+&nbsp; +44 131 460 1196 United Kingdom&nbsp; &nbsp; &nbsp; &nbsp; +44 203  
+481 5237 United Kingdom&nbsp; &nbsp; &nbsp; &nbsp; +44 203 481 5240 United  
+Kingdom&nbsp; &nbsp; &nbsp; &nbsp; +44 203 901 7895 United Kingdom&nbsp;  
+&nbsp; &nbsp; &nbsp; +44 208 080 6591 United Kingdom&nbsp; &nbsp; &nbsp;  
+&nbsp; 0 800 260 5801 United Kingdom Toll-free&nbsp; &nbsp; &nbsp; &nbsp; 0  
+800 031 5717 United Kingdom Toll-free&nbsp; &nbsp; &nbsp; &nbsp; +353 1 536  
+9320 Ireland&nbsp; &nbsp; &nbsp; &nbsp; +353 1 653 3895 Ireland&nbsp;  
+&nbsp; &nbsp; &nbsp; +353 1 653 3897 Ireland&nbsp; &nbsp; &nbsp; &nbsp;  
++353 1 653 3898 Ireland&nbsp; &nbsp; &nbsp; &nbsp; +353 6 163 9031  
+Ireland&nbsp; &nbsp; &nbsp; &nbsp; +353 1 240 8941 Ireland&nbsp; &nbsp;  
+&nbsp; &nbsp; 1800 949 238 Ireland Toll-free&nbsp; &nbsp; &nbsp; &nbsp;  
+1800 901 561 Ireland Toll-freeMeeting ID: 787 501 745Find your local  
+number:  
+https://onf.zoom.us/u/ad1osSbywU----------------------------------------------------------------If  
+you would like to get added to the calendar invite, please ask Brian.
+When: Weekly from 4:30pm to 5pm on Thursday from Thu Oct 21 to Thu Dec 16  
+Eastern Time - New York (changed)
+Where: (Online conference room)-Zoom-3, MP-1-Large Conference Room (25)
+Calendar: stratum-dev at lists.stratumproject.org
+Who:
+     * bocon at opennetworking.org - creator
+     * max at opennetworking.org
+     * bill at opennetworking.org
+     * mohammed.habeeb at inventec.com
+     * yi at opennetworking.org
+     * carmelo at opennetworking.org
+     * xiao.david at inventec.com
+     * Rich Renner
+     * Devjit Gopalpur
+     * Alireza Ghaffarkhah
+     * Leonid Khedyk
+     * niloofar at opennetworking.org
+     * hsuanchung.lee at qct.io
+     * Arkadiy Shapiro
+     * you at opennetworking.org
+     * abhilash at opennetworking.org
+     * David Gengenbach
+     * siddesh at opennetworking.org
+     * craig.stevens at dell.com
+     * asydney007 at gmail.com
+     * stratum-dev at lists.stratumproject.org
+     * maksym.kovaliov at plvision.eu
+     * maksym.tropets at plvision.eu
+     * jeff_catlin at edge-core.com
+     * chris.sommers at keysight.com
+     * John L
+     * cmace at extremenetworks.com
+     * Poongovan Ponnavaikko
+
+Event details:  
+https://calendar.google.com/calendar/event?action=VIEW&eid=MGg0ajFtNjZ1Y2RiMWxrb2ljNTU5NzJlc2VfUjIwMjExMDIxVDIwMzAwMCBzdHJhdHVtLWRldkBsaXN0cy5zdHJhdHVtcHJvamVjdC5vcmc&tok=NzEjb3Blbm5ldHdvcmtpbmcub3JnX3Z2M2xmdDg5ZTc5NGI0amxtcjNqOXAxcGVzQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb21lODdiNDljODIwYWU4YmE4MjBiNzhkMzQ2ZjM5OTI3MGViZjhhYmRh&ctz=America%2FNew_York&hl=en&es=0
+
+Invitation from Google Calendar: https://calendar.google.com/calendar/
+
+You are receiving this courtesy email at the account  
+stratum-dev at lists.stratumproject.org because you are an attendee of this  
+event.
+
+To stop receiving future updates for this event, decline this event.  
+Alternatively you can sign up for a Google account at  
+https://calendar.google.com/calendar/ and control your notification  
+settings for your entire calendar.
+
+Forwarding this invitation could allow any recipient to send a response to  
+the organizer and be added to the guest list, or invite others regardless  
+of their own invitation status, or to modify your RSVP. Learn more at  
+https://support.google.com/calendar/answer/37135#forwarding
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20211212/05744f65/attachment-0001.html>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: not available
+Type: text/calendar
+Size: 11291 bytes
+Desc: not available
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20211212/05744f65/attachment-0001.ics>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: invite.ics
+Type: application/ics
+Size: 11480 bytes
+Desc: not available
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20211212/05744f65/attachment-0001.bin>
+
+From bocon at opennetworking.org  Sun Dec 12 07:19:36 2021
+From: bocon at opennetworking.org (bocon at opennetworking.org)
+Date: Sun, 12 Dec 2021 07:19:36 +0000
+Subject: [stratum-dev] Updated invitation with note: Stratum TST Meeting @
+ Weekly from 4:30pm to 5pm on Thursday from Thu Oct 14 to Thu Dec 16 (EDT)
+ (stratum-dev@lists.stratumproject.org)
+Message-ID: <0000000000004c223605d2edc7b2@google.com>
+
+This event has been changed with this note:
+"Canceling through the end of the year. I'll send a new invite for 2022"
+
+Title: Stratum TST Meeting
+Stratum Technical Steering Team MeetingJoin Zoom  
+Meetinghttps://onf.zoom.us/j/787501745?pwd=OHdtQVA3eXdoeThxZ0UzS1VVWEtxQT09Meeting  
+ID: 787 501 745Passcode: 258532One tap mobile+13126266799,,787501745# US  
+(Chicago)+19292056099,,787501745# US (New York)Agenda and Meeting  
+Noteshttps://docs.google.com/document/d/1ret8Vbnl-xbLgNsnDEH-jWP2_WwDYym4zDn6me3tiTA/editThe  
+plan is to reserve the 1st and 3rd Thursdays of each month for  
+presentations and community updates. If you can only attend some of these  
+meetings, those will be more interesting. The other meetings will be more  
+informal&nbsp;sync ups to discuss current issues, progress, and status. You  
+can see what presentations are planned by checking the agenda  
+above.Supporting Slides and Previous  
+Recordingshttps://drive.google.com/drive/folders/1ZeYp6RwIGYi9VnIctvnKF1c1NxiAXeOT----------------------------------------------------------------Dial  
+by your location&nbsp; &nbsp; &nbsp; &nbsp; +1 312 626 6799 US  
+(Chicago)&nbsp; &nbsp; &nbsp; &nbsp; +1 929 205 6099 US (New York)&nbsp;  
+&nbsp; &nbsp; &nbsp; +1 301 715 8592 US (Germantown)&nbsp; &nbsp; &nbsp;  
+&nbsp; +1 346 248 7799 US (Houston)&nbsp; &nbsp; &nbsp; &nbsp; +1 669 900  
+6833 US (San Jose)&nbsp; &nbsp; &nbsp; &nbsp; +1 253 215 8782 US  
+(Tacoma)&nbsp; &nbsp; &nbsp; &nbsp; 888 788 0099 US Toll-free&nbsp; &nbsp;  
+&nbsp; &nbsp; 877 853 5247 US Toll-free&nbsp; &nbsp; &nbsp; &nbsp; +61 2  
+8015 6011 Australia&nbsp; &nbsp; &nbsp; &nbsp; +61 3 7018 2005  
+Australia&nbsp; &nbsp; &nbsp; &nbsp; +61 7 3185 3730 Australia&nbsp; &nbsp;  
+&nbsp; &nbsp; +61 8 6119 3900 Australia&nbsp; &nbsp; &nbsp; &nbsp; +61 8  
+7150 1149 Australia&nbsp; &nbsp; &nbsp; &nbsp; 1800 945 157 Australia  
+Toll-free&nbsp; &nbsp; &nbsp; &nbsp; 1800 893 423 Australia Toll-free&nbsp;  
+&nbsp; &nbsp; &nbsp; +81 363 628 317 Japan&nbsp; &nbsp; &nbsp; &nbsp; +81  
+524 564 439 Japan&nbsp; &nbsp; &nbsp; &nbsp; +81 3 4578 1488 Japan&nbsp;  
+&nbsp; &nbsp; &nbsp; 0 800 100 5040 Japan Toll-free&nbsp; &nbsp; &nbsp;  
+&nbsp; 00 663 381 4092 Japan Toll-free&nbsp; &nbsp; &nbsp; &nbsp; +49 69  
+7104 9922 Germany&nbsp; &nbsp; &nbsp; &nbsp; +49 30 5679 5800 Germany&nbsp;  
+&nbsp; &nbsp; &nbsp; +49 69 3807 9883 Germany&nbsp; &nbsp; &nbsp; &nbsp;  
++49 695 050 2596 Germany&nbsp; &nbsp; &nbsp; &nbsp; 0 800 1800 150 Germany  
+Toll-free&nbsp; &nbsp; &nbsp; &nbsp; 0 800 000 6954 Germany Toll-free&nbsp;  
+&nbsp; &nbsp; &nbsp; +886 (2) 7741 7473 Taiwan&nbsp; &nbsp; &nbsp; &nbsp;  
+08 0909 9864 Taiwan Toll-free&nbsp; &nbsp; &nbsp; &nbsp; +48 22 307 3488  
+Poland&nbsp; &nbsp; &nbsp; &nbsp; +48 22 398 7356 Poland&nbsp; &nbsp;  
+&nbsp; &nbsp; +48 22 306 5342 Poland&nbsp; &nbsp; &nbsp; &nbsp; 00 800 321  
+1464 Poland Toll-free&nbsp; &nbsp; &nbsp; &nbsp; 00 800 112 5171 Poland  
+Toll-free&nbsp; &nbsp; &nbsp; &nbsp; +44 208 080 6592 United Kingdom&nbsp;  
+&nbsp; &nbsp; &nbsp; +44 330 088 5830 United Kingdom&nbsp; &nbsp; &nbsp;  
+&nbsp; +44 131 460 1196 United Kingdom&nbsp; &nbsp; &nbsp; &nbsp; +44 203  
+481 5237 United Kingdom&nbsp; &nbsp; &nbsp; &nbsp; +44 203 481 5240 United  
+Kingdom&nbsp; &nbsp; &nbsp; &nbsp; +44 203 901 7895 United Kingdom&nbsp;  
+&nbsp; &nbsp; &nbsp; +44 208 080 6591 United Kingdom&nbsp; &nbsp; &nbsp;  
+&nbsp; 0 800 260 5801 United Kingdom Toll-free&nbsp; &nbsp; &nbsp; &nbsp; 0  
+800 031 5717 United Kingdom Toll-free&nbsp; &nbsp; &nbsp; &nbsp; +353 1 536  
+9320 Ireland&nbsp; &nbsp; &nbsp; &nbsp; +353 1 653 3895 Ireland&nbsp;  
+&nbsp; &nbsp; &nbsp; +353 1 653 3897 Ireland&nbsp; &nbsp; &nbsp; &nbsp;  
++353 1 653 3898 Ireland&nbsp; &nbsp; &nbsp; &nbsp; +353 6 163 9031  
+Ireland&nbsp; &nbsp; &nbsp; &nbsp; +353 1 240 8941 Ireland&nbsp; &nbsp;  
+&nbsp; &nbsp; 1800 949 238 Ireland Toll-free&nbsp; &nbsp; &nbsp; &nbsp;  
+1800 901 561 Ireland Toll-freeMeeting ID: 787 501 745Find your local  
+number:  
+https://onf.zoom.us/u/ad1osSbywU----------------------------------------------------------------If  
+you would like to get added to the calendar invite, please ask Brian.
+When: Weekly from 4:30pm to 5pm on Thursday from Thu Oct 14 to Thu Dec 16  
+Eastern Time - New York (changed)
+Where: (Online conference room)-Zoom-3, MP-1-Large Conference Room (25)
+Calendar: stratum-dev at lists.stratumproject.org
+Who:
+     * bocon at opennetworking.org - creator
+     * max at opennetworking.org
+     * bill at opennetworking.org
+     * mohammed.habeeb at inventec.com
+     * yi at opennetworking.org
+     * carmelo at opennetworking.org
+     * xiao.david at inventec.com
+     * Rich Renner
+     * Devjit Gopalpur
+     * Alireza Ghaffarkhah
+     * Leonid Khedyk
+     * niloofar at opennetworking.org
+     * hsuanchung.lee at qct.io
+     * Arkadiy Shapiro
+     * you at opennetworking.org
+     * abhilash at opennetworking.org
+     * David Gengenbach
+     * siddesh at opennetworking.org
+     * craig.stevens at dell.com
+     * asydney007 at gmail.com
+     * stratum-dev at lists.stratumproject.org
+     * maksym.kovaliov at plvision.eu
+     * maksym.tropets at plvision.eu
+     * jeff_catlin at edge-core.com
+     * chris.sommers at keysight.com
+     * John L
+     * cmace at extremenetworks.com
+     * Poongovan Ponnavaikko
+
+Event details:  
+https://calendar.google.com/calendar/event?action=VIEW&eid=MGg0ajFtNjZ1Y2RiMWxrb2ljNTU5NzJlc2Ugc3RyYXR1bS1kZXZAbGlzdHMuc3RyYXR1bXByb2plY3Qub3Jn&tok=NzEjb3Blbm5ldHdvcmtpbmcub3JnX3Z2M2xmdDg5ZTc5NGI0amxtcjNqOXAxcGVzQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb204ZGU1NDdkNTI4ODYyZjk4YzNiNGZjNDVhNGZiMDIwMDgyNjgxODI0&ctz=America%2FNew_York&hl=en&es=0
+
+Invitation from Google Calendar: https://calendar.google.com/calendar/
+
+You are receiving this courtesy email at the account  
+stratum-dev at lists.stratumproject.org because you are an attendee of this  
+event.
+
+To stop receiving future updates for this event, decline this event.  
+Alternatively you can sign up for a Google account at  
+https://calendar.google.com/calendar/ and control your notification  
+settings for your entire calendar.
+
+Forwarding this invitation could allow any recipient to send a response to  
+the organizer and be added to the guest list, or invite others regardless  
+of their own invitation status, or to modify your RSVP. Learn more at  
+https://support.google.com/calendar/answer/37135#forwarding
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20211212/da0c223e/attachment-0001.html>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: not available
+Type: text/calendar
+Size: 11254 bytes
+Desc: not available
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20211212/da0c223e/attachment-0001.ics>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: invite.ics
+Type: application/ics
+Size: 11442 bytes
+Desc: not available
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20211212/da0c223e/attachment-0001.bin>
+
+From bocon at opennetworking.org  Sun Dec 12 07:19:36 2021
+From: bocon at opennetworking.org (bocon at opennetworking.org)
+Date: Sun, 12 Dec 2021 07:19:36 +0000
+Subject: [stratum-dev] Canceled event: Stratum TST Meeting @ Thu Dec 16,
+ 2021 4:30pm - 5pm (EST) (stratum-dev@lists.stratumproject.org)
+Message-ID: <0000000000004e605105d2edc7f3@google.com>
+
+This event has been canceled.
+
+Title: Stratum TST Meeting
+Stratum Technical Steering Team MeetingJoin Zoom  
+Meetinghttps://onf.zoom.us/j/787501745?pwd=OHdtQVA3eXdoeThxZ0UzS1VVWEtxQT09Meeting  
+ID: 787 501 745Passcode: 258532One tap mobile+13126266799,,787501745# US  
+(Chicago)+19292056099,,787501745# US (New York)Agenda and Meeting  
+Noteshttps://docs.google.com/document/d/1ret8Vbnl-xbLgNsnDEH-jWP2_WwDYym4zDn6me3tiTA/editThe  
+plan is to reserve the 1st and 3rd Thursdays of each month for  
+presentations and community updates. If you can only attend some of these  
+meetings, those will be more interesting. The other meetings will be more  
+informal&nbsp;sync ups to discuss current issues, progress, and status. You  
+can see what presentations are planned by checking the agenda  
+above.Supporting Slides and Previous  
+Recordingshttps://drive.google.com/drive/folders/1ZeYp6RwIGYi9VnIctvnKF1c1NxiAXeOT----------------------------------------------------------------Dial  
+by your location&nbsp; &nbsp; &nbsp; &nbsp; +1 312 626 6799 US  
+(Chicago)&nbsp; &nbsp; &nbsp; &nbsp; +1 929 205 6099 US (New York)&nbsp;  
+&nbsp; &nbsp; &nbsp; +1 301 715 8592 US (Germantown)&nbsp; &nbsp; &nbsp;  
+&nbsp; +1 346 248 7799 US (Houston)&nbsp; &nbsp; &nbsp; &nbsp; +1 669 900  
+6833 US (San Jose)&nbsp; &nbsp; &nbsp; &nbsp; +1 253 215 8782 US  
+(Tacoma)&nbsp; &nbsp; &nbsp; &nbsp; 888 788 0099 US Toll-free&nbsp; &nbsp;  
+&nbsp; &nbsp; 877 853 5247 US Toll-free&nbsp; &nbsp; &nbsp; &nbsp; +61 2  
+8015 6011 Australia&nbsp; &nbsp; &nbsp; &nbsp; +61 3 7018 2005  
+Australia&nbsp; &nbsp; &nbsp; &nbsp; +61 7 3185 3730 Australia&nbsp; &nbsp;  
+&nbsp; &nbsp; +61 8 6119 3900 Australia&nbsp; &nbsp; &nbsp; &nbsp; +61 8  
+7150 1149 Australia&nbsp; &nbsp; &nbsp; &nbsp; 1800 945 157 Australia  
+Toll-free&nbsp; &nbsp; &nbsp; &nbsp; 1800 893 423 Australia Toll-free&nbsp;  
+&nbsp; &nbsp; &nbsp; +81 363 628 317 Japan&nbsp; &nbsp; &nbsp; &nbsp; +81  
+524 564 439 Japan&nbsp; &nbsp; &nbsp; &nbsp; +81 3 4578 1488 Japan&nbsp;  
+&nbsp; &nbsp; &nbsp; 0 800 100 5040 Japan Toll-free&nbsp; &nbsp; &nbsp;  
+&nbsp; 00 663 381 4092 Japan Toll-free&nbsp; &nbsp; &nbsp; &nbsp; +49 69  
+7104 9922 Germany&nbsp; &nbsp; &nbsp; &nbsp; +49 30 5679 5800 Germany&nbsp;  
+&nbsp; &nbsp; &nbsp; +49 69 3807 9883 Germany&nbsp; &nbsp; &nbsp; &nbsp;  
++49 695 050 2596 Germany&nbsp; &nbsp; &nbsp; &nbsp; 0 800 1800 150 Germany  
+Toll-free&nbsp; &nbsp; &nbsp; &nbsp; 0 800 000 6954 Germany Toll-free&nbsp;  
+&nbsp; &nbsp; &nbsp; +886 (2) 7741 7473 Taiwan&nbsp; &nbsp; &nbsp; &nbsp;  
+08 0909 9864 Taiwan Toll-free&nbsp; &nbsp; &nbsp; &nbsp; +48 22 307 3488  
+Poland&nbsp; &nbsp; &nbsp; &nbsp; +48 22 398 7356 Poland&nbsp; &nbsp;  
+&nbsp; &nbsp; +48 22 306 5342 Poland&nbsp; &nbsp; &nbsp; &nbsp; 00 800 321  
+1464 Poland Toll-free&nbsp; &nbsp; &nbsp; &nbsp; 00 800 112 5171 Poland  
+Toll-free&nbsp; &nbsp; &nbsp; &nbsp; +44 208 080 6592 United Kingdom&nbsp;  
+&nbsp; &nbsp; &nbsp; +44 330 088 5830 United Kingdom&nbsp; &nbsp; &nbsp;  
+&nbsp; +44 131 460 1196 United Kingdom&nbsp; &nbsp; &nbsp; &nbsp; +44 203  
+481 5237 United Kingdom&nbsp; &nbsp; &nbsp; &nbsp; +44 203 481 5240 United  
+Kingdom&nbsp; &nbsp; &nbsp; &nbsp; +44 203 901 7895 United Kingdom&nbsp;  
+&nbsp; &nbsp; &nbsp; +44 208 080 6591 United Kingdom&nbsp; &nbsp; &nbsp;  
+&nbsp; 0 800 260 5801 United Kingdom Toll-free&nbsp; &nbsp; &nbsp; &nbsp; 0  
+800 031 5717 United Kingdom Toll-free&nbsp; &nbsp; &nbsp; &nbsp; +353 1 536  
+9320 Ireland&nbsp; &nbsp; &nbsp; &nbsp; +353 1 653 3895 Ireland&nbsp;  
+&nbsp; &nbsp; &nbsp; +353 1 653 3897 Ireland&nbsp; &nbsp; &nbsp; &nbsp;  
++353 1 653 3898 Ireland&nbsp; &nbsp; &nbsp; &nbsp; +353 6 163 9031  
+Ireland&nbsp; &nbsp; &nbsp; &nbsp; +353 1 240 8941 Ireland&nbsp; &nbsp;  
+&nbsp; &nbsp; 1800 949 238 Ireland Toll-free&nbsp; &nbsp; &nbsp; &nbsp;  
+1800 901 561 Ireland Toll-freeMeeting ID: 787 501 745Find your local  
+number:  
+https://onf.zoom.us/u/ad1osSbywU----------------------------------------------------------------If  
+you would like to get added to the calendar invite, please ask Brian.
+When: Thu Dec 16, 2021 4:30pm – 5pm Eastern Time - New York
+Where: (Online conference room)-Zoom-3, MP-1-Large Conference Room (25)
+Calendar: stratum-dev at lists.stratumproject.org
+Who:
+     * bocon at opennetworking.org - creator
+     * max at opennetworking.org
+     * bill at opennetworking.org
+     * mohammed.habeeb at inventec.com
+     * yi at opennetworking.org
+     * carmelo at opennetworking.org
+     * xiao.david at inventec.com
+     * Rich Renner
+     * Devjit Gopalpur
+     * Alireza Ghaffarkhah
+     * Leonid Khedyk
+     * niloofar at opennetworking.org
+     * hsuanchung.lee at qct.io
+     * Arkadiy Shapiro
+     * you at opennetworking.org
+     * abhilash at opennetworking.org
+     * David Gengenbach
+     * siddesh at opennetworking.org
+     * craig.stevens at dell.com
+     * asydney007 at gmail.com
+     * stratum-dev at lists.stratumproject.org
+     * maksym.kovaliov at plvision.eu
+     * maksym.tropets at plvision.eu
+     * jeff_catlin at edge-core.com
+     * chris.sommers at keysight.com
+     * John L
+     * cmace at extremenetworks.com
+     * Poongovan Ponnavaikko
+
+
+Invitation from Google Calendar: https://calendar.google.com/calendar/
+
+You are receiving this courtesy email at the account  
+stratum-dev at lists.stratumproject.org because you are an attendee of this  
+event.
+
+To stop receiving future updates for this event, decline this event.  
+Alternatively you can sign up for a Google account at  
+https://calendar.google.com/calendar/ and control your notification  
+settings for your entire calendar.
+
+Forwarding this invitation could allow any recipient to send a response to  
+the organizer and be added to the guest list, or invite others regardless  
+of their own invitation status, or to modify your RSVP. Learn more at  
+https://support.google.com/calendar/answer/37135#forwarding
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20211212/41572f9d/attachment-0001.html>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: not available
+Type: text/calendar
+Size: 9901 bytes
+Desc: not available
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20211212/41572f9d/attachment-0001.ics>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: invite.ics
+Type: application/ics
+Size: 10050 bytes
+Desc: not available
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20211212/41572f9d/attachment-0001.bin>
+
+From bocon at opennetworking.org  Sun Dec 12 07:19:36 2021
+From: bocon at opennetworking.org (bocon at opennetworking.org)
+Date: Sun, 12 Dec 2021 07:19:36 +0000
+Subject: [stratum-dev] Canceled event: Stratum TST Meeting @ Thu Jan 20,
+ 2022 4:30pm - 5pm (EST) (stratum-dev@lists.stratumproject.org)
+Message-ID: <00000000000051236805d2edc79b@google.com>
+
+This event has been canceled.
+
+Title: Stratum TST Meeting
+Stratum Technical Steering Team MeetingJoin Zoom  
+Meetinghttps://onf.zoom.us/j/787501745?pwd=OHdtQVA3eXdoeThxZ0UzS1VVWEtxQT09Meeting  
+ID: 787 501 745Passcode: 258532One tap mobile+13126266799,,787501745# US  
+(Chicago)+19292056099,,787501745# US (New York)Agenda and Meeting  
+Noteshttps://docs.google.com/document/d/1ret8Vbnl-xbLgNsnDEH-jWP2_WwDYym4zDn6me3tiTA/editThe  
+plan is to reserve the 1st and 3rd Thursdays of each month for  
+presentations and community updates. If you can only attend some of these  
+meetings, those will be more interesting. The other meetings will be more  
+informal&nbsp;sync ups to discuss current issues, progress, and status. You  
+can see what presentations are planned by checking the agenda  
+above.Supporting Slides and Previous  
+Recordingshttps://drive.google.com/drive/folders/1ZeYp6RwIGYi9VnIctvnKF1c1NxiAXeOT----------------------------------------------------------------Dial  
+by your location&nbsp; &nbsp; &nbsp; &nbsp; +1 312 626 6799 US  
+(Chicago)&nbsp; &nbsp; &nbsp; &nbsp; +1 929 205 6099 US (New York)&nbsp;  
+&nbsp; &nbsp; &nbsp; +1 301 715 8592 US (Germantown)&nbsp; &nbsp; &nbsp;  
+&nbsp; +1 346 248 7799 US (Houston)&nbsp; &nbsp; &nbsp; &nbsp; +1 669 900  
+6833 US (San Jose)&nbsp; &nbsp; &nbsp; &nbsp; +1 253 215 8782 US  
+(Tacoma)&nbsp; &nbsp; &nbsp; &nbsp; 888 788 0099 US Toll-free&nbsp; &nbsp;  
+&nbsp; &nbsp; 877 853 5247 US Toll-free&nbsp; &nbsp; &nbsp; &nbsp; +61 2  
+8015 6011 Australia&nbsp; &nbsp; &nbsp; &nbsp; +61 3 7018 2005  
+Australia&nbsp; &nbsp; &nbsp; &nbsp; +61 7 3185 3730 Australia&nbsp; &nbsp;  
+&nbsp; &nbsp; +61 8 6119 3900 Australia&nbsp; &nbsp; &nbsp; &nbsp; +61 8  
+7150 1149 Australia&nbsp; &nbsp; &nbsp; &nbsp; 1800 945 157 Australia  
+Toll-free&nbsp; &nbsp; &nbsp; &nbsp; 1800 893 423 Australia Toll-free&nbsp;  
+&nbsp; &nbsp; &nbsp; +81 363 628 317 Japan&nbsp; &nbsp; &nbsp; &nbsp; +81  
+524 564 439 Japan&nbsp; &nbsp; &nbsp; &nbsp; +81 3 4578 1488 Japan&nbsp;  
+&nbsp; &nbsp; &nbsp; 0 800 100 5040 Japan Toll-free&nbsp; &nbsp; &nbsp;  
+&nbsp; 00 663 381 4092 Japan Toll-free&nbsp; &nbsp; &nbsp; &nbsp; +49 69  
+7104 9922 Germany&nbsp; &nbsp; &nbsp; &nbsp; +49 30 5679 5800 Germany&nbsp;  
+&nbsp; &nbsp; &nbsp; +49 69 3807 9883 Germany&nbsp; &nbsp; &nbsp; &nbsp;  
++49 695 050 2596 Germany&nbsp; &nbsp; &nbsp; &nbsp; 0 800 1800 150 Germany  
+Toll-free&nbsp; &nbsp; &nbsp; &nbsp; 0 800 000 6954 Germany Toll-free&nbsp;  
+&nbsp; &nbsp; &nbsp; +886 (2) 7741 7473 Taiwan&nbsp; &nbsp; &nbsp; &nbsp;  
+08 0909 9864 Taiwan Toll-free&nbsp; &nbsp; &nbsp; &nbsp; +48 22 307 3488  
+Poland&nbsp; &nbsp; &nbsp; &nbsp; +48 22 398 7356 Poland&nbsp; &nbsp;  
+&nbsp; &nbsp; +48 22 306 5342 Poland&nbsp; &nbsp; &nbsp; &nbsp; 00 800 321  
+1464 Poland Toll-free&nbsp; &nbsp; &nbsp; &nbsp; 00 800 112 5171 Poland  
+Toll-free&nbsp; &nbsp; &nbsp; &nbsp; +44 208 080 6592 United Kingdom&nbsp;  
+&nbsp; &nbsp; &nbsp; +44 330 088 5830 United Kingdom&nbsp; &nbsp; &nbsp;  
+&nbsp; +44 131 460 1196 United Kingdom&nbsp; &nbsp; &nbsp; &nbsp; +44 203  
+481 5237 United Kingdom&nbsp; &nbsp; &nbsp; &nbsp; +44 203 481 5240 United  
+Kingdom&nbsp; &nbsp; &nbsp; &nbsp; +44 203 901 7895 United Kingdom&nbsp;  
+&nbsp; &nbsp; &nbsp; +44 208 080 6591 United Kingdom&nbsp; &nbsp; &nbsp;  
+&nbsp; 0 800 260 5801 United Kingdom Toll-free&nbsp; &nbsp; &nbsp; &nbsp; 0  
+800 031 5717 United Kingdom Toll-free&nbsp; &nbsp; &nbsp; &nbsp; +353 1 536  
+9320 Ireland&nbsp; &nbsp; &nbsp; &nbsp; +353 1 653 3895 Ireland&nbsp;  
+&nbsp; &nbsp; &nbsp; +353 1 653 3897 Ireland&nbsp; &nbsp; &nbsp; &nbsp;  
++353 1 653 3898 Ireland&nbsp; &nbsp; &nbsp; &nbsp; +353 6 163 9031  
+Ireland&nbsp; &nbsp; &nbsp; &nbsp; +353 1 240 8941 Ireland&nbsp; &nbsp;  
+&nbsp; &nbsp; 1800 949 238 Ireland Toll-free&nbsp; &nbsp; &nbsp; &nbsp;  
+1800 901 561 Ireland Toll-freeMeeting ID: 787 501 745Find your local  
+number:  
+https://onf.zoom.us/u/ad1osSbywU----------------------------------------------------------------If  
+you would like to get added to the calendar invite, please ask Brian.
+When: Thu Jan 20, 2022 4:30pm – 5pm Eastern Time - New York
+Where: (Online conference room)-Zoom-3, MP-1-Large Conference Room (25)
+Calendar: stratum-dev at lists.stratumproject.org
+Who:
+     * bocon at opennetworking.org - creator
+     * max at opennetworking.org
+     * bill at opennetworking.org
+     * mohammed.habeeb at inventec.com
+     * yi at opennetworking.org
+     * carmelo at opennetworking.org
+     * xiao.david at inventec.com
+     * Rich Renner
+     * Devjit Gopalpur
+     * Alireza Ghaffarkhah
+     * Leonid Khedyk
+     * niloofar at opennetworking.org
+     * hsuanchung.lee at qct.io
+     * Arkadiy Shapiro
+     * you at opennetworking.org
+     * abhilash at opennetworking.org
+     * David Gengenbach
+     * siddesh at opennetworking.org
+     * craig.stevens at dell.com
+     * asydney007 at gmail.com
+     * stratum-dev at lists.stratumproject.org
+     * maksym.kovaliov at plvision.eu
+     * maksym.tropets at plvision.eu
+     * jeff_catlin at edge-core.com
+     * chris.sommers at keysight.com
+     * John L
+     * cmace at extremenetworks.com
+     * Poongovan Ponnavaikko
+
+
+Invitation from Google Calendar: https://calendar.google.com/calendar/
+
+You are receiving this courtesy email at the account  
+stratum-dev at lists.stratumproject.org because you are an attendee of this  
+event.
+
+To stop receiving future updates for this event, decline this event.  
+Alternatively you can sign up for a Google account at  
+https://calendar.google.com/calendar/ and control your notification  
+settings for your entire calendar.
+
+Forwarding this invitation could allow any recipient to send a response to  
+the organizer and be added to the guest list, or invite others regardless  
+of their own invitation status, or to modify your RSVP. Learn more at  
+https://support.google.com/calendar/answer/37135#forwarding
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20211212/54fff291/attachment-0001.html>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: not available
+Type: text/calendar
+Size: 9901 bytes
+Desc: not available
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20211212/54fff291/attachment-0001.ics>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: invite.ics
+Type: application/ics
+Size: 10050 bytes
+Desc: not available
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20211212/54fff291/attachment-0001.bin>
+
+From bocon at opennetworking.org  Sun Dec 12 07:19:36 2021
+From: bocon at opennetworking.org (bocon at opennetworking.org)
+Date: Sun, 12 Dec 2021 07:19:36 +0000
+Subject: [stratum-dev] Canceled event: Stratum TST Meeting @ Thu Feb 10,
+ 2022 4:30pm - 5pm (EST) (stratum-dev@lists.stratumproject.org)
+Message-ID: <00000000000053be8d05d2edc70a@google.com>
+
+This event has been canceled.
+
+Title: Stratum TST Meeting
+Stratum Technical Steering Team MeetingJoin Zoom  
+Meetinghttps://onf.zoom.us/j/787501745?pwd=OHdtQVA3eXdoeThxZ0UzS1VVWEtxQT09Meeting  
+ID: 787 501 745Passcode: 258532One tap mobile+13126266799,,787501745# US  
+(Chicago)+19292056099,,787501745# US (New York)Agenda and Meeting  
+Noteshttps://docs.google.com/document/d/1ret8Vbnl-xbLgNsnDEH-jWP2_WwDYym4zDn6me3tiTA/editThe  
+plan is to reserve the 1st and 3rd Thursdays of each month for  
+presentations and community updates. If you can only attend some of these  
+meetings, those will be more interesting. The other meetings will be more  
+informal&nbsp;sync ups to discuss current issues, progress, and status. You  
+can see what presentations are planned by checking the agenda  
+above.Supporting Slides and Previous  
+Recordingshttps://drive.google.com/drive/folders/1ZeYp6RwIGYi9VnIctvnKF1c1NxiAXeOT----------------------------------------------------------------Dial  
+by your location&nbsp; &nbsp; &nbsp; &nbsp; +1 312 626 6799 US  
+(Chicago)&nbsp; &nbsp; &nbsp; &nbsp; +1 929 205 6099 US (New York)&nbsp;  
+&nbsp; &nbsp; &nbsp; +1 301 715 8592 US (Germantown)&nbsp; &nbsp; &nbsp;  
+&nbsp; +1 346 248 7799 US (Houston)&nbsp; &nbsp; &nbsp; &nbsp; +1 669 900  
+6833 US (San Jose)&nbsp; &nbsp; &nbsp; &nbsp; +1 253 215 8782 US  
+(Tacoma)&nbsp; &nbsp; &nbsp; &nbsp; 888 788 0099 US Toll-free&nbsp; &nbsp;  
+&nbsp; &nbsp; 877 853 5247 US Toll-free&nbsp; &nbsp; &nbsp; &nbsp; +61 2  
+8015 6011 Australia&nbsp; &nbsp; &nbsp; &nbsp; +61 3 7018 2005  
+Australia&nbsp; &nbsp; &nbsp; &nbsp; +61 7 3185 3730 Australia&nbsp; &nbsp;  
+&nbsp; &nbsp; +61 8 6119 3900 Australia&nbsp; &nbsp; &nbsp; &nbsp; +61 8  
+7150 1149 Australia&nbsp; &nbsp; &nbsp; &nbsp; 1800 945 157 Australia  
+Toll-free&nbsp; &nbsp; &nbsp; &nbsp; 1800 893 423 Australia Toll-free&nbsp;  
+&nbsp; &nbsp; &nbsp; +81 363 628 317 Japan&nbsp; &nbsp; &nbsp; &nbsp; +81  
+524 564 439 Japan&nbsp; &nbsp; &nbsp; &nbsp; +81 3 4578 1488 Japan&nbsp;  
+&nbsp; &nbsp; &nbsp; 0 800 100 5040 Japan Toll-free&nbsp; &nbsp; &nbsp;  
+&nbsp; 00 663 381 4092 Japan Toll-free&nbsp; &nbsp; &nbsp; &nbsp; +49 69  
+7104 9922 Germany&nbsp; &nbsp; &nbsp; &nbsp; +49 30 5679 5800 Germany&nbsp;  
+&nbsp; &nbsp; &nbsp; +49 69 3807 9883 Germany&nbsp; &nbsp; &nbsp; &nbsp;  
++49 695 050 2596 Germany&nbsp; &nbsp; &nbsp; &nbsp; 0 800 1800 150 Germany  
+Toll-free&nbsp; &nbsp; &nbsp; &nbsp; 0 800 000 6954 Germany Toll-free&nbsp;  
+&nbsp; &nbsp; &nbsp; +886 (2) 7741 7473 Taiwan&nbsp; &nbsp; &nbsp; &nbsp;  
+08 0909 9864 Taiwan Toll-free&nbsp; &nbsp; &nbsp; &nbsp; +48 22 307 3488  
+Poland&nbsp; &nbsp; &nbsp; &nbsp; +48 22 398 7356 Poland&nbsp; &nbsp;  
+&nbsp; &nbsp; +48 22 306 5342 Poland&nbsp; &nbsp; &nbsp; &nbsp; 00 800 321  
+1464 Poland Toll-free&nbsp; &nbsp; &nbsp; &nbsp; 00 800 112 5171 Poland  
+Toll-free&nbsp; &nbsp; &nbsp; &nbsp; +44 208 080 6592 United Kingdom&nbsp;  
+&nbsp; &nbsp; &nbsp; +44 330 088 5830 United Kingdom&nbsp; &nbsp; &nbsp;  
+&nbsp; +44 131 460 1196 United Kingdom&nbsp; &nbsp; &nbsp; &nbsp; +44 203  
+481 5237 United Kingdom&nbsp; &nbsp; &nbsp; &nbsp; +44 203 481 5240 United  
+Kingdom&nbsp; &nbsp; &nbsp; &nbsp; +44 203 901 7895 United Kingdom&nbsp;  
+&nbsp; &nbsp; &nbsp; +44 208 080 6591 United Kingdom&nbsp; &nbsp; &nbsp;  
+&nbsp; 0 800 260 5801 United Kingdom Toll-free&nbsp; &nbsp; &nbsp; &nbsp; 0  
+800 031 5717 United Kingdom Toll-free&nbsp; &nbsp; &nbsp; &nbsp; +353 1 536  
+9320 Ireland&nbsp; &nbsp; &nbsp; &nbsp; +353 1 653 3895 Ireland&nbsp;  
+&nbsp; &nbsp; &nbsp; +353 1 653 3897 Ireland&nbsp; &nbsp; &nbsp; &nbsp;  
++353 1 653 3898 Ireland&nbsp; &nbsp; &nbsp; &nbsp; +353 6 163 9031  
+Ireland&nbsp; &nbsp; &nbsp; &nbsp; +353 1 240 8941 Ireland&nbsp; &nbsp;  
+&nbsp; &nbsp; 1800 949 238 Ireland Toll-free&nbsp; &nbsp; &nbsp; &nbsp;  
+1800 901 561 Ireland Toll-freeMeeting ID: 787 501 745Find your local  
+number:  
+https://onf.zoom.us/u/ad1osSbywU----------------------------------------------------------------If  
+you would like to get added to the calendar invite, please ask Brian.
+When: Thu Feb 10, 2022 4:30pm – 5pm Eastern Time - New York
+Where: (Online conference room)-Zoom-3, MP-1-Large Conference Room (25)
+Calendar: stratum-dev at lists.stratumproject.org
+Who:
+     * bocon at opennetworking.org - creator
+     * max at opennetworking.org
+     * bill at opennetworking.org
+     * mohammed.habeeb at inventec.com
+     * yi at opennetworking.org
+     * carmelo at opennetworking.org
+     * xiao.david at inventec.com
+     * Rich Renner
+     * Devjit Gopalpur
+     * Alireza Ghaffarkhah
+     * Leonid Khedyk
+     * niloofar at opennetworking.org
+     * hsuanchung.lee at qct.io
+     * Arkadiy Shapiro
+     * you at opennetworking.org
+     * abhilash at opennetworking.org
+     * David Gengenbach
+     * siddesh at opennetworking.org
+     * craig.stevens at dell.com
+     * asydney007 at gmail.com
+     * stratum-dev at lists.stratumproject.org
+     * maksym.kovaliov at plvision.eu
+     * maksym.tropets at plvision.eu
+     * jeff_catlin at edge-core.com
+     * chris.sommers at keysight.com
+     * John L
+     * cmace at extremenetworks.com
+     * Poongovan Ponnavaikko
+
+
+Invitation from Google Calendar: https://calendar.google.com/calendar/
+
+You are receiving this courtesy email at the account  
+stratum-dev at lists.stratumproject.org because you are an attendee of this  
+event.
+
+To stop receiving future updates for this event, decline this event.  
+Alternatively you can sign up for a Google account at  
+https://calendar.google.com/calendar/ and control your notification  
+settings for your entire calendar.
+
+Forwarding this invitation could allow any recipient to send a response to  
+the organizer and be added to the guest list, or invite others regardless  
+of their own invitation status, or to modify your RSVP. Learn more at  
+https://support.google.com/calendar/answer/37135#forwarding
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20211212/e6b9ac8b/attachment-0001.html>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: not available
+Type: text/calendar
+Size: 9901 bytes
+Desc: not available
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20211212/e6b9ac8b/attachment-0001.ics>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: invite.ics
+Type: application/ics
+Size: 10050 bytes
+Desc: not available
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20211212/e6b9ac8b/attachment-0001.bin>
+
+From bocon at opennetworking.org  Sun Dec 12 07:19:36 2021
+From: bocon at opennetworking.org (bocon at opennetworking.org)
+Date: Sun, 12 Dec 2021 07:19:36 +0000
+Subject: [stratum-dev] Canceled event: Stratum TST Meeting @ Thu Jan 13,
+ 2022 4:30pm - 5pm (EST) (stratum-dev@lists.stratumproject.org)
+Message-ID: <000000000000556be205d2edc701@google.com>
+
+This event has been canceled.
+
+Title: Stratum TST Meeting
+Stratum Technical Steering Team MeetingJoin Zoom  
+Meetinghttps://onf.zoom.us/j/787501745?pwd=OHdtQVA3eXdoeThxZ0UzS1VVWEtxQT09Meeting  
+ID: 787 501 745Passcode: 258532One tap mobile+13126266799,,787501745# US  
+(Chicago)+19292056099,,787501745# US (New York)Agenda and Meeting  
+Noteshttps://docs.google.com/document/d/1ret8Vbnl-xbLgNsnDEH-jWP2_WwDYym4zDn6me3tiTA/editThe  
+plan is to reserve the 1st and 3rd Thursdays of each month for  
+presentations and community updates. If you can only attend some of these  
+meetings, those will be more interesting. The other meetings will be more  
+informal&nbsp;sync ups to discuss current issues, progress, and status. You  
+can see what presentations are planned by checking the agenda  
+above.Supporting Slides and Previous  
+Recordingshttps://drive.google.com/drive/folders/1ZeYp6RwIGYi9VnIctvnKF1c1NxiAXeOT----------------------------------------------------------------Dial  
+by your location&nbsp; &nbsp; &nbsp; &nbsp; +1 312 626 6799 US  
+(Chicago)&nbsp; &nbsp; &nbsp; &nbsp; +1 929 205 6099 US (New York)&nbsp;  
+&nbsp; &nbsp; &nbsp; +1 301 715 8592 US (Germantown)&nbsp; &nbsp; &nbsp;  
+&nbsp; +1 346 248 7799 US (Houston)&nbsp; &nbsp; &nbsp; &nbsp; +1 669 900  
+6833 US (San Jose)&nbsp; &nbsp; &nbsp; &nbsp; +1 253 215 8782 US  
+(Tacoma)&nbsp; &nbsp; &nbsp; &nbsp; 888 788 0099 US Toll-free&nbsp; &nbsp;  
+&nbsp; &nbsp; 877 853 5247 US Toll-free&nbsp; &nbsp; &nbsp; &nbsp; +61 2  
+8015 6011 Australia&nbsp; &nbsp; &nbsp; &nbsp; +61 3 7018 2005  
+Australia&nbsp; &nbsp; &nbsp; &nbsp; +61 7 3185 3730 Australia&nbsp; &nbsp;  
+&nbsp; &nbsp; +61 8 6119 3900 Australia&nbsp; &nbsp; &nbsp; &nbsp; +61 8  
+7150 1149 Australia&nbsp; &nbsp; &nbsp; &nbsp; 1800 945 157 Australia  
+Toll-free&nbsp; &nbsp; &nbsp; &nbsp; 1800 893 423 Australia Toll-free&nbsp;  
+&nbsp; &nbsp; &nbsp; +81 363 628 317 Japan&nbsp; &nbsp; &nbsp; &nbsp; +81  
+524 564 439 Japan&nbsp; &nbsp; &nbsp; &nbsp; +81 3 4578 1488 Japan&nbsp;  
+&nbsp; &nbsp; &nbsp; 0 800 100 5040 Japan Toll-free&nbsp; &nbsp; &nbsp;  
+&nbsp; 00 663 381 4092 Japan Toll-free&nbsp; &nbsp; &nbsp; &nbsp; +49 69  
+7104 9922 Germany&nbsp; &nbsp; &nbsp; &nbsp; +49 30 5679 5800 Germany&nbsp;  
+&nbsp; &nbsp; &nbsp; +49 69 3807 9883 Germany&nbsp; &nbsp; &nbsp; &nbsp;  
++49 695 050 2596 Germany&nbsp; &nbsp; &nbsp; &nbsp; 0 800 1800 150 Germany  
+Toll-free&nbsp; &nbsp; &nbsp; &nbsp; 0 800 000 6954 Germany Toll-free&nbsp;  
+&nbsp; &nbsp; &nbsp; +886 (2) 7741 7473 Taiwan&nbsp; &nbsp; &nbsp; &nbsp;  
+08 0909 9864 Taiwan Toll-free&nbsp; &nbsp; &nbsp; &nbsp; +48 22 307 3488  
+Poland&nbsp; &nbsp; &nbsp; &nbsp; +48 22 398 7356 Poland&nbsp; &nbsp;  
+&nbsp; &nbsp; +48 22 306 5342 Poland&nbsp; &nbsp; &nbsp; &nbsp; 00 800 321  
+1464 Poland Toll-free&nbsp; &nbsp; &nbsp; &nbsp; 00 800 112 5171 Poland  
+Toll-free&nbsp; &nbsp; &nbsp; &nbsp; +44 208 080 6592 United Kingdom&nbsp;  
+&nbsp; &nbsp; &nbsp; +44 330 088 5830 United Kingdom&nbsp; &nbsp; &nbsp;  
+&nbsp; +44 131 460 1196 United Kingdom&nbsp; &nbsp; &nbsp; &nbsp; +44 203  
+481 5237 United Kingdom&nbsp; &nbsp; &nbsp; &nbsp; +44 203 481 5240 United  
+Kingdom&nbsp; &nbsp; &nbsp; &nbsp; +44 203 901 7895 United Kingdom&nbsp;  
+&nbsp; &nbsp; &nbsp; +44 208 080 6591 United Kingdom&nbsp; &nbsp; &nbsp;  
+&nbsp; 0 800 260 5801 United Kingdom Toll-free&nbsp; &nbsp; &nbsp; &nbsp; 0  
+800 031 5717 United Kingdom Toll-free&nbsp; &nbsp; &nbsp; &nbsp; +353 1 536  
+9320 Ireland&nbsp; &nbsp; &nbsp; &nbsp; +353 1 653 3895 Ireland&nbsp;  
+&nbsp; &nbsp; &nbsp; +353 1 653 3897 Ireland&nbsp; &nbsp; &nbsp; &nbsp;  
++353 1 653 3898 Ireland&nbsp; &nbsp; &nbsp; &nbsp; +353 6 163 9031  
+Ireland&nbsp; &nbsp; &nbsp; &nbsp; +353 1 240 8941 Ireland&nbsp; &nbsp;  
+&nbsp; &nbsp; 1800 949 238 Ireland Toll-free&nbsp; &nbsp; &nbsp; &nbsp;  
+1800 901 561 Ireland Toll-freeMeeting ID: 787 501 745Find your local  
+number:  
+https://onf.zoom.us/u/ad1osSbywU----------------------------------------------------------------If  
+you would like to get added to the calendar invite, please ask Brian.
+When: Thu Jan 13, 2022 4:30pm – 5pm Eastern Time - New York
+Where: (Online conference room)-Zoom-3, MP-1-Large Conference Room (25)
+Calendar: stratum-dev at lists.stratumproject.org
+Who:
+     * bocon at opennetworking.org - creator
+     * max at opennetworking.org
+     * bill at opennetworking.org
+     * mohammed.habeeb at inventec.com
+     * yi at opennetworking.org
+     * carmelo at opennetworking.org
+     * xiao.david at inventec.com
+     * Rich Renner
+     * Devjit Gopalpur
+     * Alireza Ghaffarkhah
+     * Leonid Khedyk
+     * niloofar at opennetworking.org
+     * hsuanchung.lee at qct.io
+     * Arkadiy Shapiro
+     * you at opennetworking.org
+     * abhilash at opennetworking.org
+     * David Gengenbach
+     * siddesh at opennetworking.org
+     * craig.stevens at dell.com
+     * asydney007 at gmail.com
+     * stratum-dev at lists.stratumproject.org
+     * maksym.kovaliov at plvision.eu
+     * maksym.tropets at plvision.eu
+     * jeff_catlin at edge-core.com
+     * chris.sommers at keysight.com
+     * John L
+     * cmace at extremenetworks.com
+     * Poongovan Ponnavaikko
+
+
+Invitation from Google Calendar: https://calendar.google.com/calendar/
+
+You are receiving this courtesy email at the account  
+stratum-dev at lists.stratumproject.org because you are an attendee of this  
+event.
+
+To stop receiving future updates for this event, decline this event.  
+Alternatively you can sign up for a Google account at  
+https://calendar.google.com/calendar/ and control your notification  
+settings for your entire calendar.
+
+Forwarding this invitation could allow any recipient to send a response to  
+the organizer and be added to the guest list, or invite others regardless  
+of their own invitation status, or to modify your RSVP. Learn more at  
+https://support.google.com/calendar/answer/37135#forwarding
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20211212/67d85b35/attachment-0001.html>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: not available
+Type: text/calendar
+Size: 9901 bytes
+Desc: not available
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20211212/67d85b35/attachment-0001.ics>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: invite.ics
+Type: application/ics
+Size: 10050 bytes
+Desc: not available
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20211212/67d85b35/attachment-0001.bin>
+
+From andrea at opennetworking.org  Mon Dec 13 10:25:29 2021
+From: andrea at opennetworking.org (Andrea Campanella)
+Date: Mon, 13 Dec 2021 11:25:29 +0100
+Subject: [stratum-dev] REST API - ONOS and Stratum P4
+In-Reply-To: <CAH7XjRj9wesDGV9MQpTQiKa8CD=6qPSr_754KsC0_UpGfUt7Lg@mail.gmail.com>
+References: <CAH7XjRhRtf5JNzrGc82r_3MU+EpF9yOsQf5ggT_t0d-7smZ+ew@mail.gmail.com>
+ <CAH7XjRj9wesDGV9MQpTQiKa8CD=6qPSr_754KsC0_UpGfUt7Lg@mail.gmail.com>
+Message-ID: <D4EC314D-2BCA-4845-B67B-4999B5D947EB@opennetworking.org>
+
+Hi Luciano, 
+
+There is some documentation here:
+https://github.com/opennetworkinglab/ODTN-emulator/blob/master/docs/run_onos.md <https://github.com/opennetworkinglab/ODTN-emulator/blob/master/docs/run_onos.md> 
+
+I’ve added the stratum mailing list and a few folks at ONF that have worked with the cassini’s
+
+Quick question on the working CASSINI. Did you follow our documentation ? Is there anything you’d like to add ? Feel free to submit a PR with all the things you needed to have them working.
+
+Thanks, 
+Andrea Campanella
+
+Member of Technical Staff at ONF
+Member of ONOS Technical Steering Team
+Member of Ambassador Steering Team, ONOS and CORD Community
+
+> On 7 Dec 2021, at 15:26, Luciano Martins <lmartins at cpqd.com.br> wrote:
+> 
+> Hi Andrea, could you please help me?
+> 
+> Regards,
+> Luciano
+> 
+> ---------- Forwarded message ---------
+> De: Luciano Martins <lmartins at cpqd.com.br <mailto:lmartins at cpqd.com.br>>
+> Date: ter., 7 de dez. de 2021 às 11:22
+> Subject: REST API - ONOS and Stratum P4
+> To: <brigade-p4 at onosproject.org <mailto:brigade-p4 at onosproject.org>>
+> 
+> 
+> Hello, 
+> 
+> I have 2 Cassinis and 2 Stordis with Stratum inside... And I'm using ONOS to control them...
+> 
+> I'm trying to figure out the correct option for "treatment instructions" and "selector criteria" in the JSON for Flow Rules in ONOS...
+> 
+> Is there any document that show all options? How can I find them?
+> 
+> Regards,
+> Luciano
+> 
+> 
+> 
+> -- 
+> Luciano Martins
+> CPQD - Diretoria de Operações
+> Tel.: +55 19 3705-4089 / Cel.: +55 19 99790-6052
+> lmartins at cpqd.com.br <mailto:lmartins at cpqd.com.br>
+>  <http://www.cpqd.com.br/>
+> 
+> -- 
+> Luciano Martins
+> CPQD - Diretoria de Operações
+> Tel.: +55 19 3705-4089 / Cel.: +55 19 99790-6052
+> lmartins at cpqd.com.br <mailto:lmartins at cpqd.com.br>
+>  <http://www.cpqd.com.br/>
+> "Esta mensagem pode conter informações confidenciais ou privilegiadas. Caso não seja o destinatário desta mensagem ou caso ela lhe tenha sido enviada por engano, pedimos a gentileza de eliminar esta mensagem e todos os seus anexos imediatamente. Utilizar, divulgar a quaisquer terceiros ou copiar esta mensagem para qualquer fim é expressamente proibido e punido por lei."
+> "This message may contain privileged or confidential information. If you are not the intended recipient of this message or if you have received it in error, please kindly delete this message and all its attachments immediately. Unauthorized use, disclosure to any third parties or copying of this message is expressly prohibited and may be subject to the penalties of law."
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20211213/ea86afbe/attachment.html>
+

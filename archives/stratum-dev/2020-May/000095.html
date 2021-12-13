@@ -1,0 +1,375 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [stratum-dev] Docker image 8.9.2-3.16.56-OpenNetworkLinux older version for stratum
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Docker%20image%208.9.2-3.16.56-OpenNetworkLinux%20older%0A%20version%20for%20stratum&In-Reply-To=%3C9010ac690f4946989ba5bff342b6e94f%40kau.se%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <LINK REL="Previous"  HREF="000094.html">
+   <LINK REL="Next"  HREF="000096.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[stratum-dev] Docker image 8.9.2-3.16.56-OpenNetworkLinux older version for stratum</H1>
+    <B>Deval Bhamare</B> 
+    <A HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Docker%20image%208.9.2-3.16.56-OpenNetworkLinux%20older%0A%20version%20for%20stratum&In-Reply-To=%3C9010ac690f4946989ba5bff342b6e94f%40kau.se%3E"
+       TITLE="[stratum-dev] Docker image 8.9.2-3.16.56-OpenNetworkLinux older version for stratum">Deval.Bhamare at kau.se
+       </A><BR>
+    <I>Sun May 17 07:24:27 UTC 2020</I>
+    <P><UL>
+        <LI>Previous message (by thread): <A HREF="000094.html">[stratum-dev] Docker image 8.9.2-3.16.56-OpenNetworkLinux older version for stratum
+</A></li>
+        <LI>Next message (by thread): <A HREF="000096.html">[stratum-dev] Docker image 8.9.2-3.16.56-OpenNetworkLinux older version for stratum
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#95">[ date ]</a>
+              <a href="thread.html#95">[ thread ]</a>
+              <a href="subject.html#95">[ subject ]</a>
+              <a href="author.html#95">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello Yi,
+
+
+Thank you for the reply. So I tried the steps below on ONL 3.16.64-OpenNetworkLinux. I still get below error:
+
+
++ docker run -it --privileged -v /dev:/dev -v /sys:/sys -v /lib/modules/3.16.64-OpenNetworkLinux:/lib/modules/3.16.64-OpenNetworkLinux --env WITH_ONLP=false --env PLATFORM=x86-64-stordis-bf2556x-1t-r0 -p 28000:28000 -v /root:/stratum_configs -v /var/log:/stratum_logs stratumproject/stratum-bf:8.9.2-3.16.56-OpenNetworkLinux
+
+loading bf_kdrv_mod...
+
+insmod: ERROR: could not insert module /usr/lib/modules/bf_kdrv.ko: Invalid module format
+
+/usr/bin/stratum_bf: error while loading shared libraries: libonlp.so.1: cannot open shared object file: No such file or directory
+
+
+
+In the end are detailed logs.
+
+
+I have used BF-SDE 8.9.0. Also, I tried with both Docker images, 8.9.2-3.16.56-OpenNetworkLinux and 8.9.2 only, still the same error.
+
+
+I also searched for libonlp.so.1 and below is the output:
+
+
+find / -name libonlp.so.1
+/lib/x86_64-linux-gnu/libonlp.so.1
+
+ls -l /lib/x86_64-linux-gnu/libonlp.so.1
+lrwxrwxrwx 1 root root 10 May 13 12:25 /lib/x86_64-linux-gnu/libonlp.so.1 -&gt; libonlp.so
+
+
+Also, I tried to load bf_kdrv_mod manually with command below and it was successful.
+
+
+sudo $SDE_INSTALL/bin/bf_kdrv_mod_load $SDE_INSTALL
+
+
+
+Thanks,
+
+Deval.
+
+
+Detailed stratum logs:
+
+
++ PLATFORM_ARGS=
+
++ '[' -n x86-64-stordis-bf2556x-1t-r0 ']'
+
++ PLATFORM_ARGS='--env PLATFORM=x86-64-stordis-bf2556x-1t-r0'
+
++ CONFIG_DIR=/root/stratum/stratum-configs
+
++ LOG_DIR=/root/stratum/stratum-configs
+
++ SDE_VERSION=9.0.0
+
+++ uname -r
+
++ KERNEL_VERSION=3.16.64-OpenNetworkLinux
+
++ DOCKER_IMAGE=stratumproject/stratum-bf
+
++ DOCKER_IMAGE_TAG=8.9.2
+
+++ uname -r
+
+++ uname -r
+
++ docker run -it --privileged -v /dev:/dev -v /sys:/sys -v /lib/modules/3.16.64-OpenNetworkLinux:/lib/modules/3.16.64-OpenNetworkLinux --env PLATFORM=x86-64-stordis-bf2556x-1t-r0 -p 28000:28000 -p 9339:9339 -v /root/stratum/stratum-configs:/etc/stratum -v /root/stratum/stratum-configs:/var/log/stratum stratumproject/stratum-bf:8.9.2
+
+Cannot find /usr/lib/modules/bf_kdrv.ko, skip installing the Kernel module.
+
+/usr/bin/stratum_bf: error while loading shared libraries: libonlp.so.1: cannot open shared object file: No such file or directory
+
+
+
+________________________________
+From: Yi Tseng &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">yi at opennetworking.org</A>&gt;
+Sent: Saturday, May 16, 2020 8:21:00 PM
+To: Deval Bhamare
+Cc: Maximilian Pudelko; <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>
+Subject: Re: [stratum-dev] Docker image 8.9.2-3.16.56-OpenNetworkLinux older version for stratum
+
+Hi Deval,
+
+I tried to run the container on my BF2556X device and it works fine. Here is what I did (by following these steps&lt;<A HREF="https://github.com/stratum/stratum/tree/master/stratum/hal/bin/barefoot/docker#run-the-container-on-the-device">https://github.com/stratum/stratum/tree/master/stratum/hal/bin/barefoot/docker#run-the-container-on-the-device</A>&gt;):
+
+1. Set up the huge page (only needs to be done once)
+sudo echo &quot;vm.nr_hugepages = 128&quot; &gt;&gt; /etc/sysctl.conf
+sudo sysctl -p /etc/sysctl.conf
+sudo mkdir /mnt/huge
+sudo mount -t hugetlbfs nodev /mnt/huge
+
+2. Create a directory for configurations and logs and enter this dir:
+mkdir stratum-configs &amp;&amp; cd stratum-configs
+
+3. Place start script, chassis config file and stratum flag file in this directory.
+curl -o start-stratum-container.sh <A HREF="https://raw.githubusercontent.com/stratum/stratum/master/stratum/hal/bin/barefoot/docker/start-stratum-container.sh">https://raw.githubusercontent.com/stratum/stratum/master/stratum/hal/bin/barefoot/docker/start-stratum-container.sh</A>
+chmod +x start-stratum-container.sh
+curl -o chassis_config.pb.txt <A HREF="https://raw.githubusercontent.com/stratum/stratum/master/stratum/hal/config/x86-64-stordis-bf2556x-1t-r0/chassis_config.pb.txt">https://raw.githubusercontent.com/stratum/stratum/master/stratum/hal/config/x86-64-stordis-bf2556x-1t-r0/chassis_config.pb.txt</A>
+curl -o stratum.flags <A HREF="https://raw.githubusercontent.com/stratum/stratum/master/stratum/hal/bin/barefoot/deb/stratum.flags">https://raw.githubusercontent.com/stratum/stratum/master/stratum/hal/bin/barefoot/deb/stratum.flags</A>
+
+4. Start Stratum with the script and some environment variable
+PLATFORM=x86-64-stordis-bf2556x-1t-r0 DOCKER_IMAGE_TAG=9.1.0 CONFIG_DIR=$PWD LOG_DIR=$PWD ./start-stratum-container.sh
+
+Note: Remove &quot;-bf_switchd_background=true&quot; from stratum.flags file if you want to use the command line from bf_switchd
+
+Yi
+
+On Sat, May 16, 2020 at 4:08 AM Deval Bhamare &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">Deval.Bhamare at kau.se</A>&lt;mailto:<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">Deval.Bhamare at kau.se</A>&gt;&gt; wrote:
+
+Hi ,
+
+
+I changed it, and this results into below error:
+
+
+/usr/bin/stratum_bf: symbol lookup error: /usr/bin/stratum_bf: undefined symbol: onlp_sw_init
+
+
+thanks,
+
+Deval.
+
+
+________________________________
+From: Maximilian Pudelko &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">max at opennetworking.org</A>&lt;mailto:<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">max at opennetworking.org</A>&gt;&gt;
+Sent: Friday, May 15, 2020 11:03:04 PM
+To: Deval Bhamare
+Cc: Yi Tseng
+Subject: Re: [stratum-dev] Docker image 8.9.2-3.16.56-OpenNetworkLinux older version for stratum
+
+&gt;<i> -v /root:/etc/stratum
+</I>
+That's the issue. Unless you have a copy of the stratum config files in /root, this will overwrite them inside the container.
+You can remove this line&lt;<A HREF="https://github.com/stratum/stratum/blob/master/stratum/hal/bin/barefoot/docker/start-stratum-container.sh#L32">https://github.com/stratum/stratum/blob/master/stratum/hal/bin/barefoot/docker/start-stratum-container.sh#L32</A>&gt; for now, until we figure something out.
+
+Max
+
+On Fri, May 15, 2020 at 12:54 PM Deval Bhamare &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">Deval.Bhamare at kau.se</A>&lt;mailto:<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">Deval.Bhamare at kau.se</A>&gt;&gt; wrote:
+
+The docker run command unfolds into below, if that might help.
+
+
+Also, do I have to use the below options with modified container as well?
+
+
+    --env WITH_ONLP=false \
+    --env PLATFORM=x86-64-stordis-bf2556x-1t-r0 \
+
+
+
+Docker run:
+
+
+
+ docker run -it --privileged -v /dev:/dev -v /sys:/sys -v /lib/modules/3.16.64-OpenNetworkLinux:/lib/modules/3.16.64-OpenNetworkLinux -v /lib/x86_64-linux-gnu/libonlp-platform-defaults.so:/lib/x86_64-linux-gnu/libonlp-platform-defaults.so -v /lib/x86_64-linux-gnu/libonlp-platform-defaults.so.1:/lib/x86_64-linux-gnu/libonlp-platform-defaults.so.1 -v /lib/x86_64-linux-gnu/libonlp-platform.so:/lib/x86_64-linux-gnu/libonlp-platform.so -v /lib/x86_64-linux-gnu/libonlp-platform.so.1:/lib/x86_64-linux-gnu/libonlp-platform.so.1 -v /lib/x86_64-linux-gnu/libonlp.so:/lib/x86_64-linux-gnu/libonlp.so -v /lib/x86_64-linux-gnu/libonlp.so.1:/lib/x86_64-linux-gnu/libonlp.so.1 -v /lib/platform-config:/lib/platform-config -v /etc/onl:/etc/onl -p 28000:28000 -p 9339:9339 -v /root:/etc/stratum -v /var/log:/var/log/stratum stratumproject/stratum-bf:8.9.2-3.16.56-OpenNetworkLinux
+
+________________________________
+From: Maximilian Pudelko &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">max at opennetworking.org</A>&lt;mailto:<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">max at opennetworking.org</A>&gt;&gt;
+Sent: Friday, May 15, 2020 10:41:03 PM
+To: Yi Tseng
+Cc: Deval Bhamare; <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>&lt;mailto:<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>&gt;
+Subject: Re: [stratum-dev] Docker image 8.9.2-3.16.56-OpenNetworkLinux older version for stratum
+
+Hi Deval,
+
+&gt;<i> Cannot find flag file /etc/stratum/stratum.flags
+</I>I think this error comes from the way you start the container. Can you give us the full command for `start-stratum-container.sh`?
+By default the script will mount your /root folder to /etc/stratum, hiding everything inside: <A HREF="https://github.com/stratum/stratum/blob/master/stratum/hal/bin/barefoot/docker/start-stratum-container.sh#L19">https://github.com/stratum/stratum/blob/master/stratum/hal/bin/barefoot/docker/start-stratum-container.sh#L19</A>
+
+@Yi Tseng&lt;mailto:<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">yi at opennetworking.org</A>&gt; Maybe we should revise this logic a bit and only mount it if the env var is set.
+
+Max
+
+On Fri, May 15, 2020 at 11:37 AM Yi Tseng via stratum-dev &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>&lt;mailto:<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>&gt;&gt; wrote:
+Hi Deval,
+
+According to the log, you are trying to run the container on the system which is not OpenNetworkingLinux with Linux kernel 3.16.56
+
+The docker image with &quot;-OpenNetworkingLinux&quot; tag postfix is now only built for OpenNetworkLinux (which requires ONLP library). If you want to use other systems like Ubuntu or Fedora, you can use images without &quot;-OpenNetworkingLinux&quot; postfix. For example &quot;stratumproject/stratum-bf:8.9.2&quot;
+
+Yi
+
+On Thu, May 14, 2020 at 10:56 PM Deval Bhamare &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">Deval.Bhamare at kau.se</A>&lt;mailto:<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">Deval.Bhamare at kau.se</A>&gt;&gt; wrote:
+
+Hello Yi,
+
+
+Sending a reminder.
+
+
+Please let me know the cause of the error below in the newly updated container image  8.9.2-3.16.56-OpenNetworkLinux&lt;<A HREF="https://hub.docker.com/layers/stratumproject/stratum-bf/8.9.2-3.16.56-OpenNetworkLinux/images/sha256-3a52ec68005041b4d69b676c9584133a34652910514272165f09f443fb2975d8?context=explore">https://hub.docker.com/layers/stratumproject/stratum-bf/8.9.2-3.16.56-OpenNetworkLinux/images/sha256-3a52ec68005041b4d69b676c9584133a34652910514272165f09f443fb2975d8?context=explore</A>&gt;
+
+
+/usr/bin/stratum_bf: error while loading shared libraries: libonlp.so.1: cannot open shared object file: No such file or directory
+
+
+Note: I am using below values in the start_container script (which was working earlier)
+
+
+--env WITH_ONLP=false \
+--env PLATFORM=x86-64-stordis-bf2556x-1t-r0 \
+
+
+ With original  start_container script, however, I get error of
+
+
+Cannot find flag file /etc/stratum/stratum.flags
+
+
+
+Is it possible to get access to the earlier version of the container image? Also, I tried to build the container locally with old Docker.runtime, but it fails as well, with error log below.
+
+
+PLease suggest.
+
+
+ERROR: /stratum/stratum/hal/bin/barefoot/BUILD:26:1: Linking of rule '//stratum/hal/bin/barefoot:stratum_bf' failed (Exit 1) gcc failed: error executing command /usr/bin/gcc @bazel-out/k8-fastbuild/bin/stratum/hal/bin/barefoot/stratum_bf-2.params
+
+
+Use --sandbox_debug to see verbose messages from the sandbox
+
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi.pic.o:pi.c:function pi_port_status_get: error: undefined reference to '_pi_port_status_get'
+
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_act_prof.pic.o:pi_act_prof.c:function pi_act_prof_grp_activate_mbr: error: undefined reference to '_pi_act_prof_grp_activate_mbr'
+
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_act_prof.pic.o:pi_act_prof.c:function pi_act_prof_grp_deactivate_mbr: error: undefined reference to '_pi_act_prof_grp_deactivate_mbr'
+
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_act_prof.pic.o:pi_act_prof.c:function pi_act_prof_mbr_fetch: error: undefined reference to '_pi_act_prof_mbr_fetch'
+
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_act_prof.pic.o:pi_act_prof.c:function pi_act_prof_grp_fetch: error: undefined reference to '_pi_act_prof_grp_fetch'
+
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_tables.pic.o:pi_tables.c:function pi_table_default_action_get_handle: error: undefined reference to '_pi_table_default_action_get_handle'
+
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_tables.pic.o:pi_tables.c:function pi_table_entries_fetch_one: error: undefined reference to '_pi_table_entries_fetch_one'
+
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_tables.pic.o:pi_tables.c:function pi_table_entries_fetch_wkey: error: undefined reference to '_pi_table_entries_fetch_wkey'
+
+collect2: error: ld returned 1 exit status
+
+Target //stratum/hal/bin/barefoot:stratum_bf failed to build
+
+Use --verbose_failures to see the command lines of failed build steps.
+
+INFO: Elapsed time: 281.155s, Critical Path: 81.05s
+
+INFO: 1513 processes: 1513 processwrapper-sandbox.
+
+FAILED: Build did NOT complete successfully
+
+FAILED: Build did NOT complete successfully
+
+The command '/bin/sh -c bazel build //stratum/hal/bin/barefoot:stratum_bf     --define sde_ver=$(cat $SDE_INSTALL/share/VERSION)     --define phal_with_onlp=false &amp;&amp;     cp bazel-bin/stratum/hal/bin/barefoot/stratum_bf /tmp/stratum_bf_no_onlp' returned a non-zero code: 1
+
+
+
+Thanks,
+
+
+Deval
+
+________________________________
+From: Deval Bhamare
+Sent: Wednesday, May 13, 2020 8:49:24 PM
+To: Yi Tseng
+Subject: Docker image older version for stratum
+
+
+Hello Yi,
+
+
+As I have mentioned earlier, the docker container image 8.9.2-3.16.56-OpenNetworkLinux&lt;<A HREF="https://hub.docker.com/layers/stratumproject/stratum-bf/8.9.2-3.16.56-OpenNetworkLinux/images/sha256-3a52ec68005041b4d69b676c9584133a34652910514272165f09f443fb2975d8?context=explore">https://hub.docker.com/layers/stratumproject/stratum-bf/8.9.2-3.16.56-OpenNetworkLinux/images/sha256-3a52ec68005041b4d69b676c9584133a34652910514272165f09f443fb2975d8?context=explore</A>&gt; was working for our tofino switch, until I had to pull the image again, due to some crash. However, after pulling the new image, things have stopped working. I now get the error:
+
+
+loading bf_kdrv_mod...
+insmod: ERROR: could not insert module /usr/lib/modules/bf_kdrv.ko: Invalid module format
+/usr/bin/stratum_bf: error while loading shared libraries: libonlp.so.1: cannot open shared object file: No such file or directory
+
+
+
+As I can see the docker image is build very recently and I doubt it may have changed something. Is it possible for you to provide the older version of this image (approx 2 months old, when the missing json issue was solved). Else, how can I fix the above problem?
+
+
+
+Thanks,
+
+Deval.
+
+
+
+
+--
+Yi Tseng
+Member of Technical Staff
+Open Networking Foundation
+<A HREF="https://www.opennetworking.org/">https://www.opennetworking.org/</A>
+_______________________________________________
+stratum-dev mailing list
+<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>&lt;mailto:<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>&gt;
+<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">https://lists.stratumproject.org/listinfo/stratum-dev</A>
+
+
+--
+Yi Tseng
+Member of Technical Staff
+Open Networking Foundation
+<A HREF="https://www.opennetworking.org/">https://www.opennetworking.org/</A>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.stratumproject.org/archives/stratum-dev/attachments/20200517/2515c930/attachment-0001.html">https://lists.stratumproject.org/archives/stratum-dev/attachments/20200517/2515c930/attachment-0001.html</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message (by thread): <A HREF="000094.html">[stratum-dev] Docker image 8.9.2-3.16.56-OpenNetworkLinux older version for stratum
+</A></li>
+	<LI>Next message (by thread): <A HREF="000096.html">[stratum-dev] Docker image 8.9.2-3.16.56-OpenNetworkLinux older version for stratum
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#95">[ date ]</a>
+              <a href="thread.html#95">[ thread ]</a>
+              <a href="subject.html#95">[ subject ]</a>
+              <a href="author.html#95">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.stratumproject.org/listinfo/stratum-dev">More information about the stratum-dev
+mailing list</a><br>
+</body></html>

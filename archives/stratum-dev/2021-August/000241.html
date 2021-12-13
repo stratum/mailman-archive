@@ -1,0 +1,151 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [stratum-dev] Control Plane API for Runtime Programmablility	(FlexCore)
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Control%20Plane%20API%20for%20Runtime%20Programmablility%0A%09%28FlexCore%29&In-Reply-To=%3CCAAkB0aAX%2B0g%3DiKpMGYKDhi10VGyrNjJLbpiFw0JmJ1Q0mZKqew%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <LINK REL="Previous"  HREF="000240.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[stratum-dev] Control Plane API for Runtime Programmablility	(FlexCore)</H1>
+    <B>Antonin Bas</B> 
+    <A HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Control%20Plane%20API%20for%20Runtime%20Programmablility%0A%09%28FlexCore%29&In-Reply-To=%3CCAAkB0aAX%2B0g%3DiKpMGYKDhi10VGyrNjJLbpiFw0JmJ1Q0mZKqew%40mail.gmail.com%3E"
+       TITLE="[stratum-dev] Control Plane API for Runtime Programmablility	(FlexCore)">antonin.bas at gmail.com
+       </A><BR>
+    <I>Wed Aug 18 18:22:32 UTC 2021</I>
+    <P><UL>
+        <LI>Previous message (by thread): <A HREF="000240.html">[stratum-dev] Canceled event with note: Stratum TST Meeting @ Thu Aug 5, 2021 12:30pm - 1pm (PDT) (stratum-dev at lists.stratumproject.org)
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#241">[ date ]</a>
+              <a href="thread.html#241">[ thread ]</a>
+              <a href="subject.html#241">[ subject ]</a>
+              <a href="author.html#241">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi all,
+
+I am happy to announce that Ang Chen from Rice University will present his
+work on FlexCore at the next P4 API Working Group meeting, on Friday August
+27th, at 9.30AM PST. Ang and his co-authors are proposing a new set of
+runtime APIs for P4, to enable live device reconfiguration with no down
+time. The FlexCore paper will appear at NSDI'22.
+
+Please find the abstract for the talk below, along with the meeting
+details. I hope to see many of you at the talk. Please share this with
+anyone you think might be interested.
+
+Thanks,
+
+Antonin
+
+-- Title: Control Plane API for Runtime Programmablility (FlexCore)
+
+-- Abstract: The current P4 ecosystem primarily targets compile-time
+programming of network devices, but runtime device reconfigurations in real
+time have not received sufficient attention. This unfortunately
+restricts the velocity of change: reprogramming a P4 device incurs
+intrusive change as it requires a complete reflash. In a production
+network, such reconfigurations need to be carefully planned, e.g., via
+network management procedures such as draining and rerouting traffic from
+the target node, re-imaging the data plane, and redirecting traffic back to
+its original route. FlexCore investigates design techniques for runtime
+programmable targets, and proposes target-independent control plane API for
+runtime programming of network devices. Our proposed API is generally
+applicable to P4-based switch ASICs, programmable NICs, and software
+targets, and our current implementation is for a merchant silicon based
+upon the Nvidia Spectrum-2 SN3300 series. This new API enables partial
+reconfiguration of programmable data planes at runtime with minimum
+resource overheads, without service disruption, while processing packets
+with consistency guarantees. The full design will be presented at NSDI
+2022, and this talk focuses on the implications for the P4Runtime design.
+This is joint work from a group of academic and industry researchers:
+Jiarong Xing, Kuo-Feng Hsu (Rice), Matty Kadosh, Alan Lo, Yonathan
+Piasetzky (Nvidia), Arvind Krishnamurthy (UW), Ang Chen (Rice).
+
+
+Join Zoom Meeting
+<A HREF="https://VMware.zoom.us/j/506821682?pwd=WXRndWVTS3EzVENHditVT3kwMkV0UT09">https://VMware.zoom.us/j/506821682?pwd=WXRndWVTS3EzVENHditVT3kwMkV0UT09</A>
+&lt;<A HREF="https://www.google.com/url?q=https://VMware.zoom.us/j/506821682?pwd%3DWXRndWVTS3EzVENHditVT3kwMkV0UT09&amp;sa=D&amp;source=calendar&amp;usd=2&amp;usg=AOvVaw0JgFrPPNe5oRJyJAaKQl-T">https://www.google.com/url?q=https://VMware.zoom.us/j/506821682?pwd%3DWXRndWVTS3EzVENHditVT3kwMkV0UT09&amp;sa=D&amp;source=calendar&amp;usd=2&amp;usg=AOvVaw0JgFrPPNe5oRJyJAaKQl-T</A>&gt;
+Meeting ID: 506 821 682
+Password: 071254
+
+Join from Skype for Business:
+<A HREF="https://VMware.zoom.us/skype/506821682">https://VMware.zoom.us/skype/506821682</A>
+&lt;<A HREF="https://www.google.com/url?q=https://VMware.zoom.us/skype/506821682&amp;sa=D&amp;source=calendar&amp;usd=2&amp;usg=AOvVaw1qUz4lEAr8eLFADYvPEtMj">https://www.google.com/url?q=https://VMware.zoom.us/skype/506821682&amp;sa=D&amp;source=calendar&amp;usd=2&amp;usg=AOvVaw1qUz4lEAr8eLFADYvPEtMj</A>&gt;
+Password: 071254
+
+Or iPhone one-tap :
+US: +16699006833,,506821682#,,#,,,071254#
+ or
++12532158782,,506821682#,,#,,,071254#
+
+Or Telephone (for higher quality, dial a number based on your current
+location)：
+US: +1 669 900 6833 or +1 253 215 8782 or +1 346 248 7799 or +1 312 626
+6799 or +1 646 558 8656 or +1 301 715 8592 India: 000 800 040 1530 (Toll
+Free) or 000 800 050 5050 (Toll Free)United Kingdom: +44 208 080 6592 or
++44 330 088 5830 or +44 131 460 1196 or +44 203 481 5237 or +44 203 481
+5240 or +44 208 080 6591 Ireland: +353 1 653 3898 or +353 6 163 9031 or
++353 1 536 9320 or +353 1 653 3895 or +353 1 653 3897
+
+Meeting ID: 506 821 682
+Password: 071254
+International numbers available:
+<A HREF="https://VMware.zoom.us/u/abB87RM3l1">https://VMware.zoom.us/u/abB87RM3l1</A>
+&lt;<A HREF="https://www.google.com/url?q=https://VMware.zoom.us/u/abB87RM3l1&amp;sa=D&amp;source=calendar&amp;usd=2&amp;usg=AOvVaw2PmlLmZTpHaVgBBMo58PGe">https://www.google.com/url?q=https://VMware.zoom.us/u/abB87RM3l1&amp;sa=D&amp;source=calendar&amp;usd=2&amp;usg=AOvVaw2PmlLmZTpHaVgBBMo58PGe</A>&gt;
+
+Or an H.323/SIP room system:
+
+162.255.37.11 (US West)
+162.255.36.11 (US East)
+221.122.88.195 (China)
+115.114.131.7 (India Mumbai)
+115.114.115.7 (India Hyderabad)
+213.19.144.110 (EMEA)
+103.122.166.55 (Australia)
+209.9.211.110 (Hong Kong SAR)
+64.211.144.160 (Brazil)
+69.174.57.160 (Canada)
+207.226.132.110 (Japan)
+Meeting ID: 506 821 682
+Password: 071254
+
+SIP: <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">506821682 at zoomcrc.com</A>
+Password: 071254
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.stratumproject.org/archives/stratum-dev/attachments/20210818/c46f11e3/attachment.html">https://lists.stratumproject.org/archives/stratum-dev/attachments/20210818/c46f11e3/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message (by thread): <A HREF="000240.html">[stratum-dev] Canceled event with note: Stratum TST Meeting @ Thu Aug 5, 2021 12:30pm - 1pm (PDT) (stratum-dev at lists.stratumproject.org)
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#241">[ date ]</a>
+              <a href="thread.html#241">[ thread ]</a>
+              <a href="subject.html#241">[ subject ]</a>
+              <a href="author.html#241">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.stratumproject.org/listinfo/stratum-dev">More information about the stratum-dev
+mailing list</a><br>
+</body></html>

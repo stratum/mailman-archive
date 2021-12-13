@@ -1,0 +1,330 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [stratum-dev] Update Bazel version to 2.2.0
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Update%20Bazel%20version%20to%202.2.0&In-Reply-To=%3CCAOyFVR1zAx6MvQ324WwcRfnm4FosJuhAmk3f%3DfpRGf_M9bZSUQ%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <LINK REL="Previous"  HREF="000053.html">
+   <LINK REL="Next"  HREF="000055.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[stratum-dev] Update Bazel version to 2.2.0</H1>
+    <B>Yi Tseng</B> 
+    <A HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Update%20Bazel%20version%20to%202.2.0&In-Reply-To=%3CCAOyFVR1zAx6MvQ324WwcRfnm4FosJuhAmk3f%3DfpRGf_M9bZSUQ%40mail.gmail.com%3E"
+       TITLE="[stratum-dev] Update Bazel version to 2.2.0">yi at opennetworking.org
+       </A><BR>
+    <I>Sun Mar 15 12:06:19 UTC 2020</I>
+    <P><UL>
+        <LI>Previous message (by thread): <A HREF="000053.html">[stratum-dev] Update Bazel version to 2.2.0
+</A></li>
+        <LI>Next message (by thread): <A HREF="000055.html">[stratum-dev] Update Bazel version to 2.2.0
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#54">[ date ]</a>
+              <a href="thread.html#54">[ thread ]</a>
+              <a href="subject.html#54">[ subject ]</a>
+              <a href="author.html#54">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Deval,
+
+You can add &quot;-- -p28000:28000&quot; option (*./setup_dev_env.sh -- -p28000:28000*).
+This will forward port 28000 to the container.
+
+And yes, the huge page command needs to be run on the host system.
+
+
+
+On Sat, Mar 14, 2020 at 5:07 PM Deval Bhamare &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">Deval.Bhamare at kau.se</A>&gt; wrote:
+
+&gt;<i> Hello Yi,
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Thank you for your reply. We will contact BSP.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> About the mount and mapping thing, I would to clarify that I am using the
+</I>&gt;<i> option of building stratum from scratch (given here:
+</I>&gt;<i> <A HREF="https://github.com/stratum/stratum/blob/master/stratum/hal/bin/barefoot/README.md">https://github.com/stratum/stratum/blob/master/stratum/hal/bin/barefoot/README.md</A>
+</I>&gt;<i> ).
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> As per your suggestion, I first run*./setup_dev_env.sh* to start the
+</I>&gt;<i> container. Then I do everything within this container (I have copied BF SDE
+</I>&gt;<i> and BSP dependencies manually in the container folder).
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Are these steps correct? The commands you mentioned  (pasted below), have
+</I>&gt;<i> to be performed outside the container, am I correct? I have done that
+</I>&gt;<i> already. How can I make sure that Stratum is listening correctly and I can
+</I>&gt;<i> access it from ONOS?
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> $ [sudo] echo &quot;vm.nr_hugepages = 128&quot; &gt;&gt; /etc/sysctl.conf
+</I>&gt;<i> $ [sudo] sysctl -p /etc/sysctl.conf
+</I>&gt;<i> $ [sudo] mkdir /mnt/huge
+</I>&gt;<i> $ [sudo] mount -t hugetlbfs nodev /mnt/huge
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Thanks,
+</I>&gt;<i>
+</I>&gt;<i> Deval.
+</I>&gt;<i> ------------------------------
+</I>&gt;<i> *From:* Yi Tseng &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">yi at opennetworking.org</A>&gt;
+</I>&gt;<i> *Sent:* Saturday, March 14, 2020 7:37:41 AM
+</I>&gt;<i> *To:* Deval Bhamare
+</I>&gt;<i> *Cc:* <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>
+</I>&gt;<i> *Subject:* Re: [stratum-dev] Update Bazel version to 2.2.0
+</I>&gt;<i>
+</I>&gt;<i> Hi Deval,
+</I>&gt;<i>
+</I>&gt;<i> As far as I know, &quot;onie-syseeprom&quot; is a tool which included in ONIE. The
+</I>&gt;<i> BSP tries to use &quot;onie-syseeprom&quot; to read some information from the board.
+</I>&gt;<i>
+</I>&gt;<i> However, I don't think ONL includes the onie-syseeprom tool (tried to
+</I>&gt;<i> search from ONL master but only got onie-sysinfo and onie-shell tool)
+</I>&gt;<i>
+</I>&gt;<i> In ONIE shell, you should be able to run &quot;onie-syseeprom&quot; command and get
+</I>&gt;<i> information like below:
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> *TlvInfo Header:    Id String:    TlvInfo    Version:      1    Total
+</I>&gt;<i> Length: 153 TLV Name             Code Len Value -------------------- ----
+</I>&gt;<i> --- ----- Product Name         0x21  10 BF2556X-1T Part Number
+</I>&gt;<i>  0x22  14 BF2556X-1T-A1F Serial Number        0x23  18 BF2556X1TXXXXXXXXX
+</I>&gt;<i> Base MAC Address     0x24   6 XX:XX:XX:XX:XX:XX Manufacture Date     0x25
+</I>&gt;<i>  19 07/08/2019 14:07:40 Device Version       0x26   1 1 Platform Name
+</I>&gt;<i>  0x28  28 x86_64-stordis_bf2556x_1t-r0 ONIE Version         0x29   4 1.10
+</I>&gt;<i> MAC Addresses        0x2A   2 XXXX Manufacturer         0x2B   7 STORDIS
+</I>&gt;<i> Country Code         0x2C   2 TW Vendor Name          0x2D   7 STORDIS Diag
+</I>&gt;<i> Version         0x2E   3 1.0 CRC-32               0xFE   4 0x57762CCE
+</I>&gt;<i> Checksum is valid.*
+</I>&gt;<i>
+</I>&gt;<i> I would suggest contacting the vendor for the BSP issue.
+</I>&gt;<i>
+</I>&gt;<i> For the container port, we do export the 28000 port, there is a script to
+</I>&gt;<i> start the Stratum container, please follow the document to start it
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="https://github.com/stratum/stratum/tree/master/stratum/hal/bin/barefoot/docker#run-the-docker-container-on-the-device">https://github.com/stratum/stratum/tree/master/stratum/hal/bin/barefoot/docker#run-the-docker-container-on-the-device</A>
+</I>&gt;<i>
+</I>&gt;<i> Yi
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> On Thu, Mar 12, 2020 at 6:30 PM Deval Bhamare &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">Deval.Bhamare at kau.se</A>&gt;
+</I>&gt;<i> wrote:
+</I>&gt;<i>
+</I>&gt;&gt;<i> Hello Yi,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> For Building Stratum Dev we have resolved the issue already with and
+</I>&gt;&gt;<i> without BSP.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> The soft-links in Lib are pointing to the Libs using Hardcoded absolute
+</I>&gt;&gt;<i> path, which is not available from within the container. So had to delete
+</I>&gt;&gt;<i> them and create again pointing to local Libs. Also have to explicitly
+</I>&gt;&gt;<i> install the library libpltfm_mgr.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I will check the direct Docker option later-on.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Now Stratum in running, but with error below in the end (screenshot is
+</I>&gt;&gt;<i> attached).
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Configuration for dev_id 0
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>   Family        : Tofino
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>   pci_sysfs_str : /sys/devices/pci0000:00/0000:00:03.0/0000:05:00.0
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>   pci_domain    : 0
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>   pci_bus       : 5
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>   pci_fn        : 0
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>   pci_dev       : 0
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>   pci_int_mode  : 1
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>   sbus_master_fw: /stratum/bf-sde-8.9.0/install/
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>   pcie_fw       : /stratum/bf-sde-8.9.0/install/
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>   serdes_fw     : /stratum/bf-sde-8.9.0/install/
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>   sds_fw_path   : /stratum/bf-sde-8.9.0/install/
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>   microp_fw_path:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> bf_switchd: processing P4 configuration...
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> P4 profile for dev_id 0
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>   p4_name: dummy
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>     libpd:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>     libpdthrift:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>     context:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>     config:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>   Agent[0]: /stratum/bf-sde-8.9.0/install/lib/libpltfm_mgr.so
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>   diag:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>   mavericks diag:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>   non_default_port_ppgs: 0
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>   SAI default initialize: 1
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> bf_switchd: library /stratum/bf-sde-8.9.0/install/lib/libpltfm_mgr.so
+</I>&gt;&gt;<i> loaded
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> bf_switchd: agent[0] initialized
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Tcl server started..
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Tcl server: listen socket created
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Tcl server: bind done on port 8008, listening...
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Tcl server: waiting for incoming connections...
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> *sh: 1: onie-syseeprom: not found*
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> *2020-03-12 10:19:54.510206 BF_PLTFM ERROR - Error in cp2112
+</I>&gt;&gt;<i> initialization*
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> *2020-03-12 10:19:54.510309 BF_PLTFM ERROR - pltfm_mgr: platform init
+</I>&gt;&gt;<i> failed*
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> So, looks like BF platform initilization is failing. Also, what is
+</I>&gt;&gt;<i> *onie-syseeprom*
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I also had a doubt that, *is the port 28000 available outside the
+</I>&gt;&gt;<i> container*? I cannot see any process listening on port 28000 or 8008
+</I>&gt;&gt;<i> (given in the message above) from outside the container.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Thanks,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Deval.
+</I>&gt;&gt;<i> ------------------------------
+</I>&gt;&gt;<i> *From:* Yi Tseng &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">yi at opennetworking.org</A>&gt;
+</I>&gt;&gt;<i> *Sent:* Thursday, March 12, 2020 6:57:14 AM
+</I>&gt;&gt;<i> *To:* Deval Bhamare
+</I>&gt;&gt;<i> *Cc:* Narada Hess; <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>
+</I>&gt;&gt;<i> *Subject:* Re: [stratum-dev] Update Bazel version to 2.2.0
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Hi Deval,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> We don't support Barefoot thrift APIs in Stratum. We support some
+</I>&gt;&gt;<i> Barefoot API like port API via gNMI and the chassis config.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> For missing JSON file, I can confirm that our internal CI did not include
+</I>&gt;&gt;<i> the latest Stratum with kernel 3.16.56
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I just rebuild it and uploaded the new container image to the Docker hub
+</I>&gt;&gt;<i> &lt;<A HREF="https://hub.docker.com/layers/stratumproject/stratum-bf/8.9.2-3.16.56-OpenNetworkLinux/images/sha256-c9d64c1a7c2853150532a5d3e14dac94aa79b63a4dffba16018322d971d65300?context=explore">https://hub.docker.com/layers/stratumproject/stratum-bf/8.9.2-3.16.56-OpenNetworkLinux/images/sha256-c9d64c1a7c2853150532a5d3e14dac94aa79b63a4dffba16018322d971d65300?context=explore</A>&gt;,
+</I>&gt;&gt;<i> feel free to let me know if the issue still exists.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> About the missing library, can you run this command in your shell?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> *LD_LIBRARY_PATH=$BF_SDE_INSTALL/lib ldd
+</I>&gt;&gt;<i> ./bazel-bin/stratum/hal/bin/barefoot/stratum_bf*
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I think the system linker may have some issue to find the library.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> The *libavago.so.0 *is a symbolic link to *libavago.so*. the libavago.so
+</I>&gt;&gt;<i> must also exists.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> *ls -al $BF_SDE_INSTALL/lib/libavago* -rwxr-xr-x 1 root root 1185264 Mar
+</I>&gt;&gt;<i> 12 04:19 libavago.so lrwxrwxrwx 1 root root      11 Mar 12 04:19
+</I>&gt;&gt;<i> libavago.so.0 -&gt; libavago.so lrwxrwxrwx 1 root root      11 Mar 12 04:19
+</I>&gt;&gt;<i> libavago.so.0.0.0 -&gt; libavago.so*
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i> Yi Tseng
+</I>&gt;<i> Member of Technical Staff
+</I>&gt;<i> Open Networking Foundation
+</I>&gt;<i> <A HREF="https://www.opennetworking.org/">https://www.opennetworking.org/</A>
+</I>&gt;<i>
+</I>
+
+-- 
+Yi Tseng
+Member of Technical Staff
+Open Networking Foundation
+<A HREF="https://www.opennetworking.org/">https://www.opennetworking.org/</A>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.stratumproject.org/archives/stratum-dev/attachments/20200315/084a83c4/attachment.html">https://lists.stratumproject.org/archives/stratum-dev/attachments/20200315/084a83c4/attachment.html</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message (by thread): <A HREF="000053.html">[stratum-dev] Update Bazel version to 2.2.0
+</A></li>
+	<LI>Next message (by thread): <A HREF="000055.html">[stratum-dev] Update Bazel version to 2.2.0
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#54">[ date ]</a>
+              <a href="thread.html#54">[ thread ]</a>
+              <a href="subject.html#54">[ subject ]</a>
+              <a href="author.html#54">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.stratumproject.org/listinfo/stratum-dev">More information about the stratum-dev
+mailing list</a><br>
+</body></html>

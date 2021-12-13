@@ -1,0 +1,80 @@
+From bocon at opennetworking.org  Wed May 13 07:17:56 2020
+From: bocon at opennetworking.org (Brian O'Connor)
+Date: Wed, 13 May 2020 00:17:56 -0700
+Subject: [stratum-announce] Stratum TST Election Results
+Message-ID: <CACKOpD=mcPU9qhSXTAZdNLJw+d6_SCzwX8rY-2t-_wgvWke9jg@mail.gmail.com>
+
+Hi everyone,
+
+We would like to congratulate the new members of the Stratum TST for 2020!
+They will be responsible for overseeing and managing the Stratum project
+for the coming year.
+
+*Stratum TST*
+Brian O’Connor (lead)
+Alireza Ghaffarkhah (incumbent)
+Craig Stevens (new)
+Max Pudelko (new)
+Yi Tseng (new)
+
+We also want to thank Antonin Bas, our (now officially) retired member for
+his service to the TST.
+
+Thanks!
+Brian
+
+P.S. If you are wondering why you didn't receive a ballot, that is because
+we had 3 open slots and 3 qualified nominees. An election would have just
+been a formality, so we decided to skip it.
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-announce/attachments/20200513/aafa9e94/attachment.html>
+
+From aghaffar at google.com  Wed May 13 07:22:52 2020
+From: aghaffar at google.com (Alireza Ghaffarkhah)
+Date: Wed, 13 May 2020 00:22:52 -0700
+Subject: [stratum-announce] Stratum TST Election Results
+In-Reply-To: <010101720ce718c7-c6c47729-3d09-4ea6-b4f2-a54d323c77a7-000000@us-west-2.amazonses.com>
+References: <010101720ce718c7-c6c47729-3d09-4ea6-b4f2-a54d323c77a7-000000@us-west-2.amazonses.com>
+Message-ID: <CA+kiLHGSYGty9=HLL8tqNe-JMxSzbHTSaUOQ7i1JmEC8z4X-5w@mail.gmail.com>
+
+Thanks Brian. Great news.
+
+And welcome Graig, Max, and Yi.
+
+--Ali
+
+On Wed, May 13, 2020 at 12:19 AM Brian O'Connor via stratum-announce <
+stratum-announce at lists.stratumproject.org> wrote:
+
+> Hi everyone,
+>
+> We would like to congratulate the new members of the Stratum TST for 2020!
+> They will be responsible for overseeing and managing the Stratum project
+> for the coming year.
+>
+> *Stratum TST*
+> Brian O’Connor (lead)
+> Alireza Ghaffarkhah (incumbent)
+> Craig Stevens (new)
+> Max Pudelko (new)
+> Yi Tseng (new)
+>
+> We also want to thank Antonin Bas, our (now officially) retired member for
+> his service to the TST.
+>
+> Thanks!
+> Brian
+>
+> P.S. If you are wondering why you didn't receive a ballot, that is because
+> we had 3 open slots and 3 qualified nominees. An election would have just
+> been a formality, so we decided to skip it.
+> _______________________________________________
+> stratum-announce mailing list
+> stratum-announce at lists.stratumproject.org
+> https://lists.stratumproject.org/listinfo/stratum-announce
+>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-announce/attachments/20200513/d1c60454/attachment.html>
+

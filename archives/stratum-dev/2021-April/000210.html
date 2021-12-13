@@ -1,0 +1,1531 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [stratum-dev] Query about accessing P4Runtime shell
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Query%20about%20accessing%20P4Runtime%20shell&In-Reply-To=%3CCAFh9Y_POUfH9ZAR%3DFAKAdhcZ8DBP%3DDnOp_Dfx4dAtnU2DXQbaw%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <LINK REL="Previous"  HREF="000213.html">
+   <LINK REL="Next"  HREF="000206.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[stratum-dev] Query about accessing P4Runtime shell</H1>
+    <B>Maximilian Pudelko</B> 
+    <A HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Query%20about%20accessing%20P4Runtime%20shell&In-Reply-To=%3CCAFh9Y_POUfH9ZAR%3DFAKAdhcZ8DBP%3DDnOp_Dfx4dAtnU2DXQbaw%40mail.gmail.com%3E"
+       TITLE="[stratum-dev] Query about accessing P4Runtime shell">max at opennetworking.org
+       </A><BR>
+    <I>Thu Apr 29 18:59:07 UTC 2021</I>
+    <P><UL>
+        <LI>Previous message (by thread): <A HREF="000213.html">[stratum-dev] Query about accessing P4Runtime shell
+</A></li>
+        <LI>Next message (by thread): <A HREF="000206.html">[stratum-dev] BMv2 standalone instances unable to forward traffic
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#210">[ date ]</a>
+              <a href="thread.html#210">[ thread ]</a>
+              <a href="subject.html#210">[ subject ]</a>
+              <a href="author.html#210">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Prashanth,
+
+Glad you made it work.
+No, I have not seen these errors before when pushing the tna_simple_switch
+pipeline.
+But we're still only SDE 9.3.1 internally and have not done much testing
+beyond it.
+&gt;<i>From the logs, I would make sure you're packing the correct bfrt.json and
+</I>p4info files.
+
+Max
+
+On Thu, Apr 29, 2021 at 11:47 AM Prashanth Iyengar &lt;
+<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">prashanth.s.iyengar at gmail.com</A>&gt; wrote:
+
+&gt;<i> Hi Max,
+</I>&gt;<i>
+</I>&gt;<i> Followed your suggestions and can access the P4Runtime shell now. Thank
+</I>&gt;<i> you so much!
+</I>&gt;<i> Used SDE 9.3.1 and stratum-bfrt-21.03-9.4.0-amd64.deb.
+</I>&gt;<i> The only difference was that I did not building the BfPipeline inside the
+</I>&gt;<i> Docker dev environment before.
+</I>&gt;<i> As a result, it did not generate the proper binary config file.
+</I>&gt;<i>
+</I>&gt;<i> I can confirm that the approach using the integrated Bazel pipeline for
+</I>&gt;<i> TNA also works for me.
+</I>&gt;<i>
+</I>&gt;<i> With SDE 9.4.0, I encountered the following error ...
+</I>&gt;<i>
+</I>&gt;<i> $ ./p4runtime-sh-docker --grpc-addr 10.4.16.67:9559 --device-id 1
+</I>&gt;<i> --election-id 0,1
+</I>&gt;<i> --config/stratum/p4-forwarding-pipeline/p4info.pb.txt,/stratum/p4-forwarding-pipeline/tna_simple_switch.pb.bin
+</I>&gt;<i> CRITICAL:root:Error when setting config
+</I>&gt;<i> CRITICAL:root:P4Runtime RPC error (INTERNAL): Unable to find bfrt ID for
+</I>&gt;<i> P4Info entity SwitchEgress.encap.encap_outer_l4 with ID 37403834.
+</I>&gt;<i>
+</I>&gt;<i> &lt; On the switch &gt;
+</I>&gt;<i>
+</I>&gt;<i> 2021-04-29 03:26:52.356933 BF_BFRT ERROR - getStartBit:2711 ERROR
+</I>&gt;<i> hdr.udp.$valid Context json node not found for the key field. Hence unable
+</I>&gt;<i> to determine the start bit
+</I>&gt;<i> 2021-04-29 03:26:52.357011 BF_BFRT ERROR - keyByteSizeAndOffsetGet:1181
+</I>&gt;<i> pipe.SwitchEgress.encap.encap_outer_l4 ERROR key field name hdr.udp.$valid
+</I>&gt;<i> not found in match_key_field_name_to_position_map
+</I>&gt;<i> 2021-04-29 03:26:52.357031 BF_BFRT ERROR - parseTable:1635
+</I>&gt;<i> pipe.SwitchEgress.encap.encap_outer_l4 ERROR in processing key field
+</I>&gt;<i> hdr.udp.$valid while trying to get field size and offset
+</I>&gt;<i> 2021-04-29 03:26:52.357402 BF_BFRT  WARN - parseTable:1803 Action
+</I>&gt;<i> SwitchIngress.lag.lag_miss present in context json but not in bfrt json
+</I>&gt;<i>              for table pipe.SwitchIngress.lag.lag
+</I>&gt;<i> 2021-04-29 03:26:52.357411 BF_BFRT  WARN - parseTable:1803 Action
+</I>&gt;<i> SwitchIngress.lag.set_port present in context json but not in bfrt json
+</I>&gt;<i>              for table pipe.SwitchIngress.lag.lag
+</I>&gt;<i> 2021-04-29 03:26:52.357546 BF_BFRT  WARN - parseTable:1803 Action NoAction
+</I>&gt;<i> present in context json but not in bfrt json                  for table
+</I>&gt;<i> pipe.SwitchIngress.nexthop.ecmp
+</I>&gt;<i> 2021-04-29 03:26:52.357552 BF_BFRT  WARN - parseTable:1803 Action
+</I>&gt;<i> SwitchIngress.nexthop.set_nexthop_attributes present in context json but
+</I>&gt;<i> not in bfrt json                  for table pipe.SwitchIngress.nexthop.ecmp
+</I>&gt;<i> 2021-04-29 03:26:52.357966 BF_BFRT  WARN - parseTable:1803 Action NoAction
+</I>&gt;<i> present in context json but not in bfrt json                  for table
+</I>&gt;<i> pipe.SwitchIngress.port_mapping.port_vlan_to_bd_mapping
+</I>&gt;<i> 2021-04-29 03:26:52.357973 BF_BFRT  WARN - parseTable:1803 Action
+</I>&gt;<i> SwitchIngress.port_mapping.set_bd_attributes present in context json but
+</I>&gt;<i> not in bfrt json                  for table
+</I>&gt;<i> pipe.SwitchIngress.port_mapping.port_vlan_to_bd_mapping
+</I>&gt;<i> 2021-04-29 03:26:52.716704 BF_BFRT ERROR - bfrtTableFromIdGet:2544
+</I>&gt;<i> Table_id &quot;37403834&quot; not found
+</I>&gt;<i> 2021-04-29 03:26:52.716777 BF_BFRT ERROR - bfrtTableFromNameGet:2532 Table
+</I>&gt;<i> &quot;SwitchEgress.encap.encap_outer_l4&quot; not found
+</I>&gt;<i> E20210429 03:26:52.716871 15300 bfrt_id_mapper.cc:136]
+</I>&gt;<i> StratumErrorSpace::ERR_INTERNAL: Unable to find bfrt ID for P4Info entity
+</I>&gt;<i> SwitchEgress.encap.encap_outer_l4 with ID 37403834.
+</I>&gt;<i> E20210429 03:26:52.716902 15300 bfrt_id_mapper.cc:38] Return Error:
+</I>&gt;<i> BuildMapping(table.preamble().id(), table.preamble().name(), bfrt_info)
+</I>&gt;<i> failed with StratumErrorSpace::ERR_INTERNAL: Unable to find bfrt ID for
+</I>&gt;<i> P4Info entity SwitchEgress.encap.encap_outer_l4 with ID 37403834.
+</I>&gt;<i> E20210429 03:26:52.716919 15300 bf_sde_wrapper.cc:1414] Return Error:
+</I>&gt;<i> bfrt_id_mapper_-&gt;PushForwardingPipelineConfig(device_config, bfrt_info_)
+</I>&gt;<i> failed with StratumErrorSpace::ERR_INTERNAL: Unable to find bfrt ID for
+</I>&gt;<i> P4Info entity SwitchEgress.encap.encap_outer_l4 with ID 37403834.
+</I>&gt;<i> E20210429 03:26:52.716943 15300 bfrt_node.cc:95] Return Error:
+</I>&gt;<i> bf_sde_interface_-&gt;AddDevice(device_id_, bfrt_config_) failed with
+</I>&gt;<i> StratumErrorSpace::ERR_INTERNAL: Unable to find bfrt ID for P4Info entity
+</I>&gt;<i> SwitchEgress.encap.encap_outer_l4 with ID 37403834.
+</I>&gt;<i> E20210429 03:26:52.716962 15300 bfrt_switch.cc:74] Return Error:
+</I>&gt;<i> bfrt_node-&gt;PushForwardingPipelineConfig(config) failed with
+</I>&gt;<i> StratumErrorSpace::ERR_INTERNAL: Unable to find bfrt ID for P4Info entity
+</I>&gt;<i> SwitchEgress.encap.encap_outer_l4 with ID 37403834.
+</I>&gt;<i> E20210429 03:26:52.717759 15300 error_buffer.cc:30] (p4_service.cc:451):
+</I>&gt;<i> Failed to set forwarding pipeline config for node 1: Unable to find bfrt ID
+</I>&gt;<i> for P4Info entity SwitchEgress.encap.encap_outer_l4 with ID 37403834.
+</I>&gt;<i> I20210429 03:26:52.721956 15315 p4_service.cc:798] Controller
+</I>&gt;<i> (connection_id: 1, election_id: 1, uri: ipv4:10.4.17.235:47382) which was
+</I>&gt;<i> MASTER for node (aka device) with ID 1 is disconnected. The node is now
+</I>&gt;<i> orphan :(
+</I>&gt;<i>
+</I>&gt;<i> Wondering if you have seen this error before. I haven't debugged this yet
+</I>&gt;<i> but, it seems that missing tables and actions are defined in the
+</I>&gt;<i> context.json, bfrt.json, and the P4Info file.
+</I>&gt;<i> It is not very critical for me at this point since I am just exploring.
+</I>&gt;<i>
+</I>&gt;<i> Thanks,
+</I>&gt;<i> Prashanth
+</I>&gt;<i>
+</I>&gt;<i> On Tue, Apr 27, 2021 at 2:10 PM Maximilian Pudelko &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">max at opennetworking.org</A>&gt;
+</I>&gt;<i> wrote:
+</I>&gt;<i>
+</I>&gt;&gt;<i> Forgot to mention the Stratum-tna work.
+</I>&gt;&gt;<i> We're actively working on a Stratum P4 pipeline for Tofino devices. It is
+</I>&gt;&gt;<i> fully integrated in Bazel which makes deployment and testing a lot easier.
+</I>&gt;&gt;<i> If you'd like to try this as a sanity check, checkout the p4-dev branch
+</I>&gt;&gt;<i> from this PR &lt;<A HREF="https://github.com/stratum/stratum/pull/638">https://github.com/stratum/stratum/pull/638</A>&gt;. Running the
+</I>&gt;&gt;<i> whole thing is as easy as:
+</I>&gt;&gt;<i> bazel run //stratum/pipelines/stratum-tna:stratum_tna_test -- --grpc_addr=
+</I>&gt;&gt;<i> 10.128.13.29:28001
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> On Tue, Apr 27, 2021 at 2:03 PM Maximilian Pudelko &lt;
+</I>&gt;&gt;<i> <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">max at opennetworking.org</A>&gt; wrote:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> I managed to compile and upload the example pipeline without problems
+</I>&gt;&gt;&gt;<i> with Statum*-bfrt*.
+</I>&gt;&gt;&gt;<i> I'm using SDE 9.3.1 and the latest Stratum code (10703c) on a
+</I>&gt;&gt;&gt;<i> Wedge100bf-32QS.
+</I>&gt;&gt;&gt;<i> Here are my exact steps inside the development docker container:
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> pwd # /stratum inside docker
+</I>&gt;&gt;&gt;<i> echo $SDE_INSTALL
+</I>&gt;&gt;&gt;<i> /stratum/bf-sde-9.3.1-install/
+</I>&gt;&gt;&gt;<i> ls p4-examples-9.3.1/ # copied from SDE
+</I>&gt;&gt;&gt;<i> mkdir p4-tna-debug &amp;&amp; cd p4-tna-debug/
+</I>&gt;&gt;&gt;<i> /stratum/bf-sde-9.3.1-install/bin/bf-p4c --arch tna -o $(realpath .) -I
+</I>&gt;&gt;&gt;<i> /stratum/p4-examples-9.3.1/p4_16_programs/common/ --p4runtime-files
+</I>&gt;&gt;&gt;<i> ./p4info.pb.txt --p4runtime-force-std-externs
+</I>&gt;&gt;&gt;<i> /stratum/p4-examples-9.3.1/p4_16_programs/tna_simple_switch/tna_simple_switch.p4
+</I>&gt;&gt;&gt;<i> bazel run //stratum/hal/bin/barefoot:bf_pipeline_builder --
+</I>&gt;&gt;&gt;<i> -p4c_conf_file=$PWD/tna_simple_switch.conf
+</I>&gt;&gt;&gt;<i>  -bf_pipeline_config_binary_file=$PWD/tna_simple_switch.pb.bin
+</I>&gt;&gt;&gt;<i> cd ~/p4runtime-shell # local checkout of p4runtime-shell repo, can also
+</I>&gt;&gt;&gt;<i> be run outside of docker
+</I>&gt;&gt;&gt;<i> ./p4runtime-sh-docker --grpc-addr 10.128.13.29:28001 --device-id 1
+</I>&gt;&gt;&gt;<i> --election-id 0,1 --config
+</I>&gt;&gt;&gt;<i> /stratum/p4-tna-debug/p4info.pb.txt,/stratum/p4-tna-debug/tna_simple_switch.pb.bin
+</I>&gt;&gt;&gt;<i> P4Runtime sh &gt;&gt;&gt; tables
+</I>&gt;&gt;&gt;<i> SwitchEgress.decap.decap_inner_ip
+</I>&gt;&gt;&gt;<i> SwitchEgress.decap.decap_inner_l4
+</I>&gt;&gt;&gt;<i> [...]
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> You might have to adjust some paths, depending on your setup, but it
+</I>&gt;&gt;&gt;<i> loads without problems.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> With Stratum*-bf* I encountered this error, which is not surprising as
+</I>&gt;&gt;&gt;<i> TNA support is limited there:
+</I>&gt;&gt;&gt;<i> 2021-04-27 20:56:27.505299 BF_BFRT ERROR - bfRtDeviceAdd:327 No BF-RT
+</I>&gt;&gt;&gt;<i> json file found for program tna_simple_switch Not adding BF-RT Info object
+</I>&gt;&gt;&gt;<i> for it
+</I>&gt;&gt;&gt;<i> E20210427 20:56:27.520689  4219 PI-device_mgr.cpp:0] Failed to query
+</I>&gt;&gt;&gt;<i> default entry handle from target for table 37403834
+</I>&gt;&gt;&gt;<i> E20210427 20:56:27.521143  4219 bf_switch.cc:135] Return Error:
+</I>&gt;&gt;&gt;<i> pi_node-&gt;PushForwardingPipelineConfig(config) failed with generic::unknown:
+</I>&gt;&gt;&gt;<i> Failed to query default entry handle from target for table 37403834
+</I>&gt;&gt;&gt;<i> E20210427 20:56:27.523460  4219 error_buffer.cc:30] (p4_service.cc:451):
+</I>&gt;&gt;&gt;<i> Failed to set forwarding pipeline config for node 1: Failed to query
+</I>&gt;&gt;&gt;<i> default entry handle from target for table 37403834.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Please compare the steps with your workflow and see if you can make it
+</I>&gt;&gt;&gt;<i> work.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Max
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> On Tue, Apr 27, 2021 at 11:46 AM Maximilian Pudelko via stratum-dev &lt;
+</I>&gt;&gt;&gt;<i> <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>&gt; wrote:
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> Hi Prashanth,
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> I missed the tna_simple_switch.p4 part in the logs before. We have
+</I>&gt;&gt;&gt;&gt;<i> access to the SDE, so I'll try to reproduce this locally,
+</I>&gt;&gt;&gt;&gt;<i> no need to share the files.
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> Max
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> On Tue, Apr 27, 2021 at 9:19 AM Prashanth Iyengar &lt;
+</I>&gt;&gt;&gt;&gt;<i> <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">prashanth.s.iyengar at gmail.com</A>&gt; wrote:
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> Hi Max,
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> Based on your response, I tried a few more things.
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>  tna_simple_switch.p4 is one of the sample programs included in the
+</I>&gt;&gt;&gt;&gt;&gt;<i> SDE, which I am just using as a reference P4 program to configure the
+</I>&gt;&gt;&gt;&gt;&gt;<i> forwarding pipeline.
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> I can access the P4Runtime Shell by passing the config bin file
+</I>&gt;&gt;&gt;&gt;&gt;<i> generated by config_builders/tofino.py for stratum-bf images
+</I>&gt;&gt;&gt;&gt;&gt;<i> (stratum-bf-21.03-9.2.0-amd64.deb &amp; stratum-bf-21.03-9.4.0-amd64.deb).
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> But, I encountered the previously reported error - &quot;ctx_json_parse:
+</I>&gt;&gt;&gt;&gt;&gt;<i> Assertion `feof(file)' failed.&quot; for stratum-bfrt images
+</I>&gt;&gt;&gt;&gt;&gt;<i> (stratum-bfrt-21.03-9.2.0-amd64.deb &amp; stratum-bfrt-21.03-9.4.0-amd64.deb)
+</I>&gt;&gt;&gt;&gt;&gt;<i> after passing the config bin file generated by the bf_pipeline_builder.
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> Unsure if it will be possible to share the P4 program or files
+</I>&gt;&gt;&gt;&gt;&gt;<i> generated after compilation here, as they are part of the SDE from Barefoot.
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> Is there something else that I can try to help troubleshoot this error?
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> Thanks,
+</I>&gt;&gt;&gt;&gt;&gt;<i> Prashanth
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> On Fri, Apr 23, 2021 at 5:29 PM Maximilian Pudelko &lt;
+</I>&gt;&gt;&gt;&gt;&gt;<i> <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">max at opennetworking.org</A>&gt; wrote:
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> Hi Prashanth,
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> From the logs it looks like the SDE is unable to parse the context
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> json file: ctx_json_parse: Assertion `feof(file)' failed.
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> Maybe it got mangled during packing or transport. You already found
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> bf_pipeline_builder which is the only and correct
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> way to build the pipeline for Stratum-bfrt on Tofino. Are you using
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> Stratum-bf or Stratum-bfrt?
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> Without the P4 files any debugging is going to be pretty difficult.
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> Can you share them?
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> Best
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> Max
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> On Fri, Apr 23, 2021 at 9:36 AM Prashanth Iyengar via stratum-dev &lt;
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>&gt; wrote:
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Hello Stratum team,
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> I am encountering some errors while attempting to access P4Runtime
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> shell. Wanted to confirm if I am executing the correct procedure and
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> commands.
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Also, referred to a similar query posted before -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> <A HREF="https://lists.stratumproject.org/archives/stratum-dev/2020-August/000141.html">https://lists.stratumproject.org/archives/stratum-dev/2020-August/000141.html</A>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> ##########################
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Build environment
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> -----------------
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> $ uname -ar
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Linux piyengar-OptiPlex-7050 4.15.0-136-generic #140~16.04.1-Ubuntu
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> SMP Wed Feb 3 18:51:03 UTC 2021 x86_64 x86_64 x86_64 GNU/Linux
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Barefoot SDE v9.2.0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Target environment
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> ------------------
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Inventec D10056
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> ##########################
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Steps:
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> ------
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 1. Build Stratum from source.
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2. Run Startum on the hardware switch
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">root at localhost</A>:~# start-stratum.sh -bf_switchd_background=false
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> bf_kdrv_mod found! Unloading first...
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> loading bf_kdrv_mod...
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> bf_sysfs_fname /sys/class/bf/bf0/device/dev_add
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Install dir: /usr (0x55761024a020)
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> bf_switchd: system services initialized
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> bf_switchd: loading conf_file
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> /usr/share/stratum/tofino_skip_p4_no_bsp.conf...
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> bf_switchd: processing device configuration...
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Configuration for dev_id 0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>   Family        : Tofino
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>   pci_sysfs_str : /sys/devices/pci0000:00/0000:00:03.0/0000:05:00.0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>   pci_domain    : 0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>   pci_bus       : 5
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>   pci_fn        : 0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>   pci_dev       : 0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>   pci_int_mode  : 1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>   sbus_master_fw: /usr/
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>   pcie_fw       : /usr/
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>   serdes_fw     : /usr/
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>   sds_fw_path   : /usr/
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>   microp_fw_path:
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> bf_switchd: processing P4 configuration...
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> P4 profile for dev_id 0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>   p4_name: dummy
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>     libpd:
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>     libpdthrift:
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>     context:
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>     config:
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>   diag:
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>   accton diag:
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>   board-port-map: /usr/share/port_map.json
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>   non_default_port_ppgs: 0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>   SAI default initialize: 1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> loading board-map /usr/share/port_map.json...
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : Parsing Board-lane-entries 57 found
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : num-of-connectors:57
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : Connector-&gt;2 device_id:0 mac_block:23 media:copper
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> enable-auto-neg:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane0 mac_ch:0 tx_lane:3, rx_lane:3, tx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :2/0 : 00000002
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : Connector-&gt;1 device_id:0 mac_block:23 media:copper
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> enable-auto-neg:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane0 mac_ch:1 tx_lane:2, rx_lane:2, tx_pn_swap:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :1/1 : 00000001
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : Connector-&gt;4 device_id:0 mac_block:23 media:copper
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> enable-auto-neg:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane0 mac_ch:2 tx_lane:1, rx_lane:1, tx_pn_swap:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :4/2 : 00000004
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : Connector-&gt;3 device_id:0 mac_block:23 media:copper
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> enable-auto-neg:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane0 mac_ch:3 tx_lane:0, rx_lane:0, tx_pn_swap:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :3/3 : 00000003
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : Connector-&gt;6 device_id:0 mac_block:22 media:copper
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> enable-auto-neg:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane0 mac_ch:0 tx_lane:3, rx_lane:3, tx_pn_swap:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :6/0 : 00000006
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : Connector-&gt;5 device_id:0 mac_block:22 media:copper
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> enable-auto-neg:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane0 mac_ch:1 tx_lane:2, rx_lane:2, tx_pn_swap:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :5/1 : 00000005
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : Connector-&gt;8 device_id:0 mac_block:22 media:copper
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> enable-auto-neg:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane0 mac_ch:2 tx_lane:1, rx_lane:1, tx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :8/2 : 00000008
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : Connector-&gt;7 device_id:0 mac_block:22 media:copper
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> enable-auto-neg:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane0 mac_ch:3 tx_lane:0, rx_lane:0, tx_pn_swap:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :7/3 : 00000007
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : Connector-&gt;10 device_id:0 mac_block:20 media:copper
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> enable-auto-neg:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane0 mac_ch:0 tx_lane:3, rx_lane:3, tx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :10/0 : 0000000a
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : Connector-&gt;9 device_id:0 mac_block:20 media:copper
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> enable-auto-neg:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane0 mac_ch:1 tx_lane:2, rx_lane:2, tx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :9/1 : 00000009
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : Connector-&gt;12 device_id:0 mac_block:20 media:copper
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> enable-auto-neg:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane0 mac_ch:2 tx_lane:1, rx_lane:1, tx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :12/2 : 0000000c
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : Connector-&gt;11 device_id:0 mac_block:20 media:copper
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> enable-auto-neg:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane0 mac_ch:3 tx_lane:0, rx_lane:0, tx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :11/3 : 0000000b
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : Connector-&gt;14 device_id:0 mac_block:18 media:copper
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> enable-auto-neg:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane0 mac_ch:0 tx_lane:3, rx_lane:3, tx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :14/0 : 0000000e
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : Connector-&gt;13 device_id:0 mac_block:18 media:copper
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> enable-auto-neg:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane0 mac_ch:1 tx_lane:2, rx_lane:2, tx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :13/1 : 0000000d
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : Connector-&gt;16 device_id:0 mac_block:18 media:copper
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> enable-auto-neg:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane0 mac_ch:2 tx_lane:1, rx_lane:1, tx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :16/2 : 00000010
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : Connector-&gt;15 device_id:0 mac_block:18 media:copper
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> enable-auto-neg:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane0 mac_ch:3 tx_lane:0, rx_lane:0, tx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :15/3 : 0000000f
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : Connector-&gt;18 device_id:0 mac_block:16 media:copper
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> enable-auto-neg:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane0 mac_ch:0 tx_lane:3, rx_lane:3, tx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :18/0 : 00000012
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : Connector-&gt;17 device_id:0 mac_block:16 media:copper
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> enable-auto-neg:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane0 mac_ch:1 tx_lane:2, rx_lane:2, tx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :17/1 : 00000011
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : Connector-&gt;20 device_id:0 mac_block:16 media:copper
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> enable-auto-neg:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane0 mac_ch:2 tx_lane:1, rx_lane:1, tx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :20/2 : 00000014
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : Connector-&gt;19 device_id:0 mac_block:16 media:copper
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> enable-auto-neg:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane0 mac_ch:3 tx_lane:0, rx_lane:0, tx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :19/3 : 00000013
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : Connector-&gt;22 device_id:0 mac_block:14 media:copper
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> enable-auto-neg:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane0 mac_ch:0 tx_lane:3, rx_lane:3, tx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :22/0 : 00000016
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : Connector-&gt;21 device_id:0 mac_block:14 media:copper
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> enable-auto-neg:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane0 mac_ch:1 tx_lane:2, rx_lane:2, tx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :21/1 : 00000015
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : Connector-&gt;24 device_id:0 mac_block:14 media:copper
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> enable-auto-neg:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane0 mac_ch:2 tx_lane:1, rx_lane:1, tx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :24/2 : 00000018
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : Connector-&gt;23 device_id:0 mac_block:14 media:copper
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> enable-auto-neg:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane0 mac_ch:3 tx_lane:0, rx_lane:0, tx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :23/3 : 00000017
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : Connector-&gt;25 device_id:0 mac_block:12 media:copper
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> enable-auto-neg:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane0 mac_ch:0 tx_lane:3, rx_lane:3, tx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :25/0 : 00000019
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : Connector-&gt;26 device_id:0 mac_block:12 media:copper
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> enable-auto-neg:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane0 mac_ch:1 tx_lane:2, rx_lane:2, tx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :26/1 : 0000001a
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : Connector-&gt;28 device_id:0 mac_block:12 media:copper
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> enable-auto-neg:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane0 mac_ch:2 tx_lane:1, rx_lane:1, tx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :28/2 : 0000001c
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : Connector-&gt;27 device_id:0 mac_block:12 media:copper
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> enable-auto-neg:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane0 mac_ch:3 tx_lane:0, rx_lane:0, tx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :27/3 : 0000001b
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : Connector-&gt;29 device_id:0 mac_block:10 media:copper
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> enable-auto-neg:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane0 mac_ch:0 tx_lane:3, rx_lane:3, tx_pn_swap:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :29/0 : 0000001d
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : Connector-&gt;30 device_id:0 mac_block:10 media:copper
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> enable-auto-neg:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane0 mac_ch:1 tx_lane:2, rx_lane:2, tx_pn_swap:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :30/1 : 0000001e
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : Connector-&gt;31 device_id:0 mac_block:10 media:copper
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> enable-auto-neg:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane0 mac_ch:2 tx_lane:1, rx_lane:1, tx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :31/2 : 0000001f
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : Connector-&gt;32 device_id:0 mac_block:10 media:copper
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> enable-auto-neg:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane0 mac_ch:3 tx_lane:0, rx_lane:0, tx_pn_swap:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :32/3 : 00000020
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : Connector-&gt;34 device_id:0 mac_block:9 media:copper
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> enable-auto-neg:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane0 mac_ch:0 tx_lane:3, rx_lane:3, tx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :34/0 : 00000022
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : Connector-&gt;33 device_id:0 mac_block:9 media:copper
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> enable-auto-neg:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane0 mac_ch:1 tx_lane:2, rx_lane:2, tx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :33/1 : 00000021
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : Connector-&gt;36 device_id:0 mac_block:9 media:copper
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> enable-auto-neg:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane0 mac_ch:2 tx_lane:1, rx_lane:1, tx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :36/2 : 00000024
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : Connector-&gt;35 device_id:0 mac_block:9 media:copper
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> enable-auto-neg:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane0 mac_ch:3 tx_lane:0, rx_lane:0, tx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :35/3 : 00000023
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : Connector-&gt;38 device_id:0 mac_block:8 media:copper
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> enable-auto-neg:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane0 mac_ch:0 tx_lane:3, rx_lane:3, tx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :38/0 : 00000026
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : Connector-&gt;40 device_id:0 mac_block:8 media:copper
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> enable-auto-neg:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane0 mac_ch:1 tx_lane:2, rx_lane:2, tx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :40/1 : 00000028
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : Connector-&gt;37 device_id:0 mac_block:8 media:copper
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> enable-auto-neg:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane0 mac_ch:2 tx_lane:1, rx_lane:1, tx_pn_swap:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :37/2 : 00000025
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : Connector-&gt;39 device_id:0 mac_block:8 media:copper
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> enable-auto-neg:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane0 mac_ch:3 tx_lane:0, rx_lane:0, tx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :39/3 : 00000027
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : Connector-&gt;41 device_id:0 mac_block:7 media:copper
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> enable-auto-neg:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane0 mac_ch:0 tx_lane:3, rx_lane:3, tx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :41/0 : 00000029
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : Connector-&gt;44 device_id:0 mac_block:7 media:copper
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> enable-auto-neg:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane0 mac_ch:1 tx_lane:2, rx_lane:2, tx_pn_swap:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :44/1 : 0000002c
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : Connector-&gt;42 device_id:0 mac_block:7 media:copper
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> enable-auto-neg:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane0 mac_ch:2 tx_lane:1, rx_lane:1, tx_pn_swap:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :42/2 : 0000002a
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : Connector-&gt;43 device_id:0 mac_block:7 media:copper
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> enable-auto-neg:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane0 mac_ch:3 tx_lane:0, rx_lane:0, tx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :43/3 : 0000002b
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : Connector-&gt;45 device_id:0 mac_block:6 media:copper
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> enable-auto-neg:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane0 mac_ch:0 tx_lane:3, rx_lane:3, tx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :45/0 : 0000002d
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : Connector-&gt;47 device_id:0 mac_block:6 media:copper
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> enable-auto-neg:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane0 mac_ch:1 tx_lane:2, rx_lane:2, tx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :47/1 : 0000002f
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : Connector-&gt;46 device_id:0 mac_block:6 media:copper
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> enable-auto-neg:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane0 mac_ch:2 tx_lane:1, rx_lane:1, tx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :46/2 : 0000002e
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : Connector-&gt;48 device_id:0 mac_block:6 media:copper
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> enable-auto-neg:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane0 mac_ch:3 tx_lane:0, rx_lane:0, tx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :48/3 : 00000030
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : Connector-&gt;50 device_id:0 mac_block:2 media:copper
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> enable-auto-neg:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane0 mac_ch:0 tx_lane:3, rx_lane:3, tx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :50/0 : 00000032
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane1 mac_ch:1 tx_lane:1, rx_lane:1, tx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :50/1 : 00010032
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane2 mac_ch:2 tx_lane:2, rx_lane:2, tx_pn_swap:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :50/2 : 00020032
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane3 mac_ch:3 tx_lane:0, rx_lane:0, tx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :50/3 : 00030032
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : Connector-&gt;49 device_id:0 mac_block:4 media:copper
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> enable-auto-neg:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane0 mac_ch:0 tx_lane:3, rx_lane:3, tx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :49/0 : 00000031
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane1 mac_ch:1 tx_lane:1, rx_lane:1, tx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :49/1 : 00010031
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane2 mac_ch:2 tx_lane:2, rx_lane:2, tx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :49/2 : 00020031
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane3 mac_ch:3 tx_lane:0, rx_lane:0, tx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :49/3 : 00030031
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : Connector-&gt;52 device_id:0 mac_block:0 media:copper
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> enable-auto-neg:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane0 mac_ch:0 tx_lane:1, rx_lane:1, tx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :52/0 : 00000034
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane1 mac_ch:1 tx_lane:3, rx_lane:3, tx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :52/1 : 00010034
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane2 mac_ch:2 tx_lane:0, rx_lane:0, tx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :52/2 : 00020034
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane3 mac_ch:3 tx_lane:2, rx_lane:2, tx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :52/3 : 00030034
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : Connector-&gt;51 device_id:0 mac_block:30 media:copper
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> enable-auto-neg:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane0 mac_ch:0 tx_lane:2, rx_lane:2, tx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :51/0 : 00000033
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane1 mac_ch:1 tx_lane:0, rx_lane:0, tx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :51/1 : 00010033
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane2 mac_ch:2 tx_lane:3, rx_lane:3, tx_pn_swap:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :51/2 : 00020033
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane3 mac_ch:3 tx_lane:1, rx_lane:1, tx_pn_swap:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :51/3 : 00030033
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : Connector-&gt;54 device_id:0 mac_block:28 media:copper
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> enable-auto-neg:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane0 mac_ch:0 tx_lane:2, rx_lane:2, tx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :54/0 : 00000036
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane1 mac_ch:1 tx_lane:0, rx_lane:0, tx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :54/1 : 00010036
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane2 mac_ch:2 tx_lane:3, rx_lane:3, tx_pn_swap:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :54/2 : 00020036
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane3 mac_ch:3 tx_lane:1, rx_lane:1, tx_pn_swap:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :54/3 : 00030036
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : Connector-&gt;53 device_id:0 mac_block:26 media:copper
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> enable-auto-neg:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane0 mac_ch:0 tx_lane:2, rx_lane:2, tx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :53/0 : 00000035
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane1 mac_ch:1 tx_lane:0, rx_lane:0, tx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :53/1 : 00010035
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane2 mac_ch:2 tx_lane:3, rx_lane:3, tx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :53/2 : 00020035
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane3 mac_ch:3 tx_lane:1, rx_lane:1, tx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :53/3 : 00030035
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : Connector-&gt;56 device_id:0 mac_block:24 media:copper
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> enable-auto-neg:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane0 mac_ch:0 tx_lane:3, rx_lane:3, tx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :56/0 : 00000038
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane1 mac_ch:1 tx_lane:1, rx_lane:1, tx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :56/1 : 00010038
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane2 mac_ch:2 tx_lane:2, rx_lane:2, tx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :56/2 : 00020038
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane3 mac_ch:3 tx_lane:0, rx_lane:0, tx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :56/3 : 00030038
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : Connector-&gt;55 device_id:0 mac_block:25 media:copper
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> enable-auto-neg:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane0 mac_ch:0 tx_lane:2, rx_lane:2, tx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :55/0 : 00000037
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane1 mac_ch:1 tx_lane:1, rx_lane:1, tx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :55/1 : 00010037
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane2 mac_ch:2 tx_lane:3, rx_lane:3, tx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :55/2 : 00020037
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane3 mac_ch:3 tx_lane:0, rx_lane:0, tx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :55/3 : 00030037
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : Connector-&gt;57 device_id:0 mac_block:32 media:copper
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> enable-auto-neg:1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane0 mac_ch:0 tx_lane:0, rx_lane:0, tx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :57/0 : 00000039
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane1 mac_ch:1 tx_lane:1, rx_lane:1, tx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :57/1 : 00010039
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane2 mac_ch:2 tx_lane:2, rx_lane:2, tx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :57/2 : 00020039
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : lane3 mac_ch:3 tx_lane:3, rx_lane:3, tx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> rx_pn_swap:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : tx_eq_pre:4 tx_eq_post:0 tx_eq_attn:0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> BD_MAP : map-add dev:0: :57/3 : 00030039
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Operational mode set to ASIC
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> ASIC detected at PCI /sys/class/bf/bf0/device
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> ASIC pci device id is 16
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> bf_switchd: drivers initialized
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Skipping P4 program load for dev_id 0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Setting core_pll_ctrl0=cd44cbfe
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> bf_switchd: dev_id 0 initialized
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> bf_switchd: initialized 1 devices
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Skip p4 lib init
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Skip mav diag lib init
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> bf_switchd: spawning cli server thread
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> bf_switchd: spawning driver shell
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> bf_switchd: server started - listening on port 9999
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> I20210422 23:11:13.359033 32645 main_bfrt.cc:78] switchd started
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> successfully
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> W20210422 23:11:13.359115 32645 credentials_manager.cc:45] Using
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> insecure server credentials
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Cannot read termcap database;
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> using dumb terminal settings.
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> bf-sde&gt; I20210422 23:11:13.359495 32645 hal.cc:128] Setting up HAL
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> in COLDBOOT mode...
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> I20210422 23:11:13.359575 32645 config_monitoring_service.cc:94]
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Pushing the saved chassis config read from
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> /etc/stratum/x86-64-inventec-d10056-r0/chassis_config.pb.txt...
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> I20210422 23:11:13.369274 32645 onlp_wrapper.cc:99] Initializing
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> ONLP.
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> I20210422 23:11:25.312541 32645 attribute_database.cc:213] PhalDB
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> service is listening to localhost:28003...
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> I20210422 23:11:25.312696 32645 bf_chassis_manager.cc:1077] Port
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> status notification callback registered successfully
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> I20210422 23:11:25.339576 32645 bf_chassis_manager.cc:87] Adding
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> port 1 in node 1 (SDK Port 129).
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 23:11:25.339610 BF_PM  INFO -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> bf_pm_port_add_with_lanes:4568 0:1/0:4(speed):0(fec):1(n_lanes)
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 23:11:25.345516 BF_PM  INFO -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> bf_pm_port_direction_clear:4183 0:1/0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 23:11:25.345552 BF_PM  INFO -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> bf_pm_pltfm_front_port_eligible_for_autoneg:3895 0:1/0:1(an_eligibility)
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 23:11:25.345576 BF_PM  INFO -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> bf_pm_pltfm_front_port_ready_for_bringup:3792 0:1/0:1(ready)
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> I20210422 23:11:25.346556 32645 bf_chassis_manager.cc:116] Enabling
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> port 1 in node 1 (SDK Port 129).
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 23:11:25.346573 BF_PM  INFO - bf_pm_port_enable:4827 0:1/0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> I20210422 23:11:25.346642 32645 bf_chassis_manager.cc:87] Adding
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> port 2 in node 1 (SDK Port 128).
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 23:11:25.346657 BF_PM  INFO -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> bf_pm_port_add_with_lanes:4568 0:2/0:4(speed):0(fec):1(n_lanes)
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 23:11:25.352851 BF_PM  INFO -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> bf_pm_port_direction_clear:4183 0:2/0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 23:11:25.352866 BF_PM  INFO -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> bf_pm_pltfm_front_port_eligible_for_autoneg:3895 0:2/0:1(an_eligibility)
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 23:11:25.352874 BF_PM  INFO -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> bf_pm_pltfm_front_port_ready_for_bringup:3792 0:2/0:1(ready)
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> I20210422 23:11:25.355861 32645 bf_chassis_manager.cc:116] Enabling
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> port 2 in node 1 (SDK Port 128).
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 23:11:25.355881 BF_PM  INFO - bf_pm_port_enable:4827 0:2/0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> [...]
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> I20210422 23:11:39.875691 32645 bfrt_switch.cc:60] Chassis config
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> pushed successfully.
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> I20210422 23:11:39.875741   440 bf_chassis_manager.cc:1008]
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Transceiver event for port (slot: 1, port: 1): HW_STATE_PRESENT.
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> I20210422 23:11:39.948796 32645 p4_service.cc:121] Pushing the saved
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> forwarding pipeline configs read from /etc/stratum/pipeline_cfg.pb.txt...
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> W20210422 23:11:39.949051 32645 p4_service.cc:142] Empty forwarding
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> pipeline configs file: /etc/stratum/pipeline_cfg.pb.txt.
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> E20210422 23:11:39.949594 32645 hal.cc:221] Stratum external facing
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> services are listening to 0.0.0.0:28000, 0.0.0.0:9339, 0.0.0.0:9559,
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> localhost:28000...
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> E20210422 23:11:39.951107 32645 hal.cc:363]
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> StratumErrorSpace::ERR_INTERNAL: Failed to check in with procmon: failed to
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> connect to all addresses
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> E20210422 23:11:39.951534 32645 hal.cc:231] Error when checking in
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> with procmon: Failed to check in with procmon: failed to connect to all
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> addresses.
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> I20210422 23:11:43.260238   440 bf_chassis_manager.cc:1057]
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Transceiver (slot: 1, port: 1) is ready.
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> I20210422 23:11:43.260305   440 bf_chassis_manager.cc:1008]
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Transceiver event for port (slot: 1, port: 2): HW_STATE_PRESENT.
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> I20210422 23:11:46.511018   440 bf_chassis_manager.cc:1057]
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Transceiver (slot: 1, port: 2) is ready.
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 3. Verify Stratum gRPC ports are up
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Active Internet connections (only servers)
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Proto Recv-Q Send-Q Local Address           Foreign Address
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> State       PID/Program name
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> tcp        0      0 0.0.0.0:9999            0.0.0.0:*
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> LISTEN      32645/stratum_bf
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> tcp        0      0 0.0.0.0:111             0.0.0.0:*
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> LISTEN      4633/rpcbind
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> tcp        0      0 0.0.0.0:17              0.0.0.0:*
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> LISTEN      4659/inetd
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> tcp        0      0 0.0.0.0:22              0.0.0.0:*
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> LISTEN      4881/sshd
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> tcp        0      0 0.0.0.0:23              0.0.0.0:*
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> LISTEN      4659/inetd
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> tcp6       0      0 :::111                  :::*
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>  LISTEN      4633/rpcbind
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> tcp6       0      0 :::22                   :::*
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>  LISTEN      4881/sshd
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> tcp6       0      0 :::9559                 :::*
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>  LISTEN      32645/stratum_bf
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> tcp6       0      0 :::9339                 :::*
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>  LISTEN      32645/stratum_bf
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> tcp6       0      0 127.0.0.1:28000         :::*
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>  LISTEN      32645/stratum_bf
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> tcp6       0      0 :::28000                :::*
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>  LISTEN      32645/stratum_bf
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> tcp6       0      0 127.0.0.1:28003         :::*
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>  LISTEN      32645/stratum_bf
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> udp        0      0 0.0.0.0:68              0.0.0.0:*
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>             4694/dhclient
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> udp        0      0 0.0.0.0:111             0.0.0.0:*
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>             4633/rpcbind
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> udp        0      0 0.0.0.0:161             0.0.0.0:*
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>             4812/snmpd
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> udp        0      0 0.0.0.0:37632           0.0.0.0:*
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>             4812/snmpd
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> udp        0      0 0.0.0.0:993             0.0.0.0:*
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>             4633/rpcbind
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> udp6       0      0 :::111                  :::*
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>            4633/rpcbind
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> udp6       0      0 ::1:161                 :::*
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>            4812/snmpd
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> udp6       0      0 :::993                  :::*
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>            4633/rpcbind
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 4. Compile sample P4 program
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> $ ~/bf-sde-9.2.0/install/bin/p4c -a tna -o . --p4runtime-format text
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> --p4runtime-files /tmp/basic.pb.txt
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> ~/bf-sde-9.2.0/pkgsrc/p4-examples/p4_16_programs/tna_simple_switch/tna_simple_switch.p4
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> $ ls -lRt tna_simple_switch.tofino/
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> tna_simple_switch.tofino/:
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> total 260
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> -rw-rw-r-- 1 piyengar piyengar   1499 Apr 22 11:59
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> tna_simple_switch.conf
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> -rw-rw-r-- 1 piyengar piyengar   1659 Apr 22 11:59 manifest.json
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> -rw-rw-r-- 1 piyengar piyengar 251513 Apr 22 11:58 bfrt.json
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> drwxr-xr-x 3 piyengar piyengar   4096 Apr 22 11:58 pipe
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> tna_simple_switch.tofino/pipe:
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> total 6804
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> -rw-rw-r-- 1 piyengar piyengar 5097918 Apr 22 11:59 context.json
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> -rw-rw-r-- 1 piyengar piyengar 1478311 Apr 22 11:59 tofino.bin
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> -rw-rw-r-- 1 piyengar piyengar  218936 Apr 22 11:59
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> tna_simple_switch.bfa
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> -rw-rw-r-- 1 piyengar piyengar      39 Apr 22 11:59
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> tna_simple_switch.dynhash.json
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> -rw-rw-r-- 1 piyengar piyengar  159145 Apr 22 11:59
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> tna_simple_switch.prim.json
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> drwxr-xr-x 2 piyengar piyengar    4096 Apr 22 11:58 logs
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> tna_simple_switch.tofino/pipe/logs:
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> total 56
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> -rw-rw-r-- 1 piyengar piyengar 40387 Apr 22 11:59 power.json
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> -rw-rw-r-- 1 piyengar piyengar 13917 Apr 22 11:59
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> parser.characterize.log
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 5. Use the config_builder script to generate compatible bin file
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> $ config_builders/tofino.py --ctx-json
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> ~/stratum/tna_simple_switch.tofino/pipe/context.json --tofino-bin
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> ~/stratum/tna_simple_switch.tofino/pipe/tofino.bin --out out.bin --name
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> tna_simple_switch
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 6. Attempt to access P4Runtime shell
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> $ ./p4runtime-sh-docker --grpc-addr 10.4.16.67:28000 --device-id 1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> --election-id 0,1 --config /tmp/basic.pb.txt,out.bin
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> CRITICAL:root:Error when setting config
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> CRITICAL:root:P4Runtime RPC error (INVALID_ARGUMENT): Unknown format
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> for p4_device_config.
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> &lt;On the switch&gt;
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> ====
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> bf-sde&gt; I20210422 19:04:47.511440  2591 p4_service.cc:771]
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Controller (connection_id: 1, election_id: 1, uri: ipv4:
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 10.4.17.235:47148) is connected as MASTER for node (aka device)
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> with ID 1.
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> E20210422 19:04:48.125031  3212 bf_pipeline_utils.cc:43]
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> StratumErrorSpace::ERR_INVALID_PARAM: Unknown format for p4_device_config.
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> E20210422 19:04:48.125089  3212 bfrt_node.cc:119] Return Error:
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> ExtractBfPipelineConfig(config, &amp;bf_config) failed with
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> StratumErrorSpace::ERR_INVALID_PARAM: Unknown format for p4_device_config.
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> E20210422 19:04:48.125114  3212 bfrt_node.cc:63] Return Error:
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> VerifyForwardingPipelineConfig(config) failed with
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> StratumErrorSpace::ERR_INVALID_PARAM: Unknown format for p4_device_config.
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> E20210422 19:04:48.125135  3212 bfrt_node.cc:53] Return Error:
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> SaveForwardingPipelineConfig(config) failed with
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> StratumErrorSpace::ERR_INVALID_PARAM: Unknown format for p4_device_config.
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> E20210422 19:04:48.125154  3212 bfrt_switch.cc:74] Return Error:
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> bfrt_node-&gt;PushForwardingPipelineConfig(config) failed with
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> StratumErrorSpace::ERR_INVALID_PARAM: Unknown format for p4_device_config.
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> E20210422 19:04:48.125202  3212 error_buffer.cc:30]
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> (p4_service.cc:451): Failed to set forwarding pipeline config for node 1:
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Unknown format for p4_device_config.
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> I20210422 19:04:48.128545  2591 p4_service.cc:798] Controller
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> (connection_id: 1, election_id: 1, uri: ipv4:10.4.17.235:47148)
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> which was MASTER for node (aka device) with ID 1 is disconnected. The node
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> is now orphan :(
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> ====
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 7. Followed instruction in the &quot;P4Runtime p4_device_config formats&quot;
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> document to generate a compatible device config
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> $ bazel run //stratum/hal/bin/barefoot:bf_pipeline_builder --
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> -p4c_conf_file=/home/piyengar/stratum/tna_simple_switch.tofino/tna_simple_switch.conf
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> -bf_pipeline_config_binary_file=$PWD/device_config.pb.bin
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> INFO: Analyzed target //stratum/hal/bin/barefoot:bf_pipeline_builder
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> (0 packages loaded, 0 targets configured).
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> INFO: Found 1 target...
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Target //stratum/hal/bin/barefoot:bf_pipeline_builder up-to-date:
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>   bazel-bin/stratum/hal/bin/barefoot/bf_pipeline_builder
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> INFO: Elapsed time: 0.109s, Critical Path: 0.02s
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> INFO: 1 process: 1 internal.
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> INFO: Build completed successfully, 1 total action
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> INFO: Running command line:
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> bazel-bin/stratum/hal/bin/barefoot/bf_pipeline_builder
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> '-p4c_conf_file=/home/piyengar/stratum/tna_simple_switch.tofino/tna_simple_switch.conf'
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> '-bf_pipeline_INFO: Build completed successfully, 1 total action
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> I20210422 14:32:04.412990  7301 bf_pipeline_builder.cc:113] Found P4
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> program: tna_simple_switch
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> I20210422 14:32:04.413036  7301 bf_pipeline_builder.cc:128]
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Found pipeline: pipe
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 8. Attempt to start P4Runtime Shell
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> $ ./p4runtime-sh-docker --grpc-addr 10.4.16.67:28000 --device-id 1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> --election-id 0,1 --config
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> /tmp/basic.pb.txt,/home/piyengar/stratum/device_config.pb.bin
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> CRITICAL:root:Error when setting config
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> CRITICAL:root:P4Runtime RPC error (UNAVAILABLE): Socket closed
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> CRITICAL:root:StreamChannel error, closing stream
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> CRITICAL:root:P4Runtime RPC error (UNAVAILABLE): Socket closed
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> &lt;On the switch&gt;
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> ====
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> bf-sde&gt; I20210422 21:36:51.661512  3215 p4_service.cc:771]
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Controller (connection_id: 1, election_id: 1, uri: ipv4:
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 10.4.17.235:47250) is connected as MASTER for node (aka device)
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> with ID 1.
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> bf_switchd: starting warm init for dev_id 0 mode 1 serdes_upgrade 0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Skip diag lib deinit
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:36:51.724572 BF_BFRT DEBUG - bfRtDeviceRemove:470 BfRt
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Device Remove called for dev : 0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:36:51.729000 BF_PORT  WARN -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> port_mgr_map_dev_port_to_all returned error code (1)
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:36:51.729020 BF_PORT  WARN -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> port_mgr_map_dev_port_to_all returned error code (1)
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:36:51.729034 BF_PORT  WARN -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> port_mgr_map_dev_port_to_all returned error code (1)
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:36:51.729049 BF_PORT  WARN -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> port_mgr_map_dev_port_to_all returned error code (1)
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:36:51.729064 BF_PORT  WARN -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> port_mgr_map_dev_port_to_all returned error code (1)
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:36:51.729076 BF_PORT  WARN -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> port_mgr_map_dev_port_to_all returned error code (1)
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:36:51.729090 BF_PORT  WARN -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> port_mgr_map_dev_port_to_all returned error code (1)
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:36:51.729103 BF_PORT  WARN -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> port_mgr_map_dev_port_to_all returned error code (1)
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:36:51.729116 BF_PORT  WARN -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> port_mgr_map_dev_port_to_all returned error code (1)
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:36:51.729132 BF_PORT  WARN -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> port_mgr_map_dev_port_to_all returned error code (1)
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:36:51.729146 BF_PORT  WARN -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> port_mgr_map_dev_port_to_all returned error code (1)
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:36:51.729158 BF_PORT  WARN -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> port_mgr_map_dev_port_to_all returned error code (1)
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:36:51.737972 BF_PORT  INFO - set chip part revision
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> number, dev 0, part rev 1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:36:51.738026 BF_PORT  INFO - port_mgr_mac_block_init:
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> core clock speed in ns = 1.220000
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:36:51.743061 BF_SYS ERROR -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> /usr/lib/libdriver.so.0(ctx_json_parse+0x265) [0x7f4c5b7df7d5]
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:36:51.743123 BF_SYS ERROR -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> /usr/lib/libdriver.so.0(+0xf1a6ec) [0x7f4c5b4e46ec]
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:36:51.743144 BF_SYS ERROR -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> /usr/lib/libdriver.so.0(pipe_mgr_add_rmt_device+0x3e3) [0x7f4c5b6759b3]
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:36:51.743162 BF_SYS ERROR -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> /usr/lib/libdriver.so.0(+0x106e75e) [0x7f4c5b63875e]
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:36:51.743183 BF_SYS ERROR -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> /usr/lib/libdriver.so.0(bf_drv_notify_clients_dev_add+0x50) [0x7f4c5b570b70]
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:36:51.743199 BF_SYS ERROR -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> /usr/lib/libdriver.so.0(bf_device_add+0x265) [0x7f4c5b56d9c5]
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:36:51.743217 BF_SYS ERROR -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> /usr/bin/stratum_bf(+0x29ea09) [0x55667c5cba09]
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:36:51.743233 BF_SYS ERROR -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> /usr/bin/stratum_bf(+0x29f3b7) [0x55667c5cc3b7]
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:36:51.743254 BF_SYS ERROR -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> /usr/bin/stratum_bf(+0x142cd6) [0x55667c46fcd6]
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:36:51.743271 BF_SYS ERROR -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> /usr/bin/stratum_bf(+0x20706d) [0x55667c53406d]
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:36:51.743289 BF_SYS ERROR -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> /usr/bin/stratum_bf(+0x206606) [0x55667c533606]
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:36:51.743306 BF_SYS ERROR -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> /usr/bin/stratum_bf(+0x1be03c) [0x55667c4eb03c]
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:36:51.743323 BF_SYS ERROR -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> /usr/bin/stratum_bf(+0x794319) [0x55667cac1319]
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:36:51.743340 BF_SYS ERROR -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> /usr/bin/stratum_bf(+0x84b8c2) [0x55667cb788c2]
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:36:51.743357 BF_SYS ERROR -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> /usr/bin/stratum_bf(+0x84cb0f) [0x55667cb79b0f]
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:36:51.743374 BF_SYS ERROR -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> /usr/bin/stratum_bf(+0x86a330) [0x55667cb97330]
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:36:51.743392 BF_SYS ERROR -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> /usr/bin/stratum_bf(+0x860c76) [0x55667cb8dc76]
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:36:51.743409 BF_SYS ERROR -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> /usr/bin/stratum_bf(+0x86a374) [0x55667cb97374]
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:36:51.743427 BF_SYS ERROR -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> /usr/bin/stratum_bf(+0x860d27) [0x55667cb8dd27]
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:36:51.743443 BF_SYS ERROR -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> /usr/bin/stratum_bf(+0xa99d03) [0x55667cdc6d03]
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:36:51.743462 BF_SYS ERROR -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> /usr/bin/stratum_bf(+0xa99b21) [0x55667cdc6b21]
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:36:51.743479 BF_SYS ERROR -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> /usr/bin/stratum_bf(+0xa9a265) [0x55667cdc7265]
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:36:51.743503 BF_SYS ERROR -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> /usr/bin/stratum_bf(+0xab503b) [0x55667cde203b]
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:36:51.743520 BF_SYS ERROR -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> /usr/bin/stratum_bf(+0xab46a9) [0x55667cde16a9]
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:36:51.743539 BF_SYS ERROR -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> /usr/bin/stratum_bf(+0xab4568) [0x55667cde1568]
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:36:51.743556 BF_SYS ERROR -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> /usr/bin/stratum_bf(+0xab4588) [0x55667cde1588]
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:36:51.743573 BF_SYS ERROR -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> /usr/bin/stratum_bf(+0xce85e6) [0x55667d0155e6]
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:36:51.743587 BF_SYS ERROR -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> /usr/bin/stratum_bf(+0xce862b) [0x55667d01562b]
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:36:51.743605 BF_SYS ERROR -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> /lib/x86_64-linux-gnu/libpthread.so.0(+0x74a4) [0x7f4c59ee24a4]
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:36:51.743622 BF_SYS ERROR -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> /lib/x86_64-linux-gnu/libc.so.6(clone+0x3f) [0x7f4c59809d0f]
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> stratum_bf:
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> /tmp/bf-sde-9.4.0/pkgsrc/bf-drivers/src/pipe_mgr/pipe_mgr_ctx_json_rmt_cfg.c:6646:
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> ctx_json_parse: Assertion `feof(file)' failed.
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> *** Aborted at 1619127411 (unix time) try &quot;date -d @1619127411&quot; if
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> you are using GNU date ***
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> PC: @                0x0 (unknown)
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> *** SIGABRT (@0x899) received by PID 2201 (TID 0x7f4c40858700) from
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> PID 2201; stack trace: ***
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>     @     0x7f4c59eec0e0 (unknown)
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>     @     0x7f4c59753fff gsignal
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>     @     0x7f4c5975542a abort
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>     @     0x7f4c5974ce67 (unknown)
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>     @     0x7f4c5974cf12 __assert_fail
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>     @     0x7f4c5b7e281e ctx_json_parse
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>     @     0x7f4c5b4e46ec pipe_mgr_rmt_import
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>     @     0x7f4c5b6759b3 pipe_mgr_add_rmt_device
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>     @     0x7f4c5b63875e pipe_mgr_add_device
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>     @     0x7f4c5b570b70 bf_drv_notify_clients_dev_add
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>     @     0x7f4c5b56d9c5 bf_device_add
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>     @     0x55667c5cba09 bf_switchd_device_add.part.6
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>     @     0x55667c5cc3b7 bf_switchd_device_add_with_p4.part.7
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>     @     0x55667c46fcd6
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> stratum::hal::barefoot::BfSdeWrapper::AddDevice()
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>     @     0x55667c53406d
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> stratum::hal::barefoot::BfrtNode::CommitForwardingPipelineConfig()
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>     @     0x55667c533606
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> stratum::hal::barefoot::BfrtNode::PushForwardingPipelineConfig()
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>     @     0x55667c4eb03c
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> stratum::hal::barefoot::BfrtSwitch::PushForwardingPipelineConfig()
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>     @     0x55667cac1319
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> stratum::hal::P4Service::SetForwardingPipelineConfig()
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>     @     0x55667cb788c2
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> _ZZN2p42v19P4Runtime7ServiceC4EvENKUlPS2_PN9grpc_impl13ServerContextEPKNS0_34SetForwardingPipelineConfigRequestEPNS0_35SetForwardingPipelineConfigResponseEE1_clES3_S6_S9_SB_
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>     @     0x55667cb79b0f
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> _ZNSt17_Function_handlerIFN4grpc6StatusEPN2p42v19P4Runtime7ServiceEPN9grpc_impl13ServerContextEPKNS3_34SetForwardingPipelineConfigRequestEPNS3_35SetForwardingPipelineConfigResponseEEZNS5_C4EvEUlS6_S9_SC_SE_E1_E9_M_invokeERKSt9_Any_dataOS6_OS9_OSC_OSE_
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>     @     0x55667cb97330 std::function&lt;&gt;::operator()()
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>     @     0x55667cb8dc76
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> _ZZN9grpc_impl8internal16RpcMethodHandlerIN2p42v19P4Runtime7ServiceENS3_34SetForwardingPipelineConfigRequestENS3_35SetForwardingPipelineConfigResponseEE10RunHandlerERKN4grpc8internal13MethodHandler16HandlerParameterEENKUlvE_clEv
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>     @     0x55667cb97374
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> _ZN9grpc_impl8internal23CatchingFunctionHandlerIZNS0_16RpcMethodHandlerIN2p42v19P4Runtime7ServiceENS4_34SetForwardingPipelineConfigRequestENS4_35SetForwardingPipelineConfigResponseEE10RunHandlerERKN4grpc8internal13MethodHandler16HandlerParameterEEUlvE_EENSA_6StatusEOT_
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>     @     0x55667cb8dd27
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> grpc_impl::internal::RpcMethodHandler&lt;&gt;::RunHandler()
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>     @     0x55667cdc6d03
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> grpc_impl::Server::SyncRequest::CallData::ContinueRunAfterInterception()
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>     @     0x55667cdc6b21
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> grpc_impl::Server::SyncRequest::CallData::Run()
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>     @     0x55667cdc7265
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> grpc_impl::Server::SyncRequestThreadManager::DoWork()
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>     @     0x55667cde203b grpc::ThreadManager::MainWorkLoop()
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>     @     0x55667cde16a9 grpc::ThreadManager::WorkerThread::Run()
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>     @     0x55667cde1568
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> _ZZN4grpc13ThreadManager12WorkerThreadC4EPS0_ENKUlPvE_clES3_
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>     @     0x55667cde1588
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> _ZZN4grpc13ThreadManager12WorkerThreadC4EPS0_ENUlPvE_4_FUNES3_
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>     @     0x55667d0155e6
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> _ZZN9grpc_core12_GLOBAL__N_120ThreadInternalsPosixC4EPKcPFvPvES4_PbRKNS_6Thread7OptionsEENKUlS4_E_clES4_
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Aborted
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> ====
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 9. Based on the suggestion for a similar query, compile P4 program
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> with `--p4runtime-force-std-externs` flag. See
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> <A HREF="https://lists.stratumproject.org/archives/stratum-dev/2020-August/000142.html">https://lists.stratumproject.org/archives/stratum-dev/2020-August/000142.html</A>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> .
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> $ ~/bf-sde-9.2.0/install/bin/p4c -a tna -o . --p4runtime-format text
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> --p4runtime-files /tmp/basic.pb.txt  --p4runtime-force-std-externs
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> ~/bf-sde-9.2.0/pkgsrc/p4-examples/p4_16_programs/tna_simple_switch/tna_simple_switch.p4
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> $ ls -lRt tna_simple_switch.tofino/
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> tna_simple_switch.tofino/:
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> total 260
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> -rw-rw-r-- 1 piyengar piyengar   1499 Apr 22 14:41
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> tna_simple_switch.conf
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> -rw-rw-r-- 1 piyengar piyengar   1689 Apr 22 14:41 manifest.json
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> -rw-rw-r-- 1 piyengar piyengar 251513 Apr 22 14:41 bfrt.json
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> drwxr-xr-x 3 piyengar piyengar   4096 Apr 22 11:58 pipe
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> tna_simple_switch.tofino/pipe:
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> total 6804
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> -rw-rw-r-- 1 piyengar piyengar 5097918 Apr 22 14:41 context.json
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> -rw-rw-r-- 1 piyengar piyengar 1478311 Apr 22 14:41 tofino.bin
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> -rw-rw-r-- 1 piyengar piyengar  218936 Apr 22 14:41
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> tna_simple_switch.bfa
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> -rw-rw-r-- 1 piyengar piyengar      39 Apr 22 14:41
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> tna_simple_switch.dynhash.json
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> -rw-rw-r-- 1 piyengar piyengar  159145 Apr 22 14:41
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> tna_simple_switch.prim.json
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> drwxr-xr-x 2 piyengar piyengar    4096 Apr 22 11:58 logs
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> tna_simple_switch.tofino/pipe/logs:
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> total 56
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> -rw-rw-r-- 1 piyengar piyengar 40387 Apr 22 14:41 power.json
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> -rw-rw-r-- 1 piyengar piyengar 13917 Apr 22 14:41
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> parser.characterize.log
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 10. Run the config_builder script again
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> $ config_builders/tofino.py --ctx-json
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> ~/stratum/tna_simple_switch.tofino/pipe/context.json --tofino-bin
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> ~/stratum/tna_simple_switch.tofino/pipe/tofino.bin --out out.bin --name
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> tna_simple_switch
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 11. Attempt to start P4Runtime shell
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> $ ./p4runtime-sh-docker --grpc-addr 10.4.16.67:28000 --device-id 1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> --election-id 0,1 --config /tmp/basic.pb.txt,out.bin
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> CRITICAL:root:Error when setting config
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> CRITICAL:root:P4Runtime RPC error (INVALID_ARGUMENT): Unknown format
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> for p4_device_config.
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 12. Use config_builder to generate compatible device config
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> $ bazel run //stratum/hal/bin/barefoot:bf_pipeline_builder --
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> -p4c_conf_file=/home/piyengar/stratum/tna_simple_switch.tofino/tna_simple_switch.conf
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> -bf_pipeline_config_binary_file=$PWD/device_config.pb.bin
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> INFO: Analyzed target //stratum/hal/bin/barefoot:bf_pipeline_builder
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> (0 packages loaded, 0 targets configured).
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> INFO: Found 1 target...
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Target //stratum/hal/bin/barefoot:bf_pipeline_builder up-to-date:
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>   bazel-bin/stratum/hal/bin/barefoot/bf_pipeline_builder
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> INFO: Elapsed time: 0.100s, Critical Path: 0.02s
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> INFO: 1 process: 1 internal.
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> INFO: Build completed successfully, 1 total action
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> INFO: Running command line:
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> bazel-bin/stratum/hal/bin/barefoot/bf_pipeline_builder
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> '-p4c_conf_file=/home/piyengar/stratum/tna_simple_switch.tofino/tna_simple_switch.conf'
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> '-bf_pipeline_INFO: Build completed successfully, 1 total action
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> I20210422 14:49:16.241858  8447 bf_pipeline_builder.cc:113] Found P4
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> program: tna_simple_switch
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> I20210422 14:49:16.241894  8447 bf_pipeline_builder.cc:128]
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Found pipeline: pipe
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 13. Attempt to access P4Runtime shell
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> $ ./p4runtime-sh-docker --grpc-addr 10.4.16.67:28000 --device-id 1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> --election-id 0,1 --config
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> /tmp/basic.pb.txt,/home/piyengar/stratum/device_config.pb.bin
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> CRITICAL:root:StreamChannel error, closing stream
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> CRITICAL:root:P4Runtime RPC error (UNAVAILABLE): Socket closed
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> CRITICAL:root:Error when setting config
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> CRITICAL:root:P4Runtime RPC error (UNAVAILABLE): Socket closed
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> &lt;On the switch&gt;
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> ====
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> bf-sde&gt; I20210422 21:50:15.943732 32238 p4_service.cc:771]
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Controller (connection_id: 1, election_id: 1, uri: ipv4:
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 10.4.17.235:47260) is connected as MASTER for node (aka device)
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> with ID 1.
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> bf_switchd: starting warm init for dev_id 0 mode 1 serdes_upgrade 0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Skip diag lib deinit
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:50:15.975977 BF_BFRT DEBUG - bfRtDeviceRemove:470 BfRt
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Device Remove called for dev : 0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:50:15.983955 BF_PORT  WARN -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> port_mgr_map_dev_port_to_all returned error code (1)
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:50:15.983970 BF_PORT  WARN -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> port_mgr_map_dev_port_to_all returned error code (1)
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:50:15.983978 BF_PORT  WARN -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> port_mgr_map_dev_port_to_all returned error code (1)
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:50:15.983989 BF_PORT  WARN -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> port_mgr_map_dev_port_to_all returned error code (1)
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:50:15.983997 BF_PORT  WARN -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> port_mgr_map_dev_port_to_all returned error code (1)
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:50:15.984006 BF_PORT  WARN -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> port_mgr_map_dev_port_to_all returned error code (1)
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:50:15.984016 BF_PORT  WARN -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> port_mgr_map_dev_port_to_all returned error code (1)
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:50:15.984026 BF_PORT  WARN -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> port_mgr_map_dev_port_to_all returned error code (1)
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:50:15.984034 BF_PORT  WARN -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> port_mgr_map_dev_port_to_all returned error code (1)
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:50:15.984044 BF_PORT  WARN -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> port_mgr_map_dev_port_to_all returned error code (1)
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:50:15.984053 BF_PORT  WARN -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> port_mgr_map_dev_port_to_all returned error code (1)
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:50:15.984063 BF_PORT  WARN -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> port_mgr_map_dev_port_to_all returned error code (1)
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:50:15.991101 BF_PORT  INFO - set chip part revision
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> number, dev 0, part rev 1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:50:15.991142 BF_PORT  INFO - port_mgr_mac_block_init:
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> core clock speed in ns = 1.220000
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:50:15.995723 BF_SYS ERROR -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> /usr/lib/libdriver.so.0(ctx_json_parse+0x265) [0x7f18672bd7d5]
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:50:15.995780 BF_SYS ERROR -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> /usr/lib/libdriver.so.0(+0xf1a6ec) [0x7f1866fc26ec]
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:50:15.995796 BF_SYS ERROR -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> /usr/lib/libdriver.so.0(pipe_mgr_add_rmt_device+0x3e3) [0x7f18671539b3]
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:50:15.995809 BF_SYS ERROR -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> /usr/lib/libdriver.so.0(+0x106e75e) [0x7f186711675e]
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:50:15.995821 BF_SYS ERROR -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> /usr/lib/libdriver.so.0(bf_drv_notify_clients_dev_add+0x50) [0x7f186704eb70]
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:50:15.995834 BF_SYS ERROR -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> /usr/lib/libdriver.so.0(bf_device_add+0x265) [0x7f186704b9c5]
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:50:15.995845 BF_SYS ERROR -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> /usr/bin/stratum_bf(+0x29ea09) [0x55a151d5fa09]
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:50:15.995856 BF_SYS ERROR -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> /usr/bin/stratum_bf(+0x29f3b7) [0x55a151d603b7]
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:50:15.995868 BF_SYS ERROR -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> /usr/bin/stratum_bf(+0x142cd6) [0x55a151c03cd6]
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:50:15.995881 BF_SYS ERROR -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> /usr/bin/stratum_bf(+0x20706d) [0x55a151cc806d]
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:50:15.995893 BF_SYS ERROR -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> /usr/bin/stratum_bf(+0x206606) [0x55a151cc7606]
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:50:15.995906 BF_SYS ERROR -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> /usr/bin/stratum_bf(+0x1be03c) [0x55a151c7f03c]
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:50:15.995918 BF_SYS ERROR -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> /usr/bin/stratum_bf(+0x794319) [0x55a152255319]
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:50:15.995931 BF_SYS ERROR -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> /usr/bin/stratum_bf(+0x84b8c2) [0x55a15230c8c2]
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:50:15.995943 BF_SYS ERROR -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> /usr/bin/stratum_bf(+0x84cb0f) [0x55a15230db0f]
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:50:15.995955 BF_SYS ERROR -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> /usr/bin/stratum_bf(+0x86a330) [0x55a15232b330]
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:50:15.995967 BF_SYS ERROR -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> /usr/bin/stratum_bf(+0x860c76) [0x55a152321c76]
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:50:15.995984 BF_SYS ERROR -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> /usr/bin/stratum_bf(+0x86a374) [0x55a15232b374]
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:50:15.995997 BF_SYS ERROR -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> /usr/bin/stratum_bf(+0x860d27) [0x55a152321d27]
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:50:15.996008 BF_SYS ERROR -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> /usr/bin/stratum_bf(+0xa99d03) [0x55a15255ad03]
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:50:15.996020 BF_SYS ERROR -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> /usr/bin/stratum_bf(+0xa99b21) [0x55a15255ab21]
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:50:15.996033 BF_SYS ERROR -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> /usr/bin/stratum_bf(+0xa9a265) [0x55a15255b265]
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:50:15.996053 BF_SYS ERROR -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> /usr/bin/stratum_bf(+0xab503b) [0x55a15257603b]
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:50:15.996065 BF_SYS ERROR -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> /usr/bin/stratum_bf(+0xab46a9) [0x55a1525756a9]
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:50:15.996076 BF_SYS ERROR -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> /usr/bin/stratum_bf(+0xab4568) [0x55a152575568]
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:50:15.996089 BF_SYS ERROR -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> /usr/bin/stratum_bf(+0xab4588) [0x55a152575588]
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:50:15.996101 BF_SYS ERROR -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> /usr/bin/stratum_bf(+0xce85e6) [0x55a1527a95e6]
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:50:15.996113 BF_SYS ERROR -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> /usr/bin/stratum_bf(+0xce862b) [0x55a1527a962b]
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:50:15.996126 BF_SYS ERROR -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> /lib/x86_64-linux-gnu/libpthread.so.0(+0x74a4) [0x7f18659c04a4]
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2021-04-22 21:50:15.996142 BF_SYS ERROR -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> /lib/x86_64-linux-gnu/libc.so.6(clone+0x3f) [0x7f18652e7d0f]
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> stratum_bf:
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> /tmp/bf-sde-9.4.0/pkgsrc/bf-drivers/src/pipe_mgr/pipe_mgr_ctx_json_rmt_cfg.c:6646:
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> ctx_json_parse: Assertion `feof(file)' failed.
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> *** Aborted at 1619128215 (unix time) try &quot;date -d @1619128215&quot; if
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> you are using GNU date ***
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> PC: @                0x0 (unknown)
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> *** SIGABRT (@0x7a9e) received by PID 31390 (TID 0x7f184c258700)
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> from PID 31390; stack trace: ***
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>     @     0x7f18659ca0e0 (unknown)
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>     @     0x7f1865231fff gsignal
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>     @     0x7f186523342a abort
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>     @     0x7f186522ae67 (unknown)
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>     @     0x7f186522af12 __assert_fail
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>     @     0x7f18672c081e ctx_json_parse
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>     @     0x7f1866fc26ec pipe_mgr_rmt_import
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>     @     0x7f18671539b3 pipe_mgr_add_rmt_device
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>     @     0x7f186711675e pipe_mgr_add_device
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>     @     0x7f186704eb70 bf_drv_notify_clients_dev_add
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>     @     0x7f186704b9c5 bf_device_add
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>     @     0x55a151d5fa09 bf_switchd_device_add.part.6
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>     @     0x55a151d603b7 bf_switchd_device_add_with_p4.part.7
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>     @     0x55a151c03cd6
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> stratum::hal::barefoot::BfSdeWrapper::AddDevice()
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>     @     0x55a151cc806d
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> stratum::hal::barefoot::BfrtNode::CommitForwardingPipelineConfig()
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>     @     0x55a151cc7606
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> stratum::hal::barefoot::BfrtNode::PushForwardingPipelineConfig()
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>     @     0x55a151c7f03c
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> stratum::hal::barefoot::BfrtSwitch::PushForwardingPipelineConfig()
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>     @     0x55a152255319
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> stratum::hal::P4Service::SetForwardingPipelineConfig()
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>     @     0x55a15230c8c2
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> _ZZN2p42v19P4Runtime7ServiceC4EvENKUlPS2_PN9grpc_impl13ServerContextEPKNS0_34SetForwardingPipelineConfigRequestEPNS0_35SetForwardingPipelineConfigResponseEE1_clES3_S6_S9_SB_
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>     @     0x55a15230db0f
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> _ZNSt17_Function_handlerIFN4grpc6StatusEPN2p42v19P4Runtime7ServiceEPN9grpc_impl13ServerContextEPKNS3_34SetForwardingPipelineConfigRequestEPNS3_35SetForwardingPipelineConfigResponseEEZNS5_C4EvEUlS6_S9_SC_SE_E1_E9_M_invokeERKSt9_Any_dataOS6_OS9_OSC_OSE_
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>     @     0x55a15232b330 std::function&lt;&gt;::operator()()
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>     @     0x55a152321c76
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> _ZZN9grpc_impl8internal16RpcMethodHandlerIN2p42v19P4Runtime7ServiceENS3_34SetForwardingPipelineConfigRequestENS3_35SetForwardingPipelineConfigResponseEE10RunHandlerERKN4grpc8internal13MethodHandler16HandlerParameterEENKUlvE_clEv
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>     @     0x55a15232b374
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> _ZN9grpc_impl8internal23CatchingFunctionHandlerIZNS0_16RpcMethodHandlerIN2p42v19P4Runtime7ServiceENS4_34SetForwardingPipelineConfigRequestENS4_35SetForwardingPipelineConfigResponseEE10RunHandlerERKN4grpc8internal13MethodHandler16HandlerParameterEEUlvE_EENSA_6StatusEOT_
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>     @     0x55a152321d27
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> grpc_impl::internal::RpcMethodHandler&lt;&gt;::RunHandler()
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>     @     0x55a15255ad03
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> grpc_impl::Server::SyncRequest::CallData::ContinueRunAfterInterception()
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>     @     0x55a15255ab21
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> grpc_impl::Server::SyncRequest::CallData::Run()
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>     @     0x55a15255b265
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> grpc_impl::Server::SyncRequestThreadManager::DoWork()
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>     @     0x55a15257603b grpc::ThreadManager::MainWorkLoop()
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>     @     0x55a1525756a9 grpc::ThreadManager::WorkerThread::Run()
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>     @     0x55a152575568
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> _ZZN4grpc13ThreadManager12WorkerThreadC4EPS0_ENKUlPvE_clES3_
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>     @     0x55a152575588
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> _ZZN4grpc13ThreadManager12WorkerThreadC4EPS0_ENUlPvE_4_FUNES3_
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>     @     0x55a1527a95e6
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> _ZZN9grpc_core12_GLOBAL__N_120ThreadInternalsPosixC4EPKcPFvPvES4_PbRKNS_6Thread7OptionsEENKUlS4_E_clES4_
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Aborted
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> ====
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> ##########################
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Would like to know how to fix/troubleshoot &quot;P4Runtime RPC error
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> (INVALID_ARGUMENT): Unknown format for p4_device_config.&quot;
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Wondering if you can help me understand what is missing or wrong
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> here.
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Any guidance in the regard would be really helpful.
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Thanks,
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Prashanth
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> stratum-dev mailing list
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">https://lists.stratumproject.org/listinfo/stratum-dev</A>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;&gt;&gt;<i> stratum-dev mailing list
+</I>&gt;&gt;&gt;&gt;<i> <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>
+</I>&gt;&gt;&gt;&gt;<i> <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">https://lists.stratumproject.org/listinfo/stratum-dev</A>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.stratumproject.org/archives/stratum-dev/attachments/20210429/2e45a959/attachment-0001.html">https://lists.stratumproject.org/archives/stratum-dev/attachments/20210429/2e45a959/attachment-0001.html</A>&gt;
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message (by thread): <A HREF="000213.html">[stratum-dev] Query about accessing P4Runtime shell
+</A></li>
+	<LI>Next message (by thread): <A HREF="000206.html">[stratum-dev] BMv2 standalone instances unable to forward traffic
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#210">[ date ]</a>
+              <a href="thread.html#210">[ thread ]</a>
+              <a href="subject.html#210">[ subject ]</a>
+              <a href="author.html#210">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.stratumproject.org/listinfo/stratum-dev">More information about the stratum-dev
+mailing list</a><br>
+</body></html>

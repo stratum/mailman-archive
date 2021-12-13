@@ -1,0 +1,37 @@
+From bocon at opennetworking.org  Fri Jul  9 17:41:48 2021
+From: bocon at opennetworking.org (Brian O'Connor)
+Date: Fri, 9 Jul 2021 13:41:48 -0400
+Subject: [stratum-dev] Stratum 2021-06-30 release is available!
+Message-ID: <CACKOpDki28y3x-DbY89W2dwsehUQVOTyVQ44-FhKSoHaF8Hz3w@mail.gmail.com>
+
+We are pleased to announce the Stratum *2021-06-30* release (or *21.06* for
+short).
+
+This release is chock full of features and fixes for Stratum's Intel
+Barefoot Tofino target, including support for two new SDE revisions,
+deflect on drop, and initial experimental support for QoS.
+
+Stratum Tofino packages now include BSP support for the Wedge100BF, and
+users on those targets can select between the BSP or the JSON port mapping
+at startup. The JSON port mapping remains the standard approach that
+Stratum uses on all existing Tofino targets. The BSP provides better
+support for optical transceivers and supports additional hardware like
+gearboxes and retimers. We expect to increase the number of platforms that
+offer BSP support in future releases, and we encourage vendors to work with
+us to package their BSPs in Stratum.
+
+In this release, Stratum now has support for finer grained control over
+logging via gNMI (see the release notes for more details). Stratum no
+longer listens for gRPC connections on port 28000 by default; users need to
+migrate to the registered IANA ports: 9339 for gNMI and 9559 for P4Runtime.
+
+Pre-built Docker images and Debian packages, along with a more extensive
+changelist, are available in the GitHub release page:
+https://github.com/stratum/stratum/releases/tag/2021-06-30
+
+Enjoy!
+Brian, Max, Yi and the rest of the Stratum team
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20210709/2ba60b10/attachment.html>
+

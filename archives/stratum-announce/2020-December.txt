@@ -1,0 +1,56 @@
+From michelle at opennetworking.org  Fri Dec  4 22:17:16 2020
+From: michelle at opennetworking.org (Michelle Roth)
+Date: Fri, 4 Dec 2020 17:17:16 -0500
+Subject: [stratum-announce] P4 and ONF Platforms Playing Major Role in New
+ DARPA-Funded Pronto Project
+Message-ID: <995796AC-690C-4F3F-9C77-BE4712530F84@opennetworking.org>
+
+Good day, 
+
+Recently the Open Networking Foundation (ONF) announced that ONF's Aether™ 5G Connected Edge Cloud platform is being used as the software platform for the $30M DARPA Pronto project, pursuing research to secure future 5G network infrastructure.
+
+DARPA is funding ONF to build, deploy and operate the network to support research by Cornell, Princeton and Stanford universities in the areas of network verification and closed-loop control. ONF will enhance and deploy its open source Aether software platform as the foundation for the Pronto research work, and in turn the research results will be open sourced back into Aether to help advance Aether as a platform for future secure 5G network infrastructure. 
+
+P4 is playing a significant role in this new DARPA project. With the advent of SDN including programmable forwarding and P4, the network has become a deeply programmable platform that can be controlled by network owners to suit their needs. It is now possible to program the control plane and the forwarding pipeline end-to-end on servers, NICs, switches and middle-boxes. With this, we can now reimagine the network as a dynamic distributed computing platform. 
+
+Read the full announcement <https://opennetworking.us8.list-manage.com/track/click?u=394e6edee21a3eea44bef0d13&id=c81678ca5a&e=5ff4875a95>
+First time hearing about Pronto? Check out this Pronto overview video <https://youtu.be/43Cesv_bmsI> by Stanford’s Nick McKeown to get up to speed. 
+
+In unison with this announcement, today we also launched new Aether <https://aetherproject.org/> and Pronto <https://opennetworking.us8.list-manage.com/track/click?u=394e6edee21a3eea44bef0d13&id=cf4e4e67aa&e=5ff4875a95%27> websites. The new Aether site is designed to provide enterprises with insights on how they can leverage Aether to enable Industry 4.0 and AI/ML-based automation projects. The new Pronto site explores the university research agenda enabled by deep programming methods to explore and create verification and closed-loop control. Learn more about the benefits of Aether, the exciting work of Pronto, and don’t miss a new white paper <https://opennetworking.us8.list-manage.com/track/click?u=394e6edee21a3eea44bef0d13&id=c29ffd35dc&e=5ff4875a95> by ONF’s Aseem Parikh titled, “Enabling a New Era of Smart Enterprises.” 
+
+View the Aether website <https://opennetworking.us8.list-manage.com/track/click?u=394e6edee21a3eea44bef0d13&id=a82c4964e6&e=5ff4875a95>
+Visit the Pronto website <https://opennetworking.us8.list-manage.com/track/click?u=394e6edee21a3eea44bef0d13&id=cf4e4e67aa&e=5ff4875a95>
+Last but certainly not least, several speakers presenting for the upcoming 5G Connected Edge Cloud for Industry 4.0 Transformation <https://opennetworking.org/events/spotlight-industry-transformation/> virtual event (December 8 - 10, 2020) will be discussing Aether and Pronto - we highly recommend attending! There will be three days of live keynotes (free to attend) along with 15+ on-demand sessions. Highlights include: 
+
+Nick McKeown, Professor of CS & EE @ Stanford University: “The Pronto Program: Securing Our Internet Infrastructure and 5G Through Verifiable Closed-Loop Control” 
+Jennifer Rexford, Professor of CS @ Princeton University: “Closing the Network Control Loop”
+Nate Foster, Professor of CS @ Cornell University: “Verifiable Networks”
+
+View the full agenda and register <https://opennetworking.org/events/spotlight-industry-transformation/>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-announce/attachments/20201204/c60efd91/attachment.html>
+
+From bocon at opennetworking.org  Fri Dec 18 23:39:50 2020
+From: bocon at opennetworking.org (Brian O'Connor)
+Date: Fri, 18 Dec 2020 18:39:50 -0500
+Subject: [stratum-announce] Stratum 2020-12-18 release is available!
+Message-ID: <CACKOpDkp96gJi_6rJXfqfTGmN9nJh2s22YZuWWcWBH2E6prVwA@mail.gmail.com>
+
+We are pleased to announce the Stratum *2020-12-18* release (or *20.12* for
+short).
+
+Pre-built Docker images and Debian packages, along with a more extensive
+changelist, are available in the GitHub release page:
+https://github.com/stratum/stratum/releases/tag/2020-12-18
+
+This release adds a new, experimental *stratum_bfrt* target, and it
+includes many bug fixes and usability enhancements.
+
+Happy holidays, and thanks again to everyone that has participated in this
+release!
+Brian, Max, Yi and the rest of the Stratum team
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-announce/attachments/20201218/071d93ab/attachment.html>
+

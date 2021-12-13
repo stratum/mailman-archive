@@ -1,0 +1,282 @@
+<tt>
+&lt;div&nbsp;dir=&quot;ltr&quot;&gt;&lt;div&gt;Hi&nbsp;Deval,&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;You&nbsp;can&nbsp;add&nbsp;&quot;--&nbsp;-p28000:28000&quot;&nbsp;option&nbsp;(&lt;b&gt;./setup_dev_env.sh&nbsp;--&nbsp;-p28000:28000&lt;/b&gt;).&nbsp;This&nbsp;will&nbsp;forward&nbsp;port&nbsp;28000&nbsp;to&nbsp;the&nbsp;container.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;And&nbsp;yes,&nbsp;the&nbsp;huge&nbsp;page&nbsp;command&nbsp;needs&nbsp;to&nbsp;be&nbsp;run&nbsp;on&nbsp;the&nbsp;host&nbsp;system.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;div&nbsp;class=&quot;gmail_quote&quot;&gt;&lt;div&nbsp;dir=&quot;ltr&quot;&nbsp;class=&quot;gmail_attr&quot;&gt;On&nbsp;Sat,&nbsp;Mar&nbsp;14,&nbsp;2020&nbsp;at&nbsp;5:07&nbsp;PM&nbsp;Deval&nbsp;Bhamare&nbsp;&lt;&lt;a&nbsp;href=&quot;mailto:Deval.Bhamare@kau.se&quot;&gt;Deval.Bhamare@kau.se&lt;/a&gt;&gt;&nbsp;wrote:&lt;br&gt;&lt;/div&gt;&lt;blockquote&nbsp;class=&quot;gmail_quote&quot;&nbsp;style=&quot;margin:0px&nbsp;0px&nbsp;0px&nbsp;0.8ex;border-left:1px&nbsp;solid&nbsp;rgb(204,204,204);padding-left:1ex&quot;&gt;<br>
+<br>
+<br>
+<br>
+&lt;div&gt;<br>
+<br>
+&lt;div&nbsp;id=&quot;gmail-m_-7341603977618292553divtagdefaultwrapper&quot;&nbsp;style=&quot;font-size:12pt;color:rgb(0,0,0);font-family:Calibri,Helvetica,sans-serif&quot;&nbsp;dir=&quot;ltr&quot;&gt;<br>
+&lt;p&gt;Hello&nbsp;Yi,&lt;/p&gt;<br>
+&lt;p&gt;&lt;br&gt;<br>
+&lt;/p&gt;<br>
+&lt;p&gt;Thank&nbsp;you&nbsp;for&nbsp;your&nbsp;reply.&nbsp;We&nbsp;will&nbsp;contact&nbsp;BSP. &lt;/p&gt;<br>
+&lt;p&gt;&lt;br&gt;<br>
+&lt;/p&gt;<br>
+&lt;p&gt;About&nbsp;the&nbsp;mount&nbsp;and&nbsp;mapping&nbsp;thing,&nbsp;I&nbsp;would&nbsp;to&nbsp;clarify&nbsp;that&nbsp;I&nbsp;am&nbsp;using&nbsp;the&nbsp;option&nbsp;of&nbsp;building&nbsp;stratum&nbsp;from&nbsp;scratch&nbsp;(given&nbsp;here:<br>
+&lt;a&nbsp;href=&quot;https://github.com/stratum/stratum/blob/master/stratum/hal/bin/barefoot/README.md&quot;&nbsp;id=&quot;gmail-m_-7341603977618292553LPlnk724203&quot;&nbsp;target=&quot;_blank&quot;&gt;<br>
+https://github.com/stratum/stratum/blob/master/stratum/hal/bin/barefoot/README.md&lt;/a&gt;).&lt;/p&gt;<br>
+&lt;p&gt;&lt;br&gt;<br>
+&lt;/p&gt;<br>
+&lt;p&gt;As&nbsp;per&nbsp;your&nbsp;suggestion,&nbsp;I&nbsp;first&nbsp;run&lt;span&nbsp;style=&quot;background-color:initial;font-family:SFMono-Regular,Consolas,&quot;Liberation&nbsp;Mono&quot;,Menlo,monospace;font-size:13.6px;color:rgb(36,41,46)&quot;&gt;&lt;b&gt;&lt;span&nbsp;style=&quot;color:rgb(255,0,0)&quot;&gt;./setup_dev_env.sh&lt;/span&gt;&lt;/b&gt; &lt;/span&gt;&lt;span&nbsp;style=&quot;font-size:12pt&quot;&gt;to<br>
+&nbsp;start&nbsp;the&nbsp;container.&nbsp;Then&nbsp;I&nbsp;do&nbsp;everything&nbsp;within&nbsp;this&nbsp;container&nbsp;(I&nbsp;have&nbsp;copied&nbsp;BF&nbsp;SDE&nbsp;and&nbsp;BSP&nbsp;dependencies&nbsp;manually&nbsp;in&nbsp;the&nbsp;container&nbsp;folder). &lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&gt;&lt;span&nbsp;style=&quot;font-size:12pt&quot;&gt;&lt;br&gt;<br>
+&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&gt;&lt;span&nbsp;style=&quot;font-size:12pt&quot;&gt;Are&nbsp;these&nbsp;steps&nbsp;correct?&nbsp;The&nbsp;commands&nbsp;you&nbsp;mentioned&nbsp; (pasted&nbsp;below),&nbsp;have&nbsp;to&nbsp;be&nbsp;performed&nbsp;outside&nbsp;the&nbsp;container,&nbsp;am&nbsp;I&nbsp;correct?&nbsp;I&nbsp;have&nbsp;done&nbsp;that&nbsp;already.&nbsp;How&nbsp;can&nbsp;I&nbsp;make&nbsp;sure&nbsp;that&nbsp;Stratum&nbsp;is&nbsp;listening&nbsp;correctly&nbsp;and&nbsp;I&nbsp;can&nbsp;access<br>
+&nbsp;it&nbsp;from&nbsp;ONOS? &lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&gt;&lt;span&nbsp;style=&quot;font-size:12pt&quot;&gt;&lt;br&gt;<br>
+&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&gt;&lt;span&nbsp;style=&quot;font-size:12pt&quot;&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&lt;pre&nbsp;style=&quot;box-sizing:border-box;font-family:SFMono-Regular,Consolas,&quot;Liberation&nbsp;Mono&quot;,Menlo,monospace;font-size:13.6px;margin-top:0px;margin-bottom:0px;padding:16px;overflow:auto;line-height:1.45;background-color:rgb(246,248,250);border-radius:3px;word-break:normal;color:rgb(36,41,46)&quot;&gt;$&nbsp;[sudo]&nbsp;&lt;span&nbsp;style=&quot;box-sizing:border-box;color:rgb(0,92,197)&quot;&gt;echo&lt;/span&gt;&nbsp;&lt;span&nbsp;style=&quot;box-sizing:border-box;color:rgb(3,47,98)&quot;&gt;&lt;span&nbsp;style=&quot;box-sizing:border-box&quot;&gt;&quot;&lt;/span&gt;vm.nr_hugepages&nbsp;=&nbsp;128&lt;span&nbsp;style=&quot;box-sizing:border-box&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&nbsp;&lt;span&nbsp;style=&quot;box-sizing:border-box;color:rgb(215,58,73)&quot;&gt;&gt;&gt;&lt;/span&gt;&nbsp;/etc/sysctl.conf<br>
+$&nbsp;[sudo]&nbsp;sysctl&nbsp;-p&nbsp;/etc/sysctl.conf<br>
+$&nbsp;[sudo]&nbsp;mkdir&nbsp;/mnt/huge<br>
+$&nbsp;[sudo]&nbsp;mount&nbsp;-t&nbsp;hugetlbfs&nbsp;nodev&nbsp;/mnt/huge&lt;/pre&gt;<br>
+&lt;br&gt;<br>
+<br>
+&lt;p&gt;&lt;/p&gt;<br>
+&lt;p&gt;&lt;span&nbsp;style=&quot;font-size:12pt&quot;&gt;&lt;br&gt;<br>
+&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&gt;&lt;span&nbsp;style=&quot;font-size:12pt&quot;&gt;Thanks,&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&gt;&lt;span&nbsp;style=&quot;font-size:12pt&quot;&gt;Deval.&lt;/span&gt;&lt;/p&gt;<br>
+&lt;/div&gt;<br>
+&lt;hr&nbsp;style=&quot;display:inline-block;width:98%&quot;&gt;<br>
+&lt;div&nbsp;id=&quot;gmail-m_-7341603977618292553divRplyFwdMsg&quot;&nbsp;dir=&quot;ltr&quot;&gt;&lt;font&nbsp;style=&quot;font-size:11pt&quot;&nbsp;face=&quot;Calibri,&nbsp;sans-serif&quot;&nbsp;color=&quot;#000000&quot;&gt;&lt;b&gt;From:&lt;/b&gt;&nbsp;Yi&nbsp;Tseng&nbsp;&lt;&lt;a&nbsp;href=&quot;mailto:yi@opennetworking.org&quot;&nbsp;target=&quot;_blank&quot;&gt;yi@opennetworking.org&lt;/a&gt;&gt;&lt;br&gt;<br>
+&lt;b&gt;Sent:&lt;/b&gt;&nbsp;Saturday,&nbsp;March&nbsp;14,&nbsp;2020&nbsp;7:37:41&nbsp;AM&lt;br&gt;<br>
+&lt;b&gt;To:&lt;/b&gt;&nbsp;Deval&nbsp;Bhamare&lt;br&gt;<br>
+&lt;b&gt;Cc:&lt;/b&gt;&nbsp;&lt;a&nbsp;href=&quot;mailto:stratum-dev@lists.stratumproject.org&quot;&nbsp;target=&quot;_blank&quot;&gt;stratum-dev@lists.stratumproject.org&lt;/a&gt;&lt;br&gt;<br>
+&lt;b&gt;Subject:&lt;/b&gt;&nbsp;Re:&nbsp;[stratum-dev]&nbsp;Update&nbsp;Bazel&nbsp;version&nbsp;to&nbsp;2.2.0&lt;/font&gt;<br>
+&lt;div&gt; &lt;/div&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&gt;<br>
+&lt;div&nbsp;dir=&quot;ltr&quot;&gt;<br>
+&lt;div&gt;Hi&nbsp;Deval,&lt;/div&gt;<br>
+&lt;div&gt;&lt;br&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&gt;As&nbsp;far&nbsp;as&nbsp;I&nbsp;know,&nbsp;&quot;onie-syseeprom&quot;&nbsp;is&nbsp;a&nbsp;tool&nbsp;which&nbsp;included&nbsp;in&nbsp;ONIE.&nbsp;The&nbsp;BSP&nbsp;tries&nbsp;to&nbsp;use&nbsp;&quot;onie-syseeprom&quot;&nbsp;to&nbsp;read&nbsp;some&nbsp;information&nbsp;from&nbsp;the&nbsp;board.&lt;/div&gt;<br>
+&lt;div&gt;&lt;br&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&gt;However,&nbsp;I&nbsp;don&#39;t&nbsp;think&nbsp;ONL&nbsp;includes&nbsp;the&nbsp;onie-syseeprom&nbsp;tool&nbsp;(tried&nbsp;to&nbsp;search&nbsp;from&nbsp;ONL&nbsp;master&nbsp;but&nbsp;only&nbsp;got&nbsp;onie-sysinfo&nbsp;and&nbsp;onie-shell&nbsp;tool)&lt;/div&gt;<br>
+&lt;div&gt;&lt;br&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&gt;In&nbsp;ONIE&nbsp;shell,&nbsp;you&nbsp;should&nbsp;be&nbsp;able&nbsp;to&nbsp;run&nbsp;&quot;onie-syseeprom&quot;&nbsp;command&nbsp;and&nbsp;get&nbsp;information&nbsp;like&nbsp;below:&lt;br&gt;<br>
+&lt;b&gt;TlvInfo&nbsp;Header:&lt;br&gt;<br>
+ &nbsp; Id&nbsp;String:&nbsp; &nbsp; TlvInfo&lt;br&gt;<br>
+ &nbsp; Version:&nbsp; &nbsp; &nbsp; 1&lt;br&gt;<br>
+ &nbsp; Total&nbsp;Length:&nbsp;153&lt;br&gt;<br>
+TLV&nbsp;Name&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Code&nbsp;Len&nbsp;Value&lt;br&gt;<br>
+--------------------&nbsp;----&nbsp;---&nbsp;-----&lt;br&gt;<br>
+Product&nbsp;Name&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;0x21&nbsp; 10&nbsp;BF2556X-1T&lt;br&gt;<br>
+Part&nbsp;Number&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 0x22&nbsp; 14&nbsp;BF2556X-1T-A1F&lt;br&gt;<br>
+Serial&nbsp;Number&nbsp; &nbsp; &nbsp; &nbsp; 0x23&nbsp; 18&nbsp;BF2556X1TXXXXXXXXX&lt;br&gt;<br>
+Base&nbsp;MAC&nbsp;Address&nbsp; &nbsp; &nbsp;0x24&nbsp; &nbsp;6&nbsp;XX:XX:XX:XX:XX:XX&lt;br&gt;<br>
+Manufacture&nbsp;Date&nbsp; &nbsp; &nbsp;0x25&nbsp; 19&nbsp;07/08/2019&nbsp;14:07:40&lt;br&gt;<br>
+Device&nbsp;Version&nbsp; &nbsp; &nbsp; &nbsp;0x26&nbsp; &nbsp;1&nbsp;1&lt;br&gt;<br>
+Platform&nbsp;Name&nbsp; &nbsp; &nbsp; &nbsp; 0x28&nbsp; 28&nbsp;x86_64-stordis_bf2556x_1t-r0&lt;br&gt;<br>
+ONIE&nbsp;Version&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;0x29&nbsp; &nbsp;4&nbsp;1.10&lt;br&gt;<br>
+MAC&nbsp;Addresses&nbsp; &nbsp; &nbsp; &nbsp; 0x2A&nbsp; &nbsp;2&nbsp;XXXX&lt;br&gt;<br>
+Manufacturer&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;0x2B&nbsp; &nbsp;7&nbsp;STORDIS&lt;br&gt;<br>
+Country&nbsp;Code&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;0x2C&nbsp; &nbsp;2&nbsp;TW&lt;br&gt;<br>
+Vendor&nbsp;Name&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 0x2D&nbsp; &nbsp;7&nbsp;STORDIS&lt;br&gt;<br>
+Diag&nbsp;Version&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;0x2E&nbsp; &nbsp;3&nbsp;1.0&lt;br&gt;<br>
+CRC-32&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;0xFE&nbsp; &nbsp;4&nbsp;0x57762CCE&lt;br&gt;<br>
+Checksum&nbsp;is&nbsp;valid.&lt;/b&gt;&lt;/div&gt;<br>
+&lt;div&gt;&lt;br&gt;<br>
+&lt;/div&gt;<br>
+I&nbsp;would&nbsp;suggest&nbsp;contacting&nbsp;the&nbsp;vendor&nbsp;for&nbsp;the&nbsp;BSP&nbsp;issue.&lt;br&gt;<br>
+&lt;div&gt;&lt;br&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&gt;For&nbsp;the&nbsp;container&nbsp;port,&nbsp;we&nbsp;do&nbsp;export&nbsp;the&nbsp;28000&nbsp;port,&nbsp;there&nbsp;is&nbsp;a&nbsp;script&nbsp;to&nbsp;start&nbsp;the&nbsp;Stratum&nbsp;container,&nbsp;please&nbsp;follow&nbsp;the&nbsp;document&nbsp;to&nbsp;start&nbsp;it&lt;br&gt;<br>
+&lt;a&nbsp;href=&quot;https://github.com/stratum/stratum/tree/master/stratum/hal/bin/barefoot/docker#run-the-docker-container-on-the-device&quot;&nbsp;target=&quot;_blank&quot;&gt;https://github.com/stratum/stratum/tree/master/stratum/hal/bin/barefoot/docker#run-the-docker-container-on-the-device&lt;/a&gt;&lt;/div&gt;<br>
+&lt;div&gt;&lt;br&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&gt;Yi&lt;br&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&gt;&lt;br&gt;<br>
+&lt;/div&gt;<br>
+&lt;/div&gt;<br>
+&lt;br&gt;<br>
+&lt;div&nbsp;class=&quot;gmail_quote&quot;&gt;<br>
+&lt;div&nbsp;dir=&quot;ltr&quot;&nbsp;class=&quot;gmail_attr&quot;&gt;On&nbsp;Thu,&nbsp;Mar&nbsp;12,&nbsp;2020&nbsp;at&nbsp;6:30&nbsp;PM&nbsp;Deval&nbsp;Bhamare&nbsp;&lt;&lt;a&nbsp;href=&quot;mailto:Deval.Bhamare@kau.se&quot;&nbsp;target=&quot;_blank&quot;&gt;Deval.Bhamare@kau.se&lt;/a&gt;&gt;&nbsp;wrote:&lt;br&gt;<br>
+&lt;/div&gt;<br>
+&lt;blockquote&nbsp;class=&quot;gmail_quote&quot;&nbsp;style=&quot;margin:0px&nbsp;0px&nbsp;0px&nbsp;0.8ex;border-left:1px&nbsp;solid&nbsp;rgb(204,204,204);padding-left:1ex&quot;&gt;<br>
+&lt;div&nbsp;dir=&quot;ltr&quot;&gt;<br>
+&lt;div&nbsp;id=&quot;gmail-m_-7341603977618292553gmail-m_1310452149677394900divtagdefaultwrapper&quot;&nbsp;dir=&quot;ltr&quot;&nbsp;style=&quot;font-size:12pt;color:rgb(0,0,0);font-family:Calibri,Helvetica,sans-serif,Helvetica,EmojiFont,&quot;Apple&nbsp;Color&nbsp;Emoji&quot;,&quot;Segoe&nbsp;UI&nbsp;Emoji&quot;,NotoColorEmoji,&quot;Segoe&nbsp;UI&nbsp;Symbol&quot;,&quot;Android&nbsp;Emoji&quot;,EmojiSymbols&quot;&gt;<br>
+&lt;div&nbsp;id=&quot;gmail-m_-7341603977618292553gmail-m_1310452149677394900divtagdefaultwrapper&quot;&nbsp;dir=&quot;ltr&quot;&nbsp;style=&quot;font-size:12pt;color:rgb(0,0,0);font-family:Calibri,Helvetica,sans-serif,Helvetica,EmojiFont,&quot;Apple&nbsp;Color&nbsp;Emoji&quot;,&quot;Segoe&nbsp;UI&nbsp;Emoji&quot;,NotoColorEmoji,&quot;Segoe&nbsp;UI&nbsp;Symbol&quot;,&quot;Android&nbsp;Emoji&quot;,EmojiSymbols&quot;&gt;<br>
+&lt;p&gt;Hello&nbsp;Yi, &lt;/p&gt;<br>
+&lt;p&gt;&lt;br&gt;<br>
+&lt;/p&gt;<br>
+&lt;p&gt;For&nbsp;Building&nbsp;Stratum&nbsp;Dev&nbsp;we&nbsp;have&nbsp;resolved&nbsp;the&nbsp;issue&nbsp;already&nbsp;with&nbsp;and&nbsp;without&nbsp;BSP. &lt;/p&gt;<br>
+&lt;p&gt;The&nbsp;soft-links&nbsp;in&nbsp;Lib&nbsp;are&nbsp;pointing&nbsp;to&nbsp;the&nbsp;Libs&nbsp;using&nbsp;Hardcoded&nbsp;absolute&nbsp;path,&nbsp;which&nbsp;is&nbsp;not&nbsp;available&nbsp;from&nbsp;within&nbsp;the&nbsp;container.&nbsp;So&nbsp;had&nbsp;to&nbsp;delete&nbsp;them&nbsp;and&nbsp;create&nbsp;again&nbsp;pointing&nbsp;to&nbsp;local&nbsp;Libs. Also&nbsp;have&nbsp;to&nbsp;explicitly&nbsp;install&nbsp;the&nbsp;library&nbsp;libpltfm_mgr. &lt;/p&gt;<br>
+&lt;p&gt;&lt;br&gt;<br>
+&lt;/p&gt;<br>
+&lt;p&gt;I&nbsp;will&nbsp;check&nbsp;the&nbsp;direct&nbsp;Docker&nbsp;option&nbsp;later-on. &lt;/p&gt;<br>
+&lt;p&gt;&lt;br&gt;<br>
+&lt;/p&gt;<br>
+&lt;p&gt;Now&nbsp;Stratum&nbsp;in&nbsp;running,&nbsp;but&nbsp;with&nbsp;error&nbsp;below&nbsp;in&nbsp;the&nbsp;end&nbsp;(screenshot&nbsp;is&nbsp;attached). &lt;/p&gt;<br>
+&lt;p&gt;&lt;br&gt;<br>
+&lt;/p&gt;<br>
+&lt;p&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;style=&quot;margin-right:0px;margin-left:0px;font-size:11px;line-height:normal;font-family:Menlo&quot;&gt;<br>
+&lt;span&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;style=&quot;margin-right:0px;margin-left:0px;font-size:11px;line-height:normal;font-family:Menlo&quot;&gt;<br>
+&lt;span&gt;Configuration&nbsp;for&nbsp;dev_id&nbsp;0&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;style=&quot;margin-right:0px;margin-left:0px;font-size:11px;line-height:normal;font-family:Menlo&quot;&gt;<br>
+&lt;span&gt;&lt;span&gt; &nbsp;&lt;/span&gt;Family&lt;span&gt; &nbsp; &nbsp; &nbsp; &nbsp;&lt;/span&gt;:&nbsp;Tofino&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;style=&quot;margin-right:0px;margin-left:0px;font-size:11px;line-height:normal;font-family:Menlo&quot;&gt;<br>
+&lt;span&gt;&lt;span&gt; &nbsp;&lt;/span&gt;pci_sysfs_str&nbsp;:&nbsp;/sys/devices/pci0000:00/0000:00:03.0/0000:05:00.0&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;style=&quot;margin-right:0px;margin-left:0px;font-size:11px;line-height:normal;font-family:Menlo&quot;&gt;<br>
+&lt;span&gt;&lt;span&gt; &nbsp;&lt;/span&gt;pci_domain&lt;span&gt; &nbsp; &nbsp;&lt;/span&gt;:&nbsp;0&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;style=&quot;margin-right:0px;margin-left:0px;font-size:11px;line-height:normal;font-family:Menlo&quot;&gt;<br>
+&lt;span&gt;&lt;span&gt; &nbsp;&lt;/span&gt;pci_bus&nbsp;&lt;span&gt; &nbsp; &nbsp; &nbsp;&lt;/span&gt;:&nbsp;5&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;style=&quot;margin-right:0px;margin-left:0px;font-size:11px;line-height:normal;font-family:Menlo&quot;&gt;<br>
+&lt;span&gt;&lt;span&gt; &nbsp;&lt;/span&gt;pci_fn&lt;span&gt; &nbsp; &nbsp; &nbsp; &nbsp;&lt;/span&gt;:&nbsp;0&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;style=&quot;margin-right:0px;margin-left:0px;font-size:11px;line-height:normal;font-family:Menlo&quot;&gt;<br>
+&lt;span&gt;&lt;span&gt; &nbsp;&lt;/span&gt;pci_dev&nbsp;&lt;span&gt; &nbsp; &nbsp; &nbsp;&lt;/span&gt;:&nbsp;0&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;style=&quot;margin-right:0px;margin-left:0px;font-size:11px;line-height:normal;font-family:Menlo&quot;&gt;<br>
+&lt;span&gt;&lt;span&gt; &nbsp;&lt;/span&gt;pci_int_mode&lt;span&gt; &nbsp;&lt;/span&gt;:&nbsp;1&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;style=&quot;margin-right:0px;margin-left:0px;font-size:11px;line-height:normal;font-family:Menlo&quot;&gt;<br>
+&lt;span&gt;&lt;span&gt; &nbsp;&lt;/span&gt;sbus_master_fw:&nbsp;/stratum/bf-sde-8.9.0/install/&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;style=&quot;margin-right:0px;margin-left:0px;font-size:11px;line-height:normal;font-family:Menlo&quot;&gt;<br>
+&lt;span&gt;&lt;span&gt; &nbsp;&lt;/span&gt;pcie_fw&nbsp;&lt;span&gt; &nbsp; &nbsp; &nbsp;&lt;/span&gt;:&nbsp;/stratum/bf-sde-8.9.0/install/&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;style=&quot;margin-right:0px;margin-left:0px;font-size:11px;line-height:normal;font-family:Menlo&quot;&gt;<br>
+&lt;span&gt;&lt;span&gt; &nbsp;&lt;/span&gt;serdes_fw&nbsp;&lt;span&gt; &nbsp; &nbsp;&lt;/span&gt;:&nbsp;/stratum/bf-sde-8.9.0/install/&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;style=&quot;margin-right:0px;margin-left:0px;font-size:11px;line-height:normal;font-family:Menlo&quot;&gt;<br>
+&lt;span&gt;&lt;span&gt; &nbsp;&lt;/span&gt;sds_fw_path&nbsp;&lt;span&gt; &nbsp;&lt;/span&gt;:&nbsp;/stratum/bf-sde-8.9.0/install/&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;style=&quot;margin-right:0px;margin-left:0px;font-size:11px;line-height:normal;font-family:Menlo&quot;&gt;<br>
+&lt;span&gt;&lt;span&gt; &nbsp;&lt;/span&gt;microp_fw_path:&lt;span&gt; &lt;/span&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;style=&quot;margin-right:0px;margin-left:0px;font-size:11px;line-height:normal;font-family:Menlo&quot;&gt;<br>
+&lt;span&gt;bf_switchd:&nbsp;processing&nbsp;P4&nbsp;configuration...&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;style=&quot;margin-right:0px;margin-left:0px;font-size:11px;line-height:normal;font-family:Menlo&quot;&gt;<br>
+&lt;span&gt;P4&nbsp;profile&nbsp;for&nbsp;dev_id&nbsp;0&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;style=&quot;margin-right:0px;margin-left:0px;font-size:11px;line-height:normal;font-family:Menlo&quot;&gt;<br>
+&lt;span&gt;&lt;span&gt; &nbsp;&lt;/span&gt;p4_name:&nbsp;dummy&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;style=&quot;margin-right:0px;margin-left:0px;font-size:11px;line-height:normal;font-family:Menlo&quot;&gt;<br>
+&lt;span&gt;&lt;span&gt; &nbsp; &nbsp;&lt;/span&gt;libpd:&lt;span&gt; &lt;/span&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;style=&quot;margin-right:0px;margin-left:0px;font-size:11px;line-height:normal;font-family:Menlo&quot;&gt;<br>
+&lt;span&gt;&lt;span&gt; &nbsp; &nbsp;&lt;/span&gt;libpdthrift:&lt;span&gt; &lt;/span&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;style=&quot;margin-right:0px;margin-left:0px;font-size:11px;line-height:normal;font-family:Menlo&quot;&gt;<br>
+&lt;span&gt;&lt;span&gt; &nbsp; &nbsp;&lt;/span&gt;context:&lt;span&gt; &lt;/span&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;style=&quot;margin-right:0px;margin-left:0px;font-size:11px;line-height:normal;font-family:Menlo&quot;&gt;<br>
+&lt;span&gt;&lt;span&gt; &nbsp; &nbsp;&lt;/span&gt;config:&lt;span&gt; &lt;/span&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;style=&quot;margin-right:0px;margin-left:0px;font-size:11px;line-height:normal;font-family:Menlo&quot;&gt;<br>
+&lt;span&gt;&lt;span&gt; &nbsp;&lt;/span&gt;Agent[0]:&nbsp;/stratum/bf-sde-8.9.0/install/lib/libpltfm_mgr.so&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;style=&quot;margin-right:0px;margin-left:0px;font-size:11px;line-height:normal;font-family:Menlo&quot;&gt;<br>
+&lt;span&gt;&lt;span&gt; &nbsp;&lt;/span&gt;diag:&lt;span&gt; &lt;/span&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;style=&quot;margin-right:0px;margin-left:0px;font-size:11px;line-height:normal;font-family:Menlo&quot;&gt;<br>
+&lt;span&gt;&lt;span&gt; &nbsp;&lt;/span&gt;mavericks&nbsp;diag:&lt;span&gt; &lt;/span&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;style=&quot;margin-right:0px;margin-left:0px;font-size:11px;line-height:normal;font-family:Menlo&quot;&gt;<br>
+&lt;span&gt;&lt;span&gt; &nbsp;&lt;/span&gt;non_default_port_ppgs:&nbsp;0&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;style=&quot;margin-right:0px;margin-left:0px;font-size:11px;line-height:normal;font-family:Menlo&quot;&gt;<br>
+&lt;span&gt;&lt;span&gt; &nbsp;&lt;/span&gt;SAI&nbsp;default&nbsp;initialize:&nbsp;1&lt;span&gt; &lt;/span&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;style=&quot;margin-right:0px;margin-left:0px;font-size:11px;line-height:normal;font-family:Menlo&quot;&gt;<br>
+&lt;span&gt;bf_switchd:&nbsp;library&nbsp;/stratum/bf-sde-8.9.0/install/lib/libpltfm_mgr.so&nbsp;loaded&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;style=&quot;margin-right:0px;margin-left:0px;font-size:11px;line-height:normal;font-family:Menlo&quot;&gt;<br>
+&lt;span&gt;bf_switchd:&nbsp;agent[0]&nbsp;initialized&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;style=&quot;margin-right:0px;margin-left:0px;font-size:11px;line-height:normal;font-family:Menlo&quot;&gt;<br>
+&lt;span&gt;Tcl&nbsp;server&nbsp;started..&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;style=&quot;margin-right:0px;margin-left:0px;font-size:11px;line-height:normal;font-family:Menlo&quot;&gt;<br>
+&lt;span&gt;Tcl&nbsp;server:&nbsp;listen&nbsp;socket&nbsp;created&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;style=&quot;margin-right:0px;margin-left:0px;font-size:11px;line-height:normal;font-family:Menlo&quot;&gt;<br>
+&lt;span&gt;Tcl&nbsp;server:&nbsp;bind&nbsp;done&nbsp;on&nbsp;port&nbsp;8008,&nbsp;listening...&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;style=&quot;margin-right:0px;margin-left:0px;font-size:11px;line-height:normal;font-family:Menlo&quot;&gt;<br>
+&lt;span&gt;Tcl&nbsp;server:&nbsp;waiting&nbsp;for&nbsp;incoming&nbsp;connections...&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;style=&quot;margin-right:0px;margin-left:0px;font-size:11px;line-height:normal;font-family:Menlo&quot;&gt;<br>
+&lt;span&gt;&lt;b&gt;&lt;span&nbsp;style=&quot;color:rgb(255,0,0)&quot;&gt;sh:&nbsp;1:&nbsp;onie-syseeprom:&nbsp;not&nbsp;found&lt;/span&gt;&lt;/b&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;style=&quot;margin-right:0px;margin-left:0px;font-size:11px;line-height:normal;font-family:Menlo&quot;&gt;<br>
+&lt;span&gt;&lt;br&gt;<br>
+&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;style=&quot;margin-right:0px;margin-left:0px;font-size:11px;line-height:normal;font-family:Menlo&quot;&gt;<br>
+&lt;span&gt;&lt;br&gt;<br>
+&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;style=&quot;margin-right:0px;margin-left:0px;font-size:11px;line-height:normal;font-family:Menlo&quot;&gt;<br>
+&lt;span&gt;&lt;b&gt;&lt;span&nbsp;style=&quot;color:rgb(255,0,0)&quot;&gt;2020-03-12&nbsp;10:19:54.510206&nbsp;BF_PLTFM&nbsp;ERROR&nbsp;-&nbsp;Error&nbsp;in&nbsp;cp2112&nbsp;initialization&lt;/span&gt;&lt;/b&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;style=&quot;margin-right:0px;margin-left:0px;font-size:11px;line-height:normal;font-family:Menlo;min-height:13px&quot;&gt;<br>
+&lt;b&gt;&lt;span&gt;&lt;/span&gt;&lt;br&gt;<br>
+&lt;/b&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;style=&quot;margin-right:0px;margin-left:0px;font-size:11px;line-height:normal;font-family:Menlo&quot;&gt;<br>
+&lt;span&gt;&lt;b&gt;&lt;span&nbsp;style=&quot;color:rgb(255,0,0)&quot;&gt;2020-03-12&nbsp;10:19:54.510309&nbsp;BF_PLTFM&nbsp;ERROR&nbsp;-&nbsp;pltfm_mgr:&nbsp;platform&nbsp;init&nbsp;failed&lt;/span&gt;&lt;/b&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;style=&quot;margin-right:0px;margin-left:0px;font-size:11px;line-height:normal;font-family:Menlo&quot;&gt;<br>
+&lt;span&gt;&lt;b&gt;&lt;span&nbsp;style=&quot;color:rgb(255,0,0)&quot;&gt;&lt;br&gt;<br>
+&lt;/span&gt;&lt;/b&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;style=&quot;margin-right:0px;margin-left:0px;font-size:11px;line-height:normal;font-family:Menlo&quot;&gt;<br>
+&lt;span&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&lt;br&gt;<br>
+&lt;p&gt;&lt;/p&gt;<br>
+&lt;p&gt;So,&nbsp;looks&nbsp;like&nbsp;BF&nbsp;platform&nbsp;initilization&nbsp;is&nbsp;failing.&nbsp;Also,&nbsp;what&nbsp;is &lt;b&nbsp;style=&quot;font-family:Menlo;font-size:11px&quot;&gt;&lt;span&nbsp;style=&quot;color:rgb(255,0,0)&quot;&gt;onie-syseeprom&lt;/span&gt;&lt;/b&gt;&lt;/p&gt;<br>
+&lt;p&gt;&lt;br&gt;<br>
+&lt;/p&gt;<br>
+&lt;p&gt;&lt;br&gt;<br>
+I&nbsp;also&nbsp;had&nbsp;a&nbsp;doubt&nbsp;that,&nbsp;&lt;b&gt;is&nbsp;the&nbsp;port&nbsp;28000&nbsp;available&nbsp;outside&nbsp;the&nbsp;container&lt;/b&gt;?&nbsp;I&nbsp;cannot&nbsp;see&nbsp;any&nbsp;process&nbsp;listening&nbsp;on&nbsp;port&nbsp;28000&nbsp;or&nbsp;8008&nbsp;(given&nbsp;in&nbsp;the&nbsp;message&nbsp;above) from&nbsp;outside&nbsp;the&nbsp;container. &lt;/p&gt;<br>
+&lt;p&gt;&lt;br&gt;<br>
+&lt;/p&gt;<br>
+&lt;p&gt;Thanks,&lt;/p&gt;<br>
+&lt;p&gt;Deval.&lt;/p&gt;<br>
+&lt;/div&gt;<br>
+&lt;hr&nbsp;style=&quot;display:inline-block;width:98%&quot;&gt;<br>
+&lt;div&nbsp;id=&quot;gmail-m_-7341603977618292553gmail-m_1310452149677394900divRplyFwdMsg&quot;&nbsp;dir=&quot;ltr&quot;&gt;&lt;font&nbsp;style=&quot;font-size:11pt&quot;&nbsp;face=&quot;Calibri,&nbsp;sans-serif&quot;&nbsp;color=&quot;#000000&quot;&gt;&lt;b&gt;From:&lt;/b&gt;&nbsp;Yi&nbsp;Tseng&nbsp;&lt;&lt;a&nbsp;href=&quot;mailto:yi@opennetworking.org&quot;&nbsp;target=&quot;_blank&quot;&gt;yi@opennetworking.org&lt;/a&gt;&gt;&lt;br&gt;<br>
+&lt;b&gt;Sent:&lt;/b&gt;&nbsp;Thursday,&nbsp;March&nbsp;12,&nbsp;2020&nbsp;6:57:14&nbsp;AM&lt;br&gt;<br>
+&lt;b&gt;To:&lt;/b&gt;&nbsp;Deval&nbsp;Bhamare&lt;br&gt;<br>
+&lt;b&gt;Cc:&lt;/b&gt;&nbsp;Narada&nbsp;Hess;&nbsp;&lt;a&nbsp;href=&quot;mailto:stratum-dev@lists.stratumproject.org&quot;&nbsp;target=&quot;_blank&quot;&gt;<br>
+stratum-dev@lists.stratumproject.org&lt;/a&gt;&lt;br&gt;<br>
+&lt;b&gt;Subject:&lt;/b&gt;&nbsp;Re:&nbsp;[stratum-dev]&nbsp;Update&nbsp;Bazel&nbsp;version&nbsp;to&nbsp;2.2.0&lt;/font&gt;<br>
+&lt;div&gt; &lt;/div&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&gt;<br>
+&lt;div&nbsp;dir=&quot;ltr&quot;&gt;<br>
+&lt;div&nbsp;dir=&quot;ltr&quot;&gt;<br>
+&lt;div&gt;Hi&nbsp;Deval,&lt;/div&gt;<br>
+&lt;div&gt;&lt;br&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&gt;We&nbsp;don&#39;t&nbsp;support&nbsp;Barefoot&nbsp;thrift&nbsp;APIs&nbsp;in&nbsp;Stratum.&nbsp;We&nbsp;support&nbsp;some&nbsp;Barefoot&nbsp;API&nbsp;like&nbsp;port&nbsp;API&nbsp;via&nbsp;gNMI&nbsp;and&nbsp;the&nbsp;chassis&nbsp;config.&lt;/div&gt;<br>
+&lt;div&gt;&lt;br&gt;<br>
+&lt;/div&gt;<br>
+For&nbsp;missing&nbsp;JSON&nbsp;file,&nbsp;I&nbsp;can&nbsp;confirm&nbsp;that&nbsp;our&nbsp;internal&nbsp;CI&nbsp;did&nbsp;not&nbsp;include&nbsp;the&nbsp;latest&nbsp;Stratum&nbsp;with&nbsp;kernel&nbsp;3.16.56&lt;/div&gt;<br>
+&lt;div&nbsp;dir=&quot;ltr&quot;&gt;&lt;br&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&gt;I&nbsp;just&nbsp;rebuild&nbsp;it&nbsp;and&nbsp;uploaded&nbsp;the&nbsp;new&nbsp;container&nbsp;image&nbsp;to&nbsp;the&nbsp;&lt;a&nbsp;href=&quot;https://hub.docker.com/layers/stratumproject/stratum-bf/8.9.2-3.16.56-OpenNetworkLinux/images/sha256-c9d64c1a7c2853150532a5d3e14dac94aa79b63a4dffba16018322d971d65300?context=explore&quot;&nbsp;target=&quot;_blank&quot;&gt;<br>
+Docker&nbsp;hub&lt;/a&gt;,&nbsp;feel&nbsp;free&nbsp;to&nbsp;let&nbsp;me&nbsp;know&nbsp;if&nbsp;the&nbsp;issue&nbsp;still&nbsp;exists.&lt;/div&gt;<br>
+&lt;div&gt;&lt;br&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&gt;About&nbsp;the&nbsp;missing&nbsp;library,&nbsp;can&nbsp;you&nbsp;run&nbsp;this&nbsp;command&nbsp;in&nbsp;your&nbsp;shell?&lt;/div&gt;<br>
+&lt;div&gt;&lt;br&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&gt;&lt;b&gt;&lt;span&gt;LD_LIBRARY_PATH=$BF_SDE_INSTALL/lib&nbsp;ldd&nbsp;./bazel-bin/stratum/hal/bin/barefoot/stratum_bf&lt;/span&gt;&lt;/b&gt;&lt;/div&gt;<br>
+&lt;div&gt;&lt;b&gt;&lt;span&gt;&lt;br&gt;<br>
+&lt;/span&gt;&lt;/b&gt;&lt;/div&gt;<br>
+&lt;div&gt;&lt;span&gt;I&nbsp;think&nbsp;the&nbsp;system&nbsp;linker&nbsp;may&nbsp;have&nbsp;some&nbsp;issue&nbsp;to&nbsp;find&nbsp;the&nbsp;library.&lt;/span&gt;&lt;/div&gt;<br>
+&lt;div&gt;&lt;span&gt;&lt;br&gt;<br>
+&lt;/span&gt;&lt;/div&gt;<br>
+&lt;div&gt;&lt;span&gt;The&nbsp;&lt;b&gt;libavago.so.0&nbsp;&lt;/b&gt;is&nbsp;a&nbsp;symbolic&nbsp;link&nbsp;to&nbsp;&lt;b&gt;libavago.so&lt;/b&gt;.&nbsp;the&nbsp;libavago.so&nbsp;must&nbsp;also&nbsp;exists.&lt;br&gt;<br>
+&lt;b&gt;&lt;/b&gt;&lt;/span&gt;&lt;/div&gt;<br>
+&lt;div&gt;&lt;b&gt;ls&nbsp;-al&nbsp;$BF_SDE_INSTALL/lib/libavago*&lt;br&gt;<br>
+-rwxr-xr-x&nbsp;1&nbsp;root&nbsp;root&nbsp;1185264&nbsp;Mar&nbsp;12&nbsp;04:19&nbsp;libavago.so&lt;br&gt;<br>
+lrwxrwxrwx&nbsp;1&nbsp;root&nbsp;root&nbsp; &nbsp; &nbsp; 11&nbsp;Mar&nbsp;12&nbsp;04:19&nbsp;libavago.so.0&nbsp;-&gt;&nbsp;libavago.so&lt;br&gt;<br>
+lrwxrwxrwx&nbsp;1&nbsp;root&nbsp;root&nbsp; &nbsp; &nbsp; 11&nbsp;Mar&nbsp;12&nbsp;04:19&nbsp;libavago.so.0.0.0&nbsp;-&gt;&nbsp;libavago.so&lt;/b&gt;&lt;/div&gt;<br>
+&lt;div&gt;&lt;br&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&gt;&lt;br&gt;<br>
+&lt;/div&gt;<br>
+&lt;/div&gt;<br>
+&lt;/div&gt;<br>
+&lt;/div&gt;<br>
+&lt;/div&gt;<br>
+&lt;/blockquote&gt;<br>
+&lt;/div&gt;<br>
+&lt;br&nbsp;clear=&quot;all&quot;&gt;<br>
+&lt;br&gt;<br>
+--&nbsp;&lt;br&gt;<br>
+&lt;div&nbsp;dir=&quot;ltr&quot;&gt;<br>
+&lt;div&nbsp;dir=&quot;ltr&quot;&gt;<br>
+&lt;div&gt;Yi&nbsp;Tseng&lt;br&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&gt;Member&nbsp;of&nbsp;Technical&nbsp;Staff&lt;/div&gt;<br>
+&lt;div&gt;Open&nbsp;Networking&nbsp;Foundation&lt;/div&gt;<br>
+&lt;div&gt;&lt;a&nbsp;href=&quot;https://www.opennetworking.org/&quot;&nbsp;target=&quot;_blank&quot;&gt;https://www.opennetworking.org/&lt;/a&gt;&lt;br&gt;<br>
+&lt;/div&gt;<br>
+&lt;/div&gt;<br>
+&lt;/div&gt;<br>
+&lt;/div&gt;<br>
+&lt;/div&gt;<br>
+<br>
+&lt;/blockquote&gt;&lt;/div&gt;&lt;br&nbsp;clear=&quot;all&quot;&gt;&lt;br&gt;--&nbsp;&lt;br&gt;&lt;div&nbsp;dir=&quot;ltr&quot;&nbsp;class=&quot;gmail_signature&quot;&gt;&lt;div&nbsp;dir=&quot;ltr&quot;&gt;&lt;div&gt;Yi&nbsp;Tseng&lt;br&gt;&lt;/div&gt;&lt;div&gt;Member&nbsp;of&nbsp;Technical&nbsp;Staff&lt;/div&gt;&lt;div&gt;Open&nbsp;Networking&nbsp;Foundation&lt;/div&gt;&lt;div&gt;&lt;a&nbsp;href=&quot;https://www.opennetworking.org/&quot;&nbsp;target=&quot;_blank&quot;&gt;https://www.opennetworking.org/&lt;/a&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;<br>
+
+</tt>

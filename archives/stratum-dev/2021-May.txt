@@ -1,0 +1,2181 @@
+From asydney007 at gmail.com  Mon May  3 19:58:04 2021
+From: asydney007 at gmail.com (A Sydney)
+Date: Mon, 3 May 2021 15:58:04 -0400
+Subject: [stratum-dev] BMv2 standalone instances unable to forward
+	traffic
+In-Reply-To: <CAM-ym_ch6+jxHFLXhkaTAqbsfhgivg4F=sfs82KPL79NB29M7Q@mail.gmail.com>
+References: <CAM-ym_ch6+jxHFLXhkaTAqbsfhgivg4F=sfs82KPL79NB29M7Q@mail.gmail.com>
+Message-ID: <CAM-ym_eLCocQ1NBih7QpDWLfdPAH=ZxizuHgW680HLukZje9Vw@mail.gmail.com>
+
+I was able to resolve the issue. Below is a quick summary:
+Problem: The ONOS GUI did not show any links and further investigation
+showed that LLDP traffic was not observed in the stratum_bmv2 log.
+Solution: I specified the "cpu_port" argument when stratum_bmv2 starts-up
+(i.e. cpu_port was set to 255, which is the same port used in the p4
+program).
+
+PS. Feel free to read below for more details:
+
+Cheers!
+-Syd
+
+On Mon, Apr 26, 2021 at 1:41 PM A Sydney <asydney007 at gmail.com> wrote:
+
+> Hi Stratum folks,
+>                            It appears that traffic is not forwarded by the
+> BMv2 standalone instances. Here are more details:
+>
+> 1. I used Max's instructions to create standalone BMv2 instances running
+> on Debian 10.
+> 2. I created an SdnTest app on ONOS with the identical pipeconf,
+> bmv2.json, and p4info.txt files from the ngsdn-tutorial app (i.e. the same
+> working versions of these files from the ngsdn-tutorial VM are used in a
+> different setup with a different ONOS controller and 6 standalone bmv2
+> switches). (https://github.com/opennetworkinglab/ngsdn-tutorial).
+> 3. I created a custom 6-node Clos topology and I've attached the
+> corresponding netcfg.json in the tarball.
+> 4. Onos starts up just fine and I ensure that all apps (similar to the
+> ones running on ngsdn-tutorial) are fired-up (See onos_cli_log in attached).
+> 5. I then push netcfg.json to onos, and the onos logs show a few "Failed
+> to register Bandwidth" and "Failed to register Port" errors (See onos_log
+> in attached tarball): Note: After digging a bit, it appears that these
+> messages originate from ResourceDeviceListener.java on line 162 when
+> "log.isTraceEnabled()" is not set in ConsistentResourceStore on line 122
+> (So this essentially may not be an issue?). In any case, onos_cli_log shows
+> that all devices are connected and available. Interestingly, the "Tx"
+> portstat remains at 0. Given the fact the the lldpprovider app is running,
+> I would expect at least LLDP traffic to be flowing.
+>
+> 6. As an example, I logged onto leaf1 to take a look at the logs, and from
+> the terminal, I see the following (See leaf1_stratum_terminal_log for more
+> details):
+> """
+> E20210426 16:01:18.918056  5458 p4_service.cc:311] Failed to write
+> forwarding entries to node 1:
+>
+
+This occurs when an attempt is made to install a flow that already exists.
+
+
+> """
+> So when the switch starts up, the initial "chassis_config_file" lists all
+> 8 ports on all switches. However, netcfg.json specifies 6 of the 8. When I
+> take a look through the onos web GUI, I still see all 8 ports which implies
+> that perhaps there may be issues pushing the updated chassis_config_file to
+> the switch?
+>
+> 7. When I look through the details debug log for leaf1 (see
+> leaf1_log_written_to_file), I only see 1 LLDP pkt (i.e. ethtype 88cc),
+> though tcpdump from the controller shows that the controller is indeed
+> sending numerous discovery pkts.
+>
+> This turns out to be the log when lldphostprovider adds the LLDP rule to
+the switch.
+
+
+> PS. I've attached a tarball with the various log files and a ReadMe
+> describing the contents of each file.
+>
+> Can you kindly provide feedback on perhaps why traffic (at least LLDP) is
+> not forwarded by the switches?
+>
+
+Using tcpdump, I observed that LLDP traffic was sent from the controller
+and made it to the switch. However, the bmv2 logs did not register any LLDP
+traffic on port 255 (i.e. the CPU port specified in the p4 program). I took
+a look at how stratum_bmv2 starts from the ngsdn-tutorial vm and observed
+that "cpu_port" was one of the arguments and was set to 255. For some
+reason, I thought that 255 was the default CPU port but it turns out that
+the default port is 64.  So I specified the "cpu_port" argument in
+testrig and pkt-in/outs now work and hence LLDP works.
+
+
+>
+> BTW. I also tried to connect to leaf1 via "util/p4rt-sh", install flow
+> rules to foward traffic between ports 5 and 6, but a quick ping showed that
+> traffic was not flowing: I also used tcpdump on leaf1 to verify that indeed
+> no pkts were making it on ports 5 and 6 (except dhcp which is expected).
+>
+This was a result of the behavior of the protocols in my environment. I had
+to add new tables and their corresponding ONOS components, and now traffic
+flows just fine.
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20210503/060cd142/attachment.html>
+
+From asydney007 at gmail.com  Mon May 10 20:46:51 2021
+From: asydney007 at gmail.com (A Sydney)
+Date: Mon, 10 May 2021 16:46:51 -0400
+Subject: [stratum-dev] Is there a limit on the # of ECMP groups stratum_bmv2
+	can handle?
+Message-ID: <CAM-ym_dwKqvp=ks8-39s07cCLY-_aJAbWgz2GSR0b4PjH+jcpw@mail.gmail.com>
+
+Hi Stratum folks,
+
+# Context:
+I have created a pipeline that enables IPv4-ECMP (P4 snippet shown in
+attached file action_selector*) and I am able to build and push p4info.txt
+and bmv2.json to the switches.
+
+# Issue:
+When I attempt to add groups, the first one moves to the "ADDED" state.
+When I attempt to add a second, the first group and the second both move to
+the "PENDING_ADD_RETRY" state.
+
+# ONOS logs:
+At the same time, P4RuntimeClientImpl throws the error "Error while
+performing READ on device:spine2...Unexpected error in RPC handling". Then
+ONOS spirals into this cycle of attempting to reinstall all flows on the
+switch (See debug.log for details.).
+
+# Logs on one of the bmv2 switches:
+I then see the following error on the switch:
+[libprotobuf FATAL
+external/com_google_protobuf/src/google/protobuf/repeated_field.h:1694]
+CHECK failed: (index) < (current_size_):
+
+# Question:
+Have you ever come across this one?  Are there any obvious mistakes that
+I'm running into (Perhaps my P4 ECMP definition attached is incorrect?)?
+Any suggestions on how to debug further?
+
+Thanks!
+-Syd
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20210510/c1b25dcd/attachment.html>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: debug.log
+Type: text/x-log
+Size: 13780 bytes
+Desc: not available
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20210510/c1b25dcd/attachment.bin>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: action_selector_snippet
+Type: application/octet-stream
+Size: 665 bytes
+Desc: not available
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20210510/c1b25dcd/attachment.obj>
+
+From bocon at opennetworking.org  Mon May 10 21:33:05 2021
+From: bocon at opennetworking.org (Brian O'Connor)
+Date: Mon, 10 May 2021 17:33:05 -0400
+Subject: [stratum-dev] Stratum vs Ubuntu 18.04.5 LTS
+In-Reply-To: <CAOmZ5nmcyLTpB2zzZKxH9bn1OSv8AGLMMG2RReTmOD9=mE8DDw@mail.gmail.com>
+References: <CAOmZ5nmcyLTpB2zzZKxH9bn1OSv8AGLMMG2RReTmOD9=mE8DDw@mail.gmail.com>
+Message-ID: <CACKOpDka0zBVuppaz8s+0zLpggQhJt5WMAeKiG4-dQBic-d0Bw@mail.gmail.com>
+
+(Adding the mailing list for quicker replies and broader community
+visibility)
+
+Stratum doesn't run in the kernel; it runs in user space. There should be
+no issues running on linux 5.4.
+
+In terms of the kernel, the Stratum target for Broadcom uses the Broadcom
+OpenNSA API, which has a few kernel modules. You may be able to recompile
+these modules for whatever kernel version you need; the sources are here:
+https://github.com/Broadcom-Network-Switching-Software/OpenNSA
+
+Out of curiosity, what is the ASIC or switching target that you plan to use
+for your project? Would BMv2 work (that would be entirely software with no
+kernel specific code)?
+https://github.com/stratum/stratum/tree/main/stratum/hal/bin/bmv2
+
+Thanks, and sorry for the delayed reply!
+
+Brian
+
+
+On Fri, Apr 30, 2021 at 12:36 PM Fernando Henrique Santorsula <
+f208918 at dac.unicamp.br> wrote:
+
+> Hi Brian, how are you?
+>
+> My name is Fernando, I am from Brazil (Indaiatuba / São Paulo), and I need
+> to ask a question about Stratum please!
+>
+> I am a master student in Computer Engineering and I need Strato OS to
+> transform it into a programmable access point in P4
+>
+> However used in the kernel: 5.4.0-72-generic and is not a version listed
+> in the link:
+>
+>
+> https://github.com/stratum/stratum/blob/main/stratum/hal/bin/bcm/standalone/README.md
+>
+> Could you tell me an installation source where I can install Stratum in
+> this kernel version: 5.4.0-72-generic and run Stratum for my search request
+> please? If Stratum does not support this kernel version, could you please
+> inform me, any other software that does the same job as Stratum, in this
+> kernel I mentioned, running on Ubuntu 18.04?
+>
+> I thank you for reading and I await your return as soon as possible, I am
+> concerned because I have 30 days to present this project, due to health
+> problems, I was unable to do the work before, could you help me with this
+> technical matter please? Thank you very much Brian, take care of yourself,
+> a hug.
+>
+> --
+> Regards,
+>
+> Fernando Henrique Santorsula
+> UNICAMP - Campinas/SP
+>
+>
+>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20210510/6f546093/attachment-0001.html>
+
+From max at opennetworking.org  Tue May 11 00:36:16 2021
+From: max at opennetworking.org (Maximilian Pudelko)
+Date: Mon, 10 May 2021 17:36:16 -0700
+Subject: [stratum-dev] Is there a limit on the # of ECMP groups
+ stratum_bmv2 can handle?
+In-Reply-To: <0101017958088bc7-038a2b1b-8aa4-40b0-ad7c-22367abdf589-000000@us-west-2.amazonses.com>
+References: <0101017958088bc7-038a2b1b-8aa4-40b0-ad7c-22367abdf589-000000@us-west-2.amazonses.com>
+Message-ID: <CAFh9Y_PLyQARQmUkgxR_+wOQ=EU4PHg_oxB7n0Du_Tb7O3r0ng@mail.gmail.com>
+
+Hi Syd,
+
+I have not observed this error before. Stratum-bmv2 is backed by PI (
+https://github.com/p4lang/PI).
+All P4RT messages are passed to it nearly unmodified, so the issue must lie
+there.
+
+Max
+
+On Mon, May 10, 2021 at 1:47 PM A Sydney via stratum-dev <
+stratum-dev at lists.stratumproject.org> wrote:
+
+> Hi Stratum folks,
+>
+> # Context:
+> I have created a pipeline that enables IPv4-ECMP (P4 snippet shown in
+> attached file action_selector*) and I am able to build and push p4info.txt
+> and bmv2.json to the switches.
+>
+> # Issue:
+> When I attempt to add groups, the first one moves to the "ADDED" state.
+> When I attempt to add a second, the first group and the second both move to
+> the "PENDING_ADD_RETRY" state.
+>
+> # ONOS logs:
+> At the same time, P4RuntimeClientImpl throws the error "Error while
+> performing READ on device:spine2...Unexpected error in RPC handling". Then
+> ONOS spirals into this cycle of attempting to reinstall all flows on the
+> switch (See debug.log for details.).
+>
+> # Logs on one of the bmv2 switches:
+> I then see the following error on the switch:
+> [libprotobuf FATAL
+> external/com_google_protobuf/src/google/protobuf/repeated_field.h:1694]
+> CHECK failed: (index) < (current_size_):
+>
+> # Question:
+> Have you ever come across this one?  Are there any obvious mistakes that
+> I'm running into (Perhaps my P4 ECMP definition attached is incorrect?)?
+> Any suggestions on how to debug further?
+>
+> Thanks!
+> -Syd
+>
+> _______________________________________________
+> stratum-dev mailing list
+> stratum-dev at lists.stratumproject.org
+> https://lists.stratumproject.org/listinfo/stratum-dev
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20210510/a9b6c615/attachment.html>
+
+From max at opennetworking.org  Tue May 11 18:33:04 2021
+From: max at opennetworking.org (Maximilian Pudelko)
+Date: Tue, 11 May 2021 11:33:04 -0700
+Subject: [stratum-dev] BMv2 standalone instances unable to forward
+	traffic
+In-Reply-To: <0101017933cf5bf3-30d21231-fab4-4208-9786-399872945b43-000000@us-west-2.amazonses.com>
+References: <CAM-ym_ch6+jxHFLXhkaTAqbsfhgivg4F=sfs82KPL79NB29M7Q@mail.gmail.com>
+ <0101017933cf5bf3-30d21231-fab4-4208-9786-399872945b43-000000@us-west-2.amazonses.com>
+Message-ID: <CAFh9Y_ML5W+wXxzkG8w1j694Nzk9PPWne0Md4O5c5Yn3r86pmg@mail.gmail.com>
+
+Glad you could make it work and thanks for writing up the solution.
+
+Max
+
+On Mon, May 3, 2021 at 12:58 PM A Sydney via stratum-dev <
+stratum-dev at lists.stratumproject.org> wrote:
+
+>
+> I was able to resolve the issue. Below is a quick summary:
+> Problem: The ONOS GUI did not show any links and further investigation
+> showed that LLDP traffic was not observed in the stratum_bmv2 log.
+> Solution: I specified the "cpu_port" argument when stratum_bmv2 starts-up
+> (i.e. cpu_port was set to 255, which is the same port used in the p4
+> program).
+>
+> PS. Feel free to read below for more details:
+>
+> Cheers!
+> -Syd
+>
+> On Mon, Apr 26, 2021 at 1:41 PM A Sydney <asydney007 at gmail.com> wrote:
+>
+>> Hi Stratum folks,
+>>                            It appears that traffic is not forwarded by
+>> the BMv2 standalone instances. Here are more details:
+>>
+>> 1. I used Max's instructions to create standalone BMv2 instances running
+>> on Debian 10.
+>> 2. I created an SdnTest app on ONOS with the identical pipeconf,
+>> bmv2.json, and p4info.txt files from the ngsdn-tutorial app (i.e. the same
+>> working versions of these files from the ngsdn-tutorial VM are used in a
+>> different setup with a different ONOS controller and 6 standalone bmv2
+>> switches). (https://github.com/opennetworkinglab/ngsdn-tutorial).
+>> 3. I created a custom 6-node Clos topology and I've attached the
+>> corresponding netcfg.json in the tarball.
+>> 4. Onos starts up just fine and I ensure that all apps (similar to the
+>> ones running on ngsdn-tutorial) are fired-up (See onos_cli_log in attached).
+>> 5. I then push netcfg.json to onos, and the onos logs show a few "Failed
+>> to register Bandwidth" and "Failed to register Port" errors (See onos_log
+>> in attached tarball): Note: After digging a bit, it appears that these
+>> messages originate from ResourceDeviceListener.java on line 162 when
+>> "log.isTraceEnabled()" is not set in ConsistentResourceStore on line 122
+>> (So this essentially may not be an issue?). In any case, onos_cli_log shows
+>> that all devices are connected and available. Interestingly, the "Tx"
+>> portstat remains at 0. Given the fact the the lldpprovider app is running,
+>> I would expect at least LLDP traffic to be flowing.
+>>
+>> 6. As an example, I logged onto leaf1 to take a look at the logs, and
+>> from the terminal, I see the following (See leaf1_stratum_terminal_log for
+>> more details):
+>> """
+>> E20210426 16:01:18.918056  5458 p4_service.cc:311] Failed to write
+>> forwarding entries to node 1:
+>>
+>
+> This occurs when an attempt is made to install a flow that already exists.
+>
+>
+>> """
+>> So when the switch starts up, the initial "chassis_config_file" lists all
+>> 8 ports on all switches. However, netcfg.json specifies 6 of the 8. When I
+>> take a look through the onos web GUI, I still see all 8 ports which implies
+>> that perhaps there may be issues pushing the updated chassis_config_file to
+>> the switch?
+>>
+>> 7. When I look through the details debug log for leaf1 (see
+>> leaf1_log_written_to_file), I only see 1 LLDP pkt (i.e. ethtype 88cc),
+>> though tcpdump from the controller shows that the controller is indeed
+>> sending numerous discovery pkts.
+>>
+>> This turns out to be the log when lldphostprovider adds the LLDP rule to
+> the switch.
+>
+>
+>> PS. I've attached a tarball with the various log files and a ReadMe
+>> describing the contents of each file.
+>>
+>> Can you kindly provide feedback on perhaps why traffic (at least LLDP) is
+>> not forwarded by the switches?
+>>
+>
+> Using tcpdump, I observed that LLDP traffic was sent from the controller
+> and made it to the switch. However, the bmv2 logs did not register any LLDP
+> traffic on port 255 (i.e. the CPU port specified in the p4 program). I took
+> a look at how stratum_bmv2 starts from the ngsdn-tutorial vm and observed
+> that "cpu_port" was one of the arguments and was set to 255. For some
+> reason, I thought that 255 was the default CPU port but it turns out that
+> the default port is 64.  So I specified the "cpu_port" argument in
+> testrig and pkt-in/outs now work and hence LLDP works.
+>
+>
+>>
+>> BTW. I also tried to connect to leaf1 via "util/p4rt-sh", install flow
+>> rules to foward traffic between ports 5 and 6, but a quick ping showed that
+>> traffic was not flowing: I also used tcpdump on leaf1 to verify that indeed
+>> no pkts were making it on ports 5 and 6 (except dhcp which is expected).
+>>
+> This was a result of the behavior of the protocols in my environment. I
+> had to add new tables and their corresponding ONOS components, and now
+> traffic flows just fine.
+>
+> _______________________________________________
+> stratum-dev mailing list
+> stratum-dev at lists.stratumproject.org
+> https://lists.stratumproject.org/listinfo/stratum-dev
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20210511/a79ae61d/attachment.html>
+
+From max at opennetworking.org  Wed May 12 03:38:02 2021
+From: max at opennetworking.org (Maximilian Pudelko)
+Date: Tue, 11 May 2021 20:38:02 -0700
+Subject: [stratum-dev] Is there a limit on the # of ECMP groups
+ stratum_bmv2 can handle?
+In-Reply-To: <0101017958dace94-7ab4aba8-5d35-404e-bb93-97a765bf23a6-000000@us-west-2.amazonses.com>
+References: <0101017958088bc7-038a2b1b-8aa4-40b0-ad7c-22367abdf589-000000@us-west-2.amazonses.com>
+ <0101017958dace94-7ab4aba8-5d35-404e-bb93-97a765bf23a6-000000@us-west-2.amazonses.com>
+Message-ID: <CAFh9Y_O2_xfJWqiKbPe1izqnwvWLK5GT3-7np5JMT+RB2A=qsA@mail.gmail.com>
+
+Hi Syd,
+
+After some investigation I found the root cause to this issue:
+https://github.com/stratum/stratum/pull/687
+I expect this to get merged soon.
+
+Max
+
+On Mon, May 10, 2021 at 5:36 PM Maximilian Pudelko via stratum-dev <
+stratum-dev at lists.stratumproject.org> wrote:
+
+> Hi Syd,
+>
+> I have not observed this error before. Stratum-bmv2 is backed by PI (
+> https://github.com/p4lang/PI).
+> All P4RT messages are passed to it nearly unmodified, so the issue must
+> lie there.
+>
+> Max
+>
+> On Mon, May 10, 2021 at 1:47 PM A Sydney via stratum-dev <
+> stratum-dev at lists.stratumproject.org> wrote:
+>
+>> Hi Stratum folks,
+>>
+>> # Context:
+>> I have created a pipeline that enables IPv4-ECMP (P4 snippet shown in
+>> attached file action_selector*) and I am able to build and push p4info.txt
+>> and bmv2.json to the switches.
+>>
+>> # Issue:
+>> When I attempt to add groups, the first one moves to the "ADDED" state.
+>> When I attempt to add a second, the first group and the second both move to
+>> the "PENDING_ADD_RETRY" state.
+>>
+>> # ONOS logs:
+>> At the same time, P4RuntimeClientImpl throws the error "Error while
+>> performing READ on device:spine2...Unexpected error in RPC handling". Then
+>> ONOS spirals into this cycle of attempting to reinstall all flows on the
+>> switch (See debug.log for details.).
+>>
+>> # Logs on one of the bmv2 switches:
+>> I then see the following error on the switch:
+>> [libprotobuf FATAL
+>> external/com_google_protobuf/src/google/protobuf/repeated_field.h:1694]
+>> CHECK failed: (index) < (current_size_):
+>>
+>> # Question:
+>> Have you ever come across this one?  Are there any obvious mistakes that
+>> I'm running into (Perhaps my P4 ECMP definition attached is incorrect?)?
+>> Any suggestions on how to debug further?
+>>
+>> Thanks!
+>> -Syd
+>>
+>> _______________________________________________
+>> stratum-dev mailing list
+>> stratum-dev at lists.stratumproject.org
+>> https://lists.stratumproject.org/listinfo/stratum-dev
+>
+> _______________________________________________
+> stratum-dev mailing list
+> stratum-dev at lists.stratumproject.org
+> https://lists.stratumproject.org/listinfo/stratum-dev
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20210511/640ed4c1/attachment.html>
+
+From asydney007 at gmail.com  Wed May 12 16:53:50 2021
+From: asydney007 at gmail.com (A Sydney)
+Date: Wed, 12 May 2021 12:53:50 -0400
+Subject: [stratum-dev] Is there a limit on the # of ECMP groups
+ stratum_bmv2 can handle?
+In-Reply-To: <CAFh9Y_O2_xfJWqiKbPe1izqnwvWLK5GT3-7np5JMT+RB2A=qsA@mail.gmail.com>
+References: <0101017958088bc7-038a2b1b-8aa4-40b0-ad7c-22367abdf589-000000@us-west-2.amazonses.com>
+ <0101017958dace94-7ab4aba8-5d35-404e-bb93-97a765bf23a6-000000@us-west-2.amazonses.com>
+ <CAFh9Y_O2_xfJWqiKbPe1izqnwvWLK5GT3-7np5JMT+RB2A=qsA@mail.gmail.com>
+Message-ID: <CAM-ym_cTWCKaA2MasF1+WZNTzSmDjRbA6jv0mCn14UKSZpS74w@mail.gmail.com>
+
+Hi Stratum folks,
+                         @Max, thanks a bunch! I updated the package in and
+indeed, this particular error has been fixed.
+
+However, I'm getting this new error where LLDP pkt-ins are causing a buffer
+underflow exception in ONOS. When I disable the lldpprovider at ONOS, the
+error is gone. Can you kindly take a look at the following log and provide
+feedback (i.e. Have you seen this one before, is stratum the source of the
+issue, or should I take it up with ONOS folks)?
+
+https://pastebin.com/SuS2ZhtV
+
+Cheers!
+-Syd
+
+
+
+
+
+
+On Tue, May 11, 2021 at 11:38 PM Maximilian Pudelko <max at opennetworking.org>
+wrote:
+
+> Hi Syd,
+>
+> After some investigation I found the root cause to this issue:
+> https://github.com/stratum/stratum/pull/687
+> I expect this to get merged soon.
+>
+> Max
+>
+> On Mon, May 10, 2021 at 5:36 PM Maximilian Pudelko via stratum-dev <
+> stratum-dev at lists.stratumproject.org> wrote:
+>
+>> Hi Syd,
+>>
+>> I have not observed this error before. Stratum-bmv2 is backed by PI (
+>> https://github.com/p4lang/PI).
+>> All P4RT messages are passed to it nearly unmodified, so the issue must
+>> lie there.
+>>
+>> Max
+>>
+>> On Mon, May 10, 2021 at 1:47 PM A Sydney via stratum-dev <
+>> stratum-dev at lists.stratumproject.org> wrote:
+>>
+>>> Hi Stratum folks,
+>>>
+>>> # Context:
+>>> I have created a pipeline that enables IPv4-ECMP (P4 snippet shown in
+>>> attached file action_selector*) and I am able to build and push p4info.txt
+>>> and bmv2.json to the switches.
+>>>
+>>> # Issue:
+>>> When I attempt to add groups, the first one moves to the "ADDED" state.
+>>> When I attempt to add a second, the first group and the second both move to
+>>> the "PENDING_ADD_RETRY" state.
+>>>
+>>> # ONOS logs:
+>>> At the same time, P4RuntimeClientImpl throws the error "Error while
+>>> performing READ on device:spine2...Unexpected error in RPC handling". Then
+>>> ONOS spirals into this cycle of attempting to reinstall all flows on the
+>>> switch (See debug.log for details.).
+>>>
+>>> # Logs on one of the bmv2 switches:
+>>> I then see the following error on the switch:
+>>> [libprotobuf FATAL
+>>> external/com_google_protobuf/src/google/protobuf/repeated_field.h:1694]
+>>> CHECK failed: (index) < (current_size_):
+>>>
+>>> # Question:
+>>> Have you ever come across this one?  Are there any obvious mistakes that
+>>> I'm running into (Perhaps my P4 ECMP definition attached is incorrect?)?
+>>> Any suggestions on how to debug further?
+>>>
+>>> Thanks!
+>>> -Syd
+>>>
+>>> _______________________________________________
+>>> stratum-dev mailing list
+>>> stratum-dev at lists.stratumproject.org
+>>> https://lists.stratumproject.org/listinfo/stratum-dev
+>>
+>> _______________________________________________
+>> stratum-dev mailing list
+>> stratum-dev at lists.stratumproject.org
+>> https://lists.stratumproject.org/listinfo/stratum-dev
+>
+>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20210512/45849b8b/attachment.html>
+
+From max at opennetworking.org  Wed May 12 17:05:50 2021
+From: max at opennetworking.org (Maximilian Pudelko)
+Date: Wed, 12 May 2021 10:05:50 -0700
+Subject: [stratum-dev] Is there a limit on the # of ECMP groups
+ stratum_bmv2 can handle?
+In-Reply-To: <01010179617fec23-34f39bbb-95ce-4407-9b36-9736f5eed684-000000@us-west-2.amazonses.com>
+References: <0101017958088bc7-038a2b1b-8aa4-40b0-ad7c-22367abdf589-000000@us-west-2.amazonses.com>
+ <0101017958dace94-7ab4aba8-5d35-404e-bb93-97a765bf23a6-000000@us-west-2.amazonses.com>
+ <CAFh9Y_O2_xfJWqiKbPe1izqnwvWLK5GT3-7np5JMT+RB2A=qsA@mail.gmail.com>
+ <01010179617fec23-34f39bbb-95ce-4407-9b36-9736f5eed684-000000@us-west-2.amazonses.com>
+Message-ID: <CAFh9Y_M-=0RWhETeihJY7h3uQ8fvpLVLEUE6z+P=t-WjXKOggA@mail.gmail.com>
+
+Hi Syd,
+
+That's an issue on the ONOS side, more specifically the fabric-interpreter:
+https://github.com/opennetworkinglab/onos/blob/master/pipelines/fabric/impl/src/main/java/org/onosproject/pipelines/fabric/impl/behaviour/FabricInterpreter.java#L262-L265
+We fixed something similar in our internal version very recently. In short,
+byte strings returned by
+Stratum are not zero-padded and ONOS has to handle them accordingly.
+Here is a snippet of the new code:
+
+        if (packetMetadata.isPresent()) {
+            try {
+                ImmutableByteSequence portByteSequence =
+packetMetadata.get()
+                        .value().fit(P4InfoConstants.INGRESS_PORT_BITWIDTH);
+                short s = portByteSequence.asReadOnlyBuffer().getShort();
+                ConnectPoint receivedFrom = new ConnectPoint(deviceId,
+PortNumber.portNumber(s));
+                ByteBuffer rawData =
+ByteBuffer.wrap(packetIn.data().asArray());
+                return new DefaultInboundPacket(receivedFrom, ethPkt,
+rawData);
+            } catch (ImmutableByteSequence.ByteSequenceTrimException e) {
+                throw new PiInterpreterException(format(
+                        "Malformed metadata '%s' in packet-in received from
+'%s': %s",
+                        P4InfoConstants.INGRESS_PORT, deviceId, packetIn));
+            }
+        } else {
+            throw new PiInterpreterException(format(
+                    "Missing metadata '%s' in packet-in received from '%s':
+%s",
+                    P4InfoConstants.INGRESS_PORT, deviceId, packetIn));
+        }
+
+Feel free to submit this as a fix to ONOS.
+
+Max
+
+
+On Wed, May 12, 2021 at 9:54 AM A Sydney via stratum-dev <
+stratum-dev at lists.stratumproject.org> wrote:
+
+> Hi Stratum folks,
+>                          @Max, thanks a bunch! I updated the package in
+> and indeed, this particular error has been fixed.
+>
+> However, I'm getting this new error where LLDP pkt-ins are causing a
+> buffer underflow exception in ONOS. When I disable the lldpprovider at
+> ONOS, the error is gone. Can you kindly take a look at the following log
+> and provide feedback (i.e. Have you seen this one before, is stratum the
+> source of the issue, or should I take it up with ONOS folks)?
+>
+> https://pastebin.com/SuS2ZhtV
+>
+> Cheers!
+> -Syd
+>
+>
+>
+>
+>
+>
+> On Tue, May 11, 2021 at 11:38 PM Maximilian Pudelko <
+> max at opennetworking.org> wrote:
+>
+>> Hi Syd,
+>>
+>> After some investigation I found the root cause to this issue:
+>> https://github.com/stratum/stratum/pull/687
+>> I expect this to get merged soon.
+>>
+>> Max
+>>
+>> On Mon, May 10, 2021 at 5:36 PM Maximilian Pudelko via stratum-dev <
+>> stratum-dev at lists.stratumproject.org> wrote:
+>>
+>>> Hi Syd,
+>>>
+>>> I have not observed this error before. Stratum-bmv2 is backed by PI (
+>>> https://github.com/p4lang/PI).
+>>> All P4RT messages are passed to it nearly unmodified, so the issue must
+>>> lie there.
+>>>
+>>> Max
+>>>
+>>> On Mon, May 10, 2021 at 1:47 PM A Sydney via stratum-dev <
+>>> stratum-dev at lists.stratumproject.org> wrote:
+>>>
+>>>> Hi Stratum folks,
+>>>>
+>>>> # Context:
+>>>> I have created a pipeline that enables IPv4-ECMP (P4 snippet shown in
+>>>> attached file action_selector*) and I am able to build and push p4info.txt
+>>>> and bmv2.json to the switches.
+>>>>
+>>>> # Issue:
+>>>> When I attempt to add groups, the first one moves to the "ADDED" state.
+>>>> When I attempt to add a second, the first group and the second both move to
+>>>> the "PENDING_ADD_RETRY" state.
+>>>>
+>>>> # ONOS logs:
+>>>> At the same time, P4RuntimeClientImpl throws the error "Error while
+>>>> performing READ on device:spine2...Unexpected error in RPC handling". Then
+>>>> ONOS spirals into this cycle of attempting to reinstall all flows on the
+>>>> switch (See debug.log for details.).
+>>>>
+>>>> # Logs on one of the bmv2 switches:
+>>>> I then see the following error on the switch:
+>>>> [libprotobuf FATAL
+>>>> external/com_google_protobuf/src/google/protobuf/repeated_field.h:1694]
+>>>> CHECK failed: (index) < (current_size_):
+>>>>
+>>>> # Question:
+>>>> Have you ever come across this one?  Are there any obvious mistakes
+>>>> that I'm running into (Perhaps my P4 ECMP definition attached is
+>>>> incorrect?)? Any suggestions on how to debug further?
+>>>>
+>>>> Thanks!
+>>>> -Syd
+>>>>
+>>>> _______________________________________________
+>>>> stratum-dev mailing list
+>>>> stratum-dev at lists.stratumproject.org
+>>>> https://lists.stratumproject.org/listinfo/stratum-dev
+>>>
+>>> _______________________________________________
+>>> stratum-dev mailing list
+>>> stratum-dev at lists.stratumproject.org
+>>> https://lists.stratumproject.org/listinfo/stratum-dev
+>>
+>> _______________________________________________
+> stratum-dev mailing list
+> stratum-dev at lists.stratumproject.org
+> https://lists.stratumproject.org/listinfo/stratum-dev
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20210512/16bbf82d/attachment.html>
+
+From asydney007 at gmail.com  Wed May 12 19:06:05 2021
+From: asydney007 at gmail.com (A Sydney)
+Date: Wed, 12 May 2021 15:06:05 -0400
+Subject: [stratum-dev] Is there a limit on the # of ECMP groups
+ stratum_bmv2 can handle?
+In-Reply-To: <CAFh9Y_M-=0RWhETeihJY7h3uQ8fvpLVLEUE6z+P=t-WjXKOggA@mail.gmail.com>
+References: <0101017958088bc7-038a2b1b-8aa4-40b0-ad7c-22367abdf589-000000@us-west-2.amazonses.com>
+ <0101017958dace94-7ab4aba8-5d35-404e-bb93-97a765bf23a6-000000@us-west-2.amazonses.com>
+ <CAFh9Y_O2_xfJWqiKbPe1izqnwvWLK5GT3-7np5JMT+RB2A=qsA@mail.gmail.com>
+ <01010179617fec23-34f39bbb-95ce-4407-9b36-9736f5eed684-000000@us-west-2.amazonses.com>
+ <CAFh9Y_M-=0RWhETeihJY7h3uQ8fvpLVLEUE6z+P=t-WjXKOggA@mail.gmail.com>
+Message-ID: <CAM-ym_dbz7LqoLbgpKrp7rGJW8LCgV0PcUF714bMxUE-WOQNeQ@mail.gmail.com>
+
+I'll take this one up with ONOS folks, but in the meantime, I'm attempting
+to insert this snippet in my codebase for a quick test.
+
+It appears that ONOS has a FabricConstants.java class (as opposed to
+P4InfoConstants.java) which does have "INGRESS_PORT" as follows:
+'''
+    public static final PiPacketMetadataId INGRESS_PORT =
+            PiPacketMetadataId.of("ingress_port");
+'''
+I'm assuming that I can replace your "P4InfoConstants.INGRESS_PORT" with
+"FabricConstants.INGRESS_PORT"? But what about but P4InfoConstants.
+INGRESS_PORT_BITWIDTH? Can you kindly share how it is defined?
+
+Thanks,
+-Syd
+
+On Wed, May 12, 2021 at 1:06 PM Maximilian Pudelko <max at opennetworking.org>
+wrote:
+
+> Hi Syd,
+>
+> That's an issue on the ONOS side, more specifically the
+> fabric-interpreter:
+> https://github.com/opennetworkinglab/onos/blob/master/pipelines/fabric/impl/src/main/java/org/onosproject/pipelines/fabric/impl/behaviour/FabricInterpreter.java#L262-L265
+> We fixed something similar in our internal version very recently. In
+> short, byte strings returned by
+> Stratum are not zero-padded and ONOS has to handle them accordingly.
+> Here is a snippet of the new code:
+>
+>         if (packetMetadata.isPresent()) {
+>             try {
+>                 ImmutableByteSequence portByteSequence =
+> packetMetadata.get()
+>
+> .value().fit(P4InfoConstants.INGRESS_PORT_BITWIDTH);
+>                 short s = portByteSequence.asReadOnlyBuffer().getShort();
+>                 ConnectPoint receivedFrom = new ConnectPoint(deviceId,
+> PortNumber.portNumber(s));
+>                 ByteBuffer rawData =
+> ByteBuffer.wrap(packetIn.data().asArray());
+>                 return new DefaultInboundPacket(receivedFrom, ethPkt,
+> rawData);
+>             } catch (ImmutableByteSequence.ByteSequenceTrimException e) {
+>                 throw new PiInterpreterException(format(
+>                         "Malformed metadata '%s' in packet-in received
+> from '%s': %s",
+>                         P4InfoConstants.INGRESS_PORT, deviceId, packetIn));
+>             }
+>         } else {
+>             throw new PiInterpreterException(format(
+>                     "Missing metadata '%s' in packet-in received from
+> '%s': %s",
+>                     P4InfoConstants.INGRESS_PORT, deviceId, packetIn));
+>         }
+>
+> Feel free to submit this as a fix to ONOS.
+>
+> Max
+>
+>
+> On Wed, May 12, 2021 at 9:54 AM A Sydney via stratum-dev <
+> stratum-dev at lists.stratumproject.org> wrote:
+>
+>> Hi Stratum folks,
+>>                          @Max, thanks a bunch! I updated the package in
+>> and indeed, this particular error has been fixed.
+>>
+>> However, I'm getting this new error where LLDP pkt-ins are causing a
+>> buffer underflow exception in ONOS. When I disable the lldpprovider at
+>> ONOS, the error is gone. Can you kindly take a look at the following log
+>> and provide feedback (i.e. Have you seen this one before, is stratum the
+>> source of the issue, or should I take it up with ONOS folks)?
+>>
+>> https://pastebin.com/SuS2ZhtV
+>>
+>> Cheers!
+>> -Syd
+>>
+>>
+>>
+>>
+>>
+>>
+>> On Tue, May 11, 2021 at 11:38 PM Maximilian Pudelko <
+>> max at opennetworking.org> wrote:
+>>
+>>> Hi Syd,
+>>>
+>>> After some investigation I found the root cause to this issue:
+>>> https://github.com/stratum/stratum/pull/687
+>>> I expect this to get merged soon.
+>>>
+>>> Max
+>>>
+>>> On Mon, May 10, 2021 at 5:36 PM Maximilian Pudelko via stratum-dev <
+>>> stratum-dev at lists.stratumproject.org> wrote:
+>>>
+>>>> Hi Syd,
+>>>>
+>>>> I have not observed this error before. Stratum-bmv2 is backed by PI (
+>>>> https://github.com/p4lang/PI).
+>>>> All P4RT messages are passed to it nearly unmodified, so the issue must
+>>>> lie there.
+>>>>
+>>>> Max
+>>>>
+>>>> On Mon, May 10, 2021 at 1:47 PM A Sydney via stratum-dev <
+>>>> stratum-dev at lists.stratumproject.org> wrote:
+>>>>
+>>>>> Hi Stratum folks,
+>>>>>
+>>>>> # Context:
+>>>>> I have created a pipeline that enables IPv4-ECMP (P4 snippet shown in
+>>>>> attached file action_selector*) and I am able to build and push p4info.txt
+>>>>> and bmv2.json to the switches.
+>>>>>
+>>>>> # Issue:
+>>>>> When I attempt to add groups, the first one moves to the "ADDED"
+>>>>> state. When I attempt to add a second, the first group and the second both
+>>>>> move to the "PENDING_ADD_RETRY" state.
+>>>>>
+>>>>> # ONOS logs:
+>>>>> At the same time, P4RuntimeClientImpl throws the error "Error while
+>>>>> performing READ on device:spine2...Unexpected error in RPC handling". Then
+>>>>> ONOS spirals into this cycle of attempting to reinstall all flows on the
+>>>>> switch (See debug.log for details.).
+>>>>>
+>>>>> # Logs on one of the bmv2 switches:
+>>>>> I then see the following error on the switch:
+>>>>> [libprotobuf FATAL
+>>>>> external/com_google_protobuf/src/google/protobuf/repeated_field.h:1694]
+>>>>> CHECK failed: (index) < (current_size_):
+>>>>>
+>>>>> # Question:
+>>>>> Have you ever come across this one?  Are there any obvious mistakes
+>>>>> that I'm running into (Perhaps my P4 ECMP definition attached is
+>>>>> incorrect?)? Any suggestions on how to debug further?
+>>>>>
+>>>>> Thanks!
+>>>>> -Syd
+>>>>>
+>>>>> _______________________________________________
+>>>>> stratum-dev mailing list
+>>>>> stratum-dev at lists.stratumproject.org
+>>>>> https://lists.stratumproject.org/listinfo/stratum-dev
+>>>>
+>>>> _______________________________________________
+>>>> stratum-dev mailing list
+>>>> stratum-dev at lists.stratumproject.org
+>>>> https://lists.stratumproject.org/listinfo/stratum-dev
+>>>
+>>> _______________________________________________
+>> stratum-dev mailing list
+>> stratum-dev at lists.stratumproject.org
+>> https://lists.stratumproject.org/listinfo/stratum-dev
+>
+>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20210512/d28d3f28/attachment-0001.html>
+
+From max at opennetworking.org  Wed May 12 19:27:19 2021
+From: max at opennetworking.org (Maximilian Pudelko)
+Date: Wed, 12 May 2021 12:27:19 -0700
+Subject: [stratum-dev] Is there a limit on the # of ECMP groups
+ stratum_bmv2 can handle?
+In-Reply-To: <CAM-ym_dbz7LqoLbgpKrp7rGJW8LCgV0PcUF714bMxUE-WOQNeQ@mail.gmail.com>
+References: <0101017958088bc7-038a2b1b-8aa4-40b0-ad7c-22367abdf589-000000@us-west-2.amazonses.com>
+ <0101017958dace94-7ab4aba8-5d35-404e-bb93-97a765bf23a6-000000@us-west-2.amazonses.com>
+ <CAFh9Y_O2_xfJWqiKbPe1izqnwvWLK5GT3-7np5JMT+RB2A=qsA@mail.gmail.com>
+ <01010179617fec23-34f39bbb-95ce-4407-9b36-9736f5eed684-000000@us-west-2.amazonses.com>
+ <CAFh9Y_M-=0RWhETeihJY7h3uQ8fvpLVLEUE6z+P=t-WjXKOggA@mail.gmail.com>
+ <CAM-ym_dbz7LqoLbgpKrp7rGJW8LCgV0PcUF714bMxUE-WOQNeQ@mail.gmail.com>
+Message-ID: <CAFh9Y_MYNsgqtf51rxUg7iCpJJJae+gar9XQ=F-N92pDBPYv+g@mail.gmail.com>
+
+Sure.
+
+We parse the p4info file of the fabric pipeline and look for the
+`controller_packet_metadata` fields.
+Currently it is 9 bits:
+
+  metadata {
+    id: 1
+    name: "ingress_port"
+    bitwidth: 9
+  }
+
+Max
+
+On Wed, May 12, 2021 at 12:06 PM A Sydney <asydney007 at gmail.com> wrote:
+
+> I'll take this one up with ONOS folks, but in the meantime, I'm attempting
+> to insert this snippet in my codebase for a quick test.
+>
+> It appears that ONOS has a FabricConstants.java class (as opposed to
+> P4InfoConstants.java) which does have "INGRESS_PORT" as follows:
+> '''
+>     public static final PiPacketMetadataId INGRESS_PORT =
+>             PiPacketMetadataId.of("ingress_port");
+> '''
+> I'm assuming that I can replace your "P4InfoConstants.INGRESS_PORT" with
+> "FabricConstants.INGRESS_PORT"? But what about but P4InfoConstants.
+> INGRESS_PORT_BITWIDTH? Can you kindly share how it is defined?
+>
+> Thanks,
+> -Syd
+>
+> On Wed, May 12, 2021 at 1:06 PM Maximilian Pudelko <max at opennetworking.org>
+> wrote:
+>
+>> Hi Syd,
+>>
+>> That's an issue on the ONOS side, more specifically the
+>> fabric-interpreter:
+>> https://github.com/opennetworkinglab/onos/blob/master/pipelines/fabric/impl/src/main/java/org/onosproject/pipelines/fabric/impl/behaviour/FabricInterpreter.java#L262-L265
+>> We fixed something similar in our internal version very recently. In
+>> short, byte strings returned by
+>> Stratum are not zero-padded and ONOS has to handle them accordingly.
+>> Here is a snippet of the new code:
+>>
+>>         if (packetMetadata.isPresent()) {
+>>             try {
+>>                 ImmutableByteSequence portByteSequence =
+>> packetMetadata.get()
+>>
+>> .value().fit(P4InfoConstants.INGRESS_PORT_BITWIDTH);
+>>                 short s = portByteSequence.asReadOnlyBuffer().getShort();
+>>                 ConnectPoint receivedFrom = new ConnectPoint(deviceId,
+>> PortNumber.portNumber(s));
+>>                 ByteBuffer rawData =
+>> ByteBuffer.wrap(packetIn.data().asArray());
+>>                 return new DefaultInboundPacket(receivedFrom, ethPkt,
+>> rawData);
+>>             } catch (ImmutableByteSequence.ByteSequenceTrimException e) {
+>>                 throw new PiInterpreterException(format(
+>>                         "Malformed metadata '%s' in packet-in received
+>> from '%s': %s",
+>>                         P4InfoConstants.INGRESS_PORT, deviceId,
+>> packetIn));
+>>             }
+>>         } else {
+>>             throw new PiInterpreterException(format(
+>>                     "Missing metadata '%s' in packet-in received from
+>> '%s': %s",
+>>                     P4InfoConstants.INGRESS_PORT, deviceId, packetIn));
+>>         }
+>>
+>> Feel free to submit this as a fix to ONOS.
+>>
+>> Max
+>>
+>>
+>> On Wed, May 12, 2021 at 9:54 AM A Sydney via stratum-dev <
+>> stratum-dev at lists.stratumproject.org> wrote:
+>>
+>>> Hi Stratum folks,
+>>>                          @Max, thanks a bunch! I updated the package in
+>>> and indeed, this particular error has been fixed.
+>>>
+>>> However, I'm getting this new error where LLDP pkt-ins are causing a
+>>> buffer underflow exception in ONOS. When I disable the lldpprovider at
+>>> ONOS, the error is gone. Can you kindly take a look at the following log
+>>> and provide feedback (i.e. Have you seen this one before, is stratum the
+>>> source of the issue, or should I take it up with ONOS folks)?
+>>>
+>>> https://pastebin.com/SuS2ZhtV
+>>>
+>>> Cheers!
+>>> -Syd
+>>>
+>>>
+>>>
+>>>
+>>>
+>>>
+>>> On Tue, May 11, 2021 at 11:38 PM Maximilian Pudelko <
+>>> max at opennetworking.org> wrote:
+>>>
+>>>> Hi Syd,
+>>>>
+>>>> After some investigation I found the root cause to this issue:
+>>>> https://github.com/stratum/stratum/pull/687
+>>>> I expect this to get merged soon.
+>>>>
+>>>> Max
+>>>>
+>>>> On Mon, May 10, 2021 at 5:36 PM Maximilian Pudelko via stratum-dev <
+>>>> stratum-dev at lists.stratumproject.org> wrote:
+>>>>
+>>>>> Hi Syd,
+>>>>>
+>>>>> I have not observed this error before. Stratum-bmv2 is backed by PI (
+>>>>> https://github.com/p4lang/PI).
+>>>>> All P4RT messages are passed to it nearly unmodified, so the issue
+>>>>> must lie there.
+>>>>>
+>>>>> Max
+>>>>>
+>>>>> On Mon, May 10, 2021 at 1:47 PM A Sydney via stratum-dev <
+>>>>> stratum-dev at lists.stratumproject.org> wrote:
+>>>>>
+>>>>>> Hi Stratum folks,
+>>>>>>
+>>>>>> # Context:
+>>>>>> I have created a pipeline that enables IPv4-ECMP (P4 snippet shown in
+>>>>>> attached file action_selector*) and I am able to build and push p4info.txt
+>>>>>> and bmv2.json to the switches.
+>>>>>>
+>>>>>> # Issue:
+>>>>>> When I attempt to add groups, the first one moves to the "ADDED"
+>>>>>> state. When I attempt to add a second, the first group and the second both
+>>>>>> move to the "PENDING_ADD_RETRY" state.
+>>>>>>
+>>>>>> # ONOS logs:
+>>>>>> At the same time, P4RuntimeClientImpl throws the error "Error while
+>>>>>> performing READ on device:spine2...Unexpected error in RPC handling". Then
+>>>>>> ONOS spirals into this cycle of attempting to reinstall all flows on the
+>>>>>> switch (See debug.log for details.).
+>>>>>>
+>>>>>> # Logs on one of the bmv2 switches:
+>>>>>> I then see the following error on the switch:
+>>>>>> [libprotobuf FATAL
+>>>>>> external/com_google_protobuf/src/google/protobuf/repeated_field.h:1694]
+>>>>>> CHECK failed: (index) < (current_size_):
+>>>>>>
+>>>>>> # Question:
+>>>>>> Have you ever come across this one?  Are there any obvious mistakes
+>>>>>> that I'm running into (Perhaps my P4 ECMP definition attached is
+>>>>>> incorrect?)? Any suggestions on how to debug further?
+>>>>>>
+>>>>>> Thanks!
+>>>>>> -Syd
+>>>>>>
+>>>>>> _______________________________________________
+>>>>>> stratum-dev mailing list
+>>>>>> stratum-dev at lists.stratumproject.org
+>>>>>> https://lists.stratumproject.org/listinfo/stratum-dev
+>>>>>
+>>>>> _______________________________________________
+>>>>> stratum-dev mailing list
+>>>>> stratum-dev at lists.stratumproject.org
+>>>>> https://lists.stratumproject.org/listinfo/stratum-dev
+>>>>
+>>>> _______________________________________________
+>>> stratum-dev mailing list
+>>> stratum-dev at lists.stratumproject.org
+>>> https://lists.stratumproject.org/listinfo/stratum-dev
+>>
+>>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20210512/07de2e10/attachment.html>
+
+From asydney007 at gmail.com  Wed May 12 20:51:44 2021
+From: asydney007 at gmail.com (A Sydney)
+Date: Wed, 12 May 2021 16:51:44 -0400
+Subject: [stratum-dev] Is there a limit on the # of ECMP groups
+ stratum_bmv2 can handle?
+In-Reply-To: <CAFh9Y_MYNsgqtf51rxUg7iCpJJJae+gar9XQ=F-N92pDBPYv+g@mail.gmail.com>
+References: <0101017958088bc7-038a2b1b-8aa4-40b0-ad7c-22367abdf589-000000@us-west-2.amazonses.com>
+ <0101017958dace94-7ab4aba8-5d35-404e-bb93-97a765bf23a6-000000@us-west-2.amazonses.com>
+ <CAFh9Y_O2_xfJWqiKbPe1izqnwvWLK5GT3-7np5JMT+RB2A=qsA@mail.gmail.com>
+ <01010179617fec23-34f39bbb-95ce-4407-9b36-9736f5eed684-000000@us-west-2.amazonses.com>
+ <CAFh9Y_M-=0RWhETeihJY7h3uQ8fvpLVLEUE6z+P=t-WjXKOggA@mail.gmail.com>
+ <CAM-ym_dbz7LqoLbgpKrp7rGJW8LCgV0PcUF714bMxUE-WOQNeQ@mail.gmail.com>
+ <CAFh9Y_MYNsgqtf51rxUg7iCpJJJae+gar9XQ=F-N92pDBPYv+g@mail.gmail.com>
+Message-ID: <CAM-ym_eQSm214w9nZuhV=O_=u_zV2zeHCeYfiEpROCUp3fE8FA@mail.gmail.com>
+
+So I've updated my pipeconf class with this info, and the error no longer
+occurs.
+
+Thanks!
+-Syd
+
+On Wed, May 12, 2021 at 3:27 PM Maximilian Pudelko <max at opennetworking.org>
+wrote:
+
+> Sure.
+>
+> We parse the p4info file of the fabric pipeline and look for the
+> `controller_packet_metadata` fields.
+> Currently it is 9 bits:
+>
+>   metadata {
+>     id: 1
+>     name: "ingress_port"
+>     bitwidth: 9
+>   }
+>
+> Max
+>
+> On Wed, May 12, 2021 at 12:06 PM A Sydney <asydney007 at gmail.com> wrote:
+>
+>> I'll take this one up with ONOS folks, but in the meantime, I'm
+>> attempting to insert this snippet in my codebase for a quick test.
+>>
+>> It appears that ONOS has a FabricConstants.java class (as opposed to
+>> P4InfoConstants.java) which does have "INGRESS_PORT" as follows:
+>> '''
+>>     public static final PiPacketMetadataId INGRESS_PORT =
+>>             PiPacketMetadataId.of("ingress_port");
+>> '''
+>> I'm assuming that I can replace your "P4InfoConstants.INGRESS_PORT" with
+>> "FabricConstants.INGRESS_PORT"? But what about but P4InfoConstants.
+>> INGRESS_PORT_BITWIDTH? Can you kindly share how it is defined?
+>>
+>> Thanks,
+>> -Syd
+>>
+>> On Wed, May 12, 2021 at 1:06 PM Maximilian Pudelko <
+>> max at opennetworking.org> wrote:
+>>
+>>> Hi Syd,
+>>>
+>>> That's an issue on the ONOS side, more specifically the
+>>> fabric-interpreter:
+>>> https://github.com/opennetworkinglab/onos/blob/master/pipelines/fabric/impl/src/main/java/org/onosproject/pipelines/fabric/impl/behaviour/FabricInterpreter.java#L262-L265
+>>> We fixed something similar in our internal version very recently. In
+>>> short, byte strings returned by
+>>> Stratum are not zero-padded and ONOS has to handle them accordingly.
+>>> Here is a snippet of the new code:
+>>>
+>>>         if (packetMetadata.isPresent()) {
+>>>             try {
+>>>                 ImmutableByteSequence portByteSequence =
+>>> packetMetadata.get()
+>>>
+>>> .value().fit(P4InfoConstants.INGRESS_PORT_BITWIDTH);
+>>>                 short s = portByteSequence.asReadOnlyBuffer().getShort();
+>>>                 ConnectPoint receivedFrom = new ConnectPoint(deviceId,
+>>> PortNumber.portNumber(s));
+>>>                 ByteBuffer rawData =
+>>> ByteBuffer.wrap(packetIn.data().asArray());
+>>>                 return new DefaultInboundPacket(receivedFrom, ethPkt,
+>>> rawData);
+>>>             } catch (ImmutableByteSequence.ByteSequenceTrimException e) {
+>>>                 throw new PiInterpreterException(format(
+>>>                         "Malformed metadata '%s' in packet-in received
+>>> from '%s': %s",
+>>>                         P4InfoConstants.INGRESS_PORT, deviceId,
+>>> packetIn));
+>>>             }
+>>>         } else {
+>>>             throw new PiInterpreterException(format(
+>>>                     "Missing metadata '%s' in packet-in received from
+>>> '%s': %s",
+>>>                     P4InfoConstants.INGRESS_PORT, deviceId, packetIn));
+>>>         }
+>>>
+>>> Feel free to submit this as a fix to ONOS.
+>>>
+>>> Max
+>>>
+>>>
+>>> On Wed, May 12, 2021 at 9:54 AM A Sydney via stratum-dev <
+>>> stratum-dev at lists.stratumproject.org> wrote:
+>>>
+>>>> Hi Stratum folks,
+>>>>                          @Max, thanks a bunch! I updated the package in
+>>>> and indeed, this particular error has been fixed.
+>>>>
+>>>> However, I'm getting this new error where LLDP pkt-ins are causing a
+>>>> buffer underflow exception in ONOS. When I disable the lldpprovider at
+>>>> ONOS, the error is gone. Can you kindly take a look at the following log
+>>>> and provide feedback (i.e. Have you seen this one before, is stratum the
+>>>> source of the issue, or should I take it up with ONOS folks)?
+>>>>
+>>>> https://pastebin.com/SuS2ZhtV
+>>>>
+>>>> Cheers!
+>>>> -Syd
+>>>>
+>>>>
+>>>>
+>>>>
+>>>>
+>>>>
+>>>> On Tue, May 11, 2021 at 11:38 PM Maximilian Pudelko <
+>>>> max at opennetworking.org> wrote:
+>>>>
+>>>>> Hi Syd,
+>>>>>
+>>>>> After some investigation I found the root cause to this issue:
+>>>>> https://github.com/stratum/stratum/pull/687
+>>>>> I expect this to get merged soon.
+>>>>>
+>>>>> Max
+>>>>>
+>>>>> On Mon, May 10, 2021 at 5:36 PM Maximilian Pudelko via stratum-dev <
+>>>>> stratum-dev at lists.stratumproject.org> wrote:
+>>>>>
+>>>>>> Hi Syd,
+>>>>>>
+>>>>>> I have not observed this error before. Stratum-bmv2 is backed by PI (
+>>>>>> https://github.com/p4lang/PI).
+>>>>>> All P4RT messages are passed to it nearly unmodified, so the issue
+>>>>>> must lie there.
+>>>>>>
+>>>>>> Max
+>>>>>>
+>>>>>> On Mon, May 10, 2021 at 1:47 PM A Sydney via stratum-dev <
+>>>>>> stratum-dev at lists.stratumproject.org> wrote:
+>>>>>>
+>>>>>>> Hi Stratum folks,
+>>>>>>>
+>>>>>>> # Context:
+>>>>>>> I have created a pipeline that enables IPv4-ECMP (P4 snippet shown
+>>>>>>> in attached file action_selector*) and I am able to build and push
+>>>>>>> p4info.txt and bmv2.json to the switches.
+>>>>>>>
+>>>>>>> # Issue:
+>>>>>>> When I attempt to add groups, the first one moves to the "ADDED"
+>>>>>>> state. When I attempt to add a second, the first group and the second both
+>>>>>>> move to the "PENDING_ADD_RETRY" state.
+>>>>>>>
+>>>>>>> # ONOS logs:
+>>>>>>> At the same time, P4RuntimeClientImpl throws the error "Error while
+>>>>>>> performing READ on device:spine2...Unexpected error in RPC handling". Then
+>>>>>>> ONOS spirals into this cycle of attempting to reinstall all flows on the
+>>>>>>> switch (See debug.log for details.).
+>>>>>>>
+>>>>>>> # Logs on one of the bmv2 switches:
+>>>>>>> I then see the following error on the switch:
+>>>>>>> [libprotobuf FATAL
+>>>>>>> external/com_google_protobuf/src/google/protobuf/repeated_field.h:1694]
+>>>>>>> CHECK failed: (index) < (current_size_):
+>>>>>>>
+>>>>>>> # Question:
+>>>>>>> Have you ever come across this one?  Are there any obvious mistakes
+>>>>>>> that I'm running into (Perhaps my P4 ECMP definition attached is
+>>>>>>> incorrect?)? Any suggestions on how to debug further?
+>>>>>>>
+>>>>>>> Thanks!
+>>>>>>> -Syd
+>>>>>>>
+>>>>>>> _______________________________________________
+>>>>>>> stratum-dev mailing list
+>>>>>>> stratum-dev at lists.stratumproject.org
+>>>>>>> https://lists.stratumproject.org/listinfo/stratum-dev
+>>>>>>
+>>>>>> _______________________________________________
+>>>>>> stratum-dev mailing list
+>>>>>> stratum-dev at lists.stratumproject.org
+>>>>>> https://lists.stratumproject.org/listinfo/stratum-dev
+>>>>>
+>>>>> _______________________________________________
+>>>> stratum-dev mailing list
+>>>> stratum-dev at lists.stratumproject.org
+>>>> https://lists.stratumproject.org/listinfo/stratum-dev
+>>>
+>>>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20210512/c49a0e20/attachment-0001.html>
+
+From NHESS at extremenetworks.com  Wed May 12 22:39:40 2021
+From: NHESS at extremenetworks.com (Narada Hess)
+Date: Wed, 12 May 2021 22:39:40 +0000
+Subject: [stratum-dev] How to set log levels with -vmodule
+Message-ID: <BN6PR04MB1138F79B98A264BE8B468295AD529@BN6PR04MB1138.namprd04.prod.outlook.com>
+
+Hi All,
+I have used -v=<level> successfully in the stratum flags file. But when I add -vmodule=<x=y>, it does not seem to take effect. What am I doing wrong?
+
+Also, how do you set the log levels for the barefoot modules (as opposed to the stratum code per se)? Thanks, N
+
+Separate examples:
+-v=5
+-vmodule=p4_service=0
+
+-v=5
+-vmodule="p4_service=0"
+
+-v=5
+-vmodule=bfrt_*=0
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20210512/6e04019d/attachment.html>
+
+From max at opennetworking.org  Thu May 13 00:49:49 2021
+From: max at opennetworking.org (Maximilian Pudelko)
+Date: Wed, 12 May 2021 17:49:49 -0700
+Subject: [stratum-dev] How to set log levels with -vmodule
+In-Reply-To: <0101017962bc6909-c657d4cd-e5a0-4fdc-9fbb-7a345af1abd8-000000@us-west-2.amazonses.com>
+References: <0101017962bc6909-c657d4cd-e5a0-4fdc-9fbb-7a345af1abd8-000000@us-west-2.amazonses.com>
+Message-ID: <CAFh9Y_NZ-d=-9sweNuGS0N3t4oUW5Qo_8BL1ANSycfgQtio0gw@mail.gmail.com>
+
+According to this SO <https://stackoverflow.com/a/45920794> post the
+-vmodule parameter is based on the source code file name. So
+-vmodule=p4_service=2
+should print all VLOG(2) and below messages. I don't see a way to limit
+ERROR/WARNING/INFO on a per-module
+basis, though.
+
+The BFRT code is an entire different topic as it uses its own logging
+library without any hooks for us. We're pretty much
+limited to letting bfrt print to stdout. The current code enables logging
+of a few select modules:
+https://github.com/stratum/stratum/blob/main/stratum/hal/lib/barefoot/bf_sde_wrapper.cc#L1514-L1528
+But that happened on a as-needed basis without any major planing. Full
+integration will require code
+changes on the SDE side to allow something like callbacks or streams. Feel
+free to lobby for that at Intel :D
+
+
+Max
+
+On Wed, May 12, 2021 at 3:39 PM Narada Hess via stratum-dev <
+stratum-dev at lists.stratumproject.org> wrote:
+
+> Hi All,
+>
+> I have used -v=<level> successfully in the stratum flags file. But when I
+> add -vmodule=<x=y>, it does not seem to take effect. What am I doing wrong?
+>
+>
+>
+> Also, how do you set the log levels for the barefoot modules (as opposed
+> to the stratum code per se)? Thanks, N
+>
+>
+>
+> Separate examples:
+>
+> -v=5
+>
+> -vmodule=p4_service=0
+>
+>
+>
+> -v=5
+>
+> -vmodule=”p4_service=0”
+>
+>
+>
+> -v=5
+>
+> -vmodule=bfrt_*=0
+>
+>
+> _______________________________________________
+> stratum-dev mailing list
+> stratum-dev at lists.stratumproject.org
+> https://lists.stratumproject.org/listinfo/stratum-dev
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20210512/f92f4466/attachment.html>
+
+From asydney007 at gmail.com  Thu May 13 03:06:36 2021
+From: asydney007 at gmail.com (A Sydney)
+Date: Wed, 12 May 2021 23:06:36 -0400
+Subject: [stratum-dev] Table entry from stratum_bmv2 different from ONOS
+	store
+Message-ID: <CAM-ym_cuRAFmUifBSP3=mj4W-F1=oP3cZauNRTV-vy4Q4Kczyg@mail.gmail.com>
+
+Hi Stratum folks,
+
+# Context: I'm running standalone stratum_bmv2 instances on Debian 10
+connected to ONOS where I've got a custom pipeconfig and app.
+
+# Problem:
+When I install flows, ONOS logs an error that table entries in
+"l2_exact_table" on the switch are different from what's recorded in the
+ONOS store. However, if you take a look at the rules, they are identical as
+shown here: https://pastebin.com/i4Jkt26i
+
+I activated the debugger and set a breakpoint near "if
+(!translatedEntity.get().translated().equals(entry))" (i.e. in
+P4RuntimeFlowRuleProgrammable.java) and both "translated" and "entry" have
+the same values.
+
+Have you come across this one? If not, perhaps I should take this up with
+ONOS folks?
+
+PS. I don't see this issue for other tables.
+
+Thanks,
+-Syd
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20210512/e6cdbcb7/attachment.html>
+
+From NHESS at extremenetworks.com  Thu May 13 20:19:30 2021
+From: NHESS at extremenetworks.com (Narada Hess)
+Date: Thu, 13 May 2021 20:19:30 +0000
+Subject: [stratum-dev] How to set log levels with -vmodule
+In-Reply-To: <CAFh9Y_NZ-d=-9sweNuGS0N3t4oUW5Qo_8BL1ANSycfgQtio0gw@mail.gmail.com>
+References: <0101017962bc6909-c657d4cd-e5a0-4fdc-9fbb-7a345af1abd8-000000@us-west-2.amazonses.com>
+ <CAFh9Y_NZ-d=-9sweNuGS0N3t4oUW5Qo_8BL1ANSycfgQtio0gw@mail.gmail.com>
+Message-ID: <BN6PR04MB11381F8ABDACFE8F1226B725AD519@BN6PR04MB1138.namprd04.prod.outlook.com>
+
+Clarifying for the list after today's TST meeting (please correct me if I'm wrong).
+
+The way to get the max logging of everything would be to set:
+-minloglevel=0
+-v=5
+
+In other words, log everything INFO and above at the maximum verbosity (5). And verbosity only affects messages at INFO level.
+
+Now that I understand log level vs verbosity, I'll play with the -vmodule option and let you know what I find. N
+
+From: Maximilian Pudelko <max at opennetworking.org>
+Sent: Wednesday, May 12, 2021 5:50 PM
+To: Narada Hess <NHESS at extremenetworks.com>
+Cc: stratum-dev at lists.stratumproject.org
+Subject: Re: [stratum-dev] How to set log levels with -vmodule
+
+External Email: Use caution in opening links or attachments.
+According to this SO<https://nam12.safelinks.protection.outlook.com/?url=https%3A%2F%2Fstackoverflow.com%2Fa%2F45920794&data=04%7C01%7CNHESS%40extremenetworks.com%7Cb9989250f8ba4ef2fd2508d915a91318%7Cfc8c2bf6914d4c1fb35246a9adb87030%7C0%7C0%7C637564638183830756%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000&sdata=QvP4lAYO6b2ucrIJQuTKG1AYOQE%2BLpv30qX6wm5Ayvo%3D&reserved=0> post the -vmodule parameter is based on the source code file name. So -vmodule=p4_service=2
+should print all VLOG(2) and below messages. I don't see a way to limit ERROR/WARNING/INFO on a per-module
+basis, though.
+
+The BFRT code is an entire different topic as it uses its own logging library without any hooks for us. We're pretty much
+limited to letting bfrt print to stdout. The current code enables logging of a few select modules:
+https://github.com/stratum/stratum/blob/main/stratum/hal/lib/barefoot/bf_sde_wrapper.cc#L1514-L1528<https://nam12.safelinks.protection.outlook.com/?url=https%3A%2F%2Fgithub.com%2Fstratum%2Fstratum%2Fblob%2Fmain%2Fstratum%2Fhal%2Flib%2Fbarefoot%2Fbf_sde_wrapper.cc%23L1514-L1528&data=04%7C01%7CNHESS%40extremenetworks.com%7Cb9989250f8ba4ef2fd2508d915a91318%7Cfc8c2bf6914d4c1fb35246a9adb87030%7C0%7C0%7C637564638183840751%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000&sdata=%2Fy4Qydn9ND1c0WTVmMT0OCZcz3m82%2BXivD47E46umpM%3D&reserved=0>
+But that happened on a as-needed basis without any major planing. Full integration will require code
+changes on the SDE side to allow something like callbacks or streams. Feel free to lobby for that at Intel :D
+
+
+Max
+
+On Wed, May 12, 2021 at 3:39 PM Narada Hess via stratum-dev <stratum-dev at lists.stratumproject.org<mailto:stratum-dev at lists.stratumproject.org>> wrote:
+Hi All,
+I have used -v=<level> successfully in the stratum flags file. But when I add -vmodule=<x=y>, it does not seem to take effect. What am I doing wrong?
+
+Also, how do you set the log levels for the barefoot modules (as opposed to the stratum code per se)? Thanks, N
+
+Separate examples:
+-v=5
+-vmodule=p4_service=0
+
+-v=5
+-vmodule="p4_service=0"
+
+-v=5
+-vmodule=bfrt_*=0
+
+_______________________________________________
+stratum-dev mailing list
+stratum-dev at lists.stratumproject.org<mailto:stratum-dev at lists.stratumproject.org>
+https://lists.stratumproject.org/listinfo/stratum-dev<https://nam12.safelinks.protection.outlook.com/?url=https%3A%2F%2Flists.stratumproject.org%2Flistinfo%2Fstratum-dev&data=04%7C01%7CNHESS%40extremenetworks.com%7Cb9989250f8ba4ef2fd2508d915a91318%7Cfc8c2bf6914d4c1fb35246a9adb87030%7C0%7C0%7C637564638183850747%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000&sdata=sb69FdhGVjcLpZvlIS4Q0bwtLCSX0X9dAt6Hg8DDR%2FY%3D&reserved=0>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20210513/da9e6324/attachment.html>
+
+From max at opennetworking.org  Thu May 13 20:36:41 2021
+From: max at opennetworking.org (Maximilian Pudelko)
+Date: Thu, 13 May 2021 13:36:41 -0700
+Subject: [stratum-dev] How to set log levels with -vmodule
+In-Reply-To: <BN6PR04MB11381F8ABDACFE8F1226B725AD519@BN6PR04MB1138.namprd04.prod.outlook.com>
+References: <0101017962bc6909-c657d4cd-e5a0-4fdc-9fbb-7a345af1abd8-000000@us-west-2.amazonses.com>
+ <CAFh9Y_NZ-d=-9sweNuGS0N3t4oUW5Qo_8BL1ANSycfgQtio0gw@mail.gmail.com>
+ <BN6PR04MB11381F8ABDACFE8F1226B725AD519@BN6PR04MB1138.namprd04.prod.outlook.com>
+Message-ID: <CAFh9Y_MZvAsSug2=yH-U9Bx93kMUKvQ2388UOvWC5-1nOe9XTQ@mail.gmail.com>
+
+Thanks Narada for posting this example. It's exactly right.
+
+Max
+
+
+On Thu, May 13, 2021 at 1:19 PM Narada Hess <NHESS at extremenetworks.com>
+wrote:
+
+> Clarifying for the list after today’s TST meeting (please correct me if
+> I’m wrong).
+>
+>
+>
+> The way to get the max logging of everything would be to set:
+>
+> -minloglevel=0
+>
+> -v=5
+>
+>
+>
+> In other words, log everything INFO and above at the maximum verbosity
+> (5). And verbosity only affects messages at INFO level.
+>
+>
+>
+> Now that I understand log level vs verbosity, I’ll play with the -vmodule
+> option and let you know what I find. N
+>
+>
+>
+> *From:* Maximilian Pudelko <max at opennetworking.org>
+> *Sent:* Wednesday, May 12, 2021 5:50 PM
+> *To:* Narada Hess <NHESS at extremenetworks.com>
+> *Cc:* stratum-dev at lists.stratumproject.org
+> *Subject:* Re: [stratum-dev] How to set log levels with -vmodule
+>
+>
+>
+> *External Email:* Use caution in opening links or attachments.
+>
+> According to this SO
+> <https://nam12.safelinks.protection.outlook.com/?url=https%3A%2F%2Fstackoverflow.com%2Fa%2F45920794&data=04%7C01%7CNHESS%40extremenetworks.com%7Cb9989250f8ba4ef2fd2508d915a91318%7Cfc8c2bf6914d4c1fb35246a9adb87030%7C0%7C0%7C637564638183830756%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000&sdata=QvP4lAYO6b2ucrIJQuTKG1AYOQE%2BLpv30qX6wm5Ayvo%3D&reserved=0>
+> post the -vmodule parameter is based on the source code file name. So
+> -vmodule=p4_service=2
+>
+> should print all VLOG(2) and below messages. I don't see a way to limit
+> ERROR/WARNING/INFO on a per-module
+>
+> basis, though.
+>
+>
+>
+> The BFRT code is an entire different topic as it uses its own logging
+> library without any hooks for us. We're pretty much
+>
+> limited to letting bfrt print to stdout. The current code enables logging
+> of a few select modules:
+>
+>
+> https://github.com/stratum/stratum/blob/main/stratum/hal/lib/barefoot/bf_sde_wrapper.cc#L1514-L1528
+> <https://nam12.safelinks.protection.outlook.com/?url=https%3A%2F%2Fgithub.com%2Fstratum%2Fstratum%2Fblob%2Fmain%2Fstratum%2Fhal%2Flib%2Fbarefoot%2Fbf_sde_wrapper.cc%23L1514-L1528&data=04%7C01%7CNHESS%40extremenetworks.com%7Cb9989250f8ba4ef2fd2508d915a91318%7Cfc8c2bf6914d4c1fb35246a9adb87030%7C0%7C0%7C637564638183840751%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000&sdata=%2Fy4Qydn9ND1c0WTVmMT0OCZcz3m82%2BXivD47E46umpM%3D&reserved=0>
+>
+> But that happened on a as-needed basis without any major planing. Full
+> integration will require code
+>
+> changes on the SDE side to allow something like callbacks or streams. Feel
+> free to lobby for that at Intel :D
+>
+>
+>
+>
+>
+> Max
+>
+>
+>
+> On Wed, May 12, 2021 at 3:39 PM Narada Hess via stratum-dev <
+> stratum-dev at lists.stratumproject.org> wrote:
+>
+> Hi All,
+>
+> I have used -v=<level> successfully in the stratum flags file. But when I
+> add -vmodule=<x=y>, it does not seem to take effect. What am I doing wrong?
+>
+>
+>
+> Also, how do you set the log levels for the barefoot modules (as opposed
+> to the stratum code per se)? Thanks, N
+>
+>
+>
+> Separate examples:
+>
+> -v=5
+>
+> -vmodule=p4_service=0
+>
+>
+>
+> -v=5
+>
+> -vmodule=”p4_service=0”
+>
+>
+>
+> -v=5
+>
+> -vmodule=bfrt_*=0
+>
+>
+>
+> _______________________________________________
+> stratum-dev mailing list
+> stratum-dev at lists.stratumproject.org
+> https://lists.stratumproject.org/listinfo/stratum-dev
+> <https://nam12.safelinks.protection.outlook.com/?url=https%3A%2F%2Flists.stratumproject.org%2Flistinfo%2Fstratum-dev&data=04%7C01%7CNHESS%40extremenetworks.com%7Cb9989250f8ba4ef2fd2508d915a91318%7Cfc8c2bf6914d4c1fb35246a9adb87030%7C0%7C0%7C637564638183850747%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000&sdata=sb69FdhGVjcLpZvlIS4Q0bwtLCSX0X9dAt6Hg8DDR%2FY%3D&reserved=0>
+>
+>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20210513/03744937/attachment-0001.html>
+
+From asydney007 at gmail.com  Tue May 18 14:59:19 2021
+From: asydney007 at gmail.com (A Sydney)
+Date: Tue, 18 May 2021 10:59:19 -0400
+Subject: [stratum-dev] Table entry from stratum_bmv2 different from ONOS
+	store
+In-Reply-To: <CAM-ym_cuRAFmUifBSP3=mj4W-F1=oP3cZauNRTV-vy4Q4Kczyg@mail.gmail.com>
+References: <CAM-ym_cuRAFmUifBSP3=mj4W-F1=oP3cZauNRTV-vy4Q4Kczyg@mail.gmail.com>
+Message-ID: <CAM-ym_ca8jh7vt1k=p8BO41O5VxKXoj2igXOXthW=U=uzE3_Dw@mail.gmail.com>
+
+Hi Stratum folks,
+                          I've used the debugger in Intellij to narrow down
+the issue (@P4RuntimeFlowRuleProgrammable.java line 233). As shown in the
+attached debugger gui, It appears that
+"tableAction->runtimeParams->value->value->value->hb" has different values
+for "translatedEntitity.get().translated()" and "entry". Hence, these flow
+rules are in a "PENDING ADD" state. Can you kindly provide feedback on this
+issue? Is this stratum specific, ONOS, or perhaps java?
+
+Thanks,
+-Syd
+[image: onos_debug_gui.png]
+
+
+
+On Wed, May 12, 2021 at 11:06 PM A Sydney <asydney007 at gmail.com> wrote:
+
+> Hi Stratum folks,
+>
+> # Context: I'm running standalone stratum_bmv2 instances on Debian 10
+> connected to ONOS where I've got a custom pipeconfig and app.
+>
+> # Problem:
+> When I install flows, ONOS logs an error that table entries in
+> "l2_exact_table" on the switch are different from what's recorded in the
+> ONOS store. However, if you take a look at the rules, they are identical as
+> shown here: https://pastebin.com/i4Jkt26i
+>
+> I activated the debugger and set a breakpoint near "if
+> (!translatedEntity.get().translated().equals(entry))" (i.e. in
+> P4RuntimeFlowRuleProgrammable.java) and both "translated" and "entry" have
+> the same values.
+>
+> Have you come across this one? If not, perhaps I should take this up with
+> ONOS folks?
+>
+> PS. I don't see this issue for other tables.
+>
+> Thanks,
+> -Syd
+>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20210518/56ba8ffd/attachment-0001.html>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: onos_debug_gui.png
+Type: image/png
+Size: 1574961 bytes
+Desc: not available
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20210518/56ba8ffd/attachment-0001.png>
+
+From max at opennetworking.org  Tue May 18 18:20:16 2021
+From: max at opennetworking.org (Maximilian Pudelko)
+Date: Tue, 18 May 2021 11:20:16 -0700
+Subject: [stratum-dev] Table entry from stratum_bmv2 different from ONOS
+	store
+In-Reply-To: <010101797ffd4d5e-62380075-4ac2-4c95-b74d-a8e2e0501c67-000000@us-west-2.amazonses.com>
+References: <CAM-ym_cuRAFmUifBSP3=mj4W-F1=oP3cZauNRTV-vy4Q4Kczyg@mail.gmail.com>
+ <010101797ffd4d5e-62380075-4ac2-4c95-b74d-a8e2e0501c67-000000@us-west-2.amazonses.com>
+Message-ID: <CAFh9Y_OfAph4z7m7jxLmVsJbcjFS8SyqYybDTNA6pC_H0Rgo3A@mail.gmail.com>
+
+Hi Syd,
+
+I think this could be related to the recent PI update we did for
+Stratum-bmv2: https://github.com/stratum/stratum/pull/660
+It now returns canonical byte strings in all P4Runtime messages, which
+confuses ONOS. We're working on fixing it:
+https://gerrit.onosproject.org/c/onos/+/24616
+
+Max
+
+
+On Tue, May 18, 2021 at 7:59 AM A Sydney via stratum-dev <
+stratum-dev at lists.stratumproject.org> wrote:
+
+> Hi Stratum folks,
+>                           I've used the debugger in Intellij to narrow
+> down the issue (@P4RuntimeFlowRuleProgrammable.java line 233). As shown in
+> the attached debugger gui, It appears that
+> "tableAction->runtimeParams->value->value->value->hb" has different values
+> for "translatedEntitity.get().translated()" and "entry". Hence, these flow
+> rules are in a "PENDING ADD" state. Can you kindly provide feedback on this
+> issue? Is this stratum specific, ONOS, or perhaps java?
+>
+> Thanks,
+> -Syd
+> [image: onos_debug_gui.png]
+>
+>
+>
+> On Wed, May 12, 2021 at 11:06 PM A Sydney <asydney007 at gmail.com> wrote:
+>
+>> Hi Stratum folks,
+>>
+>> # Context: I'm running standalone stratum_bmv2 instances on Debian 10
+>> connected to ONOS where I've got a custom pipeconfig and app.
+>>
+>> # Problem:
+>> When I install flows, ONOS logs an error that table entries in
+>> "l2_exact_table" on the switch are different from what's recorded in the
+>> ONOS store. However, if you take a look at the rules, they are identical as
+>> shown here: https://pastebin.com/i4Jkt26i
+>>
+>> I activated the debugger and set a breakpoint near "if
+>> (!translatedEntity.get().translated().equals(entry))" (i.e. in
+>> P4RuntimeFlowRuleProgrammable.java) and both "translated" and "entry" have
+>> the same values.
+>>
+>> Have you come across this one? If not, perhaps I should take this up with
+>> ONOS folks?
+>>
+>> PS. I don't see this issue for other tables.
+>>
+>> Thanks,
+>> -Syd
+>>
+> _______________________________________________
+> stratum-dev mailing list
+> stratum-dev at lists.stratumproject.org
+> https://lists.stratumproject.org/listinfo/stratum-dev
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20210518/60c43b7b/attachment-0001.html>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: onos_debug_gui.png
+Type: image/png
+Size: 1574961 bytes
+Desc: not available
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20210518/60c43b7b/attachment-0001.png>
+
+From asydney007 at gmail.com  Tue May 18 20:10:50 2021
+From: asydney007 at gmail.com (A Sydney)
+Date: Tue, 18 May 2021 16:10:50 -0400
+Subject: [stratum-dev] Table entry from stratum_bmv2 different from ONOS
+	store
+In-Reply-To: <CAFh9Y_OfAph4z7m7jxLmVsJbcjFS8SyqYybDTNA6pC_H0Rgo3A@mail.gmail.com>
+References: <CAM-ym_cuRAFmUifBSP3=mj4W-F1=oP3cZauNRTV-vy4Q4Kczyg@mail.gmail.com>
+ <010101797ffd4d5e-62380075-4ac2-4c95-b74d-a8e2e0501c67-000000@us-west-2.amazonses.com>
+ <CAFh9Y_OfAph4z7m7jxLmVsJbcjFS8SyqYybDTNA6pC_H0Rgo3A@mail.gmail.com>
+Message-ID: <CAM-ym_dyOz2b2OCqMp1f0e74GD19_kYXoAJO4LrXnniz=4LW_A@mail.gmail.com>
+
+Please let me know when a fix is pushed (or if you can provide a tkt/issue
+#, I can track it from the stratum repo). I'll then rebuild the debian
+package, create a new image and test out the change.
+
+Thanks!
+-Syd
+
+On Tue, May 18, 2021 at 2:20 PM Maximilian Pudelko <max at opennetworking.org>
+wrote:
+
+> Hi Syd,
+>
+> I think this could be related to the recent PI update we did for
+> Stratum-bmv2: https://github.com/stratum/stratum/pull/660
+> It now returns canonical byte strings in all P4Runtime messages, which
+> confuses ONOS. We're working on fixing it:
+> https://gerrit.onosproject.org/c/onos/+/24616
+>
+> Max
+>
+>
+> On Tue, May 18, 2021 at 7:59 AM A Sydney via stratum-dev <
+> stratum-dev at lists.stratumproject.org> wrote:
+>
+>> Hi Stratum folks,
+>>                           I've used the debugger in Intellij to narrow
+>> down the issue (@P4RuntimeFlowRuleProgrammable.java line 233). As shown in
+>> the attached debugger gui, It appears that
+>> "tableAction->runtimeParams->value->value->value->hb" has different values
+>> for "translatedEntitity.get().translated()" and "entry". Hence, these flow
+>> rules are in a "PENDING ADD" state. Can you kindly provide feedback on this
+>> issue? Is this stratum specific, ONOS, or perhaps java?
+>>
+>> Thanks,
+>> -Syd
+>> [image: onos_debug_gui.png]
+>>
+>>
+>>
+>> On Wed, May 12, 2021 at 11:06 PM A Sydney <asydney007 at gmail.com> wrote:
+>>
+>>> Hi Stratum folks,
+>>>
+>>> # Context: I'm running standalone stratum_bmv2 instances on Debian 10
+>>> connected to ONOS where I've got a custom pipeconfig and app.
+>>>
+>>> # Problem:
+>>> When I install flows, ONOS logs an error that table entries in
+>>> "l2_exact_table" on the switch are different from what's recorded in the
+>>> ONOS store. However, if you take a look at the rules, they are identical as
+>>> shown here: https://pastebin.com/i4Jkt26i
+>>>
+>>> I activated the debugger and set a breakpoint near "if
+>>> (!translatedEntity.get().translated().equals(entry))" (i.e. in
+>>> P4RuntimeFlowRuleProgrammable.java) and both "translated" and "entry" have
+>>> the same values.
+>>>
+>>> Have you come across this one? If not, perhaps I should take this up
+>>> with ONOS folks?
+>>>
+>>> PS. I don't see this issue for other tables.
+>>>
+>>> Thanks,
+>>> -Syd
+>>>
+>> _______________________________________________
+>> stratum-dev mailing list
+>> stratum-dev at lists.stratumproject.org
+>> https://lists.stratumproject.org/listinfo/stratum-dev
+>
+>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20210518/a0f2cc0b/attachment-0001.html>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: onos_debug_gui.png
+Type: image/png
+Size: 1574961 bytes
+Desc: not available
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20210518/a0f2cc0b/attachment-0001.png>
+
+From max at opennetworking.org  Tue May 18 21:22:41 2021
+From: max at opennetworking.org (Maximilian Pudelko)
+Date: Tue, 18 May 2021 14:22:41 -0700
+Subject: [stratum-dev] Table entry from stratum_bmv2 different from ONOS
+	store
+In-Reply-To: <CAM-ym_dyOz2b2OCqMp1f0e74GD19_kYXoAJO4LrXnniz=4LW_A@mail.gmail.com>
+References: <CAM-ym_cuRAFmUifBSP3=mj4W-F1=oP3cZauNRTV-vy4Q4Kczyg@mail.gmail.com>
+ <010101797ffd4d5e-62380075-4ac2-4c95-b74d-a8e2e0501c67-000000@us-west-2.amazonses.com>
+ <CAFh9Y_OfAph4z7m7jxLmVsJbcjFS8SyqYybDTNA6pC_H0Rgo3A@mail.gmail.com>
+ <CAM-ym_dyOz2b2OCqMp1f0e74GD19_kYXoAJO4LrXnniz=4LW_A@mail.gmail.com>
+Message-ID: <CAFh9Y_O5aJQfZ+TLZR1gJ+0stgm6gUFgBQJOomOV4X__vvg8WA@mail.gmail.com>
+
+The linked ONOS CL has been merged today. ONOS now supports canonical byte
+strings.
+You might have to update your ONOS apps, depending on how you interact with
+P4Runtime.
+For now there is nothing to be fixed in Stratum.
+
+Max
+
+On Tue, May 18, 2021 at 1:11 PM A Sydney <asydney007 at gmail.com> wrote:
+
+> Please let me know when a fix is pushed (or if you can provide a tkt/issue
+> #, I can track it from the stratum repo). I'll then rebuild the debian
+> package, create a new image and test out the change.
+>
+> Thanks!
+> -Syd
+>
+> On Tue, May 18, 2021 at 2:20 PM Maximilian Pudelko <max at opennetworking.org>
+> wrote:
+>
+>> Hi Syd,
+>>
+>> I think this could be related to the recent PI update we did for
+>> Stratum-bmv2: https://github.com/stratum/stratum/pull/660
+>> It now returns canonical byte strings in all P4Runtime messages, which
+>> confuses ONOS. We're working on fixing it:
+>> https://gerrit.onosproject.org/c/onos/+/24616
+>>
+>> Max
+>>
+>>
+>> On Tue, May 18, 2021 at 7:59 AM A Sydney via stratum-dev <
+>> stratum-dev at lists.stratumproject.org> wrote:
+>>
+>>> Hi Stratum folks,
+>>>                           I've used the debugger in Intellij to narrow
+>>> down the issue (@P4RuntimeFlowRuleProgrammable.java line 233). As shown in
+>>> the attached debugger gui, It appears that
+>>> "tableAction->runtimeParams->value->value->value->hb" has different values
+>>> for "translatedEntitity.get().translated()" and "entry". Hence, these flow
+>>> rules are in a "PENDING ADD" state. Can you kindly provide feedback on this
+>>> issue? Is this stratum specific, ONOS, or perhaps java?
+>>>
+>>> Thanks,
+>>> -Syd
+>>> [image: onos_debug_gui.png]
+>>>
+>>>
+>>>
+>>> On Wed, May 12, 2021 at 11:06 PM A Sydney <asydney007 at gmail.com> wrote:
+>>>
+>>>> Hi Stratum folks,
+>>>>
+>>>> # Context: I'm running standalone stratum_bmv2 instances on Debian 10
+>>>> connected to ONOS where I've got a custom pipeconfig and app.
+>>>>
+>>>> # Problem:
+>>>> When I install flows, ONOS logs an error that table entries in
+>>>> "l2_exact_table" on the switch are different from what's recorded in the
+>>>> ONOS store. However, if you take a look at the rules, they are identical as
+>>>> shown here: https://pastebin.com/i4Jkt26i
+>>>>
+>>>> I activated the debugger and set a breakpoint near "if
+>>>> (!translatedEntity.get().translated().equals(entry))" (i.e. in
+>>>> P4RuntimeFlowRuleProgrammable.java) and both "translated" and "entry" have
+>>>> the same values.
+>>>>
+>>>> Have you come across this one? If not, perhaps I should take this up
+>>>> with ONOS folks?
+>>>>
+>>>> PS. I don't see this issue for other tables.
+>>>>
+>>>> Thanks,
+>>>> -Syd
+>>>>
+>>> _______________________________________________
+>>> stratum-dev mailing list
+>>> stratum-dev at lists.stratumproject.org
+>>> https://lists.stratumproject.org/listinfo/stratum-dev
+>>
+>>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20210518/5bf738ff/attachment-0001.html>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: onos_debug_gui.png
+Type: image/png
+Size: 1574961 bytes
+Desc: not available
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20210518/5bf738ff/attachment-0001.png>
+
+From asydney007 at gmail.com  Wed May 19 18:57:54 2021
+From: asydney007 at gmail.com (A Sydney)
+Date: Wed, 19 May 2021 14:57:54 -0400
+Subject: [stratum-dev] Table entry from stratum_bmv2 different from ONOS
+	store
+In-Reply-To: <CAFh9Y_O5aJQfZ+TLZR1gJ+0stgm6gUFgBQJOomOV4X__vvg8WA@mail.gmail.com>
+References: <CAM-ym_cuRAFmUifBSP3=mj4W-F1=oP3cZauNRTV-vy4Q4Kczyg@mail.gmail.com>
+ <010101797ffd4d5e-62380075-4ac2-4c95-b74d-a8e2e0501c67-000000@us-west-2.amazonses.com>
+ <CAFh9Y_OfAph4z7m7jxLmVsJbcjFS8SyqYybDTNA6pC_H0Rgo3A@mail.gmail.com>
+ <CAM-ym_dyOz2b2OCqMp1f0e74GD19_kYXoAJO4LrXnniz=4LW_A@mail.gmail.com>
+ <CAFh9Y_O5aJQfZ+TLZR1gJ+0stgm6gUFgBQJOomOV4X__vvg8WA@mail.gmail.com>
+Message-ID: <CAM-ym_fzLSNVZ6qr0-uMyiaHGR1uY1REL3r-F0BPs4ob5qNqFA@mail.gmail.com>
+
+I pulled in the new changes and everything works great!
+
+Thanks a bunch!
+-Syd
+
+On Tue, May 18, 2021 at 5:23 PM Maximilian Pudelko <max at opennetworking.org>
+wrote:
+
+> The linked ONOS CL has been merged today. ONOS now supports canonical byte
+> strings.
+> You might have to update your ONOS apps, depending on how you interact
+> with P4Runtime.
+> For now there is nothing to be fixed in Stratum.
+>
+> Max
+>
+> On Tue, May 18, 2021 at 1:11 PM A Sydney <asydney007 at gmail.com> wrote:
+>
+>> Please let me know when a fix is pushed (or if you can provide a
+>> tkt/issue #, I can track it from the stratum repo). I'll then rebuild the
+>> debian package, create a new image and test out the change.
+>>
+>> Thanks!
+>> -Syd
+>>
+>> On Tue, May 18, 2021 at 2:20 PM Maximilian Pudelko <
+>> max at opennetworking.org> wrote:
+>>
+>>> Hi Syd,
+>>>
+>>> I think this could be related to the recent PI update we did for
+>>> Stratum-bmv2: https://github.com/stratum/stratum/pull/660
+>>> It now returns canonical byte strings in all P4Runtime messages, which
+>>> confuses ONOS. We're working on fixing it:
+>>> https://gerrit.onosproject.org/c/onos/+/24616
+>>>
+>>> Max
+>>>
+>>>
+>>> On Tue, May 18, 2021 at 7:59 AM A Sydney via stratum-dev <
+>>> stratum-dev at lists.stratumproject.org> wrote:
+>>>
+>>>> Hi Stratum folks,
+>>>>                           I've used the debugger in Intellij to narrow
+>>>> down the issue (@P4RuntimeFlowRuleProgrammable.java line 233). As shown in
+>>>> the attached debugger gui, It appears that
+>>>> "tableAction->runtimeParams->value->value->value->hb" has different values
+>>>> for "translatedEntitity.get().translated()" and "entry". Hence, these flow
+>>>> rules are in a "PENDING ADD" state. Can you kindly provide feedback on this
+>>>> issue? Is this stratum specific, ONOS, or perhaps java?
+>>>>
+>>>> Thanks,
+>>>> -Syd
+>>>> [image: onos_debug_gui.png]
+>>>>
+>>>>
+>>>>
+>>>> On Wed, May 12, 2021 at 11:06 PM A Sydney <asydney007 at gmail.com> wrote:
+>>>>
+>>>>> Hi Stratum folks,
+>>>>>
+>>>>> # Context: I'm running standalone stratum_bmv2 instances on Debian 10
+>>>>> connected to ONOS where I've got a custom pipeconfig and app.
+>>>>>
+>>>>> # Problem:
+>>>>> When I install flows, ONOS logs an error that table entries in
+>>>>> "l2_exact_table" on the switch are different from what's recorded in the
+>>>>> ONOS store. However, if you take a look at the rules, they are identical as
+>>>>> shown here: https://pastebin.com/i4Jkt26i
+>>>>>
+>>>>> I activated the debugger and set a breakpoint near "if
+>>>>> (!translatedEntity.get().translated().equals(entry))" (i.e. in
+>>>>> P4RuntimeFlowRuleProgrammable.java) and both "translated" and "entry" have
+>>>>> the same values.
+>>>>>
+>>>>> Have you come across this one? If not, perhaps I should take this up
+>>>>> with ONOS folks?
+>>>>>
+>>>>> PS. I don't see this issue for other tables.
+>>>>>
+>>>>> Thanks,
+>>>>> -Syd
+>>>>>
+>>>> _______________________________________________
+>>>> stratum-dev mailing list
+>>>> stratum-dev at lists.stratumproject.org
+>>>> https://lists.stratumproject.org/listinfo/stratum-dev
+>>>
+>>>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20210519/87c3f21c/attachment-0001.html>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: onos_debug_gui.png
+Type: image/png
+Size: 1574961 bytes
+Desc: not available
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20210519/87c3f21c/attachment-0001.png>
+
+From asydney007 at gmail.com  Wed May 26 17:32:53 2021
+From: asydney007 at gmail.com (A Sydney)
+Date: Wed, 26 May 2021 13:32:53 -0400
+Subject: [stratum-dev] Possible issue with stratum_bmv2/ONOS hostdiscovery
+Message-ID: <CAM-ym_f=9T-FJnSYq_j0jHhccdAsF7FK03Q6p_-z9DVMA7xntA@mail.gmail.com>
+
+Hi Stratum folks,
+                          I came across this intermittent issue:
+
+I'm running standalone bmv2 instances and I've installed rules to clone all
+ARP traffic to the ONOS controller. When the ARP packet gets to the
+controller (i.e. pinging between hosts), an ONOS app listening for new
+hosts installs flow rules. However, I've seen the following situations:
+
+1. An ARP request hits the switch and it is cloned to the controller (i.e.
+as logged from the switch). The host is automatically discovered by ONOS
+and flow rules installed.
+
+2. An ARP request hits the switch, and is cloned to the controller, but
+flow rules are not installed immediately. I have observed that it can take
+from 30s to 4 minutes for the host to be discovered by ONOS. I have also
+observed situations where the host was not discovered > 7 or so minutes.
+
+Any thoughts?
+
+PS. I've also got the lldpprovider app running, and links are discovered
+immediately and this behavior is always consistent (so the issue may not be
+with packet-ins/outs?).
+
+Thanks,
+-Syd
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20210526/fbcacb99/attachment.html>
+
+From poby1972 at gmail.com  Sat May 29 12:22:49 2021
+From: poby1972 at gmail.com (Kevin Kwon)
+Date: Sat, 29 May 2021 21:22:49 +0900
+Subject: [stratum-dev] Stratum on Wedge100BF-32X
+Message-ID: <CAG_1B5WWDzPc-Jvv77-cMm0f-PHBjU-tcXUPkpgtNkaxdb+vbA@mail.gmail.com>
+
+Hi..
+
+I am installing the Stratum on Wedge100BF-32X Switch with the guide (
+https://github.com/stratum/stratum/blob/main/stratum/docs/setup_guide_barefoot_tofino_onos.md
+)
+
+1. Download the Pre-Built ONL from
+https://github.com/opennetworkinglab/OpenNetworkLinux/releases/download/v1.4.2/ONL-OS_2021-02-19.2136-9338f84_AMD64_INSTALLED_INSTALLER
+
+2. Install it on my Wedge100BF-32X switch
+
+3. Download Stratum by below Command
+  git clone https://github.com/stratum/stratum.git
+
+4. Start Stratum by below command
+     root at localhost:~/stratum#
+./stratum/hal/bin/barefoot/docker/start-stratum-container.sh
+ -enable_onlp=false
+
+5. Result
+  [image: image.png]
+
+
+Question #1)
+  Does "STRATUM" is the same with "OFAGENT" on Broadcom based Switch?
+
+Question #2)
+  Above status is normal to wait for connection by ONOS Controller?
+
+Question #3)
+  Do the below containers have included the BDE packages by default?
+[image: image.png]
+
+Thank you!
+KevinKwon
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20210529/b91d9261/attachment-0001.html>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: image.png
+Type: image/png
+Size: 304487 bytes
+Desc: not available
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20210529/b91d9261/attachment-0002.png>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: image.png
+Type: image/png
+Size: 143517 bytes
+Desc: not available
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20210529/b91d9261/attachment-0003.png>
+

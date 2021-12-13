@@ -1,0 +1,130 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [stratum-dev] BMv2 standalone instances unable to forward traffic
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20BMv2%20standalone%20instances%20unable%20to%20forward%20traffic&In-Reply-To=%3CCAM-ym_ch6%2BjxHFLXhkaTAqbsfhgivg4F%3Dsfs82KPL79NB29M7Q%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <LINK REL="Previous"  HREF="000210.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[stratum-dev] BMv2 standalone instances unable to forward traffic</H1>
+    <B>A Sydney</B> 
+    <A HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20BMv2%20standalone%20instances%20unable%20to%20forward%20traffic&In-Reply-To=%3CCAM-ym_ch6%2BjxHFLXhkaTAqbsfhgivg4F%3Dsfs82KPL79NB29M7Q%40mail.gmail.com%3E"
+       TITLE="[stratum-dev] BMv2 standalone instances unable to forward traffic">asydney007 at gmail.com
+       </A><BR>
+    <I>Mon Apr 26 17:41:00 UTC 2021</I>
+    <P><UL>
+        <LI>Previous message (by thread): <A HREF="000210.html">[stratum-dev] Query about accessing P4Runtime shell
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#206">[ date ]</a>
+              <a href="thread.html#206">[ thread ]</a>
+              <a href="subject.html#206">[ subject ]</a>
+              <a href="author.html#206">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Stratum folks,
+                           It appears that traffic is not forwarded by the
+BMv2 standalone instances. Here are more details:
+
+1. I used Max's instructions to create standalone BMv2 instances running on
+Debian 10.
+2. I created an SdnTest app on ONOS with the identical pipeconf, bmv2.json,
+and p4info.txt files from the ngsdn-tutorial app (i.e. the same working
+versions of these files from the ngsdn-tutorial VM are used in a different
+setup with a different ONOS controller and 6 standalone bmv2 switches). (
+<A HREF="https://github.com/opennetworkinglab/ngsdn-tutorial">https://github.com/opennetworkinglab/ngsdn-tutorial</A>).
+3. I created a custom 6-node Clos topology and I've attached the
+corresponding netcfg.json in the tarball.
+4. Onos starts up just fine and I ensure that all apps (similar to the ones
+running on ngsdn-tutorial) are fired-up (See onos_cli_log in attached).
+5. I then push netcfg.json to onos, and the onos logs show a few &quot;Failed to
+register Bandwidth&quot; and &quot;Failed to register Port&quot; errors (See onos_log in
+attached tarball): Note: After digging a bit, it appears that these
+messages originate from ResourceDeviceListener.java on line 162 when
+&quot;log.isTraceEnabled()&quot; is not set in ConsistentResourceStore on line 122
+(So this essentially may not be an issue?). In any case, onos_cli_log shows
+that all devices are connected and available. Interestingly, the &quot;Tx&quot;
+portstat remains at 0. Given the fact the the lldpprovider app is running,
+I would expect at least LLDP traffic to be flowing.
+
+6. As an example, I logged onto leaf1 to take a look at the logs, and from
+the terminal, I see the following (See leaf1_stratum_terminal_log for more
+details):
+&quot;&quot;&quot;
+E20210426 16:01:18.918056  5458 p4_service.cc:311] Failed to write
+forwarding entries to node 1:
+&quot;&quot;&quot;
+So when the switch starts up, the initial &quot;chassis_config_file&quot; lists all 8
+ports on all switches. However, netcfg.json specifies 6 of the 8. When I
+take a look through the onos web GUI, I still see all 8 ports which implies
+that perhaps there may be issues pushing the updated chassis_config_file to
+the switch?
+
+7. When I look through the details debug log for leaf1 (see
+leaf1_log_written_to_file), I only see 1 LLDP pkt (i.e. ethtype 88cc),
+though tcpdump from the controller shows that the controller is indeed
+sending numerous discovery pkts.
+
+PS. I've attached a tarball with the various log files and a ReadMe
+describing the contents of each file.
+
+Can you kindly provide feedback on perhaps why traffic (at least LLDP) is
+not forwarded by the switches?
+
+BTW. I also tried to connect to leaf1 via &quot;util/p4rt-sh&quot;, install flow
+rules to foward traffic between ports 5 and 6, but a quick ping showed that
+traffic was not flowing: I also used tcpdump on leaf1 to verify that indeed
+no pkts were making it on ports 5 and 6 (except dhcp which is expected).
+
+Thanks,
+-Syd
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.stratumproject.org/archives/stratum-dev/attachments/20210426/7c442440/attachment-0001.html">https://lists.stratumproject.org/archives/stratum-dev/attachments/20210426/7c442440/attachment-0001.html</A>&gt;
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: debug.tar.xz
+Type: application/x-xz
+Size: 176956 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.stratumproject.org/archives/stratum-dev/attachments/20210426/7c442440/attachment-0001.xz">https://lists.stratumproject.org/archives/stratum-dev/attachments/20210426/7c442440/attachment-0001.xz</A>&gt;
+</PRE>
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message (by thread): <A HREF="000210.html">[stratum-dev] Query about accessing P4Runtime shell
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#206">[ date ]</a>
+              <a href="thread.html#206">[ thread ]</a>
+              <a href="subject.html#206">[ subject ]</a>
+              <a href="author.html#206">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.stratumproject.org/listinfo/stratum-dev">More information about the stratum-dev
+mailing list</a><br>
+</body></html>

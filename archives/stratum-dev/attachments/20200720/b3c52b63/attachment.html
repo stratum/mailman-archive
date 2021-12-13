@@ -1,0 +1,39 @@
+<tt>
+&lt;div&nbsp;dir=&quot;ltr&quot;&gt;Hi&nbsp;David,&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Please&nbsp;find&nbsp;the&nbsp;config&nbsp;file attached,&nbsp;and&nbsp;modify&nbsp;it&nbsp;based&nbsp;on&nbsp;your&nbsp;requirements.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Also,&nbsp;you&nbsp;can&nbsp;follow&nbsp;the &lt;a&nbsp;href=&quot;https://docs.trellisfabric.org/1.12/configuration/bridging-unicast.html&quot;&nbsp;target=&quot;_blank&quot;&gt;Trellis&nbsp;Configuration&nbsp;Guide&lt;/a&gt; for&nbsp;more&nbsp;information&nbsp;about&nbsp;how&nbsp;to&nbsp;config&nbsp;the&nbsp;ONOS&nbsp;Trellis&nbsp;application.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Yi&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;div&nbsp;class=&quot;gmail_quote&quot;&gt;&lt;div&nbsp;dir=&quot;ltr&quot;&nbsp;class=&quot;gmail_attr&quot;&gt;On&nbsp;Sat,&nbsp;Jul&nbsp;18,&nbsp;2020&nbsp;at&nbsp;12:55&nbsp;PM&nbsp;David&nbsp;Lake&nbsp;via&nbsp;stratum-dev&nbsp;&lt;&lt;a&nbsp;href=&quot;mailto:stratum-dev@lists.stratumproject.org&quot;&nbsp;target=&quot;_blank&quot;&gt;stratum-dev@lists.stratumproject.org&lt;/a&gt;&gt;&nbsp;wrote:&lt;br&gt;&lt;/div&gt;&lt;blockquote&nbsp;class=&quot;gmail_quote&quot;&nbsp;style=&quot;margin:0px&nbsp;0px&nbsp;0px&nbsp;0.8ex;border-left:1px&nbsp;solid&nbsp;rgb(204,204,204);padding-left:1ex&quot;&gt;<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+&lt;div&nbsp;lang=&quot;EN-GB&quot;&gt;<br>
+&lt;div&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;lang=&quot;EN-US&quot;&gt;Hello&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;lang=&quot;EN-US&quot;&gt;&lt;u&gt;&lt;/u&gt; &lt;u&gt;&lt;/u&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;lang=&quot;EN-US&quot;&gt;Thank&nbsp;you&nbsp;for&nbsp;you&nbsp;help&nbsp;so&nbsp;far. &nbsp;I&nbsp;now&nbsp;need&nbsp;some&nbsp;more&nbsp;guidance&nbsp;please.&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;lang=&quot;EN-US&quot;&gt;&lt;u&gt;&lt;/u&gt; &lt;u&gt;&lt;/u&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;lang=&quot;EN-US&quot;&gt;I&nbsp;have&nbsp;a&nbsp;Wedge&nbsp;100BF-32x&nbsp;running&nbsp;ONL&nbsp;and&nbsp;the&nbsp;Stratum&nbsp;Docker&nbsp;container&nbsp;with&nbsp;ONOS&nbsp;2.2.3&nbsp;and&nbsp;the&nbsp;fabric-tofino&nbsp;pipeconf.&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;lang=&quot;EN-US&quot;&gt;&lt;u&gt;&lt;/u&gt; &lt;u&gt;&lt;/u&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;lang=&quot;EN-US&quot;&gt;When&nbsp;I&nbsp;set&nbsp;the&nbsp;CHASSIS_CONFIG&nbsp;for&nbsp;the&nbsp;switch&nbsp;and&nbsp;start&nbsp;the&nbsp;container,&nbsp;I&nbsp;see&nbsp;errors&nbsp;regarding&nbsp;the&nbsp;fan&nbsp;configuration&nbsp;from&nbsp;the&nbsp;switch&nbsp;(see&nbsp;“start-stratum2.txt”&nbsp;log&nbsp;file).&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;lang=&quot;EN-US&quot;&gt;&lt;u&gt;&lt;/u&gt; &lt;u&gt;&lt;/u&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;lang=&quot;EN-US&quot;&gt;Eventually,&nbsp;these&nbsp;timeout&nbsp;and&nbsp;the&nbsp;switch&nbsp;becomes&nbsp;available&nbsp;(about&nbsp;10&nbsp;minutes&nbsp;to&nbsp;start).&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;lang=&quot;EN-US&quot;&gt;&lt;br&gt;<br>
+However,&nbsp;when&nbsp;I&nbsp;add&nbsp;to&nbsp;ONOS&nbsp;using&nbsp;the&nbsp;netcfg&nbsp;command&nbsp;I&nbsp;see&nbsp;errors&nbsp;and&nbsp;the&nbsp;ports&nbsp;show&nbsp;as&nbsp;“Enabled&nbsp;–&nbsp;False”&nbsp;in&nbsp;ONOS.  &nbsp;My&nbsp;netfg&nbsp;log&nbsp;is&nbsp;attached&nbsp;as&nbsp;“necfg.txt.”&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;lang=&quot;EN-US&quot;&gt;&lt;u&gt;&lt;/u&gt; &lt;u&gt;&lt;/u&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;lang=&quot;EN-US&quot;&gt;What&nbsp;I&nbsp;need&nbsp;to&nbsp;do&nbsp;is&nbsp;to&nbsp;set&nbsp;up&nbsp;the&nbsp;switch&nbsp;with&nbsp;4&nbsp;subnets&nbsp;across&nbsp;the&nbsp;32&nbsp;ports. &nbsp;I’m&nbsp;trying&nbsp;to&nbsp;find&nbsp;an&nbsp;example&nbsp;configuration&nbsp;and&nbsp;some&nbsp;worked&nbsp;tutorials/user-guides.&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;lang=&quot;EN-US&quot;&gt;&lt;u&gt;&lt;/u&gt; &lt;u&gt;&lt;/u&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;lang=&quot;EN-US&quot;&gt;Can&nbsp;someone&nbsp;please&nbsp;point&nbsp;me&nbsp;to&nbsp;some&nbsp;sample&nbsp;configs&nbsp;for&nbsp;similar&nbsp;environments&nbsp;please&nbsp;and&nbsp;tell&nbsp;me&nbsp;where&nbsp;I&nbsp;am&nbsp;going&nbsp;wrong&nbsp;with&nbsp;the&nbsp;configuration?&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;lang=&quot;EN-US&quot;&gt;&lt;br&gt;<br>
+Thanks&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;lang=&quot;EN-US&quot;&gt;&lt;u&gt;&lt;/u&gt; &lt;u&gt;&lt;/u&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;lang=&quot;EN-US&quot;&gt;David&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;lang=&quot;EN-US&quot;&gt;&lt;u&gt;&lt;/u&gt; &lt;u&gt;&lt;/u&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;lang=&quot;EN-US&quot;&gt;&lt;u&gt;&lt;/u&gt; &lt;u&gt;&lt;/u&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&lt;/div&gt;<br>
+&lt;/div&gt;<br>
+<br>
+_______________________________________________&lt;br&gt;<br>
+stratum-dev&nbsp;mailing&nbsp;list&lt;br&gt;<br>
+&lt;a&nbsp;href=&quot;mailto:stratum-dev@lists.stratumproject.org&quot;&nbsp;target=&quot;_blank&quot;&gt;stratum-dev@lists.stratumproject.org&lt;/a&gt;&lt;br&gt;<br>
+&lt;a&nbsp;href=&quot;https://lists.stratumproject.org/listinfo/stratum-dev&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;https://lists.stratumproject.org/listinfo/stratum-dev&lt;/a&gt;&lt;/blockquote&gt;&lt;/div&gt;&lt;br&nbsp;clear=&quot;all&quot;&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;--&nbsp;&lt;br&gt;&lt;div&nbsp;dir=&quot;ltr&quot;&gt;&lt;div&nbsp;dir=&quot;ltr&quot;&gt;&lt;div&gt;Yi&nbsp;Tseng&lt;br&gt;&lt;/div&gt;&lt;div&gt;Member&nbsp;of&nbsp;Technical&nbsp;Staff&lt;/div&gt;&lt;div&gt;Open&nbsp;Networking&nbsp;Foundation&lt;/div&gt;&lt;div&gt;&lt;a&nbsp;href=&quot;https://www.opennetworking.org/&quot;&nbsp;target=&quot;_blank&quot;&gt;https://www.opennetworking.org/&lt;/a&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;<br>
+
+</tt>

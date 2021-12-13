@@ -1,0 +1,168 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [stratum-dev] Issue with start-stratum-container
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Issue%20with%20start-stratum-container&In-Reply-To=%3CVI1PR06MB5214B7FF262834047142169CB5630%40VI1PR06MB5214.eurprd06.prod.outlook.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <LINK REL="Previous"  HREF="000131.html">
+   <LINK REL="Next"  HREF="000128.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[stratum-dev] Issue with start-stratum-container</H1>
+    <B>David Lake</B> 
+    <A HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Issue%20with%20start-stratum-container&In-Reply-To=%3CVI1PR06MB5214B7FF262834047142169CB5630%40VI1PR06MB5214.eurprd06.prod.outlook.com%3E"
+       TITLE="[stratum-dev] Issue with start-stratum-container">d.lake at surrey.ac.uk
+       </A><BR>
+    <I>Sun Jul 12 23:03:18 UTC 2020</I>
+    <P><UL>
+        <LI>Previous message (by thread): <A HREF="000131.html">[stratum-dev] Confused about how to run Stratum
+</A></li>
+        <LI>Next message (by thread): <A HREF="000128.html">[stratum-dev] ONOS P4 Trellis and SPGW
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#110">[ date ]</a>
+              <a href="thread.html#110">[ thread ]</a>
+              <a href="subject.html#110">[ subject ]</a>
+              <a href="author.html#110">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello
+
+I've pulled a Docker container for SDE 9.0.0 ONL 4.14.49 to my switch but when I try to start it, I see an issue:
+
+/usr/bin/stratum_bf: symbol lookup error: /usr/bin/stratum_bf: undefined symbol: onlp_sw_init
+
+The switch is an EdgeCore Wedge 100bf-32x.
+
+I've also tried to build my own container which was successful and has the same issue.]
+
+This is the output.
+
+Thank you
+
+David
+
+ject/stratum-bf:9.0.0-4.14.49-OpenNetworkLinuxoot/docker# docker pull stratumproj
+9.0.0-4.14.49-OpenNetworkLinux: Pulling from stratumproject/stratum-bf
+3401a574d84f: Pull complete
+8e538a274d7e: Pull complete
+6e29648faf2e: Pull complete
+Digest: sha256:e4c13610e57c74f27637f3f05b761f1fc06deca02237aae0d888a595aacaa08b
+Status: Downloaded newer image for stratumproject/stratum-bf:9.0.0-4.14.49-OpenNetworkLinux
+<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">root at localhost</A>:~/stratum/stratum/hal/bin/barefoot/docker# docker images
+REPOSITORY                          TAG                              IMAGE ID            CREATED             SIZE
+&lt;none&gt;                              &lt;none&gt;                           0377d3d6348f        18 minutes ago      11.3GB
+&lt;none&gt;                              &lt;none&gt;                           112f2bec5523        37 minutes ago      169MB
+&lt;none&gt;                              &lt;none&gt;                           166fec8f7382        38 minutes ago      11.3GB
+stratumproject/stratum-bf-builder   bf-sde-9.0.0                     65c7afacc50f        About an hour ago   7.81GB
+stratumproject/stratum-bf           9.0.0-4.14.49-OpenNetworkLinux   d7fae5ae92af        5 days ago          169MB
+stratumproject/build                build                            7e76dd7129df        6 days ago          2.02GB
+bitnami/minideb                     stretch                          5b33a3f54fe6        8 weeks ago         53.7MB
+ner.sh calhost:~/stratum/stratum/hal/bin/barefoot/docker# ./start-stratum-contain
++ [[ -z '' ]]
++ [[ -f /etc/onl/platform ]]
+++ cat /etc/onl/platform
++ PLATFORM=x86-64-accton-wedge100bf-32x-r0
++ '[' -d /etc/onl ']'
+++ awk '{print &quot;-v &quot; $1 &quot;:&quot; $1 &quot; &quot; }'
+++ ls /lib/x86_64-linux-gnu/libonlp-platform-defaults.so /lib/x86_64-linux-gnu/libonlp-platform-defaults.so.1 /lib/x86_64-linux-gnu/libonlp-platform.so /lib/x86_64-linux-gnu/libonlp-platform.so.1 /lib/x86_64-linux-gnu/libonlp.so /lib/x86_64-linux-gnu/libonlp.so.1 /lib/x86_64-linux-gnu/libonlp-x86-64-accton-wedge100bf-32x.so.1
++ ONLP_MOUNT='-v /lib/x86_64-linux-gnu/libonlp-platform-defaults.so:/lib/x86_64-linux-gnu/libonlp-platform-defaults.so
+-v /lib/x86_64-linux-gnu/libonlp-platform-defaults.so.1:/lib/x86_64-linux-gnu/libonlp-platform-defaults.so.1
+-v /lib/x86_64-linux-gnu/libonlp-platform.so:/lib/x86_64-linux-gnu/libonlp-platform.so
+-v /lib/x86_64-linux-gnu/libonlp-platform.so.1:/lib/x86_64-linux-gnu/libonlp-platform.so.1
+-v /lib/x86_64-linux-gnu/libonlp.so:/lib/x86_64-linux-gnu/libonlp.so
+-v /lib/x86_64-linux-gnu/libonlp.so.1:/lib/x86_64-linux-gnu/libonlp.so.1
+-v /lib/x86_64-linux-gnu/libo4-accton-wedge100bf-32x.so.1:/li[ 6679.377329] docker0: port 1(veth743a200) entered blocking state
+[ 6679.390612] docker0: port 1(veth743a200) entered disabled state
+b/x86_64-linux-g[ 6679.402526] device veth743a200 entered promiscuous mode
+nu/libonlp-x86-6[ 6679.415826] IPv6: ADDRCONF(NETDEV_UP): veth743a200: link is not ready
+4-accton-wedge100bf-32x.so.1 '
++ ONLP_MOUNT='-v /lib/x86_64-linux-gnu/libonlp-platform-defaults.so:/lib/x86_64-linux-gnu/libonlp-platform-defaults.so
+-v /lib/x86_64-linux-gnu/libonlp-platform-defaults.so.1:/lib/x86_64-linux-gnu/libonlp-platform-defaults.so.1
+-v /lib/x86_64-linux-gnu/libonlp-platform.so:/lib/x86_64-linux-gnu/libonlp-platform.so
+-v /lib/x86_64-linux-gnu/libonlp-platform.so.1:/lib/x86_64-linux-gnu/libonlp-platform.so.1
+-v /lib/x86_64-linux-gnu/libonlp.so:/lib/x86_64-linux-gnu/libonlp.so
+-v /lib/x86_64-linux-gnu/libonlp.so.1:/lib/x86_64-linux-gnu/libonlp.so.1
+-v /lib/x86_64-linux-gnu/libonlp-x86-64-accton-wedge100bf-32x.so.1:/lib/x86_64-linux-gnu/libonlp-x86-64-accton-wedge100bf-32x.so.1                -v /lib/platform-config:/lib/platform-config               -v /etc/onl:/etc/onl'
++ '[' -n '' ']'
++ '[' -n '' ']'
++ LOG_DIR=/var/log
++ SDE_VERSION=9.0.0
+++ uname -r
++ KERNEL_VERSION=4.14.49-OpenNetworkLinux
++ DOCKER_IMAGE=stratumproject/stratum-bf
++ DOCKER_IMAGE_TAG=9.0.0-4.14.49-OpenNetworkLinux
+++ uname -r
+++ uname -r
++ docker run -it --rm --privileged -v /dev:/dev -v /sys:/sys -v /lib/modules/4.14.49-OpenNetworkLinux:/lib/modules/4.14.49-OpenNetworkLinux --env PLATFORM=x86-64-accton-wedge100bf-32x-r0 -v /lib/x86_64-linux-gnu/libonlp-platform-defaults.so:/lib/x86_64-linux-gnu/libonlp-platform-defaults.so -v /lib/x86_64-linux-gnu/libonlp-platform-defaults.so.1:/lib/x86_64-linux-gnu/libonlp-platform-defaults.so.1 -v /lib/x86_64-linux-gnu/libonlp-platform.so:/lib/x86_64-linux-gnu/libonlp-platform.so -v /lib/x86_64-linux-gnu/libonlp-platform.so.1:/lib/x86_64-linux-gnu/libonlp-platform.so.1 -v /lib/x86_64-linux-gnu/libonlp.so:/lib/x86_64-linux-gnu/libonlp.so -v /lib/x86_64-linux-gnu/libonlp.so.1:/lib/x86_64-linux-gnu/libonlp.so.1 -v /lib/x86_64-linux-gnu/libonlp-x86-64-accton-wedge100bf-32x.so.1:/lib/x86_64-linux-gnu/libonlp-x86-64-accton-wedge100bf-32x.so.1 -v /lib/platform-config:/lib/platform-config -v /etc/onl:/etc/onl -p 28000:28000 -p 9339:9339 -v /var/log:/var/log/stratum stratumproject/stratum-bf:9.0.0-4.14.49-OpenNetworkLinux
+[ 6680.224703] eth0: renamed from vetha27ed66
+[ 6680.272671] IPv6: ADDRCONF(NETDEV_CHANGE): veth743a200: link becomes ready
+[ 6680.286500] docker0: port 1(veth743a200) entered blocking state
+[ 6680.298360] docker0: port 1(veth743a200) entered forwarding state
+bf_kdrv_mod found! Unloading first...
+loading bf_kdrv_[ 6680.434958] Use MSI interrupt
+mod...
+[ 6680.442117] BF allocating legacy int vector 11
+[ 6680.451998] bf 0000:05:00.0: bf device 0 registered with irq 11
+[ 6680.463842] bf probe ok
+/usr/bin/stratum_bf: symbol lookup error: /usr/bin/stratum_bf: undefined symbol: onlp_sw_init
+[ 6680.702096] docker0: port 1(veth743a200) entered disabled state
+[ 6680.714056] vetha27ed66: renamed from eth0
+[ 6680.845051] docker0: port 1(veth743a200) entered disabled state
+[ 6680.857394] device veth743a200 left promiscuous mode
+[ 6680.867363] docker0: port 1(veth743a200) entered disabled state
+<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">root at localhost</A>:~/stratum/stratum/hal/bin/barefoot/docker#
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.stratumproject.org/archives/stratum-dev/attachments/20200712/8546715b/attachment-0001.html">https://lists.stratumproject.org/archives/stratum-dev/attachments/20200712/8546715b/attachment-0001.html</A>&gt;
+</PRE>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message (by thread): <A HREF="000131.html">[stratum-dev] Confused about how to run Stratum
+</A></li>
+	<LI>Next message (by thread): <A HREF="000128.html">[stratum-dev] ONOS P4 Trellis and SPGW
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#110">[ date ]</a>
+              <a href="thread.html#110">[ thread ]</a>
+              <a href="subject.html#110">[ subject ]</a>
+              <a href="author.html#110">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.stratumproject.org/listinfo/stratum-dev">More information about the stratum-dev
+mailing list</a><br>
+</body></html>

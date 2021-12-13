@@ -1,0 +1,151 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [stratum-dev] [brigade-p4] Stratum pre-built container
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20%5Bbrigade-p4%5D%20Stratum%20pre-built%20container&In-Reply-To=%3CCAOyFVR17KiGdfwZeD1ZyhJm1t5eh4Ar177gGA86HPSa_0TVRjA%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <LINK REL="Previous"  HREF="000022.html">
+   <LINK REL="Next"  HREF="000026.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[stratum-dev] [brigade-p4] Stratum pre-built container</H1>
+    <B>Yi Tseng</B> 
+    <A HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20%5Bbrigade-p4%5D%20Stratum%20pre-built%20container&In-Reply-To=%3CCAOyFVR17KiGdfwZeD1ZyhJm1t5eh4Ar177gGA86HPSa_0TVRjA%40mail.gmail.com%3E"
+       TITLE="[stratum-dev] [brigade-p4] Stratum pre-built container">yi at opennetworking.org
+       </A><BR>
+    <I>Tue Feb 25 00:07:35 UTC 2020</I>
+    <P><UL>
+        <LI>Previous message (by thread): <A HREF="000022.html">[stratum-dev] Upcoming Stratum TST Meetings
+</A></li>
+        <LI>Next message (by thread): <A HREF="000026.html">[stratum-dev] [brigade-p4] Stratum pre-built container
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#23">[ date ]</a>
+              <a href="thread.html#23">[ thread ]</a>
+              <a href="subject.html#23">[ subject ]</a>
+              <a href="author.html#23">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>[<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">+stratum-dev at lists.stratumproject.org</A>
+&lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>&gt;, remove p4-brigade list]
+
+Hi Deval,
+
+The public container images include a specific Barefoot Linux kernel module.
+
+Now we only compile the module for kernels from OpenNetworkLiunx (3.16,
+4.9, and 4.14)
+
+If you want to run Stratum on different kernel (4.4.0-173-generic), you
+need to compile the Barefoot SDE with the kernel header and run Stratum
+directly on the OS
+
+I've created a GitHub issue to support this request. And will make a PR to
+support this case.
+<A HREF="https://github.com/stratum/stratum/issues/140">https://github.com/stratum/stratum/issues/140</A>
+
+Yi
+
+
+On Mon, Feb 24, 2020 at 3:25 PM Carmelo Cascone &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">carmelo at opennetworking.org</A>&gt;
+wrote:
+
+&gt;<i> Hi Deval,
+</I>&gt;<i>
+</I>&gt;<i> I suggest you ask on the stratum-dev mailing list or Slack channel:
+</I>&gt;<i> <A HREF="https://wiki.opennetworking.org/display/COM/Stratum">https://wiki.opennetworking.org/display/COM/Stratum</A>
+</I>&gt;<i>
+</I>&gt;<i> This mailing list is for discussions related to P4/P4Runtime support in
+</I>&gt;<i> ONOS.
+</I>&gt;<i>
+</I>&gt;<i> Thanks
+</I>&gt;<i> Carmelo
+</I>&gt;<i>
+</I>&gt;<i> On Feb 24, 2020, at 6:53 AM, Deval Bhamare &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">Deval.Bhamare at kau.se</A>&gt; wrote:
+</I>&gt;<i>
+</I>&gt;<i> Hi,
+</I>&gt;<i>
+</I>&gt;<i> I am trying to find Stratum pre-built docker image for Linux
+</I>&gt;<i> 4.4.0-173-generic x86_64 , however couldn't find it. Can you please tell me
+</I>&gt;<i> whether Stratum is not supported on Generic and only runs on ONL version?
+</I>&gt;<i>
+</I>&gt;<i> I tried *stratumproject/stratum-bf:8.9.1-4.14.49-OpenNetworkLinux* , but
+</I>&gt;<i> it failed with error:
+</I>&gt;<i>
+</I>&gt;<i> cat: /etc/onl/platform: No such file or directory
+</I>&gt;<i> Use default flag file
+</I>&gt;<i> Cannot find /usr/local/share/stratum/.json
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Maybe because the Linux doesn't support ONL? What may be the solution?
+</I>&gt;<i> Please let me know.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Thanks,
+</I>&gt;<i> Deval
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i> You received this message because you are subscribed to the Google Groups
+</I>&gt;<i> &quot;P4 brigade&quot; group.
+</I>&gt;<i> To unsubscribe from this group and stop receiving emails from it, send an
+</I>&gt;<i> email to <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">brigade-p4+unsubscribe at onosproject.org.</A>
+</I>&gt;<i> To view this discussion on the web visit
+</I>&gt;<i> <A HREF="https://groups.google.com/a/onosproject.org/d/msgid/brigade-p4/3219e60081e54a23950b45fb513ca36e%40kau.se">https://groups.google.com/a/onosproject.org/d/msgid/brigade-p4/3219e60081e54a23950b45fb513ca36e%40kau.se</A>
+</I>&gt;<i> &lt;<A HREF="https://groups.google.com/a/onosproject.org/d/msgid/brigade-p4/3219e60081e54a23950b45fb513ca36e%40kau.se?utm_medium=email&amp;utm_source=footer">https://groups.google.com/a/onosproject.org/d/msgid/brigade-p4/3219e60081e54a23950b45fb513ca36e%40kau.se?utm_medium=email&amp;utm_source=footer</A>&gt;
+</I>&gt;<i> .
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i> You received this message because you are subscribed to the Google Groups
+</I>&gt;<i> &quot;P4 brigade&quot; group.
+</I>&gt;<i> To unsubscribe from this group and stop receiving emails from it, send an
+</I>&gt;<i> email to <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">brigade-p4+unsubscribe at onosproject.org.</A>
+</I>&gt;<i> To view this discussion on the web visit
+</I>&gt;<i> <A HREF="https://groups.google.com/a/onosproject.org/d/msgid/brigade-p4/C51D008B-728A-4591-8CA7-EFD77B8FBB2A%40opennetworking.org">https://groups.google.com/a/onosproject.org/d/msgid/brigade-p4/C51D008B-728A-4591-8CA7-EFD77B8FBB2A%40opennetworking.org</A>
+</I>&gt;<i> &lt;<A HREF="https://groups.google.com/a/onosproject.org/d/msgid/brigade-p4/C51D008B-728A-4591-8CA7-EFD77B8FBB2A%40opennetworking.org?utm_medium=email&amp;utm_source=footer">https://groups.google.com/a/onosproject.org/d/msgid/brigade-p4/C51D008B-728A-4591-8CA7-EFD77B8FBB2A%40opennetworking.org?utm_medium=email&amp;utm_source=footer</A>&gt;
+</I>&gt;<i> .
+</I>&gt;<i>
+</I>
+
+-- 
+Yi Tseng
+Member of Technical Staff
+Open Networking Foundation
+<A HREF="https://www.opennetworking.org/">https://www.opennetworking.org/</A>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.stratumproject.org/archives/stratum-dev/attachments/20200224/c3ddfb05/attachment.html">https://lists.stratumproject.org/archives/stratum-dev/attachments/20200224/c3ddfb05/attachment.html</A>&gt;
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message (by thread): <A HREF="000022.html">[stratum-dev] Upcoming Stratum TST Meetings
+</A></li>
+	<LI>Next message (by thread): <A HREF="000026.html">[stratum-dev] [brigade-p4] Stratum pre-built container
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#23">[ date ]</a>
+              <a href="thread.html#23">[ thread ]</a>
+              <a href="subject.html#23">[ subject ]</a>
+              <a href="author.html#23">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.stratumproject.org/listinfo/stratum-dev">More information about the stratum-dev
+mailing list</a><br>
+</body></html>

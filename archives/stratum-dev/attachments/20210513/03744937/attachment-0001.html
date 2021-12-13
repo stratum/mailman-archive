@@ -1,0 +1,111 @@
+<tt>
+&lt;div&nbsp;dir=&quot;ltr&quot;&gt;&lt;div&gt;Thanks&nbsp;Narada&nbsp;for&nbsp;posting&nbsp;this&nbsp;example.&nbsp;It&#39;s&nbsp;exactly&nbsp;right.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Max&lt;br&gt;&lt;/div&gt;&lt;br&gt;&lt;/div&gt;&lt;br&gt;&lt;div&nbsp;class=&quot;gmail_quote&quot;&gt;&lt;div&nbsp;dir=&quot;ltr&quot;&nbsp;class=&quot;gmail_attr&quot;&gt;On&nbsp;Thu,&nbsp;May&nbsp;13,&nbsp;2021&nbsp;at&nbsp;1:19&nbsp;PM&nbsp;Narada&nbsp;Hess&nbsp;&lt;&lt;a&nbsp;href=&quot;mailto:NHESS@extremenetworks.com&quot;&gt;NHESS@extremenetworks.com&lt;/a&gt;&gt;&nbsp;wrote:&lt;br&gt;&lt;/div&gt;&lt;blockquote&nbsp;class=&quot;gmail_quote&quot;&nbsp;style=&quot;margin:0px&nbsp;0px&nbsp;0px&nbsp;0.8ex;border-left:1px&nbsp;solid&nbsp;rgb(204,204,204);padding-left:1ex&quot;&gt;<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+&lt;div&nbsp;style=&quot;overflow-wrap:&nbsp;break-word;&quot;&nbsp;lang=&quot;EN-US&quot;&gt;<br>
+&lt;div&nbsp;class=&quot;gmail-m_-1436171389520386200WordSection1&quot;&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;Clarifying&nbsp;for&nbsp;the&nbsp;list&nbsp;after&nbsp;today’s&nbsp;TST&nbsp;meeting&nbsp;(please&nbsp;correct&nbsp;me&nbsp;if&nbsp;I’m&nbsp;wrong).&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;u&gt;&lt;/u&gt; &lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;The&nbsp;way&nbsp;to&nbsp;get&nbsp;the&nbsp;max&nbsp;logging&nbsp;of&nbsp;everything&nbsp;would&nbsp;be&nbsp;to&nbsp;set:&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;-minloglevel=0&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;-v=5&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;u&gt;&lt;/u&gt; &lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;In&nbsp;other&nbsp;words,&nbsp;log&nbsp;everything&nbsp;INFO&nbsp;and&nbsp;above&nbsp;at&nbsp;the&nbsp;maximum&nbsp;verbosity&nbsp;(5).&nbsp;And&nbsp;verbosity&nbsp;only&nbsp;affects&nbsp;messages&nbsp;at&nbsp;INFO&nbsp;level.&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;u&gt;&lt;/u&gt; &lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;Now&nbsp;that&nbsp;I&nbsp;understand&nbsp;log&nbsp;level&nbsp;vs&nbsp;verbosity,&nbsp;I’ll&nbsp;play&nbsp;with&nbsp;the&nbsp;-vmodule&nbsp;option&nbsp;and&nbsp;let&nbsp;you&nbsp;know&nbsp;what&nbsp;I&nbsp;find.&nbsp;N&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;u&gt;&lt;/u&gt; &lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;div&gt;<br>
+&lt;div&nbsp;style=&quot;border-color:rgb(225,225,225)&nbsp;currentcolor&nbsp;currentcolor;border-style:solid&nbsp;none&nbsp;none;border-width:1pt&nbsp;medium&nbsp;medium;padding:3pt&nbsp;0in&nbsp;0in&quot;&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;b&gt;From:&lt;/b&gt;&nbsp;Maximilian&nbsp;Pudelko&nbsp;&lt;&lt;a&nbsp;href=&quot;mailto:max@opennetworking.org&quot;&nbsp;target=&quot;_blank&quot;&gt;max@opennetworking.org&lt;/a&gt;&gt;&nbsp;&lt;br&gt;<br>
+&lt;b&gt;Sent:&lt;/b&gt;&nbsp;Wednesday,&nbsp;May&nbsp;12,&nbsp;2021&nbsp;5:50&nbsp;PM&lt;br&gt;<br>
+&lt;b&gt;To:&lt;/b&gt;&nbsp;Narada&nbsp;Hess&nbsp;&lt;&lt;a&nbsp;href=&quot;mailto:NHESS@extremenetworks.com&quot;&nbsp;target=&quot;_blank&quot;&gt;NHESS@extremenetworks.com&lt;/a&gt;&gt;&lt;br&gt;<br>
+&lt;b&gt;Cc:&lt;/b&gt;&nbsp;&lt;a&nbsp;href=&quot;mailto:stratum-dev@lists.stratumproject.org&quot;&nbsp;target=&quot;_blank&quot;&gt;stratum-dev@lists.stratumproject.org&lt;/a&gt;&lt;br&gt;<br>
+&lt;b&gt;Subject:&lt;/b&gt;&nbsp;Re:&nbsp;[stratum-dev]&nbsp;How&nbsp;to&nbsp;set&nbsp;log&nbsp;levels&nbsp;with&nbsp;-vmodule&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;/div&gt;<br>
+&lt;/div&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;u&gt;&lt;/u&gt; &lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;div&nbsp;style=&quot;border:1pt&nbsp;solid&nbsp;rgb(156,101,0);padding:2pt&quot;&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&nbsp;style=&quot;line-height:12pt;background:rgb(255,235,156)&nbsp;none&nbsp;repeat&nbsp;scroll&nbsp;0%&nbsp;0%&quot;&gt;<br>
+&lt;b&gt;&lt;span&nbsp;style=&quot;font-size:10pt;color:rgb(156,101,0)&quot;&gt;External&nbsp;Email:&lt;/span&gt;&lt;/b&gt;&lt;span&nbsp;style=&quot;font-size:10pt;color:black&quot;&gt;&nbsp;Use&nbsp;caution&nbsp;in&nbsp;opening&nbsp;links&nbsp;or&nbsp;attachments.&lt;/span&gt;&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&gt;<br>
+&lt;div&gt;<br>
+&lt;div&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;According&nbsp;to&nbsp;this&nbsp;&lt;a&nbsp;href=&quot;https://nam12.safelinks.protection.outlook.com/?url=https%3A%2F%2Fstackoverflow.com%2Fa%2F45920794&amp;data=04%7C01%7CNHESS%40extremenetworks.com%7Cb9989250f8ba4ef2fd2508d915a91318%7Cfc8c2bf6914d4c1fb35246a9adb87030%7C0%7C0%7C637564638183830756%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000&amp;sdata=QvP4lAYO6b2ucrIJQuTKG1AYOQE%2BLpv30qX6wm5Ayvo%3D&amp;reserved=0&quot;&nbsp;target=&quot;_blank&quot;&gt;<br>
+SO&lt;/a&gt;&nbsp;post&nbsp;the&nbsp;-vmodule&nbsp;parameter&nbsp;is&nbsp;based&nbsp;on&nbsp;the&nbsp;source&nbsp;code&nbsp;file&nbsp;name.&nbsp;So&nbsp;-vmodule=p4_service=2&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;should&nbsp;print&nbsp;all&nbsp;VLOG(2)&nbsp;and&nbsp;below&nbsp;messages.&nbsp;I&nbsp;don&#39;t&nbsp;see&nbsp;a&nbsp;way&nbsp;to&nbsp;limit&nbsp;ERROR/WARNING/INFO&nbsp;on&nbsp;a&nbsp;per-module&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;basis,&nbsp;though.&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;u&gt;&lt;/u&gt; &lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;The&nbsp;BFRT&nbsp;code&nbsp;is&nbsp;an&nbsp;entire&nbsp;different&nbsp;topic&nbsp;as&nbsp;it&nbsp;uses&nbsp;its&nbsp;own&nbsp;logging&nbsp;library&nbsp;without&nbsp;any&nbsp;hooks&nbsp;for&nbsp;us.&nbsp;We&#39;re&nbsp;pretty&nbsp;much&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;limited&nbsp;to&nbsp;letting&nbsp;bfrt&nbsp;print&nbsp;to&nbsp;stdout.&nbsp;The&nbsp;current&nbsp;code&nbsp;enables&nbsp;logging&nbsp;of&nbsp;a&nbsp;few&nbsp;select&nbsp;modules:&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;a&nbsp;href=&quot;https://nam12.safelinks.protection.outlook.com/?url=https%3A%2F%2Fgithub.com%2Fstratum%2Fstratum%2Fblob%2Fmain%2Fstratum%2Fhal%2Flib%2Fbarefoot%2Fbf_sde_wrapper.cc%23L1514-L1528&amp;data=04%7C01%7CNHESS%40extremenetworks.com%7Cb9989250f8ba4ef2fd2508d915a91318%7Cfc8c2bf6914d4c1fb35246a9adb87030%7C0%7C0%7C637564638183840751%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000&amp;sdata=%2Fy4Qydn9ND1c0WTVmMT0OCZcz3m82%2BXivD47E46umpM%3D&amp;reserved=0&quot;&nbsp;target=&quot;_blank&quot;&gt;https://github.com/stratum/stratum/blob/main/stratum/hal/lib/barefoot/bf_sde_wrapper.cc#L1514-L1528&lt;/a&gt;&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;But&nbsp;that&nbsp;happened&nbsp;on&nbsp;a&nbsp;as-needed&nbsp;basis&nbsp;without&nbsp;any&nbsp;major&nbsp;planing.&nbsp;Full&nbsp;integration&nbsp;will&nbsp;require&nbsp;code&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;changes&nbsp;on&nbsp;the&nbsp;SDE&nbsp;side&nbsp;to&nbsp;allow&nbsp;something&nbsp;like&nbsp;callbacks&nbsp;or&nbsp;streams.&nbsp;Feel&nbsp;free&nbsp;to&nbsp;lobby&nbsp;for&nbsp;that&nbsp;at&nbsp;Intel&nbsp;:D&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;u&gt;&lt;/u&gt; &lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;u&gt;&lt;/u&gt; &lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;Max&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;/div&gt;<br>
+&lt;/div&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;u&gt;&lt;/u&gt; &lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;div&gt;<br>
+&lt;div&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;On&nbsp;Wed,&nbsp;May&nbsp;12,&nbsp;2021&nbsp;at&nbsp;3:39&nbsp;PM&nbsp;Narada&nbsp;Hess&nbsp;via&nbsp;stratum-dev&nbsp;&lt;&lt;a&nbsp;href=&quot;mailto:stratum-dev@lists.stratumproject.org&quot;&nbsp;target=&quot;_blank&quot;&gt;stratum-dev@lists.stratumproject.org&lt;/a&gt;&gt;&nbsp;wrote:&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;/div&gt;<br>
+&lt;blockquote&nbsp;style=&quot;border-color:currentcolor&nbsp;currentcolor&nbsp;currentcolor&nbsp;rgb(204,204,204);border-style:none&nbsp;none&nbsp;none&nbsp;solid;border-width:medium&nbsp;medium&nbsp;medium&nbsp;1pt;padding:0in&nbsp;0in&nbsp;0in&nbsp;6pt;margin-left:4.8pt;margin-right:0in&quot;&gt;<br>
+&lt;div&gt;<br>
+&lt;div&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;Hi&nbsp;All,&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;I&nbsp;have&nbsp;used&nbsp;-v=&lt;level&gt;&nbsp;successfully&nbsp;in&nbsp;the&nbsp;stratum&nbsp;flags&nbsp;file.&nbsp;But&nbsp;when&nbsp;I&nbsp;add&nbsp;-vmodule=&lt;x=y&gt;,&nbsp;it&nbsp;does&nbsp;not&nbsp;seem&nbsp;to&nbsp;take&nbsp;effect.&nbsp;What&nbsp;am&nbsp;I&nbsp;doing&nbsp;wrong?&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt; &lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;Also,&nbsp;how&nbsp;do&nbsp;you&nbsp;set&nbsp;the&nbsp;log&nbsp;levels&nbsp;for&nbsp;the&nbsp;barefoot&nbsp;modules&nbsp;(as&nbsp;opposed&nbsp;to&nbsp;the&nbsp;stratum&nbsp;code&nbsp;per&nbsp;se)?&nbsp;Thanks,&nbsp;N&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt; &lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;Separate&nbsp;examples:&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;font-family:&quot;Courier&nbsp;New&quot;&quot;&gt;-v=5&lt;/span&gt;&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;font-family:&quot;Courier&nbsp;New&quot;&quot;&gt;-vmodule=p4_service=0&lt;/span&gt;&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;font-family:&quot;Courier&nbsp;New&quot;&quot;&gt; &lt;/span&gt;&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;font-family:&quot;Courier&nbsp;New&quot;&quot;&gt;-v=5&lt;/span&gt;&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;font-family:&quot;Courier&nbsp;New&quot;&quot;&gt;-vmodule=”p4_service=0”&lt;/span&gt;&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;font-family:&quot;Courier&nbsp;New&quot;&quot;&gt; &lt;/span&gt;&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;font-family:&quot;Courier&nbsp;New&quot;&quot;&gt;-v=5&lt;/span&gt;&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;font-family:&quot;Courier&nbsp;New&quot;&quot;&gt;-vmodule=bfrt_*=0&lt;/span&gt;&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;font-family:&quot;Courier&nbsp;New&quot;&quot;&gt; &lt;/span&gt;&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;/div&gt;<br>
+&lt;/div&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;_______________________________________________&lt;br&gt;<br>
+stratum-dev&nbsp;mailing&nbsp;list&lt;br&gt;<br>
+&lt;a&nbsp;href=&quot;mailto:stratum-dev@lists.stratumproject.org&quot;&nbsp;target=&quot;_blank&quot;&gt;stratum-dev@lists.stratumproject.org&lt;/a&gt;&lt;br&gt;<br>
+&lt;a&nbsp;href=&quot;https://nam12.safelinks.protection.outlook.com/?url=https%3A%2F%2Flists.stratumproject.org%2Flistinfo%2Fstratum-dev&amp;data=04%7C01%7CNHESS%40extremenetworks.com%7Cb9989250f8ba4ef2fd2508d915a91318%7Cfc8c2bf6914d4c1fb35246a9adb87030%7C0%7C0%7C637564638183850747%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000&amp;sdata=sb69FdhGVjcLpZvlIS4Q0bwtLCSX0X9dAt6Hg8DDR%2FY%3D&amp;reserved=0&quot;&nbsp;target=&quot;_blank&quot;&gt;https://lists.stratumproject.org/listinfo/stratum-dev&lt;/a&gt;&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;/blockquote&gt;<br>
+&lt;/div&gt;<br>
+&lt;/div&gt;<br>
+&lt;/div&gt;<br>
+&lt;/div&gt;<br>
+<br>
+&lt;/blockquote&gt;&lt;/div&gt;<br>
+
+</tt>

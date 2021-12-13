@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [stratum-dev] Table entry from stratum_bmv2 different from ONOS	store
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Table%20entry%20from%20stratum_bmv2%20different%20from%20ONOS%0A%09store&In-Reply-To=%3CCAM-ym_ca8jh7vt1k%3Dp8BO41O5VxKXoj2igXOXthW%3DU%3DuzE3_Dw%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <LINK REL="Previous"  HREF="000226.html">
+   <LINK REL="Next"  HREF="000230.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[stratum-dev] Table entry from stratum_bmv2 different from ONOS	store</H1>
+    <B>A Sydney</B> 
+    <A HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Table%20entry%20from%20stratum_bmv2%20different%20from%20ONOS%0A%09store&In-Reply-To=%3CCAM-ym_ca8jh7vt1k%3Dp8BO41O5VxKXoj2igXOXthW%3DU%3DuzE3_Dw%40mail.gmail.com%3E"
+       TITLE="[stratum-dev] Table entry from stratum_bmv2 different from ONOS	store">asydney007 at gmail.com
+       </A><BR>
+    <I>Tue May 18 14:59:19 UTC 2021</I>
+    <P><UL>
+        <LI>Previous message (by thread): <A HREF="000226.html">[stratum-dev] Table entry from stratum_bmv2 different from ONOS	store
+</A></li>
+        <LI>Next message (by thread): <A HREF="000230.html">[stratum-dev] Table entry from stratum_bmv2 different from ONOS	store
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#229">[ date ]</a>
+              <a href="thread.html#229">[ thread ]</a>
+              <a href="subject.html#229">[ subject ]</a>
+              <a href="author.html#229">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Stratum folks,
+                          I've used the debugger in Intellij to narrow down
+the issue (@P4RuntimeFlowRuleProgrammable.java line 233). As shown in the
+attached debugger gui, It appears that
+&quot;tableAction-&gt;runtimeParams-&gt;value-&gt;value-&gt;value-&gt;hb&quot; has different values
+for &quot;translatedEntitity.get().translated()&quot; and &quot;entry&quot;. Hence, these flow
+rules are in a &quot;PENDING ADD&quot; state. Can you kindly provide feedback on this
+issue? Is this stratum specific, ONOS, or perhaps java?
+
+Thanks,
+-Syd
+[image: onos_debug_gui.png]
+
+
+
+On Wed, May 12, 2021 at 11:06 PM A Sydney &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">asydney007 at gmail.com</A>&gt; wrote:
+
+&gt;<i> Hi Stratum folks,
+</I>&gt;<i>
+</I>&gt;<i> # Context: I'm running standalone stratum_bmv2 instances on Debian 10
+</I>&gt;<i> connected to ONOS where I've got a custom pipeconfig and app.
+</I>&gt;<i>
+</I>&gt;<i> # Problem:
+</I>&gt;<i> When I install flows, ONOS logs an error that table entries in
+</I>&gt;<i> &quot;l2_exact_table&quot; on the switch are different from what's recorded in the
+</I>&gt;<i> ONOS store. However, if you take a look at the rules, they are identical as
+</I>&gt;<i> shown here: <A HREF="https://pastebin.com/i4Jkt26i">https://pastebin.com/i4Jkt26i</A>
+</I>&gt;<i>
+</I>&gt;<i> I activated the debugger and set a breakpoint near &quot;if
+</I>&gt;<i> (!translatedEntity.get().translated().equals(entry))&quot; (i.e. in
+</I>&gt;<i> P4RuntimeFlowRuleProgrammable.java) and both &quot;translated&quot; and &quot;entry&quot; have
+</I>&gt;<i> the same values.
+</I>&gt;<i>
+</I>&gt;<i> Have you come across this one? If not, perhaps I should take this up with
+</I>&gt;<i> ONOS folks?
+</I>&gt;<i>
+</I>&gt;<i> PS. I don't see this issue for other tables.
+</I>&gt;<i>
+</I>&gt;<i> Thanks,
+</I>&gt;<i> -Syd
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.stratumproject.org/archives/stratum-dev/attachments/20210518/56ba8ffd/attachment-0001.html">https://lists.stratumproject.org/archives/stratum-dev/attachments/20210518/56ba8ffd/attachment-0001.html</A>&gt;
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: onos_debug_gui.png
+Type: image/png
+Size: 1574961 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.stratumproject.org/archives/stratum-dev/attachments/20210518/56ba8ffd/attachment-0001.png">https://lists.stratumproject.org/archives/stratum-dev/attachments/20210518/56ba8ffd/attachment-0001.png</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message (by thread): <A HREF="000226.html">[stratum-dev] Table entry from stratum_bmv2 different from ONOS	store
+</A></li>
+	<LI>Next message (by thread): <A HREF="000230.html">[stratum-dev] Table entry from stratum_bmv2 different from ONOS	store
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#229">[ date ]</a>
+              <a href="thread.html#229">[ thread ]</a>
+              <a href="subject.html#229">[ subject ]</a>
+              <a href="author.html#229">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.stratumproject.org/listinfo/stratum-dev">More information about the stratum-dev
+mailing list</a><br>
+</body></html>

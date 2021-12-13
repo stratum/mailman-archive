@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [stratum-dev] Question about building stratum standalone
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Question%20about%20building%20stratum%20standalone&In-Reply-To=%3CCAFh9Y_MVYDJucTy%3DZKSwAm5X%3DoJ8MTmwyEvPMHvVWkQNP0DQGg%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <LINK REL="Previous"  HREF="000197.html">
+   <LINK REL="Next"  HREF="000199.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[stratum-dev] Question about building stratum standalone</H1>
+    <B>Maximilian Pudelko</B> 
+    <A HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Question%20about%20building%20stratum%20standalone&In-Reply-To=%3CCAFh9Y_MVYDJucTy%3DZKSwAm5X%3DoJ8MTmwyEvPMHvVWkQNP0DQGg%40mail.gmail.com%3E"
+       TITLE="[stratum-dev] Question about building stratum standalone">max at opennetworking.org
+       </A><BR>
+    <I>Fri Mar 26 18:33:55 UTC 2021</I>
+    <P><UL>
+        <LI>Previous message (by thread): <A HREF="000197.html">[stratum-dev] Question about building stratum standalone
+</A></li>
+        <LI>Next message (by thread): <A HREF="000199.html">[stratum-dev] Help with Stratum Cassini Scenario
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#198">[ date ]</a>
+              <a href="thread.html#198">[ thread ]</a>
+              <a href="subject.html#198">[ subject ]</a>
+              <a href="author.html#198">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>We're using Debian 9 in many parts of the stack. You could either use that
+or
+replace the dependency with `libboost1.67-all-dev`in the Bazel build rule.
+
+
+Max
+
+On Thu, Mar 25, 2021 at 6:48 PM A Sydney &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">asydney007 at gmail.com</A>&gt; wrote:
+
+&gt;<i> Ah great! I was able to build the package, yay! But I'm having a few
+</I>&gt;<i> dependency issues:
+</I>&gt;<i>
+</I>&gt;<i> On the vm which hosts the stratum switch, I'm running Debian 10.
+</I>&gt;<i> Unfortunately, I could not find &quot;libboost1.55-all-dev.
+</I>&gt;<i> However, libboost1.67-all-dev did exist, so I attempted to install this
+</I>&gt;<i> version but no success. It appears that &quot;libboost1.55-all-dev&quot; is a hard
+</I>&gt;<i> requirement?
+</I>&gt;<i>
+</I>&gt;<i> &quot;&quot;&quot;
+</I>&gt;<i> sudo apt-get install --reinstall ./stratum_bmv2_debian.deb
+</I>&gt;<i> ...
+</I>&gt;<i> Note, selecting 'stratum_bmv2' instead of './stratum_bmv2_debian.deb'
+</I>&gt;<i> ...
+</I>&gt;<i> stratum_bmv2 : Depends: libboost1.55-all-dev but it is not installable
+</I>&gt;<i> ...
+</I>&gt;<i> &quot;&quot;&quot;
+</I>&gt;<i>
+</I>&gt;<i> Any suggestions on how to work around this one? If this version is truly a
+</I>&gt;<i> hard requirement, what linux distributions would you suggest (e.g. what
+</I>&gt;<i> distributions have you tried the install)?
+</I>&gt;<i>
+</I>&gt;<i> Thanks,
+</I>&gt;<i> -Syd
+</I>&gt;<i>
+</I>&gt;<i> On Thu, Mar 25, 2021 at 4:17 PM Maximilian Pudelko &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">max at opennetworking.org</A>&gt;
+</I>&gt;<i> wrote:
+</I>&gt;<i>
+</I>&gt;&gt;<i> Hi Syd,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> As you have found out, the P4Runtime/gNMI ports have to be exposed from
+</I>&gt;&gt;<i> inside the container
+</I>&gt;&gt;<i> to be reachable from outside.
+</I>&gt;&gt;<i> We have a start-stratum-container.sh script that takes care of that, or
+</I>&gt;&gt;<i> you map them manually with -p,
+</I>&gt;&gt;<i> like you did.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> &gt; I didn't quite get this one. Where can I get the associated *.deb
+</I>&gt;&gt;<i> package for the install?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> What I linked is the Bazel target that *builds* the .deb package. Build
+</I>&gt;&gt;<i> it with
+</I>&gt;&gt;<i> `bazel build --stamp //stratum/hal/bin/bmv2:stratum_bmv2_debian`.
+</I>&gt;&gt;<i> The resulting file will be under
+</I>&gt;&gt;<i> `bazel-bin/stratum/hal/bin/bmv2/stratum_bmv2_debian.deb`
+</I>&gt;&gt;<i> and can be installed on most Ubuntu and Debian systems:
+</I>&gt;&gt;<i> `apt-get install --reinstall ./stratum_bmv2_debian.deb`
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Best,
+</I>&gt;&gt;<i> Max
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> On Thu, Mar 25, 2021 at 12:06 PM A Sydney &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">asydney007 at gmail.com</A>&gt; wrote:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> But instead of building Stratum many times, check if the Debian package might not be more convenient:
+</I>&gt;&gt;&gt;&gt;<i> <A HREF="https://github.com/stratum/stratum/blob/main/stratum/hal/bin/bmv2/BUILD#L81-L98">https://github.com/stratum/stratum/blob/main/stratum/hal/bin/bmv2/BUILD#L81-L98</A>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> I didn't quite get this one. Where can I get the associated *.deb
+</I>&gt;&gt;&gt;<i> package for the install?
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Thanks,
+</I>&gt;&gt;&gt;<i> -Syd
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.stratumproject.org/archives/stratum-dev/attachments/20210326/da64991c/attachment.html">https://lists.stratumproject.org/archives/stratum-dev/attachments/20210326/da64991c/attachment.html</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message (by thread): <A HREF="000197.html">[stratum-dev] Question about building stratum standalone
+</A></li>
+	<LI>Next message (by thread): <A HREF="000199.html">[stratum-dev] Help with Stratum Cassini Scenario
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#198">[ date ]</a>
+              <a href="thread.html#198">[ thread ]</a>
+              <a href="subject.html#198">[ subject ]</a>
+              <a href="author.html#198">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.stratumproject.org/listinfo/stratum-dev">More information about the stratum-dev
+mailing list</a><br>
+</body></html>

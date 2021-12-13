@@ -1,0 +1,211 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [stratum-dev] Questions regarding pushing pipeline configs to barefoot Tofino switch
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Questions%20regarding%20pushing%20pipeline%20configs%20to%0A%20barefoot%20Tofino%20switch&In-Reply-To=%3CCAFh9Y_MT_KXmaVHC_UOmwVy43WcF9j2UDMrf48%2ByAdG_RRYUzw%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <LINK REL="Previous"  HREF="000173.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[stratum-dev] Questions regarding pushing pipeline configs to barefoot Tofino switch</H1>
+    <B>Maximilian Pudelko</B> 
+    <A HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Questions%20regarding%20pushing%20pipeline%20configs%20to%0A%20barefoot%20Tofino%20switch&In-Reply-To=%3CCAFh9Y_MT_KXmaVHC_UOmwVy43WcF9j2UDMrf48%2ByAdG_RRYUzw%40mail.gmail.com%3E"
+       TITLE="[stratum-dev] Questions regarding pushing pipeline configs to barefoot Tofino switch">max at opennetworking.org
+       </A><BR>
+    <I>Tue Oct 27 04:43:30 UTC 2020</I>
+    <P><UL>
+        <LI>Previous message (by thread): <A HREF="000173.html">[stratum-dev] Questions regarding pushing pipeline configs to barefoot Tofino switch
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#174">[ date ]</a>
+              <a href="thread.html#174">[ thread ]</a>
+              <a href="subject.html#174">[ subject ]</a>
+              <a href="author.html#174">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Thanks for posting the log.
+Sadly the segfault is happening deep inside the PI / SDE code. The only
+thing we could do is to detect and catch such a pipeline and fail
+gracefully.
+
+Max
+
+On Mon, Oct 26, 2020 at 4:29 PM zzha &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">zzha at masonlive.gmu.edu</A>&gt; wrote:
+
+&gt;<i> Hi Max and Yi,
+</I>&gt;<i>
+</I>&gt;<i> Thanks a lot for the explanation. I will definitely try out the
+</I>&gt;<i> stratum_bfrt target. FYI, the seg fault message from stratum is as below if
+</I>&gt;<i> I tried to push configs generated without --p4runtime-force-std-externs
+</I>&gt;<i> during compilation.
+</I>&gt;<i>
+</I>&gt;<i> ------------------------------------------------------------------------------------------------------------------------
+</I>&gt;<i> I20201026 22:34:10.255018  6773 bf_chassis_manager.cc:716] State of port
+</I>&gt;<i> 64 in node 1: UP.
+</I>&gt;<i> I20201026 22:34:10.256922  6773 bf_chassis_manager.cc:716] State of port
+</I>&gt;<i> 65 in node 1: UP.
+</I>&gt;<i> I20201026 22:34:10.565280  6773 bf_chassis_manager.cc:716] State of port
+</I>&gt;<i> 66 in node 1: UP.
+</I>&gt;<i> I20201026 22:34:10.586470  6773 bf_chassis_manager.cc:716] State of port
+</I>&gt;<i> 67 in node 1: UP.
+</I>&gt;<i> I20201026 22:34:36.289355  6778 p4_service.cc:698] Controller
+</I>&gt;<i> (connection_id: 1, election_id: 1, uri: ipv4:192.168.100.13:34090) is
+</I>&gt;<i> connected as MASTER for node (aka device) with ID 1.
+</I>&gt;<i> bf_switchd: starting warm init for dev_id 0 mode 1 serdes_upgrade 0
+</I>&gt;<i> |2020-10-26 22:34:36.571587 BF_PI ERROR - get_table_state: error when
+</I>&gt;<i> retrieving table state 33580535 for device 0
+</I>&gt;<i> *** Aborted at 1603751676 (unix time) try &quot;date -d @1603751676&quot; if you are
+</I>&gt;<i> using GNU date ***
+</I>&gt;<i> PC: @                0x0 (unknown)
+</I>&gt;<i> *** SIGSEGV (@0x0) received by PID 6732 (TID 0x7f099e7dc700) from PID 0;
+</I>&gt;<i> stack trace: ***
+</I>&gt;<i>     @     0x7f09b72cf0e0 (unknown)
+</I>&gt;<i>     @     0x7f09b8e24459 pi_state_table_id_to_handle
+</I>&gt;<i>     @     0x7f09b8e1d2ab _pi_update_device_start
+</I>&gt;<i>     @           0xcb1e24 pi_update_device_start
+</I>&gt;<i>     @           0xb99d24 pi::fe::proto::DeviceMgrImp::pipeline_config_set()
+</I>&gt;<i>     @           0xb921cd pi::fe::proto::DeviceMgr::pipeline_config_set()
+</I>&gt;<i>     @           0xac7719
+</I>&gt;<i> stratum::hal::pi::PINode::PushForwardingPipelineConfig()
+</I>&gt;<i>     @           0x43deaa
+</I>&gt;<i> stratum::hal::barefoot::BFSwitch::PushForwardingPipelineConfig()
+</I>&gt;<i>     @           0x94b501
+</I>&gt;<i> stratum::hal::P4Service::SetForwardingPipelineConfig()
+</I>&gt;<i>     @           0xc28e50 std::_Mem_fn&lt;&gt;::operator()&lt;&gt;()
+</I>&gt;<i>     @           0xc26099 std::_Function_handler&lt;&gt;::_M_invoke()
+</I>&gt;<i>     @           0xc3aed4 std::function&lt;&gt;::operator()()
+</I>&gt;<i>     @           0xc31aa2
+</I>&gt;<i> _ZZN9grpc_impl8internal16RpcMethodHandlerIN2p42v19P4Runtime7ServiceENS3_34SetForwardingPipelineConfigRequestENS3_35SetForwardingPipelineConfigResponseEE10RunHandlerERKN4grpc8internal13MethodHandler16HandlerParameterEENKUlvE_clEv
+</I>&gt;<i>     @           0xc3af09
+</I>&gt;<i> _ZN9grpc_impl8internal23CatchingFunctionHandlerIZNS0_16RpcMethodHandlerIN2p42v19P4Runtime7ServiceENS4_34SetForwardingPipelineConfigRequestENS4_35SetForwardingPipelineConfigResponseEE10RunHandlerERKN4grpc8internal13MethodHandler16HandlerParameterEEUlvE_EENSA_6StatusEOT_
+</I>&gt;<i>     @           0xc31b57
+</I>&gt;<i> grpc_impl::internal::RpcMethodHandler&lt;&gt;::RunHandler()
+</I>&gt;<i>     @           0xe07a48
+</I>&gt;<i> grpc_impl::Server::SyncRequest::CallData::ContinueRunAfterInterception()
+</I>&gt;<i>     @           0xe07877 grpc_impl::Server::SyncRequest::CallData::Run()
+</I>&gt;<i>     @           0xe08013
+</I>&gt;<i> grpc_impl::Server::SyncRequestThreadManager::DoWork()
+</I>&gt;<i>     @           0xe24429 grpc::ThreadManager::MainWorkLoop()
+</I>&gt;<i>     @           0xe23a9b grpc::ThreadManager::WorkerThread::Run()
+</I>&gt;<i>     @           0xe2395a
+</I>&gt;<i> _ZZN4grpc13ThreadManager12WorkerThreadC4EPS0_ENKUlPvE_clES3_
+</I>&gt;<i>     @           0xe23979
+</I>&gt;<i> _ZZN4grpc13ThreadManager12WorkerThreadC4EPS0_ENUlPvE_4_FUNES3_
+</I>&gt;<i>     @          0x1016b54
+</I>&gt;<i> _ZZN9grpc_core12_GLOBAL__N_120ThreadInternalsPosixC4EPKcPFvPvES4_PbRKNS_6Thread7OptionsEENKUlS4_E_clES4_
+</I>&gt;<i>     @          0x1016b99
+</I>&gt;<i> _ZZN9grpc_core12_GLOBAL__N_120ThreadInternalsPosixC4EPKcPFvPvES4_PbRKNS_6Thread7OptionsEENUlS4_E_4_FUNES4_
+</I>&gt;<i>     @     0x7f09b72c54a4 start_thread
+</I>&gt;<i>     @     0x7f09b6bedd0f clone
+</I>&gt;<i>     @                0x0 (unknown)
+</I>&gt;<i> Segmentation fault
+</I>&gt;<i>
+</I>&gt;<i> Best regards,
+</I>&gt;<i> Zoey
+</I>&gt;<i> ------------------------------
+</I>&gt;<i> *From:* Maximilian Pudelko &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">max at opennetworking.org</A>&gt;
+</I>&gt;<i> *Sent:* Monday, October 26, 2020 6:10 PM
+</I>&gt;<i> *To:* Yi Tseng &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">yi at opennetworking.org</A>&gt;
+</I>&gt;<i> *Cc:* zzha &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">zzha at masonlive.gmu.edu</A>&gt;; <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>
+</I>&gt;<i> &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>&gt;
+</I>&gt;<i> *Subject:* Re: [stratum-dev] Questions regarding pushing pipeline configs
+</I>&gt;<i> to barefoot Tofino switch
+</I>&gt;<i>
+</I>&gt;<i> Hi Zoey,
+</I>&gt;<i>
+</I>&gt;<i> Yi summarized it pretty well. While the extern flag is required, Stratum
+</I>&gt;<i> should not segfault.
+</I>&gt;<i> If you could post the error log we could see how to handle this better.
+</I>&gt;<i>
+</I>&gt;<i> Max
+</I>&gt;<i>
+</I>&gt;<i> On Mon, Oct 26, 2020 at 2:24 PM Yi Tseng via stratum-dev &lt;
+</I>&gt;<i> <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>&gt; wrote:
+</I>&gt;<i>
+</I>&gt;<i> Hi Zoey,
+</I>&gt;<i>
+</I>&gt;<i> We believed that Barefoot will add support for converting Register extern
+</I>&gt;<i> to the standard one in the next Barefoot's SDE release.
+</I>&gt;<i>
+</I>&gt;<i> Also, the current stratum_bf doesn't support register since the PI
+</I>&gt;<i> framework doesn't support it (Implementation here
+</I>&gt;<i> &lt;<A HREF="https://github.com/p4lang/PI/blob/master/proto/frontend/src/device_mgr.cpp#L2059-L2061">https://github.com/p4lang/PI/blob/master/proto/frontend/src/device_mgr.cpp#L2059-L2061</A>&gt;
+</I>&gt;<i> )
+</I>&gt;<i>
+</I>&gt;<i> Currently, we are working on a new Stratum target called stratum_bfrt
+</I>&gt;<i> which is based on Barefoot's BfRt C++ API (Pull request here
+</I>&gt;<i> &lt;<A HREF="https://github.com/stratum/stratum/pull/337">https://github.com/stratum/stratum/pull/337</A>&gt;).
+</I>&gt;<i> And it should support the native P4Runtime register messages.
+</I>&gt;<i>
+</I>&gt;<i> Yi
+</I>&gt;<i>
+</I>&gt;<i> On Mon, Oct 26, 2020 at 9:26 AM zzha via stratum-dev &lt;
+</I>&gt;<i> <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>&gt; wrote:
+</I>&gt;<i>
+</I>&gt;<i> Hi there,
+</I>&gt;<i>
+</I>&gt;<i> I have built and started Stratum on a Tofino switch. But when I was trying
+</I>&gt;<i> to install a pipeline configuration through p4runtime-shell, Stratum
+</I>&gt;<i> reports a segmentation fault if the P4 program is compiled without
+</I>&gt;<i> &quot;--p4runtime-force-std-externs&quot; flag. However, with this p4c compilation
+</I>&gt;<i> flag, for programs that use Tofino specific externs like registers, the
+</I>&gt;<i> compiler will report a warning that says &quot;No known conversion to standard
+</I>&gt;<i> P4Info for 'Register' extern type&quot;. Any suggestions on how to fix this
+</I>&gt;<i> would be greatly appreciated!
+</I>&gt;<i>
+</I>&gt;<i> Best regards,
+</I>&gt;<i> Zoey
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> stratum-dev mailing list
+</I>&gt;<i> <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>
+</I>&gt;<i> <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">https://lists.stratumproject.org/listinfo/stratum-dev</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i> Yi Tseng
+</I>&gt;<i> Member of Technical Staff
+</I>&gt;<i> Open Networking Foundation
+</I>&gt;<i> <A HREF="https://www.opennetworking.org/">https://www.opennetworking.org/</A>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> stratum-dev mailing list
+</I>&gt;<i> <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>
+</I>&gt;<i> <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">https://lists.stratumproject.org/listinfo/stratum-dev</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.stratumproject.org/archives/stratum-dev/attachments/20201026/caf3aa0f/attachment.html">https://lists.stratumproject.org/archives/stratum-dev/attachments/20201026/caf3aa0f/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message (by thread): <A HREF="000173.html">[stratum-dev] Questions regarding pushing pipeline configs to barefoot Tofino switch
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#174">[ date ]</a>
+              <a href="thread.html#174">[ thread ]</a>
+              <a href="subject.html#174">[ subject ]</a>
+              <a href="author.html#174">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.stratumproject.org/listinfo/stratum-dev">More information about the stratum-dev
+mailing list</a><br>
+</body></html>

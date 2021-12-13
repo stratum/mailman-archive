@@ -1,0 +1,24 @@
+From bocon at opennetworking.org  Wed Sep 30 23:45:47 2020
+From: bocon at opennetworking.org (Brian O'Connor)
+Date: Wed, 30 Sep 2020 19:45:47 -0400
+Subject: [stratum-announce] Stratum 2020-09-30 release is available!
+Message-ID: <CACKOpD=PoEcA6v72az974HXyeetR8ZGo20TP4O+73PEDNddymg@mail.gmail.com>
+
+We are pleased to announce the second Stratum release: *2020-09-30* (or
+20.09 for short)
+
+Pre-built Docker images and Debian packages, along with a more extensive
+changelist, is available in the GitHub release page:
+https://github.com/stratum/stratum/releases/tag/2020-09-30
+
+This release supports P4Runtime v1.2.0 and gNMI v0.7.0 on several targets
+<https://github.com/stratum/stratum/tree/2020-09-30#supported-devices>.
+Stratum's date-named releases are scheduled to happen quarterly, but they
+may be more or less frequent if needed.
+
+Thanks again to everyone that has participated in this release!
+Brian, Max, Yi and the rest of the Stratum team
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-announce/attachments/20200930/ebb95616/attachment.html>
+

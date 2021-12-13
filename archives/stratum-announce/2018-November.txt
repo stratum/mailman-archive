@@ -1,0 +1,49 @@
+From bocon at opennetworking.org  Wed Nov  7 02:58:17 2018
+From: bocon at opennetworking.org (Brian O'Connor)
+Date: Tue, 6 Nov 2018 18:58:17 -0800
+Subject: [stratum-announce] Upcoming Stratum Events (Nov./Dec. 2018)
+Message-ID: <CACKOpDm0WbAAWJEt2_cyQYzd7BYWhuN1Y9GHugh4HtC1qtJRLQ@mail.gmail.com>
+
+Hi everyone,
+
+We wanted to make you aware of a few upcoming events that will feature
+Stratum:
+
+*November 14-16: GNTC <http://www.conference.cn/gntc/2018/en/> - Nanjing*
+- Demo booth: Come see Stratum, Trellis, and ONOS in action at our demo
+booth
+- P4 & Stratum workshop (Nov. 15th 13:30-15:30): Tencent, China Telecom,
+and Ruijie will be talking about P4 and Stratum in their networks and
+solutions
+- ONOS/P4 Tutorial (Nov. 16th 13:30-16:30): Learn how to run ONOS and
+Trellis in this hands-on
+
+*November 17: Stratum Developer Day - Shenzhen
+<https://www.eventbrite.com/e/stratum-developer-day-shenzhen-tickets-51746246416>*
+*Hosted and sponsored by Tencent*
+- Morning session (9:30-12:00): Overview and architecture sessions that are
+open to the public
+- Afternoon session (12:00-17:00): Deep dive for Stratum members [lunch
+provided]
+
+*December 3-6: ONF Connect 2018
+<https://www.opennetworking.org/onf-connect/>*
+*Note: There a few tutorials on the 3rd; the main program runs Tuesday to
+Thursday (4th-6th)*
+- Stratum Tutorial (Dec. 3rd, 13:00-14:30) - Architecture and technical
+deep dive
+- Trellis+P4 Tutorial (Dec. 3rd, 15:00-18:00) - Learn how to run ONOS and
+Trellis in this hands-on
+- Demo booth (Dec. 4-6): Come see Stratum, Trellis, and ONOS in action at
+our demo booth
+- Next-Gen SDN track
+<https://onfconnect2018.sched.com/overview/type/Next-Gen+SDN+%28P4+%26+Stratum+%26+UPAN%29>
+(Dec. 4-6, 14:00-18:00): Hear from a wide range of industry leaders on P4,
+Stratum, and next-generation SDN architectures and solutions
+
+Hope to see you at one or more of these events!
+Brian
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-announce/attachments/20181106/12fd5fe1/attachment.html>
+

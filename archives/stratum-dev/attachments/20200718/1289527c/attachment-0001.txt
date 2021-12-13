@@ -1,0 +1,1422 @@
+root@localhost:~/stratum# ./stratum/hal/bin/barefoot/docker/start-stratum-container.sh
++ [[ -z '' ]]
++ [[ -f /etc/onl/platform ]]
+++ cat /etc/onl/platform
++ PLATFORM=x86-64-accton-wedge100bf-32x-r0
++ '[' -d /etc/onl ']'
+++ awk '{print "-v " $1 ":" $1 " " }'
+++ ls /lib/x86_64-linux-gnu/libonlp-platform-defaults.so /lib/x86_64-linux-gnu/libonlp-platform-defaults.so.1 /lib/x86_64-linux-gnu/libonlp-platform.so /lib/x86_64-linux-gnu/libonlp-platform.so.1 /lib/x86_64-linux-gnu/libonlp.so /lib/x86_64-linux-gnu/libonlp.so.1 /lib/x86_64-linux-gnu/libonlp-x86-64-accton-wedge100bf-32x.so.1
++ ONLP_MOUNT='-v /lib/x86_64-linux-gnu/libonlp-platform-defaults.so:/lib/x86_64-linux-gnu/libonlp-platform-defaults.so
+-v /lib/x86_64-linux-gnu/libonlp-platform-defaults.so.1:/lib/x86_64-linux-gnu/libonlp-platform-defaults.so.1
+-v /lib/x86_64-linux-gnu/libonlp-platform.so:/lib/x86_64-linux-gnu/libonlp-platform.so
+-v /lib/x86_64-linux-gnu/libonlp-platform.so.1:/lib/x86_64-linux-gnu/libonlp-platform.so.1
+-v /lib/x86_64-linux-gnu/libonlp.so:/lib/x86_64-linux-gnu/libonlp.so
+-v /lib/x86_64-linux-gnu/libonlp.so.1:/lib/x86_64-lnlp.so.1
+-v /lib/x86_64-linux-[445878.732321] docker0: port 1(veth9a02bd3) entered blocking state
+gnu/libonlp-x86-[445878.745457] docker0: port 1(veth9a02bd3) entered disabled state
+64-accton-wedge1[445878.760483] device veth9a02bd3 entered promiscuous mode
+00bf-32x.so.1:/l[445878.773884] IPv6: ADDRCONF(NETDEV_UP): veth9a02bd3: link is not ready
+ib/x86_64-linux-gnu/libonlp-x86-64-accton-wedge100bf-32x.so.1 '
++ ONLP_MOUNT='-v /lib/x86_64-linux-gnu/libonlp-platform-defaults.so:/lib/x86_64-linux-gnu/libonlp-platform-defaults.so
+-v /lib/x86_64-linux-gnu/libonlp-platform-defaults.so.1:/lib/x86_64-linux-gnu/libonlp-platform-defaults.so.1
+-v /lib/x86_64-linux-gnu/libonlp-platform.so:/lib/x86_64-linux-gnu/libonlp-platform.so
+-v /lib/x86_64-linux-gnu/libonlp-platform.so.1:/lib/x86_64-linux-gnu/libonlp-platform.so.1
+-v /lib/x86_64-linux-gnu/libonlp.so:/lib/x86_64-linux-gnu/libonlp.so
+-v /lib/x86_64-linux-gnu/libonlp.so.1:/lib/x86_64-linux-gnu/libonlp.so.1
+-v /lib/x86_64-linux-gnu/libonlp-x86-64-accton-wedge100bf-32x.so.1:/lib/x86_64-linux-gnu/libonlp-x86-64-accton-wedge100bf-32x.so.1                -v /lib/platform-config:/lib/platform-config               -v /etc/onl:/etc/onl'
++ '[' -n '' ']'
++ '[' -n /root/stratum/stratum/hal/config/x86-64-accton-wedge100bf-32x-r0/chassis_config.pb.txt ']'
++ CHASSIS_CONFIG_MOUNT='-v /root/stratum/stratum/hal/config/x86-64-accton-wedge100bf-32x-r0/chassis_config.pb.txt:/etc/stratum/x86-64-accton-wedge100bf-32x-r0/chassis_config.pb.txt'
++ LOG_DIR=/var/log
++ SDE_VERSION=9.0.0
+++ uname -r
++ KERNEL_VERSION=4.14.49-OpenNetworkLinux
++ DOCKER_IMAGE=stratumproject/stratum-bf
++ DOCKER_IMAGE_TAG=9.0.0-4.14.49-OpenNetworkLinux
+++ uname -r
+++ uname -r
++ docker run -it --rm --privileged -v /dev:/dev -v /sys:/sys -v /lib/modules/4.14.49-OpenNetworkLinux:/lib/modules/4.14.49-OpenNetworkLinux --env PLATFORM=x86-64-accton-wedge100bf-32x-r0 -v /lib/x86_64-linux-gnu/libonlp-platform-defaults.so:/lib/x86_64-linux-gnu/libonlp-platform-defaults.so -v /lib/x86_64-linux-gnu/libonlp-platform-defaults.so.1:/lib/x86_64-linux-gnu/libonlp-platform-defaults.so.1 -v /lib/x86_64-linux-gnu/libonlp-platform.so:/lib/x86_64-linux-gnu/libonlp-platform.so -v /lib/x86_64-linux-gnu/libonlp-platform.so.1:/lib/x86_64-linux-gnu/libonlp-platform.so.1 -v /lib/x86_64-linux-gnu/libonlp.so:/lib/x86_64-linux-gnu/libonlp.so -v /lib/x86_64-linux-gnu/libonlp.so.1:/lib/x86_64-linux-gnu/libonlp.so.1 -v /lib/x86_64-linux-gnu/libonlp-x86-64-accton-wedge100bf-32x.so.1:/lib/x86_64-linux-gnu/libonlp-x86-64-accton-wedge100bf-32x.so.1 -v /lib/platform-config:/lib/platform-config -v /etc/onl:/etc/onl -p 28000:28000 -p 9339:9339 -v /root/stratum/stratum/hal/config/x86-64-accton-wedge100bf-32x-r0/chassis_config.pb.txt:/etc/stratum/x86-64-accton-wedge100bf-32x-r0/chassis_config.pb.txt -v /var/log:/var/log/stratum stratumproject/stratum-bf:9.0.0-4.14.49-OpenNetworkLinux
+[445879.600843] eth0: renamed from vethfa408cd
+[445879.648909] IPv6: ADDRCONF(NETDEV_CHANGE): veth9a02bd3: link becomes ready
+[445879.662902] docker0: port 1(veth9a02bd3) entered blocking state
+[445879.674934] docker0: port 1(veth9a02bd3) entered forwarding state
+bf_kdrv_mod found! Unloading first...
+loading bf_kdrv_[445879.778960] Use MSI interrupt
+mod...
+[445879.786401] BF allocating legacy int vector 11
+[445879.796368] bf 0000:05:00.0: bf device 0 registered with irq 11
+[445879.808394] bf probe ok
+bf_sysfs_fname /sys/class/bf/bf0/device/dev_add
+Install dir: /usr (0x55d9a36d4020)
+bf_switchd: system services initialized
+bf_switchd: loading conf_file /usr/share/stratum/tofino_skip_p4_no_bsp.conf...
+bf_switchd: processing device configuration...
+Configuration for dev_id 0
+  Family        : Tofino
+  pci_sysfs_str : /sys/devices/pci0000:00/0000:00:03.0/0000:05:00.0
+  pci_domain    : 0
+  pci_bus       : 5
+  pci_fn        : 0
+  pci_dev       : 0
+  pci_int_mode  : 1
+  sbus_master_fw: /usr/
+  pcie_fw       : /usr/
+  serdes_fw     : /usr/
+  sds_fw_path   : /usr/
+  microp_fw_path:
+bf_switchd: processing P4 configuration...
+P4 profile for dev_id 0
+  p4_name: dummy
+    libpd:
+    libpdthrift:
+    context:
+    config:
+  diag:
+  accton diag:
+  board-port-map: /usr/share/port_map.json
+  non_default_port_ppgs: 0
+  SAI default initialize: 1
+board-port-map path: /usr/share/port_map.json
+bf_switchd: loading board-map conf file /usr/share/port_map.json...
+enable-debug-log:yes
+Parsing Board-lane-entries 33 found
+num-of-connectors:33
+
+Connector->1 device_id:0 mac_block:23 media:copper enable-auto-neg:1
+lane0 mac_ch:0 tx_lane:2, rx_lane:2, tx_pn_swap:1 rx_pn_swap:1
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane1 mac_ch:1 tx_lane:0, rx_lane:0, tx_pn_swap:1 rx_pn_swap:1
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane2 mac_ch:2 tx_lane:3, rx_lane:3, tx_pn_swap:1 rx_pn_swap:0
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane3 mac_ch:3 tx_lane:1, rx_lane:1, tx_pn_swap:1 rx_pn_swap:0
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+
+Connector->2 device_id:0 mac_block:22 media:copper enable-auto-neg:1
+lane0 mac_ch:0 tx_lane:2, rx_lane:2, tx_pn_swap:1 rx_pn_swap:0
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane1 mac_ch:1 tx_lane:3, rx_lane:3, tx_pn_swap:1 rx_pn_swap:0
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane2 mac_ch:2 tx_lane:0, rx_lane:0, tx_pn_swap:1 rx_pn_swap:1
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane3 mac_ch:3 tx_lane:1, rx_lane:1, tx_pn_swap:0 rx_pn_swap:1
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+
+Connector->3 device_id:0 mac_block:21 media:copper enable-auto-neg:1
+lane0 mac_ch:0 tx_lane:3, rx_lane:3, tx_pn_swap:0 rx_pn_swap:0
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane1 mac_ch:1 tx_lane:2, rx_lane:2, tx_pn_swap:0 rx_pn_swap:1
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane2 mac_ch:2 tx_lane:1, rx_lane:1, tx_pn_swap:0 rx_pn_swap:0
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane3 mac_ch:3 tx_lane:0, rx_lane:0, tx_pn_swap:1 rx_pn_swap:0
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+
+Connector->4 device_id:0 mac_block:20 media:copper enable-auto-neg:1
+lane0 mac_ch:0 tx_lane:2, rx_lane:2, tx_pn_swap:1 rx_pn_swap:0
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane1 mac_ch:1 tx_lane:3, rx_lane:3, tx_pn_swap:1 rx_pn_swap:0
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane2 mac_ch:2 tx_lane:0, rx_lane:0, tx_pn_swap:1 rx_pn_swap:1
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane3 mac_ch:3 tx_lane:1, rx_lane:1, tx_pn_swap:0 rx_pn_swap:1
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+
+Connector->5 device_id:0 mac_block:19 media:copper enable-auto-neg:1
+lane0 mac_ch:0 tx_lane:2, rx_lane:2, tx_pn_swap:1 rx_pn_swap:1
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane1 mac_ch:1 tx_lane:3, rx_lane:3, tx_pn_swap:1 rx_pn_swap:1
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane2 mac_ch:2 tx_lane:0, rx_lane:0, tx_pn_swap:1 rx_pn_swap:0
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane3 mac_ch:3 tx_lane:1, rx_lane:1, tx_pn_swap:1 rx_pn_swap:0
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+
+Connector->6 device_id:0 mac_block:18 media:copper enable-auto-neg:1
+lane0 mac_ch:0 tx_lane:2, rx_lane:2, tx_pn_swap:1 rx_pn_swap:0
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane1 mac_ch:1 tx_lane:3, rx_lane:3, tx_pn_swap:1 rx_pn_swap:0
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane2 mac_ch:2 tx_lane:0, rx_lane:0, tx_pn_swap:1 rx_pn_swap:1
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane3 mac_ch:3 tx_lane:1, rx_lane:1, tx_pn_swap:1 rx_pn_swap:1
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+
+Connector->7 device_id:0 mac_block:17 media:copper enable-auto-neg:1
+lane0 mac_ch:0 tx_lane:2, rx_lane:2, tx_pn_swap:1 rx_pn_swap:1
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane1 mac_ch:1 tx_lane:3, rx_lane:3, tx_pn_swap:1 rx_pn_swap:1
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane2 mac_ch:2 tx_lane:0, rx_lane:0, tx_pn_swap:1 rx_pn_swap:0
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane3 mac_ch:3 tx_lane:1, rx_lane:1, tx_pn_swap:1 rx_pn_swap:0
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+
+Connector->8 device_id:0 mac_block:16 media:copper enable-auto-neg:1
+lane0 mac_ch:0 tx_lane:2, rx_lane:2, tx_pn_swap:1 rx_pn_swap:0
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane1 mac_ch:1 tx_lane:3, rx_lane:3, tx_pn_swap:1 rx_pn_swap:0
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane2 mac_ch:2 tx_lane:0, rx_lane:0, tx_pn_swap:1 rx_pn_swap:1
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane3 mac_ch:3 tx_lane:1, rx_lane:1, tx_pn_swap:1 rx_pn_swap:1
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+
+Connector->9 device_id:0 mac_block:15 media:copper enable-auto-neg:1
+lane0 mac_ch:0 tx_lane:2, rx_lane:2, tx_pn_swap:1 rx_pn_swap:1
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane1 mac_ch:1 tx_lane:3, rx_lane:3, tx_pn_swap:1 rx_pn_swap:1
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane2 mac_ch:2 tx_lane:0, rx_lane:0, tx_pn_swap:1 rx_pn_swap:0
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane3 mac_ch:3 tx_lane:1, rx_lane:1, tx_pn_swap:1 rx_pn_swap:0
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+
+Connector->10 device_id:0 mac_block:14 media:copper enable-auto-neg:1
+lane0 mac_ch:0 tx_lane:2, rx_lane:2, tx_pn_swap:1 rx_pn_swap:0
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane1 mac_ch:1 tx_lane:3, rx_lane:3, tx_pn_swap:1 rx_pn_swap:0
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane2 mac_ch:2 tx_lane:0, rx_lane:0, tx_pn_swap:1 rx_pn_swap:1
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane3 mac_ch:3 tx_lane:1, rx_lane:1, tx_pn_swap:1 rx_pn_swap:1
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+
+Connector->11 device_id:0 mac_block:13 media:copper enable-auto-neg:1
+lane0 mac_ch:0 tx_lane:2, rx_lane:2, tx_pn_swap:1 rx_pn_swap:1
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane1 mac_ch:1 tx_lane:3, rx_lane:3, tx_pn_swap:1 rx_pn_swap:1
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane2 mac_ch:2 tx_lane:0, rx_lane:0, tx_pn_swap:1 rx_pn_swap:0
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane3 mac_ch:3 tx_lane:1, rx_lane:1, tx_pn_swap:1 rx_pn_swap:0
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+
+Connector->12 device_id:0 mac_block:12 media:copper enable-auto-neg:1
+lane0 mac_ch:0 tx_lane:2, rx_lane:2, tx_pn_swap:1 rx_pn_swap:0
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane1 mac_ch:1 tx_lane:3, rx_lane:3, tx_pn_swap:1 rx_pn_swap:0
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane2 mac_ch:2 tx_lane:0, rx_lane:0, tx_pn_swap:1 rx_pn_swap:1
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane3 mac_ch:3 tx_lane:1, rx_lane:1, tx_pn_swap:1 rx_pn_swap:1
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+
+Connector->13 device_id:0 mac_block:11 media:copper enable-auto-neg:1
+lane0 mac_ch:0 tx_lane:2, rx_lane:2, tx_pn_swap:1 rx_pn_swap:1
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane1 mac_ch:1 tx_lane:3, rx_lane:3, tx_pn_swap:1 rx_pn_swap:1
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane2 mac_ch:2 tx_lane:0, rx_lane:0, tx_pn_swap:1 rx_pn_swap:0
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane3 mac_ch:3 tx_lane:1, rx_lane:1, tx_pn_swap:1 rx_pn_swap:0
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+
+Connector->14 device_id:0 mac_block:10 media:copper enable-auto-neg:1
+lane0 mac_ch:0 tx_lane:0, rx_lane:0, tx_pn_swap:1 rx_pn_swap:0
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane1 mac_ch:1 tx_lane:2, rx_lane:2, tx_pn_swap:1 rx_pn_swap:0
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane2 mac_ch:2 tx_lane:1, rx_lane:1, tx_pn_swap:1 rx_pn_swap:1
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane3 mac_ch:3 tx_lane:3, rx_lane:3, tx_pn_swap:1 rx_pn_swap:1
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+
+Connector->15 device_id:0 mac_block:9 media:copper enable-auto-neg:1
+lane0 mac_ch:0 tx_lane:2, rx_lane:2, tx_pn_swap:1 rx_pn_swap:1
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane1 mac_ch:1 tx_lane:3, rx_lane:3, tx_pn_swap:1 rx_pn_swap:1
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane2 mac_ch:2 tx_lane:0, rx_lane:0, tx_pn_swap:1 rx_pn_swap:0
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane3 mac_ch:3 tx_lane:1, rx_lane:1, tx_pn_swap:1 rx_pn_swap:0
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+
+Connector->16 device_id:0 mac_block:8 media:copper enable-auto-neg:1
+lane0 mac_ch:0 tx_lane:2, rx_lane:2, tx_pn_swap:1 rx_pn_swap:0
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane1 mac_ch:1 tx_lane:3, rx_lane:3, tx_pn_swap:1 rx_pn_swap:0
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane2 mac_ch:2 tx_lane:0, rx_lane:0, tx_pn_swap:1 rx_pn_swap:1
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane3 mac_ch:3 tx_lane:1, rx_lane:1, tx_pn_swap:1 rx_pn_swap:1
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+
+Connector->17 device_id:0 mac_block:7 media:copper enable-auto-neg:1
+lane0 mac_ch:0 tx_lane:3, rx_lane:3, tx_pn_swap:0 rx_pn_swap:1
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane1 mac_ch:1 tx_lane:2, rx_lane:2, tx_pn_swap:0 rx_pn_swap:1
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane2 mac_ch:2 tx_lane:1, rx_lane:1, tx_pn_swap:0 rx_pn_swap:0
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane3 mac_ch:3 tx_lane:0, rx_lane:0, tx_pn_swap:0 rx_pn_swap:0
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+
+Connector->18 device_id:0 mac_block:6 media:copper enable-auto-neg:1
+lane0 mac_ch:0 tx_lane:3, rx_lane:3, tx_pn_swap:0 rx_pn_swap:1
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane1 mac_ch:1 tx_lane:2, rx_lane:2, tx_pn_swap:0 rx_pn_swap:1
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane2 mac_ch:2 tx_lane:0, rx_lane:0, tx_pn_swap:0 rx_pn_swap:0
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane3 mac_ch:3 tx_lane:1, rx_lane:1, tx_pn_swap:0 rx_pn_swap:0
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+
+Connector->19 device_id:0 mac_block:5 media:copper enable-auto-neg:1
+lane0 mac_ch:0 tx_lane:3, rx_lane:3, tx_pn_swap:0 rx_pn_swap:1
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane1 mac_ch:1 tx_lane:1, rx_lane:1, tx_pn_swap:0 rx_pn_swap:1
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane2 mac_ch:2 tx_lane:2, rx_lane:2, tx_pn_swap:0 rx_pn_swap:0
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane3 mac_ch:3 tx_lane:0, rx_lane:0, tx_pn_swap:0 rx_pn_swap:0
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+
+Connector->20 device_id:0 mac_block:4 media:copper enable-auto-neg:1
+lane0 mac_ch:0 tx_lane:2, rx_lane:2, tx_pn_swap:0 rx_pn_swap:1
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane1 mac_ch:1 tx_lane:3, rx_lane:3, tx_pn_swap:0 rx_pn_swap:1
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane2 mac_ch:2 tx_lane:0, rx_lane:0, tx_pn_swap:0 rx_pn_swap:0
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane3 mac_ch:3 tx_lane:1, rx_lane:1, tx_pn_swap:0 rx_pn_swap:0
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+
+Connector->21 device_id:0 mac_block:3 media:copper enable-auto-neg:1
+lane0 mac_ch:0 tx_lane:2, rx_lane:2, tx_pn_swap:0 rx_pn_swap:0
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane1 mac_ch:1 tx_lane:3, rx_lane:3, tx_pn_swap:0 rx_pn_swap:0
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane2 mac_ch:2 tx_lane:0, rx_lane:0, tx_pn_swap:0 rx_pn_swap:1
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane3 mac_ch:3 tx_lane:1, rx_lane:1, tx_pn_swap:0 rx_pn_swap:1
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+
+Connector->22 device_id:0 mac_block:2 media:copper enable-auto-neg:1
+lane0 mac_ch:0 tx_lane:2, rx_lane:2, tx_pn_swap:0 rx_pn_swap:1
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane1 mac_ch:1 tx_lane:3, rx_lane:3, tx_pn_swap:0 rx_pn_swap:1
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane2 mac_ch:2 tx_lane:0, rx_lane:0, tx_pn_swap:0 rx_pn_swap:0
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane3 mac_ch:3 tx_lane:1, rx_lane:1, tx_pn_swap:0 rx_pn_swap:0
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+
+Connector->23 device_id:0 mac_block:1 media:copper enable-auto-neg:1
+lane0 mac_ch:0 tx_lane:2, rx_lane:2, tx_pn_swap:0 rx_pn_swap:0
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane1 mac_ch:1 tx_lane:3, rx_lane:3, tx_pn_swap:0 rx_pn_swap:0
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane2 mac_ch:2 tx_lane:0, rx_lane:0, tx_pn_swap:0 rx_pn_swap:1
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane3 mac_ch:3 tx_lane:1, rx_lane:1, tx_pn_swap:0 rx_pn_swap:1
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+
+Connector->24 device_id:0 mac_block:0 media:copper enable-auto-neg:1
+lane0 mac_ch:0 tx_lane:2, rx_lane:2, tx_pn_swap:0 rx_pn_swap:1
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane1 mac_ch:1 tx_lane:3, rx_lane:3, tx_pn_swap:0 rx_pn_swap:1
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane2 mac_ch:2 tx_lane:0, rx_lane:0, tx_pn_swap:0 rx_pn_swap:0
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane3 mac_ch:3 tx_lane:1, rx_lane:1, tx_pn_swap:0 rx_pn_swap:0
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+
+Connector->25 device_id:0 mac_block:31 media:copper enable-auto-neg:1
+lane0 mac_ch:0 tx_lane:2, rx_lane:2, tx_pn_swap:0 rx_pn_swap:0
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane1 mac_ch:1 tx_lane:3, rx_lane:3, tx_pn_swap:0 rx_pn_swap:0
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane2 mac_ch:2 tx_lane:0, rx_lane:0, tx_pn_swap:0 rx_pn_swap:1
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane3 mac_ch:3 tx_lane:1, rx_lane:1, tx_pn_swap:0 rx_pn_swap:1
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+
+Connector->26 device_id:0 mac_block:30 media:copper enable-auto-neg:1
+lane0 mac_ch:0 tx_lane:2, rx_lane:2, tx_pn_swap:0 rx_pn_swap:1
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane1 mac_ch:1 tx_lane:3, rx_lane:3, tx_pn_swap:0 rx_pn_swap:1
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane2 mac_ch:2 tx_lane:0, rx_lane:0, tx_pn_swap:0 rx_pn_swap:0
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane3 mac_ch:3 tx_lane:1, rx_lane:1, tx_pn_swap:0 rx_pn_swap:0
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+
+Connector->27 device_id:0 mac_block:29 media:copper enable-auto-neg:1
+lane0 mac_ch:0 tx_lane:2, rx_lane:2, tx_pn_swap:0 rx_pn_swap:0
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane1 mac_ch:1 tx_lane:3, rx_lane:3, tx_pn_swap:0 rx_pn_swap:0
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane2 mac_ch:2 tx_lane:0, rx_lane:0, tx_pn_swap:0 rx_pn_swap:1
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane3 mac_ch:3 tx_lane:1, rx_lane:1, tx_pn_swap:0 rx_pn_swap:1
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+
+Connector->28 device_id:0 mac_block:28 media:copper enable-auto-neg:1
+lane0 mac_ch:0 tx_lane:2, rx_lane:2, tx_pn_swap:0 rx_pn_swap:1
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane1 mac_ch:1 tx_lane:3, rx_lane:3, tx_pn_swap:0 rx_pn_swap:1
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane2 mac_ch:2 tx_lane:0, rx_lane:0, tx_pn_swap:0 rx_pn_swap:0
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane3 mac_ch:3 tx_lane:1, rx_lane:1, tx_pn_swap:0 rx_pn_swap:0
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+
+Connector->29 device_id:0 mac_block:26 media:copper enable-auto-neg:1
+lane0 mac_ch:0 tx_lane:3, rx_lane:3, tx_pn_swap:1 rx_pn_swap:1
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane1 mac_ch:1 tx_lane:2, rx_lane:2, tx_pn_swap:1 rx_pn_swap:0
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane2 mac_ch:2 tx_lane:1, rx_lane:1, tx_pn_swap:1 rx_pn_swap:0
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane3 mac_ch:3 tx_lane:0, rx_lane:0, tx_pn_swap:1 rx_pn_swap:0
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+
+Connector->30 device_id:0 mac_block:27 media:copper enable-auto-neg:1
+lane0 mac_ch:0 tx_lane:3, rx_lane:3, tx_pn_swap:1 rx_pn_swap:0
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane1 mac_ch:1 tx_lane:2, rx_lane:2, tx_pn_swap:1 rx_pn_swap:0
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane2 mac_ch:2 tx_lane:1, rx_lane:1, tx_pn_swap:0 rx_pn_swap:1
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane3 mac_ch:3 tx_lane:0, rx_lane:0, tx_pn_swap:0 rx_pn_swap:1
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+
+Connector->31 device_id:0 mac_block:24 media:copper enable-auto-neg:1
+lane0 mac_ch:0 tx_lane:0, rx_lane:0, tx_pn_swap:1 rx_pn_swap:1
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane1 mac_ch:1 tx_lane:3, rx_lane:3, tx_pn_swap:0 rx_pn_swap:0
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane2 mac_ch:2 tx_lane:2, rx_lane:2, tx_pn_swap:0 rx_pn_swap:1
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane3 mac_ch:3 tx_lane:1, rx_lane:1, tx_pn_swap:0 rx_pn_swap:1
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+
+Connector->32 device_id:0 mac_block:25 media:copper enable-auto-neg:1
+lane0 mac_ch:0 tx_lane:2, rx_lane:2, tx_pn_swap:1 rx_pn_swap:0
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane1 mac_ch:1 tx_lane:3, rx_lane:3, tx_pn_swap:1 rx_pn_swap:0
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane2 mac_ch:2 tx_lane:0, rx_lane:0, tx_pn_swap:0 rx_pn_swap:1
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+lane3 mac_ch:3 tx_lane:1, rx_lane:1, tx_pn_swap:0 rx_pn_swap:1
+tx_eq_pre:6 tx_eq_post:0 tx_eq_attn:0
+
+Connector->33 device_id:0 mac_block:32 media:copper enable-auto-neg:1
+lane0 mac_ch:0 tx_lane:1, rx_lane:1, tx_pn_swap:0 rx_pn_swap:0
+tx_eq_pre:0 tx_eq_post:0 tx_eq_attn:0
+lane1 mac_ch:1 tx_lane:2, rx_lane:2, tx_pn_swap:0 rx_pn_swap:0
+tx_eq_pre:0 tx_eq_post:0 tx_eq_attn:0
+lane2 mac_ch:2 tx_lane:0, rx_lane:0, tx_pn_swap:1 rx_pn_swap:0
+tx_eq_pre:0 tx_eq_post:0 tx_eq_attn:0
+lane3 mac_ch:3 tx_lane:3, rx_lane:3, tx_pn_swap:0 rx_pn_swap:0
+tx_eq_pre:0 tx_eq_post:0 tx_eq_attn:0
+Operational mode set to ASIC
+ASIC detected at PCI /sys/class/bf/bf0/device
+ASIC pci device id is 16
+bf_switchd: drivers initialized
+Skipping P4 program load for dev_id 0
+detecting.. IOMMU not enabled on the platform
+Setting core_pll_ctrl0=cd44cbfe
+
+bf_switchd: dev_id 0 initialized
+
+bf_switchd: initialized 1 devices
+bf_switchd: Credo python server thread initialized..Skip p4 lib init
+Skip mav diag lib init
+bf_switchd: spawning cli server thread
+credo_python_intf: listen socket created
+credo_python_intf: bind done on port 9001, listening...
+credo_python_intf: listening for incoming connections...
+bf_switchd: running in background; driver shell is disabled
+bf_switchd: server started - listening on port 9999
+I0718 17:21:39.606451     1 main.cc:124] switchd started successfully
+W0718 17:21:39.607110     1 credentials_manager.cc:45] Using insecure server credentials
+I0718 17:21:39.607637     1 timer_daemon.cc:90] The timer daemon has been started.
+I0718 17:21:39.607766     1 hal.cc:128] Setting up HAL in COLDBOOT mode...
+I0718 17:21:39.607890     1 config_monitoring_service.cc:90] Pushing the saved chassis config read from /etc/stratum/x86-64-accton-wedge100bf-32x-r0/chassis_config.pb.txt...
+I0718 17:21:39.619957     1 onlp_wrapper.cc:65] Initializing ONLP.
+07-18 17:21:44.473907 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:21:52.475553 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/drivers/lm75/8-0048/temp1_input)
+
+07-18 17:21:57.476468 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/drivers/lm75/8-0049/temp1_input)
+
+07-18 17:22:02.487631 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/drivers/syscpld/12-0031/psu1_present)
+
+07-18 17:22:07.488605 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/drivers/syscpld/12-0031/psu2_present)
+
+07-18 17:22:12.489517 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/devices/8-0033/fantray_present)
+
+07-18 17:22:17.990531 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/devices/8-0033/fan3_input)
+
+07-18 17:22:22.991475 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/devices/8-0033/fantray_present)
+
+07-18 17:22:27.992435 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/devices/8-0033/fantray_present)
+
+07-18 17:22:32.993380 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/devices/8-0033/fantray_present)
+
+07-18 17:22:39.154643 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/devices/8-0033/fantray_present)
+
+07-18 17:22:44.155604 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/devices/8-0033/fantray_present)
+
+07-18 17:22:49.156568 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/devices/8-0033/fantray_present)
+
+07-18 17:22:54.157499 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/devices/8-0033/fantray_present)
+
+07-18 17:22:59.158444 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/devices/8-0033/fantray_present)
+
+07-18 17:23:04.159389 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input)
+
+07-18 17:23:09.160262 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/drivers/lm75/3-0048/temp1_input)
+
+07-18 17:23:14.161201 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/drivers/lm75/3-0049/temp1_input)
+
+07-18 17:23:19.162121 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/drivers/lm75/3-004a/temp1_input)
+
+07-18 17:23:24.163062 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/drivers/lm75/3-004b/temp1_input)
+
+07-18 17:23:29.163991 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/drivers/lm75/3-004c/temp1_input)
+
+07-18 17:23:34.164945 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/drivers/lm75/8-0048/temp1_input)
+
+07-18 17:23:39.675732 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/drivers/syscpld/12-0031/psu1_present)
+
+07-18 17:23:44.676647 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/drivers/syscpld/12-0031/psu2_present)
+
+07-18 17:23:49.677613 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/devices/8-0033/fantray_present)
+
+07-18 17:23:55.182299 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/devices/8-0033/fan3_input)
+
+07-18 17:24:05.184008 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/devices/8-0033/fan5_input)
+
+07-18 17:24:15.185769 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/devices/8-0033/fan7_input)
+
+07-18 17:24:20.186684 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/devices/8-0033/fantray_present)
+
+07-18 17:24:25.539925 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/drivers/syscpld/12-0031/psu1_present)
+
+07-18 17:24:30.540856 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/drivers/syscpld/12-0031/psu2_present)
+
+07-18 17:24:35.541789 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input)
+
+07-18 17:24:40.542730 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/drivers/lm75/3-0048/temp1_input)
+
+07-18 17:24:41.042982 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/lm75/3-0049/temp1_input
+) timed out
+
+07-18 17:24:46.543966 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/drivers/lm75/3-004a/temp1_input)
+
+07-18 17:24:51.544926 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/drivers/lm75/3-004b/temp1_input)
+
+07-18 17:24:56.545880 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/drivers/lm75/3-004c/temp1_input)
+
+07-18 17:25:01.546840 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/drivers/lm75/8-0048/temp1_input)
+
+07-18 17:25:06.547772 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/drivers/lm75/8-0049/temp1_input)
+
+07-18 17:25:11.558846 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/drivers/syscpld/12-0031/psu1_present)
+
+07-18 17:25:16.559772 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/drivers/syscpld/12-0031/psu2_present)
+
+07-18 17:25:21.560726 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/devices/8-0033/fantray_present)
+
+07-18 17:25:26.561680 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/devices/8-0033/fantray_present)
+
+07-18 17:25:31.562603 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/devices/8-0033/fantray_present)
+
+07-18 17:25:36.563543 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/devices/8-0033/fantray_present)
+
+07-18 17:25:41.564501 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/devices/8-0033/fantray_present)
+
+07-18 17:25:46.928867 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input)
+
+07-18 17:25:51.929794 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/drivers/lm75/3-0048/temp1_input)
+
+07-18 17:25:56.930859 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/drivers/lm75/3-0049/temp1_input)
+
+07-18 17:26:01.931816 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/drivers/lm75/3-004a/temp1_input)
+
+07-18 17:26:06.932732 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/drivers/lm75/3-004b/temp1_input)
+
+07-18 17:26:11.933692 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/drivers/lm75/3-004c/temp1_input)
+
+07-18 17:26:16.934627 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/drivers/lm75/8-0048/temp1_input)
+
+07-18 17:26:21.935584 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/drivers/lm75/8-0049/temp1_input)
+
+07-18 17:26:26.946960 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/drivers/syscpld/12-0031/psu1_present)
+
+07-18 17:26:31.947980 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/drivers/syscpld/12-0031/psu2_present)
+
+07-18 17:26:36.948884 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/devices/8-0033/fantray_present)
+
+07-18 17:26:41.949820 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/devices/8-0033/fantray_present)
+
+07-18 17:26:46.950766 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/devices/8-0033/fantray_present)
+
+07-18 17:26:51.951714 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/devices/8-0033/fantray_present)
+
+07-18 17:26:56.952639 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/devices/8-0033/fantray_present)
+
+07-18 17:27:02.306058 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input)
+
+07-18 17:27:07.306939 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/drivers/lm75/3-0048/temp1_input)
+
+07-18 17:27:12.307883 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/drivers/lm75/3-0049/temp1_input)
+
+07-18 17:27:17.308828 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/drivers/lm75/3-004a/temp1_input)
+
+07-18 17:27:22.309838 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/drivers/lm75/3-004b/temp1_input)
+
+07-18 17:27:27.310786 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/drivers/lm75/3-004c/temp1_input)
+
+07-18 17:27:32.311669 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/drivers/lm75/8-0048/temp1_input)
+
+07-18 17:27:32.811906 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/lm75/8-0049/temp1_input
+) timed out
+
+07-18 17:27:38.813041 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/drivers/lm75/3-0048/temp1_input)
+
+07-18 17:27:43.814129 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/drivers/lm75/3-0049/temp1_input)
+
+07-18 17:27:51.315511 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/drivers/lm75/3-004b/temp1_input)
+
+07-18 17:27:56.316483 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/drivers/lm75/3-004c/temp1_input)
+
+07-18 17:28:01.317399 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/drivers/lm75/8-0048/temp1_input)
+
+07-18 17:28:06.828070 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/drivers/syscpld/12-0031/psu1_present)
+
+07-18 17:28:11.828995 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/drivers/syscpld/12-0031/psu2_present)
+
+07-18 17:28:16.829898 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/devices/8-0033/fantray_present)
+
+07-18 17:28:21.830837 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/devices/8-0033/fantray_present)
+
+07-18 17:28:26.831857 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/devices/8-0033/fantray_present)
+
+07-18 17:28:31.832804 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/devices/8-0033/fantray_present)
+
+07-18 17:28:36.833785 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/devices/8-0033/fantray_present)
+
+07-18 17:28:50.265185 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/devices/8-0033/fan1_input)
+
+07-18 17:28:55.277109 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/devices/8-0033/fantray_present)
+
+07-18 17:29:00.289098 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/devices/8-0033/fantray_present)
+
+07-18 17:29:00.289251 [onlp] fani info get fan-1 failed: E_INTERNAL
+E0718 17:29:00.289430     1 onlp_wrapper.cc:101] StratumErrorSpace::ERR_INVALID_PARAM: 'ONLP_SUCCESS(onlp_fan_info_get(oid, &fan_info))' is false. Failed to get FAN info for OID 67108865.
+E0718 17:29:00.290542     1 onlp_fan_datasource.cc:29] Return Error: onlp_interface->GetFanInfo(fan_oid) at stratum/hal/lib/phal/onlp/onlp_fan_datasource.cc:29
+E0718 17:29:00.290596     1 onlp_switch_configurator.cc:355] Return Error: OnlpFanDataSource::Make(id, onlp_interface_, cache) at stratum/hal/lib/phal/onlp/onlp_switch_configurator.cc:355
+07-18 17:29:05.812271 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/devices/8-0033/fan3_input)
+
+07-18 17:29:10.824182 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/devices/8-0033/fantray_present)
+
+07-18 17:29:16.325193 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/devices/8-0033/fan3_input)
+
+07-18 17:29:16.325313 [onlp] fani info get fan-2 failed: E_INTERNAL
+E0718 17:29:16.325469     1 onlp_wrapper.cc:101] StratumErrorSpace::ERR_INVALID_PARAM: 'ONLP_SUCCESS(onlp_fan_info_get(oid, &fan_info))' is false. Failed to get FAN info for OID 67108866.
+E0718 17:29:16.325639     1 onlp_fan_datasource.cc:29] Return Error: onlp_interface->GetFanInfo(fan_oid) at stratum/hal/lib/phal/onlp/onlp_fan_datasource.cc:29
+E0718 17:29:16.325702     1 onlp_switch_configurator.cc:355] Return Error: OnlpFanDataSource::Make(id, onlp_interface_, cache) at stratum/hal/lib/phal/onlp/onlp_switch_configurator.cc:355
+07-18 17:29:21.337160 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/devices/8-0033/fantray_present)
+
+07-18 17:29:26.360229 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/devices/8-0033/fantray_present)
+
+07-18 17:29:31.372209 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/devices/8-0033/fantray_present)
+
+07-18 17:29:31.372330 [onlp] fani info get fan-3 failed: E_INTERNAL
+E0718 17:29:31.372467     1 onlp_wrapper.cc:101] StratumErrorSpace::ERR_INVALID_PARAM: 'ONLP_SUCCESS(onlp_fan_info_get(oid, &fan_info))' is false. Failed to get FAN info for OID 67108867.
+E0718 17:29:31.372637     1 onlp_fan_datasource.cc:29] Return Error: onlp_interface->GetFanInfo(fan_oid) at stratum/hal/lib/phal/onlp/onlp_fan_datasource.cc:29
+E0718 17:29:31.372707     1 onlp_switch_configurator.cc:355] Return Error: OnlpFanDataSource::Make(id, onlp_interface_, cache) at stratum/hal/lib/phal/onlp/onlp_switch_configurator.cc:355
+07-18 17:29:31.916456 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/devices/8-0033/fantray_present
+) timed out
+
+07-18 17:29:41.918135 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/devices/8-0033/fan7_input)
+
+07-18 17:29:46.930211 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/devices/8-0033/fantray_present)
+
+07-18 17:29:51.942196 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/devices/8-0033/fantray_present)
+
+07-18 17:29:51.942336 [onlp] fani info get fan-4 failed: E_INTERNAL
+E0718 17:29:51.942478     1 onlp_wrapper.cc:101] StratumErrorSpace::ERR_INVALID_PARAM: 'ONLP_SUCCESS(onlp_fan_info_get(oid, &fan_info))' is false. Failed to get FAN info for OID 67108868.
+E0718 17:29:51.942661     1 onlp_fan_datasource.cc:29] Return Error: onlp_interface->GetFanInfo(fan_oid) at stratum/hal/lib/phal/onlp/onlp_fan_datasource.cc:29
+E0718 17:29:51.942729     1 onlp_switch_configurator.cc:355] Return Error: OnlpFanDataSource::Make(id, onlp_interface_, cache) at stratum/hal/lib/phal/onlp/onlp_switch_configurator.cc:355
+07-18 17:29:56.954236 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/devices/8-0033/fantray_present)
+
+07-18 17:30:01.966215 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/devices/8-0033/fantray_present)
+
+07-18 17:30:06.967175 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/devices/8-0033/fantray_present)
+
+07-18 17:30:06.967294 [onlp] fani info get fan-5 failed: E_INTERNAL
+E0718 17:30:06.967453     1 onlp_wrapper.cc:101] StratumErrorSpace::ERR_INVALID_PARAM: 'ONLP_SUCCESS(onlp_fan_info_get(oid, &fan_info))' is false. Failed to get FAN info for OID 67108869.
+E0718 17:30:06.967633     1 onlp_fan_datasource.cc:29] Return Error: onlp_interface->GetFanInfo(fan_oid) at stratum/hal/lib/phal/onlp/onlp_fan_datasource.cc:29
+E0718 17:30:06.967691     1 onlp_switch_configurator.cc:355] Return Error: OnlpFanDataSource::Make(id, onlp_interface_, cache) at stratum/hal/lib/phal/onlp/onlp_switch_configurator.cc:355
+07-18 17:30:11.979250 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/drivers/syscpld/12-0031/psu1_present)
+
+07-18 17:30:16.991241 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/drivers/syscpld/12-0031/psu1_present)
+
+07-18 17:30:21.992185 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/drivers/syscpld/12-0031/psu1_present)
+
+07-18 17:30:21.992311 [onlp] psui info get psu-1 failed: E_INTERNAL
+E0718 17:30:21.992457     1 onlp_wrapper.cc:203] StratumErrorSpace::ERR_INVALID_PARAM: 'ONLP_SUCCESS(onlp_psu_info_get(oid, &psu_info))' is false. Failed to get PSU info for OID 83886081.
+E0718 17:30:21.992622     1 onlp_psu_datasource.cc:27] Return Error: onlp_interface->GetPsuInfo(psu_oid) at stratum/hal/lib/phal/onlp/onlp_psu_datasource.cc:27
+E0718 17:30:21.992692     1 onlp_switch_configurator.cc:437] Return Error: OnlpPsuDataSource::Make(id, onlp_interface_, cache) at stratum/hal/lib/phal/onlp/onlp_switch_configurator.cc:437
+07-18 17:30:27.015217 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/drivers/syscpld/12-0031/psu2_present)
+
+07-18 17:30:32.027260 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/drivers/syscpld/12-0031/psu2_present)
+
+07-18 17:30:37.028235 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/drivers/syscpld/12-0031/psu2_present)
+
+07-18 17:30:37.028372 [onlp] psui info get psu-2 failed: E_INTERNAL
+E0718 17:30:37.028543     1 onlp_wrapper.cc:203] StratumErrorSpace::ERR_INVALID_PARAM: 'ONLP_SUCCESS(onlp_psu_info_get(oid, &psu_info))' is false. Failed to get PSU info for OID 83886082.
+E0718 17:30:37.028714     1 onlp_psu_datasource.cc:27] Return Error: onlp_interface->GetPsuInfo(psu_oid) at stratum/hal/lib/phal/onlp/onlp_psu_datasource.cc:27
+E0718 17:30:37.028775     1 onlp_switch_configurator.cc:437] Return Error: OnlpPsuDataSource::Make(id, onlp_interface_, cache) at stratum/hal/lib/phal/onlp/onlp_switch_configurator.cc:437
+07-18 17:30:37.909541 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:30:38.409718 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:30:38.909892 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:30:39.410087 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:30:39.910266 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:30:40.410447 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:30:40.910613 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:30:41.410777 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:30:41.910928 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:30:42.411079 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:30:42.411158 [x86_64_accton_wedge100bf_32x] Unable to send command to bmc(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+)
+
+07-18 17:30:42.911295 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:30:43.411448 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:30:43.911611 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:30:44.411795 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:30:44.911982 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:30:45.412158 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:30:45.912311 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:30:46.412483 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:30:46.912652 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:30:47.412781 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:30:47.412871 [x86_64_accton_wedge100bf_32x] Unable to send command to bmc(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+)
+
+07-18 17:30:47.913010 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:30:48.413163 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:30:48.913313 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:30:49.413510 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:30:49.913652 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:30:50.413850 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:30:50.914028 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:30:51.414180 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:30:51.914326 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:30:52.414486 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:30:52.414574 [x86_64_accton_wedge100bf_32x] Unable to send command to bmc(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+)
+
+07-18 17:30:52.914706 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:30:53.414893 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:30:53.915040 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:30:54.415234 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:30:54.915387 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:30:55.415568 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:30:55.915733 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:30:56.415894 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:30:56.916043 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:30:57.416194 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:30:57.416272 [x86_64_accton_wedge100bf_32x] Unable to send command to bmc(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+)
+
+07-18 17:30:57.916403 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:30:58.416549 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:30:58.916699 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:30:59.416899 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:30:59.917081 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:00.417257 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:00.917415 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:01.417575 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:01.917739 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:02.417879 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:02.417944 [x86_64_accton_wedge100bf_32x] Unable to send command to bmc(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+)
+
+07-18 17:31:02.918074 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:03.418216 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:03.918367 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:04.418551 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:04.918728 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:05.418921 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:05.919036 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:06.419186 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:06.919364 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:07.419521 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:07.419597 [x86_64_accton_wedge100bf_32x] Unable to send command to bmc(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+)
+
+07-18 17:31:07.919737 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:08.419886 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:08.920074 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:09.420257 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:09.920431 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:10.420607 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:10.920763 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:11.420924 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:11.921071 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:12.421226 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:12.421296 [x86_64_accton_wedge100bf_32x] Unable to send command to bmc(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+)
+
+07-18 17:31:12.921419 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:13.421590 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:13.921796 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:14.421995 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:14.922168 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:15.422350 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:15.922514 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:16.422678 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:16.922845 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:17.423010 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:17.423090 [x86_64_accton_wedge100bf_32x] Unable to send command to bmc(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+)
+
+07-18 17:31:17.923232 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:18.423384 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:18.923550 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:19.423736 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:19.923920 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:20.424088 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:20.924236 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:21.424386 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:21.924532 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:22.424700 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:22.424785 [x86_64_accton_wedge100bf_32x] Unable to send command to bmc(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+)
+
+07-18 17:31:22.924906 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:23.425043 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:23.925205 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:24.425395 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:24.925549 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:25.425721 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:25.925878 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:26.426035 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:26.926179 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:27.426333 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:27.426415 [x86_64_accton_wedge100bf_32x] Unable to send command to bmc(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+)
+
+07-18 17:31:27.426480 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input)
+
+07-18 17:31:28.437697 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:30.438099 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:32.438537 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:32.938708 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:33.438869 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:33.939018 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:34.439201 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:34.939360 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:35.439540 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:35.939656 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:36.439827 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:36.939981 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:36.940077 [x86_64_accton_wedge100bf_32x] Unable to send command to bmc(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+)
+
+07-18 17:31:37.440225 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:37.940391 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:38.440550 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:38.940709 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:39.440890 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:39.941065 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:40.441240 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:40.941398 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:41.441547 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:41.941707 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:41.941793 [x86_64_accton_wedge100bf_32x] Unable to send command to bmc(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+)
+
+07-18 17:31:42.441927 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input
+) timed out
+
+07-18 17:31:47.943021 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/drivers/com_e_driver/4-0033/temp2_input)
+
+07-18 17:31:47.943152 [onlp] thermali info get thermal-1 failed: E_INTERNAL
+E0718 17:31:47.943303     1 onlp_wrapper.cc:142] StratumErrorSpace::ERR_INVALID_PARAM: 'ONLP_SUCCESS(onlp_thermal_info_get(oid, &thermal_info))' is false. Failed to get THERMAL info for OID 50331649.
+E0718 17:31:47.943488     1 onlp_thermal_datasource.cc:32] Return Error: onlp_interface->GetThermalInfo(thermal_oid) at stratum/hal/lib/phal/onlp/onlp_thermal_datasource.cc:32
+E0718 17:31:47.943570     1 onlp_switch_configurator.cc:612] Return Error: OnlpThermalDataSource::Make(id, onlp_interface_, cache) at stratum/hal/lib/phal/onlp/onlp_switch_configurator.cc:612
+07-18 17:31:48.454501 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/lm75/3-0048/temp1_input
+) timed out
+
+07-18 17:31:48.954689 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/lm75/3-0048/temp1_input
+) timed out
+
+07-18 17:31:49.454917 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/lm75/3-0048/temp1_input
+) timed out
+
+07-18 17:31:49.955113 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/lm75/3-0048/temp1_input
+) timed out
+
+07-18 17:31:50.455296 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/lm75/3-0048/temp1_input
+) timed out
+
+07-18 17:31:50.955452 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/lm75/3-0048/temp1_input
+) timed out
+
+07-18 17:31:51.455667 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/lm75/3-0048/temp1_input
+) timed out
+
+07-18 17:31:51.955848 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/lm75/3-0048/temp1_input
+) timed out
+
+07-18 17:31:52.456022 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/lm75/3-0048/temp1_input
+) timed out
+
+07-18 17:31:52.956171 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/lm75/3-0048/temp1_input
+) timed out
+
+07-18 17:31:52.956240 [x86_64_accton_wedge100bf_32x] Unable to send command to bmc(cat /sys/bus/i2c/drivers/lm75/3-0048/temp1_input
+)
+
+07-18 17:31:53.456376 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/lm75/3-0048/temp1_input
+) timed out
+
+07-18 17:31:54.467640 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/lm75/3-0048/temp1_input
+) timed out
+
+07-18 17:31:54.967835 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/lm75/3-0048/temp1_input
+) timed out
+
+07-18 17:31:55.468018 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/lm75/3-0048/temp1_input
+) timed out
+
+07-18 17:31:55.968173 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/lm75/3-0048/temp1_input
+) timed out
+
+07-18 17:31:56.468298 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/lm75/3-0048/temp1_input
+) timed out
+
+07-18 17:31:56.968465 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/lm75/3-0048/temp1_input
+) timed out
+
+07-18 17:31:57.468618 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/lm75/3-0048/temp1_input
+) timed out
+
+07-18 17:31:57.968777 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/lm75/3-0048/temp1_input
+) timed out
+
+07-18 17:31:58.468927 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/lm75/3-0048/temp1_input
+) timed out
+
+07-18 17:31:58.969079 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/lm75/3-0048/temp1_input
+) timed out
+
+07-18 17:31:58.969187 [x86_64_accton_wedge100bf_32x] Unable to send command to bmc(cat /sys/bus/i2c/drivers/lm75/3-0048/temp1_input
+)
+
+07-18 17:31:59.469318 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/lm75/3-0048/temp1_input
+) timed out
+
+07-18 17:32:00.480636 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/lm75/3-0048/temp1_input
+) timed out
+
+07-18 17:32:00.980822 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/lm75/3-0048/temp1_input
+) timed out
+
+07-18 17:32:01.480993 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/lm75/3-0048/temp1_input
+) timed out
+
+07-18 17:32:01.981139 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/lm75/3-0048/temp1_input
+) timed out
+
+07-18 17:32:02.481314 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/lm75/3-0048/temp1_input
+) timed out
+
+07-18 17:32:02.981489 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/lm75/3-0048/temp1_input
+) timed out
+
+07-18 17:32:03.481670 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/lm75/3-0048/temp1_input
+) timed out
+
+07-18 17:32:03.981853 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/lm75/3-0048/temp1_input
+) timed out
+
+07-18 17:32:04.482043 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/lm75/3-0048/temp1_input
+) timed out
+
+07-18 17:32:04.982207 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/lm75/3-0048/temp1_input
+) timed out
+
+07-18 17:32:04.982322 [x86_64_accton_wedge100bf_32x] Unable to send command to bmc(cat /sys/bus/i2c/drivers/lm75/3-0048/temp1_input
+)
+
+07-18 17:32:05.993657 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/lm75/3-0048/temp1_input
+) timed out
+
+07-18 17:32:06.493819 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/lm75/3-0048/temp1_input
+) timed out
+
+07-18 17:32:06.993989 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/lm75/3-0048/temp1_input
+) timed out
+
+07-18 17:32:07.494151 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/lm75/3-0048/temp1_input
+) timed out
+
+07-18 17:32:07.994317 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/lm75/3-0048/temp1_input
+) timed out
+
+07-18 17:32:08.494433 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/lm75/3-0048/temp1_input
+) timed out
+
+07-18 17:32:08.994606 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/lm75/3-0048/temp1_input
+) timed out
+
+07-18 17:32:09.494797 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/lm75/3-0048/temp1_input
+) timed out
+
+07-18 17:32:09.994962 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/lm75/3-0048/temp1_input
+) timed out
+
+07-18 17:32:10.495143 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/lm75/3-0048/temp1_input
+) timed out
+
+07-18 17:32:10.495233 [x86_64_accton_wedge100bf_32x] Unable to send command to bmc(cat /sys/bus/i2c/drivers/lm75/3-0048/temp1_input
+)
+
+07-18 17:32:11.506669 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/lm75/3-0049/temp1_input
+) timed out
+
+07-18 17:32:12.006836 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/lm75/3-0049/temp1_input
+) timed out
+
+07-18 17:32:12.506991 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/lm75/3-0049/temp1_input
+) timed out
+
+07-18 17:32:13.007147 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/lm75/3-0049/temp1_input
+) timed out
+
+07-18 17:32:13.507322 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/lm75/3-0049/temp1_input
+) timed out
+
+07-18 17:32:14.007477 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/lm75/3-0049/temp1_input
+) timed out
+
+07-18 17:32:14.507683 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/lm75/3-0049/temp1_input
+) timed out
+
+07-18 17:32:15.007851 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/lm75/3-0049/temp1_input
+) timed out
+
+07-18 17:32:15.508057 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/lm75/3-0049/temp1_input
+) timed out
+
+07-18 17:32:16.008225 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/lm75/3-0049/temp1_input
+) timed out
+
+07-18 17:32:16.008299 [x86_64_accton_wedge100bf_32x] Unable to send command to bmc(cat /sys/bus/i2c/drivers/lm75/3-0049/temp1_input
+)
+
+07-18 17:32:16.508438 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/lm75/3-0049/temp1_input
+) timed out
+
+07-18 17:32:17.008602 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/lm75/3-0049/temp1_input
+) timed out
+
+07-18 17:32:17.508753 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/lm75/3-0049/temp1_input
+) timed out
+
+07-18 17:32:18.008905 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/lm75/3-0049/temp1_input
+) timed out
+
+07-18 17:32:18.509083 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/lm75/3-0049/temp1_input
+) timed out
+
+07-18 17:32:19.009253 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/lm75/3-0049/temp1_input
+) timed out
+
+07-18 17:32:19.509434 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/lm75/3-0049/temp1_input
+) timed out
+
+07-18 17:32:20.009619 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/lm75/3-0049/temp1_input
+) timed out
+
+07-18 17:32:20.509830 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/lm75/3-0049/temp1_input
+) timed out
+
+07-18 17:32:21.009996 [x86_64_accton_wedge100bf_32x] ERROR: bmc_send_command(cat /sys/bus/i2c/drivers/lm75/3-0049/temp1_input
+) timed out
+
+07-18 17:32:21.010060 [x86_64_accton_wedge100bf_32x] Unable to send command to bmc(cat /sys/bus/i2c/drivers/lm75/3-0049/temp1_input
+)
+
+07-18 17:32:27.026608 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/drivers/lm75/3-0049/temp1_input)
+
+07-18 17:32:27.026763 [onlp] thermali info get thermal-3 failed: E_INTERNAL
+E0718 17:32:27.026916     1 onlp_wrapper.cc:142] StratumErrorSpace::ERR_INVALID_PARAM: 'ONLP_SUCCESS(onlp_thermal_info_get(oid, &thermal_info))' is false. Failed to get THERMAL info for OID 50331651.
+E0718 17:32:27.027078     1 onlp_thermal_datasource.cc:32] Return Error: onlp_interface->GetThermalInfo(thermal_oid) at stratum/hal/lib/phal/onlp/onlp_thermal_datasource.cc:32
+E0718 17:32:27.027153     1 onlp_switch_configurator.cc:612] Return Error: OnlpThermalDataSource::Make(id, onlp_interface_, cache) at stratum/hal/lib/phal/onlp/onlp_switch_configurator.cc:612
+07-18 17:32:32.049511 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/drivers/lm75/3-004a/temp1_input)
+
+07-18 17:32:42.062233 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/drivers/lm75/3-004a/temp1_input)
+
+07-18 17:32:42.062373 [onlp] thermali info get thermal-4 failed: E_INTERNAL
+E0718 17:32:42.062525     1 onlp_wrapper.cc:142] StratumErrorSpace::ERR_INVALID_PARAM: 'ONLP_SUCCESS(onlp_thermal_info_get(oid, &thermal_info))' is false. Failed to get THERMAL info for OID 50331652.
+E0718 17:32:42.062665     1 onlp_thermal_datasource.cc:32] Return Error: onlp_interface->GetThermalInfo(thermal_oid) at stratum/hal/lib/phal/onlp/onlp_thermal_datasource.cc:32
+E0718 17:32:42.062731     1 onlp_switch_configurator.cc:612] Return Error: OnlpThermalDataSource::Make(id, onlp_interface_, cache) at stratum/hal/lib/phal/onlp/onlp_switch_configurator.cc:612
+07-18 17:32:47.074458 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/drivers/lm75/3-004b/temp1_input)
+
+07-18 17:32:52.086645 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/drivers/lm75/3-004b/temp1_input)
+
+07-18 17:32:57.087640 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/drivers/lm75/3-004b/temp1_input)
+
+07-18 17:32:57.087779 [onlp] thermali info get thermal-5 failed: E_INTERNAL
+E0718 17:32:57.087908     1 onlp_wrapper.cc:142] StratumErrorSpace::ERR_INVALID_PARAM: 'ONLP_SUCCESS(onlp_thermal_info_get(oid, &thermal_info))' is false. Failed to get THERMAL info for OID 50331653.
+E0718 17:32:57.088078     1 onlp_thermal_datasource.cc:32] Return Error: onlp_interface->GetThermalInfo(thermal_oid) at stratum/hal/lib/phal/onlp/onlp_thermal_datasource.cc:32
+E0718 17:32:57.088155     1 onlp_switch_configurator.cc:612] Return Error: OnlpThermalDataSource::Make(id, onlp_interface_, cache) at stratum/hal/lib/phal/onlp/onlp_switch_configurator.cc:612
+07-18 17:33:02.099470 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/drivers/lm75/3-004c/temp1_input)
+
+07-18 17:33:07.111443 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/drivers/lm75/3-004c/temp1_input)
+
+07-18 17:33:12.623508 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/drivers/lm75/3-004c/temp1_input)
+
+07-18 17:33:12.623645 [onlp] thermali info get thermal-6 failed: E_INTERNAL
+E0718 17:33:12.623816     1 onlp_wrapper.cc:142] StratumErrorSpace::ERR_INVALID_PARAM: 'ONLP_SUCCESS(onlp_thermal_info_get(oid, &thermal_info))' is false. Failed to get THERMAL info for OID 50331654.
+E0718 17:33:12.623960     1 onlp_thermal_datasource.cc:74] Return Error: onlp_stub_->GetThermalInfo(thermal_oid_) at stratum/hal/lib/phal/onlp/onlp_thermal_datasource.cc:74
+07-18 17:33:20.300425 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/drivers/lm75/8-0049/temp1_input)
+
+07-18 17:33:25.312476 [x86_64_accton_wedge100bf_32x] Unable to read status from file (/sys/bus/i2c/drivers/lm75/8-0049/temp1_input)
+
+07-18 17:33:25.312617 [onlp] thermali info get thermal-8 failed: E_INTERNAL
+E0718 17:33:25.312772     1 onlp_wrapper.cc:142] StratumErrorSpace::ERR_INVALID_PARAM: 'ONLP_SUCCESS(onlp_thermal_info_get(oid, &thermal_info))' is false. Failed to get THERMAL info for OID 50331656.
+E0718 17:33:25.312955     1 onlp_thermal_datasource.cc:32] Return Error: onlp_interface->GetThermalInfo(thermal_oid) at stratum/hal/lib/phal/onlp/onlp_thermal_datasource.cc:32
+E0718 17:33:25.313030     1 onlp_switch_configurator.cc:612] Return Error: OnlpThermalDataSource::Make(id, onlp_interface_, cache) at stratum/hal/lib/phal/onlp/onlp_switch_configurator.cc:612
+E0718 17:33:25.315195274       1 server_chttp2.cc:40]        {"created":"@1595093605.315094529","description":"Only 1 addresses added out of total 2 resolved","file":"external/com_github_grpc_grpc/src/core/ext/transport/chttp2/server/chttp2_server.cc","file_line":406,"referenced_errors":[{"created":"@1595093605.315079129","description":"Address family not supported by protocol","errno":97,"file":"external/com_github_grpc_grpc/src/core/lib/iomgr/socket_utils_common_posix.cc","file_line":420,"os_error":"Address family not supported by protocol","syscall":"socket","target_address":"[::1]:28003"}]}
+I0718 17:33:25.315415     1 attribute_database.cc:213] PhalDB service is listening to localhost:28003...
+I0718 17:33:25.315594     1 bf_chassis_manager.cc:788] Port status notification callback registered successfully
+I0718 17:33:25.336328     1 bf_chassis_manager.cc:71] Adding port 128 in node 1.
+I0718 17:33:25.343410     1 bf_chassis_manager.cc:98] Enabling port 128 in node 1.
+I0718 17:33:25.343657     1 bf_chassis_manager.cc:71] Adding port 136 in node 1.
+I0718 17:33:25.364177     1 bf_chassis_manager.cc:98] Enabling port 136 in node 1.
+I0718 17:33:25.364411     1 bf_chassis_manager.cc:71] Adding port 144 in node 1.
+I0718 17:33:25.390110     1 bf_chassis_manager.cc:98] Enabling port 144 in node 1.
+I0718 17:33:25.390357     1 bf_chassis_manager.cc:71] Adding port 152 in node 1.
+I0718 17:33:25.416487     1 bf_chassis_manager.cc:98] Enabling port 152 in node 1.
+I0718 17:33:25.416705     1 bf_chassis_manager.cc:71] Adding port 160 in node 1.
+I0718 17:33:25.442335     1 bf_chassis_manager.cc:98] Enabling port 160 in node 1.
+I0718 17:33:25.442560     1 bf_chassis_manager.cc:71] Adding port 168 in node 1.
+I0718 17:33:25.467912     1 bf_chassis_manager.cc:98] Enabling port 168 in node 1.
+I0718 17:33:25.468168     1 bf_chassis_manager.cc:71] Adding port 176 in node 1.
+I0718 17:33:25.500267     1 bf_chassis_manager.cc:98] Enabling port 176 in node 1.
+I0718 17:33:25.500545     1 bf_chassis_manager.cc:71] Adding port 184 in node 1.
+I0718 17:33:25.523381     1 bf_chassis_manager.cc:98] Enabling port 184 in node 1.
+I0718 17:33:25.523612     1 bf_chassis_manager.cc:71] Adding port 60 in node 1.
+I0718 17:33:25.550832     1 bf_chassis_manager.cc:98] Enabling port 60 in node 1.
+I0718 17:33:25.551100     1 bf_chassis_manager.cc:71] Adding port 52 in node 1.
+I0718 17:33:25.581104     1 bf_chassis_manager.cc:98] Enabling port 52 in node 1.
+I0718 17:33:25.581339     1 bf_chassis_manager.cc:71] Adding port 44 in node 1.
+I0718 17:33:25.611337     1 bf_chassis_manager.cc:98] Enabling port 44 in node 1.
+I0718 17:33:25.611485     1 bf_chassis_manager.cc:71] Adding port 36 in node 1.
+I0718 17:33:25.642985     1 bf_chassis_manager.cc:98] Enabling port 36 in node 1.
+I0718 17:33:25.643126     1 bf_chassis_manager.cc:71] Adding port 28 in node 1.
+I0718 17:33:25.680506     1 bf_chassis_manager.cc:98] Enabling port 28 in node 1.
+I0718 17:33:25.680656     1 bf_chassis_manager.cc:71] Adding port 20 in node 1.
+I0718 17:33:25.708215     1 bf_chassis_manager.cc:98] Enabling port 20 in node 1.
+I0718 17:33:25.708357     1 bf_chassis_manager.cc:71] Adding port 12 in node 1.
+I0718 17:33:25.745831     1 bf_chassis_manager.cc:98] Enabling port 12 in node 1.
+I0718 17:33:25.745982     1 bf_chassis_manager.cc:71] Adding port 4 in node 1.
+I0718 17:33:25.770939     1 bf_chassis_manager.cc:98] Enabling port 4 in node 1.
+I0718 17:33:25.771242     1 bf_chassis_manager.cc:71] Adding port 0 in node 1.
+I0718 17:33:25.800137     1 bf_chassis_manager.cc:98] Enabling port 0 in node 1.
+I0718 17:33:25.800420     1 bf_chassis_manager.cc:71] Adding port 8 in node 1.
+I0718 17:33:25.829094     1 bf_chassis_manager.cc:98] Enabling port 8 in node 1.
+I0718 17:33:25.829378     1 bf_chassis_manager.cc:71] Adding port 16 in node 1.
+I0718 17:33:25.864238     1 bf_chassis_manager.cc:98] Enabling port 16 in node 1.
+I0718 17:33:25.864542     1 bf_chassis_manager.cc:71] Adding port 24 in node 1.
+I0718 17:33:25.890516     1 bf_chassis_manager.cc:98] Enabling port 24 in node 1.
+I0718 17:33:25.890815     1 bf_chassis_manager.cc:71] Adding port 32 in node 1.
+I0718 17:33:25.925911     1 bf_chassis_manager.cc:98] Enabling port 32 in node 1.
+I0718 17:33:25.926203     1 bf_chassis_manager.cc:71] Adding port 40 in node 1.
+I0718 17:33:25.953366     1 bf_chassis_manager.cc:98] Enabling port 40 in node 1.
+I0718 17:33:25.953653     1 bf_chassis_manager.cc:71] Adding port 48 in node 1.
+I0718 17:33:25.993827     1 bf_chassis_manager.cc:98] Enabling port 48 in node 1.
+I0718 17:33:25.994114     1 bf_chassis_manager.cc:71] Adding port 56 in node 1.
+I0718 17:33:26.018358     1 bf_chassis_manager.cc:98] Enabling port 56 in node 1.
+I0718 17:33:26.018647     1 bf_chassis_manager.cc:71] Adding port 188 in node 1.
+I0718 17:33:26.059095     1 bf_chassis_manager.cc:98] Enabling port 188 in node 1.
+I0718 17:33:26.059372     1 bf_chassis_manager.cc:71] Adding port 180 in node 1.
+I0718 17:33:26.083613     1 bf_chassis_manager.cc:98] Enabling port 180 in node 1.
+I0718 17:33:26.083918     1 bf_chassis_manager.cc:71] Adding port 172 in node 1.
+I0718 17:33:26.123700     1 bf_chassis_manager.cc:98] Enabling port 172 in node 1.
+I0718 17:33:26.123980     1 bf_chassis_manager.cc:71] Adding port 164 in node 1.
+I0718 17:33:26.148589     1 bf_chassis_manager.cc:98] Enabling port 164 in node 1.
+I0718 17:33:26.148912     1 bf_chassis_manager.cc:71] Adding port 148 in node 1.
+I0718 17:33:26.189647     1 bf_chassis_manager.cc:98] Enabling port 148 in node 1.
+I0718 17:33:26.189951     1 bf_chassis_manager.cc:71] Adding port 156 in node 1.
+I0718 17:33:26.215116     1 bf_chassis_manager.cc:98] Enabling port 156 in node 1.
+I0718 17:33:26.215442     1 bf_chassis_manager.cc:71] Adding port 132 in node 1.
+I0718 17:33:26.257555     1 bf_chassis_manager.cc:98] Enabling port 132 in node 1.
+I0718 17:33:26.257849     1 bf_chassis_manager.cc:71] Adding port 140 in node 1.
+I0718 17:33:26.282760     1 bf_chassis_manager.cc:98] Enabling port 140 in node 1.
+I0718 17:33:26.283244     1 bf_switch.cc:60] Chassis config pushed successfully.
+I0718 17:33:26.283355    39 bf_chassis_manager.cc:719] Transceiver event for port (slot: 1, port: 1): HW_STATE_PRESENT.
+I0718 17:33:26.352176     1 p4_service.cc:118] Pushing the saved forwarding pipeline configs read from /var/run/stratum/pipeline_cfg.pb.txt...
+E0718 17:33:26.352252     1 utils.cc:109] StratumErrorSpace::ERR_FILE_NOT_FOUND: /var/run/stratum/pipeline_cfg.pb.txt not found.
+E0718 17:33:26.352319     1 utils.cc:65] Return Error: ReadFileToString(filename, &text) failed with StratumErrorSpace::ERR_FILE_NOT_FOUND: /var/run/stratum/pipeline_cfg.pb.txt not found.
+W0718 17:33:26.352367     1 p4_service.cc:127] No saved forwarding pipeline config found at /var/run/stratum/pipeline_cfg.pb.txt. This is normal when the switch is just installed and no master controller is connected yet.
+E0718 17:33:26.352861263       1 server_chttp2.cc:40]        {"created":"@1595093606.352807498","description":"Only 1 addresses added out of total 2 resolved","file":"external/com_github_grpc_grpc/src/core/ext/transport/chttp2/server/chttp2_server.cc","file_line":406,"referenced_errors":[{"created":"@1595093606.352802563","description":"Address family not supported by protocol","errno":97,"file":"external/com_github_grpc_grpc/src/core/lib/iomgr/socket_utils_common_posix.cc","file_line":420,"os_error":"Address family not supported by protocol","syscall":"socket","target_address":"[::1]:28000"}]}
+E0718 17:33:26.353173     1 hal.cc:223] Stratum external facing services are listening to 0.0.0.0:28000, 0.0.0.0:9339, localhost:28000...
+E0718 17:33:26.354087     1 hal.cc:365] StratumErrorSpace::ERR_INTERNAL: Failed to check in with procmon: failed to connect to all addresses
+E0718 17:33:26.354234     1 hal.cc:233] Error when checking in with procmon: Failed to check in with procmon: failed to connect to all addresses.
+I0718 17:33:26.543146    39 bf_chassis_manager.cc:768] Transceiver (slot: 1, port: 1) is ready.
+I0718 17:33:26.543220    39 bf_chassis_manager.cc:719] Transceiver event for port (slot: 1, port: 2): HW_STATE_PRESENT.
+I0718 17:33:26.663061    39 bf_chassis_manager.cc:768] Transceiver (slot: 1, port: 2) is ready.
+I0718 17:33:26.663128    39 bf_chassis_manager.cc:719] Transceiver event for port (slot: 1, port: 3): HW_STATE_PRESENT.
+I0718 17:33:26.815896    39 bf_chassis_manager.cc:768] Transceiver (slot: 1, port: 3) is ready.
+I0718 17:33:26.815935    39 bf_chassis_manager.cc:719] Transceiver event for port (slot: 1, port: 4): HW_STATE_PRESENT.
+I0718 17:33:26.914019    39 bf_chassis_manager.cc:768] Transceiver (slot: 1, port: 4) is ready.
+I0718 17:33:26.914084    39 bf_chassis_manager.cc:719] Transceiver event for port (slot: 1, port: 15): HW_STATE_PRESENT.
+I0718 17:33:27.078042    39 bf_chassis_manager.cc:768] Transceiver (slot: 1, port: 15) is ready.
+I0718 17:33:27.078104    39 bf_chassis_manager.cc:719] Transceiver event for port (slot: 1, port: 23): HW_STATE_PRESENT.
+I0718 17:33:27.187103    39 bf_chassis_manager.cc:768] Transceiver (slot: 1, port: 23) is ready.

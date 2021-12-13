@@ -1,0 +1,90 @@
+From bocon at opennetworking.org  Thu Apr  1 17:20:36 2021
+From: bocon at opennetworking.org (Brian O'Connor)
+Date: Thu, 1 Apr 2021 13:20:36 -0400
+Subject: [stratum-announce] Stratum 2021-03-31 release is available!
+Message-ID: <CACKOpDkbcdR4YVofne4NH-v0xfpZsOc9qp7HCF0pNqK7U5iyzQ@mail.gmail.com>
+
+We are pleased to announce the Stratum *2021-03-31* release (or *21.03* for
+short).
+
+Stratum now leverages the new P5 (*Predictive* Programming
+Protocol-Independent Packet Processors) language which infers the packet
+pipeline based on control plane requirements. On the hardware side, we've
+added support for neural wave transponders for direct brain to Stratum
+connections.
+
+Pre-built Docker images and Debian packages, along with a more extensive
+changelist, are available in the GitHub release page:
+https://github.com/stratum/stratum/releases/tag/2021-03-31
+
+This release includes commits from 3 new contributors from the Stratum
+community: David Gengenbach, Narada Hess, and Rich Renner.
+
+Enjoy!
+Brian, Max, Yi and the rest of the Stratum team
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-announce/attachments/20210401/7a0fdedf/attachment.html>
+
+From bocon at opennetworking.org  Mon Apr  5 16:02:38 2021
+From: bocon at opennetworking.org (Brian O'Connor)
+Date: Mon, 5 Apr 2021 12:02:38 -0400
+Subject: [stratum-announce] Stratum 2021-03-31 release is available!
+In-Reply-To: <01010178906e7f90-333f2d35-0726-459b-8531-4826adc59967-000000@us-west-2.amazonses.com>
+References: <01010178906e7f90-333f2d35-0726-459b-8531-4826adc59967-000000@us-west-2.amazonses.com>
+Message-ID: <CACKOpDnx0ktoeCWvy49LHB_jKQTrjEJ4sy3Qef3+UzkggKzybA@mail.gmail.com>
+
+Hi everyone,
+
+We've gotten some questions about the release highlights paragraph of this
+announcement (namely, P5 and neural wave transponders); this was a
+joke for April
+Fools' Day <https://en.wikipedia.org/wiki/April_Fools%27_Day>.
+
+The release itself and the rest of the announcement are legitimate. Here
+are the actual release highlights:
+
+This release contains many bug fixes and new features for Stratum running
+on Intel Tofino, including support for meter entries, remote *bfshell* for
+debugging, basic port shaping configuration, and P4Runtime read
+improvements. The Stratum Tofino simulator can now be used in Mininet for
+development and testing. Stratum has been updated to the P4Runtime 1.3.0
+specification (however, it is not fully compliant with some of the new
+semantics, which the Stratum community hopes to address in the next
+release). Several gNMI paths in the *interfaces* model have been improved
+to return consistent values. The 21.03 release is also the first release of
+Stratum that has been (almost entirely) automated.
+
+Thanks!
+Brian
+
+On Thu, Apr 1, 2021 at 10:34 PM Brian O'Connor via stratum-announce <
+stratum-announce at lists.stratumproject.org> wrote:
+
+> We are pleased to announce the Stratum *2021-03-31* release (or *21.03* for
+> short).
+>
+> Stratum now leverages the new P5 (*Predictive* Programming
+> Protocol-Independent Packet Processors) language which infers the packet
+> pipeline based on control plane requirements. On the hardware side, we've
+> added support for neural wave transponders for direct brain to Stratum
+> connections.
+>
+> Pre-built Docker images and Debian packages, along with a more extensive
+> changelist, are available in the GitHub release page:
+> https://github.com/stratum/stratum/releases/tag/2021-03-31
+>
+> This release includes commits from 3 new contributors from the Stratum
+> community: David Gengenbach, Narada Hess, and Rich Renner.
+>
+> Enjoy!
+> Brian, Max, Yi and the rest of the Stratum team
+> _______________________________________________
+> stratum-announce mailing list
+> stratum-announce at lists.stratumproject.org
+> https://lists.stratumproject.org/listinfo/stratum-announce
+>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-announce/attachments/20210405/dc513b91/attachment.html>
+

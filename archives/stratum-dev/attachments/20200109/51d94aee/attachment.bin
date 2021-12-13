@@ -1,0 +1,87 @@
+BEGIN:VCALENDAR
+PRODID:-//Google Inc//Google Calendar 70.9054//EN
+VERSION:2.0
+CALSCALE:GREGORIAN
+METHOD:REQUEST
+BEGIN:VTIMEZONE
+TZID:America/Los_Angeles
+X-LIC-LOCATION:America/Los_Angeles
+BEGIN:DAYLIGHT
+TZOFFSETFROM:-0800
+TZOFFSETTO:-0700
+TZNAME:PDT
+DTSTART:19700308T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:-0700
+TZOFFSETTO:-0800
+TZNAME:PST
+DTSTART:19701101T020000
+RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+DTSTART;TZID=America/Los_Angeles:20200109T100000
+DTEND;TZID=America/Los_Angeles:20200109T103000
+DTSTAMP:20200109T174324Z
+ORGANIZER;CN=Stratum Members:mailto:opennetworking.org_f5b14b1b8quk3slm38ra
+ spotto@group.calendar.google.com
+UID:354pmsr7ekd5mp3r18tvjf6hib_R20190919T170000@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=DECLINED;RSVP=TRUE
+ ;CN=bill@opennetworking.org;X-NUM-GUESTS=0;X-RESPONSE-COMMENT="Declined bec
+ ause I am out of office":mailto:bill@opennetworking.org
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;RSVP=TRUE
+ ;CN=Arkadiy Shapiro;X-NUM-GUESTS=0:mailto:ashapiro@barefootnetworks.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;RSVP=
+ TRUE;CN=Alireza Ghaffarkhah;X-NUM-GUESTS=0:mailto:aghaffar@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=TENTATIVE;RSVP=TRU
+ E;CN=stratum-members@lists.stratumproject.org;X-NUM-GUESTS=0:mailto:stratum
+ -members@lists.stratumproject.org
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=TENTATIVE;RSVP=TRU
+ E;CN=carmelo@opennetworking.org;X-NUM-GUESTS=0:mailto:carmelo@opennetworkin
+ g.org
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;RSVP=TRUE
+ ;CN=Devjit Gopalpur;X-NUM-GUESTS=0:mailto:devjitg@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;RSVP=
+ TRUE;CN=stratum-dev@lists.stratumproject.org;X-NUM-GUESTS=0:mailto:stratum-
+ dev@lists.stratumproject.org
+ATTENDEE;CUTYPE=RESOURCE;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;RSVP=TRUE;C
+ N=SVL-MAT3-4-Ulysses (5) [GVC];X-NUM-GUESTS=0:mailto:google.com_726f6f6d5f7
+ 5735f73766c5f6d6174335f345f346c31@resource.calendar.google.com
+X-MICROSOFT-CDO-OWNERAPPTID:-1843006009
+RECURRENCE-ID;TZID=America/Los_Angeles:20200109T100000
+CREATED:20190130T012731Z
+DESCRIPTION:Stratum Team Meeting<br><br>Agenda for meetings - <a href="http
+ s://docs.google.com/document/d/1-bHfORugMPEdcj3I9M_CJKhszrmARcmvPQu0vDQRD5Y
+ /edit?usp=sharing">https://docs.google.com/document/d/1-bHfORugMPEdcj3I9M_C
+ JKhszrmARcmvPQu0vDQRD5Y/edit?usp=sharing</a> <br><br>Meeting notes/presenta
+ tions - <a href="https://drive.google.com/drive/folders/1YLKEc80r3R9hpAb2A5
+ YZdhdz30u2jEBn?usp=sharing">https://drive.google.com/drive/folders/1YLKEc80
+ r3R9hpAb2A5YZdhdz30u2jEBn?usp=sharing</a> <br><br><p>Topic: Stratum TST</p>
+ <p>Time: Jan 9\, 2020 10:00 AM Pacific Time (US and Canada)</p><p><br></p><
+ p>Join Zoom Meeting</p><p>https://zoom.us/j/602389841</p><p><br></p><p>Meet
+ ing ID: 602 389 841</p><p><br></p><p>One tap mobile</p><p>+16699006833\,\,6
+ 02389841# US (San Jose)</p><p>+19292056099\,\,602389841# US (New York)</p><
+ p><br></p><p>Dial by your location</p><p>&nbsp\; &nbsp\; &nbsp\; &nbsp\; +1
+  669 900 6833 US (San Jose)</p><p>&nbsp\; &nbsp\; &nbsp\; &nbsp\; +1 929 20
+ 5 6099 US (New York)</p><p>&nbsp\; &nbsp\; &nbsp\; &nbsp\; 888 788 0099 US 
+ Toll-free</p><p>&nbsp\; &nbsp\; &nbsp\; &nbsp\; 877 853 5247 US Toll-free</
+ p><p>Meeting ID: 602 389 841</p><p>Find your local number: https://zoom.us/
+ u/abOfU2EASr</p>\n\n-::~:~::~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~
+ :~:~:~:~:~:~:~:~:~:~:~:~::~:~::-\nPlease do not edit this section of the de
+ scription.\n\nView your event at https://www.google.com/calendar/event?acti
+ on=VIEW&eid=MzU0cG1zcjdla2Q1bXAzcjE4dHZqZjZoaWJfMjAyMDAxMDlUMTgwMDAwWiBzdHJ
+ hdHVtLWRldkBsaXN0cy5zdHJhdHVtcHJvamVjdC5vcmc&tok=NzEjb3Blbm5ldHdvcmtpbmcub3
+ JnX2Y1YjE0YjFiOHF1azNzbG0zOHJhc3BvdHRvQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb203M
+ zgxNWI4ODcxNmVkYjc5MTFiNmU0MThlZjdmMTI2NGQwMTcyMGVh&ctz=America%2FLos_Angel
+ es&hl=en&es=0.\n-::~:~::~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~
+ :~:~:~:~:~:~:~:~:~:~::~:~::-
+LAST-MODIFIED:20200109T174323Z
+LOCATION:SVL-MAT3-4-Ulysses (5) [GVC]
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Stratum Project Team
+TRANSP:OPAQUE
+END:VEVENT
+END:VCALENDAR

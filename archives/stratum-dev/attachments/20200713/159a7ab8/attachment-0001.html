@@ -1,0 +1,185 @@
+<tt>
+&lt;html&gt;<br>
+&nbsp;&nbsp;&lt;head&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;meta&nbsp;http-equiv=&quot;Content-Type&quot;&nbsp;content=&quot;text/html;&nbsp;charset=UTF-8&quot;&gt;<br>
+&nbsp;&nbsp;&lt;/head&gt;<br>
+&nbsp;&nbsp;&lt;body&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;It&nbsp;seems&nbsp;like&nbsp;you&nbsp;did&nbsp;not&nbsp;install/activate&nbsp;the&nbsp;fabric-tofino<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;library?&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Did&nbsp;you&nbsp;follow&nbsp;the&nbsp;steps&nbsp;in&nbsp;the&nbsp;guide?&nbsp;The&nbsp;&quot;Compile&nbsp;fabric-tofino&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;section&nbsp;should&nbsp;install&nbsp;the&nbsp;pipeconfs.&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Important:&nbsp;you&nbsp;do&nbsp;NOT&nbsp;have&nbsp;to&nbsp;follow&nbsp;the&nbsp;whole&nbsp;guide&nbsp;of<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fabric-tofino.&nbsp;They&nbsp;provide&nbsp;compiled&nbsp;switch&nbsp;binaries.&nbsp;If&nbsp;you<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;follow&nbsp;their&nbsp;guide,&nbsp;these&nbsp;are&nbsp;automatically&nbsp;cleaned&nbsp;(=&nbsp;deleted)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;before&nbsp;they&nbsp;are&nbsp;compiled&nbsp;again&nbsp;-&nbsp;so&nbsp;all&nbsp;subsequent&nbsp;commands&nbsp;will<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;not&nbsp;work&nbsp;unless&nbsp;you&nbsp;are&nbsp;able&nbsp;to&nbsp;compile&nbsp;them&nbsp;yourself&nbsp;(which&nbsp;is<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;only&nbsp;needed&nbsp;if&nbsp;you&nbsp;want&nbsp;to&nbsp;change&nbsp;the&nbsp;underlying&nbsp;P4&nbsp;program,&nbsp;I<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;guess).&nbsp;So&nbsp;I&nbsp;would&nbsp;suggest&nbsp;starting&nbsp;with&nbsp;a&nbsp;fresh&nbsp;copy&nbsp;of<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fabric-tofino&nbsp;in&nbsp;case&nbsp;you&nbsp;changed&nbsp;to&nbsp;much.&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For&nbsp;troubleshooting:&nbsp;as&nbsp;described&nbsp;in&nbsp;the&nbsp;guide,&nbsp;you&nbsp;can&nbsp;connect&nbsp;to<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ONOS&nbsp;via&nbsp;the&nbsp;CLI&nbsp;and&nbsp;look&nbsp;for&nbsp;the&nbsp;pipeconf&nbsp;by&nbsp;executing:&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`onos&nbsp;onos@localhost`&nbsp;(or&nbsp;wherever&nbsp;ONOS&nbsp;is&nbsp;hosted)&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;&lt;a&nbsp;class=&quot;moz-txt-link-freetext&quot;&nbsp;href=&quot;https://github.com/stratum/stratum/blob/b1aa4a5fae55b9971839896add66f5d9a43505bf/stratum/docs/setup_guide_barefoot_tofino_onos.md#compile-fabric-tofino&quot;&gt;https://github.com/stratum/stratum/blob/b1aa4a5fae55b9971839896add66f5d9a43505bf/stratum/docs/setup_guide_barefoot_tofino_onos.md#compile-fabric-tofino&lt;/a&gt;&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=&quot;moz-cite-prefix&quot;&gt;On&nbsp;7/13/20&nbsp;11:20&nbsp;PM,&nbsp;David&nbsp;Lake&nbsp;wrote:&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;blockquote&nbsp;type=&quot;cite&quot;<br>
+cite=&quot;mid:VI1PR06MB5214BE4129F113D74CDD0BA1B5600@VI1PR06MB5214.eurprd06.prod.outlook.com&quot;&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;meta&nbsp;http-equiv=&quot;Content-Type&quot;&nbsp;content=&quot;text/html;&nbsp;charset=UTF-8&quot;&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;meta&nbsp;name=&quot;Generator&quot;&nbsp;content=&quot;Microsoft&nbsp;Word&nbsp;15&nbsp;(filtered<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;medium)&quot;&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;style&gt;&lt;!--<br>
+/*&nbsp;Font&nbsp;Definitions&nbsp;*/<br>
+@font-face<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{font-family:&quot;Cambria&nbsp;Math&quot;;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;panose-1:2&nbsp;4&nbsp;5&nbsp;3&nbsp;5&nbsp;4&nbsp;6&nbsp;3&nbsp;2&nbsp;4;}<br>
+@font-face<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{font-family:Calibri;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;panose-1:2&nbsp;15&nbsp;5&nbsp;2&nbsp;2&nbsp;2&nbsp;4&nbsp;3&nbsp;2&nbsp;4;}<br>
+/*&nbsp;Style&nbsp;Definitions&nbsp;*/<br>
+p.MsoNormal,&nbsp;li.MsoNormal,&nbsp;div.MsoNormal<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{margin:0cm;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;margin-bottom:.0001pt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;font-size:11.0pt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;font-family:&quot;Calibri&quot;,sans-serif;}<br>
+a:link,&nbsp;span.MsoHyperlink<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{mso-style-priority:99;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;color:blue;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text-decoration:underline;}<br>
+a:visited,&nbsp;span.MsoHyperlinkFollowed<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{mso-style-priority:99;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;color:purple;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text-decoration:underline;}<br>
+p.msonormal0,&nbsp;li.msonormal0,&nbsp;div.msonormal0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{mso-style-name:msonormal;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mso-margin-top-alt:auto;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;margin-right:0cm;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mso-margin-bottom-alt:auto;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;margin-left:0cm;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;font-size:11.0pt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;font-family:&quot;Calibri&quot;,sans-serif;}<br>
+span.EmailStyle18<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{mso-style-type:personal-reply;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;font-family:&quot;Calibri&quot;,sans-serif;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;color:windowtext;}<br>
+.MsoChpDefault<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{mso-style-type:export-only;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;font-family:&quot;Calibri&quot;,sans-serif;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mso-fareast-language:EN-US;}<br>
+@page&nbsp;WordSection1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{size:612.0pt&nbsp;792.0pt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;margin:72.0pt&nbsp;72.0pt&nbsp;72.0pt&nbsp;72.0pt;}<br>
+div.WordSection1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{page:WordSection1;}<br>
+--&gt;&lt;/style&gt;&lt;!--[if&nbsp;gte&nbsp;mso&nbsp;9]&gt;&lt;xml&gt;<br>
+&lt;o:shapedefaults&nbsp;v:ext=&quot;edit&quot;&nbsp;spidmax=&quot;1026&quot;&nbsp;/&gt;<br>
+&lt;/xml&gt;&lt;![endif]--&gt;&lt;!--[if&nbsp;gte&nbsp;mso&nbsp;9]&gt;&lt;xml&gt;<br>
+&lt;o:shapelayout&nbsp;v:ext=&quot;edit&quot;&gt;<br>
+&lt;o:idmap&nbsp;v:ext=&quot;edit&quot;&nbsp;data=&quot;1&quot;&nbsp;/&gt;<br>
+&lt;/o:shapelayout&gt;&lt;/xml&gt;&lt;![endif]--&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=&quot;WordSection1&quot;&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;OK<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;–&nbsp;I&nbsp;followed&nbsp;the&nbsp;instructions&nbsp;from&nbsp;David&nbsp;Gengenbach&nbsp;(thank<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;you)&nbsp;and&nbsp;I&nbsp;now&nbsp;have&nbsp;a&nbsp;Stratum&nbsp;agent&nbsp;running&nbsp;on&nbsp;the&nbsp;switch.&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;&lt;o:p&gt; &lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;I<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;then&nbsp;built&nbsp;the&nbsp;pipeline&nbsp;in&nbsp;ONOS&nbsp;and&nbsp;loaded&nbsp;it:&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;&lt;o:p&gt; &lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;2020-07-13T22:10:58,999<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;INFO &nbsp;|&nbsp;onos-store-app-app-activation&nbsp;|<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ApplicationManager              &nbsp;|&nbsp;193&nbsp;-<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;org.onosproject.onos-core-net&nbsp;-&nbsp;2.2.3&nbsp;|&nbsp;Application<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;org.opencord.fabric-tofino&nbsp;has&nbsp;been&nbsp;activated&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;root@ONOS:~/fabric-tofino#&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;&lt;o:p&gt; &lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;But<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;when&nbsp;I&nbsp;add&nbsp;the&nbsp;netfcfg,&nbsp;I&nbsp;see&nbsp;this&nbsp;message&nbsp;in&nbsp;the&nbsp;ONOS&nbsp;log:&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;&lt;o:p&gt; &lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;2020-07-13T22:15:42,571<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;ERROR&nbsp;|&nbsp;onos-gdp-6      &nbsp;|<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DeviceTaskExecutor              &nbsp;|&nbsp;225&nbsp;-<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;org.onosproject.onos-providers-general-device&nbsp;-&nbsp;2.2.3&nbsp;|<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Unable&nbsp;to&nbsp;complete&nbsp;task&nbsp;CONNECTION_SETUP&nbsp;for<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;device:my-tofino-switch:&nbsp;pipeconf<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;org.opencord.fabric.tofino.montara_sde_9_0_0&nbsp;not&nbsp;registered&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;&lt;o:p&gt; &lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;&lt;o:p&gt; &lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;My<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;switch&nbsp;is&nbsp;a&nbsp;Montara&nbsp;but&nbsp;I&nbsp;don’t&nbsp;see&nbsp;where&nbsp;the&nbsp;pipeconf&nbsp;is<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;built?<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;&lt;o:p&gt; &lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;On<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;ONOS&nbsp;system&nbsp;I&nbsp;have&nbsp;ONOS&nbsp;2.2.3&nbsp;and&nbsp;bf-sde-9.0.0. &nbsp;I&nbsp;have<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;not&nbsp;built&nbsp;anything&nbsp;with&nbsp;the&nbsp;bf-sde.&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;&lt;o:p&gt; &lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;Do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I&nbsp;need&nbsp;to&nbsp;run&nbsp;p4studio_build&nbsp;in&nbsp;the&nbsp;BF-SDE&nbsp;first?&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;&lt;o:p&gt; &lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;Thanks&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;David&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;&lt;o:p&gt; &lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;b&gt;&lt;span&nbsp;lang=&quot;EN-US&quot;&gt;From:&lt;/span&gt;&lt;/b&gt;&lt;span<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lang=&quot;EN-US&quot;&gt;&nbsp;Alireza&nbsp;Ghaffarkhah<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;class=&quot;moz-txt-link-rfc2396E&quot;&nbsp;href=&quot;mailto:aghaffar@google.com&quot;&gt;&lt;aghaffar@google.com&gt;&lt;/a&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;b&gt;Sent:&lt;/b&gt;&nbsp;13&nbsp;July&nbsp;2020&nbsp;07:01&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;b&gt;To:&lt;/b&gt;&nbsp;David&nbsp;Gengenbach&nbsp;&lt;a&nbsp;class=&quot;moz-txt-link-rfc2396E&quot;&nbsp;href=&quot;mailto:davidgengenbach@gmx.de&quot;&gt;&lt;davidgengenbach@gmx.de&gt;&lt;/a&gt;;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Brian&nbsp;O'Connor&nbsp;&lt;a&nbsp;class=&quot;moz-txt-link-rfc2396E&quot;&nbsp;href=&quot;mailto:brian@opennetworking.org&quot;&gt;&lt;brian@opennetworking.org&gt;&lt;/a&gt;;&nbsp;Yi&nbsp;Tseng<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;class=&quot;moz-txt-link-rfc2396E&quot;&nbsp;href=&quot;mailto:yi@opennetworking.org&quot;&gt;&lt;yi@opennetworking.org&gt;&lt;/a&gt;;&nbsp;Maximilian&nbsp;Pudelko<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;class=&quot;moz-txt-link-rfc2396E&quot;&nbsp;href=&quot;mailto:max@opennetworking.org&quot;&gt;&lt;max@opennetworking.org&gt;&lt;/a&gt;&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;b&gt;Cc:&lt;/b&gt;&nbsp;Lake,&nbsp;David&nbsp;(PG/R&nbsp;-&nbsp;Elec&nbsp;Electronic&nbsp;Eng)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;class=&quot;moz-txt-link-rfc2396E&quot;&nbsp;href=&quot;mailto:d.lake@surrey.ac.uk&quot;&gt;&lt;d.lake@surrey.ac.uk&gt;&lt;/a&gt;;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;class=&quot;moz-txt-link-abbreviated&quot;&nbsp;href=&quot;mailto:stratum-dev@lists.stratumproject.org&quot;&gt;stratum-dev@lists.stratumproject.org&lt;/a&gt;&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;b&gt;Subject:&lt;/b&gt;&nbsp;Re:&nbsp;[stratum-dev]&nbsp;Confused&nbsp;about&nbsp;how&nbsp;to&nbsp;run<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Stratum&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;o:p&gt; &lt;/o:p&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;a&nbsp;href=&quot;mailto:brian@opennetworking.org&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;moz-do-not-send=&quot;true&quot;&gt;+Brian&nbsp;O'Connor&lt;/a&gt; &lt;a<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;href=&quot;mailto:yi@opennetworking.org&quot;&nbsp;moz-do-not-send=&quot;true&quot;&gt;+Yi<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tseng&lt;/a&gt; &lt;a&nbsp;href=&quot;mailto:max@opennetworking.org&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;moz-do-not-send=&quot;true&quot;&gt;+Maximilian&nbsp;Pudelko&lt;/a&gt; in&nbsp;case<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;they&nbsp;can&nbsp;provide&nbsp;more&nbsp;input. &lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;o:p&gt; &lt;/o:p&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;On&nbsp;Sun,&nbsp;Jul&nbsp;12,&nbsp;2020&nbsp;at&nbsp;5:00&nbsp;PM&nbsp;David<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Gengenbach&nbsp;via&nbsp;stratum-dev&nbsp;&lt;&lt;a<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;href=&quot;mailto:stratum-dev@lists.stratumproject.org&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;moz-do-not-send=&quot;true&quot;&gt;stratum-dev@lists.stratumproject.org&lt;/a&gt;&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;wrote:&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;blockquote&nbsp;style=&quot;border:none;border-left:solid&nbsp;#CCCCCC<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.0pt;padding:0cm&nbsp;0cm&nbsp;0cm<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6.0pt;margin-left:4.8pt;margin-right:0cm&quot;&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;I&nbsp;created&nbsp;a&nbsp;setup&nbsp;guide&nbsp;for&nbsp;this&nbsp;exact<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;use-case.&nbsp;The&nbsp;PR&nbsp;for&nbsp;it&nbsp;has&nbsp;not&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;been&nbsp;merged&nbsp;but&nbsp;should&nbsp;work:&nbsp;&lt;a<br>
+href=&quot;https://eur02.safelinks.protection.outlook.com/?url=https%3A%2F%2Fgithub.com%2Fstratum%2Fstratum%2Fpull%2F280&amp;data=02%7C01%7Cd.lake%40surrey.ac.uk%7C4f4583ab6704455b169c08d826f2263a%7C6b902693107440aa9e21d89446a2ebb5%7C0%7C1%7C637302168754861486&amp;sdata=lOeajVrVj9WuLmwrXJxoY79aJVD7amgmxaFeZ5SPQSU%3D&amp;reserved=0&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;target=&quot;_blank&quot;&nbsp;moz-do-not-send=&quot;true&quot;&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;https://github.com/stratum/stratum/pull/280&lt;/a&gt;&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_______________________________________________&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stratum-dev&nbsp;mailing&nbsp;list&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;href=&quot;mailto:stratum-dev@lists.stratumproject.org&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;target=&quot;_blank&quot;&nbsp;moz-do-not-send=&quot;true&quot;&gt;stratum-dev@lists.stratumproject.org&lt;/a&gt;&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a<br>
+href=&quot;https://eur02.safelinks.protection.outlook.com/?url=https%3A%2F%2Flists.stratumproject.org%2Flistinfo%2Fstratum-dev&amp;data=02%7C01%7Cd.lake%40surrey.ac.uk%7C4f4583ab6704455b169c08d826f2263a%7C6b902693107440aa9e21d89446a2ebb5%7C0%7C1%7C637302168754861486&amp;sdata=48TwOOswQ5trT99bjjnm30vSYpid0ObqjsxDOhjPPRk%3D&amp;reserved=0&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;target=&quot;_blank&quot;&nbsp;moz-do-not-send=&quot;true&quot;&gt;https://lists.stratumproject.org/listinfo/stratum-dev&lt;/a&gt;&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/blockquote&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/blockquote&gt;<br>
+&nbsp;&nbsp;&lt;/body&gt;<br>
+&lt;/html&gt;<br>
+
+</tt>

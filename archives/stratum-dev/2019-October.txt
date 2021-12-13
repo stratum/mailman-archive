@@ -1,0 +1,90 @@
+From bocon at opennetworking.org  Mon Oct 28 22:45:51 2019
+From: bocon at opennetworking.org (bocon at opennetworking.org)
+Date: Mon, 28 Oct 2019 22:45:51 +0000
+Subject: [stratum-dev] Canceled event: Stratum Project Team @ Thu Oct 31,
+ 2019 10am - 10:30am (PDT) (stratum-dev@lists.stratumproject.org)
+Message-ID: <000000000000f4b26c05960042bf@google.com>
+
+This event has been canceled.
+
+Title: Stratum Project Team
+Stratum Team Meeting
+
+Agenda for meetings -  
+https://docs.google.com/document/d/1-bHfORugMPEdcj3I9M_CJKhszrmARcmvPQu0vDQRD5Y/edit?usp=sharing
+
+Meeting notes/presentations -  
+https://drive.google.com/drive/folders/1YLKEc80r3R9hpAb2A5YZdhdz30u2jEBn?usp=sharing
+
+Please join my meeting from your computer, tablet or smartphone.
+https://global.gotomeeting.com/join/274603861
+
+You can also dial in using your phone.
+United States: +1 (571) 317-3129
+
+Access Code: 274-603-861
+
+More phone numbers
+Austria: +43 7 2081 5427
+Canada: +1 (647) 497-9391
+France: +33 170 950 594
+Germany: +49 691 7489 928
+Italy: +39 0 247 92 13 01
+Netherlands: +31 202 251 017
+Spain: +34 932 75 2004
+Switzerland: +41 225 4599 78
+United Kingdom: +44 20 3713 5028
+
+Joining from a video-conferencing room or system?
+Dial: 67.217.95.2##274603861
+Cisco devices: 274603861 at 67.217.95.2
+
+First GoToMeeting? Let's do a quick system check:  
+https://link.gotomeeting.com/system-check
+When: Thu Oct 31, 2019 10am – 10:30am Pacific Time - Los Angeles
+Where: SVL-MAT3-4-Ulysses (5) [GVC]
+Calendar: stratum-dev at lists.stratumproject.org
+Who:
+     * bocon at opennetworking.org - creator
+     * carmelo at opennetworking.org
+     * bill at opennetworking.org
+     * Arkadiy Shapiro
+     * stratum-dev at lists.stratumproject.org
+     * Devjit Gopalpur
+     * stratum-members at lists.stratumproject.org
+     * Alireza Ghaffarkhah
+
+
+Invitation from Google Calendar: https://www.google.com/calendar/
+
+You are receiving this courtesy email at the account  
+stratum-dev at lists.stratumproject.org because you are an attendee of this  
+event.
+
+To stop receiving future updates for this event, decline this event.  
+Alternatively you can sign up for a Google account at  
+https://www.google.com/calendar/ and control your notification settings for  
+your entire calendar.
+
+Forwarding this invitation could allow any recipient to send a response to  
+the organizer and be added to the guest list, or invite others regardless  
+of their own invitation status, or to modify your RSVP. Learn more at  
+https://support.google.com/calendar/answer/37135#forwarding
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20191028/cf626420/attachment.html>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: not available
+Type: text/calendar
+Size: 3324 bytes
+Desc: not available
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20191028/cf626420/attachment.ics>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: invite.ics
+Type: application/ics
+Size: 3397 bytes
+Desc: not available
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20191028/cf626420/attachment.bin>
+

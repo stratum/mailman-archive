@@ -1,0 +1,649 @@
+<tt>
+&lt;div&nbsp;dir=&quot;ltr&quot;&gt;Hi&nbsp;Deval,&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;We&nbsp;unified&nbsp;and&nbsp;cleaned&nbsp;up&nbsp;the&nbsp;Docker&nbsp;configuration&nbsp;and&nbsp;scripts.&lt;/div&gt;&lt;div&gt;&lt;a&nbsp;href=&quot;https://github.com/stratum/stratum/tree/master/stratum/hal/bin/barefoot#1-deploy-with-docker&quot;&gt;https://github.com/stratum/stratum/tree/master/stratum/hal/bin/barefoot#1-deploy-with-docker&lt;/a&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Please&nbsp;pull&nbsp;the&nbsp;latest&nbsp;container&nbsp;image&nbsp;and&nbsp;use&nbsp;the&nbsp;latest&nbsp;script&nbsp;to&nbsp;start&nbsp;the&nbsp;container.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Yi&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;div&nbsp;class=&quot;gmail_quote&quot;&gt;&lt;div&nbsp;dir=&quot;ltr&quot;&nbsp;class=&quot;gmail_attr&quot;&gt;On&nbsp;Tue,&nbsp;Jun&nbsp;9,&nbsp;2020&nbsp;at&nbsp;3:53&nbsp;AM&nbsp;Deval&nbsp;Bhamare&nbsp;&lt;&lt;a&nbsp;href=&quot;mailto:Deval.Bhamare@kau.se&quot;&gt;Deval.Bhamare@kau.se&lt;/a&gt;&gt;&nbsp;wrote:&lt;br&gt;&lt;/div&gt;&lt;blockquote&nbsp;class=&quot;gmail_quote&quot;&nbsp;style=&quot;margin:0px&nbsp;0px&nbsp;0px&nbsp;0.8ex;border-left:1px&nbsp;solid&nbsp;rgb(204,204,204);padding-left:1ex&quot;&gt;<br>
+<br>
+<br>
+<br>
+&lt;div&gt;<br>
+<br>
+&lt;div&nbsp;id=&quot;gmail-m_2934385188576154820divtagdefaultwrapper&quot;&nbsp;style=&quot;font-size:12pt;color:rgb(0,0,0);font-family:Calibri,Helvetica,sans-serif&quot;&nbsp;dir=&quot;ltr&quot;&gt;<br>
+&lt;p&gt;Hi&nbsp;, &lt;/p&gt;<br>
+&lt;p&gt;&lt;br&gt;<br>
+&lt;/p&gt;<br>
+&lt;p&gt;Sorry&nbsp;for&nbsp;getting&nbsp;back&nbsp;late&nbsp;on&nbsp;this, &lt;/p&gt;<br>
+&lt;p&gt;&lt;br&gt;<br>
+&lt;/p&gt;<br>
+&lt;p&gt;I&nbsp;checked&nbsp;in&nbsp;the&nbsp;local&nbsp;system,&nbsp;and&nbsp;I&nbsp;can &nbsp;find &lt;b&nbsp;style=&quot;color:rgb(33,33,33);font-family:wf_segoe-ui_normal,&quot;Segoe&nbsp;UI&quot;,&quot;Segoe&nbsp;WP&quot;,Tahoma,Arial,sans-serif,serif,EmojiFont;font-size:15px&quot;&gt;libonlp.so.1&lt;/b&gt;&lt;/p&gt;<br>
+&lt;p&gt;&lt;br&gt;<br>
+&lt;/p&gt;<br>
+&lt;p&gt;However,&nbsp;I&nbsp;cannot&nbsp;check&nbsp;it&nbsp;in&nbsp;the&nbsp;container&nbsp;as&nbsp;the&nbsp;container&nbsp;doesn&#39;t&nbsp;start&nbsp;and&nbsp;I&nbsp;cannot&nbsp;enter&nbsp;in&nbsp;it.&nbsp;Is&nbsp;there&nbsp;any&nbsp;other&nbsp;way&nbsp;to&nbsp;check&nbsp;it? &lt;/p&gt;<br>
+&lt;p&gt;&lt;br&gt;<br>
+&lt;/p&gt;<br>
+&lt;p&gt;Thanks,&lt;/p&gt;<br>
+&lt;p&gt;&lt;br&gt;<br>
+&lt;/p&gt;<br>
+&lt;p&gt;Deval.&lt;/p&gt;<br>
+&lt;p&gt;&lt;br&gt;<br>
+&lt;/p&gt;<br>
+&lt;/div&gt;<br>
+&lt;hr&nbsp;style=&quot;display:inline-block;width:98%&quot;&gt;<br>
+&lt;div&nbsp;id=&quot;gmail-m_2934385188576154820divRplyFwdMsg&quot;&nbsp;dir=&quot;ltr&quot;&gt;&lt;font&nbsp;face=&quot;Calibri,&nbsp;sans-serif&quot;&nbsp;style=&quot;font-size:11pt&quot;&nbsp;color=&quot;#000000&quot;&gt;&lt;b&gt;From:&lt;/b&gt;&nbsp;Yi&nbsp;Tseng&nbsp;&lt;&lt;a&nbsp;href=&quot;mailto:yi@opennetworking.org&quot;&nbsp;target=&quot;_blank&quot;&gt;yi@opennetworking.org&lt;/a&gt;&gt;&lt;br&gt;<br>
+&lt;b&gt;Sent:&lt;/b&gt;&nbsp;Thursday,&nbsp;May&nbsp;28,&nbsp;2020&nbsp;6:12:09&nbsp;PM&lt;br&gt;<br>
+&lt;b&gt;To:&lt;/b&gt;&nbsp;Deval&nbsp;Bhamare&lt;br&gt;<br>
+&lt;b&gt;Cc:&lt;/b&gt;&nbsp;Maximilian&nbsp;Pudelko;&nbsp;&lt;a&nbsp;href=&quot;mailto:stratum-dev@lists.stratumproject.org&quot;&nbsp;target=&quot;_blank&quot;&gt;stratum-dev@lists.stratumproject.org&lt;/a&gt;&lt;br&gt;<br>
+&lt;b&gt;Subject:&lt;/b&gt;&nbsp;Re:&nbsp;[stratum-dev]&nbsp;Docker&nbsp;image&nbsp;8.9.2-3.16.56-OpenNetworkLinux&nbsp;older&nbsp;version&nbsp;for&nbsp;stratum&lt;/font&gt;<br>
+&lt;div&gt; &lt;/div&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&gt;<br>
+&lt;div&nbsp;dir=&quot;ltr&quot;&gt;Hi&nbsp;Deval,<br>
+&lt;div&gt;&lt;br&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&gt;&lt;b&gt;insmod:&nbsp;ERROR:&nbsp;could&nbsp;not&nbsp;insert&nbsp;module&nbsp;/usr/lib/modules/bf_kdrv.ko:&nbsp;Invalid&nbsp;module&nbsp;format&lt;/b&gt;&lt;br&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&gt;&lt;b&gt;&lt;br&gt;<br>
+&lt;/b&gt;&lt;/div&gt;<br>
+&lt;div&gt;You&nbsp;can&nbsp;find&nbsp;more&nbsp;details&nbsp;by&nbsp;using&nbsp;&quot;&lt;b&gt;dmesg&lt;/b&gt;&quot;&nbsp;command.&nbsp;Usually,&nbsp;Linux&nbsp;shows&nbsp;this&nbsp;message&nbsp;because&nbsp;the&nbsp;version&nbsp;of&nbsp;your&nbsp;host&nbsp;is&nbsp;different.&lt;/div&gt;<br>
+&lt;div&gt;&lt;br&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&gt;&lt;b&gt;/usr/bin/stratum_bf:&nbsp;error&nbsp;while&nbsp;loading&nbsp;shared&nbsp;libraries:&nbsp;libonlp.so.1:&nbsp;cannot&nbsp;open&nbsp;shared&nbsp;object&nbsp;file:&nbsp;No&nbsp;such&nbsp;file&nbsp;or&nbsp;directory&lt;/b&gt;&lt;br&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&gt;&lt;b&gt;&lt;br&gt;<br>
+&lt;/b&gt;&lt;/div&gt;<br>
+&lt;div&gt;Please&nbsp;check&nbsp;if&nbsp;&lt;b&gt;libonlp.so.1&lt;/b&gt;&nbsp;is&nbsp;mounted&nbsp;to&nbsp;the&nbsp;container.&lt;/div&gt;<br>
+&lt;div&gt;&lt;br&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&gt;&lt;br&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&gt;Yi&lt;/div&gt;<br>
+&lt;/div&gt;<br>
+&lt;br&gt;<br>
+&lt;div&nbsp;class=&quot;gmail_quote&quot;&gt;<br>
+&lt;div&nbsp;dir=&quot;ltr&quot;&nbsp;class=&quot;gmail_attr&quot;&gt;On&nbsp;Mon,&nbsp;May&nbsp;25,&nbsp;2020&nbsp;at&nbsp;3:24&nbsp;AM&nbsp;Deval&nbsp;Bhamare&nbsp;&lt;&lt;a&nbsp;href=&quot;mailto:Deval.Bhamare@kau.se&quot;&nbsp;target=&quot;_blank&quot;&gt;Deval.Bhamare@kau.se&lt;/a&gt;&gt;&nbsp;wrote:&lt;br&gt;<br>
+&lt;/div&gt;<br>
+&lt;blockquote&nbsp;class=&quot;gmail_quote&quot;&nbsp;style=&quot;margin:0px&nbsp;0px&nbsp;0px&nbsp;0.8ex;border-left:1px&nbsp;solid&nbsp;rgb(204,204,204);padding-left:1ex&quot;&gt;<br>
+&lt;div&nbsp;dir=&quot;ltr&quot;&gt;<br>
+&lt;div&nbsp;id=&quot;gmail-m_2934385188576154820gmail-m_6845765020408704915divtagdefaultwrapper&quot;&nbsp;dir=&quot;ltr&quot;&nbsp;style=&quot;font-size:12pt;color:rgb(0,0,0);font-family:Calibri,Helvetica,sans-serif,Helvetica,EmojiFont,&quot;Apple&nbsp;Color&nbsp;Emoji&quot;,&quot;Segoe&nbsp;UI&nbsp;Emoji&quot;,NotoColorEmoji,&quot;Segoe&nbsp;UI&nbsp;Symbol&quot;,&quot;Android&nbsp;Emoji&quot;,EmojiSymbols&quot;&gt;<br>
+&lt;div&nbsp;id=&quot;gmail-m_2934385188576154820gmail-m_6845765020408704915divtagdefaultwrapper&quot;&nbsp;dir=&quot;ltr&quot;&nbsp;style=&quot;font-size:12pt;color:rgb(0,0,0);font-family:Calibri,Helvetica,sans-serif,Helvetica,EmojiFont,&quot;Apple&nbsp;Color&nbsp;Emoji&quot;,&quot;Segoe&nbsp;UI&nbsp;Emoji&quot;,NotoColorEmoji,&quot;Segoe&nbsp;UI&nbsp;Symbol&quot;,&quot;Android&nbsp;Emoji&quot;,EmojiSymbols&quot;&gt;<br>
+&lt;p&gt;Hello&nbsp;Team,&lt;/p&gt;<br>
+&lt;p&gt;&lt;br&gt;<br>
+&lt;/p&gt;<br>
+&lt;p&gt;Thank&nbsp;you&nbsp;for&nbsp;your&nbsp;support&nbsp;so&nbsp;far.&nbsp;Stratum&nbsp;works&nbsp;with&nbsp;docker&nbsp;image&nbsp;8.9.2&nbsp;on&nbsp;my&nbsp;ONL. &lt;/p&gt;<br>
+&lt;p&gt;&lt;br&gt;<br>
+&lt;/p&gt;<br>
+&lt;p&gt;However,&nbsp;it&nbsp;still&nbsp;gives&nbsp;the&nbsp;same&nbsp;error&nbsp;below&nbsp;when&nbsp;I&nbsp;try&nbsp;with &lt;span&gt;8.9.2-3.16.56-OpenNetworkLinux&nbsp;image. &lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&gt;&lt;span&gt;Any&nbsp;idea&nbsp;about&nbsp;this? &lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&gt;&lt;span&gt;&lt;br&gt;<br>
+&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&lt;div&gt;loading&nbsp;bf_kdrv_mod...&lt;/div&gt;<br>
+&lt;div&gt;insmod:&nbsp;ERROR:&nbsp;could&nbsp;not&nbsp;insert&nbsp;module&nbsp;/usr/lib/modules/bf_kdrv.ko:&nbsp;Invalid&nbsp;module&nbsp;format&lt;/div&gt;<br>
+&lt;div&gt;/usr/bin/stratum_bf:&nbsp;error&nbsp;while&nbsp;loading&nbsp;shared&nbsp;libraries:&nbsp;&lt;b&gt;libonlp.so.1:&nbsp;cannot&nbsp;open&nbsp;shared&nbsp;object&nbsp;file:&nbsp;No&nbsp;such&nbsp;file&nbsp;or&nbsp;directory&lt;/b&gt;&lt;/div&gt;<br>
+&lt;br&gt;<br>
+&lt;p&gt;&lt;/p&gt;<br>
+&lt;p&gt;&lt;span&gt;&lt;br&gt;<br>
+&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&gt;&lt;span&gt;Also,&nbsp;does&nbsp;it&nbsp;affect&nbsp;the&nbsp;switch&nbsp;performance&nbsp;if&nbsp;docker&nbsp;image&nbsp;with&nbsp;and&nbsp;without&nbsp;ONL&nbsp;support&nbsp;is&nbsp;used?&nbsp;Any&nbsp;insights&nbsp;on&nbsp;that&nbsp;part&nbsp;please? &lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&gt;&lt;br&gt;<br>
+&lt;/p&gt;<br>
+&lt;p&gt;thanks,&lt;/p&gt;<br>
+&lt;p&gt;&lt;br&gt;<br>
+&lt;/p&gt;<br>
+&lt;p&gt;deval.&lt;/p&gt;<br>
+&lt;/div&gt;<br>
+&lt;hr&nbsp;style=&quot;display:inline-block;width:98%&quot;&gt;<br>
+&lt;div&nbsp;id=&quot;gmail-m_2934385188576154820gmail-m_6845765020408704915divRplyFwdMsg&quot;&nbsp;dir=&quot;ltr&quot;&gt;&lt;font&nbsp;face=&quot;Calibri,&nbsp;sans-serif&quot;&nbsp;color=&quot;#000000&quot;&nbsp;style=&quot;font-size:11pt&quot;&gt;&lt;b&gt;From:&lt;/b&gt;&nbsp;Deval&nbsp;Bhamare&lt;br&gt;<br>
+&lt;b&gt;Sent:&lt;/b&gt;&nbsp;Wednesday,&nbsp;May&nbsp;20,&nbsp;2020&nbsp;11:00:45&nbsp;AM&lt;br&gt;<br>
+&lt;b&gt;To:&lt;/b&gt;&nbsp;Maximilian&nbsp;Pudelko;&nbsp;Yi&nbsp;Tseng&lt;br&gt;<br>
+&lt;b&gt;Subject:&lt;/b&gt;&nbsp;Re:&nbsp;[stratum-dev]&nbsp;Docker&nbsp;image&nbsp;8.9.2-3.16.56-OpenNetworkLinux&nbsp;older&nbsp;version&nbsp;for&nbsp;stratum&lt;/font&gt;<br>
+&lt;div&gt; &lt;/div&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&gt;<br>
+&lt;div&nbsp;id=&quot;gmail-m_2934385188576154820gmail-m_6845765020408704915divtagdefaultwrapper&quot;&nbsp;dir=&quot;ltr&quot;&nbsp;style=&quot;font-size:12pt;color:rgb(0,0,0);font-family:Calibri,Helvetica,sans-serif,Helvetica,EmojiFont,&quot;Apple&nbsp;Color&nbsp;Emoji&quot;,&quot;Segoe&nbsp;UI&nbsp;Emoji&quot;,NotoColorEmoji,&quot;Segoe&nbsp;UI&nbsp;Symbol&quot;,&quot;Android&nbsp;Emoji&quot;,EmojiSymbols&quot;&gt;<br>
+&lt;p&gt;Ok,&nbsp;thanks. &lt;/p&gt;<br>
+&lt;p&gt;&lt;br&gt;<br>
+&lt;/p&gt;<br>
+&lt;p&gt;@YI,&nbsp;I&nbsp;tried&nbsp;hitting&nbsp;enter&nbsp;,&nbsp;and&nbsp;as&nbsp;mentioned&nbsp;below,&nbsp;I&nbsp;an&nbsp;getting&nbsp;the&nbsp;bf_sde&nbsp;prompt. &lt;/p&gt;<br>
+&lt;p&gt;&lt;br&gt;<br>
+&lt;/p&gt;<br>
+&lt;p&gt;Thanks,&lt;/p&gt;<br>
+&lt;p&gt;Deval.&lt;/p&gt;<br>
+&lt;/div&gt;<br>
+&lt;hr&nbsp;style=&quot;display:inline-block;width:98%&quot;&gt;<br>
+&lt;div&nbsp;id=&quot;gmail-m_2934385188576154820gmail-m_6845765020408704915divRplyFwdMsg&quot;&nbsp;dir=&quot;ltr&quot;&gt;&lt;font&nbsp;face=&quot;Calibri,&nbsp;sans-serif&quot;&nbsp;color=&quot;#000000&quot;&nbsp;style=&quot;font-size:11pt&quot;&gt;&lt;b&gt;From:&lt;/b&gt;&nbsp;Maximilian&nbsp;Pudelko&nbsp;&lt;&lt;a&nbsp;href=&quot;mailto:max@opennetworking.org&quot;&nbsp;target=&quot;_blank&quot;&gt;max@opennetworking.org&lt;/a&gt;&gt;&lt;br&gt;<br>
+&lt;b&gt;Sent:&lt;/b&gt;&nbsp;Tuesday,&nbsp;May&nbsp;19,&nbsp;2020&nbsp;12:15:38&nbsp;AM&lt;br&gt;<br>
+&lt;b&gt;To:&lt;/b&gt;&nbsp;Deval&nbsp;Bhamare&lt;br&gt;<br>
+&lt;b&gt;Cc:&lt;/b&gt;&nbsp;Daniel&nbsp;Velasco;&nbsp;Yi&nbsp;Tseng&lt;br&gt;<br>
+&lt;b&gt;Subject:&lt;/b&gt;&nbsp;Re:&nbsp;[stratum-dev]&nbsp;Docker&nbsp;image&nbsp;8.9.2-3.16.56-OpenNetworkLinux&nbsp;older&nbsp;version&nbsp;for&nbsp;stratum&lt;/font&gt;<br>
+&lt;div&gt; &lt;/div&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&gt;<br>
+&lt;div&nbsp;dir=&quot;ltr&quot;&gt;<br>
+&lt;div&gt;That&#39;s&nbsp;normal&nbsp;on&nbsp;the&nbsp;first&nbsp;startup.&nbsp;Now&nbsp;you&nbsp;have&nbsp;to&nbsp;push&nbsp;your&nbsp;compiled&nbsp;P4&nbsp;program&nbsp;to&nbsp;the&nbsp;switch&nbsp;via&nbsp;P4Runtime,&nbsp;e.g.&nbsp;with&nbsp;the<br>
+&lt;a&nbsp;href=&quot;https://github.com/p4lang/p4runtime-shell&quot;&nbsp;target=&quot;_blank&quot;&gt;p4runtime-shell&lt;/a&gt;&lt;br&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&gt;There&nbsp;are&nbsp;also&nbsp;some&nbsp;scripts&nbsp;in&nbsp;the&nbsp;source&nbsp;tree&nbsp;that&nbsp;might&nbsp;help:&nbsp;&lt;a&nbsp;href=&quot;https://github.com/stratum/stratum/blob/9f5bd2b285badbef11e81eca6c31d4a3c4342843/stratum/hal/bin/barefoot/update_config.py&quot;&nbsp;target=&quot;_blank&quot;&gt;<br>
+https://github.com/stratum/stratum/blob/9f5bd2b285badbef11e81eca6c31d4a3c4342843/stratum/hal/bin/barefoot/update_config.py&lt;/a&gt;&lt;/div&gt;<br>
+&lt;div&gt;&lt;br&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&gt;Max&lt;br&gt;<br>
+&lt;/div&gt;<br>
+&lt;/div&gt;<br>
+&lt;br&gt;<br>
+&lt;div&nbsp;class=&quot;gmail_quote&quot;&gt;<br>
+&lt;div&nbsp;dir=&quot;ltr&quot;&nbsp;class=&quot;gmail_attr&quot;&gt;On&nbsp;Mon,&nbsp;May&nbsp;18,&nbsp;2020&nbsp;at&nbsp;1:28&nbsp;PM&nbsp;Deval&nbsp;Bhamare&nbsp;&lt;&lt;a&nbsp;href=&quot;mailto:Deval.Bhamare@kau.se&quot;&nbsp;target=&quot;_blank&quot;&gt;Deval.Bhamare@kau.se&lt;/a&gt;&gt;&nbsp;wrote:&lt;br&gt;<br>
+&lt;/div&gt;<br>
+&lt;blockquote&nbsp;class=&quot;gmail_quote&quot;&nbsp;style=&quot;margin:0px&nbsp;0px&nbsp;0px&nbsp;0.8ex;border-left:1px&nbsp;solid&nbsp;rgb(204,204,204);padding-left:1ex&quot;&gt;<br>
+&lt;div&gt;<br>
+&lt;div&nbsp;id=&quot;gmail-m_2934385188576154820gmail-m_6845765020408704915gmail-m_1598074316526402797divtagdefaultwrapper&quot;&nbsp;dir=&quot;ltr&quot;&nbsp;style=&quot;font-size:12pt;color:rgb(0,0,0);font-family:Calibri,Helvetica,sans-serif,Helvetica,EmojiFont,&quot;Apple&nbsp;Color&nbsp;Emoji&quot;,&quot;Segoe&nbsp;UI&nbsp;Emoji&quot;,NotoColorEmoji,&quot;Segoe&nbsp;UI&nbsp;Symbol&quot;,&quot;Android&nbsp;Emoji&quot;,EmojiSymbols&quot;&gt;<br>
+&lt;p&gt;&lt;br&gt;<br>
+&lt;/p&gt;<br>
+&lt;p&gt;&lt;/p&gt;<br>
+&lt;div&nbsp;style=&quot;font-family:Calibri,Helvetica,sans-serif,serif,EmojiFont;font-size:16px;margin-top:0px;margin-bottom:0px&quot;&gt;<br>
+Hi, &lt;/div&gt;<br>
+&lt;div&nbsp;style=&quot;font-family:Calibri,Helvetica,sans-serif,serif,EmojiFont;font-size:16px;margin-top:0px;margin-bottom:0px&quot;&gt;<br>
+&lt;br&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&nbsp;style=&quot;font-family:Calibri,Helvetica,sans-serif,serif,EmojiFont;font-size:16px;margin-top:0px;margin-bottom:0px&quot;&gt;<br>
+Sorry&nbsp;for&nbsp;the&nbsp;incomplete&nbsp;message. I&nbsp;downloaded&nbsp;chasis_config&nbsp;afresh&nbsp;and&nbsp;that&nbsp;error&nbsp;is&nbsp;gone,&nbsp;however,&nbsp;I&nbsp;still&nbsp;get&nbsp;below&nbsp;error:&lt;/div&gt;<br>
+&lt;div&nbsp;style=&quot;font-family:Calibri,Helvetica,sans-serif,serif,EmojiFont;font-size:16px;margin-top:0px;margin-bottom:0px&quot;&gt;<br>
+&lt;br&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&nbsp;style=&quot;font-family:Calibri,Helvetica,sans-serif,serif,EmojiFont;font-size:16px;margin-top:0px;margin-bottom:0px&quot;&gt;<br>
+&lt;span&gt;E0518&nbsp;20:04:16.774682 &nbsp; &nbsp; 8&nbsp;utils.cc:65]&nbsp;Return&nbsp;Error:&nbsp;ReadFileToString(filename,&nbsp;&amp;text)&nbsp;failed&nbsp;with&nbsp;StratumErrorSpace::ERR_FILE_NOT_FOUND:&nbsp;/etc/stratum/pipeline_config.pb.txt&nbsp;not&nbsp;found.&lt;/span&gt;&lt;br&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&nbsp;style=&quot;font-family:Calibri,Helvetica,sans-serif,serif,EmojiFont;font-size:16px;margin-top:0px;margin-bottom:0px&quot;&gt;<br>
+&lt;span&gt;&lt;br&gt;<br>
+&lt;/span&gt;&lt;/div&gt;<br>
+&lt;div&nbsp;style=&quot;font-family:Calibri,Helvetica,sans-serif,serif,EmojiFont;font-size:16px;margin-top:0px;margin-bottom:0px&quot;&gt;<br>
+&lt;span&gt;<br>
+&lt;div&gt;E0518&nbsp;20:04:16.776194 &nbsp; &nbsp; 8&nbsp;hal.cc:233]&nbsp;Error&nbsp;when&nbsp;checking&nbsp;in&nbsp;with&nbsp;procmon:&nbsp;Failed&nbsp;to&nbsp;check&nbsp;in&nbsp;with&nbsp;procmon:&nbsp;failed&nbsp;to&nbsp;connect&nbsp;to&nbsp;all&nbsp;addresses.&lt;/div&gt;<br>
+&lt;div&gt;&lt;br&gt;<br>
+&lt;/div&gt;<br>
+&lt;br&gt;<br>
+&lt;/span&gt;&lt;/div&gt;<br>
+&lt;div&nbsp;style=&quot;font-family:Calibri,Helvetica,sans-serif,serif,EmojiFont;font-size:16px;margin-top:0px;margin-bottom:0px&quot;&gt;<br>
+&lt;span&gt;&lt;br&gt;<br>
+&lt;/span&gt;&lt;/div&gt;<br>
+&lt;div&nbsp;style=&quot;font-family:Calibri,Helvetica,sans-serif,serif,EmojiFont;font-size:16px;margin-top:0px;margin-bottom:0px&quot;&gt;<br>
+&lt;span&gt;Where&nbsp;can&nbsp;I&nbsp;find &lt;span&nbsp;style=&quot;font-family:Calibri,Helvetica,sans-serif,serif,EmojiFont;font-size:16px&quot;&gt;&lt;b&gt;pipeline_config.pb.txt&lt;/b&gt;?&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;<br>
+&lt;div&nbsp;style=&quot;font-family:Calibri,Helvetica,sans-serif,serif,EmojiFont;font-size:16px;margin-top:0px;margin-bottom:0px&quot;&gt;<br>
+&lt;br&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&nbsp;style=&quot;font-family:Calibri,Helvetica,sans-serif,serif,EmojiFont;font-size:16px;margin-top:0px;margin-bottom:0px&quot;&gt;<br>
+However,&nbsp;now&nbsp;I&nbsp;get&nbsp;the&nbsp;bf_sde&gt;&nbsp;prompt. &lt;/div&gt;<br>
+&lt;br&gt;<br>
+&lt;p&gt;&lt;/p&gt;<br>
+&lt;p&gt;thanks,&lt;/p&gt;<br>
+&lt;p&gt;&lt;br&gt;<br>
+&lt;/p&gt;<br>
+&lt;p&gt;Deval.&lt;/p&gt;<br>
+&lt;/div&gt;<br>
+&lt;hr&nbsp;style=&quot;display:inline-block;width:98%&quot;&gt;<br>
+&lt;div&nbsp;id=&quot;gmail-m_2934385188576154820gmail-m_6845765020408704915gmail-m_1598074316526402797divRplyFwdMsg&quot;&nbsp;dir=&quot;ltr&quot;&gt;<br>
+&lt;font&nbsp;face=&quot;Calibri,&nbsp;sans-serif&quot;&nbsp;color=&quot;#000000&quot;&nbsp;style=&quot;font-size:11pt&quot;&gt;&lt;b&gt;From:&lt;/b&gt;&nbsp;Deval&nbsp;Bhamare&lt;br&gt;<br>
+&lt;b&gt;Sent:&lt;/b&gt;&nbsp;Monday,&nbsp;May&nbsp;18,&nbsp;2020&nbsp;11:26:00&nbsp;PM&lt;br&gt;<br>
+&lt;b&gt;To:&lt;/b&gt;&nbsp;Maximilian&nbsp;Pudelko&lt;br&gt;<br>
+&lt;b&gt;Cc:&lt;/b&gt;&nbsp;Daniel&nbsp;Velasco;&nbsp;Yi&nbsp;Tseng&lt;br&gt;<br>
+&lt;b&gt;Subject:&lt;/b&gt;&nbsp;Re:&nbsp;[stratum-dev]&nbsp;Docker&nbsp;image&nbsp;8.9.2-3.16.56-OpenNetworkLinux&nbsp;older&nbsp;version&nbsp;for&nbsp;stratum&lt;/font&gt;<br>
+&lt;div&gt; &lt;/div&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&gt;<br>
+&lt;div&nbsp;id=&quot;gmail-m_2934385188576154820gmail-m_6845765020408704915gmail-m_1598074316526402797divtagdefaultwrapper&quot;&nbsp;dir=&quot;ltr&quot;&nbsp;style=&quot;font-size:12pt;color:rgb(0,0,0);font-family:Calibri,Helvetica,sans-serif,Helvetica,EmojiFont,&quot;Apple&nbsp;Color&nbsp;Emoji&quot;,&quot;Segoe&nbsp;UI&nbsp;Emoji&quot;,NotoColorEmoji,&quot;Segoe&nbsp;UI&nbsp;Symbol&quot;,&quot;Android&nbsp;Emoji&quot;,EmojiSymbols&quot;&gt;<br>
+&lt;p&gt;Hi, &lt;/p&gt;<br>
+&lt;p&gt;&lt;br&gt;<br>
+&lt;/p&gt;<br>
+&lt;p&gt;I&nbsp;downloaded&nbsp;chasis_config&nbsp;afresh&nbsp;and&nbsp;that&nbsp;error&nbsp;is&nbsp;gone,&nbsp;however,&nbsp;I&nbsp;still&nbsp;get&nbsp;below&nbsp;error:&lt;/p&gt;<br>
+&lt;p&gt;&lt;br&gt;<br>
+&lt;/p&gt;<br>
+&lt;/div&gt;<br>
+&lt;hr&nbsp;style=&quot;display:inline-block;width:98%&quot;&gt;<br>
+&lt;div&nbsp;id=&quot;gmail-m_2934385188576154820gmail-m_6845765020408704915gmail-m_1598074316526402797divRplyFwdMsg&quot;&nbsp;dir=&quot;ltr&quot;&gt;<br>
+&lt;font&nbsp;face=&quot;Calibri,&nbsp;sans-serif&quot;&nbsp;color=&quot;#000000&quot;&nbsp;style=&quot;font-size:11pt&quot;&gt;&lt;b&gt;From:&lt;/b&gt;&nbsp;Maximilian&nbsp;Pudelko&nbsp;&lt;&lt;a&nbsp;href=&quot;mailto:max@opennetworking.org&quot;&nbsp;target=&quot;_blank&quot;&gt;max@opennetworking.org&lt;/a&gt;&gt;&lt;br&gt;<br>
+&lt;b&gt;Sent:&lt;/b&gt;&nbsp;Monday,&nbsp;May&nbsp;18,&nbsp;2020&nbsp;9:07:35&nbsp;PM&lt;br&gt;<br>
+&lt;b&gt;To:&lt;/b&gt;&nbsp;Deval&nbsp;Bhamare&lt;br&gt;<br>
+&lt;b&gt;Cc:&lt;/b&gt;&nbsp;Daniel&nbsp;Velasco;&nbsp;&lt;a&nbsp;href=&quot;mailto:stratum-dev@lists.stratumproject.org&quot;&nbsp;target=&quot;_blank&quot;&gt;<br>
+stratum-dev@lists.stratumproject.org&lt;/a&gt;&lt;br&gt;<br>
+&lt;b&gt;Subject:&lt;/b&gt;&nbsp;Re:&nbsp;[stratum-dev]&nbsp;Docker&nbsp;image&nbsp;8.9.2-3.16.56-OpenNetworkLinux&nbsp;older&nbsp;version&nbsp;for&nbsp;stratum&lt;/font&gt;<br>
+&lt;div&gt; &lt;/div&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&gt;<br>
+&lt;div&nbsp;dir=&quot;ltr&quot;&gt;<br>
+&lt;div&gt;Hi&nbsp;all,&lt;/div&gt;<br>
+&lt;div&gt;&lt;br&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&gt;I&#39;ll&nbsp;try&nbsp;to&nbsp;answer&nbsp;some&nbsp;of&nbsp;the&nbsp;questions:&lt;br&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&gt;&lt;br&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&gt;&gt;&nbsp;StratumErrorSpace::ERR_INTERNAL:&nbsp;Failed&nbsp;to&nbsp;check&nbsp;in&nbsp;with&nbsp;procmon:&nbsp;failed&nbsp;to&nbsp;connect&nbsp;to&nbsp;all&nbsp;addresses&lt;/div&gt;<br>
+&lt;div&gt;You&nbsp;can&nbsp;ignore&nbsp;this,&nbsp;that&nbsp;error&nbsp;is&nbsp;a&nbsp;leftover&nbsp;from&nbsp;the&nbsp;Google&nbsp;codebase.&lt;br&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&gt;&lt;br&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&gt;&gt;&nbsp;ERR_FILE_NOT_FOUND:&nbsp;/etc/stratum/chassis_config.pb.txt&nbsp;not&nbsp;found.&lt;/div&gt;<br>
+&lt;div&gt;This&nbsp;means&nbsp;there&nbsp;was&nbsp;no&nbsp;ChassisConfig&nbsp;(Stratum&#39;s&nbsp;settings&nbsp;storage)&nbsp;found&nbsp;under&nbsp;the&nbsp;path&nbsp;you&nbsp;gave&nbsp;with&nbsp;`-chassis_config_file=&lt;path&gt;`.&lt;/div&gt;<br>
+&lt;div&gt;When&nbsp;you&nbsp;download&nbsp;a&nbsp;default&nbsp;one,&nbsp;like&nbsp;Yi&nbsp;described&nbsp;above,&nbsp;you&#39;ll&nbsp;likely&nbsp;have&nbsp;to&nbsp;adjust&nbsp;the&nbsp;path&nbsp;so&nbsp;it&#39;s&nbsp;correct.&nbsp;Or&nbsp;just&nbsp;use&nbsp;the&nbsp;gnmi&nbsp;cli&nbsp;to&nbsp;push&nbsp;it:<br>
+&lt;a&nbsp;href=&quot;https://github.com/stratum/stratum/blob/9f5bd2b285badbef11e81eca6c31d4a3c4342843/tools/gnmi/README.md#L50&quot;&nbsp;target=&quot;_blank&quot;&gt;<br>
+https://github.com/stratum/stratum/blob/9f5bd2b285badbef11e81eca6c31d4a3c4342843/tools/gnmi/README.md#L50&lt;/a&gt;&lt;/div&gt;<br>
+&lt;div&gt;&lt;br&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&gt;Max&lt;b&gt;&lt;br&gt;<br>
+&lt;/b&gt;&lt;/div&gt;<br>
+&lt;div&gt;&lt;br&gt;<br>
+&lt;/div&gt;<br>
+&lt;/div&gt;<br>
+&lt;br&gt;<br>
+&lt;div&nbsp;class=&quot;gmail_quote&quot;&gt;<br>
+&lt;div&nbsp;dir=&quot;ltr&quot;&nbsp;class=&quot;gmail_attr&quot;&gt;On&nbsp;Mon,&nbsp;May&nbsp;18,&nbsp;2020&nbsp;at&nbsp;8:21&nbsp;AM&nbsp;Deval&nbsp;Bhamare&nbsp;via&nbsp;stratum-dev&nbsp;&lt;&lt;a&nbsp;href=&quot;mailto:stratum-dev@lists.stratumproject.org&quot;&nbsp;target=&quot;_blank&quot;&gt;stratum-dev@lists.stratumproject.org&lt;/a&gt;&gt;&nbsp;wrote:&lt;br&gt;<br>
+&lt;/div&gt;<br>
+&lt;blockquote&nbsp;class=&quot;gmail_quote&quot;&nbsp;style=&quot;margin:0px&nbsp;0px&nbsp;0px&nbsp;0.8ex;border-left:1px&nbsp;solid&nbsp;rgb(204,204,204);padding-left:1ex&quot;&gt;<br>
+&lt;div&gt;<br>
+&lt;div&nbsp;id=&quot;gmail-m_2934385188576154820gmail-m_6845765020408704915gmail-m_1598074316526402797gmail-m_881589629099818970divtagdefaultwrapper&quot;&nbsp;dir=&quot;ltr&quot;&nbsp;style=&quot;font-size:12pt;color:rgb(0,0,0);font-family:Calibri,Helvetica,sans-serif,Helvetica,EmojiFont,&quot;Apple&nbsp;Color&nbsp;Emoji&quot;,&quot;Segoe&nbsp;UI&nbsp;Emoji&quot;,NotoColorEmoji,&quot;Segoe&nbsp;UI&nbsp;Symbol&quot;,&quot;Android&nbsp;Emoji&quot;,EmojiSymbols&quot;&gt;<br>
+&lt;p&gt;Hi&nbsp;Dani,&lt;/p&gt;<br>
+&lt;p&gt;&lt;br&gt;<br>
+&lt;/p&gt;<br>
+&lt;p&gt;I&nbsp;guess&nbsp;you&nbsp;can&nbsp;ignore&nbsp;&lt;span&nbsp;style=&quot;color:rgb(33,33,33);font-family:wf_segoe-ui_normal,&quot;Segoe&nbsp;UI&quot;,&quot;Segoe&nbsp;WP&quot;,Tahoma,Arial,sans-serif,serif,EmojiFont;font-size:15px&quot;&gt;<br>
+procmon &lt;/span&gt;error.  &lt;/p&gt;<br>
+&lt;p&gt;&lt;br&gt;<br>
+&lt;/p&gt;<br>
+&lt;p&gt;The&nbsp;message&nbsp;below&nbsp;says&nbsp;stratum&nbsp;is&nbsp;up. &lt;/p&gt;<br>
+&lt;p&gt;&lt;br&gt;<br>
+&lt;/p&gt;<br>
+&lt;p&gt;&lt;span&nbsp;style=&quot;color:rgb(33,33,33);font-family:wf_segoe-ui_normal,&quot;Segoe&nbsp;UI&quot;,&quot;Segoe&nbsp;WP&quot;,Tahoma,Arial,sans-serif,serif,EmojiFont;font-size:15px&quot;&gt;E0518&nbsp;23:08:33.498530&nbsp; &nbsp; &nbsp;6&nbsp;hal.cc:223]&nbsp;Stratum&nbsp;external&nbsp;facing&nbsp;services&nbsp;are&nbsp;listening&nbsp;to &lt;/span&gt;&lt;a&nbsp;href=&quot;http://0.0.0.0:28000/&quot;&nbsp;rel=&quot;noopener&nbsp;noreferrer&quot;&nbsp;id=&quot;gmail-m_2934385188576154820gmail-m_6845765020408704915gmail-m_1598074316526402797gmail-m_881589629099818970LPlnk141831&quot;&nbsp;style=&quot;font-family:wf_segoe-ui_normal,&quot;Segoe&nbsp;UI&quot;,&quot;Segoe&nbsp;WP&quot;,Tahoma,Arial,sans-serif,serif,EmojiFont;font-size:15px&quot;&nbsp;target=&quot;_blank&quot;&gt;0.0.0.0:28000&lt;/a&gt;&lt;span&nbsp;style=&quot;color:rgb(33,33,33);font-family:wf_segoe-ui_normal,&quot;Segoe&nbsp;UI&quot;,&quot;Segoe&nbsp;WP&quot;,Tahoma,Arial,sans-serif,serif,EmojiFont;font-size:15px&quot;&gt;, &lt;/span&gt;&lt;a&nbsp;href=&quot;http://0.0.0.0:9339/&quot;&nbsp;rel=&quot;noopener&nbsp;noreferrer&quot;&nbsp;id=&quot;gmail-m_2934385188576154820gmail-m_6845765020408704915gmail-m_1598074316526402797gmail-m_881589629099818970LPlnk403174&quot;&nbsp;style=&quot;font-family:wf_segoe-ui_normal,&quot;Segoe&nbsp;UI&quot;,&quot;Segoe&nbsp;WP&quot;,Tahoma,Arial,sans-serif,serif,EmojiFont;font-size:15px&quot;&nbsp;target=&quot;_blank&quot;&gt;0.0.0.0:9339&lt;/a&gt;&lt;span&nbsp;style=&quot;color:rgb(33,33,33);font-family:wf_segoe-ui_normal,&quot;Segoe&nbsp;UI&quot;,&quot;Segoe&nbsp;WP&quot;,Tahoma,Arial,sans-serif,serif,EmojiFont;font-size:15px&quot;&gt;,<br>
+&nbsp;localhost:28000...&lt;/span&gt;&lt;br&gt;<br>
+&lt;/p&gt;<br>
+&lt;p&gt;&lt;span&nbsp;style=&quot;color:rgb(33,33,33);font-family:wf_segoe-ui_normal,&quot;Segoe&nbsp;UI&quot;,&quot;Segoe&nbsp;WP&quot;,Tahoma,Arial,sans-serif,serif,EmojiFont;font-size:15px&quot;&gt;&lt;br&gt;<br>
+&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&gt;The&nbsp;only&nbsp;thing&nbsp;I&nbsp;need&nbsp;to&nbsp;figure&nbsp;out&nbsp;is&nbsp;getting command&nbsp;line&nbsp;from&nbsp;bf_switchd. &lt;/p&gt;<br>
+&lt;p&gt;&lt;br&gt;<br>
+&lt;/p&gt;<br>
+&lt;p&gt;If&nbsp;you&nbsp;hit&nbsp;enter&nbsp;in&nbsp;the&nbsp;end,&nbsp;do&nbsp;you&nbsp;get&nbsp;any&nbsp;bf_sw&nbsp;command&nbsp;prompt?&nbsp;At&nbsp;least&nbsp;I&nbsp;am&nbsp;not&nbsp;getting any.&lt;/p&gt;<br>
+&lt;p&gt;&lt;br&gt;<br>
+&lt;/p&gt;<br>
+&lt;p&gt;&lt;b&gt;Dev&nbsp;team&lt;/b&gt;:&nbsp;&lt;span&nbsp;style=&quot;color:rgb(255,0,0)&quot;&gt;Is&nbsp;it&nbsp;because&nbsp;of&nbsp;the&nbsp;following&nbsp;error: &lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&gt;&lt;br&gt;<br>
+&lt;/p&gt;<br>
+&lt;p&gt;&lt;/p&gt;<br>
+&lt;div&gt;&lt;b&gt;ERR_FILE_NOT_FOUND:&nbsp;/etc/stratum/chassis_config.pb.txt&nbsp;not&nbsp;found.&lt;/b&gt;&lt;/div&gt;<br>
+&lt;div&gt;E0518&nbsp;15:17:17.704537 &nbsp; &nbsp; 8&nbsp;utils.cc:65]&nbsp;Return&nbsp;Error:&nbsp;ReadFileToString(filename,&nbsp;&amp;text)&nbsp;failed&nbsp;with&nbsp;StratumErrorSpace::ERR_FILE_NOT_FOUND:&nbsp;/etc/stratum/chassis_config.pb.txt&nbsp;not&nbsp;found.&lt;/div&gt;<br>
+&lt;br&gt;<br>
+&lt;p&gt;&lt;/p&gt;<br>
+&lt;p&gt;&lt;br&gt;<br>
+&lt;/p&gt;<br>
+&lt;p&gt;&lt;br&gt;<br>
+&lt;/p&gt;<br>
+&lt;p&gt;Ideally&nbsp; &lt;span&nbsp;style=&quot;color:rgb(33,33,33);font-family:wf_segoe-ui_normal,&quot;Segoe&nbsp;UI&quot;,&quot;Segoe&nbsp;WP&quot;,Tahoma,Arial,sans-serif,serif,EmojiFont;font-size:15px&quot;&gt;stratumproject/stratum-bf:9.1.0-4.14.49-OpenNetworkLinu &lt;/span&gt;should&nbsp;work&nbsp;on&nbsp;ONL,&nbsp;but&nbsp;I&nbsp;am&nbsp;getting&nbsp;the<br>
+&nbsp;same&nbsp;error&nbsp;as&nbsp;you&nbsp;got&nbsp;(&lt;span&nbsp;style=&quot;color:rgb(33,33,33);font-family:wf_segoe-ui_normal,&quot;Segoe&nbsp;UI&quot;,&quot;Segoe&nbsp;WP&quot;,Tahoma,Arial,sans-serif,serif,EmojiFont;font-size:15px&quot;&gt;libonlp.so.1:&nbsp;cannot&nbsp;open&nbsp;shared&nbsp;object&nbsp;file:&nbsp;No&nbsp;such&nbsp;file&nbsp;or&nbsp;directory&lt;/span&gt;)&nbsp;and hopefully<br>
+&nbsp;we&nbsp;will&nbsp;get&nbsp;some&nbsp;response&nbsp;soon. &lt;/p&gt;<br>
+&lt;p&gt;&lt;br&gt;<br>
+&lt;/p&gt;<br>
+&lt;p&gt;/Deval.&lt;/p&gt;<br>
+&lt;p&gt;&lt;br&gt;<br>
+&lt;/p&gt;<br>
+&lt;/div&gt;<br>
+&lt;hr&nbsp;style=&quot;display:inline-block;width:98%&quot;&gt;<br>
+&lt;div&nbsp;id=&quot;gmail-m_2934385188576154820gmail-m_6845765020408704915gmail-m_1598074316526402797gmail-m_881589629099818970divRplyFwdMsg&quot;&nbsp;dir=&quot;ltr&quot;&gt;<br>
+&lt;font&nbsp;face=&quot;Calibri,&nbsp;sans-serif&quot;&nbsp;color=&quot;#000000&quot;&nbsp;style=&quot;font-size:11pt&quot;&gt;&lt;b&gt;From:&lt;/b&gt;&nbsp;Daniel&nbsp;Velasco&nbsp;&lt;&lt;a&nbsp;href=&quot;mailto:dvelben@gmail.com&quot;&nbsp;target=&quot;_blank&quot;&gt;dvelben@gmail.com&lt;/a&gt;&gt;&lt;br&gt;<br>
+&lt;b&gt;Sent:&lt;/b&gt;&nbsp;Monday,&nbsp;May&nbsp;18,&nbsp;2020&nbsp;6:09:32&nbsp;PM&lt;br&gt;<br>
+&lt;b&gt;To:&lt;/b&gt;&nbsp;Deval&nbsp;Bhamare&lt;br&gt;<br>
+&lt;b&gt;Subject:&lt;/b&gt;&nbsp;Re:&nbsp;[stratum-dev]&nbsp;Docker&nbsp;image&nbsp;8.9.2-3.16.56-OpenNetworkLinux&nbsp;older&nbsp;version&nbsp;for&nbsp;stratum&lt;/font&gt;<br>
+&lt;div&gt; &lt;/div&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&gt;<br>
+&lt;div&nbsp;dir=&quot;ltr&quot;&gt;Hi&nbsp;Deval,<br>
+&lt;div&gt;&lt;br&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&gt;if&nbsp;I&nbsp;use&nbsp;that&nbsp;command&nbsp;(with&nbsp;DOCKER_IMAGE_TAG),&nbsp;it&nbsp;uses&nbsp;the&nbsp;container stratumproject/stratum-bf:9.1.0,&nbsp;instead&nbsp;of&nbsp;stratumproject/stratum-bf:9.1.0-4.14.49-OpenNetworkLinux,&nbsp;that&nbsp;was&nbsp;the&nbsp;one&nbsp;I&nbsp;thought&nbsp;it&nbsp;should&nbsp;be.&lt;/div&gt;<br>
+&lt;div&gt;&lt;br&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&gt;In&nbsp;any&nbsp;case,&nbsp;if&nbsp;I&nbsp;do&nbsp;as&nbsp;you&nbsp;ask,&nbsp;I&nbsp;get&nbsp;the&nbsp;following&nbsp;error:&lt;/div&gt;<br>
+&lt;div&gt;<br>
+&lt;blockquote&nbsp;style=&quot;margin:0px&nbsp;0px&nbsp;0px&nbsp;40px;border:medium&nbsp;none;padding:0px&quot;&gt;<br>
+&lt;div&gt;&lt;br&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&gt;root@localhost:~/stratum-configs#&nbsp;PLATFORM=x86-64-stordis-bf2556x-1t-r0&nbsp;DOCKER_IMAGE_TAG=9.1.0&nbsp;CONFIG_DIR=$PWD&nbsp;LOG_DIR=$PWD&nbsp;./start-stratum-container.sh&lt;/div&gt;<br>
+&lt;div&gt;+&nbsp;PLATFORM_ARGS=&lt;/div&gt;<br>
+&lt;div&gt;+&nbsp;&#39;[&#39;&nbsp;-n&nbsp;x86-64-stordis-bf2556x-1t-r0&nbsp;&#39;]&#39;&lt;/div&gt;<br>
+&lt;div&gt;+&nbsp;PLATFORM_ARGS=&#39;--env&nbsp;PLATFORM=x86-64-stordis-bf2556x-1t-r0&#39;&lt;/div&gt;<br>
+&lt;div&gt;+&nbsp;CONFIG_DIR=/root/stratum-configs&lt;/div&gt;<br>
+&lt;div&gt;+&nbsp;LOG_DIR=/root/stratum-configs&lt;/div&gt;<br>
+&lt;div&gt;+&nbsp;SDE_VERSION=9.0.0&lt;/div&gt;<br>
+&lt;div&gt;++&nbsp;uname&nbsp;-r&lt;/div&gt;<br>
+&lt;div&gt;+&nbsp;KERNEL_VERSION=4.14.49-OpenNetworkLinux&lt;/div&gt;<br>
+&lt;div&gt;+&nbsp;DOCKER_IMAGE=stratumproject/stratum-bf&lt;/div&gt;<br>
+&lt;div&gt;+&nbsp;DOCKER_IMAGE_TAG=9.1.0&lt;/div&gt;<br>
+&lt;div&gt;++&nbsp;uname&nbsp;-r&lt;/div&gt;<br>
+&lt;div&gt;++&nbsp;uname&nbsp;-r&lt;/div&gt;<br>
+&lt;div&gt;+&nbsp;docker&nbsp;run&nbsp;-it&nbsp;--privileged&nbsp;-v&nbsp;/dev:/dev&nbsp;-v&nbsp;/sys:/sys&nbsp;-v&nbsp;/lib/modules/4.14.49-OpenNetworkLinux:/lib/modules/4.14.49-OpenNetworkLinux&nbsp;--env&nbsp;PLATFORM=x86-64-stordis-bf2556x-1t-r0&nbsp;-p&nbsp;28000:28000&nbsp;-p&nbsp;9339:9339&nbsp;-v&nbsp;/root/stratum-configs:/etc/stratum&nbsp;-v&nbsp;/root/stratum-configs:/var/log/stratum<br>
+&nbsp;stratumproject/stratum-bf:9.1.0&lt;/div&gt;<br>
+&lt;div&gt;Cannot&nbsp;find&nbsp;/usr/lib/modules/bf_kdrv.ko,&nbsp;skip&nbsp;installing&nbsp;the&nbsp;Kernel&nbsp;module.&lt;/div&gt;<br>
+&lt;div&gt;bf_sysfs_fname&nbsp;/sys/class/bf/bf0/device/dev_add&lt;/div&gt;<br>
+&lt;div&gt;Install&nbsp;dir:&nbsp;/usr&nbsp;(0x55a9d74ea020)&lt;/div&gt;<br>
+&lt;div&gt;error&nbsp;copying&nbsp;zlog&nbsp;config&nbsp;file&nbsp;&quot;cp&nbsp;/usr/share/bfsys/zlog-cfg&nbsp;zlog-cfg-cur&quot;&lt;/div&gt;<br>
+&lt;div&gt;bf_switchd:&nbsp;system&nbsp;services&nbsp;initialized&lt;/div&gt;<br>
+&lt;div&gt;bf_switchd:&nbsp;loading&nbsp;conf_file&nbsp;/usr/share/stratum/tofino_skip_p4_no_bsp.conf...&lt;/div&gt;<br>
+&lt;div&gt;bf_switchd:&nbsp;processing&nbsp;device&nbsp;configuration...&lt;/div&gt;<br>
+&lt;div&gt;&lt;br&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&gt;...&lt;/div&gt;<br>
+&lt;/blockquote&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&gt;&lt;br&gt;<br>
+&lt;/div&gt;<br>
+&lt;blockquote&nbsp;style=&quot;margin:0px&nbsp;0px&nbsp;0px&nbsp;40px;border:medium&nbsp;none;padding:0px&quot;&gt;bf_switchd:&nbsp;dev_id&nbsp;0&nbsp;initialized&lt;br&gt;<br>
+&lt;br&gt;<br>
+bf_switchd:&nbsp;initialized&nbsp;1&nbsp;devices&lt;br&gt;<br>
+bf_switchd:&nbsp;Credo&nbsp;python&nbsp;server&nbsp;thread&nbsp;initialized..Skip&nbsp;p4&nbsp;lib&nbsp;init&lt;br&gt;<br>
+Skip&nbsp;mav&nbsp;diag&nbsp;lib&nbsp;init&lt;br&gt;<br>
+bf_switchd:&nbsp;spawning&nbsp;cli&nbsp;server&nbsp;thread&lt;br&gt;<br>
+credo_python_intf:&nbsp;listen&nbsp;socket&nbsp;created&lt;br&gt;<br>
+credo_python_intf:&nbsp;bind&nbsp;done&nbsp;on&nbsp;port&nbsp;9001,&nbsp;listening...&lt;br&gt;<br>
+credo_python_intf:&nbsp;listening&nbsp;for&nbsp;incoming&nbsp;connections...&lt;br&gt;<br>
+bf_switchd:&nbsp;spawning&nbsp;driver&nbsp;shell&lt;br&gt;<br>
+bf_switchd:&nbsp;server&nbsp;started&nbsp;-&nbsp;listening&nbsp;on&nbsp;port&nbsp;9999&lt;br&gt;<br>
+Cannot&nbsp;read&nbsp;termcap&nbsp;database;&lt;br&gt;<br>
+using&nbsp;dumb&nbsp;terminal&nbsp;settings.&lt;br&gt;<br>
+bf-sde&gt;&lt;br&gt;<br>
+bf-sde&gt;&lt;br&gt;<br>
+bf-sde&gt;&lt;br&gt;<br>
+bf-sde&gt;&lt;br&gt;<br>
+bf-sde&gt;&nbsp;E0518&nbsp;23:08:32.875291&nbsp; &nbsp; &nbsp;6&nbsp;phal.cc:91]&nbsp;No&nbsp;phal_config_file&nbsp;specified&nbsp;and&nbsp;no&nbsp;switch&nbsp;configurator&nbsp;found!&nbsp;This&nbsp;is&nbsp;probably&nbsp;not&nbsp;what&nbsp;you&nbsp;want.&nbsp;Did&nbsp;you&nbsp;forget&nbsp;to&nbsp;specify&nbsp;any&nbsp;&#39;--define&nbsp;phal_with_*=true&#39;&nbsp;Bazel&nbsp;flags?&lt;br&gt;<br>
+E0518&nbsp;23:08:32.876373699&nbsp; &nbsp; &nbsp; &nbsp;6&nbsp;server_chttp2.cc:40]&nbsp; &nbsp; &nbsp; &nbsp; {&quot;created&quot;:&quot;@1589843312.876328305&quot;,&quot;description&quot;:&quot;Only&nbsp;1&nbsp;addresses&nbsp;added&nbsp;out&nbsp;of&nbsp;total&nbsp;2&nbsp;resolved&quot;,&quot;file&quot;:&quot;external/com_github_grpc_grpc/src/core/ext/transport/chttp2/server/chttp2_server.cc&quot;,&quot;file_line&quot;:406,&quot;referenced_errors&quot;:[{&quot;created&quot;:&quot;@1589843312.876323313&quot;,&quot;description&quot;:&quot;Address<br>
+&nbsp;family&nbsp;not&nbsp;supported&nbsp;by&nbsp;protocol&quot;,&quot;errno&quot;:97,&quot;file&quot;:&quot;external/com_github_grpc_grpc/src/core/lib/iomgr/socket_utils_common_posix.cc&quot;,&quot;file_line&quot;:420,&quot;os_error&quot;:&quot;Address&nbsp;family&nbsp;not&nbsp;supported&nbsp;by&nbsp;protocol&quot;,&quot;syscall&quot;:&quot;socket&quot;,&quot;target_address&quot;:&quot;[::1]:28003&quot;}]}&lt;br&gt;<br>
+E0518&nbsp;23:08:33.497541&nbsp; &nbsp; &nbsp;6&nbsp;utils.cc:109]&nbsp;StratumErrorSpace::ERR_FILE_NOT_FOUND:&nbsp;/etc/stratum/pipeline_config.pb.txt&nbsp;not&nbsp;found.&lt;br&gt;<br>
+E0518&nbsp;23:08:33.497881&nbsp; &nbsp; &nbsp;6&nbsp;utils.cc:65]&nbsp;Return&nbsp;Error:&nbsp;ReadFileToString(filename,&nbsp;&amp;text)&nbsp;failed&nbsp;with&nbsp;StratumErrorSpace::ERR_FILE_NOT_FOUND:&nbsp;/etc/stratum/pipeline_config.pb.txt&nbsp;not&nbsp;found.&lt;br&gt;<br>
+E0518&nbsp;23:08:33.498277684&nbsp; &nbsp; &nbsp; &nbsp;6&nbsp;server_chttp2.cc:40]&nbsp; &nbsp; &nbsp; &nbsp; {&quot;created&quot;:&quot;@1589843313.498234870&quot;,&quot;description&quot;:&quot;Only&nbsp;1&nbsp;addresses&nbsp;added&nbsp;out&nbsp;of&nbsp;total&nbsp;2&nbsp;resolved&quot;,&quot;file&quot;:&quot;external/com_github_grpc_grpc/src/core/ext/transport/chttp2/server/chttp2_server.cc&quot;,&quot;file_line&quot;:406,&quot;referenced_errors&quot;:[{&quot;created&quot;:&quot;@1589843313.498230982&quot;,&quot;description&quot;:&quot;Address<br>
+&nbsp;family&nbsp;not&nbsp;supported&nbsp;by&nbsp;protocol&quot;,&quot;errno&quot;:97,&quot;file&quot;:&quot;external/com_github_grpc_grpc/src/core/lib/iomgr/socket_utils_common_posix.cc&quot;,&quot;file_line&quot;:420,&quot;os_error&quot;:&quot;Address&nbsp;family&nbsp;not&nbsp;supported&nbsp;by&nbsp;protocol&quot;,&quot;syscall&quot;:&quot;socket&quot;,&quot;target_address&quot;:&quot;[::1]:28000&quot;}]}&lt;br&gt;<br>
+E0518&nbsp;23:08:33.498530&nbsp; &nbsp; &nbsp;6&nbsp;hal.cc:223]&nbsp;Stratum&nbsp;external&nbsp;facing&nbsp;services&nbsp;are&nbsp;listening&nbsp;to<br>
+&lt;a&nbsp;href=&quot;http://0.0.0.0:28000&quot;&nbsp;target=&quot;_blank&quot;&gt;0.0.0.0:28000&lt;/a&gt;,&nbsp;&lt;a&nbsp;href=&quot;http://0.0.0.0:9339&quot;&nbsp;target=&quot;_blank&quot;&gt;<br>
+0.0.0.0:9339&lt;/a&gt;,&nbsp;localhost:28000...&lt;br&gt;<br>
+E0518&nbsp;23:08:33.499231&nbsp; &nbsp; &nbsp;6&nbsp;hal.cc:365]&nbsp;StratumErrorSpace::ERR_INTERNAL:&nbsp;Failed&nbsp;to&nbsp;check&nbsp;in&nbsp;with&nbsp;procmon:&nbsp;failed&nbsp;to&nbsp;connect&nbsp;to&nbsp;all&nbsp;addresses&lt;br&gt;<br>
+E0518&nbsp;23:08:33.499338&nbsp; &nbsp; &nbsp;6&nbsp;hal.cc:233]&nbsp;Error&nbsp;when&nbsp;checking&nbsp;in&nbsp;with&nbsp;procmon:&nbsp;Failed&nbsp;to&nbsp;check&nbsp;in&nbsp;with&nbsp;procmon:&nbsp;failed&nbsp;to&nbsp;connect&nbsp;to&nbsp;all&nbsp;addresses.&lt;br&gt;<br>
+&lt;/blockquote&gt;<br>
+&lt;div&gt;&lt;br&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&gt;&lt;br&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&gt;&lt;br&gt;<br>
+&lt;/div&gt;<br>
+&lt;/div&gt;<br>
+&lt;br&gt;<br>
+&lt;div&nbsp;class=&quot;gmail_quote&quot;&gt;<br>
+&lt;div&nbsp;dir=&quot;ltr&quot;&nbsp;class=&quot;gmail_attr&quot;&gt;El&nbsp;lun.,&nbsp;18&nbsp;may.&nbsp;2020&nbsp;a&nbsp;las&nbsp;16:52,&nbsp;Deval&nbsp;Bhamare&nbsp;(&lt;&lt;a&nbsp;href=&quot;mailto:Deval.Bhamare@kau.se&quot;&nbsp;target=&quot;_blank&quot;&gt;Deval.Bhamare@kau.se&lt;/a&gt;&gt;)&nbsp;escribió:&lt;br&gt;<br>
+&lt;/div&gt;<br>
+&lt;blockquote&nbsp;class=&quot;gmail_quote&quot;&nbsp;style=&quot;margin:0px&nbsp;0px&nbsp;0px&nbsp;0.8ex;border-left:1px&nbsp;solid&nbsp;rgb(204,204,204);padding-left:1ex&quot;&gt;<br>
+&lt;div&nbsp;dir=&quot;ltr&quot;&gt;<br>
+&lt;div&nbsp;id=&quot;gmail-m_2934385188576154820gmail-m_6845765020408704915gmail-m_1598074316526402797gmail-m_881589629099818970gmail-m_-8421115090199365971divtagdefaultwrapper&quot;&nbsp;dir=&quot;ltr&quot;&nbsp;style=&quot;font-size:12pt;color:rgb(0,0,0);font-family:Calibri,Helvetica,sans-serif,Helvetica,EmojiFont,&quot;Apple&nbsp;Color&nbsp;Emoji&quot;,&quot;Segoe&nbsp;UI&nbsp;Emoji&quot;,NotoColorEmoji,&quot;Segoe&nbsp;UI&nbsp;Symbol&quot;,&quot;Android&nbsp;Emoji&quot;,EmojiSymbols&quot;&gt;<br>
+&lt;div&nbsp;id=&quot;gmail-m_2934385188576154820gmail-m_6845765020408704915gmail-m_1598074316526402797gmail-m_881589629099818970gmail-m_-8421115090199365971divtagdefaultwrapper&quot;&nbsp;dir=&quot;ltr&quot;&nbsp;style=&quot;font-size:12pt;color:rgb(0,0,0);font-family:Calibri,Helvetica,sans-serif,Helvetica,EmojiFont,&quot;Apple&nbsp;Color&nbsp;Emoji&quot;,&quot;Segoe&nbsp;UI&nbsp;Emoji&quot;,NotoColorEmoji,&quot;Segoe&nbsp;UI&nbsp;Symbol&quot;,&quot;Android&nbsp;Emoji&quot;,EmojiSymbols&quot;&gt;<br>
+&lt;p&gt;Hi&nbsp;Dani, &lt;/p&gt;<br>
+&lt;p&gt;&lt;br&gt;<br>
+&lt;/p&gt;<br>
+&lt;p&gt;I&nbsp;am&nbsp;just&nbsp;a&nbsp;stratum&nbsp;user&nbsp;and&nbsp;not&nbsp;from&nbsp;the&nbsp;dev&nbsp;community,&nbsp;but&nbsp;just&nbsp;a&nbsp;suggestion.&lt;/p&gt;<br>
+&lt;p&gt;&lt;br&gt;<br>
+&lt;/p&gt;<br>
+&lt;p&gt;Can&nbsp;you&nbsp;try&nbsp;update&nbsp;your&nbsp;start-stratum&nbsp;script&nbsp;with&nbsp;below&nbsp;command&nbsp;and&nbsp;then&nbsp;try&nbsp;with&nbsp;the&nbsp;command&nbsp;given&nbsp;after&nbsp;that.&lt;/p&gt;<br>
+&lt;p&gt;&lt;br&gt;<br>
+&lt;/p&gt;<br>
+&lt;p&gt;&lt;b&gt;Update&nbsp;start&nbsp;script: &lt;/b&gt;&lt;/p&gt;<br>
+&lt;p&gt;&lt;br&gt;<br>
+&lt;/p&gt;<br>
+&lt;p&gt;&lt;/p&gt;<br>
+&lt;div&nbsp;style=&quot;font-family:Calibri,Helvetica,sans-serif,Helvetica,EmojiFont,&quot;Apple&nbsp;Color&nbsp;Emoji&quot;,&quot;Segoe&nbsp;UI&nbsp;Emoji&quot;,NotoColorEmoji,&quot;Segoe&nbsp;UI&nbsp;Symbol&quot;,&quot;Android&nbsp;Emoji&quot;,EmojiSymbols;font-size:16px&quot;&gt;<br>
+&lt;b&gt;curl&nbsp;-o&nbsp;start-stratum-container.sh &lt;/b&gt;&lt;a&nbsp;href=&quot;https://raw.githubusercontent.com/stratum/stratum/master/stratum/hal/bin/barefoot/docker/start-stratum-container.sh&quot;&nbsp;rel=&quot;noopener&nbsp;noreferrer&quot;&nbsp;id=&quot;gmail-m_2934385188576154820gmail-m_6845765020408704915gmail-m_1598074316526402797gmail-m_881589629099818970gmail-m_-8421115090199365971LPlnk311075&quot;&nbsp;target=&quot;_blank&quot;&gt;&lt;b&gt;https://raw.githubusercontent.com/stratum/stratum/master/stratum/hal/bin/barefoot/docker/start-stratum-container.sh&lt;/b&gt;&lt;/a&gt;&lt;b&gt;&lt;br&gt;<br>
+&lt;/b&gt;&lt;/div&gt;<br>
+&lt;div&nbsp;style=&quot;font-family:Calibri,Helvetica,sans-serif,Helvetica,EmojiFont,&quot;Apple&nbsp;Color&nbsp;Emoji&quot;,&quot;Segoe&nbsp;UI&nbsp;Emoji&quot;,NotoColorEmoji,&quot;Segoe&nbsp;UI&nbsp;Symbol&quot;,&quot;Android&nbsp;Emoji&quot;,EmojiSymbols;font-size:16px&quot;&gt;<br>
+&lt;b&gt;chmod +x start-stratum-container.sh&lt;/b&gt;&lt;/div&gt;<br>
+&lt;p&gt;&lt;br&gt;<br>
+&lt;/p&gt;<br>
+&lt;p&gt;&lt;br&gt;<br>
+&lt;/p&gt;<br>
+&lt;b&gt;Use command: &lt;/b&gt;<br>
+&lt;p&gt;&lt;/p&gt;<br>
+&lt;p&gt; &lt;/p&gt;<br>
+&lt;p&gt;&lt;span&nbsp;style=&quot;font-family:Calibri,Helvetica,sans-serif,Helvetica,EmojiFont,&quot;Apple&nbsp;Color&nbsp;Emoji&quot;,&quot;Segoe&nbsp;UI&nbsp;Emoji&quot;,NotoColorEmoji,&quot;Segoe&nbsp;UI&nbsp;Symbol&quot;,&quot;Android&nbsp;Emoji&quot;,EmojiSymbols;font-size:16px&quot;&gt;&lt;span&gt;PLATFORM=x86-64-stordis-bf2556x-1t-r0&nbsp;DOCKER_IMAGE_TAG=9.1.0<br>
+&nbsp;CONFIG_DIR=$PWD&nbsp;LOG_DIR=$PWD&nbsp;./start-stratum-container.sh&lt;/span&gt;&lt;/span&gt;&lt;br&gt;<br>
+&lt;/p&gt;<br>
+&lt;p&gt;&lt;span&nbsp;style=&quot;font-family:Calibri,Helvetica,sans-serif,Helvetica,EmojiFont,&quot;Apple&nbsp;Color&nbsp;Emoji&quot;,&quot;Segoe&nbsp;UI&nbsp;Emoji&quot;,NotoColorEmoji,&quot;Segoe&nbsp;UI&nbsp;Symbol&quot;,&quot;Android&nbsp;Emoji&quot;,EmojiSymbols;font-size:16px&quot;&gt;&lt;br&gt;<br>
+&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&gt;&lt;span&nbsp;style=&quot;font-family:Calibri,Helvetica,sans-serif,Helvetica,EmojiFont,&quot;Apple&nbsp;Color&nbsp;Emoji&quot;,&quot;Segoe&nbsp;UI&nbsp;Emoji&quot;,NotoColorEmoji,&quot;Segoe&nbsp;UI&nbsp;Symbol&quot;,&quot;Android&nbsp;Emoji&quot;,EmojiSymbols;font-size:16px&quot;&gt;(Here,&nbsp;should&nbsp;be &lt;span&nbsp;style=&quot;font-family:Calibri,Helvetica,sans-serif,Helvetica,EmojiFont,&quot;Apple&nbsp;Color&nbsp;Emoji&quot;,&quot;Segoe&nbsp;UI&nbsp;Emoji&quot;,NotoColorEmoji,&quot;Segoe&nbsp;UI&nbsp;Symbol&quot;,&quot;Android&nbsp;Emoji&quot;,EmojiSymbols;font-size:16px&quot;&gt;&lt;b&gt;&lt;span&nbsp;style=&quot;color:rgb(0,111,201)&quot;&gt;DOCKER_IMAGE_TAG&lt;/span&gt;&lt;/b&gt;<br>
+&nbsp;and&nbsp;not &lt;span&nbsp;style=&quot;font-family:Calibri,Helvetica,sans-serif,Helvetica,EmojiFont,&quot;Apple&nbsp;Color&nbsp;Emoji&quot;,&quot;Segoe&nbsp;UI&nbsp;Emoji&quot;,NotoColorEmoji,&quot;Segoe&nbsp;UI&nbsp;Symbol&quot;,&quot;Android&nbsp;Emoji&quot;,EmojiSymbols;font-size:16px&quot;&gt;&lt;b&gt;&lt;span&nbsp;style=&quot;color:rgb(255,0,0)&quot;&gt;SDE_VERSION&lt;/span&gt;&lt;/b&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&gt;&lt;span&nbsp;style=&quot;font-family:Calibri,Helvetica,sans-serif,Helvetica,EmojiFont,&quot;Apple&nbsp;Color&nbsp;Emoji&quot;,&quot;Segoe&nbsp;UI&nbsp;Emoji&quot;,NotoColorEmoji,&quot;Segoe&nbsp;UI&nbsp;Symbol&quot;,&quot;Android&nbsp;Emoji&quot;,EmojiSymbols;font-size:16px&quot;&gt;&lt;span&nbsp;style=&quot;font-family:Calibri,Helvetica,sans-serif,Helvetica,EmojiFont,&quot;Apple&nbsp;Color&nbsp;Emoji&quot;,&quot;Segoe&nbsp;UI&nbsp;Emoji&quot;,NotoColorEmoji,&quot;Segoe&nbsp;UI&nbsp;Symbol&quot;,&quot;Android&nbsp;Emoji&quot;,EmojiSymbols;font-size:16px&quot;&gt;&lt;span&nbsp;style=&quot;font-family:Calibri,Helvetica,sans-serif,Helvetica,EmojiFont,&quot;Apple&nbsp;Color&nbsp;Emoji&quot;,&quot;Segoe&nbsp;UI&nbsp;Emoji&quot;,NotoColorEmoji,&quot;Segoe&nbsp;UI&nbsp;Symbol&quot;,&quot;Android&nbsp;Emoji&quot;,EmojiSymbols;font-size:16px&quot;&gt;&lt;br&gt;<br>
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&gt;It&nbsp;will&nbsp;try&nbsp;with&nbsp;Image&nbsp;&lt;span&nbsp;style=&quot;font-family:Calibri,Helvetica,sans-serif,Helvetica,EmojiFont,&quot;Apple&nbsp;Color&nbsp;Emoji&quot;,&quot;Segoe&nbsp;UI&nbsp;Emoji&quot;,NotoColorEmoji,&quot;Segoe&nbsp;UI&nbsp;Symbol&quot;,&quot;Android&nbsp;Emoji&quot;,EmojiSymbols;font-size:16px&quot;&gt;<br>
+stratumproject/stratum-bf:&lt;/span&gt;9.1.0,&nbsp;rather&nbsp;than &lt;span&nbsp;style=&quot;font-family:Calibri,Helvetica,sans-serif,Helvetica,EmojiFont,&quot;Apple&nbsp;Color&nbsp;Emoji&quot;,&quot;Segoe&nbsp;UI&nbsp;Emoji&quot;,NotoColorEmoji,&quot;Segoe&nbsp;UI&nbsp;Symbol&quot;,&quot;Android&nbsp;Emoji&quot;,EmojiSymbols;font-size:16px&quot;&gt;stratumproject/stratum-bf:9.1.0-4.14.49-OpenNetworkLinux.&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&gt;&lt;span&nbsp;style=&quot;font-family:Calibri,Helvetica,sans-serif,Helvetica,EmojiFont,&quot;Apple&nbsp;Color&nbsp;Emoji&quot;,&quot;Segoe&nbsp;UI&nbsp;Emoji&quot;,NotoColorEmoji,&quot;Segoe&nbsp;UI&nbsp;Symbol&quot;,&quot;Android&nbsp;Emoji&quot;,EmojiSymbols;font-size:16px&quot;&gt;&lt;br&gt;<br>
+&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&gt;&lt;span&nbsp;style=&quot;font-family:Calibri,Helvetica,sans-serif,Helvetica,EmojiFont,&quot;Apple&nbsp;Color&nbsp;Emoji&quot;,&quot;Segoe&nbsp;UI&nbsp;Emoji&quot;,NotoColorEmoji,&quot;Segoe&nbsp;UI&nbsp;Symbol&quot;,&quot;Android&nbsp;Emoji&quot;,EmojiSymbols;font-size:16px&quot;&gt;Can&nbsp;you&nbsp;let&nbsp;me&nbsp;know&nbsp;the&nbsp;output? &lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&gt;&lt;span&nbsp;style=&quot;font-family:Calibri,Helvetica,sans-serif,Helvetica,EmojiFont,&quot;Apple&nbsp;Color&nbsp;Emoji&quot;,&quot;Segoe&nbsp;UI&nbsp;Emoji&quot;,NotoColorEmoji,&quot;Segoe&nbsp;UI&nbsp;Symbol&quot;,&quot;Android&nbsp;Emoji&quot;,EmojiSymbols;font-size:16px&quot;&gt;&lt;br&gt;<br>
+&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&gt;&lt;span&nbsp;style=&quot;font-family:Calibri,Helvetica,sans-serif,Helvetica,EmojiFont,&quot;Apple&nbsp;Color&nbsp;Emoji&quot;,&quot;Segoe&nbsp;UI&nbsp;Emoji&quot;,NotoColorEmoji,&quot;Segoe&nbsp;UI&nbsp;Symbol&quot;,&quot;Android&nbsp;Emoji&quot;,EmojiSymbols;font-size:16px&quot;&gt;Thanks,&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&gt;&lt;span&nbsp;style=&quot;font-family:Calibri,Helvetica,sans-serif,Helvetica,EmojiFont,&quot;Apple&nbsp;Color&nbsp;Emoji&quot;,&quot;Segoe&nbsp;UI&nbsp;Emoji&quot;,NotoColorEmoji,&quot;Segoe&nbsp;UI&nbsp;Symbol&quot;,&quot;Android&nbsp;Emoji&quot;,EmojiSymbols;font-size:16px&quot;&gt;&lt;br&gt;<br>
+&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&gt;&lt;span&nbsp;style=&quot;font-family:Calibri,Helvetica,sans-serif,Helvetica,EmojiFont,&quot;Apple&nbsp;Color&nbsp;Emoji&quot;,&quot;Segoe&nbsp;UI&nbsp;Emoji&quot;,NotoColorEmoji,&quot;Segoe&nbsp;UI&nbsp;Symbol&quot;,&quot;Android&nbsp;Emoji&quot;,EmojiSymbols;font-size:16px&quot;&gt;Deval.&lt;/span&gt;&lt;/p&gt;<br>
+&lt;/div&gt;<br>
+&lt;hr&nbsp;style=&quot;display:inline-block;width:98%&quot;&gt;<br>
+&lt;div&nbsp;id=&quot;gmail-m_2934385188576154820gmail-m_6845765020408704915gmail-m_1598074316526402797gmail-m_881589629099818970gmail-m_-8421115090199365971divRplyFwdMsg&quot;&nbsp;dir=&quot;ltr&quot;&gt;<br>
+&lt;font&nbsp;face=&quot;Calibri,&nbsp;sans-serif&quot;&nbsp;color=&quot;#000000&quot;&nbsp;style=&quot;font-size:11pt&quot;&gt;&lt;b&gt;From:&lt;/b&gt;&nbsp;stratum-dev&nbsp;&lt;&lt;a&nbsp;href=&quot;mailto:stratum-dev-bounces@lists.stratumproject.org&quot;&nbsp;target=&quot;_blank&quot;&gt;stratum-dev-bounces@lists.stratumproject.org&lt;/a&gt;&gt;&nbsp;on&nbsp;behalf&nbsp;of&nbsp;Daniel&nbsp;Velasco&nbsp;via<br>
+&nbsp;stratum-dev&nbsp;&lt;&lt;a&nbsp;href=&quot;mailto:stratum-dev@lists.stratumproject.org&quot;&nbsp;target=&quot;_blank&quot;&gt;stratum-dev@lists.stratumproject.org&lt;/a&gt;&gt;&lt;br&gt;<br>
+&lt;b&gt;Sent:&lt;/b&gt;&nbsp;Monday,&nbsp;May&nbsp;18,&nbsp;2020&nbsp;5:18:46&nbsp;PM&lt;br&gt;<br>
+&lt;b&gt;To:&lt;/b&gt;&nbsp;&lt;a&nbsp;href=&quot;mailto:stratum-dev@lists.stratumproject.org&quot;&nbsp;target=&quot;_blank&quot;&gt;<br>
+stratum-dev@lists.stratumproject.org&lt;/a&gt;&lt;br&gt;<br>
+&lt;b&gt;Subject:&lt;/b&gt;&nbsp;Re:&nbsp;[stratum-dev]&nbsp;Docker&nbsp;image&nbsp;8.9.2-3.16.56-OpenNetworkLinux&nbsp;older&nbsp;version&nbsp;for&nbsp;stratum&lt;/font&gt;<br>
+&lt;div&gt; &lt;/div&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&gt;<br>
+&lt;div&nbsp;dir=&quot;ltr&quot;&gt;Hi,<br>
+&lt;div&gt;&lt;br&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&gt;we&nbsp;are&nbsp;doing&nbsp;out&nbsp;first&nbsp;tests&nbsp;with&nbsp;stratum&nbsp;and&nbsp;we&nbsp;are&nbsp;getting&nbsp;same&nbsp;failure&nbsp;with&nbsp;9.1.0,&nbsp;are&nbsp;we&nbsp;missing&nbsp;something?&lt;/div&gt;<br>
+&lt;div&gt;&lt;br&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&gt;root@localhost:~/stratum-configs#&nbsp;PLATFORM=x86-64-stordis-bf2556x-1t-r0&nbsp;SDE_VERSION=9.1.0&nbsp;CONFIG_DIR=$PWD&nbsp;LOG_DIR=$PWD&nbsp;./start-stratum-container.sh&lt;br&gt;<br>
++&nbsp;PLATFORM_ARGS=&lt;br&gt;<br>
++&nbsp;&#39;[&#39;&nbsp;-n&nbsp;x86-64-stordis-bf2556x-1t-r0&nbsp;&#39;]&#39;&lt;br&gt;<br>
++&nbsp;PLATFORM_ARGS=&#39;--env&nbsp;PLATFORM=x86-64-stordis-bf2556x-1t-r0&#39;&lt;br&gt;<br>
++&nbsp;CONFIG_DIR=/root/stratum-configs&lt;br&gt;<br>
++&nbsp;LOG_DIR=/root/stratum-configs&lt;br&gt;<br>
++&nbsp;SDE_VERSION=9.1.0&lt;br&gt;<br>
+++&nbsp;uname&nbsp;-r&lt;br&gt;<br>
++&nbsp;KERNEL_VERSION=4.14.49-OpenNetworkLinux&lt;br&gt;<br>
++&nbsp;DOCKER_IMAGE=stratumproject/stratum-bf&lt;br&gt;<br>
++&nbsp;DOCKER_IMAGE_TAG=9.1.0-4.14.49-OpenNetworkLinux&lt;br&gt;<br>
+++&nbsp;uname&nbsp;-r&lt;br&gt;<br>
+++&nbsp;uname&nbsp;-r&lt;br&gt;<br>
++&nbsp;docker&nbsp;run&nbsp;-it&nbsp;--privileged&nbsp;-v&nbsp;/dev:/dev&nbsp;-v&nbsp;/sys:/sys&nbsp;-v&nbsp;/lib/modules/4.14.49-OpenNetworkLinux:/lib/modules/4.14.49-OpenNetworkLinux&nbsp;--env&nbsp;PLATFORM=x86-64-stordis-bf2556x-1t-r0&nbsp;-p&nbsp;28000:28000&nbsp;-p&nbsp;9339:9339&nbsp;-v&nbsp;/root/stratum-configs:/etc/stratum&nbsp;-v&nbsp;/root/stratum-configs:/var/log/stratum<br>
+&nbsp;stratumproject/stratum-bf:9.1.0-4.14.49-OpenNetworkLinux&lt;br&gt;<br>
+Unable&nbsp;to&nbsp;find&nbsp;image&nbsp;&#39;stratumproject/stratum-bf:9.1.0-4.14.49-OpenNetworkLinux&#39;&nbsp;locally&lt;br&gt;<br>
+9.1.0-4.14.49-OpenNetworkLinux:&nbsp;Pulling&nbsp;from&nbsp;stratumproject/stratum-bf&lt;br&gt;<br>
+3401a574d84f:&nbsp;Pull&nbsp;complete&lt;br&gt;<br>
+26b758f54741:&nbsp;Pull&nbsp;complete&lt;br&gt;<br>
+97d203f02ea3:&nbsp;Pull&nbsp;complete&lt;br&gt;<br>
+Digest:&nbsp;sha256:6c372f84b3ba56cd877afd2f049a80d7b97425b45c21358a6edf2396c5d11e19&lt;br&gt;<br>
+Status:&nbsp;Downloaded&nbsp;newer&nbsp;image&nbsp;for&nbsp;stratumproject/stratum-bf:9.1.0-4.14.49-OpenNetworkLinux&lt;br&gt;<br>
+bf_kdrv_mod&nbsp;found!&nbsp;Unloading&nbsp;first...&lt;br&gt;<br>
+loading&nbsp;bf_kdrv_mod...&lt;br&gt;<br>
+/usr/bin/stratum_bf:&nbsp;error&nbsp;while&nbsp;loading&nbsp;shared&nbsp;libraries:&nbsp;libonlp.so.1:&nbsp;cannot&nbsp;open&nbsp;shared&nbsp;object&nbsp;file:&nbsp;No&nbsp;such&nbsp;file&nbsp;or&nbsp;directory&lt;br&gt;<br>
+root@localhost:~/stratum-configs#&lt;br&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&gt;&lt;br&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&gt;Thanks&nbsp;a&nbsp;lot!&lt;/div&gt;<br>
+&lt;div&gt;&lt;br&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&gt;BR&nbsp;/&nbsp;Dani&lt;/div&gt;<br>
+&lt;/div&gt;<br>
+&lt;br&gt;<br>
+&lt;div&nbsp;class=&quot;gmail_quote&quot;&gt;<br>
+&lt;div&nbsp;dir=&quot;ltr&quot;&nbsp;class=&quot;gmail_attr&quot;&gt;El&nbsp;dom.,&nbsp;17&nbsp;may.&nbsp;2020&nbsp;a&nbsp;las&nbsp;20:42,&nbsp;Deval&nbsp;Bhamare&nbsp;via&nbsp;stratum-dev&nbsp;(&lt;&lt;a&nbsp;href=&quot;mailto:stratum-dev@lists.stratumproject.org&quot;&nbsp;target=&quot;_blank&quot;&gt;stratum-dev@lists.stratumproject.org&lt;/a&gt;&gt;)&nbsp;escribió:&lt;br&gt;<br>
+&lt;/div&gt;<br>
+&lt;blockquote&nbsp;class=&quot;gmail_quote&quot;&nbsp;style=&quot;margin:0px&nbsp;0px&nbsp;0px&nbsp;0.8ex;border-left:1px&nbsp;solid&nbsp;rgb(204,204,204);padding-left:1ex&quot;&gt;<br>
+&lt;div&gt;<br>
+&lt;div&nbsp;id=&quot;gmail-m_2934385188576154820gmail-m_6845765020408704915gmail-m_1598074316526402797gmail-m_881589629099818970gmail-m_-8421115090199365971gmail-m_-8205573830468001000divtagdefaultwrapper&quot;&nbsp;dir=&quot;ltr&quot;&nbsp;style=&quot;font-size:12pt;color:rgb(0,0,0);font-family:Calibri,Helvetica,sans-serif,Helvetica,EmojiFont,&quot;Apple&nbsp;Color&nbsp;Emoji&quot;,&quot;Segoe&nbsp;UI&nbsp;Emoji&quot;,NotoColorEmoji,&quot;Segoe&nbsp;UI&nbsp;Symbol&quot;,&quot;Android&nbsp;Emoji&quot;,EmojiSymbols&quot;&gt;<br>
+&lt;p&gt;Hello&nbsp;Yi, &lt;/p&gt;<br>
+&lt;p&gt;&lt;br&gt;<br>
+&lt;/p&gt;<br>
+&lt;p&gt;I&nbsp;downloaded&nbsp;the&nbsp;image&nbsp;again&nbsp;and&nbsp;this&nbsp;time&nbsp;it&nbsp;looks&nbsp;like&nbsp;working.&nbsp;Below&nbsp;are&nbsp;the&nbsp;logs. &lt;/p&gt;<br>
+&lt;p&gt;&lt;br&gt;<br>
+&lt;/p&gt;<br>
+&lt;p&gt;However,&nbsp;as&nbsp;you&nbsp;suggested,&nbsp;I&nbsp;modified &lt;i&nbsp;style=&quot;font-family:Calibri,Helvetica,sans-serif,Helvetica,EmojiFont,&quot;Apple&nbsp;Color&nbsp;Emoji&quot;,&quot;Segoe&nbsp;UI&nbsp;Emoji&quot;,NotoColorEmoji,&quot;Segoe&nbsp;UI&nbsp;Symbol&quot;,&quot;Android&nbsp;Emoji&quot;,EmojiSymbols;font-size:16px&quot;&gt;stratum.flags &nbsp;to&nbsp;r&lt;/i&gt;&lt;span&nbsp;style=&quot;font-family:Calibri,Helvetica,sans-serif,Helvetica,EmojiFont,&quot;Apple&nbsp;Color&nbsp;Emoji&quot;,&quot;Segoe&nbsp;UI&nbsp;Emoji&quot;,NotoColorEmoji,&quot;Segoe&nbsp;UI&nbsp;Symbol&quot;,&quot;Android&nbsp;Emoji&quot;,EmojiSymbols;font-size:16px&quot;&gt;emove<br>
+&nbsp;&quot;-bf_switchd_background=true&quot;&nbsp;from&nbsp;stratum.flags&nbsp;file to&nbsp;use&nbsp;the&nbsp;command&nbsp;line&nbsp;from&nbsp;bf_switchd.&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&gt;&lt;span&nbsp;style=&quot;font-family:Calibri,Helvetica,sans-serif,Helvetica,EmojiFont,&quot;Apple&nbsp;Color&nbsp;Emoji&quot;,&quot;Segoe&nbsp;UI&nbsp;Emoji&quot;,NotoColorEmoji,&quot;Segoe&nbsp;UI&nbsp;Symbol&quot;,&quot;Android&nbsp;Emoji&quot;,EmojiSymbols;font-size:16px&quot;&gt;&lt;br&gt;<br>
+&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&gt;&lt;span&nbsp;style=&quot;font-family:Calibri,Helvetica,sans-serif,Helvetica,EmojiFont,&quot;Apple&nbsp;Color&nbsp;Emoji&quot;,&quot;Segoe&nbsp;UI&nbsp;Emoji&quot;,NotoColorEmoji,&quot;Segoe&nbsp;UI&nbsp;Symbol&quot;,&quot;Android&nbsp;Emoji&quot;,EmojiSymbols;font-size:16px&quot;&gt;But<br>
+&lt;b&gt;command&nbsp;prompt&nbsp;doesn&#39;t&nbsp;appear&lt;/b&gt;.&nbsp;Any&nbsp;suggestions?&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&gt;&lt;span&nbsp;style=&quot;font-family:Calibri,Helvetica,sans-serif,Helvetica,EmojiFont,&quot;Apple&nbsp;Color&nbsp;Emoji&quot;,&quot;Segoe&nbsp;UI&nbsp;Emoji&quot;,NotoColorEmoji,&quot;Segoe&nbsp;UI&nbsp;Symbol&quot;,&quot;Android&nbsp;Emoji&quot;,EmojiSymbols;font-size:16px&quot;&gt;&lt;br&gt;<br>
+&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&gt;&lt;span&nbsp;style=&quot;font-family:Calibri,Helvetica,sans-serif,Helvetica,EmojiFont,&quot;Apple&nbsp;Color&nbsp;Emoji&quot;,&quot;Segoe&nbsp;UI&nbsp;Emoji&quot;,NotoColorEmoji,&quot;Segoe&nbsp;UI&nbsp;Symbol&quot;,&quot;Android&nbsp;Emoji&quot;,EmojiSymbols;font-size:16px&quot;&gt;Thanks,&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&gt;&lt;span&nbsp;style=&quot;font-family:Calibri,Helvetica,sans-serif,Helvetica,EmojiFont,&quot;Apple&nbsp;Color&nbsp;Emoji&quot;,&quot;Segoe&nbsp;UI&nbsp;Emoji&quot;,NotoColorEmoji,&quot;Segoe&nbsp;UI&nbsp;Symbol&quot;,&quot;Android&nbsp;Emoji&quot;,EmojiSymbols;font-size:16px&quot;&gt;Deval.&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&gt;&lt;span&nbsp;style=&quot;font-family:Calibri,Helvetica,sans-serif,Helvetica,EmojiFont,&quot;Apple&nbsp;Color&nbsp;Emoji&quot;,&quot;Segoe&nbsp;UI&nbsp;Emoji&quot;,NotoColorEmoji,&quot;Segoe&nbsp;UI&nbsp;Symbol&quot;,&quot;Android&nbsp;Emoji&quot;,EmojiSymbols;font-size:16px&quot;&gt;&lt;br&gt;<br>
+&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&gt;&lt;span&nbsp;style=&quot;font-family:Calibri,Helvetica,sans-serif,Helvetica,EmojiFont,&quot;Apple&nbsp;Color&nbsp;Emoji&quot;,&quot;Segoe&nbsp;UI&nbsp;Emoji&quot;,NotoColorEmoji,&quot;Segoe&nbsp;UI&nbsp;Symbol&quot;,&quot;Android&nbsp;Emoji&quot;,EmojiSymbols;font-size:16px&quot;&gt;&lt;b&gt;Logs&lt;/b&gt;:&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&gt;&lt;span&nbsp;style=&quot;font-family:Calibri,Helvetica,sans-serif,Helvetica,EmojiFont,&quot;Apple&nbsp;Color&nbsp;Emoji&quot;,&quot;Segoe&nbsp;UI&nbsp;Emoji&quot;,NotoColorEmoji,&quot;Segoe&nbsp;UI&nbsp;Symbol&quot;,&quot;Android&nbsp;Emoji&quot;,EmojiSymbols;font-size:16px&quot;&gt;&lt;br&gt;<br>
+&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&gt;&lt;span&nbsp;style=&quot;font-family:Calibri,Helvetica,sans-serif,Helvetica,EmojiFont,&quot;Apple&nbsp;Color&nbsp;Emoji&quot;,&quot;Segoe&nbsp;UI&nbsp;Emoji&quot;,NotoColorEmoji,&quot;Segoe&nbsp;UI&nbsp;Symbol&quot;,&quot;Android&nbsp;Emoji&quot;,EmojiSymbols;font-size:16px&quot;&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&lt;div&gt;bf_switchd:&nbsp;dev_id&nbsp;0&nbsp;initialized&lt;/div&gt;<br>
+&lt;div&gt;&lt;br&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&gt;bf_switchd:&nbsp;initialized&nbsp;1&nbsp;devices&lt;/div&gt;<br>
+&lt;div&gt;Skip&nbsp;p4&nbsp;lib&nbsp;init&lt;/div&gt;<br>
+&lt;div&gt;Skip&nbsp;mav&nbsp;diag&nbsp;lib&nbsp;init&lt;/div&gt;<br>
+&lt;div&gt;bf_switchd:&nbsp;spawning&nbsp;cli&nbsp;server&nbsp;thread&lt;/div&gt;<br>
+&lt;div&gt;bf_switchd:&nbsp;running&nbsp;in&nbsp;background;&nbsp;driver&nbsp;shell&nbsp;is&nbsp;disabled&lt;/div&gt;<br>
+&lt;div&gt;bf_switchd:&nbsp;server&nbsp;started&nbsp;-&nbsp;listening&nbsp;on&nbsp;port&nbsp;9999&lt;/div&gt;<br>
+&lt;div&gt;E0517&nbsp;18:08:29.853154 &nbsp; &nbsp; 8&nbsp;utils.cc:109]&nbsp;StratumErrorSpace::ERR_FILE_NOT_FOUND:&nbsp;/etc/stratum/chassis_config.pb.txt&nbsp;not&nbsp;found.&lt;/div&gt;<br>
+&lt;div&gt;E0517&nbsp;18:08:29.853606 &nbsp; &nbsp; 8&nbsp;utils.cc:65]&nbsp;Return&nbsp;Error:&nbsp;ReadFileToString(filename,&nbsp;&amp;text)&nbsp;failed&nbsp;with&nbsp;StratumErrorSpace::ERR_FILE_NOT_FOUND:&nbsp;/etc/stratum/chassis_config.pb.txt&nbsp;not&nbsp;found.&lt;/div&gt;<br>
+&lt;div&gt;E0517&nbsp;18:08:29.853675 &nbsp; &nbsp; 8&nbsp;utils.cc:109]&nbsp;StratumErrorSpace::ERR_FILE_NOT_FOUND:&nbsp;/etc/stratum/pipeline_config.pb.txt&nbsp;not&nbsp;found.&lt;/div&gt;<br>
+&lt;div&gt;E0517&nbsp;18:08:29.853701 &nbsp; &nbsp; 8&nbsp;utils.cc:65]&nbsp;Return&nbsp;Error:&nbsp;ReadFileToString(filename,&nbsp;&amp;text)&nbsp;failed&nbsp;with&nbsp;StratumErrorSpace::ERR_FILE_NOT_FOUND:&nbsp;/etc/stratum/pipeline_config.pb.txt&nbsp;not&nbsp;found.&lt;/div&gt;<br>
+&lt;div&gt;E0517&nbsp;18:08:29.854777685 &nbsp; &nbsp; &nbsp; 8&nbsp;server_chttp2.cc:40] &nbsp; &nbsp; &nbsp; &nbsp;{&quot;created&quot;:&quot;@1589738909.854734733&quot;,&quot;description&quot;:&quot;Only&nbsp;1&nbsp;addresses&nbsp;added&nbsp;out&nbsp;of&nbsp;total&nbsp;2&nbsp;resolved&quot;,&quot;file&quot;:&quot;external/com_github_grpc_grpc/src/core/ext/transport/chttp2/server/chttp2_server.cc&quot;,&quot;file_line&quot;:406,&quot;referenced_errors&quot;:[{&quot;created&quot;:&quot;@1589738909.854731483&quot;,&quot;description&quot;:&quot;Address<br>
+&nbsp;family&nbsp;not&nbsp;supported&nbsp;by&nbsp;protocol&quot;,&quot;errno&quot;:97,&quot;file&quot;:&quot;external/com_github_grpc_grpc/src/core/lib/iomgr/socket_utils_common_posix.cc&quot;,&quot;file_line&quot;:420,&quot;os_error&quot;:&quot;Address&nbsp;family&nbsp;not&nbsp;supported&nbsp;by&nbsp;protocol&quot;,&quot;syscall&quot;:&quot;socket&quot;,&quot;target_address&quot;:&quot;[::1]:28000&quot;}]}&lt;/div&gt;<br>
+&lt;div&gt;E0517&nbsp;18:08:29.854998 &nbsp; &nbsp; 8&nbsp;hal.cc:223]&nbsp;Stratum&nbsp;external&nbsp;facing&nbsp;services&nbsp;are&nbsp;listening&nbsp;to<br>
+&lt;a&nbsp;href=&quot;http://0.0.0.0:28000&quot;&nbsp;target=&quot;_blank&quot;&gt;0.0.0.0:28000&lt;/a&gt;,&nbsp;&lt;a&nbsp;href=&quot;http://0.0.0.0:9339&quot;&nbsp;target=&quot;_blank&quot;&gt;<br>
+0.0.0.0:9339&lt;/a&gt;,&nbsp;localhost:28000...&lt;/div&gt;<br>
+&lt;div&gt;E0517&nbsp;18:08:29.855722 &nbsp; &nbsp; 8&nbsp;hal.cc:365]&nbsp;StratumErrorSpace::ERR_INTERNAL:&nbsp;Failed&nbsp;to&nbsp;check&nbsp;in&nbsp;with&nbsp;procmon:&nbsp;failed&nbsp;to&nbsp;connect&nbsp;to&nbsp;all&nbsp;addresses&lt;/div&gt;<br>
+&lt;div&gt;E0517&nbsp;18:08:29.855825 &nbsp; &nbsp; 8&nbsp;hal.cc:233]&nbsp;Error&nbsp;when&nbsp;checking&nbsp;in&nbsp;with&nbsp;procmon:&nbsp;Failed&nbsp;to&nbsp;check&nbsp;in&nbsp;with&nbsp;procmon:&nbsp;failed&nbsp;to&nbsp;connect&nbsp;to&nbsp;all&nbsp;addresses.&lt;/div&gt;<br>
+&lt;div&gt;&lt;br&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&gt;&lt;br&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&gt;&lt;br&gt;<br>
+&lt;/div&gt;<br>
+&lt;br&gt;<br>
+&lt;p&gt;&lt;/p&gt;<br>
+&lt;/div&gt;<br>
+&lt;hr&nbsp;style=&quot;display:inline-block;width:98%&quot;&gt;<br>
+&lt;div&nbsp;id=&quot;gmail-m_2934385188576154820gmail-m_6845765020408704915gmail-m_1598074316526402797gmail-m_881589629099818970gmail-m_-8421115090199365971gmail-m_-8205573830468001000divRplyFwdMsg&quot;&nbsp;dir=&quot;ltr&quot;&gt;<br>
+&lt;font&nbsp;face=&quot;Calibri,&nbsp;sans-serif&quot;&nbsp;color=&quot;#000000&quot;&nbsp;style=&quot;font-size:11pt&quot;&gt;&lt;b&gt;From:&lt;/b&gt;&nbsp;Yi&nbsp;Tseng&nbsp;&lt;&lt;a&nbsp;href=&quot;mailto:yi@opennetworking.org&quot;&nbsp;target=&quot;_blank&quot;&gt;yi@opennetworking.org&lt;/a&gt;&gt;&lt;br&gt;<br>
+&lt;b&gt;Sent:&lt;/b&gt;&nbsp;Sunday,&nbsp;May&nbsp;17,&nbsp;2020&nbsp;1:48:54&nbsp;PM&lt;br&gt;<br>
+&lt;b&gt;To:&lt;/b&gt;&nbsp;Deval&nbsp;Bhamare&lt;br&gt;<br>
+&lt;b&gt;Cc:&lt;/b&gt;&nbsp;&lt;a&nbsp;href=&quot;mailto:stratum-dev@lists.stratumproject.org&quot;&nbsp;target=&quot;_blank&quot;&gt;<br>
+stratum-dev@lists.stratumproject.org&lt;/a&gt;&lt;br&gt;<br>
+&lt;b&gt;Subject:&lt;/b&gt;&nbsp;Re:&nbsp;[stratum-dev]&nbsp;Docker&nbsp;image&nbsp;8.9.2-3.16.56-OpenNetworkLinux&nbsp;older&nbsp;version&nbsp;for&nbsp;stratum&lt;/font&gt;<br>
+&lt;div&gt; &lt;/div&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&gt;<br>
+&lt;div&nbsp;dir=&quot;ltr&quot;&gt;<br>
+&lt;div&nbsp;dir=&quot;ltr&quot;&gt;Hi&nbsp;Deval,<br>
+&lt;div&gt;&lt;br&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&gt;Based&nbsp;on&nbsp;the&nbsp;email&nbsp;you&nbsp;send:&lt;/div&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&nbsp;class=&quot;gmail_quote&quot;&gt;<br>
+&lt;blockquote&nbsp;class=&quot;gmail_quote&quot;&nbsp;style=&quot;margin:0px&nbsp;0px&nbsp;0px&nbsp;0.8ex;border-left:1px&nbsp;solid&nbsp;rgb(204,204,204);padding-left:1ex&quot;&gt;<br>
+&lt;div&gt;<br>
+&lt;div&gt;<br>
+&lt;div&nbsp;class=&quot;gmail_quote&quot;&gt;<br>
+&lt;blockquote&nbsp;class=&quot;gmail_quote&quot;&nbsp;style=&quot;margin:0px&nbsp;0px&nbsp;0px&nbsp;0.8ex;border-left:1px&nbsp;solid&nbsp;rgb(204,204,204);padding-left:1ex&quot;&gt;<br>
+&lt;div&nbsp;dir=&quot;ltr&quot;&gt;<br>
+&lt;div&nbsp;id=&quot;gmail-m_2934385188576154820gmail-m_6845765020408704915gmail-m_1598074316526402797gmail-m_881589629099818970gmail-m_-8421115090199365971gmail-m_-8205573830468001000gmail-m_-183127743427116235gmail-m_2226041778723113712divtagdefaultwrapper&quot;&nbsp;dir=&quot;ltr&quot;&nbsp;style=&quot;font-size:12pt;color:rgb(0,0,0);font-family:Calibri,Helvetica,sans-serif,Helvetica,EmojiFont,&quot;Apple&nbsp;Color&nbsp;Emoji&quot;,&quot;Segoe&nbsp;UI&nbsp;Emoji&quot;,NotoColorEmoji,&quot;Segoe&nbsp;UI&nbsp;Symbol&quot;,&quot;Android&nbsp;Emoji&quot;,EmojiSymbols&quot;&gt;<br>
+&lt;div&nbsp;style=&quot;color:rgb(0,0,0)&quot;&gt;<br>
+&lt;div&gt;<br>
+&lt;div&nbsp;id=&quot;gmail-m_2934385188576154820gmail-m_6845765020408704915gmail-m_1598074316526402797gmail-m_881589629099818970gmail-m_-8421115090199365971gmail-m_-8205573830468001000gmail-m_-183127743427116235gmail-m_2226041778723113712divtagdefaultwrapper&quot;&nbsp;dir=&quot;ltr&quot;&gt;<br>
+&lt;div&nbsp;id=&quot;gmail-m_2934385188576154820gmail-m_6845765020408704915gmail-m_1598074316526402797gmail-m_881589629099818970gmail-m_-8421115090199365971gmail-m_-8205573830468001000gmail-m_-183127743427116235gmail-m_2226041778723113712divtagdefaultwrapper&quot;&nbsp;dir=&quot;ltr&quot;&gt;<br>
+&lt;p&nbsp;style=&quot;color:rgb(0,0,0);font-family:Calibri,Helvetica,sans-serif,Helvetica,EmojiFont,&quot;Apple&nbsp;Color&nbsp;Emoji&quot;,&quot;Segoe&nbsp;UI&nbsp;Emoji&quot;,NotoColorEmoji,&quot;Segoe&nbsp;UI&nbsp;Symbol&quot;,&quot;Android&nbsp;Emoji&quot;,EmojiSymbols;font-size:12pt&quot;&gt;<br>
+Hello&nbsp;Yi, &lt;/p&gt;<br>
+&lt;p&nbsp;style=&quot;color:rgb(0,0,0);font-family:Calibri,Helvetica,sans-serif,Helvetica,EmojiFont,&quot;Apple&nbsp;Color&nbsp;Emoji&quot;,&quot;Segoe&nbsp;UI&nbsp;Emoji&quot;,NotoColorEmoji,&quot;Segoe&nbsp;UI&nbsp;Symbol&quot;,&quot;Android&nbsp;Emoji&quot;,EmojiSymbols;font-size:12pt&quot;&gt;<br>
+Thank&nbsp;you&nbsp;for&nbsp;the&nbsp;reply.&nbsp;So&nbsp;I&nbsp;tried&nbsp;the&nbsp;steps&nbsp;below&nbsp;on&nbsp;&lt;b&gt;ONL &lt;/b&gt;&lt;span&gt;&lt;b&gt;3.16.64-OpenNetworkLinux&lt;/b&gt;.&nbsp;I&nbsp;still&nbsp;get&nbsp;below&nbsp;error: &lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;style=&quot;color:rgb(0,0,0);font-family:Calibri,Helvetica,sans-serif,Helvetica,EmojiFont,&quot;Apple&nbsp;Color&nbsp;Emoji&quot;,&quot;Segoe&nbsp;UI&nbsp;Emoji&quot;,NotoColorEmoji,&quot;Segoe&nbsp;UI&nbsp;Symbol&quot;,&quot;Android&nbsp;Emoji&quot;,EmojiSymbols;font-size:12pt&quot;&gt;<br>
+&lt;span&gt;&lt;br&gt;<br>
+&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;style=&quot;color:rgb(0,0,0);font-family:Calibri,Helvetica,sans-serif,Helvetica,EmojiFont,&quot;Apple&nbsp;Color&nbsp;Emoji&quot;,&quot;Segoe&nbsp;UI&nbsp;Emoji&quot;,NotoColorEmoji,&quot;Segoe&nbsp;UI&nbsp;Symbol&quot;,&quot;Android&nbsp;Emoji&quot;,EmojiSymbols;font-size:12pt&quot;&gt;<br>
+&lt;span&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;style=&quot;color:rgb(69,69,69);font-family:&quot;Helvetica&nbsp;Neue&quot;;font-size:12px;margin-right:0px;margin-left:0px;line-height:normal&quot;&gt;<br>
++&nbsp;docker&nbsp;run&nbsp;-it&nbsp;--privileged&nbsp;-v&nbsp;/dev:/dev&nbsp;-v&nbsp;/sys:/sys&nbsp;-v&nbsp;/lib/modules/3.16.64-OpenNetworkLinux:/lib/modules/3.16.64-OpenNetworkLinux&nbsp;--env&nbsp;WITH_ONLP=false&nbsp;--env&nbsp;PLATFORM=x86-64-stordis-bf2556x-1t-r0&nbsp;-p&nbsp;28000:28000&nbsp;-v&nbsp;/root:/stratum_configs&nbsp;-v&nbsp;/var/log:/stratum_logs<br>
+&nbsp;stratumproject/stratum-bf:8.9.2-3.16.56-OpenNetworkLinux&lt;/p&gt;<br>
+&lt;/div&gt;<br>
+&lt;/div&gt;<br>
+&lt;/div&gt;<br>
+&lt;/div&gt;<br>
+&lt;/div&gt;<br>
+&lt;/div&gt;<br>
+&lt;/blockquote&gt;<br>
+&lt;/div&gt;<br>
+&lt;/div&gt;<br>
+&lt;/div&gt;<br>
+&lt;/blockquote&gt;<br>
+&lt;div&gt;&lt;br&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&gt;We&nbsp;are&nbsp;no&nbsp;longer&nbsp;using&nbsp;&quot;WITH_ONLP&quot;&nbsp;variable&nbsp;and&nbsp;we&nbsp;expose&nbsp;additional&nbsp;TCP&nbsp;port&nbsp;9339&lt;/div&gt;<br>
+&lt;div&gt;&lt;br&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&gt;For&nbsp;SDE&nbsp;8.9.0,&nbsp;we&nbsp;tested&nbsp;it&nbsp;several months&nbsp;ago&nbsp;and&nbsp;moved&nbsp;to&nbsp;version&nbsp;8.9.2&nbsp;since&nbsp;Barefoot&nbsp;upgraded&nbsp;the&nbsp;version. &lt;/div&gt;<br>
+&lt;div&gt;&lt;br&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&gt;Are&nbsp;you&nbsp;still&nbsp;getting&nbsp;the&nbsp;ONLP&nbsp;library&nbsp;issue&nbsp;when&nbsp;you&nbsp;are&nbsp;using&nbsp;the&nbsp;container&nbsp;image&nbsp;&quot;stratumproject/stratum-bf:8.9.2&quot;&nbsp;?&lt;/div&gt;<br>
+&lt;div&gt;Can&nbsp;you&nbsp;try&nbsp;delete&nbsp;your&nbsp;local&nbsp;container&nbsp;image&nbsp;cache and&nbsp;pull&nbsp;it&nbsp;again?&lt;/div&gt;<br>
+&lt;div&gt;&lt;br&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&gt;Yi&lt;/div&gt;<br>
+&lt;br&gt;<br>
+&lt;/div&gt;<br>
+&lt;/div&gt;<br>
+&lt;/div&gt;<br>
+&lt;/div&gt;<br>
+_______________________________________________&lt;br&gt;<br>
+stratum-dev&nbsp;mailing&nbsp;list&lt;br&gt;<br>
+&lt;a&nbsp;href=&quot;mailto:stratum-dev@lists.stratumproject.org&quot;&nbsp;target=&quot;_blank&quot;&gt;stratum-dev@lists.stratumproject.org&lt;/a&gt;&lt;br&gt;<br>
+&lt;a&nbsp;href=&quot;https://lists.stratumproject.org/listinfo/stratum-dev&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;https://lists.stratumproject.org/listinfo/stratum-dev&lt;/a&gt;&lt;/blockquote&gt;<br>
+&lt;/div&gt;<br>
+&lt;/div&gt;<br>
+&lt;/div&gt;<br>
+&lt;/div&gt;<br>
+&lt;/blockquote&gt;<br>
+&lt;/div&gt;<br>
+&lt;/div&gt;<br>
+&lt;/div&gt;<br>
+_______________________________________________&lt;br&gt;<br>
+stratum-dev&nbsp;mailing&nbsp;list&lt;br&gt;<br>
+&lt;a&nbsp;href=&quot;mailto:stratum-dev@lists.stratumproject.org&quot;&nbsp;target=&quot;_blank&quot;&gt;stratum-dev@lists.stratumproject.org&lt;/a&gt;&lt;br&gt;<br>
+&lt;a&nbsp;href=&quot;https://lists.stratumproject.org/listinfo/stratum-dev&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;https://lists.stratumproject.org/listinfo/stratum-dev&lt;/a&gt;&lt;/blockquote&gt;<br>
+&lt;/div&gt;<br>
+&lt;/div&gt;<br>
+&lt;/div&gt;<br>
+&lt;/div&gt;<br>
+&lt;/blockquote&gt;<br>
+&lt;/div&gt;<br>
+&lt;/div&gt;<br>
+&lt;/div&gt;<br>
+&lt;/div&gt;<br>
+&lt;/div&gt;<br>
+&lt;/blockquote&gt;<br>
+&lt;/div&gt;<br>
+&lt;br&nbsp;clear=&quot;all&quot;&gt;<br>
+&lt;div&gt;&lt;br&gt;<br>
+&lt;/div&gt;<br>
+--&nbsp;&lt;br&gt;<br>
+&lt;div&nbsp;dir=&quot;ltr&quot;&gt;<br>
+&lt;div&nbsp;dir=&quot;ltr&quot;&gt;<br>
+&lt;div&gt;Yi&nbsp;Tseng&lt;br&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&gt;Member&nbsp;of&nbsp;Technical&nbsp;Staff&lt;/div&gt;<br>
+&lt;div&gt;Open&nbsp;Networking&nbsp;Foundation&lt;/div&gt;<br>
+&lt;div&gt;&lt;a&nbsp;href=&quot;https://www.opennetworking.org/&quot;&nbsp;target=&quot;_blank&quot;&gt;https://www.opennetworking.org/&lt;/a&gt;&lt;br&gt;<br>
+&lt;/div&gt;<br>
+&lt;/div&gt;<br>
+&lt;/div&gt;<br>
+&lt;/div&gt;<br>
+&lt;/div&gt;<br>
+<br>
+&lt;/blockquote&gt;&lt;/div&gt;&lt;br&nbsp;clear=&quot;all&quot;&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;--&nbsp;&lt;br&gt;&lt;div&nbsp;dir=&quot;ltr&quot;&nbsp;class=&quot;gmail_signature&quot;&gt;&lt;div&nbsp;dir=&quot;ltr&quot;&gt;&lt;div&gt;Yi&nbsp;Tseng&lt;br&gt;&lt;/div&gt;&lt;div&gt;Member&nbsp;of&nbsp;Technical&nbsp;Staff&lt;/div&gt;&lt;div&gt;Open&nbsp;Networking&nbsp;Foundation&lt;/div&gt;&lt;div&gt;&lt;a&nbsp;href=&quot;https://www.opennetworking.org/&quot;&nbsp;target=&quot;_blank&quot;&gt;https://www.opennetworking.org/&lt;/a&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;<br>
+
+</tt>

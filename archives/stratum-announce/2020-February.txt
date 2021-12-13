@@ -1,0 +1,32 @@
+From denise at opennetworking.org  Fri Feb  7 20:13:34 2020
+From: denise at opennetworking.org (Denise Barton)
+Date: Fri, 7 Feb 2020 12:13:34 -0800
+Subject: [stratum-announce] Call for Proposals Oopen!
+Message-ID: <CADMt3906n1wyNTxw3MjSJahG6SfGEXiZihk+TaPDsRR8K0i7OA@mail.gmail.com>
+
+Mark your calendar to attend the P4 and Programmable Forwarding Summit
+<https://p4.org/events/2020-p4-summit/> which will take place April 28-30
+at Stanford University, hosted by the P4 Language Community and ONF. The
+first day will be dedicated to tutorials with the following two days to
+include keynotes as well as in-depth technical sessions covering use cases,
+the P4 tool chain, as well as hands-on tutorials and live demonstrations.
+
+In addition to attending the event, I’d like to invite you to *submit a
+proposal* to speak or host a demonstration. Please visit the event web page
+<https://p4.org/events/2020-p4-summit/> to learn more about the event and
+submit your proposal - note the deadline to submit a proposal is March 13,
+2020. We will be continuing to update this web page so please check back
+again soon for updates.
+
+On behalf of the P4 and ONF community, we look forward to having you join
+us!
+
+-- 
+Denise Barton
+Marketing Director
+Open Networking Foundation <https://www.opennetworking.org/>
+C: (408) 219-3403
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-announce/attachments/20200207/25d56730/attachment.html>
+

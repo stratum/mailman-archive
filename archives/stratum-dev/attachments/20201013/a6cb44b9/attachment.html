@@ -1,0 +1,98 @@
+<tt>
+&lt;div&nbsp;dir=&quot;ltr&quot;&gt;&lt;div&gt;Thanks&nbsp;for&nbsp;the&nbsp;update.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;I&nbsp;think&nbsp;if&nbsp;you&nbsp;use&nbsp;&lt;span&nbsp;style=&quot;font-family:monospace&quot;&gt;bazel&nbsp;run&lt;/span&gt;&nbsp;directly&nbsp;on&nbsp;the&nbsp;switch,&nbsp;all&nbsp;the&nbsp;shared&nbsp;libraries&nbsp;should&nbsp;be&nbsp;taken&nbsp;care&nbsp;of&nbsp;by&nbsp;Bazel.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;To&nbsp;my&nbsp;knowledge,&nbsp;nobody&nbsp;had&nbsp;success&nbsp;running&nbsp;both&nbsp;gRPC&nbsp;services&nbsp;at&nbsp;the&nbsp;same&nbsp;time&nbsp;yet.&nbsp;We&nbsp;internally&nbsp;tried&nbsp;a&nbsp;while&nbsp;ago,&lt;br&gt;&lt;/div&gt;&lt;div&gt;but&nbsp;hit&nbsp;the&nbsp;same&nbsp;roadblocks&nbsp;as&nbsp;you.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Max&lt;br&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;div&nbsp;class=&quot;gmail_quote&quot;&gt;&lt;div&nbsp;dir=&quot;ltr&quot;&nbsp;class=&quot;gmail_attr&quot;&gt;On&nbsp;Tue,&nbsp;Oct&nbsp;13,&nbsp;2020&nbsp;at&nbsp;8:04&nbsp;AM&nbsp;Narada&nbsp;Hess&nbsp;&lt;&lt;a&nbsp;href=&quot;mailto:NHESS@extremenetworks.com&quot;&gt;NHESS@extremenetworks.com&lt;/a&gt;&gt;&nbsp;wrote:&lt;br&gt;&lt;/div&gt;&lt;blockquote&nbsp;class=&quot;gmail_quote&quot;&nbsp;style=&quot;margin:0px&nbsp;0px&nbsp;0px&nbsp;0.8ex;border-left:1px&nbsp;solid&nbsp;rgb(204,204,204);padding-left:1ex&quot;&gt;<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+&lt;div&nbsp;lang=&quot;EN-US&quot;&gt;<br>
+&lt;div&nbsp;class=&quot;gmail-m_-8276456671750498422WordSection1&quot;&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;Thanks&nbsp;Max,&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;Setting&nbsp;linkstatic&nbsp;to&nbsp;False&nbsp;results&nbsp;in&nbsp;a&nbsp;set&nbsp;of&nbsp;missing&nbsp;libraries.&nbsp;I&nbsp;am&nbsp;using&nbsp;compatible&nbsp;versions&nbsp;of&nbsp;grpc&nbsp;and&nbsp;protobuf,&nbsp;so&nbsp;that&nbsp;is&nbsp;not&nbsp;the&nbsp;issue.&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;u&gt;&lt;/u&gt; &lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;Has&nbsp;anyone&nbsp;reported&nbsp;being&nbsp;able&nbsp;to&nbsp;run&nbsp;stratum&nbsp;with&nbsp;the&nbsp;Barefoot&nbsp;SDE&nbsp;BFRT&nbsp;server&nbsp;enabled?&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;u&gt;&lt;/u&gt; &lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;I&nbsp;have&nbsp;not&nbsp;thus&nbsp;far&nbsp;solved&nbsp;the&nbsp;issue&nbsp;of&nbsp;the&nbsp;duplicate&nbsp;references&nbsp;(protobuf,&nbsp;etc).&nbsp;Thanks,&nbsp;N&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;u&gt;&lt;/u&gt; &lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;div&gt;<br>
+&lt;div&nbsp;style=&quot;border-color:rgb(225,225,225)&nbsp;currentcolor&nbsp;currentcolor;border-style:solid&nbsp;none&nbsp;none;border-width:1pt&nbsp;medium&nbsp;medium;padding:3pt&nbsp;0in&nbsp;0in&quot;&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;b&gt;From:&lt;/b&gt;&nbsp;Maximilian&nbsp;Pudelko&nbsp;&lt;&lt;a&nbsp;href=&quot;mailto:max@opennetworking.org&quot;&nbsp;target=&quot;_blank&quot;&gt;max@opennetworking.org&lt;/a&gt;&gt;&nbsp;&lt;br&gt;<br>
+&lt;b&gt;Sent:&lt;/b&gt;&nbsp;Monday,&nbsp;October&nbsp;12,&nbsp;2020&nbsp;12:31&nbsp;PM&lt;br&gt;<br>
+&lt;b&gt;To:&lt;/b&gt;&nbsp;Narada&nbsp;Hess&nbsp;&lt;&lt;a&nbsp;href=&quot;mailto:NHESS@extremenetworks.com&quot;&nbsp;target=&quot;_blank&quot;&gt;NHESS@extremenetworks.com&lt;/a&gt;&gt;&lt;br&gt;<br>
+&lt;b&gt;Cc:&lt;/b&gt;&nbsp;&lt;a&nbsp;href=&quot;mailto:stratum-dev@lists.stratumproject.org&quot;&nbsp;target=&quot;_blank&quot;&gt;stratum-dev@lists.stratumproject.org&lt;/a&gt;&lt;br&gt;<br>
+&lt;b&gt;Subject:&lt;/b&gt;&nbsp;Re:&nbsp;[stratum-dev]&nbsp;Can&nbsp;I&nbsp;build&nbsp;stratum_bf&nbsp;with&nbsp;dynamic&nbsp;load&nbsp;of&nbsp;the&nbsp;grpc&nbsp;library?&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;/div&gt;<br>
+&lt;/div&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;u&gt;&lt;/u&gt; &lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;div&nbsp;style=&quot;border:1pt&nbsp;solid&nbsp;rgb(156,101,0);padding:2pt&quot;&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&nbsp;style=&quot;line-height:12pt;background:rgb(255,235,156)&nbsp;none&nbsp;repeat&nbsp;scroll&nbsp;0%&nbsp;0%&quot;&gt;<br>
+&lt;b&gt;&lt;span&nbsp;style=&quot;font-size:10pt;color:rgb(156,101,0)&quot;&gt;External&nbsp;Email:&lt;/span&gt;&lt;/b&gt;&lt;span&nbsp;style=&quot;font-size:10pt;color:black&quot;&gt;&nbsp;Use&nbsp;caution&nbsp;in&nbsp;opening&nbsp;links&nbsp;or&nbsp;attachments.&lt;/span&gt;&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&gt;<br>
+&lt;div&gt;<br>
+&lt;div&gt;<br>
+&lt;div&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;Hi&nbsp;Narada,&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;u&gt;&lt;/u&gt; &lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;Bazel&nbsp;heavily&nbsp;favors&nbsp;static&nbsp;linking,&nbsp;but&nbsp;there&nbsp;are&nbsp;some&nbsp;options&nbsp;around&nbsp;that:<br>
+&lt;a&nbsp;href=&quot;https://nam05.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.bazel.build%2Fversions%2Fmaster%2Fbe%2Fc-cpp.html%23cc_binary.linkstatic&amp;data=02%7C01%7CNHESS%40extremenetworks.com%7C1f43d59658434f0c669108d86ee55cd7%7Cfc8c2bf6914d4c1fb35246a9adb87030%7C0%7C1%7C637381278676810927&amp;sdata=RfHPgYkFU%2FPXl4bc%2BL7KJhAzQQFcRbWcPq%2B1LT8GV08%3D&amp;reserved=0&quot;&nbsp;target=&quot;_blank&quot;&gt;<br>
+https://docs.bazel.build/versions/master/be/c-cpp.html#cc_binary.linkstatic&lt;/a&gt;&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&nbsp;style=&quot;margin-bottom:12pt&quot;&gt;Try&nbsp;adding&nbsp;this&nbsp;label&nbsp;on&nbsp;the&nbsp;stratum_bf&nbsp;target&nbsp;and&nbsp;rebuild.&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;Another&nbsp;potential&nbsp;source&nbsp;of&nbsp;problems&nbsp;could&nbsp;be&nbsp;the&nbsp;different&nbsp;versions&nbsp;of&nbsp;gRPC&nbsp;and&nbsp;Protobuf&nbsp;between&nbsp;Stratum&nbsp;and&nbsp;the&nbsp;SDE.&nbsp;Adjusting&nbsp;it&nbsp;in&nbsp;Stratum&nbsp;is&nbsp;as&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;/div&gt;<br>
+&lt;div&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;easy&nbsp;as&nbsp;swapping&nbsp;the&nbsp;urls&nbsp;in&nbsp;the&nbsp;deps.bzl&nbsp;file.&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;/div&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&nbsp;style=&quot;margin-bottom:12pt&quot;&gt;&lt;u&gt;&lt;/u&gt; &lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;/div&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;Max&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;/div&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;u&gt;&lt;/u&gt; &lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;div&gt;<br>
+&lt;div&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;On&nbsp;Sun,&nbsp;Oct&nbsp;11,&nbsp;2020&nbsp;at&nbsp;8:35&nbsp;AM&nbsp;Narada&nbsp;Hess&nbsp;via&nbsp;stratum-dev&nbsp;&lt;&lt;a&nbsp;href=&quot;mailto:stratum-dev@lists.stratumproject.org&quot;&nbsp;target=&quot;_blank&quot;&gt;stratum-dev@lists.stratumproject.org&lt;/a&gt;&gt;&nbsp;wrote:&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;/div&gt;<br>
+&lt;blockquote&nbsp;style=&quot;border-color:currentcolor&nbsp;currentcolor&nbsp;currentcolor&nbsp;rgb(204,204,204);border-style:none&nbsp;none&nbsp;none&nbsp;solid;border-width:medium&nbsp;medium&nbsp;medium&nbsp;1pt;padding:0in&nbsp;0in&nbsp;0in&nbsp;6pt;margin-left:4.8pt;margin-right:0in&quot;&gt;<br>
+&lt;div&gt;<br>
+&lt;div&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;Hi,&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;I’m&nbsp;trying&nbsp;to&nbsp;build&nbsp;stratum_bf&nbsp;with&nbsp;the&nbsp;BF&nbsp;SDE&nbsp;BF-Runtime&nbsp;server&nbsp;enabled.&nbsp;That&nbsp;requires&nbsp;building&nbsp;the&nbsp;SDE&nbsp;with&nbsp;gRPC.&nbsp;Of&nbsp;course,&nbsp;when&nbsp;I&nbsp;try&nbsp;to&nbsp;run&nbsp;stratum_bf,&nbsp;it&nbsp;crashes&nbsp;because&nbsp;of<br>
+&nbsp;the&nbsp;two&nbsp;instances&nbsp;of&nbsp;the&nbsp;gRPC&nbsp;library&nbsp;(see&nbsp;below).&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt; &lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;Is&nbsp;there&nbsp;any&nbsp;way&nbsp;to&nbsp;build&nbsp;stratum_bf&nbsp;with&nbsp;dynamic&nbsp;linking&nbsp;of&nbsp;the&nbsp;gRPC&nbsp;(and&nbsp;protobuf&nbsp;too,&nbsp;I’m&nbsp;guessing)&nbsp;library?&nbsp;I&nbsp;saw&nbsp;half&nbsp;a&nbsp;dozen&nbsp;files&nbsp;in&nbsp;the&nbsp;bazel&nbsp;directory&nbsp;referencing&nbsp;gRPC.<br>
+&nbsp;Just&nbsp;removing&nbsp;the&nbsp;references&nbsp;of&nbsp;course&nbsp;did&nbsp;not&nbsp;work.&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt; &lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;Thanks&nbsp;for&nbsp;any&nbsp;suggestions&nbsp;on&nbsp;how&nbsp;to&nbsp;proceed.&nbsp;N&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt; &lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;gmail-m_-8276456671750498422gmail-m-4602590349157854574msoplaintext&quot;&gt;&lt;span&nbsp;style=&quot;font-family:&quot;Courier&nbsp;New&quot;&quot;&gt;/usr/local/bin/stratum_bf&nbsp;-flagfile=/etc/service/stratum/stratum-tofino-model.flags&lt;/span&gt;&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;gmail-m_-8276456671750498422gmail-m-4602590349157854574msoplaintext&quot;&gt;&lt;span&nbsp;style=&quot;font-family:&quot;Courier&nbsp;New&quot;&quot;&gt;[libprotobuf&nbsp;ERROR&nbsp;external/com_google_protobuf/src/google/protobuf/descriptor_database.cc:120]&nbsp;File&nbsp;already&nbsp;exists&nbsp;in&nbsp;database:&nbsp;google/protobuf/descriptor.proto&nbsp;[libprotobuf<br>
+&nbsp;FATAL&nbsp;external/com_google_protobuf/src/google/protobuf/descriptor.cc:1382]&nbsp;CHECK&nbsp;failed:&nbsp;GeneratedDatabase()-\u003eAdd(encoded_file_descriptor,&nbsp;size):<br>
+&lt;/span&gt;&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;gmail-m_-8276456671750498422gmail-m-4602590349157854574msoplaintext&quot;&gt;&lt;span&nbsp;style=&quot;font-family:&quot;Courier&nbsp;New&quot;&quot;&gt;terminate&nbsp;called&nbsp;after&nbsp;throwing&nbsp;an&nbsp;instance&nbsp;of&nbsp;&#39;google::protobuf::FatalException&#39;&lt;/span&gt;&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;gmail-m_-8276456671750498422gmail-m-4602590349157854574msoplaintext&quot;&gt;&lt;span&nbsp;style=&quot;font-family:&quot;Courier&nbsp;New&quot;&quot;&gt; &nbsp;what(): &nbsp;CHECK&nbsp;failed:&nbsp;GeneratedDatabase()-\u003eAdd(encoded_file_descriptor,&nbsp;size):<br>
+&lt;/span&gt;&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;gmail-m_-8276456671750498422gmail-m-4602590349157854574msoplaintext&quot;&gt;&lt;span&nbsp;style=&quot;font-family:&quot;Courier&nbsp;New&quot;&quot;&gt;Aborted&nbsp;(core&nbsp;dumped)&lt;/span&gt;&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt; &lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;/div&gt;<br>
+&lt;/div&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;_______________________________________________&lt;br&gt;<br>
+stratum-dev&nbsp;mailing&nbsp;list&lt;br&gt;<br>
+&lt;a&nbsp;href=&quot;mailto:stratum-dev@lists.stratumproject.org&quot;&nbsp;target=&quot;_blank&quot;&gt;stratum-dev@lists.stratumproject.org&lt;/a&gt;&lt;br&gt;<br>
+&lt;a&nbsp;href=&quot;https://nam05.safelinks.protection.outlook.com/?url=https%3A%2F%2Flists.stratumproject.org%2Flistinfo%2Fstratum-dev&amp;data=02%7C01%7CNHESS%40extremenetworks.com%7C1f43d59658434f0c669108d86ee55cd7%7Cfc8c2bf6914d4c1fb35246a9adb87030%7C0%7C1%7C637381278676810927&amp;sdata=8l%2B%2BeeBJC0j5Js%2FLI7%2F7oGXlt9vn9xbk33%2FT%2B2f3eHs%3D&amp;reserved=0&quot;&nbsp;target=&quot;_blank&quot;&gt;https://lists.stratumproject.org/listinfo/stratum-dev&lt;/a&gt;&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;/blockquote&gt;<br>
+&lt;/div&gt;<br>
+&lt;/div&gt;<br>
+&lt;/div&gt;<br>
+&lt;/div&gt;<br>
+<br>
+&lt;/blockquote&gt;&lt;/div&gt;<br>
+
+</tt>

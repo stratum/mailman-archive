@@ -1,0 +1,1113 @@
+<tt>
+&lt;div&nbsp;dir=&quot;ltr&quot;&gt;&lt;blockquote&nbsp;class=&quot;gmail_quote&quot;&nbsp;style=&quot;margin:0px&nbsp;0px&nbsp;0px&nbsp;0.8ex;border-left:1px&nbsp;solid&nbsp;rgb(204,204,204);padding-left:1ex&quot;&gt;&lt;div&gt;In&nbsp;order&nbsp;to&nbsp;up&nbsp;/&nbsp;down&nbsp;the&nbsp;port,&nbsp;is&nbsp;the&nbsp;following&nbsp;command&nbsp;description&nbsp;correct?&lt;br&gt;<br>
+---&lt;br&gt;<br>
+gNMI&nbsp;command&lt;br&gt;<br>
+root@localhost:~/stratum#&nbsp;bazel&nbsp;run&nbsp;//stratum/tools/gnmi:gnmi-cli&nbsp;--&nbsp;--replace&nbsp;--bytes_val_file&nbsp;/root/stratum/temp.pb.txt&nbsp;set&nbsp;/&lt;br&gt;<br>
+---&lt;/div&gt;&lt;/blockquote&gt;&lt;div&gt;This&nbsp;replaces&nbsp;the&nbsp;whole&nbsp;config.&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;There&nbsp;is&nbsp;a&nbsp;more&nbsp;direct&nbsp;way:&lt;/div&gt;&lt;div&gt;bazel&nbsp;run&nbsp;//stratum/tools/gnmi:gnmi-cli&nbsp;--&nbsp;set&nbsp;--bool_val=false&nbsp;/interfaces/interface[name=1/0]/config/enabled&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Depending&nbsp;on&nbsp;the&nbsp;remote&nbsp;device&nbsp;the&nbsp;Tofino&nbsp;is&nbsp;connected&nbsp;to,&nbsp;it&nbsp;can&nbsp;be&nbsp;a&nbsp;bit&nbsp;tricky&nbsp;to&nbsp;get&nbsp;the&nbsp;port&nbsp;into&nbsp;up&nbsp;state.&lt;/div&gt;&lt;div&gt;We&nbsp;had&nbsp;to&nbsp;play&nbsp;with&nbsp;the&nbsp;FEC&nbsp;and&nbsp;autoneg&nbsp;setting&nbsp;and&nbsp;cycle&nbsp;the&nbsp;ports&nbsp;a&nbsp;few&nbsp;times.&lt;/div&gt;&lt;div&gt;You&nbsp;can&nbsp;also&nbsp;try&nbsp;this&nbsp;in&nbsp;the&nbsp;Bf-sde&nbsp;ucli,&nbsp;since&nbsp;it&#39;s&nbsp;the&nbsp;direct&nbsp;interface.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Max&lt;br&gt;&lt;/div&gt;&lt;br&gt;&lt;/div&gt;&lt;br&gt;&lt;div&nbsp;class=&quot;gmail_quote&quot;&gt;&lt;div&nbsp;dir=&quot;ltr&quot;&nbsp;class=&quot;gmail_attr&quot;&gt;On&nbsp;Tue,&nbsp;Sep&nbsp;15,&nbsp;2020&nbsp;at&nbsp;1:15&nbsp;AM&nbsp;&lt;a&nbsp;href=&quot;mailto:ry-oogami@kddi.com&quot;&gt;ry-oogami@kddi.com&lt;/a&gt;&nbsp;&lt;&lt;a&nbsp;href=&quot;mailto:ry-oogami@kddi.com&quot;&gt;ry-oogami@kddi.com&lt;/a&gt;&gt;&nbsp;wrote:&lt;br&gt;&lt;/div&gt;&lt;blockquote&nbsp;class=&quot;gmail_quote&quot;&nbsp;style=&quot;margin:0px&nbsp;0px&nbsp;0px&nbsp;0.8ex;border-left:1px&nbsp;solid&nbsp;rgb(204,204,204);padding-left:1ex&quot;&gt;Hi&nbsp;Max,&lt;br&gt;<br>
+&lt;br&gt;<br>
+Thank&nbsp;you&nbsp;for&nbsp;answering&nbsp;my&nbsp;question&nbsp;issued&nbsp;on&nbsp;Aug&nbsp;18th.&lt;br&gt;<br>
+I&nbsp;was&nbsp;able&nbsp;to&nbsp;add&nbsp;a&nbsp;table&nbsp;entry&nbsp;using&nbsp;P4&nbsp;runtime.&lt;br&gt;<br>
+&lt;br&gt;<br>
+I&#39;m&nbsp;currently&nbsp;trying&nbsp;to&nbsp;link&nbsp;up&nbsp;/&nbsp;down&nbsp;a&nbsp;port&nbsp;through&nbsp;gNMI,however,&nbsp;I&nbsp;faild&nbsp;it.&lt;br&gt;<br>
+&lt;br&gt;<br>
+The&nbsp;commands&nbsp;and&nbsp;logs&nbsp;are&nbsp;described&nbsp;below.&lt;br&gt;<br>
+According&nbsp;to&nbsp;the&nbsp;following&nbsp;log,&nbsp;command&nbsp;&quot;push&quot;&nbsp;seems&nbsp;to&nbsp;be&nbsp;successful.&lt;br&gt;<br>
+---&lt;br&gt;<br>
+I20200914&nbsp;05:09:17.604884&nbsp;32499&nbsp;bf_switch.cc:63]&nbsp;Chassis&nbsp;config&nbsp;pushed&nbsp;successfully.&lt;br&gt;<br>
+---&lt;br&gt;<br>
+&lt;br&gt;<br>
+In&nbsp;order&nbsp;to&nbsp;up&nbsp;/&nbsp;down&nbsp;the&nbsp;port,&nbsp;is&nbsp;the&nbsp;following&nbsp;command&nbsp;description&nbsp;correct?&lt;br&gt;<br>
+---&lt;br&gt;<br>
+gNMI&nbsp;command&lt;br&gt;<br>
+root@localhost:~/stratum#&nbsp;bazel&nbsp;run&nbsp;//stratum/tools/gnmi:gnmi-cli&nbsp;--&nbsp;--replace&nbsp;--bytes_val_file&nbsp;/root/stratum/temp.pb.txt&nbsp;set&nbsp;/&lt;br&gt;<br>
+---&lt;br&gt;<br>
+&lt;br&gt;<br>
+&lt;br&gt;<br>
+&lt;stratum’s&nbsp;log&gt;&lt;br&gt;<br>
+root@localhost:~#&nbsp;start-stratum.sh&lt;br&gt;<br>
+bf_kdrv_mod&nbsp;found!&nbsp;Unloading&nbsp;first...&lt;br&gt;<br>
+loading&nbsp;bf_kdrv_mod...&lt;br&gt;<br>
+bf_sysfs_fname&nbsp;/sys/class/bf/bf0/device/dev_add&lt;br&gt;<br>
+Install&nbsp;dir:&nbsp;/usr&nbsp;(0x5644b1684020)&lt;br&gt;<br>
+bf_switchd:&nbsp;system&nbsp;services&nbsp;initialized&lt;br&gt;<br>
+bf_switchd:&nbsp;loading&nbsp;conf_file&nbsp;/usr/share/stratum/tofino_skip_p4_no_bsp.conf...&lt;br&gt;<br>
+bf_switchd:&nbsp;processing&nbsp;device&nbsp;configuration...&lt;br&gt;<br>
+Configuration&nbsp;for&nbsp;dev_id&nbsp;0&lt;br&gt;<br>
+ &nbsp;Family &nbsp; &nbsp; &nbsp; &nbsp;:&nbsp;Tofino&lt;br&gt;<br>
+ &nbsp;pci_sysfs_str&nbsp;:&nbsp;/sys/devices/pci0000:00/0000:00:03.0/0000:05:00.0&lt;br&gt;<br>
+ &nbsp;pci_domain &nbsp; &nbsp;:&nbsp;0&lt;br&gt;<br>
+ &nbsp;pci_bus &nbsp; &nbsp; &nbsp; :&nbsp;5&lt;br&gt;<br>
+ &nbsp;pci_fn &nbsp; &nbsp; &nbsp; &nbsp;:&nbsp;0&lt;br&gt;<br>
+ &nbsp;pci_dev &nbsp; &nbsp; &nbsp; :&nbsp;0&lt;br&gt;<br>
+ &nbsp;pci_int_mode &nbsp;:&nbsp;1&lt;br&gt;<br>
+ &nbsp;sbus_master_fw:&nbsp;/usr/&lt;br&gt;<br>
+ &nbsp;pcie_fw &nbsp; &nbsp; &nbsp; :&nbsp;/usr/&lt;br&gt;<br>
+ &nbsp;serdes_fw &nbsp; &nbsp; :&nbsp;/usr/&lt;br&gt;<br>
+ &nbsp;sds_fw_path &nbsp; :&nbsp;/usr/&lt;br&gt;<br>
+ &nbsp;microp_fw_path:&lt;br&gt;<br>
+bf_switchd:&nbsp;processing&nbsp;P4&nbsp;configuration...&lt;br&gt;<br>
+P4&nbsp;profile&nbsp;for&nbsp;dev_id&nbsp;0&lt;br&gt;<br>
+ &nbsp;p4_name:&nbsp;dummy&lt;br&gt;<br>
+ &nbsp; &nbsp;libpd:&lt;br&gt;<br>
+ &nbsp; &nbsp;libpdthrift:&lt;br&gt;<br>
+ &nbsp; &nbsp;context:&lt;br&gt;<br>
+ &nbsp; &nbsp;config:&lt;br&gt;<br>
+ &nbsp;diag:&lt;br&gt;<br>
+ &nbsp;accton&nbsp;diag:&lt;br&gt;<br>
+ &nbsp;board-port-map:&nbsp;/usr/share/port_map.json&lt;br&gt;<br>
+ &nbsp;non_default_port_ppgs:&nbsp;0&lt;br&gt;<br>
+ &nbsp;SAI&nbsp;default&nbsp;initialize:&nbsp;1&lt;br&gt;<br>
+board-port-map&nbsp;path:&nbsp;/usr/share/port_map.json&lt;br&gt;<br>
+bf_switchd:&nbsp;loading&nbsp;board-map&nbsp;conf&nbsp;file&nbsp;/usr/share/port_map.json...&lt;br&gt;<br>
+enable-debug-log:yes&lt;br&gt;<br>
+Parsing&nbsp;Board-lane-entries&nbsp;33&nbsp;found&lt;br&gt;<br>
+num-of-connectors:33&lt;br&gt;<br>
+&lt;br&gt;<br>
+Connector-&gt;1&nbsp;device_id:0&nbsp;mac_block:23&nbsp;media:copper&nbsp;enable-auto-neg:1&lt;br&gt;<br>
+lane0&nbsp;mac_ch:0&nbsp;tx_lane:2,&nbsp;rx_lane:2,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane1&nbsp;mac_ch:1&nbsp;tx_lane:0,&nbsp;rx_lane:0,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane2&nbsp;mac_ch:2&nbsp;tx_lane:3,&nbsp;rx_lane:3,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane3&nbsp;mac_ch:3&nbsp;tx_lane:1,&nbsp;rx_lane:1,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+&lt;br&gt;<br>
+Connector-&gt;2&nbsp;device_id:0&nbsp;mac_block:22&nbsp;media:copper&nbsp;enable-auto-neg:1&lt;br&gt;<br>
+lane0&nbsp;mac_ch:0&nbsp;tx_lane:2,&nbsp;rx_lane:2,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane1&nbsp;mac_ch:1&nbsp;tx_lane:3,&nbsp;rx_lane:3,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane2&nbsp;mac_ch:2&nbsp;tx_lane:0,&nbsp;rx_lane:0,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane3&nbsp;mac_ch:3&nbsp;tx_lane:1,&nbsp;rx_lane:1,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+&lt;br&gt;<br>
+Connector-&gt;3&nbsp;device_id:0&nbsp;mac_block:21&nbsp;media:copper&nbsp;enable-auto-neg:1&lt;br&gt;<br>
+lane0&nbsp;mac_ch:0&nbsp;tx_lane:3,&nbsp;rx_lane:3,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane1&nbsp;mac_ch:1&nbsp;tx_lane:2,&nbsp;rx_lane:2,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane2&nbsp;mac_ch:2&nbsp;tx_lane:1,&nbsp;rx_lane:1,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane3&nbsp;mac_ch:3&nbsp;tx_lane:0,&nbsp;rx_lane:0,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+&lt;br&gt;<br>
+Connector-&gt;4&nbsp;device_id:0&nbsp;mac_block:20&nbsp;media:copper&nbsp;enable-auto-neg:1&lt;br&gt;<br>
+lane0&nbsp;mac_ch:0&nbsp;tx_lane:2,&nbsp;rx_lane:2,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane1&nbsp;mac_ch:1&nbsp;tx_lane:3,&nbsp;rx_lane:3,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane2&nbsp;mac_ch:2&nbsp;tx_lane:0,&nbsp;rx_lane:0,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane3&nbsp;mac_ch:3&nbsp;tx_lane:1,&nbsp;rx_lane:1,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+&lt;br&gt;<br>
+Connector-&gt;5&nbsp;device_id:0&nbsp;mac_block:19&nbsp;media:copper&nbsp;enable-auto-neg:1&lt;br&gt;<br>
+lane0&nbsp;mac_ch:0&nbsp;tx_lane:2,&nbsp;rx_lane:2,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane1&nbsp;mac_ch:1&nbsp;tx_lane:3,&nbsp;rx_lane:3,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane2&nbsp;mac_ch:2&nbsp;tx_lane:0,&nbsp;rx_lane:0,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane3&nbsp;mac_ch:3&nbsp;tx_lane:1,&nbsp;rx_lane:1,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+&lt;br&gt;<br>
+Connector-&gt;6&nbsp;device_id:0&nbsp;mac_block:18&nbsp;media:copper&nbsp;enable-auto-neg:1&lt;br&gt;<br>
+lane0&nbsp;mac_ch:0&nbsp;tx_lane:2,&nbsp;rx_lane:2,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane1&nbsp;mac_ch:1&nbsp;tx_lane:3,&nbsp;rx_lane:3,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane2&nbsp;mac_ch:2&nbsp;tx_lane:0,&nbsp;rx_lane:0,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane3&nbsp;mac_ch:3&nbsp;tx_lane:1,&nbsp;rx_lane:1,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+&lt;br&gt;<br>
+Connector-&gt;7&nbsp;device_id:0&nbsp;mac_block:17&nbsp;media:copper&nbsp;enable-auto-neg:1&lt;br&gt;<br>
+lane0&nbsp;mac_ch:0&nbsp;tx_lane:2,&nbsp;rx_lane:2,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane1&nbsp;mac_ch:1&nbsp;tx_lane:3,&nbsp;rx_lane:3,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane2&nbsp;mac_ch:2&nbsp;tx_lane:0,&nbsp;rx_lane:0,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane3&nbsp;mac_ch:3&nbsp;tx_lane:1,&nbsp;rx_lane:1,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+&lt;br&gt;<br>
+Connector-&gt;8&nbsp;device_id:0&nbsp;mac_block:16&nbsp;media:copper&nbsp;enable-auto-neg:1&lt;br&gt;<br>
+lane0&nbsp;mac_ch:0&nbsp;tx_lane:2,&nbsp;rx_lane:2,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane1&nbsp;mac_ch:1&nbsp;tx_lane:3,&nbsp;rx_lane:3,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane2&nbsp;mac_ch:2&nbsp;tx_lane:0,&nbsp;rx_lane:0,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane3&nbsp;mac_ch:3&nbsp;tx_lane:1,&nbsp;rx_lane:1,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+&lt;br&gt;<br>
+Connector-&gt;9&nbsp;device_id:0&nbsp;mac_block:15&nbsp;media:copper&nbsp;enable-auto-neg:1&lt;br&gt;<br>
+lane0&nbsp;mac_ch:0&nbsp;tx_lane:2,&nbsp;rx_lane:2,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane1&nbsp;mac_ch:1&nbsp;tx_lane:3,&nbsp;rx_lane:3,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane2&nbsp;mac_ch:2&nbsp;tx_lane:0,&nbsp;rx_lane:0,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane3&nbsp;mac_ch:3&nbsp;tx_lane:1,&nbsp;rx_lane:1,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+&lt;br&gt;<br>
+Connector-&gt;10&nbsp;device_id:0&nbsp;mac_block:14&nbsp;media:copper&nbsp;enable-auto-neg:1&lt;br&gt;<br>
+lane0&nbsp;mac_ch:0&nbsp;tx_lane:2,&nbsp;rx_lane:2,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane1&nbsp;mac_ch:1&nbsp;tx_lane:3,&nbsp;rx_lane:3,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane2&nbsp;mac_ch:2&nbsp;tx_lane:0,&nbsp;rx_lane:0,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane3&nbsp;mac_ch:3&nbsp;tx_lane:1,&nbsp;rx_lane:1,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+&lt;br&gt;<br>
+Connector-&gt;11&nbsp;device_id:0&nbsp;mac_block:13&nbsp;media:copper&nbsp;enable-auto-neg:1&lt;br&gt;<br>
+lane0&nbsp;mac_ch:0&nbsp;tx_lane:2,&nbsp;rx_lane:2,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane1&nbsp;mac_ch:1&nbsp;tx_lane:3,&nbsp;rx_lane:3,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane2&nbsp;mac_ch:2&nbsp;tx_lane:0,&nbsp;rx_lane:0,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane3&nbsp;mac_ch:3&nbsp;tx_lane:1,&nbsp;rx_lane:1,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+&lt;br&gt;<br>
+Connector-&gt;12&nbsp;device_id:0&nbsp;mac_block:12&nbsp;media:copper&nbsp;enable-auto-neg:1&lt;br&gt;<br>
+lane0&nbsp;mac_ch:0&nbsp;tx_lane:2,&nbsp;rx_lane:2,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane1&nbsp;mac_ch:1&nbsp;tx_lane:3,&nbsp;rx_lane:3,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane2&nbsp;mac_ch:2&nbsp;tx_lane:0,&nbsp;rx_lane:0,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane3&nbsp;mac_ch:3&nbsp;tx_lane:1,&nbsp;rx_lane:1,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+&lt;br&gt;<br>
+Connector-&gt;13&nbsp;device_id:0&nbsp;mac_block:11&nbsp;media:copper&nbsp;enable-auto-neg:1&lt;br&gt;<br>
+lane0&nbsp;mac_ch:0&nbsp;tx_lane:2,&nbsp;rx_lane:2,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane1&nbsp;mac_ch:1&nbsp;tx_lane:3,&nbsp;rx_lane:3,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane2&nbsp;mac_ch:2&nbsp;tx_lane:0,&nbsp;rx_lane:0,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane3&nbsp;mac_ch:3&nbsp;tx_lane:1,&nbsp;rx_lane:1,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+&lt;br&gt;<br>
+Connector-&gt;14&nbsp;device_id:0&nbsp;mac_block:10&nbsp;media:copper&nbsp;enable-auto-neg:1&lt;br&gt;<br>
+lane0&nbsp;mac_ch:0&nbsp;tx_lane:0,&nbsp;rx_lane:0,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane1&nbsp;mac_ch:1&nbsp;tx_lane:2,&nbsp;rx_lane:2,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane2&nbsp;mac_ch:2&nbsp;tx_lane:1,&nbsp;rx_lane:1,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane3&nbsp;mac_ch:3&nbsp;tx_lane:3,&nbsp;rx_lane:3,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+&lt;br&gt;<br>
+Connector-&gt;15&nbsp;device_id:0&nbsp;mac_block:9&nbsp;media:copper&nbsp;enable-auto-neg:1&lt;br&gt;<br>
+lane0&nbsp;mac_ch:0&nbsp;tx_lane:2,&nbsp;rx_lane:2,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane1&nbsp;mac_ch:1&nbsp;tx_lane:3,&nbsp;rx_lane:3,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane2&nbsp;mac_ch:2&nbsp;tx_lane:0,&nbsp;rx_lane:0,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane3&nbsp;mac_ch:3&nbsp;tx_lane:1,&nbsp;rx_lane:1,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+&lt;br&gt;<br>
+Connector-&gt;16&nbsp;device_id:0&nbsp;mac_block:8&nbsp;media:copper&nbsp;enable-auto-neg:1&lt;br&gt;<br>
+lane0&nbsp;mac_ch:0&nbsp;tx_lane:2,&nbsp;rx_lane:2,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane1&nbsp;mac_ch:1&nbsp;tx_lane:3,&nbsp;rx_lane:3,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane2&nbsp;mac_ch:2&nbsp;tx_lane:0,&nbsp;rx_lane:0,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane3&nbsp;mac_ch:3&nbsp;tx_lane:1,&nbsp;rx_lane:1,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+&lt;br&gt;<br>
+Connector-&gt;17&nbsp;device_id:0&nbsp;mac_block:7&nbsp;media:copper&nbsp;enable-auto-neg:1&lt;br&gt;<br>
+lane0&nbsp;mac_ch:0&nbsp;tx_lane:3,&nbsp;rx_lane:3,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane1&nbsp;mac_ch:1&nbsp;tx_lane:2,&nbsp;rx_lane:2,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane2&nbsp;mac_ch:2&nbsp;tx_lane:1,&nbsp;rx_lane:1,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane3&nbsp;mac_ch:3&nbsp;tx_lane:0,&nbsp;rx_lane:0,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+&lt;br&gt;<br>
+Connector-&gt;18&nbsp;device_id:0&nbsp;mac_block:6&nbsp;media:copper&nbsp;enable-auto-neg:1&lt;br&gt;<br>
+lane0&nbsp;mac_ch:0&nbsp;tx_lane:3,&nbsp;rx_lane:3,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane1&nbsp;mac_ch:1&nbsp;tx_lane:2,&nbsp;rx_lane:2,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane2&nbsp;mac_ch:2&nbsp;tx_lane:0,&nbsp;rx_lane:0,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane3&nbsp;mac_ch:3&nbsp;tx_lane:1,&nbsp;rx_lane:1,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+&lt;br&gt;<br>
+Connector-&gt;19&nbsp;device_id:0&nbsp;mac_block:5&nbsp;media:copper&nbsp;enable-auto-neg:1&lt;br&gt;<br>
+lane0&nbsp;mac_ch:0&nbsp;tx_lane:3,&nbsp;rx_lane:3,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane1&nbsp;mac_ch:1&nbsp;tx_lane:1,&nbsp;rx_lane:1,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane2&nbsp;mac_ch:2&nbsp;tx_lane:2,&nbsp;rx_lane:2,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane3&nbsp;mac_ch:3&nbsp;tx_lane:0,&nbsp;rx_lane:0,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+&lt;br&gt;<br>
+Connector-&gt;20&nbsp;device_id:0&nbsp;mac_block:4&nbsp;media:copper&nbsp;enable-auto-neg:1&lt;br&gt;<br>
+lane0&nbsp;mac_ch:0&nbsp;tx_lane:2,&nbsp;rx_lane:2,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane1&nbsp;mac_ch:1&nbsp;tx_lane:3,&nbsp;rx_lane:3,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane2&nbsp;mac_ch:2&nbsp;tx_lane:0,&nbsp;rx_lane:0,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane3&nbsp;mac_ch:3&nbsp;tx_lane:1,&nbsp;rx_lane:1,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+&lt;br&gt;<br>
+Connector-&gt;21&nbsp;device_id:0&nbsp;mac_block:3&nbsp;media:copper&nbsp;enable-auto-neg:1&lt;br&gt;<br>
+lane0&nbsp;mac_ch:0&nbsp;tx_lane:2,&nbsp;rx_lane:2,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane1&nbsp;mac_ch:1&nbsp;tx_lane:3,&nbsp;rx_lane:3,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane2&nbsp;mac_ch:2&nbsp;tx_lane:0,&nbsp;rx_lane:0,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane3&nbsp;mac_ch:3&nbsp;tx_lane:1,&nbsp;rx_lane:1,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+&lt;br&gt;<br>
+Connector-&gt;22&nbsp;device_id:0&nbsp;mac_block:2&nbsp;media:copper&nbsp;enable-auto-neg:1&lt;br&gt;<br>
+lane0&nbsp;mac_ch:0&nbsp;tx_lane:2,&nbsp;rx_lane:2,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane1&nbsp;mac_ch:1&nbsp;tx_lane:3,&nbsp;rx_lane:3,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane2&nbsp;mac_ch:2&nbsp;tx_lane:0,&nbsp;rx_lane:0,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane3&nbsp;mac_ch:3&nbsp;tx_lane:1,&nbsp;rx_lane:1,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+&lt;br&gt;<br>
+Connector-&gt;23&nbsp;device_id:0&nbsp;mac_block:1&nbsp;media:copper&nbsp;enable-auto-neg:1&lt;br&gt;<br>
+lane0&nbsp;mac_ch:0&nbsp;tx_lane:2,&nbsp;rx_lane:2,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane1&nbsp;mac_ch:1&nbsp;tx_lane:3,&nbsp;rx_lane:3,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane2&nbsp;mac_ch:2&nbsp;tx_lane:0,&nbsp;rx_lane:0,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane3&nbsp;mac_ch:3&nbsp;tx_lane:1,&nbsp;rx_lane:1,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+&lt;br&gt;<br>
+Connector-&gt;24&nbsp;device_id:0&nbsp;mac_block:0&nbsp;media:copper&nbsp;enable-auto-neg:1&lt;br&gt;<br>
+lane0&nbsp;mac_ch:0&nbsp;tx_lane:2,&nbsp;rx_lane:2,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane1&nbsp;mac_ch:1&nbsp;tx_lane:3,&nbsp;rx_lane:3,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane2&nbsp;mac_ch:2&nbsp;tx_lane:0,&nbsp;rx_lane:0,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane3&nbsp;mac_ch:3&nbsp;tx_lane:1,&nbsp;rx_lane:1,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+&lt;br&gt;<br>
+Connector-&gt;25&nbsp;device_id:0&nbsp;mac_block:31&nbsp;media:copper&nbsp;enable-auto-neg:1&lt;br&gt;<br>
+lane0&nbsp;mac_ch:0&nbsp;tx_lane:2,&nbsp;rx_lane:2,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane1&nbsp;mac_ch:1&nbsp;tx_lane:3,&nbsp;rx_lane:3,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane2&nbsp;mac_ch:2&nbsp;tx_lane:0,&nbsp;rx_lane:0,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane3&nbsp;mac_ch:3&nbsp;tx_lane:1,&nbsp;rx_lane:1,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+&lt;br&gt;<br>
+Connector-&gt;26&nbsp;device_id:0&nbsp;mac_block:30&nbsp;media:copper&nbsp;enable-auto-neg:1&lt;br&gt;<br>
+lane0&nbsp;mac_ch:0&nbsp;tx_lane:2,&nbsp;rx_lane:2,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane1&nbsp;mac_ch:1&nbsp;tx_lane:3,&nbsp;rx_lane:3,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane2&nbsp;mac_ch:2&nbsp;tx_lane:0,&nbsp;rx_lane:0,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane3&nbsp;mac_ch:3&nbsp;tx_lane:1,&nbsp;rx_lane:1,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+&lt;br&gt;<br>
+Connector-&gt;27&nbsp;device_id:0&nbsp;mac_block:29&nbsp;media:copper&nbsp;enable-auto-neg:1&lt;br&gt;<br>
+lane0&nbsp;mac_ch:0&nbsp;tx_lane:2,&nbsp;rx_lane:2,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane1&nbsp;mac_ch:1&nbsp;tx_lane:3,&nbsp;rx_lane:3,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane2&nbsp;mac_ch:2&nbsp;tx_lane:0,&nbsp;rx_lane:0,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane3&nbsp;mac_ch:3&nbsp;tx_lane:1,&nbsp;rx_lane:1,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+&lt;br&gt;<br>
+Connector-&gt;28&nbsp;device_id:0&nbsp;mac_block:28&nbsp;media:copper&nbsp;enable-auto-neg:1&lt;br&gt;<br>
+lane0&nbsp;mac_ch:0&nbsp;tx_lane:2,&nbsp;rx_lane:2,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane1&nbsp;mac_ch:1&nbsp;tx_lane:3,&nbsp;rx_lane:3,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane2&nbsp;mac_ch:2&nbsp;tx_lane:0,&nbsp;rx_lane:0,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane3&nbsp;mac_ch:3&nbsp;tx_lane:1,&nbsp;rx_lane:1,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+&lt;br&gt;<br>
+Connector-&gt;29&nbsp;device_id:0&nbsp;mac_block:26&nbsp;media:copper&nbsp;enable-auto-neg:1&lt;br&gt;<br>
+lane0&nbsp;mac_ch:0&nbsp;tx_lane:3,&nbsp;rx_lane:3,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane1&nbsp;mac_ch:1&nbsp;tx_lane:2,&nbsp;rx_lane:2,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane2&nbsp;mac_ch:2&nbsp;tx_lane:1,&nbsp;rx_lane:1,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane3&nbsp;mac_ch:3&nbsp;tx_lane:0,&nbsp;rx_lane:0,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+&lt;br&gt;<br>
+Connector-&gt;30&nbsp;device_id:0&nbsp;mac_block:27&nbsp;media:copper&nbsp;enable-auto-neg:1&lt;br&gt;<br>
+lane0&nbsp;mac_ch:0&nbsp;tx_lane:3,&nbsp;rx_lane:3,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane1&nbsp;mac_ch:1&nbsp;tx_lane:2,&nbsp;rx_lane:2,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane2&nbsp;mac_ch:2&nbsp;tx_lane:1,&nbsp;rx_lane:1,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane3&nbsp;mac_ch:3&nbsp;tx_lane:0,&nbsp;rx_lane:0,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+&lt;br&gt;<br>
+Connector-&gt;31&nbsp;device_id:0&nbsp;mac_block:24&nbsp;media:copper&nbsp;enable-auto-neg:1&lt;br&gt;<br>
+lane0&nbsp;mac_ch:0&nbsp;tx_lane:0,&nbsp;rx_lane:0,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane1&nbsp;mac_ch:1&nbsp;tx_lane:3,&nbsp;rx_lane:3,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane2&nbsp;mac_ch:2&nbsp;tx_lane:2,&nbsp;rx_lane:2,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane3&nbsp;mac_ch:3&nbsp;tx_lane:1,&nbsp;rx_lane:1,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+&lt;br&gt;<br>
+Connector-&gt;32&nbsp;device_id:0&nbsp;mac_block:25&nbsp;media:copper&nbsp;enable-auto-neg:1&lt;br&gt;<br>
+lane0&nbsp;mac_ch:0&nbsp;tx_lane:2,&nbsp;rx_lane:2,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane1&nbsp;mac_ch:1&nbsp;tx_lane:3,&nbsp;rx_lane:3,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane2&nbsp;mac_ch:2&nbsp;tx_lane:0,&nbsp;rx_lane:0,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane3&nbsp;mac_ch:3&nbsp;tx_lane:1,&nbsp;rx_lane:1,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+&lt;br&gt;<br>
+Connector-&gt;33&nbsp;device_id:0&nbsp;mac_block:32&nbsp;media:copper&nbsp;enable-auto-neg:1&lt;br&gt;<br>
+lane0&nbsp;mac_ch:0&nbsp;tx_lane:1,&nbsp;rx_lane:1,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+tx_eq_pre:0&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane1&nbsp;mac_ch:1&nbsp;tx_lane:2,&nbsp;rx_lane:2,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+tx_eq_pre:0&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane2&nbsp;mac_ch:2&nbsp;tx_lane:0,&nbsp;rx_lane:0,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+tx_eq_pre:0&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+lane3&nbsp;mac_ch:3&nbsp;tx_lane:3,&nbsp;rx_lane:3,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+tx_eq_pre:0&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+Operational&nbsp;mode&nbsp;set&nbsp;to&nbsp;ASIC&lt;br&gt;<br>
+ASIC&nbsp;detected&nbsp;at&nbsp;PCI&nbsp;/sys/class/bf/bf0/device&lt;br&gt;<br>
+ASIC&nbsp;pci&nbsp;device&nbsp;id&nbsp;is&nbsp;16&lt;br&gt;<br>
+bf_switchd:&nbsp;drivers&nbsp;initialized&lt;br&gt;<br>
+Skipping&nbsp;P4&nbsp;program&nbsp;load&nbsp;for&nbsp;dev_id&nbsp;0&lt;br&gt;<br>
+detecting..&nbsp;IOMMU&nbsp;not&nbsp;enabled&nbsp;on&nbsp;the&nbsp;platform&lt;br&gt;<br>
+Setting&nbsp;core_pll_ctrl0=cd44cbfe&lt;br&gt;<br>
+&lt;br&gt;<br>
+bf_switchd:&nbsp;dev_id&nbsp;0&nbsp;initialized&lt;br&gt;<br>
+&lt;br&gt;<br>
+bf_switchd:&nbsp;initialized&nbsp;1&nbsp;devices&lt;br&gt;<br>
+bf_switchd:&nbsp;Credo&nbsp;python&nbsp;server&nbsp;thread&nbsp;initialized..Skip&nbsp;p4&nbsp;lib&nbsp;init&lt;br&gt;<br>
+Skip&nbsp;mav&nbsp;diag&nbsp;lib&nbsp;init&lt;br&gt;<br>
+bf_switchd:&nbsp;spawning&nbsp;cli&nbsp;server&nbsp;thread&lt;br&gt;<br>
+credo_python_intf:&nbsp;listen&nbsp;socket&nbsp;created&lt;br&gt;<br>
+credo_python_intf:&nbsp;bind&nbsp;done&nbsp;on&nbsp;port&nbsp;9001,&nbsp;listening...&lt;br&gt;<br>
+credo_python_intf:&nbsp;listening&nbsp;for&nbsp;incoming&nbsp;connections...&lt;br&gt;<br>
+bf_switchd:&nbsp;running&nbsp;in&nbsp;background;&nbsp;driver&nbsp;shell&nbsp;is&nbsp;disabled&lt;br&gt;<br>
+bf_switchd:&nbsp;server&nbsp;started&nbsp;-&nbsp;listening&nbsp;on&nbsp;port&nbsp;9999&lt;br&gt;<br>
+Could&nbsp;not&nbsp;create&nbsp;logging&nbsp;file:&nbsp;No&nbsp;such&nbsp;file&nbsp;or&nbsp;directory&lt;br&gt;<br>
+COULD&nbsp;NOT&nbsp;CREATE&nbsp;A&nbsp;LOGGINGFILE&nbsp;20200914-050910.32455!I20200914&nbsp;05:09:10.989152&nbsp;32455&nbsp;main.cc:124]&nbsp;switchd&nbsp;started&nbsp;successfully&lt;br&gt;<br>
+Could&nbsp;not&nbsp;create&nbsp;logging&nbsp;file:&nbsp;No&nbsp;such&nbsp;file&nbsp;or&nbsp;directory&lt;br&gt;<br>
+COULD&nbsp;NOT&nbsp;CREATE&nbsp;A&nbsp;LOGGINGFILE&nbsp;20200914-050910.32455!W20200914&nbsp;05:09:10.989571&nbsp;32455&nbsp;credentials_manager.cc:45]&nbsp;Using&nbsp;insecure&nbsp;server&nbsp;credentials&lt;br&gt;<br>
+I20200914&nbsp;05:09:10.990274&nbsp;32455&nbsp;hal.cc:128]&nbsp;Setting&nbsp;up&nbsp;HAL&nbsp;in&nbsp;COLDBOOT&nbsp;mode...&lt;br&gt;<br>
+I20200914&nbsp;05:09:10.990386&nbsp;32455&nbsp;config_monitoring_service.cc:90]&nbsp;Pushing&nbsp;the&nbsp;saved&nbsp;chassis&nbsp;config&nbsp;read&nbsp;from&nbsp;/etc/stratum/x86-64-accton-wedge100bf-32x-r0/chassis_config.pb.txt...&lt;br&gt;<br>
+Could&nbsp;not&nbsp;create&nbsp;logging&nbsp;file:&nbsp;No&nbsp;such&nbsp;file&nbsp;or&nbsp;directory&lt;br&gt;<br>
+COULD&nbsp;NOT&nbsp;CREATE&nbsp;A&nbsp;LOGGINGFILE&nbsp;20200914-050911.32455!E20200914&nbsp;05:09:11.000291&nbsp;32455&nbsp;bf_chassis_manager.cc:543]&nbsp;StratumErrorSpace::ERR_NOT_INITIALIZED:&nbsp;Not&nbsp;initialized!&lt;br&gt;<br>
+I20200914&nbsp;05:09:11.000746&nbsp;32455&nbsp;bf_switch.cc:98]&nbsp;Chassis&nbsp;config&nbsp;verified&nbsp;successfully.&lt;br&gt;<br>
+E20200914&nbsp;05:09:11.002784&nbsp;32455&nbsp;phal.cc:96]&nbsp;No&nbsp;phal_config_file&nbsp;specified&nbsp;and&nbsp;no&nbsp;switch&nbsp;configurator&nbsp;found!&nbsp;This&nbsp;is&nbsp;probably&nbsp;not&nbsp;what&nbsp;you&nbsp;want.&nbsp;Did&nbsp;you&nbsp;forget&nbsp;to&nbsp;specify&nbsp;any&nbsp;&#39;--define&nbsp;phal_with_*=true&#39;&nbsp;Bazel&nbsp;flags?&lt;br&gt;<br>
+I20200914&nbsp;05:09:11.004007&nbsp;32455&nbsp;attribute_database.cc:213]&nbsp;PhalDB&nbsp;service&nbsp;is&nbsp;listening&nbsp;to&nbsp;localhost:28003...&lt;br&gt;<br>
+I20200914&nbsp;05:09:11.004081&nbsp;32455&nbsp;bf_chassis_manager.cc:820]&nbsp;Port&nbsp;status&nbsp;notification&nbsp;callback&nbsp;registered&nbsp;successfully&lt;br&gt;<br>
+I20200914&nbsp;05:09:11.004714&nbsp;32455&nbsp;bf_chassis_manager.cc:71]&nbsp;Adding&nbsp;port&nbsp;128&nbsp;in&nbsp;node&nbsp;1.&lt;br&gt;<br>
+I20200914&nbsp;05:09:11.010711&nbsp;32455&nbsp;bf_chassis_manager.cc:98]&nbsp;Enabling&nbsp;port&nbsp;128&nbsp;in&nbsp;node&nbsp;1.&lt;br&gt;<br>
+I20200914&nbsp;05:09:11.010841&nbsp;32455&nbsp;bf_switch.cc:63]&nbsp;Chassis&nbsp;config&nbsp;pushed&nbsp;successfully.&lt;br&gt;<br>
+I20200914&nbsp;05:09:11.014021&nbsp;32455&nbsp;p4_service.cc:118]&nbsp;Pushing&nbsp;the&nbsp;saved&nbsp;forwarding&nbsp;pipeline&nbsp;configs&nbsp;read&nbsp;from&nbsp;/var/run/stratum/pipeline_cfg.pb.txt...&lt;br&gt;<br>
+bf_switchd:&nbsp;starting&nbsp;warm&nbsp;init&nbsp;for&nbsp;dev_id&nbsp;0&nbsp;mode&nbsp;1&nbsp;serdes_upgrade&nbsp;0&lt;br&gt;<br>
+Skip&nbsp;diag&nbsp;lib&nbsp;deinit&lt;br&gt;<br>
+\I20200914&nbsp;05:09:12.576406&nbsp;32455&nbsp;bf_chassis_manager.cc:557]&nbsp;Replaying&nbsp;ports&nbsp;for&nbsp;node&nbsp;1.&lt;br&gt;<br>
+I20200914&nbsp;05:09:12.582643&nbsp;32455&nbsp;bf_switch.cc:111]&nbsp;P4-based&nbsp;forwarding&nbsp;pipeline&nbsp;config&nbsp;pushed&nbsp;successfully&nbsp;to&nbsp;node&nbsp;with&nbsp;ID&nbsp;1.&lt;br&gt;<br>
+E20200914&nbsp;05:09:12.585922&nbsp;32455&nbsp;hal.cc:223]&nbsp;Stratum&nbsp;external&nbsp;facing&nbsp;services&nbsp;are&nbsp;listening&nbsp;to&nbsp;&lt;a&nbsp;href=&quot;http://0.0.0.0:28000&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;0.0.0.0:28000&lt;/a&gt;,&nbsp;&lt;a&nbsp;href=&quot;http://0.0.0.0:9339&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;0.0.0.0:9339&lt;/a&gt;,&nbsp;localhost:28000...&lt;br&gt;<br>
+E20200914&nbsp;05:09:12.593706&nbsp;32455&nbsp;hal.cc:365]&nbsp;StratumErrorSpace::ERR_INTERNAL:&nbsp;Failed&nbsp;to&nbsp;check&nbsp;in&nbsp;with&nbsp;procmon:&nbsp;failed&nbsp;to&nbsp;connect&nbsp;to&nbsp;all&nbsp;addresses&lt;br&gt;<br>
+E20200914&nbsp;05:09:12.593993&nbsp;32455&nbsp;hal.cc:233]&nbsp;Error&nbsp;when&nbsp;checking&nbsp;in&nbsp;with&nbsp;procmon:&nbsp;Failed&nbsp;to&nbsp;check&nbsp;in&nbsp;with&nbsp;procmon:&nbsp;failed&nbsp;to&nbsp;connect&nbsp;to&nbsp;all&nbsp;addresses.&lt;br&gt;<br>
+I20200914&nbsp;05:09:17.604761&nbsp;32499&nbsp;bf_switch.cc:98]&nbsp;Chassis&nbsp;config&nbsp;verified&nbsp;successfully.&lt;br&gt;<br>
+I20200914&nbsp;05:09:17.604884&nbsp;32499&nbsp;bf_switch.cc:63]&nbsp;Chassis&nbsp;config&nbsp;pushed&nbsp;successfully.&lt;br&gt;<br>
+&lt;br&gt;<br>
+[File&nbsp;referenced&nbsp;by&nbsp;gNMI&nbsp;command]&lt;br&gt;<br>
+root@localhost:~/stratum#&nbsp;cat&nbsp;temp.pb.txt&lt;br&gt;<br>
+description:&nbsp;&quot;Default&nbsp;Chassis&nbsp;Config&nbsp;for&nbsp;Edgecore&nbsp;Wedge100BF-32x&quot;&lt;br&gt;<br>
+chassis&nbsp;{&lt;br&gt;<br>
+ &nbsp;platform:&nbsp;PLT_BAREFOOT_TOFINO&lt;br&gt;<br>
+ &nbsp;name:&nbsp;&quot;Edgecore&nbsp;Wedge100BF-32x&quot;&lt;br&gt;<br>
+}&lt;br&gt;<br>
+nodes&nbsp;{&lt;br&gt;<br>
+ &nbsp;id:&nbsp;1&lt;br&gt;<br>
+ &nbsp;slot:&nbsp;1&lt;br&gt;<br>
+ &nbsp;index:&nbsp;1&lt;br&gt;<br>
+}&lt;br&gt;<br>
+singleton_ports&nbsp;{&lt;br&gt;<br>
+ &nbsp;id:&nbsp;128&lt;br&gt;<br>
+ &nbsp;name:&nbsp;&quot;1/0&quot;&lt;br&gt;<br>
+ &nbsp;slot:&nbsp;1&lt;br&gt;<br>
+ &nbsp;port:&nbsp;1&lt;br&gt;<br>
+ &nbsp;speed_bps:&nbsp;100000000000&lt;br&gt;<br>
+ &nbsp;config_params&nbsp;{&lt;br&gt;<br>
+ &nbsp; &nbsp;admin_state:&nbsp;ADMIN_STATE_ENABLED&lt;br&gt;<br>
+ &nbsp; &nbsp;autoneg:&nbsp;TRI_STATE_TRUE&lt;br&gt;<br>
+ &nbsp; &nbsp;fec_mode:&nbsp;FEC_MODE_ON&lt;br&gt;<br>
+ &nbsp;}&lt;br&gt;<br>
+ &nbsp;node:&nbsp;1&lt;br&gt;<br>
+}&lt;br&gt;<br>
+root@localhost:~/stratum#&lt;br&gt;<br>
+&lt;br&gt;<br>
+-----Original&nbsp;Message-----&lt;br&gt;<br>
+From:&nbsp;Maximilian&nbsp;Pudelko&nbsp;&lt;&lt;a&nbsp;href=&quot;mailto:max@opennetworking.org&quot;&nbsp;target=&quot;_blank&quot;&gt;max@opennetworking.org&lt;/a&gt;&gt;&nbsp;&lt;br&gt;<br>
+Sent:&nbsp;Wednesday,&nbsp;August&nbsp;19,&nbsp;2020&nbsp;6:49&nbsp;AM&lt;br&gt;<br>
+To:&nbsp;大上&nbsp;涼太&nbsp;&lt;&lt;a&nbsp;href=&quot;mailto:ry-oogami@kddi.com&quot;&nbsp;target=&quot;_blank&quot;&gt;ry-oogami@kddi.com&lt;/a&gt;&gt;&lt;br&gt;<br>
+Cc:&nbsp;&lt;a&nbsp;href=&quot;mailto:stratum-dev@lists.stratumproject.org&quot;&nbsp;target=&quot;_blank&quot;&gt;stratum-dev@lists.stratumproject.org&lt;/a&gt;&lt;br&gt;<br>
+Subject:&nbsp;Re:&nbsp;[stratum-dev]&nbsp;[straum-dev]&nbsp;Inquiring&nbsp;about&nbsp;Build&nbsp;P4-stratum&nbsp;on&nbsp;a&nbsp;Edgecore&nbsp;Wedge100BF-32X&lt;br&gt;<br>
+&lt;br&gt;<br>
+Hi&nbsp;Ryota,&lt;br&gt;<br>
+&lt;br&gt;<br>
+&gt;From&nbsp;the&nbsp;logs&nbsp;it&nbsp;looks&nbsp;like&nbsp;you&nbsp;managed&nbsp;to&nbsp;compile&nbsp;and&nbsp;start&nbsp;Stratum&nbsp;correctly.&lt;br&gt;<br>
+The&nbsp;reason&nbsp;why&nbsp;p4rt-shell&nbsp;can&#39;t&nbsp;connect,&nbsp;is&nbsp;because&nbsp;there&nbsp;is&nbsp;a&nbsp;segfault&nbsp;in&nbsp;Stratum&nbsp;during&nbsp;the&nbsp;pipeline&nbsp;push.&lt;br&gt;<br>
+This&nbsp;happens&nbsp;when&nbsp;the&nbsp;SDE&nbsp;encounters&nbsp;an&nbsp;unexpected&nbsp;program&nbsp;or&nbsp;packing&nbsp;format.&lt;br&gt;<br>
+&lt;br&gt;<br>
+Looking&nbsp;at&nbsp;your&nbsp;p4c&nbsp;command,&nbsp;I&nbsp;noticed&nbsp;that&nbsp;you&nbsp;do&nbsp;not&nbsp;set&nbsp;the&nbsp;`--p4runtime-force-std-externs`&nbsp;flag.&nbsp;In&nbsp;our&nbsp;tests&nbsp;this&nbsp;is&nbsp;required&nbsp;for&nbsp;tna&nbsp;programs.&nbsp;Could&nbsp;you&nbsp;try&nbsp;adding&nbsp;that?&lt;br&gt;<br>
+&lt;br&gt;<br>
+&lt;br&gt;<br>
+Best,&lt;br&gt;<br>
+&lt;br&gt;<br>
+Max&lt;br&gt;<br>
+&lt;br&gt;<br>
+&lt;br&gt;<br>
+&lt;br&gt;<br>
+On&nbsp;Tue,&nbsp;Aug&nbsp;18,&nbsp;2020&nbsp;at&nbsp;2:54&nbsp;AM&nbsp;ry-oogami---&nbsp;via&nbsp;stratum-dev&nbsp;&lt;&lt;a&nbsp;href=&quot;mailto:stratum-dev@lists.stratumproject.org&quot;&nbsp;target=&quot;_blank&quot;&gt;stratum-dev@lists.stratumproject.org&lt;/a&gt;&nbsp;&lt;mailto:&lt;a&nbsp;href=&quot;mailto:stratum-dev@lists.stratumproject.org&quot;&nbsp;target=&quot;_blank&quot;&gt;stratum-dev@lists.stratumproject.org&lt;/a&gt;&gt;&nbsp;&gt;&nbsp;wrote:&lt;br&gt;<br>
+&lt;br&gt;<br>
+&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp;Dear&nbsp;stratum-dev&nbsp;staff:&lt;br&gt;<br>
+&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp;I&nbsp;hope&nbsp;you&nbsp;do&nbsp;not&nbsp;mind&nbsp;my&nbsp;contacting&nbsp;you&nbsp;out&nbsp;of&nbsp;blue.&nbsp;My&nbsp;name&nbsp;is&nbsp;Ryota&nbsp;Ogami&nbsp;at&nbsp;KDDI&nbsp;Corporation.&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp;I&nbsp;got&nbsp;a&nbsp;trouble&nbsp;on&nbsp;starting&nbsp;stratum&nbsp;and&nbsp;p4-runtime&nbsp;(unable&nbsp;to&nbsp;access&nbsp;stratum&nbsp;from&nbsp;p4-runtime). &nbsp;&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;I&nbsp;reffered&nbsp;the&nbsp;git&nbsp;pages(&lt;a&nbsp;href=&quot;https://github.com/stratum/stratum/blob/master/stratum/hal/bin/barefoot/README.md&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;https://github.com/stratum/stratum/blob/master/stratum/hal/bin/barefoot/README.md&lt;/a&gt;)&nbsp;,&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;I&nbsp;applied&nbsp;the&nbsp;following&nbsp;configuration&nbsp;&amp;&nbsp;steps&nbsp;(1&nbsp;to&nbsp;6)&nbsp;to&nbsp;build&nbsp;and&nbsp;install&nbsp;P4-runtime,&nbsp;SDE&nbsp;9.2.0&nbsp;and&nbsp;P4-stratum&nbsp;into&nbsp;an&nbsp;ONL&nbsp;host&nbsp;on&nbsp;a&nbsp;P4&nbsp;swtich&nbsp;(Edgecore&nbsp;Wedge100BF-32X).&lt;br&gt;<br>
+&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;1&nbsp;Open&nbsp;Network&nbsp;Linux&nbsp;version&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;```&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;root@p4-1$&nbsp;uname&nbsp;-r &nbsp; &lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;4.14.151-OpenNetworkLinux&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;```&lt;br&gt;<br>
+&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;2&nbsp;Install&nbsp;dependent&nbsp;packages&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;```&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;root@p4-1$&nbsp;source&nbsp;set_sde.bash&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;root@p4-1$&nbsp;apt&nbsp;install&nbsp;autoconf&nbsp;libtool&nbsp;libc6-dev&nbsp;g++&nbsp;git&nbsp;libboost-dev&nbsp;python-dev&nbsp;flex&nbsp;bison&nbsp;libevent-dev&nbsp;libboost-test-dev&nbsp;bridge-utils&nbsp;python-pip&nbsp;python-ply&nbsp;ethtool&nbsp;libssl-dev&nbsp;libpcap-dev&nbsp;libusb-1.0-0-dev&nbsp;libcurl4-gnutls-dev&nbsp;automake&nbsp;python-crcmod&nbsp;python-jsonschema&nbsp;xz-utils&nbsp;libbz2-dev&nbsp;python3&nbsp;python3-pip&nbsp;python3-dev&nbsp;python3-crcmod&nbsp;python3-jsonschema&nbsp;python3-yaml&nbsp;pkg-config&nbsp;curl&nbsp;unzip&nbsp;python-ipaddr&nbsp;python-pyparsing&nbsp;doxygen&nbsp;python-ply&nbsp;python-simplejson&nbsp;python-packaging&nbsp;python-vcversioner&nbsp;python-functools32&nbsp;python-six&nbsp;python-wheel&nbsp;python-futures&nbsp;python-enum34&nbsp;python-coverage&nbsp;patch&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;root@p4-1$&nbsp;cd&nbsp;dependencies&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;root@p4-1$&nbsp;./install.sh&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;root@p4-1$&nbsp;dpkg&nbsp;-i&nbsp;onl-kernel-4.14-lts-x86-64-all_1.0.0_amd64.deb&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;root@p4-1$&nbsp;ln&nbsp;-s&nbsp;/usr/share/onl/packages/amd64/onl-kernel-4.14-lts-x86-64-all/mbuilds/&nbsp;/lib/modules/4.14.151-OpenNetworkLinux/build&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;```&lt;br&gt;<br>
+&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;3&nbsp;Build&nbsp;SDE&nbsp;9.2.0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;```&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;root@p4-1$&nbsp;tar&nbsp;-xvf&nbsp;bf-sde-9.2.0.tar&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;root@p4-1$&nbsp;tar&nbsp;-xvf&nbsp;bf-reference-bsp-9.2.0.tar&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;root@p4-1$&nbsp;tar&nbsp;-zxvf&nbsp;dependencies.tar.gz&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;root@p4-1$&nbsp;cd&nbsp;bf-sde-9.2.0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;root@p4-1$&nbsp;cd&nbsp;p4studio_build/profiles/&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;root@p4-1$&nbsp;./p4studio_build.py&nbsp;-up&nbsp;profiles/stratum_profile.yaml&nbsp;--bsp-path&nbsp;/root/bf-reference-bsp-9.2.0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;```&lt;br&gt;<br>
+&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;4&nbsp;Build&nbsp;P4&nbsp;stratum&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;```&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;root@p4-1$&nbsp;git&nbsp;clone&nbsp;&lt;a&nbsp;href=&quot;https://github.com/stratum/stratum.git&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;https://github.com/stratum/stratum.git&lt;/a&gt;&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;root@p4-1$&nbsp;bazel&nbsp;build&nbsp;//stratum/hal/bin/barefoot:stratum_bf_deb&nbsp;--define&nbsp;phal_with_onlp=false&nbsp;--define&nbsp;sde_ver=9.2.0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;root@p4-1$&nbsp;apt-get&nbsp;update&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;root@p4-1$&nbsp;apt-get&nbsp;install&nbsp;-y&nbsp;--reinstall&nbsp;./stratum_bf_deb.deb&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;```&lt;br&gt;<br>
+&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;5&nbsp;Install&nbsp;P4-Runtime&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;```&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;root@p4-1$&nbsp;git&nbsp;clone&nbsp;--recursive&nbsp;&lt;a&nbsp;href=&quot;https://github.com/p4lang/p4runtime-shell&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;https://github.com/p4lang/p4runtime-shell&lt;/a&gt;&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;root@p4-1$&nbsp;cd&nbsp;p4runtime-shell&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;root@p4-1$&nbsp;docker&nbsp;build&nbsp;-t&nbsp;p4lang/p4runtime-sh&nbsp;.&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;```&lt;br&gt;<br>
+&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;6&nbsp;Compile&nbsp;P4&nbsp;program&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;```&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;root@p4-1$&nbsp;/root/bf-sde-9.2.0/install/bin/p4c&nbsp;-a&nbsp;tna&nbsp;-o&nbsp;/root/&nbsp;--p4runtime-format&nbsp;text&nbsp;--p4runtime-files&nbsp;/tmp/basic.pb.txt&nbsp;/root/bf-sde-9.2.0/pkgsrc/p4-examples/p4_16_programs/tna_exact_match/tna_exact_match.p4&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;root@p4-1$&nbsp;./config_builders/tofino.py&nbsp;--ctx-json&nbsp;/root/pipe/context.json&nbsp;--tofino-bin&nbsp;/root/bf-sde-9.2.0/install/share/tofinopd/tna_exact_match/pipe/tofino.bin&nbsp;-p&nbsp;tna_exact_match&nbsp;-o&nbsp;out.bin&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;```&lt;br&gt;<br>
+&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;After&nbsp;building,&nbsp;I&nbsp;started&nbsp;stratum&nbsp;and&nbsp;P4-Runtime&nbsp;according&nbsp;to&nbsp;the&nbsp;steps&nbsp;7&nbsp;&amp;&nbsp;8.&nbsp;However,&nbsp;P4-runtime&nbsp;cannot&nbsp;access&nbsp;to&nbsp;stratum&#39;s&nbsp;IP&nbsp;adress&nbsp;and&nbsp;port&nbsp;number&nbsp;(&lt;a&nbsp;href=&quot;http://10.0.2.3:28000&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;10.0.2.3:28000&lt;/a&gt;&nbsp;&lt;&lt;a&nbsp;href=&quot;http://10.0.2.3:28000&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://10.0.2.3:28000&lt;/a&gt;&gt;&nbsp;),&nbsp;and&nbsp;the&nbsp;following&nbsp;error&nbsp;messages&nbsp;were&nbsp;created&nbsp;(see&nbsp;9&nbsp;and&nbsp;10).&lt;br&gt;<br>
+&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;7&nbsp;starting&nbsp;stratum&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;```&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;root@p4-1$&nbsp;start-stratum.sh&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;```&lt;br&gt;<br>
+&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;8&nbsp;starting&nbsp;P4-Runtime&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;```&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;root@p4-1$&nbsp;./p4runtime-sh-docker&nbsp;--grpc-addr&nbsp;&lt;a&nbsp;href=&quot;http://10.0.2.3:28000&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;10.0.2.3:28000&lt;/a&gt;&nbsp;&lt;&lt;a&nbsp;href=&quot;http://10.0.2.3:28000&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://10.0.2.3:28000&lt;/a&gt;&gt; &nbsp;--device-id&nbsp;1&nbsp;--election-id&nbsp;0,1&nbsp;--config&nbsp;/tmp/basic.pb.txt,out.bin&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;```&lt;br&gt;<br>
+&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;9&nbsp;error&nbsp;messages&nbsp;start_stratum.sh&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;```&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;root@localhost:~#&nbsp;start-stratum.sh&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;bf_kdrv_mod&nbsp;found!&nbsp;Unloading&nbsp;first...&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;loading&nbsp;bf_kdrv_mod...&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;bf_sysfs_fname&nbsp;/sys/class/bf/bf0/device/dev_add&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Install&nbsp;dir:&nbsp;/usr&nbsp;(0x560423e04020)&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;bf_switchd:&nbsp;system&nbsp;services&nbsp;initialized&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;bf_switchd:&nbsp;loading&nbsp;conf_file&nbsp;/usr/share/stratum/tofino_skip_p4_no_bsp.conf...&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;bf_switchd:&nbsp;processing&nbsp;device&nbsp;configuration...&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Configuration&nbsp;for&nbsp;dev_id&nbsp;0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Family &nbsp; &nbsp; &nbsp; &nbsp;:&nbsp;Tofino&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; pci_sysfs_str&nbsp;:&nbsp;/sys/devices/pci0000:00/0000:00:03.0/0000:05:00.0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; pci_domain &nbsp; &nbsp;:&nbsp;0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; pci_bus &nbsp; &nbsp; &nbsp; :&nbsp;5&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; pci_fn &nbsp; &nbsp; &nbsp; &nbsp;:&nbsp;0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; pci_dev &nbsp; &nbsp; &nbsp; :&nbsp;0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; pci_int_mode &nbsp;:&nbsp;1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; sbus_master_fw:&nbsp;/usr/&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; pcie_fw &nbsp; &nbsp; &nbsp; :&nbsp;/usr/&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; serdes_fw &nbsp; &nbsp; :&nbsp;/usr/&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; sds_fw_path &nbsp; :&nbsp;/usr/&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; microp_fw_path:&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;bf_switchd:&nbsp;processing&nbsp;P4&nbsp;configuration...&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;P4&nbsp;profile&nbsp;for&nbsp;dev_id&nbsp;0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; p4_name:&nbsp;dummy&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; libpd:&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; libpdthrift:&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; context:&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; config:&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; diag:&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; accton&nbsp;diag:&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; board-port-map:&nbsp;/usr/share/port_map.json&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; non_default_port_ppgs:&nbsp;0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; SAI&nbsp;default&nbsp;initialize:&nbsp;1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;board-port-map&nbsp;path:&nbsp;/usr/share/port_map.json&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;bf_switchd:&nbsp;loading&nbsp;board-map&nbsp;conf&nbsp;file&nbsp;/usr/share/port_map.json...&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;enable-debug-log:yes&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Parsing&nbsp;Board-lane-entries&nbsp;33&nbsp;found&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;num-of-connectors:33&lt;br&gt;<br>
+&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Connector-&gt;1&nbsp;device_id:0&nbsp;mac_block:23&nbsp;media:copper&nbsp;enable-auto-neg:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane0&nbsp;mac_ch:0&nbsp;tx_lane:2,&nbsp;rx_lane:2,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane1&nbsp;mac_ch:1&nbsp;tx_lane:0,&nbsp;rx_lane:0,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane2&nbsp;mac_ch:2&nbsp;tx_lane:3,&nbsp;rx_lane:3,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane3&nbsp;mac_ch:3&nbsp;tx_lane:1,&nbsp;rx_lane:1,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Connector-&gt;2&nbsp;device_id:0&nbsp;mac_block:22&nbsp;media:copper&nbsp;enable-auto-neg:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane0&nbsp;mac_ch:0&nbsp;tx_lane:2,&nbsp;rx_lane:2,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane1&nbsp;mac_ch:1&nbsp;tx_lane:3,&nbsp;rx_lane:3,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane2&nbsp;mac_ch:2&nbsp;tx_lane:0,&nbsp;rx_lane:0,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane3&nbsp;mac_ch:3&nbsp;tx_lane:1,&nbsp;rx_lane:1,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Connector-&gt;3&nbsp;device_id:0&nbsp;mac_block:21&nbsp;media:copper&nbsp;enable-auto-neg:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane0&nbsp;mac_ch:0&nbsp;tx_lane:3,&nbsp;rx_lane:3,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane1&nbsp;mac_ch:1&nbsp;tx_lane:2,&nbsp;rx_lane:2,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane2&nbsp;mac_ch:2&nbsp;tx_lane:1,&nbsp;rx_lane:1,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane3&nbsp;mac_ch:3&nbsp;tx_lane:0,&nbsp;rx_lane:0,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Connector-&gt;4&nbsp;device_id:0&nbsp;mac_block:20&nbsp;media:copper&nbsp;enable-auto-neg:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane0&nbsp;mac_ch:0&nbsp;tx_lane:2,&nbsp;rx_lane:2,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane1&nbsp;mac_ch:1&nbsp;tx_lane:3,&nbsp;rx_lane:3,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane2&nbsp;mac_ch:2&nbsp;tx_lane:0,&nbsp;rx_lane:0,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane3&nbsp;mac_ch:3&nbsp;tx_lane:1,&nbsp;rx_lane:1,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Connector-&gt;5&nbsp;device_id:0&nbsp;mac_block:19&nbsp;media:copper&nbsp;enable-auto-neg:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane0&nbsp;mac_ch:0&nbsp;tx_lane:2,&nbsp;rx_lane:2,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane1&nbsp;mac_ch:1&nbsp;tx_lane:3,&nbsp;rx_lane:3,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane2&nbsp;mac_ch:2&nbsp;tx_lane:0,&nbsp;rx_lane:0,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane3&nbsp;mac_ch:3&nbsp;tx_lane:1,&nbsp;rx_lane:1,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Connector-&gt;6&nbsp;device_id:0&nbsp;mac_block:18&nbsp;media:copper&nbsp;enable-auto-neg:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane0&nbsp;mac_ch:0&nbsp;tx_lane:2,&nbsp;rx_lane:2,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane1&nbsp;mac_ch:1&nbsp;tx_lane:3,&nbsp;rx_lane:3,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane2&nbsp;mac_ch:2&nbsp;tx_lane:0,&nbsp;rx_lane:0,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane3&nbsp;mac_ch:3&nbsp;tx_lane:1,&nbsp;rx_lane:1,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Connector-&gt;7&nbsp;device_id:0&nbsp;mac_block:17&nbsp;media:copper&nbsp;enable-auto-neg:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane0&nbsp;mac_ch:0&nbsp;tx_lane:2,&nbsp;rx_lane:2,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane1&nbsp;mac_ch:1&nbsp;tx_lane:3,&nbsp;rx_lane:3,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane2&nbsp;mac_ch:2&nbsp;tx_lane:0,&nbsp;rx_lane:0,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane3&nbsp;mac_ch:3&nbsp;tx_lane:1,&nbsp;rx_lane:1,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Connector-&gt;8&nbsp;device_id:0&nbsp;mac_block:16&nbsp;media:copper&nbsp;enable-auto-neg:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane0&nbsp;mac_ch:0&nbsp;tx_lane:2,&nbsp;rx_lane:2,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane1&nbsp;mac_ch:1&nbsp;tx_lane:3,&nbsp;rx_lane:3,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane2&nbsp;mac_ch:2&nbsp;tx_lane:0,&nbsp;rx_lane:0,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane3&nbsp;mac_ch:3&nbsp;tx_lane:1,&nbsp;rx_lane:1,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Connector-&gt;9&nbsp;device_id:0&nbsp;mac_block:15&nbsp;media:copper&nbsp;enable-auto-neg:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane0&nbsp;mac_ch:0&nbsp;tx_lane:2,&nbsp;rx_lane:2,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane1&nbsp;mac_ch:1&nbsp;tx_lane:3,&nbsp;rx_lane:3,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane2&nbsp;mac_ch:2&nbsp;tx_lane:0,&nbsp;rx_lane:0,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane3&nbsp;mac_ch:3&nbsp;tx_lane:1,&nbsp;rx_lane:1,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Connector-&gt;10&nbsp;device_id:0&nbsp;mac_block:14&nbsp;media:copper&nbsp;enable-auto-neg:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane0&nbsp;mac_ch:0&nbsp;tx_lane:2,&nbsp;rx_lane:2,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane1&nbsp;mac_ch:1&nbsp;tx_lane:3,&nbsp;rx_lane:3,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane2&nbsp;mac_ch:2&nbsp;tx_lane:0,&nbsp;rx_lane:0,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane3&nbsp;mac_ch:3&nbsp;tx_lane:1,&nbsp;rx_lane:1,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Connector-&gt;11&nbsp;device_id:0&nbsp;mac_block:13&nbsp;media:copper&nbsp;enable-auto-neg:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane0&nbsp;mac_ch:0&nbsp;tx_lane:2,&nbsp;rx_lane:2,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane1&nbsp;mac_ch:1&nbsp;tx_lane:3,&nbsp;rx_lane:3,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane2&nbsp;mac_ch:2&nbsp;tx_lane:0,&nbsp;rx_lane:0,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane3&nbsp;mac_ch:3&nbsp;tx_lane:1,&nbsp;rx_lane:1,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Connector-&gt;12&nbsp;device_id:0&nbsp;mac_block:12&nbsp;media:copper&nbsp;enable-auto-neg:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane0&nbsp;mac_ch:0&nbsp;tx_lane:2,&nbsp;rx_lane:2,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane1&nbsp;mac_ch:1&nbsp;tx_lane:3,&nbsp;rx_lane:3,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane2&nbsp;mac_ch:2&nbsp;tx_lane:0,&nbsp;rx_lane:0,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane3&nbsp;mac_ch:3&nbsp;tx_lane:1,&nbsp;rx_lane:1,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Connector-&gt;13&nbsp;device_id:0&nbsp;mac_block:11&nbsp;media:copper&nbsp;enable-auto-neg:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane0&nbsp;mac_ch:0&nbsp;tx_lane:2,&nbsp;rx_lane:2,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane1&nbsp;mac_ch:1&nbsp;tx_lane:3,&nbsp;rx_lane:3,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane2&nbsp;mac_ch:2&nbsp;tx_lane:0,&nbsp;rx_lane:0,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane3&nbsp;mac_ch:3&nbsp;tx_lane:1,&nbsp;rx_lane:1,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Connector-&gt;14&nbsp;device_id:0&nbsp;mac_block:10&nbsp;media:copper&nbsp;enable-auto-neg:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane0&nbsp;mac_ch:0&nbsp;tx_lane:0,&nbsp;rx_lane:0,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane1&nbsp;mac_ch:1&nbsp;tx_lane:2,&nbsp;rx_lane:2,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane2&nbsp;mac_ch:2&nbsp;tx_lane:1,&nbsp;rx_lane:1,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane3&nbsp;mac_ch:3&nbsp;tx_lane:3,&nbsp;rx_lane:3,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Connector-&gt;15&nbsp;device_id:0&nbsp;mac_block:9&nbsp;media:copper&nbsp;enable-auto-neg:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane0&nbsp;mac_ch:0&nbsp;tx_lane:2,&nbsp;rx_lane:2,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane1&nbsp;mac_ch:1&nbsp;tx_lane:3,&nbsp;rx_lane:3,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane2&nbsp;mac_ch:2&nbsp;tx_lane:0,&nbsp;rx_lane:0,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane3&nbsp;mac_ch:3&nbsp;tx_lane:1,&nbsp;rx_lane:1,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Connector-&gt;16&nbsp;device_id:0&nbsp;mac_block:8&nbsp;media:copper&nbsp;enable-auto-neg:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane0&nbsp;mac_ch:0&nbsp;tx_lane:2,&nbsp;rx_lane:2,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane1&nbsp;mac_ch:1&nbsp;tx_lane:3,&nbsp;rx_lane:3,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane2&nbsp;mac_ch:2&nbsp;tx_lane:0,&nbsp;rx_lane:0,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane3&nbsp;mac_ch:3&nbsp;tx_lane:1,&nbsp;rx_lane:1,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Connector-&gt;17&nbsp;device_id:0&nbsp;mac_block:7&nbsp;media:copper&nbsp;enable-auto-neg:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane0&nbsp;mac_ch:0&nbsp;tx_lane:3,&nbsp;rx_lane:3,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane1&nbsp;mac_ch:1&nbsp;tx_lane:2,&nbsp;rx_lane:2,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane2&nbsp;mac_ch:2&nbsp;tx_lane:1,&nbsp;rx_lane:1,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane3&nbsp;mac_ch:3&nbsp;tx_lane:0,&nbsp;rx_lane:0,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Connector-&gt;18&nbsp;device_id:0&nbsp;mac_block:6&nbsp;media:copper&nbsp;enable-auto-neg:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane0&nbsp;mac_ch:0&nbsp;tx_lane:3,&nbsp;rx_lane:3,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane1&nbsp;mac_ch:1&nbsp;tx_lane:2,&nbsp;rx_lane:2,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane2&nbsp;mac_ch:2&nbsp;tx_lane:0,&nbsp;rx_lane:0,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane3&nbsp;mac_ch:3&nbsp;tx_lane:1,&nbsp;rx_lane:1,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Connector-&gt;19&nbsp;device_id:0&nbsp;mac_block:5&nbsp;media:copper&nbsp;enable-auto-neg:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane0&nbsp;mac_ch:0&nbsp;tx_lane:3,&nbsp;rx_lane:3,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane1&nbsp;mac_ch:1&nbsp;tx_lane:1,&nbsp;rx_lane:1,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane2&nbsp;mac_ch:2&nbsp;tx_lane:2,&nbsp;rx_lane:2,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane3&nbsp;mac_ch:3&nbsp;tx_lane:0,&nbsp;rx_lane:0,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Connector-&gt;20&nbsp;device_id:0&nbsp;mac_block:4&nbsp;media:copper&nbsp;enable-auto-neg:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane0&nbsp;mac_ch:0&nbsp;tx_lane:2,&nbsp;rx_lane:2,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane1&nbsp;mac_ch:1&nbsp;tx_lane:3,&nbsp;rx_lane:3,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane2&nbsp;mac_ch:2&nbsp;tx_lane:0,&nbsp;rx_lane:0,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane3&nbsp;mac_ch:3&nbsp;tx_lane:1,&nbsp;rx_lane:1,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Connector-&gt;21&nbsp;device_id:0&nbsp;mac_block:3&nbsp;media:copper&nbsp;enable-auto-neg:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane0&nbsp;mac_ch:0&nbsp;tx_lane:2,&nbsp;rx_lane:2,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane1&nbsp;mac_ch:1&nbsp;tx_lane:3,&nbsp;rx_lane:3,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane2&nbsp;mac_ch:2&nbsp;tx_lane:0,&nbsp;rx_lane:0,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane3&nbsp;mac_ch:3&nbsp;tx_lane:1,&nbsp;rx_lane:1,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Connector-&gt;22&nbsp;device_id:0&nbsp;mac_block:2&nbsp;media:copper&nbsp;enable-auto-neg:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane0&nbsp;mac_ch:0&nbsp;tx_lane:2,&nbsp;rx_lane:2,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane1&nbsp;mac_ch:1&nbsp;tx_lane:3,&nbsp;rx_lane:3,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane2&nbsp;mac_ch:2&nbsp;tx_lane:0,&nbsp;rx_lane:0,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane3&nbsp;mac_ch:3&nbsp;tx_lane:1,&nbsp;rx_lane:1,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Connector-&gt;23&nbsp;device_id:0&nbsp;mac_block:1&nbsp;media:copper&nbsp;enable-auto-neg:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane0&nbsp;mac_ch:0&nbsp;tx_lane:2,&nbsp;rx_lane:2,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane1&nbsp;mac_ch:1&nbsp;tx_lane:3,&nbsp;rx_lane:3,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane2&nbsp;mac_ch:2&nbsp;tx_lane:0,&nbsp;rx_lane:0,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane3&nbsp;mac_ch:3&nbsp;tx_lane:1,&nbsp;rx_lane:1,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Connector-&gt;24&nbsp;device_id:0&nbsp;mac_block:0&nbsp;media:copper&nbsp;enable-auto-neg:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane0&nbsp;mac_ch:0&nbsp;tx_lane:2,&nbsp;rx_lane:2,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane1&nbsp;mac_ch:1&nbsp;tx_lane:3,&nbsp;rx_lane:3,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane2&nbsp;mac_ch:2&nbsp;tx_lane:0,&nbsp;rx_lane:0,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane3&nbsp;mac_ch:3&nbsp;tx_lane:1,&nbsp;rx_lane:1,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Connector-&gt;25&nbsp;device_id:0&nbsp;mac_block:31&nbsp;media:copper&nbsp;enable-auto-neg:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane0&nbsp;mac_ch:0&nbsp;tx_lane:2,&nbsp;rx_lane:2,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane1&nbsp;mac_ch:1&nbsp;tx_lane:3,&nbsp;rx_lane:3,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane2&nbsp;mac_ch:2&nbsp;tx_lane:0,&nbsp;rx_lane:0,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane3&nbsp;mac_ch:3&nbsp;tx_lane:1,&nbsp;rx_lane:1,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Connector-&gt;26&nbsp;device_id:0&nbsp;mac_block:30&nbsp;media:copper&nbsp;enable-auto-neg:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane0&nbsp;mac_ch:0&nbsp;tx_lane:2,&nbsp;rx_lane:2,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane1&nbsp;mac_ch:1&nbsp;tx_lane:3,&nbsp;rx_lane:3,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane2&nbsp;mac_ch:2&nbsp;tx_lane:0,&nbsp;rx_lane:0,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane3&nbsp;mac_ch:3&nbsp;tx_lane:1,&nbsp;rx_lane:1,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Connector-&gt;27&nbsp;device_id:0&nbsp;mac_block:29&nbsp;media:copper&nbsp;enable-auto-neg:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane0&nbsp;mac_ch:0&nbsp;tx_lane:2,&nbsp;rx_lane:2,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane1&nbsp;mac_ch:1&nbsp;tx_lane:3,&nbsp;rx_lane:3,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane2&nbsp;mac_ch:2&nbsp;tx_lane:0,&nbsp;rx_lane:0,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane3&nbsp;mac_ch:3&nbsp;tx_lane:1,&nbsp;rx_lane:1,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Connector-&gt;28&nbsp;device_id:0&nbsp;mac_block:28&nbsp;media:copper&nbsp;enable-auto-neg:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane0&nbsp;mac_ch:0&nbsp;tx_lane:2,&nbsp;rx_lane:2,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane1&nbsp;mac_ch:1&nbsp;tx_lane:3,&nbsp;rx_lane:3,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane2&nbsp;mac_ch:2&nbsp;tx_lane:0,&nbsp;rx_lane:0,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane3&nbsp;mac_ch:3&nbsp;tx_lane:1,&nbsp;rx_lane:1,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Connector-&gt;29&nbsp;device_id:0&nbsp;mac_block:26&nbsp;media:copper&nbsp;enable-auto-neg:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane0&nbsp;mac_ch:0&nbsp;tx_lane:3,&nbsp;rx_lane:3,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane1&nbsp;mac_ch:1&nbsp;tx_lane:2,&nbsp;rx_lane:2,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane2&nbsp;mac_ch:2&nbsp;tx_lane:1,&nbsp;rx_lane:1,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane3&nbsp;mac_ch:3&nbsp;tx_lane:0,&nbsp;rx_lane:0,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Connector-&gt;30&nbsp;device_id:0&nbsp;mac_block:27&nbsp;media:copper&nbsp;enable-auto-neg:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane0&nbsp;mac_ch:0&nbsp;tx_lane:3,&nbsp;rx_lane:3,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane1&nbsp;mac_ch:1&nbsp;tx_lane:2,&nbsp;rx_lane:2,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane2&nbsp;mac_ch:2&nbsp;tx_lane:1,&nbsp;rx_lane:1,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane3&nbsp;mac_ch:3&nbsp;tx_lane:0,&nbsp;rx_lane:0,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Connector-&gt;31&nbsp;device_id:0&nbsp;mac_block:24&nbsp;media:copper&nbsp;enable-auto-neg:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane0&nbsp;mac_ch:0&nbsp;tx_lane:0,&nbsp;rx_lane:0,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane1&nbsp;mac_ch:1&nbsp;tx_lane:3,&nbsp;rx_lane:3,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane2&nbsp;mac_ch:2&nbsp;tx_lane:2,&nbsp;rx_lane:2,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane3&nbsp;mac_ch:3&nbsp;tx_lane:1,&nbsp;rx_lane:1,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Connector-&gt;32&nbsp;device_id:0&nbsp;mac_block:25&nbsp;media:copper&nbsp;enable-auto-neg:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane0&nbsp;mac_ch:0&nbsp;tx_lane:2,&nbsp;rx_lane:2,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane1&nbsp;mac_ch:1&nbsp;tx_lane:3,&nbsp;rx_lane:3,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane2&nbsp;mac_ch:2&nbsp;tx_lane:0,&nbsp;rx_lane:0,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane3&nbsp;mac_ch:3&nbsp;tx_lane:1,&nbsp;rx_lane:1,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:6&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Connector-&gt;33&nbsp;device_id:0&nbsp;mac_block:32&nbsp;media:copper&nbsp;enable-auto-neg:1&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane0&nbsp;mac_ch:0&nbsp;tx_lane:1,&nbsp;rx_lane:1,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:0&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane1&nbsp;mac_ch:1&nbsp;tx_lane:2,&nbsp;rx_lane:2,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:0&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane2&nbsp;mac_ch:2&nbsp;tx_lane:0,&nbsp;rx_lane:0,&nbsp;tx_pn_swap:1&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:0&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lane3&nbsp;mac_ch:3&nbsp;tx_lane:3,&nbsp;rx_lane:3,&nbsp;tx_pn_swap:0&nbsp;rx_pn_swap:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tx_eq_pre:0&nbsp;tx_eq_post:0&nbsp;tx_eq_attn:0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Operational&nbsp;mode&nbsp;set&nbsp;to&nbsp;ASIC&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;ASIC&nbsp;detected&nbsp;at&nbsp;PCI&nbsp;/sys/class/bf/bf0/device&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;ASIC&nbsp;pci&nbsp;device&nbsp;id&nbsp;is&nbsp;16&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;bf_switchd:&nbsp;drivers&nbsp;initialized&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Skipping&nbsp;P4&nbsp;program&nbsp;load&nbsp;for&nbsp;dev_id&nbsp;0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;detecting..&nbsp;IOMMU&nbsp;not&nbsp;enabled&nbsp;on&nbsp;the&nbsp;platform&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Setting&nbsp;core_pll_ctrl0=cd44cbfe&lt;br&gt;<br>
+&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;bf_switchd:&nbsp;dev_id&nbsp;0&nbsp;initialized&lt;br&gt;<br>
+&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;bf_switchd:&nbsp;initialized&nbsp;1&nbsp;devices&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;bf_switchd:&nbsp;Credo&nbsp;python&nbsp;server&nbsp;thread&nbsp;initialized..Skip&nbsp;p4&nbsp;lib&nbsp;init&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Skip&nbsp;mav&nbsp;diag&nbsp;lib&nbsp;init&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;bf_switchd:&nbsp;spawning&nbsp;cli&nbsp;server&nbsp;thread&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;credo_python_intf:&nbsp;listen&nbsp;socket&nbsp;created&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;credo_python_intf:&nbsp;bind&nbsp;done&nbsp;on&nbsp;port&nbsp;9001,&nbsp;listening...&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;credo_python_intf:&nbsp;listening&nbsp;for&nbsp;incoming&nbsp;connections...&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;bf_switchd:&nbsp;running&nbsp;in&nbsp;background;&nbsp;driver&nbsp;shell&nbsp;is&nbsp;disabled&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;bf_switchd:&nbsp;server&nbsp;started&nbsp;-&nbsp;listening&nbsp;on&nbsp;port&nbsp;9999&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;I0729&nbsp;00:08:02.512548 &nbsp;3375&nbsp;main.cc:124&nbsp;&lt;&lt;a&nbsp;href=&quot;http://main.cc:124&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://main.cc:124&lt;/a&gt;&gt;&nbsp;]&nbsp;switchd&nbsp;started&nbsp;successfully&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;W0729&nbsp;00:08:02.513070 &nbsp;3375&nbsp;credentials_manager.cc:45&nbsp;&lt;&lt;a&nbsp;href=&quot;http://credentials_manager.cc:45&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://credentials_manager.cc:45&lt;/a&gt;&gt;&nbsp;]&nbsp;Using&nbsp;insecure&nbsp;server&nbsp;credentials&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;I0729&nbsp;00:08:02.513619 &nbsp;3375&nbsp;timer_daemon.cc:90&nbsp;&lt;&lt;a&nbsp;href=&quot;http://timer_daemon.cc:90&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://timer_daemon.cc:90&lt;/a&gt;&gt;&nbsp;]&nbsp;The&nbsp;timer&nbsp;daemon&nbsp;has&nbsp;been&nbsp;started.&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;I0729&nbsp;00:08:02.513737 &nbsp;3375&nbsp;hal.cc:128&nbsp;&lt;&lt;a&nbsp;href=&quot;http://hal.cc:128&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://hal.cc:128&lt;/a&gt;&gt;&nbsp;]&nbsp;Setting&nbsp;up&nbsp;HAL&nbsp;in&nbsp;COLDBOOT&nbsp;mode...&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;I0729&nbsp;00:08:02.513847 &nbsp;3375&nbsp;config_monitoring_service.cc:90&nbsp;&lt;&lt;a&nbsp;href=&quot;http://config_monitoring_service.cc:90&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://config_monitoring_service.cc:90&lt;/a&gt;&gt;&nbsp;]&nbsp;Pushing&nbsp;the&nbsp;saved&nbsp;chassis&nbsp;config&nbsp;read&nbsp;from&nbsp;/etc/stratum/x86-64-accton-wedge100bf-32x-r0/chassis_config.pb.txt...&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;E0729&nbsp;00:08:02.526157 &nbsp;3375&nbsp;phal.cc:96&nbsp;&lt;&lt;a&nbsp;href=&quot;http://phal.cc:96&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://phal.cc:96&lt;/a&gt;&gt;&nbsp;]&nbsp;No&nbsp;phal_config_file&nbsp;specified&nbsp;and&nbsp;no&nbsp;switch&nbsp;configurator&nbsp;found!&nbsp;This&nbsp;is&nbsp;probably&nbsp;not&nbsp;what&nbsp;you&nbsp;want.&nbsp;Did&nbsp;you&nbsp;forget&nbsp;to&nbsp;specify&nbsp;any&nbsp;&#39;--define&nbsp;phal_with_*=true&#39;&nbsp;Bazel&nbsp;flags?&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;I0729&nbsp;00:08:02.527349 &nbsp;3375&nbsp;attribute_database.cc:213&nbsp;&lt;&lt;a&nbsp;href=&quot;http://attribute_database.cc:213&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://attribute_database.cc:213&lt;/a&gt;&gt;&nbsp;]&nbsp;PhalDB&nbsp;service&nbsp;is&nbsp;listening&nbsp;to&nbsp;localhost:28003...&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;I0729&nbsp;00:08:02.527417 &nbsp;3375&nbsp;bf_chassis_manager.cc:788&nbsp;&lt;&lt;a&nbsp;href=&quot;http://bf_chassis_manager.cc:788&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://bf_chassis_manager.cc:788&lt;/a&gt;&gt;&nbsp;]&nbsp;Port&nbsp;status&nbsp;notification&nbsp;callback&nbsp;registered&nbsp;successfully&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;I0729&nbsp;00:08:02.528173 &nbsp;3375&nbsp;bf_chassis_manager.cc:71&nbsp;&lt;&lt;a&nbsp;href=&quot;http://bf_chassis_manager.cc:71&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://bf_chassis_manager.cc:71&lt;/a&gt;&gt;&nbsp;]&nbsp;Adding&nbsp;port&nbsp;128&nbsp;in&nbsp;node&nbsp;1.&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;I0729&nbsp;00:08:02.534268 &nbsp;3375&nbsp;bf_chassis_manager.cc:98&nbsp;&lt;&lt;a&nbsp;href=&quot;http://bf_chassis_manager.cc:98&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://bf_chassis_manager.cc:98&lt;/a&gt;&gt;&nbsp;]&nbsp;Enabling&nbsp;port&nbsp;128&nbsp;in&nbsp;node&nbsp;1.&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;I0729&nbsp;00:08:02.534374 &nbsp;3375&nbsp;bf_chassis_manager.cc:71&nbsp;&lt;&lt;a&nbsp;href=&quot;http://bf_chassis_manager.cc:71&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://bf_chassis_manager.cc:71&lt;/a&gt;&gt;&nbsp;]&nbsp;Adding&nbsp;port&nbsp;136&nbsp;in&nbsp;node&nbsp;1.&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;I0729&nbsp;00:08:02.554438 &nbsp;3375&nbsp;bf_chassis_manager.cc:98&nbsp;&lt;&lt;a&nbsp;href=&quot;http://bf_chassis_manager.cc:98&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://bf_chassis_manager.cc:98&lt;/a&gt;&gt;&nbsp;]&nbsp;Enabling&nbsp;port&nbsp;136&nbsp;in&nbsp;node&nbsp;1.&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;I0729&nbsp;00:08:02.554538 &nbsp;3375&nbsp;bf_chassis_manager.cc:71&nbsp;&lt;&lt;a&nbsp;href=&quot;http://bf_chassis_manager.cc:71&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://bf_chassis_manager.cc:71&lt;/a&gt;&gt;&nbsp;]&nbsp;Adding&nbsp;port&nbsp;144&nbsp;in&nbsp;node&nbsp;1.&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;I0729&nbsp;00:08:02.580076 &nbsp;3375&nbsp;bf_chassis_manager.cc:98&nbsp;&lt;&lt;a&nbsp;href=&quot;http://bf_chassis_manager.cc:98&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://bf_chassis_manager.cc:98&lt;/a&gt;&gt;&nbsp;]&nbsp;Enabling&nbsp;port&nbsp;144&nbsp;in&nbsp;node&nbsp;1.&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;I0729&nbsp;00:08:02.580164 &nbsp;3375&nbsp;bf_chassis_manager.cc:71&nbsp;&lt;&lt;a&nbsp;href=&quot;http://bf_chassis_manager.cc:71&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://bf_chassis_manager.cc:71&lt;/a&gt;&gt;&nbsp;]&nbsp;Adding&nbsp;port&nbsp;152&nbsp;in&nbsp;node&nbsp;1.&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;I0729&nbsp;00:08:02.605779 &nbsp;3375&nbsp;bf_chassis_manager.cc:98&nbsp;&lt;&lt;a&nbsp;href=&quot;http://bf_chassis_manager.cc:98&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://bf_chassis_manager.cc:98&lt;/a&gt;&gt;&nbsp;]&nbsp;Enabling&nbsp;port&nbsp;152&nbsp;in&nbsp;node&nbsp;1.&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;I0729&nbsp;00:08:02.605870 &nbsp;3375&nbsp;bf_chassis_manager.cc:71&nbsp;&lt;&lt;a&nbsp;href=&quot;http://bf_chassis_manager.cc:71&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://bf_chassis_manager.cc:71&lt;/a&gt;&gt;&nbsp;]&nbsp;Adding&nbsp;port&nbsp;160&nbsp;in&nbsp;node&nbsp;1.&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;I0729&nbsp;00:08:02.632144 &nbsp;3375&nbsp;bf_chassis_manager.cc:98&nbsp;&lt;&lt;a&nbsp;href=&quot;http://bf_chassis_manager.cc:98&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://bf_chassis_manager.cc:98&lt;/a&gt;&gt;&nbsp;]&nbsp;Enabling&nbsp;port&nbsp;160&nbsp;in&nbsp;node&nbsp;1.&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;I0729&nbsp;00:08:02.632297 &nbsp;3375&nbsp;bf_chassis_manager.cc:71&nbsp;&lt;&lt;a&nbsp;href=&quot;http://bf_chassis_manager.cc:71&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://bf_chassis_manager.cc:71&lt;/a&gt;&gt;&nbsp;]&nbsp;Adding&nbsp;port&nbsp;168&nbsp;in&nbsp;node&nbsp;1.&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;I0729&nbsp;00:08:02.658277 &nbsp;3375&nbsp;bf_chassis_manager.cc:98&nbsp;&lt;&lt;a&nbsp;href=&quot;http://bf_chassis_manager.cc:98&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://bf_chassis_manager.cc:98&lt;/a&gt;&gt;&nbsp;]&nbsp;Enabling&nbsp;port&nbsp;168&nbsp;in&nbsp;node&nbsp;1.&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;I0729&nbsp;00:08:02.658442 &nbsp;3375&nbsp;bf_chassis_manager.cc:71&nbsp;&lt;&lt;a&nbsp;href=&quot;http://bf_chassis_manager.cc:71&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://bf_chassis_manager.cc:71&lt;/a&gt;&gt;&nbsp;]&nbsp;Adding&nbsp;port&nbsp;176&nbsp;in&nbsp;node&nbsp;1.&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;I0729&nbsp;00:08:02.684825 &nbsp;3375&nbsp;bf_chassis_manager.cc:98&nbsp;&lt;&lt;a&nbsp;href=&quot;http://bf_chassis_manager.cc:98&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://bf_chassis_manager.cc:98&lt;/a&gt;&gt;&nbsp;]&nbsp;Enabling&nbsp;port&nbsp;176&nbsp;in&nbsp;node&nbsp;1.&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;I0729&nbsp;00:08:02.685006 &nbsp;3375&nbsp;bf_chassis_manager.cc:71&nbsp;&lt;&lt;a&nbsp;href=&quot;http://bf_chassis_manager.cc:71&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://bf_chassis_manager.cc:71&lt;/a&gt;&gt;&nbsp;]&nbsp;Adding&nbsp;port&nbsp;184&nbsp;in&nbsp;node&nbsp;1.&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;I0729&nbsp;00:08:02.711098 &nbsp;3375&nbsp;bf_chassis_manager.cc:98&nbsp;&lt;&lt;a&nbsp;href=&quot;http://bf_chassis_manager.cc:98&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://bf_chassis_manager.cc:98&lt;/a&gt;&gt;&nbsp;]&nbsp;Enabling&nbsp;port&nbsp;184&nbsp;in&nbsp;node&nbsp;1.&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;I0729&nbsp;00:08:02.711333 &nbsp;3375&nbsp;bf_chassis_manager.cc:71&nbsp;&lt;&lt;a&nbsp;href=&quot;http://bf_chassis_manager.cc:71&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://bf_chassis_manager.cc:71&lt;/a&gt;&gt;&nbsp;]&nbsp;Adding&nbsp;port&nbsp;60&nbsp;in&nbsp;node&nbsp;1.&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;I0729&nbsp;00:08:02.738742 &nbsp;3375&nbsp;bf_chassis_manager.cc:98&nbsp;&lt;&lt;a&nbsp;href=&quot;http://bf_chassis_manager.cc:98&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://bf_chassis_manager.cc:98&lt;/a&gt;&gt;&nbsp;]&nbsp;Enabling&nbsp;port&nbsp;60&nbsp;in&nbsp;node&nbsp;1.&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;I0729&nbsp;00:08:02.738965 &nbsp;3375&nbsp;bf_chassis_manager.cc:71&nbsp;&lt;&lt;a&nbsp;href=&quot;http://bf_chassis_manager.cc:71&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://bf_chassis_manager.cc:71&lt;/a&gt;&gt;&nbsp;]&nbsp;Adding&nbsp;port&nbsp;52&nbsp;in&nbsp;node&nbsp;1.&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;I0729&nbsp;00:08:02.765933 &nbsp;3375&nbsp;bf_chassis_manager.cc:98&nbsp;&lt;&lt;a&nbsp;href=&quot;http://bf_chassis_manager.cc:98&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://bf_chassis_manager.cc:98&lt;/a&gt;&gt;&nbsp;]&nbsp;Enabling&nbsp;port&nbsp;52&nbsp;in&nbsp;node&nbsp;1.&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;I0729&nbsp;00:08:02.766140 &nbsp;3375&nbsp;bf_chassis_manager.cc:71&nbsp;&lt;&lt;a&nbsp;href=&quot;http://bf_chassis_manager.cc:71&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://bf_chassis_manager.cc:71&lt;/a&gt;&gt;&nbsp;]&nbsp;Adding&nbsp;port&nbsp;44&nbsp;in&nbsp;node&nbsp;1.&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;I0729&nbsp;00:08:02.794571 &nbsp;3375&nbsp;bf_chassis_manager.cc:98&nbsp;&lt;&lt;a&nbsp;href=&quot;http://bf_chassis_manager.cc:98&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://bf_chassis_manager.cc:98&lt;/a&gt;&gt;&nbsp;]&nbsp;Enabling&nbsp;port&nbsp;44&nbsp;in&nbsp;node&nbsp;1.&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;I0729&nbsp;00:08:02.794782 &nbsp;3375&nbsp;bf_chassis_manager.cc:71&nbsp;&lt;&lt;a&nbsp;href=&quot;http://bf_chassis_manager.cc:71&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://bf_chassis_manager.cc:71&lt;/a&gt;&gt;&nbsp;]&nbsp;Adding&nbsp;port&nbsp;36&nbsp;in&nbsp;node&nbsp;1.&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;I0729&nbsp;00:08:02.822964 &nbsp;3375&nbsp;bf_chassis_manager.cc:98&nbsp;&lt;&lt;a&nbsp;href=&quot;http://bf_chassis_manager.cc:98&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://bf_chassis_manager.cc:98&lt;/a&gt;&gt;&nbsp;]&nbsp;Enabling&nbsp;port&nbsp;36&nbsp;in&nbsp;node&nbsp;1.&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;I0729&nbsp;00:08:02.823189 &nbsp;3375&nbsp;bf_chassis_manager.cc:71&nbsp;&lt;&lt;a&nbsp;href=&quot;http://bf_chassis_manager.cc:71&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://bf_chassis_manager.cc:71&lt;/a&gt;&gt;&nbsp;]&nbsp;Adding&nbsp;port&nbsp;28&nbsp;in&nbsp;node&nbsp;1.&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;I0729&nbsp;00:08:02.851384 &nbsp;3375&nbsp;bf_chassis_manager.cc:98&nbsp;&lt;&lt;a&nbsp;href=&quot;http://bf_chassis_manager.cc:98&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://bf_chassis_manager.cc:98&lt;/a&gt;&gt;&nbsp;]&nbsp;Enabling&nbsp;port&nbsp;28&nbsp;in&nbsp;node&nbsp;1.&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;I0729&nbsp;00:08:02.851619 &nbsp;3375&nbsp;bf_chassis_manager.cc:71&nbsp;&lt;&lt;a&nbsp;href=&quot;http://bf_chassis_manager.cc:71&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://bf_chassis_manager.cc:71&lt;/a&gt;&gt;&nbsp;]&nbsp;Adding&nbsp;port&nbsp;20&nbsp;in&nbsp;node&nbsp;1.&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;I0729&nbsp;00:08:02.879788 &nbsp;3375&nbsp;bf_chassis_manager.cc:98&nbsp;&lt;&lt;a&nbsp;href=&quot;http://bf_chassis_manager.cc:98&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://bf_chassis_manager.cc:98&lt;/a&gt;&gt;&nbsp;]&nbsp;Enabling&nbsp;port&nbsp;20&nbsp;in&nbsp;node&nbsp;1.&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;I0729&nbsp;00:08:02.880071 &nbsp;3375&nbsp;bf_chassis_manager.cc:71&nbsp;&lt;&lt;a&nbsp;href=&quot;http://bf_chassis_manager.cc:71&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://bf_chassis_manager.cc:71&lt;/a&gt;&gt;&nbsp;]&nbsp;Adding&nbsp;port&nbsp;12&nbsp;in&nbsp;node&nbsp;1.&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;I0729&nbsp;00:08:02.914714 &nbsp;3375&nbsp;bf_chassis_manager.cc:98&nbsp;&lt;&lt;a&nbsp;href=&quot;http://bf_chassis_manager.cc:98&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://bf_chassis_manager.cc:98&lt;/a&gt;&gt;&nbsp;]&nbsp;Enabling&nbsp;port&nbsp;12&nbsp;in&nbsp;node&nbsp;1.&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;I0729&nbsp;00:08:02.914990 &nbsp;3375&nbsp;bf_chassis_manager.cc:71&nbsp;&lt;&lt;a&nbsp;href=&quot;http://bf_chassis_manager.cc:71&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://bf_chassis_manager.cc:71&lt;/a&gt;&gt;&nbsp;]&nbsp;Adding&nbsp;port&nbsp;4&nbsp;in&nbsp;node&nbsp;1.&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;I0729&nbsp;00:08:02.939514 &nbsp;3375&nbsp;bf_chassis_manager.cc:98&nbsp;&lt;&lt;a&nbsp;href=&quot;http://bf_chassis_manager.cc:98&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://bf_chassis_manager.cc:98&lt;/a&gt;&gt;&nbsp;]&nbsp;Enabling&nbsp;port&nbsp;4&nbsp;in&nbsp;node&nbsp;1.&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;I0729&nbsp;00:08:02.939772 &nbsp;3375&nbsp;bf_chassis_manager.cc:71&nbsp;&lt;&lt;a&nbsp;href=&quot;http://bf_chassis_manager.cc:71&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://bf_chassis_manager.cc:71&lt;/a&gt;&gt;&nbsp;]&nbsp;Adding&nbsp;port&nbsp;0&nbsp;in&nbsp;node&nbsp;1.&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;I0729&nbsp;00:08:02.969403 &nbsp;3375&nbsp;bf_chassis_manager.cc:98&nbsp;&lt;&lt;a&nbsp;href=&quot;http://bf_chassis_manager.cc:98&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://bf_chassis_manager.cc:98&lt;/a&gt;&gt;&nbsp;]&nbsp;Enabling&nbsp;port&nbsp;0&nbsp;in&nbsp;node&nbsp;1.&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;I0729&nbsp;00:08:02.969648 &nbsp;3375&nbsp;bf_chassis_manager.cc:71&nbsp;&lt;&lt;a&nbsp;href=&quot;http://bf_chassis_manager.cc:71&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://bf_chassis_manager.cc:71&lt;/a&gt;&gt;&nbsp;]&nbsp;Adding&nbsp;port&nbsp;8&nbsp;in&nbsp;node&nbsp;1.&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;I0729&nbsp;00:08:02.999389 &nbsp;3375&nbsp;bf_chassis_manager.cc:98&nbsp;&lt;&lt;a&nbsp;href=&quot;http://bf_chassis_manager.cc:98&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://bf_chassis_manager.cc:98&lt;/a&gt;&gt;&nbsp;]&nbsp;Enabling&nbsp;port&nbsp;8&nbsp;in&nbsp;node&nbsp;1.&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;I0729&nbsp;00:08:03.005864 &nbsp;3375&nbsp;bf_chassis_manager.cc:71&nbsp;&lt;&lt;a&nbsp;href=&quot;http://bf_chassis_manager.cc:71&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://bf_chassis_manager.cc:71&lt;/a&gt;&gt;&nbsp;]&nbsp;Adding&nbsp;port&nbsp;16&nbsp;in&nbsp;node&nbsp;1.&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;I0729&nbsp;00:08:03.035084 &nbsp;3375&nbsp;bf_chassis_manager.cc:98&nbsp;&lt;&lt;a&nbsp;href=&quot;http://bf_chassis_manager.cc:98&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://bf_chassis_manager.cc:98&lt;/a&gt;&gt;&nbsp;]&nbsp;Enabling&nbsp;port&nbsp;16&nbsp;in&nbsp;node&nbsp;1.&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;I0729&nbsp;00:08:03.035384 &nbsp;3375&nbsp;bf_chassis_manager.cc:71&nbsp;&lt;&lt;a&nbsp;href=&quot;http://bf_chassis_manager.cc:71&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://bf_chassis_manager.cc:71&lt;/a&gt;&gt;&nbsp;]&nbsp;Adding&nbsp;port&nbsp;24&nbsp;in&nbsp;node&nbsp;1.&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;I0729&nbsp;00:08:03.075254 &nbsp;3375&nbsp;bf_chassis_manager.cc:98&nbsp;&lt;&lt;a&nbsp;href=&quot;http://bf_chassis_manager.cc:98&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://bf_chassis_manager.cc:98&lt;/a&gt;&gt;&nbsp;]&nbsp;Enabling&nbsp;port&nbsp;24&nbsp;in&nbsp;node&nbsp;1.&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;I0729&nbsp;00:08:03.075557 &nbsp;3375&nbsp;bf_chassis_manager.cc:71&nbsp;&lt;&lt;a&nbsp;href=&quot;http://bf_chassis_manager.cc:71&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://bf_chassis_manager.cc:71&lt;/a&gt;&gt;&nbsp;]&nbsp;Adding&nbsp;port&nbsp;32&nbsp;in&nbsp;node&nbsp;1.&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;I0729&nbsp;00:08:03.100225 &nbsp;3375&nbsp;bf_chassis_manager.cc:98&nbsp;&lt;&lt;a&nbsp;href=&quot;http://bf_chassis_manager.cc:98&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://bf_chassis_manager.cc:98&lt;/a&gt;&gt;&nbsp;]&nbsp;Enabling&nbsp;port&nbsp;32&nbsp;in&nbsp;node&nbsp;1.&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;I0729&nbsp;00:08:03.100484 &nbsp;3375&nbsp;bf_chassis_manager.cc:71&nbsp;&lt;&lt;a&nbsp;href=&quot;http://bf_chassis_manager.cc:71&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://bf_chassis_manager.cc:71&lt;/a&gt;&gt;&nbsp;]&nbsp;Adding&nbsp;port&nbsp;40&nbsp;in&nbsp;node&nbsp;1.&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;I0729&nbsp;00:08:03.141837 &nbsp;3375&nbsp;bf_chassis_manager.cc:98&nbsp;&lt;&lt;a&nbsp;href=&quot;http://bf_chassis_manager.cc:98&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://bf_chassis_manager.cc:98&lt;/a&gt;&gt;&nbsp;]&nbsp;Enabling&nbsp;port&nbsp;40&nbsp;in&nbsp;node&nbsp;1.&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;I0729&nbsp;00:08:03.142086 &nbsp;3375&nbsp;bf_chassis_manager.cc:71&nbsp;&lt;&lt;a&nbsp;href=&quot;http://bf_chassis_manager.cc:71&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://bf_chassis_manager.cc:71&lt;/a&gt;&gt;&nbsp;]&nbsp;Adding&nbsp;port&nbsp;48&nbsp;in&nbsp;node&nbsp;1.&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;I0729&nbsp;00:08:03.167019 &nbsp;3375&nbsp;bf_chassis_manager.cc:98&nbsp;&lt;&lt;a&nbsp;href=&quot;http://bf_chassis_manager.cc:98&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://bf_chassis_manager.cc:98&lt;/a&gt;&gt;&nbsp;]&nbsp;Enabling&nbsp;port&nbsp;48&nbsp;in&nbsp;node&nbsp;1.&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;I0729&nbsp;00:08:03.167284 &nbsp;3375&nbsp;bf_chassis_manager.cc:71&nbsp;&lt;&lt;a&nbsp;href=&quot;http://bf_chassis_manager.cc:71&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://bf_chassis_manager.cc:71&lt;/a&gt;&gt;&nbsp;]&nbsp;Adding&nbsp;port&nbsp;56&nbsp;in&nbsp;node&nbsp;1.&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;I0729&nbsp;00:08:03.208166 &nbsp;3375&nbsp;bf_chassis_manager.cc:98&nbsp;&lt;&lt;a&nbsp;href=&quot;http://bf_chassis_manager.cc:98&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://bf_chassis_manager.cc:98&lt;/a&gt;&gt;&nbsp;]&nbsp;Enabling&nbsp;port&nbsp;56&nbsp;in&nbsp;node&nbsp;1.&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;I0729&nbsp;00:08:03.208426 &nbsp;3375&nbsp;bf_chassis_manager.cc:71&nbsp;&lt;&lt;a&nbsp;href=&quot;http://bf_chassis_manager.cc:71&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://bf_chassis_manager.cc:71&lt;/a&gt;&gt;&nbsp;]&nbsp;Adding&nbsp;port&nbsp;188&nbsp;in&nbsp;node&nbsp;1.&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;I0729&nbsp;00:08:03.233619 &nbsp;3375&nbsp;bf_chassis_manager.cc:98&nbsp;&lt;&lt;a&nbsp;href=&quot;http://bf_chassis_manager.cc:98&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://bf_chassis_manager.cc:98&lt;/a&gt;&gt;&nbsp;]&nbsp;Enabling&nbsp;port&nbsp;188&nbsp;in&nbsp;node&nbsp;1.&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;I0729&nbsp;00:08:03.233870 &nbsp;3375&nbsp;bf_chassis_manager.cc:71&nbsp;&lt;&lt;a&nbsp;href=&quot;http://bf_chassis_manager.cc:71&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://bf_chassis_manager.cc:71&lt;/a&gt;&gt;&nbsp;]&nbsp;Adding&nbsp;port&nbsp;180&nbsp;in&nbsp;node&nbsp;1.&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;I0729&nbsp;00:08:03.275310 &nbsp;3375&nbsp;bf_chassis_manager.cc:98&nbsp;&lt;&lt;a&nbsp;href=&quot;http://bf_chassis_manager.cc:98&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://bf_chassis_manager.cc:98&lt;/a&gt;&gt;&nbsp;]&nbsp;Enabling&nbsp;port&nbsp;180&nbsp;in&nbsp;node&nbsp;1.&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;I0729&nbsp;00:08:03.275593 &nbsp;3375&nbsp;bf_chassis_manager.cc:71&nbsp;&lt;&lt;a&nbsp;href=&quot;http://bf_chassis_manager.cc:71&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://bf_chassis_manager.cc:71&lt;/a&gt;&gt;&nbsp;]&nbsp;Adding&nbsp;port&nbsp;172&nbsp;in&nbsp;node&nbsp;1.&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;I0729&nbsp;00:08:03.301023 &nbsp;3375&nbsp;bf_chassis_manager.cc:98&nbsp;&lt;&lt;a&nbsp;href=&quot;http://bf_chassis_manager.cc:98&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://bf_chassis_manager.cc:98&lt;/a&gt;&gt;&nbsp;]&nbsp;Enabling&nbsp;port&nbsp;172&nbsp;in&nbsp;node&nbsp;1.&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;I0729&nbsp;00:08:03.301263 &nbsp;3375&nbsp;bf_chassis_manager.cc:71&nbsp;&lt;&lt;a&nbsp;href=&quot;http://bf_chassis_manager.cc:71&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://bf_chassis_manager.cc:71&lt;/a&gt;&gt;&nbsp;]&nbsp;Adding&nbsp;port&nbsp;164&nbsp;in&nbsp;node&nbsp;1.&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;I0729&nbsp;00:08:03.343309 &nbsp;3375&nbsp;bf_chassis_manager.cc:98&nbsp;&lt;&lt;a&nbsp;href=&quot;http://bf_chassis_manager.cc:98&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://bf_chassis_manager.cc:98&lt;/a&gt;&gt;&nbsp;]&nbsp;Enabling&nbsp;port&nbsp;164&nbsp;in&nbsp;node&nbsp;1.&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;I0729&nbsp;00:08:03.343560 &nbsp;3375&nbsp;bf_chassis_manager.cc:71&nbsp;&lt;&lt;a&nbsp;href=&quot;http://bf_chassis_manager.cc:71&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://bf_chassis_manager.cc:71&lt;/a&gt;&gt;&nbsp;]&nbsp;Adding&nbsp;port&nbsp;148&nbsp;in&nbsp;node&nbsp;1.&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;I0729&nbsp;00:08:03.369046 &nbsp;3375&nbsp;bf_chassis_manager.cc:98&nbsp;&lt;&lt;a&nbsp;href=&quot;http://bf_chassis_manager.cc:98&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://bf_chassis_manager.cc:98&lt;/a&gt;&gt;&nbsp;]&nbsp;Enabling&nbsp;port&nbsp;148&nbsp;in&nbsp;node&nbsp;1.&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;I0729&nbsp;00:08:03.369292 &nbsp;3375&nbsp;bf_chassis_manager.cc:71&nbsp;&lt;&lt;a&nbsp;href=&quot;http://bf_chassis_manager.cc:71&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://bf_chassis_manager.cc:71&lt;/a&gt;&gt;&nbsp;]&nbsp;Adding&nbsp;port&nbsp;156&nbsp;in&nbsp;node&nbsp;1.&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;I0729&nbsp;00:08:03.400629 &nbsp;3375&nbsp;bf_chassis_manager.cc:98&nbsp;&lt;&lt;a&nbsp;href=&quot;http://bf_chassis_manager.cc:98&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://bf_chassis_manager.cc:98&lt;/a&gt;&gt;&nbsp;]&nbsp;Enabling&nbsp;port&nbsp;156&nbsp;in&nbsp;node&nbsp;1.&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;I0729&nbsp;00:08:03.400827 &nbsp;3375&nbsp;bf_chassis_manager.cc:71&nbsp;&lt;&lt;a&nbsp;href=&quot;http://bf_chassis_manager.cc:71&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://bf_chassis_manager.cc:71&lt;/a&gt;&gt;&nbsp;]&nbsp;Adding&nbsp;port&nbsp;132&nbsp;in&nbsp;node&nbsp;1.&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;I0729&nbsp;00:08:03.444171 &nbsp;3375&nbsp;bf_chassis_manager.cc:98&nbsp;&lt;&lt;a&nbsp;href=&quot;http://bf_chassis_manager.cc:98&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://bf_chassis_manager.cc:98&lt;/a&gt;&gt;&nbsp;]&nbsp;Enabling&nbsp;port&nbsp;132&nbsp;in&nbsp;node&nbsp;1.&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;I0729&nbsp;00:08:03.444409 &nbsp;3375&nbsp;bf_chassis_manager.cc:71&nbsp;&lt;&lt;a&nbsp;href=&quot;http://bf_chassis_manager.cc:71&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://bf_chassis_manager.cc:71&lt;/a&gt;&gt;&nbsp;]&nbsp;Adding&nbsp;port&nbsp;140&nbsp;in&nbsp;node&nbsp;1.&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;I0729&nbsp;00:08:03.471109 &nbsp;3375&nbsp;bf_chassis_manager.cc:98&nbsp;&lt;&lt;a&nbsp;href=&quot;http://bf_chassis_manager.cc:98&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://bf_chassis_manager.cc:98&lt;/a&gt;&gt;&nbsp;]&nbsp;Enabling&nbsp;port&nbsp;140&nbsp;in&nbsp;node&nbsp;1.&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;I0729&nbsp;00:08:03.471511 &nbsp;3375&nbsp;bf_switch.cc:60&nbsp;&lt;&lt;a&nbsp;href=&quot;http://bf_switch.cc:60&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://bf_switch.cc:60&lt;/a&gt;&gt;&nbsp;]&nbsp;Chassis&nbsp;config&nbsp;pushed&nbsp;successfully.&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;I0729&nbsp;00:08:03.540140 &nbsp;3375&nbsp;p4_service.cc:118&nbsp;&lt;&lt;a&nbsp;href=&quot;http://p4_service.cc:118&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://p4_service.cc:118&lt;/a&gt;&gt;&nbsp;]&nbsp;Pushing&nbsp;the&nbsp;saved&nbsp;forwarding&nbsp;pipeline&nbsp;configs&nbsp;read&nbsp;from&nbsp;/var/run/stratum/pipeline_cfg.pb.txt...&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;E0729&nbsp;00:08:03.540207 &nbsp;3375&nbsp;utils.cc:109&nbsp;&lt;&lt;a&nbsp;href=&quot;http://utils.cc:109&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://utils.cc:109&lt;/a&gt;&gt;&nbsp;]&nbsp;StratumErrorSpace::ERR_FILE_NOT_FOUND:&nbsp;/var/run/stratum/pipeline_cfg.pb.txt&nbsp;not&nbsp;found.&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;E0729&nbsp;00:08:03.540649 &nbsp;3375&nbsp;utils.cc:65&nbsp;&lt;&lt;a&nbsp;href=&quot;http://utils.cc:65&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://utils.cc:65&lt;/a&gt;&gt;&nbsp;]&nbsp;Return&nbsp;Error:&nbsp;ReadFileToString(filename,&nbsp;&amp;text)&nbsp;failed&nbsp;with&nbsp;StratumErrorSpace::ERR_FILE_NOT_FOUND:&nbsp;/var/run/stratum/pipeline_cfg.pb.txt&nbsp;not&nbsp;found.&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;W0729&nbsp;00:08:03.540683 &nbsp;3375&nbsp;p4_service.cc:127&nbsp;&lt;&lt;a&nbsp;href=&quot;http://p4_service.cc:127&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://p4_service.cc:127&lt;/a&gt;&gt;&nbsp;]&nbsp;No&nbsp;saved&nbsp;forwarding&nbsp;pipeline&nbsp;config&nbsp;found&nbsp;at&nbsp;/var/run/stratum/pipeline_cfg.pb.txt.&nbsp;This&nbsp;is&nbsp;normal&nbsp;when&nbsp;the&nbsp;switch&nbsp;is&nbsp;just&nbsp;installed&nbsp;and&nbsp;no&nbsp;master&nbsp;controller&nbsp;is&nbsp;connected&nbsp;yet.&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;E0729&nbsp;00:08:03.541280 &nbsp;3375&nbsp;hal.cc:223&nbsp;&lt;&lt;a&nbsp;href=&quot;http://hal.cc:223&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://hal.cc:223&lt;/a&gt;&gt;&nbsp;]&nbsp;Stratum&nbsp;external&nbsp;facing&nbsp;services&nbsp;are&nbsp;listening&nbsp;to&nbsp;&lt;a&nbsp;href=&quot;http://0.0.0.0:28000&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;0.0.0.0:28000&lt;/a&gt;&nbsp;&lt;&lt;a&nbsp;href=&quot;http://0.0.0.0:28000&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://0.0.0.0:28000&lt;/a&gt;&gt;&nbsp;,&nbsp;&lt;a&nbsp;href=&quot;http://0.0.0.0:9339&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;0.0.0.0:9339&lt;/a&gt;&nbsp;&lt;&lt;a&nbsp;href=&quot;http://0.0.0.0:9339&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://0.0.0.0:9339&lt;/a&gt;&gt;&nbsp;,&nbsp;localhost:28000...&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;E0729&nbsp;00:08:03.546200 &nbsp;3375&nbsp;hal.cc:365&nbsp;&lt;&lt;a&nbsp;href=&quot;http://hal.cc:365&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://hal.cc:365&lt;/a&gt;&gt;&nbsp;]&nbsp;StratumErrorSpace::ERR_INTERNAL:&nbsp;Failed&nbsp;to&nbsp;check&nbsp;in&nbsp;with&nbsp;procmon:&nbsp;failed&nbsp;to&nbsp;connect&nbsp;to&nbsp;all&nbsp;addresses&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;E0729&nbsp;00:08:03.546463 &nbsp;3375&nbsp;hal.cc:233&nbsp;&lt;&lt;a&nbsp;href=&quot;http://hal.cc:233&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://hal.cc:233&lt;/a&gt;&gt;&nbsp;]&nbsp;Error&nbsp;when&nbsp;checking&nbsp;in&nbsp;with&nbsp;procmon:&nbsp;Failed&nbsp;to&nbsp;check&nbsp;in&nbsp;with&nbsp;procmon:&nbsp;failed&nbsp;to&nbsp;connect&nbsp;to&nbsp;all&nbsp;addresses.&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;I0729&nbsp;00:08:09.126171 &nbsp;3419&nbsp;p4_service.cc:695&nbsp;&lt;&lt;a&nbsp;href=&quot;http://p4_service.cc:695&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://p4_service.cc:695&lt;/a&gt;&gt;&nbsp;]&nbsp;Controller&nbsp;(connection_id:&nbsp;1,&nbsp;election_id:&nbsp;1,&nbsp;uri:&nbsp;ipv4:&lt;a&nbsp;href=&quot;http://172.17.0.2:47190&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;172.17.0.2:47190&lt;/a&gt;&nbsp;&lt;&lt;a&nbsp;href=&quot;http://172.17.0.2:47190&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://172.17.0.2:47190&lt;/a&gt;&gt;&nbsp;)&nbsp;is&nbsp;connected&nbsp;as&nbsp;MASTER&nbsp;for&nbsp;node&nbsp;(aka&nbsp;device)&nbsp;with&nbsp;ID&nbsp;1.&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;bf_switchd:&nbsp;starting&nbsp;warm&nbsp;init&nbsp;for&nbsp;dev_id&nbsp;0&nbsp;mode&nbsp;1&nbsp;serdes_upgrade&nbsp;0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Skip&nbsp;diag&nbsp;lib&nbsp;deinit&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;2020-07-29&nbsp;00:08:09.276447&nbsp;BF_PI&nbsp;ERROR&nbsp;-&nbsp;handles_map_add:&nbsp;error&nbsp;when&nbsp;inserting&nbsp;into&nbsp;handles&nbsp;map&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;2020-07-29&nbsp;00:08:09.444534&nbsp;BF_PI&nbsp;ERROR&nbsp;-&nbsp;get_table_state:&nbsp;error&nbsp;when&nbsp;retrieving&nbsp;table&nbsp;state&nbsp;33556279&nbsp;for&nbsp;device&nbsp;0&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;***&nbsp;Aborted&nbsp;at&nbsp;1595981289&nbsp;(unix&nbsp;time)&nbsp;try&nbsp;&quot;date&nbsp;-d&nbsp;@1595981289&quot;&nbsp;if&nbsp;you&nbsp;are&nbsp;using&nbsp;GNU&nbsp;date&nbsp;***&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;PC:&nbsp;@ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;0x0&nbsp;(unknown)&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;***&nbsp;SIGSEGV&nbsp;(@0x0)&nbsp;received&nbsp;by&nbsp;PID&nbsp;3375&nbsp;(TID&nbsp;0x7f37cc7dc700)&nbsp;from&nbsp;PID&nbsp;0;&nbsp;stack&nbsp;trace:&nbsp;***&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; @ &nbsp; &nbsp; 0x7f37e52be0e0&nbsp;(unknown)&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; @ &nbsp; &nbsp; 0x7f37e6e139f9&nbsp;pi_state_table_id_to_handle&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; @ &nbsp; &nbsp; 0x7f37e6e0c88b&nbsp;_pi_update_device_start&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; @ &nbsp; &nbsp; 0x56042072c9b7&nbsp;pi_update_device_start&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; @ &nbsp; &nbsp; 0x56042060def1&nbsp;pi::fe::proto::DeviceMgrImp::pipeline_config_set()&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; @ &nbsp; &nbsp; 0x5604206058dd&nbsp;pi::fe::proto::DeviceMgr::pipeline_config_set()&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; @ &nbsp; &nbsp; 0x560420539caf&nbsp;stratum::hal::pi::PINode::PushForwardingPipelineConfig()&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; @ &nbsp; &nbsp; 0x56041fe9bb04&nbsp;stratum::hal::barefoot::BFSwitch::PushForwardingPipelineConfig()&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; @ &nbsp; &nbsp; 0x5604203bbc37&nbsp;stratum::hal::P4Service::SetForwardingPipelineConfig()&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; @ &nbsp; &nbsp; 0x56042069e0d9&nbsp;std::__invoke_impl&lt;&gt;()&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; @ &nbsp; &nbsp; 0x56042069d3ac&nbsp;std::__invoke&lt;&gt;()&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; @ &nbsp; &nbsp; 0x56042069bcec&nbsp;_ZNKSt12_Mem_fn_baseIMN2p42v19P4Runtime7ServiceEFN4grpc6StatusEPN9grpc_impl13ServerContextEPKNS1_34SetForwardingPipelineConfigRequestEPNS1_35SetForwardingPipelineConfigResponseEELb1EEclIJPS3_S8_SB_SD_EEEDTcl8__invokedtdefpT6_M_pmfspcl7forwardIT_Efp_EEEDpOSJ_&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; @ &nbsp; &nbsp; 0x5604206994bf&nbsp;std::_Function_handler&lt;&gt;::_M_invoke()&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; @ &nbsp; &nbsp; 0x5604206ae808&nbsp;std::function&lt;&gt;::operator()()&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; @ &nbsp; &nbsp; 0x5604206a517e&nbsp;_ZZN9grpc_impl8internal16RpcMethodHandlerIN2p42v19P4Runtime7ServiceENS3_34SetForwardingPipelineConfigRequestENS3_35SetForwardingPipelineConfigResponseEE10RunHandlerERKN4grpc8internal13MethodHandler16HandlerParameterEENKUlvE_clEv&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; @ &nbsp; &nbsp; 0x5604206ae84c&nbsp;_ZN9grpc_impl8internal23CatchingFunctionHandlerIZNS0_16RpcMethodHandlerIN2p42v19P4Runtime7ServiceENS4_34SetForwardingPipelineConfigRequestENS4_35SetForwardingPipelineConfigResponseEE10RunHandlerERKN4grpc8internal13MethodHandler16HandlerParameterEEUlvE_EENSA_6StatusEOT_&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; @ &nbsp; &nbsp; 0x5604206a5233&nbsp;grpc_impl::internal::RpcMethodHandler&lt;&gt;::RunHandler()&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; @ &nbsp; &nbsp; 0x5604208874e1&nbsp;grpc_impl::Server::SyncRequest::CallData::ContinueRunAfterInterception()&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; @ &nbsp; &nbsp; 0x5604208872ff&nbsp;grpc_impl::Server::SyncRequest::CallData::Run()&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; @ &nbsp; &nbsp; 0x560420887a97&nbsp;grpc_impl::Server::SyncRequestThreadManager::DoWork()&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; @ &nbsp; &nbsp; 0x5604208a41a7&nbsp;grpc::ThreadManager::MainWorkLoop()&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; @ &nbsp; &nbsp; 0x5604208a3815&nbsp;grpc::ThreadManager::WorkerThread::Run()&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; @ &nbsp; &nbsp; 0x5604208a36d4&nbsp;_ZZN4grpc13ThreadManager12WorkerThreadC4EPS0_ENKUlPvE_clES3_&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; @ &nbsp; &nbsp; 0x5604208a36f4&nbsp;_ZZN4grpc13ThreadManager12WorkerThreadC4EPS0_ENUlPvE_4_FUNES3_&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; @ &nbsp; &nbsp; 0x560420a8fe5c&nbsp;_ZZN9grpc_core12_GLOBAL__N_120ThreadInternalsPosixC4EPKcPFvPvES4_PbRKNS_6Thread7OptionsEENKUlS4_E_clES4_&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; @ &nbsp; &nbsp; 0x560420a8fea1&nbsp;_ZZN9grpc_core12_GLOBAL__N_120ThreadInternalsPosixC4EPKcPFvPvES4_PbRKNS_6Thread7OptionsEENUlS4_E_4_FUNES4_&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; @ &nbsp; &nbsp; 0x7f37e52b44a4&nbsp;start_thread&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; @ &nbsp; &nbsp; 0x7f37e4bdbd0f&nbsp;clone&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; @ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;0x0&nbsp;(unknown)&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Segmentation&nbsp;fault&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;root@localhost:~#&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;```&lt;br&gt;<br>
+&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;10&nbsp;error&nbsp;messages&nbsp;P4-runtime&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;```&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;root@localhost:~/p4runtime-shell#&nbsp;./p4runtime-sh-docker&nbsp;--grpc-addr&nbsp;&lt;a&nbsp;href=&quot;http://10.0.2.3:28000&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;10.0.2.3:28000&lt;/a&gt;&nbsp;&lt;&lt;a&nbsp;href=&quot;http://10.0.2.3:28000&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;http://10.0.2.3:28000&lt;/a&gt;&gt; &nbsp; --device-id&nbsp;1&nbsp;--election-id&nbsp;0,1&nbsp;--config&nbsp;/tmp/basic.pb.txt,out.bin&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;CRITICAL:root:Error&nbsp;when&nbsp;setting&nbsp;config&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;CRITICAL:root:P4Runtime&nbsp;RPC&nbsp;error&nbsp;(UNAVAILABLE):&nbsp;Socket&nbsp;closed&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;CRITICAL:root:StreamChannel&nbsp;error,&nbsp;closing&nbsp;stream&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;CRITICAL:root:P4Runtime&nbsp;RPC&nbsp;error&nbsp;(UNAVAILABLE):&nbsp;Socket&nbsp;closed&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;root@localhost:~/p4runtime-shell#&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;```&lt;br&gt;<br>
+&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Could&nbsp;you&nbsp;please&nbsp;tell&nbsp;me&nbsp;if&nbsp;something&nbsp;wrong&nbsp;in&nbsp;our&nbsp;procedure,&nbsp;or&nbsp;(if&nbsp;nothing&nbsp;wrong)&nbsp;show&nbsp;me&nbsp;some&nbsp;workaround&nbsp;on&nbsp;it.&lt;br&gt;<br>
+&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp;-------------------------------&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp;Tomorrow,&nbsp;Together &nbsp;KDDI&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp;-------------------------------&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp;++++++++++++++++++++++++++++++++++++&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp;Ryota&nbsp;Ogami&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp;KDDI&nbsp;Corporation&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp;AI-assisted&nbsp;Network&nbsp;Opetation&nbsp;Support&nbsp;Group&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp;Operation&nbsp;Support&nbsp;System&nbsp;Development&nbsp;Department&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp;Advanced&nbsp;Operations&nbsp;Management&nbsp;Division&lt;br&gt;<br>
+&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp;163-8003&nbsp;Japan&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp;KDDI&nbsp;Bldg,2-3-2,Nishishinjyuku,Shinjuku-ku,Tokyo&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp;TEL:+81-80-5077-9690&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp;E-mail：&lt;a&nbsp;href=&quot;mailto:ry-oogami@kddi.com&quot;&nbsp;target=&quot;_blank&quot;&gt;ry-oogami@kddi.com&lt;/a&gt;&nbsp;&lt;mailto:&lt;a&nbsp;href=&quot;mailto:ry-oogami@kddi.com&quot;&nbsp;target=&quot;_blank&quot;&gt;ry-oogami@kddi.com&lt;/a&gt;&gt;&nbsp;&lt;br&gt;<br>
+&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp;=====================&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp;NOTE:&nbsp;This&nbsp;electronic&nbsp;mail&nbsp;message&nbsp;may&nbsp;contain&nbsp;confidential&nbsp;and&lt;br&gt;<br>
+　　 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;privileged&nbsp;information&nbsp;from&nbsp;KDDI&nbsp;Corporation.&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;If&nbsp;you&nbsp;are&nbsp;not&nbsp;the&nbsp;intended&nbsp;recipient,&nbsp;any&nbsp;disclosure,&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;photocopying,&nbsp;distribution&nbsp;or&nbsp;use&nbsp;of&nbsp;the&nbsp;contents&nbsp;of&nbsp;the&nbsp;received&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;information&nbsp;is&nbsp;prohibited.&nbsp;If&nbsp;you&nbsp;have&nbsp;received&nbsp;this&nbsp;e-mail&nbsp;in&nbsp;error,&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;please&nbsp;notify&nbsp;the&nbsp;sender&nbsp;immediately&nbsp;and&nbsp;permanently&nbsp;delete&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;this&nbsp;message&nbsp;and&nbsp;all&nbsp;related&nbsp;copies.&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp;=====================&lt;br&gt;<br>
+&lt;br&gt;<br>
+&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp;_______________________________________________&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp;stratum-dev&nbsp;mailing&nbsp;list&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp;&lt;a&nbsp;href=&quot;mailto:stratum-dev@lists.stratumproject.org&quot;&nbsp;target=&quot;_blank&quot;&gt;stratum-dev@lists.stratumproject.org&lt;/a&gt;&nbsp;&lt;mailto:&lt;a&nbsp;href=&quot;mailto:stratum-dev@lists.stratumproject.org&quot;&nbsp;target=&quot;_blank&quot;&gt;stratum-dev@lists.stratumproject.org&lt;/a&gt;&gt;&nbsp;&lt;br&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp;&lt;a&nbsp;href=&quot;https://lists.stratumproject.org/listinfo/stratum-dev&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;https://lists.stratumproject.org/listinfo/stratum-dev&lt;/a&gt;&lt;br&gt;<br>
+&lt;br&gt;<br>
+&lt;/blockquote&gt;&lt;/div&gt;<br>
+
+</tt>

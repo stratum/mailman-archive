@@ -1,0 +1,189 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [stratum-dev] Update Bazel version to 2.2.0
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Update%20Bazel%20version%20to%202.2.0&In-Reply-To=%3Cca635b6054e74331b75c3ac20af06ff3%40kau.se%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <LINK REL="Previous"  HREF="000037.html">
+   <LINK REL="Next"  HREF="000035.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[stratum-dev] Update Bazel version to 2.2.0</H1>
+    <B>Deval Bhamare</B> 
+    <A HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Update%20Bazel%20version%20to%202.2.0&In-Reply-To=%3Cca635b6054e74331b75c3ac20af06ff3%40kau.se%3E"
+       TITLE="[stratum-dev] Update Bazel version to 2.2.0">Deval.Bhamare at kau.se
+       </A><BR>
+    <I>Thu Mar  5 15:10:44 UTC 2020</I>
+    <P><UL>
+        <LI>Previous message (by thread): <A HREF="000037.html">[stratum-dev] Update Bazel version to 2.2.0
+</A></li>
+        <LI>Next message (by thread): <A HREF="000035.html">[stratum-dev] Update Bazel version to 2.2.0
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#34">[ date ]</a>
+              <a href="thread.html#34">[ thread ]</a>
+              <a href="subject.html#34">[ subject ]</a>
+              <a href="author.html#34">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+
+So as per the suggestions in the errors, and further suggestions, I commented out the single_file attribute in the repository rule in pip.bzl.
+
+
+So the build went ahead and now I am getting error:
+
+
+DEBUG: Call stack for the definition of repository 'build_stack_rules_proto' which is a http_archive (rule definition at /home/tofino/.cache/bazel/_bazel_tofino/1b07b1db06ec9ee22c71eac6f0bd4549/external/bazel_tools/tools/build_defs/repo/http.bzl:296:16):
+
+ - &lt;builtin&gt;
+
+ - /stratum/bazel/workspace_rule.bzl:62:5
+
+ - /stratum/bazel/workspace_rule.bzl:144:22
+
+ - /stratum/bazel/deps.bzl:87:9
+
+ - /stratum/WORKSPACE:55:1
+
+ERROR: /stratum/stratum/hal/bin/barefoot/BUILD:24:1: file '//bazel:rules.bzl' does not contain symbol 'stratum_cc_binary'
+
+ERROR: Skipping '//stratum/hal/bin/barefoot:stratum_bf': no such target '//stratum/hal/bin/barefoot:stratum_bf': target 'stratum_bf' not declared in package 'stratum/hal/bin/barefoot' defined by /stratum/stratum/hal/bin/barefoot/BUILD
+
+WARNING: Target pattern parsing failed.
+
+ERROR: no such target '//stratum/hal/bin/barefoot:stratum_bf': target 'stratum_bf' not declared in package 'stratum/hal/bin/barefoot' defined by /stratum/stratum/hal/bin/barefoot/BUILD
+
+INFO: Elapsed time: 29.345s
+
+INFO: 0 processes.
+
+FAILED: Build did NOT complete successfully (1 packages loaded)
+
+
+
+No idea how to deal with it. Please suggest.
+
+
+Thanks,
+
+Deval.
+
+
+
+________________________________
+From: stratum-dev &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev-bounces at lists.stratumproject.org</A>&gt; on behalf of Deval Bhamare via stratum-dev &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>&gt;
+Sent: Thursday, March 5, 2020 3:04:49 PM
+To: Yi Tseng; <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>
+Subject: Re: [stratum-dev] Update Bazel version to 2.2.0
+
+
+Forgot to paste the error message:
+
+
+ERROR: /home/tofino/.cache/bazel/_bazel_tofino/1b07b1db06ec9ee22c71eac6f0bd4549/external/io_bazel_rules_python/python/pip.bzl:39:25: Traceback (most recent call last):
+
+File &quot;/home/tofino/.cache/bazel/_bazel_tofino/1b07b1db06ec9ee22c71eac6f0bd4549/external/io_bazel_rules_python/python/pip.bzl&quot;, line 37
+
+repository_rule(&lt;2 more arguments&gt;)
+
+File &quot;/home/tofino/.cache/bazel/_bazel_tofino/1b07b1db06ec9ee22c71eac6f0bd4549/external/io_bazel_rules_python/python/pip.bzl&quot;, line 39, in repository_rule
+
+attr.label(allow_files = True, &lt;2 more arguments&gt;)
+
+'single_file' is no longer supported. use allow_single_file instead. You can use --incompatible_disable_deprecated_attr_params=false to temporarily disable this check.
+
+ERROR: error loading package '': Extension file 'python/pip.bzl' has errors
+
+ERROR: error loading package '': Extension file 'python/pip.bzl' has errors
+
+INFO: Elapsed time: 9.195s
+
+INFO: 0 processes.
+
+FAILED: Build did NOT complete successfully (0 packages loaded)
+
+
+
+Thanks,
+
+
+Deval.
+
+________________________________
+From: Deval Bhamare
+Sent: Thursday, March 5, 2020 3:04:13 PM
+To: Yi Tseng; <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>
+Subject: Re: [stratum-dev] Update Bazel version to 2.2.0
+
+
+Hello Yi,
+
+
+Thanks for the updates. I had reported this earlier as well, but with the Bazel version to 2.2.0 , I get following error:
+
+
+
+I also had reported the error I get with previous container image (older Bazel version).
+
+
+Please suggest. Thank you.
+
+________________________________
+From: stratum-dev &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev-bounces at lists.stratumproject.org</A>&gt; on behalf of Yi Tseng via stratum-dev &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>&gt;
+Sent: Thursday, March 5, 2020 2:10:35 AM
+To: <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>
+Subject: [stratum-dev] Update Bazel version to 2.2.0
+
+Hello Stratum developers:
+
+Today we updated the Bazel version to 2.2.0 (see #84&lt;<A HREF="https://github.com/stratum/stratum/pull/84">https://github.com/stratum/stratum/pull/84</A>&gt;)
+
+Please run ./setup_dev_env.sh --pull to get new Stratum development container image.
+
+Feel free to let us know if you have any questions or issues with new Bazel
+
+Yi Tseng
+Member of Technical Staff
+Open Networking Foundation
+<A HREF="https://www.opennetworking.org/">https://www.opennetworking.org/</A>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.stratumproject.org/archives/stratum-dev/attachments/20200305/b2109dc2/attachment-0001.html">https://lists.stratumproject.org/archives/stratum-dev/attachments/20200305/b2109dc2/attachment-0001.html</A>&gt;
+</PRE>
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message (by thread): <A HREF="000037.html">[stratum-dev] Update Bazel version to 2.2.0
+</A></li>
+	<LI>Next message (by thread): <A HREF="000035.html">[stratum-dev] Update Bazel version to 2.2.0
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#34">[ date ]</a>
+              <a href="thread.html#34">[ thread ]</a>
+              <a href="subject.html#34">[ subject ]</a>
+              <a href="author.html#34">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.stratumproject.org/listinfo/stratum-dev">More information about the stratum-dev
+mailing list</a><br>
+</body></html>

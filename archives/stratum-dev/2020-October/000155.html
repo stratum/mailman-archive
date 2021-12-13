@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [stratum-dev] Can I build stratum_bf with dynamic load of the grpc	library?
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Can%20I%20build%20stratum_bf%20with%20dynamic%20load%20of%20the%20grpc%0A%09library%3F&In-Reply-To=%3CBY5PR04MB6342E8E7C84C75AF907FF730AD060%40BY5PR04MB6342.namprd04.prod.outlook.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <LINK REL="Previous"  HREF="000154.html">
+   <LINK REL="Next"  HREF="000156.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[stratum-dev] Can I build stratum_bf with dynamic load of the grpc	library?</H1>
+    <B>Narada Hess</B> 
+    <A HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Can%20I%20build%20stratum_bf%20with%20dynamic%20load%20of%20the%20grpc%0A%09library%3F&In-Reply-To=%3CBY5PR04MB6342E8E7C84C75AF907FF730AD060%40BY5PR04MB6342.namprd04.prod.outlook.com%3E"
+       TITLE="[stratum-dev] Can I build stratum_bf with dynamic load of the grpc	library?">NHESS at extremenetworks.com
+       </A><BR>
+    <I>Sun Oct 11 15:35:14 UTC 2020</I>
+    <P><UL>
+        <LI>Previous message (by thread): <A HREF="000154.html">[stratum-dev] [stratum-announce] Stratum 2020-09-30 release is	available!
+</A></li>
+        <LI>Next message (by thread): <A HREF="000156.html">[stratum-dev] Can I build stratum_bf with dynamic load of the grpc library?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#155">[ date ]</a>
+              <a href="thread.html#155">[ thread ]</a>
+              <a href="subject.html#155">[ subject ]</a>
+              <a href="author.html#155">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+I'm trying to build stratum_bf with the BF SDE BF-Runtime server enabled. That requires building the SDE with gRPC. Of course, when I try to run stratum_bf, it crashes because of the two instances of the gRPC library (see below).
+
+Is there any way to build stratum_bf with dynamic linking of the gRPC (and protobuf too, I'm guessing) library? I saw half a dozen files in the bazel directory referencing gRPC. Just removing the references of course did not work.
+
+Thanks for any suggestions on how to proceed. N
+
+
+/usr/local/bin/stratum_bf -flagfile=/etc/service/stratum/stratum-tofino-model.flags
+
+[libprotobuf ERROR external/com_google_protobuf/src/google/protobuf/descriptor_database.cc:120] File already exists in database: google/protobuf/descriptor.proto [libprotobuf FATAL external/com_google_protobuf/src/google/protobuf/descriptor.cc:1382] CHECK failed: GeneratedDatabase()-\u003eAdd(encoded_file_descriptor, size):
+
+terminate called after throwing an instance of 'google::protobuf::FatalException'
+
+  what():  CHECK failed: GeneratedDatabase()-\u003eAdd(encoded_file_descriptor, size):
+
+Aborted (core dumped)
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.stratumproject.org/archives/stratum-dev/attachments/20201011/0a8c3118/attachment.html">https://lists.stratumproject.org/archives/stratum-dev/attachments/20201011/0a8c3118/attachment.html</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message (by thread): <A HREF="000154.html">[stratum-dev] [stratum-announce] Stratum 2020-09-30 release is	available!
+</A></li>
+	<LI>Next message (by thread): <A HREF="000156.html">[stratum-dev] Can I build stratum_bf with dynamic load of the grpc library?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#155">[ date ]</a>
+              <a href="thread.html#155">[ thread ]</a>
+              <a href="subject.html#155">[ subject ]</a>
+              <a href="author.html#155">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.stratumproject.org/listinfo/stratum-dev">More information about the stratum-dev
+mailing list</a><br>
+</body></html>

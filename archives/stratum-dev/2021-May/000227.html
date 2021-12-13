@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [stratum-dev] How to set log levels with -vmodule
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20How%20to%20set%20log%20levels%20with%20-vmodule&In-Reply-To=%3CBN6PR04MB11381F8ABDACFE8F1226B725AD519%40BN6PR04MB1138.namprd04.prod.outlook.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <LINK REL="Previous"  HREF="000225.html">
+   <LINK REL="Next"  HREF="000228.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[stratum-dev] How to set log levels with -vmodule</H1>
+    <B>Narada Hess</B> 
+    <A HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20How%20to%20set%20log%20levels%20with%20-vmodule&In-Reply-To=%3CBN6PR04MB11381F8ABDACFE8F1226B725AD519%40BN6PR04MB1138.namprd04.prod.outlook.com%3E"
+       TITLE="[stratum-dev] How to set log levels with -vmodule">NHESS at extremenetworks.com
+       </A><BR>
+    <I>Thu May 13 20:19:30 UTC 2021</I>
+    <P><UL>
+        <LI>Previous message (by thread): <A HREF="000225.html">[stratum-dev] How to set log levels with -vmodule
+</A></li>
+        <LI>Next message (by thread): <A HREF="000228.html">[stratum-dev] How to set log levels with -vmodule
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#227">[ date ]</a>
+              <a href="thread.html#227">[ thread ]</a>
+              <a href="subject.html#227">[ subject ]</a>
+              <a href="author.html#227">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Clarifying for the list after today's TST meeting (please correct me if I'm wrong).
+
+The way to get the max logging of everything would be to set:
+-minloglevel=0
+-v=5
+
+In other words, log everything INFO and above at the maximum verbosity (5). And verbosity only affects messages at INFO level.
+
+Now that I understand log level vs verbosity, I'll play with the -vmodule option and let you know what I find. N
+
+From: Maximilian Pudelko &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">max at opennetworking.org</A>&gt;
+Sent: Wednesday, May 12, 2021 5:50 PM
+To: Narada Hess &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">NHESS at extremenetworks.com</A>&gt;
+Cc: <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>
+Subject: Re: [stratum-dev] How to set log levels with -vmodule
+
+External Email: Use caution in opening links or attachments.
+According to this SO&lt;<A HREF="https://nam12.safelinks.protection.outlook.com/?url=https%3A%2F%2Fstackoverflow.com%2Fa%2F45920794&amp;data=04%7C01%7CNHESS%40extremenetworks.com%7Cb9989250f8ba4ef2fd2508d915a91318%7Cfc8c2bf6914d4c1fb35246a9adb87030%7C0%7C0%7C637564638183830756%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000&amp;sdata=QvP4lAYO6b2ucrIJQuTKG1AYOQE%2BLpv30qX6wm5Ayvo%3D&amp;reserved=0">https://nam12.safelinks.protection.outlook.com/?url=https%3A%2F%2Fstackoverflow.com%2Fa%2F45920794&amp;data=04%7C01%7CNHESS%40extremenetworks.com%7Cb9989250f8ba4ef2fd2508d915a91318%7Cfc8c2bf6914d4c1fb35246a9adb87030%7C0%7C0%7C637564638183830756%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000&amp;sdata=QvP4lAYO6b2ucrIJQuTKG1AYOQE%2BLpv30qX6wm5Ayvo%3D&amp;reserved=0</A>&gt; post the -vmodule parameter is based on the source code file name. So -vmodule=p4_service=2
+should print all VLOG(2) and below messages. I don't see a way to limit ERROR/WARNING/INFO on a per-module
+basis, though.
+
+The BFRT code is an entire different topic as it uses its own logging library without any hooks for us. We're pretty much
+limited to letting bfrt print to stdout. The current code enables logging of a few select modules:
+<A HREF="https://github.com/stratum/stratum/blob/main/stratum/hal/lib/barefoot/bf_sde_wrapper.cc#L1514-L1528&lt;https://nam12.safelinks.protection.outlook.com/?url=https%3A%2F%2Fgithub.com%2Fstratum%2Fstratum%2Fblob%2Fmain%2Fstratum%2Fhal%2Flib%2Fbarefoot%2Fbf_sde_wrapper.cc%23L1514-L1528&amp;data=04%7C01%7CNHESS%40extremenetworks.com%7Cb9989250f8ba4ef2fd2508d915a91318%7Cfc8c2bf6914d4c1fb35246a9adb87030%7C0%7C0%7C637564638183840751%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000&amp;sdata=%2Fy4Qydn9ND1c0WTVmMT0OCZcz3m82%2BXivD47E46umpM%3D&amp;reserved=0">https://github.com/stratum/stratum/blob/main/stratum/hal/lib/barefoot/bf_sde_wrapper.cc#L1514-L1528&lt;https://nam12.safelinks.protection.outlook.com/?url=https%3A%2F%2Fgithub.com%2Fstratum%2Fstratum%2Fblob%2Fmain%2Fstratum%2Fhal%2Flib%2Fbarefoot%2Fbf_sde_wrapper.cc%23L1514-L1528&amp;data=04%7C01%7CNHESS%40extremenetworks.com%7Cb9989250f8ba4ef2fd2508d915a91318%7Cfc8c2bf6914d4c1fb35246a9adb87030%7C0%7C0%7C637564638183840751%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000&amp;sdata=%2Fy4Qydn9ND1c0WTVmMT0OCZcz3m82%2BXivD47E46umpM%3D&amp;reserved=0</A>&gt;
+But that happened on a as-needed basis without any major planing. Full integration will require code
+changes on the SDE side to allow something like callbacks or streams. Feel free to lobby for that at Intel :D
+
+
+Max
+
+On Wed, May 12, 2021 at 3:39 PM Narada Hess via stratum-dev &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>&lt;mailto:<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>&gt;&gt; wrote:
+Hi All,
+I have used -v=&lt;level&gt; successfully in the stratum flags file. But when I add -vmodule=&lt;x=y&gt;, it does not seem to take effect. What am I doing wrong?
+
+Also, how do you set the log levels for the barefoot modules (as opposed to the stratum code per se)? Thanks, N
+
+Separate examples:
+-v=5
+-vmodule=p4_service=0
+
+-v=5
+-vmodule=&quot;p4_service=0&quot;
+
+-v=5
+-vmodule=bfrt_*=0
+
+_______________________________________________
+stratum-dev mailing list
+<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>&lt;mailto:<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>&gt;
+<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev&lt;https://nam12.safelinks.protection.outlook.com/?url=https%3A%2F%2Flists.stratumproject.org%2Flistinfo%2Fstratum-dev&amp;data=04%7C01%7CNHESS%40extremenetworks.com%7Cb9989250f8ba4ef2fd2508d915a91318%7Cfc8c2bf6914d4c1fb35246a9adb87030%7C0%7C0%7C637564638183850747%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000&amp;sdata=sb69FdhGVjcLpZvlIS4Q0bwtLCSX0X9dAt6Hg8DDR%2FY%3D&amp;reserved=0">https://lists.stratumproject.org/listinfo/stratum-dev&lt;https://nam12.safelinks.protection.outlook.com/?url=https%3A%2F%2Flists.stratumproject.org%2Flistinfo%2Fstratum-dev&amp;data=04%7C01%7CNHESS%40extremenetworks.com%7Cb9989250f8ba4ef2fd2508d915a91318%7Cfc8c2bf6914d4c1fb35246a9adb87030%7C0%7C0%7C637564638183850747%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000&amp;sdata=sb69FdhGVjcLpZvlIS4Q0bwtLCSX0X9dAt6Hg8DDR%2FY%3D&amp;reserved=0</A>&gt;
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.stratumproject.org/archives/stratum-dev/attachments/20210513/da9e6324/attachment.html">https://lists.stratumproject.org/archives/stratum-dev/attachments/20210513/da9e6324/attachment.html</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message (by thread): <A HREF="000225.html">[stratum-dev] How to set log levels with -vmodule
+</A></li>
+	<LI>Next message (by thread): <A HREF="000228.html">[stratum-dev] How to set log levels with -vmodule
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#227">[ date ]</a>
+              <a href="thread.html#227">[ thread ]</a>
+              <a href="subject.html#227">[ subject ]</a>
+              <a href="author.html#227">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.stratumproject.org/listinfo/stratum-dev">More information about the stratum-dev
+mailing list</a><br>
+</body></html>

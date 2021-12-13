@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [stratum-dev] Confused about how to run Stratum
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Confused%20about%20how%20to%20run%20Stratum&In-Reply-To=%3CVI1PR06MB5214C9DD92630F93DC88F785B5630%40VI1PR06MB5214.eurprd06.prod.outlook.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <LINK REL="Previous"  HREF="000108.html">
+   <LINK REL="Next"  HREF="000111.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[stratum-dev] Confused about how to run Stratum</H1>
+    <B>David Lake</B> 
+    <A HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Confused%20about%20how%20to%20run%20Stratum&In-Reply-To=%3CVI1PR06MB5214C9DD92630F93DC88F785B5630%40VI1PR06MB5214.eurprd06.prod.outlook.com%3E"
+       TITLE="[stratum-dev] Confused about how to run Stratum">d.lake at surrey.ac.uk
+       </A><BR>
+    <I>Sun Jul 12 13:08:51 UTC 2020</I>
+    <P><UL>
+        <LI>Previous message (by thread): <A HREF="000108.html">[stratum-dev] Stratum TST meeting canceled this week (Jul 2)
+</A></li>
+        <LI>Next message (by thread): <A HREF="000111.html">[stratum-dev] Confused about how to run Stratum
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#109">[ date ]</a>
+              <a href="thread.html#109">[ thread ]</a>
+              <a href="subject.html#109">[ subject ]</a>
+              <a href="author.html#109">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello
+
+I have a Wedge 100BF-32x switch running 4.14.151-OpenNetworkLinux.
+
+I have BF SDE 9.1.0 installed.
+
+I have successfully built the SDE using the stratum_profile.yaml.
+
+The instructions for Stratum say to pull a docker container but:
+
+
+  1.  Docker is not installed on the switch.
+  2.  When I do install docker-ce and try to pull there is no image available.
+
+I then tried to follow the instructions to build Stratum to install via dpkg:
+
+bazel build //stratum/hal/bin/barefoot:stratum_bf_deb [--define phal_with_onlp=false] [--define sde_ver=9.2.0]
+
+But bazel is not installed on the switch?
+
+How can I run Stratum on this device please?
+
+Thanks
+
+David
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.stratumproject.org/archives/stratum-dev/attachments/20200712/36221bf5/attachment.html">https://lists.stratumproject.org/archives/stratum-dev/attachments/20200712/36221bf5/attachment.html</A>&gt;
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message (by thread): <A HREF="000108.html">[stratum-dev] Stratum TST meeting canceled this week (Jul 2)
+</A></li>
+	<LI>Next message (by thread): <A HREF="000111.html">[stratum-dev] Confused about how to run Stratum
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#109">[ date ]</a>
+              <a href="thread.html#109">[ thread ]</a>
+              <a href="subject.html#109">[ subject ]</a>
+              <a href="author.html#109">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.stratumproject.org/listinfo/stratum-dev">More information about the stratum-dev
+mailing list</a><br>
+</body></html>

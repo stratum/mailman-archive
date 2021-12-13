@@ -1,0 +1,130 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [stratum-dev] Stratum vs Ubuntu 18.04.5 LTS
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Stratum%20vs%20Ubuntu%2018.04.5%20LTS&In-Reply-To=%3CCACKOpDka0zBVuppaz8s%2B0zLpggQhJt5WMAeKiG4-dQBic-d0Bw%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <LINK REL="Previous"  HREF="000223.html">
+   <LINK REL="Next"  HREF="000224.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[stratum-dev] Stratum vs Ubuntu 18.04.5 LTS</H1>
+    <B>Brian O'Connor</B> 
+    <A HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Stratum%20vs%20Ubuntu%2018.04.5%20LTS&In-Reply-To=%3CCACKOpDka0zBVuppaz8s%2B0zLpggQhJt5WMAeKiG4-dQBic-d0Bw%40mail.gmail.com%3E"
+       TITLE="[stratum-dev] Stratum vs Ubuntu 18.04.5 LTS">bocon at opennetworking.org
+       </A><BR>
+    <I>Mon May 10 21:33:05 UTC 2021</I>
+    <P><UL>
+        <LI>Previous message (by thread): <A HREF="000223.html">[stratum-dev] Is there a limit on the # of ECMP groups stratum_bmv2 can handle?
+</A></li>
+        <LI>Next message (by thread): <A HREF="000224.html">[stratum-dev] How to set log levels with -vmodule
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#215">[ date ]</a>
+              <a href="thread.html#215">[ thread ]</a>
+              <a href="subject.html#215">[ subject ]</a>
+              <a href="author.html#215">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>(Adding the mailing list for quicker replies and broader community
+visibility)
+
+Stratum doesn't run in the kernel; it runs in user space. There should be
+no issues running on linux 5.4.
+
+In terms of the kernel, the Stratum target for Broadcom uses the Broadcom
+OpenNSA API, which has a few kernel modules. You may be able to recompile
+these modules for whatever kernel version you need; the sources are here:
+<A HREF="https://github.com/Broadcom-Network-Switching-Software/OpenNSA">https://github.com/Broadcom-Network-Switching-Software/OpenNSA</A>
+
+Out of curiosity, what is the ASIC or switching target that you plan to use
+for your project? Would BMv2 work (that would be entirely software with no
+kernel specific code)?
+<A HREF="https://github.com/stratum/stratum/tree/main/stratum/hal/bin/bmv2">https://github.com/stratum/stratum/tree/main/stratum/hal/bin/bmv2</A>
+
+Thanks, and sorry for the delayed reply!
+
+Brian
+
+
+On Fri, Apr 30, 2021 at 12:36 PM Fernando Henrique Santorsula &lt;
+<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">f208918 at dac.unicamp.br</A>&gt; wrote:
+
+&gt;<i> Hi Brian, how are you?
+</I>&gt;<i>
+</I>&gt;<i> My name is Fernando, I am from Brazil (Indaiatuba / São Paulo), and I need
+</I>&gt;<i> to ask a question about Stratum please!
+</I>&gt;<i>
+</I>&gt;<i> I am a master student in Computer Engineering and I need Strato OS to
+</I>&gt;<i> transform it into a programmable access point in P4
+</I>&gt;<i>
+</I>&gt;<i> However used in the kernel: 5.4.0-72-generic and is not a version listed
+</I>&gt;<i> in the link:
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="https://github.com/stratum/stratum/blob/main/stratum/hal/bin/bcm/standalone/README.md">https://github.com/stratum/stratum/blob/main/stratum/hal/bin/bcm/standalone/README.md</A>
+</I>&gt;<i>
+</I>&gt;<i> Could you tell me an installation source where I can install Stratum in
+</I>&gt;<i> this kernel version: 5.4.0-72-generic and run Stratum for my search request
+</I>&gt;<i> please? If Stratum does not support this kernel version, could you please
+</I>&gt;<i> inform me, any other software that does the same job as Stratum, in this
+</I>&gt;<i> kernel I mentioned, running on Ubuntu 18.04?
+</I>&gt;<i>
+</I>&gt;<i> I thank you for reading and I await your return as soon as possible, I am
+</I>&gt;<i> concerned because I have 30 days to present this project, due to health
+</I>&gt;<i> problems, I was unable to do the work before, could you help me with this
+</I>&gt;<i> technical matter please? Thank you very much Brian, take care of yourself,
+</I>&gt;<i> a hug.
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i> Regards,
+</I>&gt;<i>
+</I>&gt;<i> Fernando Henrique Santorsula
+</I>&gt;<i> UNICAMP - Campinas/SP
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.stratumproject.org/archives/stratum-dev/attachments/20210510/6f546093/attachment-0001.html">https://lists.stratumproject.org/archives/stratum-dev/attachments/20210510/6f546093/attachment-0001.html</A>&gt;
+</PRE>
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message (by thread): <A HREF="000223.html">[stratum-dev] Is there a limit on the # of ECMP groups stratum_bmv2 can handle?
+</A></li>
+	<LI>Next message (by thread): <A HREF="000224.html">[stratum-dev] How to set log levels with -vmodule
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#215">[ date ]</a>
+              <a href="thread.html#215">[ thread ]</a>
+              <a href="subject.html#215">[ subject ]</a>
+              <a href="author.html#215">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.stratumproject.org/listinfo/stratum-dev">More information about the stratum-dev
+mailing list</a><br>
+</body></html>

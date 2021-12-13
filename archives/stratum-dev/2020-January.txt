@@ -1,0 +1,711 @@
+From bocon at opennetworking.org  Tue Jan  7 01:49:00 2020
+From: bocon at opennetworking.org (Brian O'Connor)
+Date: Mon, 6 Jan 2020 17:49:00 -0800
+Subject: [stratum-dev] Stratum TST Meeting
+Message-ID: <CACKOpDn53r6RKfOhC4NT7naB4-KzTRv6KoFYtVWQaRTqG_snzw@mail.gmail.com>
+
+Happy New Year!
+
+Our first scheduled meeting of the year is scheduled for:
+Thursday, January 9⋅10:00 – 10:30am PST
+
+New Year, New Call?
+
+   1.  There is a proposal for a new call time: Wed. 11:30am PST (San
+   Francisco) / 8:30pm CET (Berlin) / Thurs 6:30am AEDT (Sydney). Are there
+   any objections to this time slot? (during the summer months, we might adopt
+   a different time)
+   2. Meeting cadence: We currently have this meeting weekly. The thinking
+   is to make the 1st and 3rd Wednesdays as larger meetings with scheduled
+   presentations, and the other meetings more like sync-up / stand ups that
+   are about going over current status and issues. Thoughts?
+   3. Moving to Zoom. Be on the lookout for a new conferencing link in the
+   calendar invite.
+
+If there are no objections on the new time, we can move this week's
+meeting. If there are any concerns, we can keep the previously scheduled
+time and discuss on Thursday.
+
+Thanks!
+Brian
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20200106/2393141b/attachment.html>
+
+From bocon at opennetworking.org  Wed Jan  8 09:01:32 2020
+From: bocon at opennetworking.org (Brian O'Connor)
+Date: Wed, 8 Jan 2020 01:01:32 -0800
+Subject: [stratum-dev] Stratum TST Meeting
+In-Reply-To: <CACKOpDn53r6RKfOhC4NT7naB4-KzTRv6KoFYtVWQaRTqG_snzw@mail.gmail.com>
+References: <CACKOpDn53r6RKfOhC4NT7naB4-KzTRv6KoFYtVWQaRTqG_snzw@mail.gmail.com>
+Message-ID: <CACKOpDn7EgDGHsSg6qD2RqAnaEshbtkp3Ed-5E6tAss37qU5aA@mail.gmail.com>
+
+Hi everyone,
+
+Let's keep the meeting at 10am PST on Thursday this week; a new time slot
+will be on the agenda.
+
+Thanks!
+Brian
+
+On Mon, Jan 6, 2020 at 5:49 PM Brian O'Connor <bocon at opennetworking.org>
+wrote:
+
+> Happy New Year!
+>
+> Our first scheduled meeting of the year is scheduled for:
+> Thursday, January 9⋅10:00 – 10:30am PST
+>
+> New Year, New Call?
+>
+>    1.  There is a proposal for a new call time: Wed. 11:30am PST (San
+>    Francisco) / 8:30pm CET (Berlin) / Thurs 6:30am AEDT (Sydney). Are there
+>    any objections to this time slot? (during the summer months, we might adopt
+>    a different time)
+>    2. Meeting cadence: We currently have this meeting weekly. The
+>    thinking is to make the 1st and 3rd Wednesdays as larger meetings with
+>    scheduled presentations, and the other meetings more like sync-up / stand
+>    ups that are about going over current status and issues. Thoughts?
+>    3. Moving to Zoom. Be on the lookout for a new conferencing link in
+>    the calendar invite.
+>
+> If there are no objections on the new time, we can move this week's
+> meeting. If there are any concerns, we can keep the previously scheduled
+> time and discuss on Thursday.
+>
+> Thanks!
+> Brian
+>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20200108/417a51b9/attachment.html>
+
+From bocon at opennetworking.org  Thu Jan  9 17:43:24 2020
+From: bocon at opennetworking.org (bocon at opennetworking.org)
+Date: Thu, 09 Jan 2020 17:43:24 +0000
+Subject: [stratum-dev] Updated invitation with note: Stratum Project Team @
+ Thu Jan 9, 2020 10am - 10:30am (PST) (stratum-dev@lists.stratumproject.org)
+Message-ID: <000000000000c2d4d4059bb88bb4@google.com>
+
+This event has been changed with this note:
+"Updated Zoom Meeting"
+
+Title: Stratum Project Team
+Stratum Team MeetingAgenda for meetings -  
+https://docs.google.com/document/d/1-bHfORugMPEdcj3I9M_CJKhszrmARcmvPQu0vDQRD5Y/edit?usp=sharing  
+Meeting notes/presentations -  
+https://drive.google.com/drive/folders/1YLKEc80r3R9hpAb2A5YZdhdz30u2jEBn?usp=sharing  
+Topic: Stratum TSTTime: Jan 9, 2020 10:00 AM Pacific Time (US and  
+Canada)Join Zoom Meetinghttps://zoom.us/j/602389841Meeting ID: 602 389  
+841One tap mobile+16699006833,,602389841# US (San  
+Jose)+19292056099,,602389841# US (New York)Dial by your location&nbsp;  
+&nbsp; &nbsp; &nbsp; +1 669 900 6833 US (San Jose)&nbsp; &nbsp; &nbsp;  
+&nbsp; +1 929 205 6099 US (New York)&nbsp; &nbsp; &nbsp; &nbsp; 888 788  
+0099 US Toll-free&nbsp; &nbsp; &nbsp; &nbsp; 877 853 5247 US  
+Toll-freeMeeting ID: 602 389 841Find your local number:  
+https://zoom.us/u/abOfU2EASr (changed)
+When: Thu Jan 9, 2020 10am – 10:30am Pacific Time - Los Angeles
+Where: SVL-MAT3-4-Ulysses (5) [GVC]
+Calendar: stratum-dev at lists.stratumproject.org
+Who:
+     * bocon at opennetworking.org - creator
+     * bill at opennetworking.org
+     * Arkadiy Shapiro
+     * Alireza Ghaffarkhah
+     * stratum-members at lists.stratumproject.org
+     * carmelo at opennetworking.org
+     * Devjit Gopalpur
+     * stratum-dev at lists.stratumproject.org
+
+Event details:  
+https://www.google.com/calendar/event?action=VIEW&eid=MzU0cG1zcjdla2Q1bXAzcjE4dHZqZjZoaWJfMjAyMDAxMDlUMTgwMDAwWiBzdHJhdHVtLWRldkBsaXN0cy5zdHJhdHVtcHJvamVjdC5vcmc&tok=NzEjb3Blbm5ldHdvcmtpbmcub3JnX2Y1YjE0YjFiOHF1azNzbG0zOHJhc3BvdHRvQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb203MzgxNWI4ODcxNmVkYjc5MTFiNmU0MThlZjdmMTI2NGQwMTcyMGVh&ctz=America%2FLos_Angeles&hl=en&es=0
+
+Invitation from Google Calendar: https://www.google.com/calendar/
+
+You are receiving this courtesy email at the account  
+stratum-dev at lists.stratumproject.org because you are an attendee of this  
+event.
+
+To stop receiving future updates for this event, decline this event.  
+Alternatively you can sign up for a Google account at  
+https://www.google.com/calendar/ and control your notification settings for  
+your entire calendar.
+
+Forwarding this invitation could allow any recipient to send a response to  
+the organizer and be added to the guest list, or invite others regardless  
+of their own invitation status, or to modify your RSVP. Learn more at  
+https://support.google.com/calendar/answer/37135#forwarding
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20200109/51d94aee/attachment-0001.html>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: not available
+Type: text/calendar
+Size: 4334 bytes
+Desc: not available
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20200109/51d94aee/attachment-0001.ics>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: invite.ics
+Type: application/ics
+Size: 4421 bytes
+Desc: not available
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20200109/51d94aee/attachment-0001.bin>
+
+From bocon at opennetworking.org  Tue Jan 14 02:24:59 2020
+From: bocon at opennetworking.org (bocon at opennetworking.org)
+Date: Tue, 14 Jan 2020 02:24:59 +0000
+Subject: [stratum-dev] Updated invitation: Stratum TST Meeting @ Thu Jan 16,
+ 2020 11:30am - 12pm (PST) (stratum-dev@lists.stratumproject.org)
+Message-ID: <0000000000007330d8059c104cd6@google.com>
+
+This event has been changed.
+
+Title: Stratum TST Meeting (changed)
+Stratum Technical Steering Team MeetingAgenda and Meeting  
+Noteshttps://docs.google.com/document/d/1ret8Vbnl-xbLgNsnDEH-jWP2_WwDYym4zDn6me3tiTA/editThe  
+plan is to reserve the 1st and 3rd Thursdays of each month for  
+presentations and community updates. If you can only attend some of these  
+meetings, those will be more interesting. The other meetings will be more  
+informal&nbsp;sync ups to discuss current issues, progress, and status. You  
+can see what presentations are planned by checking the agenda  
+above.Supporting Slides and Previous  
+Recordingshttps://drive.google.com/drive/folders/1ZeYp6RwIGYi9VnIctvnKF1c1NxiAXeOT----------------------------------------------------------------Join  
+Zoom Meetinghttps://zoom.us/j/787501745Meeting ID: 787 501 745One tap  
+mobile+16699006833,,787501745# US (San Jose)+19292056099,,787501745# US  
+(New York)Dial by your location&nbsp; &nbsp; &nbsp; &nbsp; +1 669 900 6833  
+US (San Jose)&nbsp; &nbsp; &nbsp; &nbsp; +1 929 205 6099 US (New  
+York)&nbsp; &nbsp; &nbsp; &nbsp; 888 788 0099 US Toll-free&nbsp; &nbsp;  
+&nbsp; &nbsp; 877 853 5247 US Toll-free&nbsp; &nbsp; &nbsp; &nbsp; +61 3  
+7018 2005 Australia&nbsp; &nbsp; &nbsp; &nbsp; +61 8 7150 1149  
+Australia&nbsp; &nbsp; &nbsp; &nbsp; +61 2 8015 6011 Australia&nbsp; &nbsp;  
+&nbsp; &nbsp; 1800 945 157 Australia Toll-free&nbsp; &nbsp; &nbsp; &nbsp;  
+1800 893 423 Australia Toll-free&nbsp; &nbsp; &nbsp; &nbsp; +81 524 564 439  
+Japan&nbsp; &nbsp; &nbsp; &nbsp; +81 3 4578 1488 Japan&nbsp; &nbsp; &nbsp;  
+&nbsp; 0 800 100 5040 Japan Toll-free&nbsp; &nbsp; &nbsp; &nbsp; 00 663 381  
+4092 Japan Toll-free&nbsp; &nbsp; &nbsp; &nbsp; +49 695 050 2596  
+Germany&nbsp; &nbsp; &nbsp; &nbsp; +49 69 7104 9922 Germany&nbsp; &nbsp;  
+&nbsp; &nbsp; +49 30 5679 5800 Germany&nbsp; &nbsp; &nbsp; &nbsp; 0 800  
+1800 150 Germany Toll-free&nbsp; &nbsp; &nbsp; &nbsp; 0 800 000 6954  
+Germany Toll-free&nbsp; &nbsp; &nbsp; &nbsp; +886 (2) 7741 7473  
+Taiwan&nbsp; &nbsp; &nbsp; &nbsp; 08 0909 9864 Taiwan Toll-free&nbsp;  
+&nbsp; &nbsp; &nbsp; +48 22 398 7356 Poland&nbsp; &nbsp; &nbsp; &nbsp; +48  
+22 307 3488 Poland&nbsp; &nbsp; &nbsp; &nbsp; 00 800 321 1464 Poland  
+Toll-free&nbsp; &nbsp; &nbsp; &nbsp; 00 800 112 5171 Poland Toll-free&nbsp;  
+&nbsp; &nbsp; &nbsp; +44 203 481 5240 United Kingdom&nbsp; &nbsp; &nbsp;  
+&nbsp; +44 131 460 1196 United Kingdom&nbsp; &nbsp; &nbsp; &nbsp; +44 203  
+051 2874 United Kingdom&nbsp; &nbsp; &nbsp; &nbsp; +44 203 481 5237 United  
+Kingdom&nbsp; &nbsp; &nbsp; &nbsp; 0 800 260 5801 United Kingdom  
+Toll-free&nbsp; &nbsp; &nbsp; &nbsp; 0 800 031 5717 United Kingdom  
+Toll-free&nbsp; &nbsp; &nbsp; &nbsp; +353 1 653 3895 Ireland&nbsp; &nbsp;  
+&nbsp; &nbsp; +353 6 163 9031 Ireland&nbsp; &nbsp; &nbsp; &nbsp; +353 1 536  
+9320 Ireland&nbsp; &nbsp; &nbsp; &nbsp; 1800 949 238 Ireland  
+Toll-free&nbsp; &nbsp; &nbsp; &nbsp; 1800 901 561 Ireland Toll-freeMeeting  
+ID: 787 501 745Find your local number:  
+https://zoom.us/u/adqQM87Zrg----------------------------------------------------------------If  
+you would like to get added to the calendar invite, please ask Brian.  
+(changed)
+When: Thu Jan 16, 2020 11:30am – 12pm Pacific Time - Los Angeles
+Where: MP-1-Large Conference Room (25), Zoom-3
+Calendar: stratum-dev at lists.stratumproject.org
+Who:
+     * bocon at opennetworking.org - creator
+     * stratum-dev at lists.stratumproject.org
+     * maksym.tropets at plvision.eu - optional
+     * mohammed.habeeb at inventec.com - optional
+     * Devjit Gopalpur - optional
+     * yi at opennetworking.org - optional
+     * Rich Renner - optional
+     * you at opennetworking.org - optional
+     * max at opennetworking.org - optional
+     * abhilash at opennetworking.org - optional
+     * Alireza Ghaffarkhah - optional
+     * maksym.kovaliov at plvision.eu - optional
+     * Arkadiy Shapiro - optional
+     * craig.stevens at dell.com - optional
+     * carmelo at opennetworking.org - optional
+     * Leonid Khedyk - optional
+     * hsuanchung.lee at qct.io - optional
+
+Event details:  
+https://www.google.com/calendar/event?action=VIEW&eid=NXNlYXJjbXJvOWtibWRpNTNmNzVnNXRlYXIgc3RyYXR1bS1kZXZAbGlzdHMuc3RyYXR1bXByb2plY3Qub3Jn&tok=NzEjb3Blbm5ldHdvcmtpbmcub3JnX3Z2M2xmdDg5ZTc5NGI0amxtcjNqOXAxcGVzQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb21mMTNmYjk1ZjIxYmY1YjlmNTQzMDc2YmJkMjI1NjA0ZGU5OTI1YTE5&ctz=America%2FLos_Angeles&hl=en&es=0
+
+Invitation from Google Calendar: https://www.google.com/calendar/
+
+You are receiving this courtesy email at the account  
+stratum-dev at lists.stratumproject.org because you are an attendee of this  
+event.
+
+To stop receiving future updates for this event, decline this event.  
+Alternatively you can sign up for a Google account at  
+https://www.google.com/calendar/ and control your notification settings for  
+your entire calendar.
+
+Forwarding this invitation could allow any recipient to send a response to  
+the organizer and be added to the guest list, or invite others regardless  
+of their own invitation status, or to modify your RSVP. Learn more at  
+https://support.google.com/calendar/answer/37135#forwarding
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20200114/1e2deacb/attachment-0001.html>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: not available
+Type: text/calendar
+Size: 8078 bytes
+Desc: not available
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20200114/1e2deacb/attachment-0001.ics>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: invite.ics
+Type: application/ics
+Size: 8204 bytes
+Desc: not available
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20200114/1e2deacb/attachment-0001.bin>
+
+From bocon at opennetworking.org  Tue Jan 14 02:33:01 2020
+From: bocon at opennetworking.org (Brian O'Connor)
+Date: Mon, 13 Jan 2020 18:33:01 -0800
+Subject: [stratum-dev] New Stratum TST Meeting Time Slot - Thurs. 11:30am PST
+Message-ID: <CACKOpDmrgL1mdykt2pFuZP5OYuUB8D7LjZZN0oc-kOg03vuaOA@mail.gmail.com>
+
+Hi all,
+
+You might have seen the new calendar invite for the weekly TST call.
+
+Agenda and Meeting Notes
+https://docs.google.com/document/d/1ret8Vbnl-xbLgNsnDEH-jWP2_WwDYym4zDn6me3tiTA/edit
+
+The plan is to reserve the *1st and 3rd Thursdays* of each month for
+presentations and community updates. If you can only attend some of these
+meetings, those will be more interesting. The other meetings will be more
+informal sync ups to discuss current issues, progress, and status. You can
+see what presentations are planned by checking the agenda above.
+
+The first meeting in this new time slot will be a "3rd Thursday," and the
+plan is to review the Stratum Q1 Roadmap.
+
+For Supporting Slides and Previous Recordings,
+https://drive.google.com/drive/folders/1ZeYp6RwIGYi9VnIctvnKF1c1NxiAXeOT
+
+The meetings are now on Zoom:
+https://zoom.us/j/787501745
+
+If you would like to be added to a future agenda or to the meeting invite,
+please let me know.
+
+Thanks!
+Brian
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20200113/5c47c64e/attachment.html>
+
+From bocon at opennetworking.org  Thu Jan 16 18:44:59 2020
+From: bocon at opennetworking.org (bocon at opennetworking.org)
+Date: Thu, 16 Jan 2020 18:44:59 +0000
+Subject: [stratum-dev] Reminder: Stratum TST @ 11:30pm PST today
+Message-ID: <000000000000e3e7ce059c463853@google.com>
+
+Hi everyone, We will have our first TST in the new time slot in about an  
+hour. Join Zoom Meeting https://zoom.us/j/787501745 Meeting ID: 787 501 745  
+- Brian
+
+Title: Stratum TST Meeting
+Stratum Technical Steering Team MeetingAgenda and Meeting  
+Noteshttps://docs.google.com/document/d/1ret8Vbnl-xbLgNsnDEH-jWP2_WwDYym4zDn6me3tiTA/editThe  
+plan is to reserve the 1st and 3rd Thursdays of each month for  
+presentations and community updates. If you can only attend some of these  
+meetings, those will be more interesting. The other meetings will be more  
+informal&nbsp;sync ups to discuss current issues, progress, and status. You  
+can see what presentations are planned by checking the agenda  
+above.Supporting Slides and Previous  
+Recordingshttps://drive.google.com/drive/folders/1ZeYp6RwIGYi9VnIctvnKF1c1NxiAXeOT----------------------------------------------------------------Join  
+Zoom Meetinghttps://zoom.us/j/787501745Meeting ID: 787 501 745One tap  
+mobile+16699006833,,787501745# US (San Jose)+19292056099,,787501745# US  
+(New York)Dial by your location&nbsp; &nbsp; &nbsp; &nbsp; +1 669 900 6833  
+US (San Jose)&nbsp; &nbsp; &nbsp; &nbsp; +1 929 205 6099 US (New  
+York)&nbsp; &nbsp; &nbsp; &nbsp; 888 788 0099 US Toll-free&nbsp; &nbsp;  
+&nbsp; &nbsp; 877 853 5247 US Toll-free&nbsp; &nbsp; &nbsp; &nbsp; +61 3  
+7018 2005 Australia&nbsp; &nbsp; &nbsp; &nbsp; +61 8 7150 1149  
+Australia&nbsp; &nbsp; &nbsp; &nbsp; +61 2 8015 6011 Australia&nbsp; &nbsp;  
+&nbsp; &nbsp; 1800 945 157 Australia Toll-free&nbsp; &nbsp; &nbsp; &nbsp;  
+1800 893 423 Australia Toll-free&nbsp; &nbsp; &nbsp; &nbsp; +81 524 564 439  
+Japan&nbsp; &nbsp; &nbsp; &nbsp; +81 3 4578 1488 Japan&nbsp; &nbsp; &nbsp;  
+&nbsp; 0 800 100 5040 Japan Toll-free&nbsp; &nbsp; &nbsp; &nbsp; 00 663 381  
+4092 Japan Toll-free&nbsp; &nbsp; &nbsp; &nbsp; +49 695 050 2596  
+Germany&nbsp; &nbsp; &nbsp; &nbsp; +49 69 7104 9922 Germany&nbsp; &nbsp;  
+&nbsp; &nbsp; +49 30 5679 5800 Germany&nbsp; &nbsp; &nbsp; &nbsp; 0 800  
+1800 150 Germany Toll-free&nbsp; &nbsp; &nbsp; &nbsp; 0 800 000 6954  
+Germany Toll-free&nbsp; &nbsp; &nbsp; &nbsp; +886 (2) 7741 7473  
+Taiwan&nbsp; &nbsp; &nbsp; &nbsp; 08 0909 9864 Taiwan Toll-free&nbsp;  
+&nbsp; &nbsp; &nbsp; +48 22 398 7356 Poland&nbsp; &nbsp; &nbsp; &nbsp; +48  
+22 307 3488 Poland&nbsp; &nbsp; &nbsp; &nbsp; 00 800 321 1464 Poland  
+Toll-free&nbsp; &nbsp; &nbsp; &nbsp; 00 800 112 5171 Poland Toll-free&nbsp;  
+&nbsp; &nbsp; &nbsp; +44 203 481 5240 United Kingdom&nbsp; &nbsp; &nbsp;  
+&nbsp; +44 131 460 1196 United Kingdom&nbsp; &nbsp; &nbsp; &nbsp; +44 203  
+051 2874 United Kingdom&nbsp; &nbsp; &nbsp; &nbsp; +44 203 481 5237 United  
+Kingdom&nbsp; &nbsp; &nbsp; &nbsp; 0 800 260 5801 United Kingdom  
+Toll-free&nbsp; &nbsp; &nbsp; &nbsp; 0 800 031 5717 United Kingdom  
+Toll-free&nbsp; &nbsp; &nbsp; &nbsp; +353 1 653 3895 Ireland&nbsp; &nbsp;  
+&nbsp; &nbsp; +353 6 163 9031 Ireland&nbsp; &nbsp; &nbsp; &nbsp; +353 1 536  
+9320 Ireland&nbsp; &nbsp; &nbsp; &nbsp; 1800 949 238 Ireland  
+Toll-free&nbsp; &nbsp; &nbsp; &nbsp; 1800 901 561 Ireland Toll-freeMeeting  
+ID: 787 501 745Find your local number:  
+https://zoom.us/u/adqQM87Zrg----------------------------------------------------------------If  
+you would like to get added to the calendar invite, please ask Brian.
+When: Thu Jan 16, 2020 11:30am – 12pm Pacific Time - Los Angeles
+Where: MP-1-Large Conference Room (25), (Online conference room)-Zoom-3
+Who:
+     * bocon at opennetworking.org - creator
+     * maksym.tropets at plvision.eu
+     * mohammed.habeeb at inventec.com
+     * stratum-dev at lists.stratumproject.org
+     * Devjit Gopalpur
+     * yi at opennetworking.org
+     * Rich Renner
+     * you at opennetworking.org
+     * max at opennetworking.org
+     * abhilash at opennetworking.org
+     * Alireza Ghaffarkhah
+     * maksym.kovaliov at plvision.eu
+     * Arkadiy Shapiro
+     * craig.stevens at dell.com
+     * carmelo at opennetworking.org
+     * Leonid Khedyk
+     * hsuanchung.lee at qct.io
+     * bill at opennetworking.org
+     * xiao.david at inventec.com
+     * jeff_catlin at edge-core.com
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20200116/616ee663/attachment-0001.html>
+
+From bocon at opennetworking.org  Thu Jan 16 20:17:59 2020
+From: bocon at opennetworking.org (bocon at opennetworking.org)
+Date: Thu, 16 Jan 2020 20:17:59 +0000
+Subject: [stratum-dev] Updated invitation with note: Stratum Project Team @
+ Every 2 weeks from 10am to 10:30am on Thursday from Thu Sep 19,
+ 2019 to Wed Jan 22 (PDT) (stratum-dev@lists.stratumproject.org)
+Message-ID: <00000000000077473f059c478513@google.com>
+
+This event has been changed with this note:
+"removing old 10:30am PST meeting"
+
+Title: Stratum Project Team
+Stratum Team Meeting
+
+Agenda for meetings -  
+https://docs.google.com/document/d/1-bHfORugMPEdcj3I9M_CJKhszrmARcmvPQu0vDQRD5Y/edit?usp=sharing
+
+Meeting notes/presentations -  
+https://drive.google.com/drive/folders/1YLKEc80r3R9hpAb2A5YZdhdz30u2jEBn?usp=sharing
+
+Please join my meeting from your computer, tablet or smartphone.
+https://global.gotomeeting.com/join/274603861
+
+You can also dial in using your phone.
+United States: +1 (571) 317-3129
+
+Access Code: 274-603-861
+
+More phone numbers
+Austria: +43 7 2081 5427
+Canada: +1 (647) 497-9391
+France: +33 170 950 594
+Germany: +49 691 7489 928
+Italy: +39 0 247 92 13 01
+Netherlands: +31 202 251 017
+Spain: +34 932 75 2004
+Switzerland: +41 225 4599 78
+United Kingdom: +44 20 3713 5028
+
+Joining from a video-conferencing room or system?
+Dial: 67.217.95.2##274603861
+Cisco devices: 274603861 at 67.217.95.2
+
+First GoToMeeting? Let's do a quick system check:  
+https://link.gotomeeting.com/system-check
+When: Every 2 weeks from 10am to 10:30am on Thursday from Thu Sep 19, 2019  
+to Wed Jan 22 Pacific Time - Los Angeles (changed)
+Where: SVL-MAT3-4-Ulysses (5) [GVC]
+Calendar: stratum-dev at lists.stratumproject.org
+Who:
+     * bocon at opennetworking.org - creator
+     * stratum-members at lists.stratumproject.org
+     * bill at opennetworking.org
+     * Arkadiy Shapiro
+     * Devjit Gopalpur
+     * Alireza Ghaffarkhah
+     * carmelo at opennetworking.org
+     * stratum-dev at lists.stratumproject.org
+
+Event details:  
+https://www.google.com/calendar/event?action=VIEW&eid=MzU0cG1zcjdla2Q1bXAzcjE4dHZqZjZoaWJfUjIwMTkwOTE5VDE3MDAwMCBzdHJhdHVtLWRldkBsaXN0cy5zdHJhdHVtcHJvamVjdC5vcmc&tok=NzEjb3Blbm5ldHdvcmtpbmcub3JnX2Y1YjE0YjFiOHF1azNzbG0zOHJhc3BvdHRvQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb204OTI3MDQ5MzFmMDZjMzM4NWVmYjg0OTQ5OWYyZDRhMTU5NjJjMDg0&ctz=America%2FLos_Angeles&hl=en&es=0
+
+Invitation from Google Calendar: https://www.google.com/calendar/
+
+You are receiving this courtesy email at the account  
+stratum-dev at lists.stratumproject.org because you are an attendee of this  
+event.
+
+To stop receiving future updates for this event, decline this event.  
+Alternatively you can sign up for a Google account at  
+https://www.google.com/calendar/ and control your notification settings for  
+your entire calendar.
+
+Forwarding this invitation could allow any recipient to send a response to  
+the organizer and be added to the guest list, or invite others regardless  
+of their own invitation status, or to modify your RSVP. Learn more at  
+https://support.google.com/calendar/answer/37135#forwarding
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20200116/1316573b/attachment-0001.html>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: not available
+Type: text/calendar
+Size: 4053 bytes
+Desc: not available
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20200116/1316573b/attachment-0001.ics>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: invite.ics
+Type: application/ics
+Size: 4136 bytes
+Desc: not available
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20200116/1316573b/attachment-0001.bin>
+
+From bocon at opennetworking.org  Thu Jan 16 20:17:59 2020
+From: bocon at opennetworking.org (bocon at opennetworking.org)
+Date: Thu, 16 Jan 2020 20:17:59 +0000
+Subject: [stratum-dev] Updated invitation with note: Stratum Project Team @
+ Every 2 weeks from 10am to 10:30am on Thursday from Thu Feb 7,
+ 2019 to Wed Jan 22 (PST) (stratum-dev@lists.stratumproject.org)
+Message-ID: <000000000000797c06059c478505@google.com>
+
+This event has been changed with this note:
+"removing old 10:30am PST meeting"
+
+Title: Stratum Project Team
+Stratum Team Meeting
+
+Agenda for meetings -  
+https://docs.google.com/document/d/1-bHfORugMPEdcj3I9M_CJKhszrmARcmvPQu0vDQRD5Y/edit?usp=sharing
+
+Meeting notes/presentations -  
+https://drive.google.com/drive/folders/1YLKEc80r3R9hpAb2A5YZdhdz30u2jEBn?usp=sharing
+
+Please join my meeting from your computer, tablet or smartphone.
+https://global.gotomeeting.com/join/274603861
+
+You can also dial in using your phone.
+United States: +1 (571) 317-3129
+
+Access Code: 274-603-861
+
+More phone numbers
+Austria: +43 7 2081 5427
+Canada: +1 (647) 497-9391
+France: +33 170 950 594
+Germany: +49 691 7489 928
+Italy: +39 0 247 92 13 01
+Netherlands: +31 202 251 017
+Spain: +34 932 75 2004
+Switzerland: +41 225 4599 78
+United Kingdom: +44 20 3713 5028
+
+Joining from a video-conferencing room or system?
+Dial: 67.217.95.2##274603861
+Cisco devices: 274603861 at 67.217.95.2
+
+First GoToMeeting? Let's do a quick system check:  
+https://link.gotomeeting.com/system-check
+When: Every 2 weeks from 10am to 10:30am on Thursday from Thu Feb 7, 2019  
+to Wed Jan 22 Pacific Time - Los Angeles (changed)
+Where: (Online conference room)-GoToMeeting Bill, SVL-MAT3-4-Ulysses (5)  
+[GVC]
+Calendar: stratum-dev at lists.stratumproject.org
+Who:
+     * bocon at opennetworking.org - creator
+     * stratum-members at lists.stratumproject.org
+     * stratum-dev at lists.stratumproject.org
+     * carmelo at opennetworking.org
+     * Devjit Gopalpur
+     * bill at opennetworking.org
+     * Alireza Ghaffarkhah
+
+Event details:  
+https://www.google.com/calendar/event?action=VIEW&eid=MzU0cG1zcjdla2Q1bXAzcjE4dHZqZjZoaWIgc3RyYXR1bS1kZXZAbGlzdHMuc3RyYXR1bXByb2plY3Qub3Jn&tok=NzEjb3Blbm5ldHdvcmtpbmcub3JnX2Y1YjE0YjFiOHF1azNzbG0zOHJhc3BvdHRvQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb202ODFhYjliNzk4ODQ4MmQ2OTEwYTE5YjJlOTJhYTI4ZjJkYTQwMjE5&ctz=America%2FLos_Angeles&hl=en&es=0
+
+Invitation from Google Calendar: https://www.google.com/calendar/
+
+You are receiving this courtesy email at the account  
+stratum-dev at lists.stratumproject.org because you are an attendee of this  
+event.
+
+To stop receiving future updates for this event, decline this event.  
+Alternatively you can sign up for a Google account at  
+https://www.google.com/calendar/ and control your notification settings for  
+your entire calendar.
+
+Forwarding this invitation could allow any recipient to send a response to  
+the organizer and be added to the guest list, or invite others regardless  
+of their own invitation status, or to modify your RSVP. Learn more at  
+https://support.google.com/calendar/answer/37135#forwarding
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20200116/9713fa46/attachment-0001.html>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: not available
+Type: text/calendar
+Size: 4125 bytes
+Desc: not available
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20200116/9713fa46/attachment-0001.ics>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: invite.ics
+Type: application/ics
+Size: 4210 bytes
+Desc: not available
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20200116/9713fa46/attachment-0001.bin>
+
+From bocon at opennetworking.org  Thu Jan 16 20:17:22 2020
+From: bocon at opennetworking.org (bocon at opennetworking.org)
+Date: Thu, 16 Jan 2020 20:17:22 +0000
+Subject: [stratum-dev] Updated invitation with note: Stratum TST Meeting @
+ Weekly from 11:30am to 12pm on Thursday (PST)
+ (stratum-dev@lists.stratumproject.org)
+Message-ID: <00000000000041da70059c4783b4@google.com>
+
+This event has been changed with this note:
+"Forgot to make this meeting recurring"
+
+Title: Stratum TST Meeting
+Stratum Technical Steering Team MeetingAgenda and Meeting  
+Noteshttps://docs.google.com/document/d/1ret8Vbnl-xbLgNsnDEH-jWP2_WwDYym4zDn6me3tiTA/editThe  
+plan is to reserve the 1st and 3rd Thursdays of each month for  
+presentations and community updates. If you can only attend some of these  
+meetings, those will be more interesting. The other meetings will be more  
+informal&nbsp;sync ups to discuss current issues, progress, and status. You  
+can see what presentations are planned by checking the agenda  
+above.Supporting Slides and Previous  
+Recordingshttps://drive.google.com/drive/folders/1ZeYp6RwIGYi9VnIctvnKF1c1NxiAXeOT----------------------------------------------------------------Join  
+Zoom Meetinghttps://zoom.us/j/787501745Meeting ID: 787 501 745One tap  
+mobile+16699006833,,787501745# US (San Jose)+19292056099,,787501745# US  
+(New York)Dial by your location&nbsp; &nbsp; &nbsp; &nbsp; +1 669 900 6833  
+US (San Jose)&nbsp; &nbsp; &nbsp; &nbsp; +1 929 205 6099 US (New  
+York)&nbsp; &nbsp; &nbsp; &nbsp; 888 788 0099 US Toll-free&nbsp; &nbsp;  
+&nbsp; &nbsp; 877 853 5247 US Toll-free&nbsp; &nbsp; &nbsp; &nbsp; +61 3  
+7018 2005 Australia&nbsp; &nbsp; &nbsp; &nbsp; +61 8 7150 1149  
+Australia&nbsp; &nbsp; &nbsp; &nbsp; +61 2 8015 6011 Australia&nbsp; &nbsp;  
+&nbsp; &nbsp; 1800 945 157 Australia Toll-free&nbsp; &nbsp; &nbsp; &nbsp;  
+1800 893 423 Australia Toll-free&nbsp; &nbsp; &nbsp; &nbsp; +81 524 564 439  
+Japan&nbsp; &nbsp; &nbsp; &nbsp; +81 3 4578 1488 Japan&nbsp; &nbsp; &nbsp;  
+&nbsp; 0 800 100 5040 Japan Toll-free&nbsp; &nbsp; &nbsp; &nbsp; 00 663 381  
+4092 Japan Toll-free&nbsp; &nbsp; &nbsp; &nbsp; +49 695 050 2596  
+Germany&nbsp; &nbsp; &nbsp; &nbsp; +49 69 7104 9922 Germany&nbsp; &nbsp;  
+&nbsp; &nbsp; +49 30 5679 5800 Germany&nbsp; &nbsp; &nbsp; &nbsp; 0 800  
+1800 150 Germany Toll-free&nbsp; &nbsp; &nbsp; &nbsp; 0 800 000 6954  
+Germany Toll-free&nbsp; &nbsp; &nbsp; &nbsp; +886 (2) 7741 7473  
+Taiwan&nbsp; &nbsp; &nbsp; &nbsp; 08 0909 9864 Taiwan Toll-free&nbsp;  
+&nbsp; &nbsp; &nbsp; +48 22 398 7356 Poland&nbsp; &nbsp; &nbsp; &nbsp; +48  
+22 307 3488 Poland&nbsp; &nbsp; &nbsp; &nbsp; 00 800 321 1464 Poland  
+Toll-free&nbsp; &nbsp; &nbsp; &nbsp; 00 800 112 5171 Poland Toll-free&nbsp;  
+&nbsp; &nbsp; &nbsp; +44 203 481 5240 United Kingdom&nbsp; &nbsp; &nbsp;  
+&nbsp; +44 131 460 1196 United Kingdom&nbsp; &nbsp; &nbsp; &nbsp; +44 203  
+051 2874 United Kingdom&nbsp; &nbsp; &nbsp; &nbsp; +44 203 481 5237 United  
+Kingdom&nbsp; &nbsp; &nbsp; &nbsp; 0 800 260 5801 United Kingdom  
+Toll-free&nbsp; &nbsp; &nbsp; &nbsp; 0 800 031 5717 United Kingdom  
+Toll-free&nbsp; &nbsp; &nbsp; &nbsp; +353 1 653 3895 Ireland&nbsp; &nbsp;  
+&nbsp; &nbsp; +353 6 163 9031 Ireland&nbsp; &nbsp; &nbsp; &nbsp; +353 1 536  
+9320 Ireland&nbsp; &nbsp; &nbsp; &nbsp; 1800 949 238 Ireland  
+Toll-free&nbsp; &nbsp; &nbsp; &nbsp; 1800 901 561 Ireland Toll-freeMeeting  
+ID: 787 501 745Find your local number:  
+https://zoom.us/u/adqQM87Zrg----------------------------------------------------------------If  
+you would like to get added to the calendar invite, please ask Brian.
+When: Weekly from 11:30am to 12pm on Thursday Pacific Time - Los Angeles  
+(changed)
+Where: MP-1-Large Conference Room (25), (Online conference room)-Zoom-3
+Calendar: stratum-dev at lists.stratumproject.org
+Who:
+     * bocon at opennetworking.org - creator
+     * maksym.tropets at plvision.eu
+     * mohammed.habeeb at inventec.com
+     * stratum-dev at lists.stratumproject.org
+     * Devjit Gopalpur
+     * yi at opennetworking.org
+     * Rich Renner
+     * you at opennetworking.org
+     * max at opennetworking.org
+     * abhilash at opennetworking.org
+     * Alireza Ghaffarkhah
+     * maksym.kovaliov at plvision.eu
+     * Arkadiy Shapiro
+     * craig.stevens at dell.com
+     * carmelo at opennetworking.org
+     * Leonid Khedyk
+     * hsuanchung.lee at qct.io
+     * bill at opennetworking.org
+     * xiao.david at inventec.com
+     * jeff_catlin at edge-core.com
+
+Event details:  
+https://www.google.com/calendar/event?action=VIEW&eid=NXNlYXJjbXJvOWtibWRpNTNmNzVnNXRlYXIgc3RyYXR1bS1kZXZAbGlzdHMuc3RyYXR1bXByb2plY3Qub3Jn&tok=NzEjb3Blbm5ldHdvcmtpbmcub3JnX3Z2M2xmdDg5ZTc5NGI0amxtcjNqOXAxcGVzQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb21mMTNmYjk1ZjIxYmY1YjlmNTQzMDc2YmJkMjI1NjA0ZGU5OTI1YTE5&ctz=America%2FLos_Angeles&hl=en&es=0
+
+Invitation from Google Calendar: https://www.google.com/calendar/
+
+You are receiving this courtesy email at the account  
+stratum-dev at lists.stratumproject.org because you are an attendee of this  
+event.
+
+To stop receiving future updates for this event, decline this event.  
+Alternatively you can sign up for a Google account at  
+https://www.google.com/calendar/ and control your notification settings for  
+your entire calendar.
+
+Forwarding this invitation could allow any recipient to send a response to  
+the organizer and be added to the guest list, or invite others regardless  
+of their own invitation status, or to modify your RSVP. Learn more at  
+https://support.google.com/calendar/answer/37135#forwarding
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20200116/32838de0/attachment-0001.html>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: not available
+Type: text/calendar
+Size: 9063 bytes
+Desc: not available
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20200116/32838de0/attachment-0001.ics>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: invite.ics
+Type: application/ics
+Size: 9219 bytes
+Desc: not available
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20200116/32838de0/attachment-0001.bin>
+
+From bocon at opennetworking.org  Thu Jan 23 07:19:25 2020
+From: bocon at opennetworking.org (Brian O'Connor)
+Date: Wed, 22 Jan 2020 23:19:25 -0800
+Subject: [stratum-dev] TST Meeting Today
+Message-ID: <CACKOpDkTAURXcBBLmdmrSbpu0N9Qt7MjhkR5VfOrR4zLTZojoA@mail.gmail.com>
+
+For today's meeting,
+
+   - TestVectors roadmap (that we didn't get to last week)
+   - OCP Demo Status and Planning (please attend if you have interest in
+   including hardware in our Stratum Trellis demo)
+   - CASSINI / Stratum Optical Update and Outstanding Questions
+
+Full agenda is here:
+https://docs.google.com/document/d/1ret8Vbnl-xbLgNsnDEH-jWP2_WwDYym4zDn6me3tiTA/edit?usp=sharing
+
+Thanks!
+Brian
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20200122/f43d8629/attachment.html>
+

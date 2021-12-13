@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [stratum-dev] Help with Stratum Cassini Scenario
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Help%20with%20Stratum%20Cassini%20Scenario&In-Reply-To=%3CCAEnXUd5KNm5%2BEst0OALC-M5AQE3O19cL8Y0W6a%2BBMVwLSn0UqA%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <LINK REL="Previous"  HREF="000198.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[stratum-dev] Help with Stratum Cassini Scenario</H1>
+    <B>Fabio David</B> 
+    <A HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Help%20with%20Stratum%20Cassini%20Scenario&In-Reply-To=%3CCAEnXUd5KNm5%2BEst0OALC-M5AQE3O19cL8Y0W6a%2BBMVwLSn0UqA%40mail.gmail.com%3E"
+       TITLE="[stratum-dev] Help with Stratum Cassini Scenario">fabio at land.ufrj.br
+       </A><BR>
+    <I>Thu Mar 18 19:25:52 UTC 2021</I>
+    <P><UL>
+        <LI>Previous message (by thread): <A HREF="000198.html">[stratum-dev] Question about building stratum standalone
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#199">[ date ]</a>
+              <a href="thread.html#199">[ thread ]</a>
+              <a href="subject.html#199">[ subject ]</a>
+              <a href="author.html#199">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+My name is Fabio David, and I am a PhD student at UFRJ (Federal University
+of Rio de Janeiro). Marcos Schwarz, copied in this email, is R&amp;D manager at
+RNP (Brazilian Research and Education Network).
+
+We are currently building a Stratum lab with P4 Stordis switches
+(BF2556X-1T-A1F) and Edgecore Casssini transponders, using ONOS
+(Trellis/ODTN) as control plane, inspired by the DCI scenario presented at
+ONF Connect 2019 (
+<A HREF="https://onfconnect2019.sched.com/event/RwPf/stratums-new-capabilities-optical-transport-support-for-cassini-chassis">https://onfconnect2019.sched.com/event/RwPf/stratums-new-capabilities-optical-transport-support-for-cassini-chassis</A>
+)
+
+Unfortunately, we did not find any specific documentation on how to compile
+and run Stratum pipelines for Cassini, as well as configuration examples.
+Could you please provide us with links to this information?
+
+At this moment, we are trying to replicate the code obtained at
+<A HREF="https://github.com/Yi-Tseng/onos-ocp-demo,">https://github.com/Yi-Tseng/onos-ocp-demo,</A> which we believe contains the
+pipeline specific for Broadcom Cassini. We added Tofino pipeline available
+at <A HREF="https://github.com/opencord/fabric-tofino">https://github.com/opencord/fabric-tofino</A> for the Stordis switches.
+
+Currently, our tests are failing to install the MPLS rules in the Cassini.
+Also, we couldn't find out how to configure optical connectivity via
+Stratum APIs.
+
+We managed to replicate these rules errors with main.p4 pipeline using BMV2
+in Stratum Mininet.
+
+We believe that there should be some additional configuration used in the
+demo scenario.
+
+Could you please help us?
+
+Thanks in advance,
+Fabio David
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.stratumproject.org/archives/stratum-dev/attachments/20210318/823e504e/attachment.html">https://lists.stratumproject.org/archives/stratum-dev/attachments/20210318/823e504e/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message (by thread): <A HREF="000198.html">[stratum-dev] Question about building stratum standalone
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#199">[ date ]</a>
+              <a href="thread.html#199">[ thread ]</a>
+              <a href="subject.html#199">[ subject ]</a>
+              <a href="author.html#199">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.stratumproject.org/listinfo/stratum-dev">More information about the stratum-dev
+mailing list</a><br>
+</body></html>

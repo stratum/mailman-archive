@@ -1,0 +1,534 @@
+<tt>
+&lt;html&gt;<br>
+&nbsp;&nbsp;&lt;head&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;meta&nbsp;http-equiv=&quot;Content-Type&quot;&nbsp;content=&quot;text/html;&nbsp;charset=UTF-8&quot;&gt;<br>
+&nbsp;&nbsp;&lt;/head&gt;<br>
+&nbsp;&nbsp;&lt;body&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Unfortunately,&nbsp;I&nbsp;do&nbsp;not&nbsp;have&nbsp;access&nbsp;to&nbsp;the&nbsp;Tofino&nbsp;switch&nbsp;now,&nbsp;so<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I&nbsp;can&nbsp;not&nbsp;confirm&nbsp;your&nbsp;logs.&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Can&nbsp;you&nbsp;please&nbsp;also&nbsp;provide&nbsp;the&nbsp;output&nbsp;of&nbsp;running&nbsp;&quot;pipeconf&nbsp;|&nbsp;grep<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tofino&quot;&nbsp;in&nbsp;the&nbsp;ONOS&nbsp;CLI&nbsp;(onos&nbsp;onos@localhost   &nbsp;#&nbsp;Password&nbsp;is<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rocks).&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Did&nbsp;you&nbsp;start&nbsp;with&nbsp;an&nbsp;empty&nbsp;fabric-tofino&nbsp;repo&nbsp;and&nbsp;executed&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;commands?&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Especially&nbsp;this&nbsp;log&nbsp;entry&nbsp;is&nbsp;strange&nbsp;(but&nbsp;again,&nbsp;I&nbsp;can&nbsp;not&nbsp;verify<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;whether&nbsp;this&nbsp;is&nbsp;normal):&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2020-07-13T22:10:57,905&nbsp;|&nbsp;WARN &nbsp;|&nbsp;features-3-thread-1&nbsp;|<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FabricPipeconfLoader            &nbsp;|&nbsp;236&nbsp;-<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;org.onosproject.onos-pipelines-fabric-impl&nbsp;-&nbsp;2.2.3&nbsp;|&nbsp;Unable&nbsp;to<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;build&nbsp;pipeconf&nbsp;at&nbsp;p4c-out/fabric-mlnx/spectrum/default/&nbsp;because<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file&nbsp;is&nbsp;missing:&nbsp;spectrum.bin&nbsp;&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=&quot;moz-cite-prefix&quot;&gt;On&nbsp;7/13/20&nbsp;11:46&nbsp;PM,&nbsp;David&nbsp;Lake&nbsp;wrote:&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;blockquote&nbsp;type=&quot;cite&quot;<br>
+cite=&quot;mid:VI1PR06MB521494F8B8D8321EB0407232B5600@VI1PR06MB5214.eurprd06.prod.outlook.com&quot;&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;meta&nbsp;http-equiv=&quot;Content-Type&quot;&nbsp;content=&quot;text/html;&nbsp;charset=UTF-8&quot;&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;meta&nbsp;name=&quot;Generator&quot;&nbsp;content=&quot;Microsoft&nbsp;Word&nbsp;15&nbsp;(filtered<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;medium)&quot;&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;style&gt;&lt;!--<br>
+/*&nbsp;Font&nbsp;Definitions&nbsp;*/<br>
+@font-face<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{font-family:&quot;Cambria&nbsp;Math&quot;;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;panose-1:2&nbsp;4&nbsp;5&nbsp;3&nbsp;5&nbsp;4&nbsp;6&nbsp;3&nbsp;2&nbsp;4;}<br>
+@font-face<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{font-family:Calibri;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;panose-1:2&nbsp;15&nbsp;5&nbsp;2&nbsp;2&nbsp;2&nbsp;4&nbsp;3&nbsp;2&nbsp;4;}<br>
+/*&nbsp;Style&nbsp;Definitions&nbsp;*/<br>
+p.MsoNormal,&nbsp;li.MsoNormal,&nbsp;div.MsoNormal<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{margin:0cm;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;margin-bottom:.0001pt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;font-size:11.0pt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;font-family:&quot;Calibri&quot;,sans-serif;}<br>
+a:link,&nbsp;span.MsoHyperlink<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{mso-style-priority:99;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;color:blue;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text-decoration:underline;}<br>
+a:visited,&nbsp;span.MsoHyperlinkFollowed<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{mso-style-priority:99;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;color:purple;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text-decoration:underline;}<br>
+p.msonormal0,&nbsp;li.msonormal0,&nbsp;div.msonormal0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{mso-style-name:msonormal;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mso-margin-top-alt:auto;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;margin-right:0cm;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mso-margin-bottom-alt:auto;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;margin-left:0cm;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;font-size:11.0pt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;font-family:&quot;Calibri&quot;,sans-serif;}<br>
+span.EmailStyle19<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{mso-style-type:personal;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;font-family:&quot;Calibri&quot;,sans-serif;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;color:windowtext;}<br>
+span.EmailStyle20<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{mso-style-type:personal-reply;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;font-family:&quot;Calibri&quot;,sans-serif;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;color:windowtext;}<br>
+.MsoChpDefault<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{mso-style-type:export-only;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;font-size:10.0pt;}<br>
+@page&nbsp;WordSection1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{size:612.0pt&nbsp;792.0pt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;margin:72.0pt&nbsp;72.0pt&nbsp;72.0pt&nbsp;72.0pt;}<br>
+div.WordSection1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{page:WordSection1;}<br>
+--&gt;&lt;/style&gt;&lt;!--[if&nbsp;gte&nbsp;mso&nbsp;9]&gt;&lt;xml&gt;<br>
+&lt;o:shapedefaults&nbsp;v:ext=&quot;edit&quot;&nbsp;spidmax=&quot;1026&quot;&nbsp;/&gt;<br>
+&lt;/xml&gt;&lt;![endif]--&gt;&lt;!--[if&nbsp;gte&nbsp;mso&nbsp;9]&gt;&lt;xml&gt;<br>
+&lt;o:shapelayout&nbsp;v:ext=&quot;edit&quot;&gt;<br>
+&lt;o:idmap&nbsp;v:ext=&quot;edit&quot;&nbsp;data=&quot;1&quot;&nbsp;/&gt;<br>
+&lt;/o:shapelayout&gt;&lt;/xml&gt;&lt;![endif]--&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=&quot;WordSection1&quot;&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;I<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;did&nbsp;follow&nbsp;this&nbsp;step&nbsp;and&nbsp;was&nbsp;able&nbsp;to&nbsp;register&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;application&nbsp;and&nbsp;pipeline&nbsp;but&nbsp;I&nbsp;don’t&nbsp;see<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;“org.opencord.fabric.tofino.montara_sde_9_0_0”&nbsp;anywhere?&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;&lt;o:p&gt; &lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;David&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;&lt;o:p&gt; &lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;root@ONOS:~/fabric-tofino#<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;make&nbsp;pipeconf-install&nbsp;ONOS_HOST=localhost&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;***<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Installing&nbsp;and&nbsp;activating&nbsp;pipeconf&nbsp;app&nbsp;in&nbsp;ONOS&nbsp;at<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;localhost...&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;curl<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--fail&nbsp;-sSL&nbsp;--user&nbsp;onos:rocks&nbsp;--noproxy&nbsp;localhost&nbsp;-X&nbsp;POST<br>
+-HContent-Type:ap                                                                                                                                                      <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;      plication/octet-stream&nbsp;\&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;       <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'&lt;a&nbsp;class=&quot;moz-txt-link-freetext&quot;&nbsp;href=&quot;http://localhost:8181/onos/v1/applications?activate=true&quot;&gt;http://localhost:8181/onos/v1/applications?activate=true&lt;/a&gt;'&nbsp;\&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;       <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--data-binary<br>
+@/home/admin5g/fabric-tofino/target/fabric-tofino-1.1.1-SN                                                                           <br>
+                                                                                 APSHOT.oar&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;{&quot;name&quot;:&quot;org.opencord.fabric-tofino&quot;,&quot;id&quot;:190,&quot;version&quot;:&quot;1.1.1.SNAPSHOT&quot;,&quot;catego                                                                                   <br>
+                                                                         ry&quot;:&quot;Pipeline&quot;,&quot;description&quot;:&quot;Provides<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pipeconfs&nbsp;based&nbsp;on<br>
+fabric.&quot;,&quot;readme&quot;:&quot;Pro                                                                                                      <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                      vides<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pipeconfs&nbsp;based&nbsp;on&nbsp;fabric.p4&nbsp;to&nbsp;use&nbsp;Trellis&nbsp;with<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Barefoot\\n           <br>
+To                                                                                                                         <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                   fino-based<br>
+devices.&quot;,&quot;origin&quot;:&lt;a&nbsp;class=&quot;moz-txt-link-rfc2396E&quot;&nbsp;href=&quot;http://www.opencord.org&quot;&gt;&quot;http://www.opencord.org&quot;&lt;/a&gt;,&quot;url&quot;:&quot;&lt;a&nbsp;class=&quot;moz-txt-link-freetext&quot;&nbsp;href=&quot;http://www.openco&quot;&gt;http://www.openco&lt;/a&gt;                                                                                                                                            <br>
+                rd.org&quot;,&quot;featuresRepo&quot;:&quot;mvn:org.opencord/fabric-tofino/1.1.1-SNAPSHOT/xml/featur                                                                                                                                                            <br>
+es&quot;,&quot;state&quot;:&quot;ACTIVE&quot;,&quot;features&quot;:[&quot;fabric-tofino&quot;],&quot;permissions&quot;:[],&quot;requiredApps                                                                                                                                                            <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;:[&quot;org.onosproject.pipelines.fabric&quot;]}&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;root@ONOS:~/fabric-tofino#&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;root@ONOS:~/fabric-tofino#&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;&lt;o:p&gt; &lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;&lt;o:p&gt; &lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;&lt;o:p&gt; &lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;&lt;o:p&gt; &lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;&lt;o:p&gt; &lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;root@ONOS:~/fabric-tofino#<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tail&nbsp;-50&nbsp;/opt/onos/log/karaf.log&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;2020-07-13T22:10:55,638<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;INFO &nbsp;|&nbsp;features-3-thread-1&nbsp;|<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FeaturesServiceImpl             &nbsp;|&nbsp;11&nbsp;-<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;org.apache.karaf.features.core&nbsp;-&nbsp;4.2.8&nbsp;|&nbsp;Changes&nbsp;to&nbsp;perform:&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;2020-07-13T22:10:55,647<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;INFO &nbsp;|&nbsp;features-3-thread-1&nbsp;|<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FeaturesServiceImpl             &nbsp;|&nbsp;11&nbsp;-<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;org.apache.karaf.features.core&nbsp;-&nbsp;4.2.8&nbsp;|  &nbsp;Region:&nbsp;root&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;2020-07-13T22:10:55,647<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;INFO &nbsp;|&nbsp;features-3-thread-1&nbsp;|<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FeaturesServiceImpl             &nbsp;|&nbsp;11&nbsp;-<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;org.apache.karaf.features.core&nbsp;-&nbsp;4.2.8&nbsp;|    &nbsp;Bundles&nbsp;to<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;install:&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;2020-07-13T22:10:55,647<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;INFO &nbsp;|&nbsp;features-3-thread-1&nbsp;|<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FeaturesServiceImpl             &nbsp;|&nbsp;11&nbsp;-<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;org.apache.karaf.features.core&nbsp;-&nbsp;4.2.8&nbsp;|      <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mvn:org.onosproject/onos-apps-inbandtelemetry-api/2.2.3&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;2020-07-13T22:10:55,648<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;INFO &nbsp;|&nbsp;features-3-thread-1&nbsp;|<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FeaturesServiceImpl             &nbsp;|&nbsp;11&nbsp;-<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;org.apache.karaf.features.core&nbsp;-&nbsp;4.2.8&nbsp;|      <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mvn:org.onosproject/onos-pipelines-basic/2.2.3&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;2020-07-13T22:10:55,648<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;INFO &nbsp;|&nbsp;features-3-thread-1&nbsp;|<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FeaturesServiceImpl             &nbsp;|&nbsp;11&nbsp;-<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;org.apache.karaf.features.core&nbsp;-&nbsp;4.2.8&nbsp;|&nbsp;Installing&nbsp;bundles:&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;2020-07-13T22:10:55,650<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;INFO &nbsp;|&nbsp;features-3-thread-1&nbsp;|<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FeaturesServiceImpl             &nbsp;|&nbsp;11&nbsp;-<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;org.apache.karaf.features.core&nbsp;-&nbsp;4.2.8&nbsp;|  <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mvn:org.onosproject/onos-apps-inbandtelemetry-api/2.2.3&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;2020-07-13T22:10:55,652<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;INFO &nbsp;|&nbsp;features-3-thread-1&nbsp;|<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FeaturesServiceImpl             &nbsp;|&nbsp;11&nbsp;-<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;org.apache.karaf.features.core&nbsp;-&nbsp;4.2.8&nbsp;|  <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mvn:org.onosproject/onos-pipelines-basic/2.2.3&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;2020-07-13T22:10:55,689<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;INFO &nbsp;|&nbsp;features-3-thread-1&nbsp;|<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FeaturesServiceImpl             &nbsp;|&nbsp;11&nbsp;-<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;org.apache.karaf.features.core&nbsp;-&nbsp;4.2.8&nbsp;|&nbsp;Starting&nbsp;bundles:&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;2020-07-13T22:10:55,690<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;INFO &nbsp;|&nbsp;features-3-thread-1&nbsp;|<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FeaturesServiceImpl             &nbsp;|&nbsp;11&nbsp;-<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;org.apache.karaf.features.core&nbsp;-&nbsp;4.2.8&nbsp;|  <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;org.onosproject.onos-apps-inbandtelemetry-api/2.2.3&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;2020-07-13T22:10:55,696<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;INFO &nbsp;|&nbsp;features-3-thread-1&nbsp;|<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FeaturesServiceImpl             &nbsp;|&nbsp;11&nbsp;-<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;org.apache.karaf.features.core&nbsp;-&nbsp;4.2.8&nbsp;|  <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;org.onosproject.onos-pipelines-basic/2.2.3&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;2020-07-13T22:10:56,388<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;INFO &nbsp;|&nbsp;features-3-thread-1&nbsp;|&nbsp;PiPipeconfManager<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;               |&nbsp;193&nbsp;-&nbsp;org.onosproject.onos-core-net&nbsp;-&nbsp;2.2.3<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;New&nbsp;pipeconf&nbsp;registered:&nbsp;org.onosproject.pipelines.basic<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(fingerprint=1f:03:c5:4d:32:19:e4:f4)&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;2020-07-13T22:10:56,391<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;INFO &nbsp;|&nbsp;features-3-thread-1&nbsp;|<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PiPipeconfManager               &nbsp;|&nbsp;193&nbsp;-<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;org.onosproject.onos-core-net&nbsp;-&nbsp;2.2.3&nbsp;|&nbsp;New&nbsp;pipeconf<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;registered:&nbsp;org.onosproject.pipelines.int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(fingerprint=cf:0e:30:28:dc:5f:97:4c)&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;2020-07-13T22:10:56,396<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;INFO &nbsp;|&nbsp;features-3-thread-1&nbsp;|<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FeaturesServiceImpl             &nbsp;|&nbsp;11&nbsp;-<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;org.apache.karaf.features.core&nbsp;-&nbsp;4.2.8&nbsp;|&nbsp;Done.&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;2020-07-13T22:10:56,399<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;INFO &nbsp;|&nbsp;onos-store-app-app-activation&nbsp;|<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ApplicationManager              &nbsp;|&nbsp;193&nbsp;-<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;org.onosproject.onos-core-net&nbsp;-&nbsp;2.2.3&nbsp;|&nbsp;Application<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;org.onosproject.pipelines.basic&nbsp;has&nbsp;been&nbsp;activated&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;2020-07-13T22:10:56,402<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;INFO &nbsp;|&nbsp;onos-store-app-app-activation&nbsp;|<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FeaturesServiceImpl             &nbsp;|&nbsp;11&nbsp;-<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;org.apache.karaf.features.core&nbsp;-&nbsp;4.2.8&nbsp;|&nbsp;Adding&nbsp;features:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;onos-pipelines-fabric/[2.2.3,2.2.3]&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;2020-07-13T22:10:57,086<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;INFO &nbsp;|&nbsp;features-3-thread-1&nbsp;|&nbsp;FeaturesServiceImpl       <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;      |&nbsp;11&nbsp;-&nbsp;org.apache.karaf.features.core&nbsp;-&nbsp;4.2.8&nbsp;|<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Changes&nbsp;to&nbsp;perform:&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;2020-07-13T22:10:57,094<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;INFO &nbsp;|&nbsp;features-3-thread-1&nbsp;|<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FeaturesServiceImpl             &nbsp;|&nbsp;11&nbsp;-<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;org.apache.karaf.features.core&nbsp;-&nbsp;4.2.8&nbsp;|  &nbsp;Region:&nbsp;root&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;2020-07-13T22:10:57,094<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;INFO &nbsp;|&nbsp;features-3-thread-1&nbsp;|<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FeaturesServiceImpl             &nbsp;|&nbsp;11&nbsp;-<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;org.apache.karaf.features.core&nbsp;-&nbsp;4.2.8&nbsp;|    &nbsp;Bundles&nbsp;to<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;install:&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;2020-07-13T22:10:57,095<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;INFO &nbsp;|&nbsp;features-3-thread-1&nbsp;|<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FeaturesServiceImpl             &nbsp;|&nbsp;11&nbsp;-<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;org.apache.karaf.features.core&nbsp;-&nbsp;4.2.8&nbsp;|      <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mvn:org.onosproject/onos-pipelines-fabric-api/2.2.3&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;2020-07-13T22:10:57,095<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;INFO &nbsp;|&nbsp;features-3-thread-1&nbsp;|<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FeaturesServiceImpl             &nbsp;|&nbsp;11&nbsp;-<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;org.apache.karaf.features.core&nbsp;-&nbsp;4.2.8&nbsp;|      <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mvn:org.onosproject/onos-pipelines-fabric-impl/2.2.3&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;2020-07-13T22:10:57,097<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;INFO &nbsp;|&nbsp;features-3-thread-1&nbsp;|<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FeaturesServiceImpl             &nbsp;|&nbsp;11&nbsp;-<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;org.apache.karaf.features.core&nbsp;-&nbsp;4.2.8&nbsp;|&nbsp;Installing&nbsp;bundles:&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;2020-07-13T22:10:57,097<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;INFO &nbsp;|&nbsp;features-3-thread-1&nbsp;|<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FeaturesServiceImpl             &nbsp;|&nbsp;11&nbsp;-<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;org.apache.karaf.features.core&nbsp;-&nbsp;4.2.8&nbsp;|  <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mvn:org.onosproject/onos-pipelines-fabric-api/2.2.3&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;2020-07-13T22:10:57,104<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;INFO &nbsp;|&nbsp;features-3-thread-1&nbsp;|<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FeaturesServiceImpl             &nbsp;|&nbsp;11&nbsp;-<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;org.apache.karaf.features.core&nbsp;-&nbsp;4.2.8&nbsp;|  <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mvn:org.onosproject/onos-pipelines-fabric-impl/2.2.3&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;2020-07-13T22:10:57,178<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;INFO &nbsp;|&nbsp;features-3-thread-1&nbsp;|<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FeaturesServiceImpl             &nbsp;|&nbsp;11&nbsp;-<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;org.apache.karaf.features.core&nbsp;-&nbsp;4.2.8&nbsp;|&nbsp;Starting&nbsp;bundles:&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;2020-07-13T22:10:57,179<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;INFO &nbsp;|&nbsp;features-3-thread-1&nbsp;|<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FeaturesServiceImpl             &nbsp;|&nbsp;11&nbsp;-<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;org.apache.karaf.features.core&nbsp;-&nbsp;4.2.8&nbsp;|  <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;org.onosproject.onos-pipelines-fabric-api/2.2.3&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;2020-07-13T22:10:57,183<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;INFO &nbsp;|&nbsp;features-3-thread-1&nbsp;|<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FeaturesServiceImpl             &nbsp;|&nbsp;11&nbsp;-<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;org.apache.karaf.features.core&nbsp;-&nbsp;4.2.8&nbsp;|  <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;org.onosproject.onos-pipelines-fabric-impl/2.2.3&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;2020-07-13T22:10:57,905<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;WARN &nbsp;|&nbsp;features-3-thread-1&nbsp;|<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FabricPipeconfLoader            &nbsp;|&nbsp;236&nbsp;-<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;org.onosproject.onos-pipelines-fabric-impl&nbsp;-&nbsp;2.2.3&nbsp;|&nbsp;Unable<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to&nbsp;build&nbsp;pipeconf&nbsp;at&nbsp;p4c-out/fabric-mlnx/spectrum/default/<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;because&nbsp;file&nbsp;is&nbsp;missing:&nbsp;spectrum.bin&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;2020-07-13T22:10:58,241<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;INFO &nbsp;|&nbsp;features-3-thread-1&nbsp;|<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PiPipeconfManager               &nbsp;|&nbsp;193&nbsp;-<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;org.onosproject.onos-core-net&nbsp;-&nbsp;2.2.3&nbsp;|&nbsp;New&nbsp;pipeconf<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;registered:&nbsp;org.onosproject.pipelines.fabric-bng<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(fingerprint=9e:af:91:d4:8c:8a:bc:98)&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;2020-07-13T22:10:58,241<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;INFO &nbsp;|&nbsp;features-3-thread-1&nbsp;|<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PiPipeconfManager               &nbsp;|&nbsp;193&nbsp;-<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;org.onosproject.onos-core-net&nbsp;-&nbsp;2.2.3&nbsp;|&nbsp;New&nbsp;pipeconf<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;registered:&nbsp;org.onosproject.pipelines.fabric-full<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(fingerprint=1a:cc:c0:b8:a6:f7:a4:7e)&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;2020-07-13T22:10:58,241<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;INFO &nbsp;|&nbsp;features-3-thread-1&nbsp;|<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PiPipeconfManager               &nbsp;|&nbsp;193&nbsp;-<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;org.onosproject.onos-core-net&nbsp;-&nbsp;2.2.3&nbsp;|&nbsp;New&nbsp;pipeconf<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;registered:&nbsp;org.onosproject.pipelines.fabric-int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(fingerprint=01:39:87:22:c5:c4:e6:0a)&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;2020-07-13T22:10:58,243<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;INFO &nbsp;|&nbsp;features-3-thread-1&nbsp;|<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PiPipeconfManager               &nbsp;|&nbsp;193&nbsp;-<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;org.onosproject.onos-core-net&nbsp;-&nbsp;2.2.3&nbsp;|&nbsp;New&nbsp;pipeconf<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;registered:&nbsp;org.onosproject.pipelines.fabric-spgw-int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(fingerprint=97:b3:d2:dd:9e:10:bf:ce)&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;2020-07-13T22:10:58,243<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;INFO &nbsp;|&nbsp;features-3-thread-1&nbsp;|<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PiPipeconfManager               &nbsp;|&nbsp;193&nbsp;-<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;org.onosproject.onos-core-net&nbsp;-&nbsp;2.2.3&nbsp;|&nbsp;New&nbsp;pipeconf<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;registered:&nbsp;org.onosproject.pipelines.fabric-spgw<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(fingerprint=ca:1c:0d:f1:f2:df:07:3f)&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;2020-07-13T22:10:58,243<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;INFO &nbsp;|&nbsp;features-3-thread-1&nbsp;|<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PiPipeconfManager               &nbsp;|&nbsp;193&nbsp;-<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;org.onosproject.onos-core-net&nbsp;-&nbsp;2.2.3&nbsp;|&nbsp;New&nbsp;pipeconf<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;registered:&nbsp;org.onosproject.pipelines.fabric<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(fingerprint=33:a1:c2:36:82:04:f5:0c)&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;2020-07-13T22:10:58,244<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;INFO &nbsp;|&nbsp;features-3-thread-1&nbsp;|<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FabricPipeconfLoader            &nbsp;|&nbsp;236&nbsp;-<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;org.onosproject.onos-pipelines-fabric-impl&nbsp;-&nbsp;2.2.3&nbsp;|&nbsp;Started&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;2020-07-13T22:10:58,252<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;INFO &nbsp;|&nbsp;features-3-thread-1&nbsp;|<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FabricPipeconfLoader            &nbsp;|&nbsp;236&nbsp;-<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;org.onosproject.onos-pipelines-fabric-impl&nbsp;-&nbsp;2.2.3&nbsp;|&nbsp;Started&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;2020-07-13T22:10:58,261<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;INFO &nbsp;|&nbsp;features-3-thread-1&nbsp;|<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FeaturesServiceImpl             &nbsp;|&nbsp;11&nbsp;-<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;org.apache.karaf.features.core&nbsp;-&nbsp;4.2.8&nbsp;|&nbsp;Done.&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;2020-07-13T22:10:58,263<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;INFO &nbsp;|&nbsp;onos-store-app-app-activation&nbsp;|<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ApplicationManager              &nbsp;|&nbsp;193&nbsp;-<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;org.onosproject.onos-core-net&nbsp;-&nbsp;2.2.3&nbsp;|&nbsp;Application<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;org.onosproject.pipelines.fabric&nbsp;has&nbsp;been&nbsp;activated&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;2020-07-13T22:10:58,266<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;INFO &nbsp;|&nbsp;onos-store-app-app-activation&nbsp;|<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FeaturesServiceImpl             &nbsp;|&nbsp;11&nbsp;-<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;org.apache.karaf.features.core&nbsp;-&nbsp;4.2.8&nbsp;|&nbsp;Adding&nbsp;features:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fabric-tofino/[1.1.1.SNAPSHOT,1.1.1.SNAPSHOT]&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;2020-07-13T22:10:58,960<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;INFO &nbsp;|&nbsp;features-3-thread-1&nbsp;|<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FeaturesServiceImpl             &nbsp;|&nbsp;11&nbsp;-<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;org.apache.karaf.features.core&nbsp;-&nbsp;4.2.8&nbsp;|&nbsp;Changes&nbsp;to&nbsp;perform:&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;2020-07-13T22:10:58,961<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;INFO &nbsp;|&nbsp;features-3-thread-1&nbsp;|<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FeaturesServiceImpl             &nbsp;|&nbsp;11&nbsp;-<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;org.apache.karaf.features.core&nbsp;-&nbsp;4.2.8&nbsp;|  &nbsp;Region:&nbsp;root&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;2020-07-13T22:10:58,961<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;INFO &nbsp;|&nbsp;features-3-thread-1&nbsp;|<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FeaturesServiceImpl             &nbsp;|&nbsp;11&nbsp;-<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;org.apache.karaf.features.core&nbsp;-&nbsp;4.2.8&nbsp;|    &nbsp;Bundles&nbsp;to<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;install:&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;2020-07-13T22:10:58,961<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;INFO &nbsp;|&nbsp;features-3-thread-1&nbsp;|<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FeaturesServiceImpl             &nbsp;|&nbsp;11&nbsp;-<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;org.apache.karaf.features.core&nbsp;-&nbsp;4.2.8&nbsp;|      <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mvn:org.opencord/fabric-tofino/1.1.1-SNAPSHOT&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;2020-07-13T22:10:58,963<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;INFO &nbsp;|&nbsp;features-3-thread-1&nbsp;|<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FeaturesServiceImpl             &nbsp;|&nbsp;11&nbsp;-<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;org.apache.karaf.features.core&nbsp;-&nbsp;4.2.8&nbsp;|&nbsp;Installing&nbsp;bundles:&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;2020-07-13T22:10:58,964<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;INFO &nbsp;|&nbsp;features-3-thread-1&nbsp;|<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FeaturesServiceImpl             &nbsp;|&nbsp;11&nbsp;-<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;org.apache.karaf.features.core&nbsp;-&nbsp;4.2.8&nbsp;|  <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mvn:org.opencord/fabric-tofino/1.1.1-SNAPSHOT&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;2020-07-13T22:10:58,988<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;INFO &nbsp;|&nbsp;features-3-thread-1&nbsp;|<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FeaturesServiceImpl             &nbsp;|&nbsp;11&nbsp;-<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;org.apache.karaf.features.core&nbsp;-&nbsp;4.2.8&nbsp;|&nbsp;Starting&nbsp;bundles:&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;2020-07-13T22:10:58,988<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;INFO &nbsp;|&nbsp;features-3-thread-1&nbsp;|<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FeaturesServiceImpl             &nbsp;|&nbsp;11&nbsp;-<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;org.apache.karaf.features.core&nbsp;-&nbsp;4.2.8&nbsp;|  <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;org.opencord.fabric-tofino/1.1.1.SNAPSHOT&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;2020-07-13T22:10:58,996<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;INFO &nbsp;|&nbsp;features-3-thread-1&nbsp;|<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PipeconfLoader                  &nbsp;|&nbsp;237&nbsp;-<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;org.opencord.fabric-tofino&nbsp;-&nbsp;1.1.1.SNAPSHOT&nbsp;|&nbsp;Started&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;2020-07-13T22:10:58,998<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;INFO &nbsp;|&nbsp;features-3-thread-1&nbsp;|<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FeaturesServiceImpl             &nbsp;|&nbsp;11&nbsp;-<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;org.apache.karaf.features.core&nbsp;-&nbsp;4.2.8&nbsp;|&nbsp;Done.&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;2020-07-13T22:10:58,999<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;INFO &nbsp;|&nbsp;onos-store-app-app-activation&nbsp;|<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ApplicationManager              &nbsp;|&nbsp;193&nbsp;-<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;org.onosproject.onos-core-net&nbsp;-&nbsp;2.2.3&nbsp;|&nbsp;Application<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;org.opencord.fabric-tofino&nbsp;has&nbsp;been&nbsp;activated&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;root@ONOS:~/fabric-tofino#&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;&lt;o:p&gt; &lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;style=&quot;border:none;border-top:solid&nbsp;#E1E1E1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.0pt;padding:3.0pt&nbsp;0cm&nbsp;0cm&nbsp;0cm&quot;&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;b&gt;&lt;span&nbsp;lang=&quot;EN-US&quot;&gt;From:&lt;/span&gt;&lt;/b&gt;&lt;span<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lang=&quot;EN-US&quot;&gt;&nbsp;David&nbsp;Gengenbach<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;class=&quot;moz-txt-link-rfc2396E&quot;&nbsp;href=&quot;mailto:davidgengenbach@gmx.de&quot;&gt;&lt;davidgengenbach@gmx.de&gt;&lt;/a&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;b&gt;Sent:&lt;/b&gt;&nbsp;13&nbsp;July&nbsp;2020&nbsp;22:42&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;b&gt;To:&lt;/b&gt;&nbsp;Lake,&nbsp;David&nbsp;(PG/R&nbsp;-&nbsp;Elec&nbsp;Electronic&nbsp;Eng)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;class=&quot;moz-txt-link-rfc2396E&quot;&nbsp;href=&quot;mailto:d.lake@surrey.ac.uk&quot;&gt;&lt;d.lake@surrey.ac.uk&gt;&lt;/a&gt;;&nbsp;Alireza&nbsp;Ghaffarkhah<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;class=&quot;moz-txt-link-rfc2396E&quot;&nbsp;href=&quot;mailto:aghaffar@google.com&quot;&gt;&lt;aghaffar@google.com&gt;&lt;/a&gt;;&nbsp;Brian&nbsp;O'Connor<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;class=&quot;moz-txt-link-rfc2396E&quot;&nbsp;href=&quot;mailto:brian@opennetworking.org&quot;&gt;&lt;brian@opennetworking.org&gt;&lt;/a&gt;;&nbsp;Yi&nbsp;Tseng<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;class=&quot;moz-txt-link-rfc2396E&quot;&nbsp;href=&quot;mailto:yi@opennetworking.org&quot;&gt;&lt;yi@opennetworking.org&gt;&lt;/a&gt;;&nbsp;Maximilian&nbsp;Pudelko<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;class=&quot;moz-txt-link-rfc2396E&quot;&nbsp;href=&quot;mailto:max@opennetworking.org&quot;&gt;&lt;max@opennetworking.org&gt;&lt;/a&gt;&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;b&gt;Cc:&lt;/b&gt;&nbsp;&lt;a&nbsp;class=&quot;moz-txt-link-abbreviated&quot;&nbsp;href=&quot;mailto:stratum-dev@lists.stratumproject.org&quot;&gt;stratum-dev@lists.stratumproject.org&lt;/a&gt;&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;b&gt;Subject:&lt;/b&gt;&nbsp;Re:&nbsp;[stratum-dev]&nbsp;Confused&nbsp;about&nbsp;how&nbsp;to<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;run&nbsp;Stratum&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;o:p&gt; &lt;/o:p&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;style=&quot;margin-bottom:12.0pt&quot;&gt;It&nbsp;seems&nbsp;like&nbsp;you&nbsp;did&nbsp;not<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;install/activate&nbsp;the&nbsp;fabric-tofino&nbsp;library?&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Did&nbsp;you&nbsp;follow&nbsp;the&nbsp;steps&nbsp;in&nbsp;the&nbsp;guide?&nbsp;The&nbsp;&quot;Compile<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fabric-tofino&quot;&nbsp;section&nbsp;should&nbsp;install&nbsp;the&nbsp;pipeconfs.&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Important:&nbsp;you&nbsp;do&nbsp;NOT&nbsp;have&nbsp;to&nbsp;follow&nbsp;the&nbsp;whole&nbsp;guide&nbsp;of<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fabric-tofino.&nbsp;They&nbsp;provide&nbsp;compiled&nbsp;switch&nbsp;binaries.&nbsp;If&nbsp;you<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;follow&nbsp;their&nbsp;guide,&nbsp;these&nbsp;are&nbsp;automatically&nbsp;cleaned&nbsp;(=<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;deleted)&nbsp;before&nbsp;they&nbsp;are&nbsp;compiled&nbsp;again&nbsp;-&nbsp;so&nbsp;all&nbsp;subsequent<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;commands&nbsp;will&nbsp;not&nbsp;work&nbsp;unless&nbsp;you&nbsp;are&nbsp;able&nbsp;to&nbsp;compile&nbsp;them<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yourself&nbsp;(which&nbsp;is&nbsp;only&nbsp;needed&nbsp;if&nbsp;you&nbsp;want&nbsp;to&nbsp;change&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;underlying&nbsp;P4&nbsp;program,&nbsp;I&nbsp;guess).&nbsp;So&nbsp;I&nbsp;would&nbsp;suggest&nbsp;starting<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with&nbsp;a&nbsp;fresh&nbsp;copy&nbsp;of&nbsp;fabric-tofino&nbsp;in&nbsp;case&nbsp;you&nbsp;changed&nbsp;to<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;much.&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For&nbsp;troubleshooting:&nbsp;as&nbsp;described&nbsp;in&nbsp;the&nbsp;guide,&nbsp;you&nbsp;can<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;connect&nbsp;to&nbsp;ONOS&nbsp;via&nbsp;the&nbsp;CLI&nbsp;and&nbsp;look&nbsp;for&nbsp;the&nbsp;pipeconf&nbsp;by<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;executing:&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`onos&nbsp;onos@localhost`&nbsp;(or&nbsp;wherever&nbsp;ONOS&nbsp;is&nbsp;hosted)&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;&lt;a<br>
+href=&quot;https://eur02.safelinks.protection.outlook.com/?url=https%3A%2F%2Fgithub.com%2Fstratum%2Fstratum%2Fblob%2Fb1aa4a5fae55b9971839896add66f5d9a43505bf%2Fstratum%2Fdocs%2Fsetup_guide_barefoot_tofino_onos.md%23compile-fabric-tofino&amp;data=02%7C01%7Cd.lake%40surrey.ac.uk%7Cfe209a4d53fb42f6ee9b08d827759897%7C6b902693107440aa9e21d89446a2ebb5%7C0%7C1%7C637302733323245533&amp;sdata=Ktr2VtAp05dZNWoEgFkfH8KEAg7Q4i0hy8p4rlTgYfk%3D&amp;reserved=0&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;moz-do-not-send=&quot;true&quot;&gt;https://github.com/stratum/stratum/blob/b1aa4a5fae55b9971839896add66f5d9a43505bf/stratum/docs/setup_guide_barefoot_tofino_onos.md#compile-fabric-tofino&lt;/a&gt;&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;On&nbsp;7/13/20&nbsp;11:20&nbsp;PM,&nbsp;David&nbsp;Lake&nbsp;wrote:&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;blockquote&nbsp;style=&quot;margin-top:5.0pt;margin-bottom:5.0pt&quot;&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;OK<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;–&nbsp;I&nbsp;followed&nbsp;the&nbsp;instructions&nbsp;from&nbsp;David&nbsp;Gengenbach&nbsp;(thank<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;you)&nbsp;and&nbsp;I&nbsp;now&nbsp;have&nbsp;a&nbsp;Stratum&nbsp;agent&nbsp;running&nbsp;on&nbsp;the&nbsp;switch.&lt;/span&gt;&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt; &lt;/span&gt;&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;I<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;then&nbsp;built&nbsp;the&nbsp;pipeline&nbsp;in&nbsp;ONOS&nbsp;and&nbsp;loaded&nbsp;it:&lt;/span&gt;&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt; &lt;/span&gt;&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;2020-07-13T22:10:58,999<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;INFO &nbsp;|&nbsp;onos-store-app-app-activation&nbsp;|<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ApplicationManager              &nbsp;|&nbsp;193&nbsp;-<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;org.onosproject.onos-core-net&nbsp;-&nbsp;2.2.3&nbsp;|&nbsp;Application<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;org.opencord.fabric-tofino&nbsp;has&nbsp;been&nbsp;activated&lt;/span&gt;&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;root@ONOS:~/fabric-tofino#&lt;/span&gt;&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt; &lt;/span&gt;&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;But<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;when&nbsp;I&nbsp;add&nbsp;the&nbsp;netfcfg,&nbsp;I&nbsp;see&nbsp;this&nbsp;message&nbsp;in&nbsp;the&nbsp;ONOS<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;log:&lt;/span&gt;&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt; &lt;/span&gt;&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;2020-07-13T22:15:42,571<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;ERROR&nbsp;|&nbsp;onos-gdp-6      &nbsp;|<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DeviceTaskExecutor              &nbsp;|&nbsp;225&nbsp;-<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;org.onosproject.onos-providers-general-device&nbsp;-&nbsp;2.2.3&nbsp;|<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Unable&nbsp;to&nbsp;complete&nbsp;task&nbsp;CONNECTION_SETUP&nbsp;for<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;device:my-tofino-switch:&nbsp;pipeconf<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;org.opencord.fabric.tofino.montara_sde_9_0_0&nbsp;not<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;registered&lt;/span&gt;&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt; &lt;/span&gt;&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt; &lt;/span&gt;&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;My<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;switch&nbsp;is&nbsp;a&nbsp;Montara&nbsp;but&nbsp;I&nbsp;don’t&nbsp;see&nbsp;where&nbsp;the&nbsp;pipeconf&nbsp;is<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;built?<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/span&gt;&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt; &lt;/span&gt;&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;On<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;ONOS&nbsp;system&nbsp;I&nbsp;have&nbsp;ONOS&nbsp;2.2.3&nbsp;and&nbsp;bf-sde-9.0.0. &nbsp;I&nbsp;have<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;not&nbsp;built&nbsp;anything&nbsp;with&nbsp;the&nbsp;bf-sde.&lt;/span&gt;&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt; &lt;/span&gt;&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;Do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I&nbsp;need&nbsp;to&nbsp;run&nbsp;p4studio_build&nbsp;in&nbsp;the&nbsp;BF-SDE&nbsp;first?&lt;/span&gt;&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt; &lt;/span&gt;&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;Thanks&lt;/span&gt;&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt;&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;David&lt;/span&gt;&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;span&nbsp;style=&quot;mso-fareast-language:EN-US&quot;&gt; &lt;/span&gt;&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;b&gt;&lt;span&nbsp;lang=&quot;EN-US&quot;&gt;From:&lt;/span&gt;&lt;/b&gt;&lt;span<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lang=&quot;EN-US&quot;&gt;&nbsp;Alireza&nbsp;Ghaffarkhah<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;href=&quot;mailto:aghaffar@google.com&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;moz-do-not-send=&quot;true&quot;&gt;&lt;aghaffar@google.com&gt;&lt;/a&gt;&nbsp;&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;b&gt;Sent:&lt;/b&gt;&nbsp;13&nbsp;July&nbsp;2020&nbsp;07:01&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;b&gt;To:&lt;/b&gt;&nbsp;David&nbsp;Gengenbach&nbsp;&lt;a<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;href=&quot;mailto:davidgengenbach@gmx.de&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;moz-do-not-send=&quot;true&quot;&gt;&lt;davidgengenbach@gmx.de&gt;&lt;/a&gt;;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Brian&nbsp;O'Connor<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;href=&quot;mailto:brian@opennetworking.org&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;moz-do-not-send=&quot;true&quot;&gt;&lt;brian@opennetworking.org&gt;&lt;/a&gt;;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Yi&nbsp;Tseng<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;href=&quot;mailto:yi@opennetworking.org&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;moz-do-not-send=&quot;true&quot;&gt;&lt;yi@opennetworking.org&gt;&lt;/a&gt;;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Maximilian&nbsp;Pudelko<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;href=&quot;mailto:max@opennetworking.org&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;moz-do-not-send=&quot;true&quot;&gt;&lt;max@opennetworking.org&gt;&lt;/a&gt;&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;b&gt;Cc:&lt;/b&gt;&nbsp;Lake,&nbsp;David&nbsp;(PG/R&nbsp;-&nbsp;Elec&nbsp;Electronic&nbsp;Eng)&nbsp;&lt;a<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;href=&quot;mailto:d.lake@surrey.ac.uk&quot;&nbsp;moz-do-not-send=&quot;true&quot;&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;d.lake@surrey.ac.uk&gt;&lt;/a&gt;;&nbsp;&lt;a<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;href=&quot;mailto:stratum-dev@lists.stratumproject.org&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;moz-do-not-send=&quot;true&quot;&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stratum-dev@lists.stratumproject.org&lt;/a&gt;&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;b&gt;Subject:&lt;/b&gt;&nbsp;Re:&nbsp;[stratum-dev]&nbsp;Confused&nbsp;about&nbsp;how&nbsp;to<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;run&nbsp;Stratum&lt;/span&gt;&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt; &lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;a<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;href=&quot;mailto:brian@opennetworking.org&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;moz-do-not-send=&quot;true&quot;&gt;+Brian&nbsp;O'Connor&lt;/a&gt; &lt;a<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;href=&quot;mailto:yi@opennetworking.org&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;moz-do-not-send=&quot;true&quot;&gt;+Yi&nbsp;Tseng&lt;/a&gt; &lt;a<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;href=&quot;mailto:max@opennetworking.org&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;moz-do-not-send=&quot;true&quot;&gt;+Maximilian&nbsp;Pudelko&lt;/a&gt; in&nbsp;case<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;they&nbsp;can&nbsp;provide&nbsp;more&nbsp;input. &lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt; &lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;On&nbsp;Sun,&nbsp;Jul&nbsp;12,&nbsp;2020&nbsp;at&nbsp;5:00&nbsp;PM&nbsp;David<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Gengenbach&nbsp;via&nbsp;stratum-dev&nbsp;&lt;&lt;a<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;href=&quot;mailto:stratum-dev@lists.stratumproject.org&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;moz-do-not-send=&quot;true&quot;&gt;stratum-dev@lists.stratumproject.org&lt;/a&gt;&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;wrote:&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;blockquote&nbsp;style=&quot;border:none;border-left:solid&nbsp;#CCCCCC<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.0pt;padding:0cm&nbsp;0cm&nbsp;0cm<br>
+6.0pt;margin-left:4.8pt;margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt&quot;&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;I&nbsp;created&nbsp;a&nbsp;setup&nbsp;guide&nbsp;for&nbsp;this<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exact&nbsp;use-case.&nbsp;The&nbsp;PR&nbsp;for&nbsp;it&nbsp;has&nbsp;not&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;been&nbsp;merged&nbsp;but&nbsp;should&nbsp;work:&nbsp;&lt;a<br>
+href=&quot;https://eur02.safelinks.protection.outlook.com/?url=https%3A%2F%2Fgithub.com%2Fstratum%2Fstratum%2Fpull%2F280&amp;data=02%7C01%7Cd.lake%40surrey.ac.uk%7Cfe209a4d53fb42f6ee9b08d827759897%7C6b902693107440aa9e21d89446a2ebb5%7C0%7C1%7C637302733323255530&amp;sdata=94scdPXRGyf%2BEj%2BfmYBzHIwx3vY0RD9XcYl%2FX57m1sM%3D&amp;reserved=0&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;target=&quot;_blank&quot;&nbsp;moz-do-not-send=&quot;true&quot;&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;https://github.com/stratum/stratum/pull/280&lt;/a&gt;&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_______________________________________________&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stratum-dev&nbsp;mailing&nbsp;list&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;href=&quot;mailto:stratum-dev@lists.stratumproject.org&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;target=&quot;_blank&quot;&nbsp;moz-do-not-send=&quot;true&quot;&gt;stratum-dev@lists.stratumproject.org&lt;/a&gt;&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a<br>
+href=&quot;https://eur02.safelinks.protection.outlook.com/?url=https%3A%2F%2Flists.stratumproject.org%2Flistinfo%2Fstratum-dev&amp;data=02%7C01%7Cd.lake%40surrey.ac.uk%7Cfe209a4d53fb42f6ee9b08d827759897%7C6b902693107440aa9e21d89446a2ebb5%7C0%7C1%7C637302733323265533&amp;sdata=4gS0cZGnWSQFtvrk36IPprPkz37GMX1rRuVq78%2BExzg%3D&amp;reserved=0&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;target=&quot;_blank&quot;&nbsp;moz-do-not-send=&quot;true&quot;&gt;https://lists.stratumproject.org/listinfo/stratum-dev&lt;/a&gt;&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/blockquote&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/blockquote&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/blockquote&gt;<br>
+&nbsp;&nbsp;&lt;/body&gt;<br>
+&lt;/html&gt;<br>
+
+</tt>

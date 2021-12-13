@@ -1,0 +1,182 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [stratum-dev] Problems regarding the installation of stratum &amp; SDE 9.4.0 on Tofino switch
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Problems%20regarding%20the%20installation%20of%20stratum%20%26%0A%20SDE%209.4.0%20on%20Tofino%20switch&In-Reply-To=%3CHK0PR06MB3233CB333A066E89BE348C13819C9%40HK0PR06MB3233.apcprd06.prod.outlook.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <LINK REL="Previous"  HREF="000260.html">
+   <LINK REL="Next"  HREF="000262.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[stratum-dev] Problems regarding the installation of stratum &amp; SDE 9.4.0 on Tofino switch</H1>
+    <B>鄭仲翔</B> 
+    <A HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Problems%20regarding%20the%20installation%20of%20stratum%20%26%0A%20SDE%209.4.0%20on%20Tofino%20switch&In-Reply-To=%3CHK0PR06MB3233CB333A066E89BE348C13819C9%40HK0PR06MB3233.apcprd06.prod.outlook.com%3E"
+       TITLE="[stratum-dev] Problems regarding the installation of stratum &amp; SDE 9.4.0 on Tofino switch">john.cheng at oprueba.com
+       </A><BR>
+    <I>Fri Nov 19 15:12:09 UTC 2021</I>
+    <P><UL>
+        <LI>Previous message (by thread): <A HREF="000260.html">[stratum-dev] Problems regarding the installation of stratum &amp; SDE 9.4.0 on Tofino switch
+</A></li>
+        <LI>Next message (by thread): <A HREF="000262.html">[stratum-dev] Canceled event with note: Stratum TST Meeting @ Thu Nov 25, 2021 4:30pm - 5pm (EST) (stratum-dev at lists.stratumproject.org)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#261">[ date ]</a>
+              <a href="thread.html#261">[ thread ]</a>
+              <a href="subject.html#261">[ subject ]</a>
+              <a href="author.html#261">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Max,
+
+Thanks for your information. It works for me.
+
+I use latest Stratum source code and it can work now.
+
+Best Regards,
+John
+From: Maximilian Pudelko &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">max at opennetworking.org</A>&gt;
+Sent: Thursday, November 18, 2021 1:09 PM
+To: 鄭仲翔 &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">john.cheng at oprueba.com</A>&gt;
+Cc: <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>
+Subject: Re: [stratum-dev] Problems regarding the installation of stratum &amp; SDE 9.4.0 on Tofino switch
+
+Hi John,
+
+That bug you linked should be fixed by now and has been included in a few releases. Can you verify
+you're running the latest 2021-10-09 release from the release page&lt;<A HREF="https://github.com/stratum/stratum/releases">https://github.com/stratum/stratum/releases</A>&gt;?
+If this (or another) error still exists, that's worth investigating and probably a new bug.
+
+If you still want to build Stratum yourself, you should check out the Stratum on Tofino build instructions here&lt;<A HREF="https://github.com/stratum/stratum/blob/main/stratum/hal/bin/barefoot/README.build.md#method-2-pre-build-the-sde-then-build-stratum-with-docker-recommended">https://github.com/stratum/stratum/blob/main/stratum/hal/bin/barefoot/README.build.md#method-2-pre-build-the-sde-then-build-stratum-with-docker-recommended</A>&gt;.
+Method 2 or 3 seem close to what you're looking for.
+
+
+Best,
+Max
+
+
+On Wed, Nov 17, 2021 at 8:39 PM 鄭仲翔 via stratum-dev &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>&lt;mailto:<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>&gt;&gt; wrote:
+Hello everyone,
+
+I encountered some problems during the installation of stratum &amp; SDE 9.4.0 on Tofino switch and was unable to run stratum smoothly.
+
+Environment:
+Switch: Netberg Aurora 610
+<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">root at localhost</A>:~# cat /etc/onl/platform
+x86-64-netberg-aurora-610-r0
+
+<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">root at localhost</A>:~# uname -a
+Linux localhost 4.19.81-OpenNetworkLinux #1 SMP Wed Apr 21 09:25:49 UTC 2021 x86_64 GNU/Linux
+
+<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">root at localhost</A>:~# lsmod
+Module                  Size  Used by
+bf_kdrv                28672  0
+at24                   20480  0
+x86_pkg_temp_thermal    16384  0
+intel_pch_thermal      16384  0
+optoe                  20480  0
+vpd                    24576  0
+swps                  147456  0
+net_cpld               16384  0
+net_psoc               24576  0
+net_platform           16384  0
+i2c_gpio               16384  0
+lpc_ich                28672  0
+gpio_ich               16384  3
+
+I tried two ways to run ONOS + Stratum + Tofino, the steps are as followed:
+• Pre-built Stratum binaries:
+        On switch:
+        1. Install ONL on Tofino Switch
+        2. Install stratum on Tofino Switch by stratum_bf_deb.deb
+        3. Start stratum using start-stratum.sh
+
+        On ONOS server:
+        1. Start ONOS Server
+        2. Build and install my app to ONOS server
+        (My app can work on stratum + bmv2. To run on physical switch, I just modify PipeconfLoader.java)
+        3. Put network configuration to ONOS server
+
+        So far, ONOS can connect to Tofino Switch with stratum. But for Install rule, Stratum returned an error:
+        [libprotobuf FATAL external/com_google_protobuf/src/google/protobuf/repeated_field.h:1694] CHECK failed: (index) &lt; (current_size_):
+        I saw the solution and want to build a new stratum_bf_deb.deb by myself: <A HREF="https://github.com/stratum/stratum/pull/687">https://github.com/stratum/stratum/pull/687</A>
+
+• Build Stratum Source code:
+        It cannot compile stratum on Tofino Switch, so I tried to build the STRATUM package on another Debian machine.
+
+        Prepare package:
+                Stratum Packet: <A HREF="https://github.com/stratum/stratum">https://github.com/stratum/stratum</A>
+                P4-SDE: 9.4.0
+                BSP: 9.4.0
+                Linux-kernel-4.19.81
+
+        On Debian:
+        1. Download Stratum Source Code
+        2. Start a temporary container by setup_dev_env.sh
+        3. Copy require packages into a container (SDE, BSP, Linux-kernel)
+        4. Compile SDE:
+        ./p4studio_build.py -up profiles/stratum_profile.yaml -shc -kdir &lt;path/to/linux/sources&gt; --bsp-path $BSP_PATH
+        5. Get Stratum package:
+        bazel build --sandbox_debug --verbose_failures //stratum/hal/bin/barefoot:stratum_bf_deb
+
+        In this step it returned the following error:
+        Repository rule http_archive defined at:
+                /root/.cache/bazel/_bazel_root/1b07b1db06ec9ee22c71eac6f0bd4549/external/bazel_tools/tools/build_defs/repo/http.bzl:336:31: in &lt;toplevel&gt;
+        ERROR: /stratum/stratum/hal/bin/barefoot/BUILD:85:8: no such target '@local_barefoot_bin//:bf_library_files': target 'bf_library_files' not declared in package '' defined by   /root/.cache/bazel/_bazel_root/1b07b1db06ec9ee22c71eac6f0bd4549/external/local_barefoot_bin/BUILD and referenced by '//stratum/hal/bin/barefoot:stratum_bf_data'
+        ERROR: /stratum/stratum/hal/bin/barefoot/BUILD:85:8: no such target '@local_barefoot_bin//:bf_shareable_files': target 'bf_shareable_files' not declared in package '' defined by       /root/.cache/bazel/_bazel_root/1b07b1db06ec9ee22c71eac6f0bd4549/external/local_barefoot_bin/BUILD and referenced by '//stratum/hal/bin/barefoot:stratum_bf_data'
+        ERROR: /stratum/stratum/hal/bin/barefoot/BUILD:85:8: no such target '@local_barefoot_bin//:kernel_module': target 'kernel_module' not declared in package '' defined by         /root/.cache/bazel/_bazel_root/1b07b1db06ec9ee22c71eac6f0bd4549/external/local_barefoot_bin/BUILD and referenced by '//stratum/hal/bin/barefoot:stratum_bf_data'
+        ERROR: Analysis of target '//stratum/hal/bin/barefoot:stratum_bf_deb' failed; build aborted: Analysis failed
+        INFO: Elapsed time: 0.148s
+        INFO: 0 processes.
+        FAILED: Build did NOT complete successfully (0 packages loaded, 0 targets configured)
+
+        I am not sure how to solve the problem. Can anyone offer me your insight?
+
+Thanks
+
+John
+Confidentiality Note
+本郵件含有詮隼科技股份有限公司機密資訊、或受法律保護之資料，惟有原發信人指定之收信人得閱讀或使用本郵件之內容。如您並非被指定之收信人，請立即將本郵件及所有附件予以刪除；請勿揭露、儲存或使用本郵件之任何資訊，並請您立即告知原發信人本郵件的傳遞錯誤。謝謝您的合作。
+This e-mail transmission and any attachments contain information from O'Prueba Technology Inc. The information is confidential and/or privileged and intended to be solely for the use of the individuals or entity named in this e-mail transmission. If you are not the intended recipient, be aware that any disclosure, saving or use of the contents of this e-mail transmission and attachments is strictly prohibited. If you have received this email transmission in error, please notify us immediately, and delete the e-mail and attachments. We greatly appreciate your cooperation.
+_______________________________________________
+stratum-dev mailing list
+<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>&lt;mailto:<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>&gt;
+<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">https://lists.stratumproject.org/listinfo/stratum-dev</A>
+Confidentiality Note
+本郵件含有詮隼科技股份有限公司機密資訊、或受法律保護之資料，惟有原發信人指定之收信人得閱讀或使用本郵件之內容。如您並非被指定之收信人，請立即將本郵件及所有附件予以刪除；請勿揭露、儲存或使用本郵件之任何資訊，並請您立即告知原發信人本郵件的傳遞錯誤。謝謝您的合作。
+This e-mail transmission and any attachments contain information from O'Prueba Technology Inc. The information is confidential and/or privileged and intended to be solely for the use of the individuals or entity named in this e-mail transmission. If you are not the intended recipient, be aware that any disclosure, saving or use of the contents of this e-mail transmission and attachments is strictly prohibited. If you have received this email transmission in error, please notify us immediately, and delete the e-mail and attachments. We greatly appreciate your cooperation.
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.stratumproject.org/archives/stratum-dev/attachments/20211119/b922a338/attachment-0001.html">https://lists.stratumproject.org/archives/stratum-dev/attachments/20211119/b922a338/attachment-0001.html</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message (by thread): <A HREF="000260.html">[stratum-dev] Problems regarding the installation of stratum &amp; SDE 9.4.0 on Tofino switch
+</A></li>
+	<LI>Next message (by thread): <A HREF="000262.html">[stratum-dev] Canceled event with note: Stratum TST Meeting @ Thu Nov 25, 2021 4:30pm - 5pm (EST) (stratum-dev at lists.stratumproject.org)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#261">[ date ]</a>
+              <a href="thread.html#261">[ thread ]</a>
+              <a href="subject.html#261">[ subject ]</a>
+              <a href="author.html#261">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.stratumproject.org/listinfo/stratum-dev">More information about the stratum-dev
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,102 @@
+From bocon at opennetworking.org  Fri Nov  1 06:19:08 2019
+From: bocon at opennetworking.org (Brian O'Connor)
+Date: Thu, 31 Oct 2019 23:19:08 -0700
+Subject: [stratum-announce] Upcoming Events in November
+Message-ID: <CACKOpDnh5Yy1ou6nxA0_p8DWkGFYdWBnAB7xz0ngaCtDWkj8Aw@mail.gmail.com>
+
+Hi everyone,
+
+I wanted to make you aware of a few upcoming events that will feature
+Stratum:
+
+
+*November 11th: Linux Foundation Open Source Networking (OSN) Day*Hosted by
+Telstra in Melbourne, Australia
+https://events19.linuxfoundation.org/events/osn-days-2019/apac/melbourne-australia/
+
+*November 12th: Next-Gen SDN Tutorial*
+Hosted by Telstra in Melbourne, Australia
+https://www.eventbrite.com.au/e/next-gen-sdn-tutorial-tickets-75792536517
+
+
+*November 13th: Next-Gen SDN Tutorial*Hosted by Princeton New Jersey, USA
+(part of HotNets 2019)
+(Respond to me and +Yi Tseng <yi at opennetworking.org> if you are interested
+in attending)
+
+
+*November 14th: Linux Foundation Open Source Networking (OSN) Day*Hosted by
+NCTU in Hsinchu, Taiwan
+https://events19.linuxfoundation.org/events/osn-days-2019/apac/taiwan/
+
+*November 15th: Stratum Developer Tutorial*
+Hosted by NCTU in Hsinchu, Taiwan (10:00 - 15:00)
+(Registration link available soon; respond to me if you are interested)
+
+If you are interested in attending any of these events, please register to
+secure your spot.
+
+- Brian
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-announce/attachments/20191031/bc4b6444/attachment.html>
+
+From bocon at opennetworking.org  Mon Nov 11 11:51:37 2019
+From: bocon at opennetworking.org (Brian O'Connor)
+Date: Mon, 11 Nov 2019 22:51:37 +1100
+Subject: [stratum-announce] Upcoming Events in November
+In-Reply-To: <0101016e259ef8d8-cb66d0df-468b-41f9-ae6e-dfa5739ffccb-000000@us-west-2.amazonses.com>
+References: <0101016e259ef8d8-cb66d0df-468b-41f9-ae6e-dfa5739ffccb-000000@us-west-2.amazonses.com>
+Message-ID: <CACKOpDmqaJx-u1ug=b2p6N586_C0BCHkYB-cExTPm9nqp7LnKw@mail.gmail.com>
+
+Here is the registration link for the Stratum Developer Tutorial in Taiwan:
+https://docs.google.com/forms/d/e/1FAIpQLSeAKd79N0PNympI-Grf7-DcxQxsie5iyuNOJZTM2NemUMULMw/viewform
+
+- Brian
+
+On Fri, Nov 1, 2019 at 5:20 PM Brian O'Connor via stratum-announce <
+stratum-announce at lists.stratumproject.org> wrote:
+
+> Hi everyone,
+>
+> I wanted to make you aware of a few upcoming events that will feature
+> Stratum:
+>
+>
+> *November 11th: Linux Foundation Open Source Networking (OSN) Day*Hosted
+> by Telstra in Melbourne, Australia
+>
+> https://events19.linuxfoundation.org/events/osn-days-2019/apac/melbourne-australia/
+>
+> *November 12th: Next-Gen SDN Tutorial*
+> Hosted by Telstra in Melbourne, Australia
+> https://www.eventbrite.com.au/e/next-gen-sdn-tutorial-tickets-75792536517
+>
+>
+> *November 13th: Next-Gen SDN Tutorial*Hosted by Princeton New Jersey, USA
+> (part of HotNets 2019)
+> (Respond to me and +Yi Tseng <yi at opennetworking.org> if you are
+> interested in attending)
+>
+>
+> *November 14th: Linux Foundation Open Source Networking (OSN) Day*Hosted
+> by NCTU in Hsinchu, Taiwan
+> https://events19.linuxfoundation.org/events/osn-days-2019/apac/taiwan/
+>
+> *November 15th: Stratum Developer Tutorial*
+> Hosted by NCTU in Hsinchu, Taiwan (10:00 - 15:00)
+> (Registration link available soon; respond to me if you are interested)
+>
+> If you are interested in attending any of these events, please register to
+> secure your spot.
+>
+> - Brian
+> _______________________________________________
+> stratum-announce mailing list
+> stratum-announce at lists.stratumproject.org
+> https://lists.stratumproject.org/listinfo/stratum-announce
+>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-announce/attachments/20191111/51eb793e/attachment.html>
+

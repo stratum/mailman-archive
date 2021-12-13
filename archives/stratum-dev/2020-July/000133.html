@@ -1,0 +1,146 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [stratum-dev] Issues with Configuring Wedge 100bf-32x with ONOS
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Issues%20with%20Configuring%20Wedge%20100bf-32x%20with%20ONOS&In-Reply-To=%3CCAOyFVR2byLofiuWy6XpQDvNThKE3vm90AKPz-P%3DzzYEK44Lyig%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <LINK REL="Previous"  HREF="000132.html">
+   <LINK REL="Next"  HREF="000134.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[stratum-dev] Issues with Configuring Wedge 100bf-32x with ONOS</H1>
+    <B>Yi Tseng</B> 
+    <A HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Issues%20with%20Configuring%20Wedge%20100bf-32x%20with%20ONOS&In-Reply-To=%3CCAOyFVR2byLofiuWy6XpQDvNThKE3vm90AKPz-P%3DzzYEK44Lyig%40mail.gmail.com%3E"
+       TITLE="[stratum-dev] Issues with Configuring Wedge 100bf-32x with ONOS">yi at opennetworking.org
+       </A><BR>
+    <I>Mon Jul 20 18:12:35 UTC 2020</I>
+    <P><UL>
+        <LI>Previous message (by thread): <A HREF="000132.html">[stratum-dev] Issues with Configuring Wedge 100bf-32x with ONOS
+</A></li>
+        <LI>Next message (by thread): <A HREF="000134.html">[stratum-dev] Issues with Configuring Wedge 100bf-32x with ONOS
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#133">[ date ]</a>
+              <a href="thread.html#133">[ thread ]</a>
+              <a href="subject.html#133">[ subject ]</a>
+              <a href="author.html#133">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi David,
+
+Please find the config file attached, and modify it based on your
+requirements.
+
+Also, you can follow the Trellis Configuration Guide
+&lt;<A HREF="https://docs.trellisfabric.org/1.12/configuration/bridging-unicast.html">https://docs.trellisfabric.org/1.12/configuration/bridging-unicast.html</A>&gt; for
+more information about how to config the ONOS Trellis application.
+
+Yi
+
+On Sat, Jul 18, 2020 at 12:55 PM David Lake via stratum-dev &lt;
+<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>&gt; wrote:
+
+&gt;<i> Hello
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Thank you for you help so far.  I now need some more guidance please.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> I have a Wedge 100BF-32x running ONL and the Stratum Docker container with
+</I>&gt;<i> ONOS 2.2.3 and the fabric-tofino pipeconf.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> When I set the CHASSIS_CONFIG for the switch and start the container, I
+</I>&gt;<i> see errors regarding the fan configuration from the switch (see
+</I>&gt;<i> “start-stratum2.txt” log file).
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Eventually, these timeout and the switch becomes available (about 10
+</I>&gt;<i> minutes to start).
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> However, when I add to ONOS using the netcfg command I see errors and the
+</I>&gt;<i> ports show as “Enabled – False” in ONOS.   My netfg log is attached as
+</I>&gt;<i> “necfg.txt.”
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> What I need to do is to set up the switch with 4 subnets across the 32
+</I>&gt;<i> ports.  I’m trying to find an example configuration and some worked
+</I>&gt;<i> tutorials/user-guides.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Can someone please point me to some sample configs for similar
+</I>&gt;<i> environments please and tell me where I am going wrong with the
+</I>&gt;<i> configuration?
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Thanks
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> David
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> stratum-dev mailing list
+</I>&gt;<i> <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>
+</I>&gt;<i> <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">https://lists.stratumproject.org/listinfo/stratum-dev</A>
+</I>
+
+
+-- 
+Yi Tseng
+Member of Technical Staff
+Open Networking Foundation
+<A HREF="https://www.opennetworking.org/">https://www.opennetworking.org/</A>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.stratumproject.org/archives/stratum-dev/attachments/20200720/b3c52b63/attachment.html">https://lists.stratumproject.org/archives/stratum-dev/attachments/20200720/b3c52b63/attachment.html</A>&gt;
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: netcfg.json
+Type: application/json
+Size: 6968 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.stratumproject.org/archives/stratum-dev/attachments/20200720/b3c52b63/attachment.json">https://lists.stratumproject.org/archives/stratum-dev/attachments/20200720/b3c52b63/attachment.json</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message (by thread): <A HREF="000132.html">[stratum-dev] Issues with Configuring Wedge 100bf-32x with ONOS
+</A></li>
+	<LI>Next message (by thread): <A HREF="000134.html">[stratum-dev] Issues with Configuring Wedge 100bf-32x with ONOS
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#133">[ date ]</a>
+              <a href="thread.html#133">[ thread ]</a>
+              <a href="subject.html#133">[ subject ]</a>
+              <a href="author.html#133">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.stratumproject.org/listinfo/stratum-dev">More information about the stratum-dev
+mailing list</a><br>
+</body></html>

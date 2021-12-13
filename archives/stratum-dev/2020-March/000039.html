@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [stratum-dev] Update Bazel version to 2.2.0
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Update%20Bazel%20version%20to%202.2.0&In-Reply-To=%3Cc5b7716226554a42a1ad5c8aa3c44eef%40kau.se%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <LINK REL="Previous"  HREF="000038.html">
+   <LINK REL="Next"  HREF="000042.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[stratum-dev] Update Bazel version to 2.2.0</H1>
+    <B>Deval Bhamare</B> 
+    <A HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Update%20Bazel%20version%20to%202.2.0&In-Reply-To=%3Cc5b7716226554a42a1ad5c8aa3c44eef%40kau.se%3E"
+       TITLE="[stratum-dev] Update Bazel version to 2.2.0">Deval.Bhamare at kau.se
+       </A><BR>
+    <I>Fri Mar  6 09:47:58 UTC 2020</I>
+    <P><UL>
+        <LI>Previous message (by thread): <A HREF="000038.html">[stratum-dev] Update Bazel version to 2.2.0
+</A></li>
+        <LI>Next message (by thread): <A HREF="000042.html">[stratum-dev] Update Bazel version to 2.2.0
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#39">[ date ]</a>
+              <a href="thread.html#39">[ thread ]</a>
+              <a href="subject.html#39">[ subject ]</a>
+              <a href="author.html#39">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Yi,
+
+
+Yes I am using --define sde_ver=8.9.2 and now tried bazel clean --expunge, but no luck.
+
+
+Same gcc errors:
+
+
+ERROR: /stratum/stratum/hal/bin/barefoot/BUILD:26:1: Linking of rule '//stratum/hal/bin/barefoot:stratum_bf' failed (Exit 1) gcc failed: error executing command /usr/bin/gcc @bazel-out/k8-fastbuild/bin/stratum/hal/bin/barefoot/stratum_bf-2.params
+
+
+Use --sandbox_debug to see verbose messages from the sandbox
+
+bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_8_9_2/_objs/pi/pi.pic.o:pi.c:function pi_init: error: undefined reference to '_pi_init'
+
+.. and so on..
+
+
+Thanks,
+
+Deval
+
+________________________________
+From: Yi Tseng &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">yi at opennetworking.org</A>&gt;
+Sent: Friday, March 6, 2020 12:08:42 AM
+To: Deval Bhamare
+Cc: <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>
+Subject: Re: [stratum-dev] Update Bazel version to 2.2.0
+
+Hi Deval,
+
+Can you try to clean up your cache and build it again? (bazel clean --expunge)
+
+I tested the build in my environment and it works.
+
+Also, which SDE version you are using? I assume that you are using 8.9.0 (According to previous email thread)
+
+Have you tried to add Bazel flag &quot;--define sde_ver=8.9.2&quot;? (Both 8.9.2 and 8.9.0 uses the same dependency)
+
+Yi
+
+Yi Tseng
+Member of Technical Staff
+Open Networking Foundation
+<A HREF="https://www.opennetworking.org/">https://www.opennetworking.org/</A>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.stratumproject.org/archives/stratum-dev/attachments/20200306/5a577ed2/attachment.html">https://lists.stratumproject.org/archives/stratum-dev/attachments/20200306/5a577ed2/attachment.html</A>&gt;
+</PRE>
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message (by thread): <A HREF="000038.html">[stratum-dev] Update Bazel version to 2.2.0
+</A></li>
+	<LI>Next message (by thread): <A HREF="000042.html">[stratum-dev] Update Bazel version to 2.2.0
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#39">[ date ]</a>
+              <a href="thread.html#39">[ thread ]</a>
+              <a href="subject.html#39">[ subject ]</a>
+              <a href="author.html#39">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.stratumproject.org/listinfo/stratum-dev">More information about the stratum-dev
+mailing list</a><br>
+</body></html>

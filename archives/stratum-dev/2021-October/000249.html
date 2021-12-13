@@ -1,0 +1,164 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [stratum-dev] Stratum 2021-10-09 Release and Call to Action
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Stratum%202021-10-09%20Release%20and%20Call%20to%20Action&In-Reply-To=%3CCACKOpD%3DFdaeK_T_ux1Q%3D4AryenqPnG%3D9K1aWEUMoN%2Bjz7L7_iA%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <LINK REL="Previous"  HREF="000248.html">
+   <LINK REL="Next"  HREF="000256.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[stratum-dev] Stratum 2021-10-09 Release and Call to Action</H1>
+    <B>Brian O'Connor</B> 
+    <A HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Stratum%202021-10-09%20Release%20and%20Call%20to%20Action&In-Reply-To=%3CCACKOpD%3DFdaeK_T_ux1Q%3D4AryenqPnG%3D9K1aWEUMoN%2Bjz7L7_iA%40mail.gmail.com%3E"
+       TITLE="[stratum-dev] Stratum 2021-10-09 Release and Call to Action">bocon at opennetworking.org
+       </A><BR>
+    <I>Tue Oct 12 02:06:23 UTC 2021</I>
+    <P><UL>
+        <LI>Previous message (by thread): <A HREF="000248.html">[stratum-dev] Stratum TST Meeting time
+</A></li>
+        <LI>Next message (by thread): <A HREF="000256.html">[stratum-dev] Stratum 2021-10-09 Release and Call to Action
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#249">[ date ]</a>
+              <a href="thread.html#249">[ thread ]</a>
+              <a href="subject.html#249">[ subject ]</a>
+              <a href="author.html#249">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Dear Stratum Community!
+
+We would first like to thank you for being a member of this community and
+for your contributions. Over the past four years, the Stratum community has
+achieved a lot:
+
+   -
+
+   Demonstrated how P4 can be used to model fixed-pipeline ASICs,
+   -
+
+   Used P4 to program a variety of flexible targets, including ASICs,
+   FPGAs, and CPUs,
+   -
+
+   Controlled a multi-vendor, multi-ASIC leaf-spine fabric using ONOS and
+   the Trellis control applications,
+   -
+
+   Read statistics and configured peripherals using gNMI, including
+   long-range optical transceivers,
+   -
+
+   Automated device testing using TestVectors enabling CI/CD for the switch
+   OS,
+   -
+
+   Deployed Stratum in a variety of production environments, including
+   ONF’s Aether fabric,
+   -
+
+   Improved and evolved P4Runtime using real world use cases with the P4
+   API working group,
+   -
+
+   Educated community on the benefits of P4Runtime and gNMI.
+
+
+In addition, Stratum is part of ONF’s Continuous Certification Program
+&lt;<A HREF="https://opennetworking.org/continuous-certification-program/">https://opennetworking.org/continuous-certification-program/</A>&gt; and a few
+companies have certified their switches
+&lt;<A HREF="https://opennetworking.org/marketplace/?_product_project=stratum">https://opennetworking.org/marketplace/?_product_project=stratum</A>&gt; with
+Stratum. Stratum switches have been taken into commercial deployments by a
+number of users.
+
+Today, we are pleased to announce the Stratum 2021-10-09 release (or 21.10
+for short). This release contains several new features and fixes for
+Stratum's Intel Barefoot Tofino target and will be part of the upcoming
+first ONF SD-Fabric release; stratum_bfrt is now the default and
+recommended target for Tofino users. This release makes debugging easier on
+all Stratum targets by stamping version information into binaries when they
+are compiled and logging that information on Stratum startup. It also
+contains first time contributions from Pier Luigi Ventre.
+
+Pre-built Docker images and Debian packages, along with a more extensive
+changelist, are available in the GitHub release page:
+
+<A HREF="https://github.com/stratum/stratum/releases/tag/2021-10-09">https://github.com/stratum/stratum/releases/tag/2021-10-09</A>
+
+However over the past several months, ONF has observed that the community
+is not getting adequate support from its members. While we have a number of
+code contributors, we have recently been lacking code maintainers who help
+triage bugs and issues, work with contributors on feature designs, and
+review code contributions. Unfortunately, our previously active maintainers
+have moved on to new projects/companies, and we feel that the core of the
+community is at risk of shrinking.
+
+As with every community, it is only as active as its members. With this
+message, we would like to issue a call to action to all interested
+community members to step up their participation in the Stratum community.
+Open source communities are healthiest when multiple companies are
+represented from the user level all the way up through leadership, and we
+are asking ONF member companies for your support!
+
+We are looking for new maintainers to step up from our community. A new
+maintainer is someone who climbs the developer learning curve through
+multiple code submissions, then starts taking responsibility for the
+contributions of others through design/code review, work with authors, etc.
+Ultimately, *we would like to add at least a few new maintainers by the end
+of this year*; there are further growth opportunities that will emerge in
+the future (e.g. becoming a TST member).
+
+If you would like to become a maintainer or explore other ways you can
+contribute to the Stratum community, please reach out to Ain Indermitte
+&lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">ain at opennetworking.org</A>&gt; and Brian O'Connor &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">bocon at opennetworking.org</A>&gt;.
+
+As always, we thank you for your continued support of this community!
+
+On behalf of the Stratum TST,
+
+Brian O’Connor (Lead, ONF)
+
+Alireza Ghaffarkhah (Google)
+
+Craig Stevens (Dell/EMC)
+
+Max Pudelko (ONF)
+
+Yi Tseng (ONF)
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.stratumproject.org/archives/stratum-dev/attachments/20211011/104cf363/attachment.html">https://lists.stratumproject.org/archives/stratum-dev/attachments/20211011/104cf363/attachment.html</A>&gt;
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message (by thread): <A HREF="000248.html">[stratum-dev] Stratum TST Meeting time
+</A></li>
+	<LI>Next message (by thread): <A HREF="000256.html">[stratum-dev] Stratum 2021-10-09 Release and Call to Action
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#249">[ date ]</a>
+              <a href="thread.html#249">[ thread ]</a>
+              <a href="subject.html#249">[ subject ]</a>
+              <a href="author.html#249">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.stratumproject.org/listinfo/stratum-dev">More information about the stratum-dev
+mailing list</a><br>
+</body></html>

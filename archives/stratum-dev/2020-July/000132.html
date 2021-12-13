@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [stratum-dev] Issues with Configuring Wedge 100bf-32x with ONOS
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Issues%20with%20Configuring%20Wedge%20100bf-32x%20with%20ONOS&In-Reply-To=%3CVI1PR06MB521488E31A7387ED4DA8D247B57D0%40VI1PR06MB5214.eurprd06.prod.outlook.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <LINK REL="Previous"  HREF="000130.html">
+   <LINK REL="Next"  HREF="000133.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[stratum-dev] Issues with Configuring Wedge 100bf-32x with ONOS</H1>
+    <B>David Lake</B> 
+    <A HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Issues%20with%20Configuring%20Wedge%20100bf-32x%20with%20ONOS&In-Reply-To=%3CVI1PR06MB521488E31A7387ED4DA8D247B57D0%40VI1PR06MB5214.eurprd06.prod.outlook.com%3E"
+       TITLE="[stratum-dev] Issues with Configuring Wedge 100bf-32x with ONOS">d.lake at surrey.ac.uk
+       </A><BR>
+    <I>Sat Jul 18 19:55:31 UTC 2020</I>
+    <P><UL>
+        <LI>Previous message (by thread): <A HREF="000130.html">[stratum-dev] ONOS P4 Trellis and SPGW
+</A></li>
+        <LI>Next message (by thread): <A HREF="000133.html">[stratum-dev] Issues with Configuring Wedge 100bf-32x with ONOS
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#132">[ date ]</a>
+              <a href="thread.html#132">[ thread ]</a>
+              <a href="subject.html#132">[ subject ]</a>
+              <a href="author.html#132">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello
+
+Thank you for you help so far.  I now need some more guidance please.
+
+I have a Wedge 100BF-32x running ONL and the Stratum Docker container with ONOS 2.2.3 and the fabric-tofino pipeconf.
+
+When I set the CHASSIS_CONFIG for the switch and start the container, I see errors regarding the fan configuration from the switch (see &quot;start-stratum2.txt&quot; log file).
+
+Eventually, these timeout and the switch becomes available (about 10 minutes to start).
+
+However, when I add to ONOS using the netcfg command I see errors and the ports show as &quot;Enabled - False&quot; in ONOS.   My netfg log is attached as &quot;necfg.txt.&quot;
+
+What I need to do is to set up the switch with 4 subnets across the 32 ports.  I'm trying to find an example configuration and some worked tutorials/user-guides.
+
+Can someone please point me to some sample configs for similar environments please and tell me where I am going wrong with the configuration?
+
+Thanks
+
+David
+
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.stratumproject.org/archives/stratum-dev/attachments/20200718/1289527c/attachment-0001.html">https://lists.stratumproject.org/archives/stratum-dev/attachments/20200718/1289527c/attachment-0001.html</A>&gt;
+-------------- next part --------------
+An embedded and charset-unspecified text was scrubbed...
+Name: netcfg.txt
+URL: &lt;<A HREF="https://lists.stratumproject.org/archives/stratum-dev/attachments/20200718/1289527c/attachment-0002.txt">https://lists.stratumproject.org/archives/stratum-dev/attachments/20200718/1289527c/attachment-0002.txt</A>&gt;
+-------------- next part --------------
+An embedded and charset-unspecified text was scrubbed...
+Name: Start-stratum2.txt
+URL: &lt;<A HREF="https://lists.stratumproject.org/archives/stratum-dev/attachments/20200718/1289527c/attachment-0003.txt">https://lists.stratumproject.org/archives/stratum-dev/attachments/20200718/1289527c/attachment-0003.txt</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message (by thread): <A HREF="000130.html">[stratum-dev] ONOS P4 Trellis and SPGW
+</A></li>
+	<LI>Next message (by thread): <A HREF="000133.html">[stratum-dev] Issues with Configuring Wedge 100bf-32x with ONOS
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#132">[ date ]</a>
+              <a href="thread.html#132">[ thread ]</a>
+              <a href="subject.html#132">[ subject ]</a>
+              <a href="author.html#132">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.stratumproject.org/listinfo/stratum-dev">More information about the stratum-dev
+mailing list</a><br>
+</body></html>

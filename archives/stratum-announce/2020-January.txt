@@ -1,0 +1,38 @@
+From bocon at opennetworking.org  Tue Jan 14 02:33:01 2020
+From: bocon at opennetworking.org (Brian O'Connor)
+Date: Mon, 13 Jan 2020 18:33:01 -0800
+Subject: [stratum-announce] New Stratum TST Meeting Time Slot - Thurs.
+	11:30am PST
+Message-ID: <CACKOpDmrgL1mdykt2pFuZP5OYuUB8D7LjZZN0oc-kOg03vuaOA@mail.gmail.com>
+
+Hi all,
+
+You might have seen the new calendar invite for the weekly TST call.
+
+Agenda and Meeting Notes
+https://docs.google.com/document/d/1ret8Vbnl-xbLgNsnDEH-jWP2_WwDYym4zDn6me3tiTA/edit
+
+The plan is to reserve the *1st and 3rd Thursdays* of each month for
+presentations and community updates. If you can only attend some of these
+meetings, those will be more interesting. The other meetings will be more
+informal sync ups to discuss current issues, progress, and status. You can
+see what presentations are planned by checking the agenda above.
+
+The first meeting in this new time slot will be a "3rd Thursday," and the
+plan is to review the Stratum Q1 Roadmap.
+
+For Supporting Slides and Previous Recordings,
+https://drive.google.com/drive/folders/1ZeYp6RwIGYi9VnIctvnKF1c1NxiAXeOT
+
+The meetings are now on Zoom:
+https://zoom.us/j/787501745
+
+If you would like to be added to a future agenda or to the meeting invite,
+please let me know.
+
+Thanks!
+Brian
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-announce/attachments/20200113/5c47c64e/attachment.html>
+

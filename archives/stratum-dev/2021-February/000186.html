@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [stratum-dev] PINS: STRATUM vs SONiC(SAI)
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20PINS%3A%20STRATUM%20vs%20SONiC%28SAI%29&In-Reply-To=%3CCAM-ym_c2v1Kr0cAb6Z50RgNw8Ri9FZb5O6-eeCYDAwWAL%2B-4Ng%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <LINK REL="Previous"  HREF="000185.html">
+   <LINK REL="Next"  HREF="000187.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[stratum-dev] PINS: STRATUM vs SONiC(SAI)</H1>
+    <B>A Sydney</B> 
+    <A HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20PINS%3A%20STRATUM%20vs%20SONiC%28SAI%29&In-Reply-To=%3CCAM-ym_c2v1Kr0cAb6Z50RgNw8Ri9FZb5O6-eeCYDAwWAL%2B-4Ng%40mail.gmail.com%3E"
+       TITLE="[stratum-dev] PINS: STRATUM vs SONiC(SAI)">asydney007 at gmail.com
+       </A><BR>
+    <I>Thu Feb  4 16:22:00 UTC 2021</I>
+    <P><UL>
+        <LI>Previous message (by thread): <A HREF="000185.html">[stratum-dev] Canceled event with note: Stratum TST Meeting @ Thu Feb 4, 2021 3:30pm - 4pm (EST) (stratum-dev at lists.stratumproject.org)
+</A></li>
+        <LI>Next message (by thread): <A HREF="000187.html">[stratum-dev] PINS: STRATUM vs SONiC(SAI)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#186">[ date ]</a>
+              <a href="thread.html#186">[ thread ]</a>
+              <a href="subject.html#186">[ subject ]</a>
+              <a href="author.html#186">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Stratum folks,
+                          Can you kindly provide feedback on the following:
+
+1. From Brian's Techinar last Wednesday (Jan 27th), there was a nice
+comparison between STRATUM and SONiC's dataplane (Ref (near minute 35):
+<A HREF="https://youtu.be/_XtOUHU55EE">https://youtu.be/_XtOUHU55EE</A>). Now SONiC has a software switch that runs
+over OVS (REF: <A HREF="https://github.com/Azure/SONiC/wiki/SONiC-P4-Software-Switch">https://github.com/Azure/SONiC/wiki/SONiC-P4-Software-Switch</A>).
+Given that OVS is a production virtual switch, will one of the results of
+the PINS initiative be a production virtual switch?
+
+2. Is there any documentation on the PINS effort (I didn't come across any
+under the ONF's infra projects)?
+
+3. With P4 in &quot;Traditional SDN&quot; (i.e. dataplane communication with external
+controller), a user programs the dataplane and leverages P4Runtime from an
+external controller to control the forwarding behavior in the switch. It's
+a bit unclear how this translates to the SONiC paradigm given that SONiC
+does support P4. In particular, assuming a user compiled a *.p4 dataplane,
+how do you create applications to control the forwarding behavior of this
+dataplane? Is there a controller (e.g. Trellis+ONOS) running inside the
+switch on top of SONIC?
+
+Thanks,
+-Syd
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.stratumproject.org/archives/stratum-dev/attachments/20210204/adc5de78/attachment.html">https://lists.stratumproject.org/archives/stratum-dev/attachments/20210204/adc5de78/attachment.html</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message (by thread): <A HREF="000185.html">[stratum-dev] Canceled event with note: Stratum TST Meeting @ Thu Feb 4, 2021 3:30pm - 4pm (EST) (stratum-dev at lists.stratumproject.org)
+</A></li>
+	<LI>Next message (by thread): <A HREF="000187.html">[stratum-dev] PINS: STRATUM vs SONiC(SAI)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#186">[ date ]</a>
+              <a href="thread.html#186">[ thread ]</a>
+              <a href="subject.html#186">[ subject ]</a>
+              <a href="author.html#186">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.stratumproject.org/listinfo/stratum-dev">More information about the stratum-dev
+mailing list</a><br>
+</body></html>

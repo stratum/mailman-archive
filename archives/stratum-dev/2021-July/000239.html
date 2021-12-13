@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [stratum-dev] Stratum 2021-06-30 release is available!
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Stratum%202021-06-30%20release%20is%20available%21&In-Reply-To=%3CCACKOpDki28y3x-DbY89W2dwsehUQVOTyVQ44-FhKSoHaF8Hz3w%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+   
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[stratum-dev] Stratum 2021-06-30 release is available!</H1>
+    <B>Brian O'Connor</B> 
+    <A HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Stratum%202021-06-30%20release%20is%20available%21&In-Reply-To=%3CCACKOpDki28y3x-DbY89W2dwsehUQVOTyVQ44-FhKSoHaF8Hz3w%40mail.gmail.com%3E"
+       TITLE="[stratum-dev] Stratum 2021-06-30 release is available!">bocon at opennetworking.org
+       </A><BR>
+    <I>Fri Jul  9 17:41:48 UTC 2021</I>
+    <P><UL>
+        
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#239">[ date ]</a>
+              <a href="thread.html#239">[ thread ]</a>
+              <a href="subject.html#239">[ subject ]</a>
+              <a href="author.html#239">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>We are pleased to announce the Stratum *2021-06-30* release (or *21.06* for
+short).
+
+This release is chock full of features and fixes for Stratum's Intel
+Barefoot Tofino target, including support for two new SDE revisions,
+deflect on drop, and initial experimental support for QoS.
+
+Stratum Tofino packages now include BSP support for the Wedge100BF, and
+users on those targets can select between the BSP or the JSON port mapping
+at startup. The JSON port mapping remains the standard approach that
+Stratum uses on all existing Tofino targets. The BSP provides better
+support for optical transceivers and supports additional hardware like
+gearboxes and retimers. We expect to increase the number of platforms that
+offer BSP support in future releases, and we encourage vendors to work with
+us to package their BSPs in Stratum.
+
+In this release, Stratum now has support for finer grained control over
+logging via gNMI (see the release notes for more details). Stratum no
+longer listens for gRPC connections on port 28000 by default; users need to
+migrate to the registered IANA ports: 9339 for gNMI and 9559 for P4Runtime.
+
+Pre-built Docker images and Debian packages, along with a more extensive
+changelist, are available in the GitHub release page:
+<A HREF="https://github.com/stratum/stratum/releases/tag/2021-06-30">https://github.com/stratum/stratum/releases/tag/2021-06-30</A>
+
+Enjoy!
+Brian, Max, Yi and the rest of the Stratum team
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.stratumproject.org/archives/stratum-dev/attachments/20210709/2ba60b10/attachment.html">https://lists.stratumproject.org/archives/stratum-dev/attachments/20210709/2ba60b10/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#239">[ date ]</a>
+              <a href="thread.html#239">[ thread ]</a>
+              <a href="subject.html#239">[ subject ]</a>
+              <a href="author.html#239">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.stratumproject.org/listinfo/stratum-dev">More information about the stratum-dev
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,140 @@
+From brian at opennetworking.org  Fri Oct  4 08:03:52 2019
+From: brian at opennetworking.org (Brian O'Connor)
+Date: Fri, 4 Oct 2019 01:03:52 -0700
+Subject: [stratum-announce] Stratum is Open Source!
+Message-ID: <CACKOpDmdRHP1obTAa3CrHEKDwehjkt_NLWiJV72Ac_LcGaub4A@mail.gmail.com>
+
+Hi everyone,
+
+
+A few weeks ago at ONF Connect, the Stratum community announced
+<https://www.opennetworking.org/news-and-events/press-releases/onf-announces-stratum-project-now-available-as-open-source-completes-incubation-development/>
+that the project is now open source.
+
+Here are some of the talks from the event that focused on Stratum:
+
+Next-Gen SDN Stack Plenary at ONF Connect 19 <https://vimeo.com/359680444>
+
+Stratum Overview & Update at ONF Connect 19 <https://vimeo.com/360359821>
+
+Additional Next-GEN SDN sessions from ONF Connect 19
+<https://www.opennetworking.org/onf-connect-2019-resources/>
+
+To help you get started, we have two basic tutorials that walk through how
+to start Stratum in Mininet as well as how to connect it to ONOS and run
+Trellis: https://github.com/stratum/tutorial
+
+To learn more about Stratum's northbound interfaces (P4Runtime, gNMI and
+gNOI), you can try out the NG-SDN tutorial:
+https://github.com/opennetworkinglab/ngsdn-tutorial
+
+If you are interested in looking into the source code, Stratum is now
+public: https://github.com/stratum/stratum
+
+Stratum uses Github for source management, issue tracking and pull
+requests, so file bugs, request features, and submit patches on Github.
+
+The Stratum Technical Steering Team holds a weekly meeting that oscillates
+between Wednesday at 4:30pm and Thursday at 10:00am Pacific time. You can
+add the Stratum calendar to see upcoming meetings and events: web view
+<https://calendar.google.com/calendar/embed?src=opennetworking.org_vv3lft89e794b4jlmr3j9p1pes%40group.calendar.google.com&ctz=America%2FLos_Angeles>,
+ICS format
+<https://calendar.google.com/calendar/ical/opennetworking.org_vv3lft89e794b4jlmr3j9p1pes%40group.calendar.google.com/public/basic.ics>
+(for Outlook, iCal, Google Calendar, etc.).
+
+If you have questions, we maintain a mailing list
+<https://lists.stratumproject.org/listinfo/stratum-dev> and Slack workspace
+<https://slackin.stratumproject.org>.
+
+Thanks, and looking forward to your (continued) participation!
+
+Brian
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-announce/attachments/20191004/6c3ae0bf/attachment.html>
+
+From antonin.bas at gmail.com  Sat Oct  5 00:00:35 2019
+From: antonin.bas at gmail.com (Antonin Bas)
+Date: Fri, 4 Oct 2019 17:00:35 -0700
+Subject: [stratum-announce] Stepping down from Stratum TST
+Message-ID: <CAAkB0aAkRptJPNaMrA4PqAki8TZ8nXZ6JgqzOUv3t61nSqD-5w@mail.gmail.com>
+
+Hi Stratum community,
+
+As some of you may know, I recently moved from Barefoot Networks / Intel to
+VMware. While I will be able to stay involved in the P4.org community and
+in particular the P4 API Working Group (which maintains the P4Runtime API),
+I will not be able to keep the same level of involvement in other ONF
+projects and in particular Stratum. While I intend to keep contributing to
+bmv2 and the bmv2 Stratum integration, it will mostly be on my own time.
+Given this, I feel it is better and only fair that I step down from the
+Stratum TST, and leave my spot to someone who will be more involved in the
+project and foster involvement from his employer. I let Brian know about my
+decision a couple of weeks ago. My understanding is that there will be a
+new TST election in the near future as part of the Stratum open-sourcing.
+It has been a real pleasure to serve on the TST and I sincerely hope I can
+stay involved in the project.
+
+Best,
+
+Antonin
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-announce/attachments/20191004/aed587e9/attachment.html>
+
+From bocon at opennetworking.org  Mon Oct  7 23:52:31 2019
+From: bocon at opennetworking.org (Brian O'Connor)
+Date: Mon, 7 Oct 2019 16:52:31 -0700
+Subject: [stratum-announce] Stepping down from Stratum TST
+In-Reply-To: <0101016da89f4edb-87f2f6aa-359a-49b4-99a8-bcad7222d32c-000000@us-west-2.amazonses.com>
+References: <0101016da89f4edb-87f2f6aa-359a-49b4-99a8-bcad7222d32c-000000@us-west-2.amazonses.com>
+Message-ID: <CACKOpDn90-SfvdJjd1K68F5wLSSRz5t29cze4-Q6gVYPHXpEjw@mail.gmail.com>
+
+Thanks, Antonin, for all that you've done for the project during the
+incubation phases! We (the community) definitely owe you one, and hope to
+see you around from time to time!
+
+The ONF is currently soliciting nominations for the Stratum TST. If you'd
+like to nominate yourself or someone else, please let me know by Oct. 18th.
+
+*TST Election Schedule*
+
+*10/3/19 - 10/18/19: Nominations and voting list creation10/21/19 -
+11/1/19: Voting*
+
+If you'd like to learn more about Stratum's governance, you can read more
+here: https://github.com/stratum/stratum/wiki/Governance
+
+- Brian
+
+On Mon, Oct 7, 2019 at 4:47 PM Antonin Bas via stratum-announce <
+stratum-announce at lists.stratumproject.org> wrote:
+
+> Hi Stratum community,
+>
+> As some of you may know, I recently moved from Barefoot Networks / Intel
+> to VMware. While I will be able to stay involved in the P4.org community
+> and in particular the P4 API Working Group (which maintains the P4Runtime
+> API), I will not be able to keep the same level of involvement in other ONF
+> projects and in particular Stratum. While I intend to keep contributing to
+> bmv2 and the bmv2 Stratum integration, it will mostly be on my own time.
+> Given this, I feel it is better and only fair that I step down from the
+> Stratum TST, and leave my spot to someone who will be more involved in the
+> project and foster involvement from his employer. I let Brian know about my
+> decision a couple of weeks ago. My understanding is that there will be a
+> new TST election in the near future as part of the Stratum open-sourcing.
+> It has been a real pleasure to serve on the TST and I sincerely hope I can
+> stay involved in the project.
+>
+> Best,
+>
+> Antonin
+> _______________________________________________
+> stratum-announce mailing list
+> stratum-announce at lists.stratumproject.org
+> https://lists.stratumproject.org/listinfo/stratum-announce
+>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-announce/attachments/20191007/aa136423/attachment.html>
+

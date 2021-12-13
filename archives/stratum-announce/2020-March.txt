@@ -1,0 +1,200 @@
+From ain at opennetworking.org  Tue Mar  3 05:36:03 2020
+From: ain at opennetworking.org (Ain Indermitte)
+Date: Mon, 2 Mar 2020 21:36:03 -0800
+Subject: [stratum-announce] Invitation to ONF Community Meetup 2020 - Europe,
+ June 2-3, The Hague, The Netherlands
+Message-ID: <CACZfwXseY4_EMCccEiruVEC6mL_3gNpCmiN5SXsSntYePKgURA@mail.gmail.com>
+
+Dear ONF supporter,
+
+We would like to cordially invite you to participate in the *ONF Community
+Meetup 2020 - Europe!*
+
+Dates: *June 2-3, 2020 (Tuesday 10am – Wednesday 4pm)*
+Host/Location: *KPN, Maanplein 55, The Hague, The Netherlands*
+
+The theme of the event is *The Status of Open Source Networking in
+Production*.
+
+Building on the successful events of June 2018 in Darmstadt and June 2019
+in Berlin, the agenda of this two-day event will cover these major areas:
+
+   - Operator updates
+   - ONF project and portfolio overviews
+   - Infrastructure and SDN projects (ONOS, Stratum, P4, etc.)
+   - Broadband (SEBA, VOLTHA)
+   - Mobile & Edge Cloud
+
+In each area, you will be hearing about operator updates (roadmaps, trials,
+deployments, and experiences), collaborative community proceedings, and
+supplier and technology updates.
+
+
+*Please register here
+<https://www.eventbrite.com/e/onf-community-meetup-2020-europe-tickets-96967371017?aff=EmailInvitation>
+by May 18th, 2020*. Attendance is free of charge.
+
+
+Do you have something exciting to present? Kindly let us know by *Monday,
+April 20th* (the earlier, the better) if you are interested in *presenting*.
+Just reply-all to this email.
+
+*After taking into account the latest status on the evolving COVID-19
+situation in Europe, we will communicate a final Go/No-go for this meetup
+by April 30th, 2020*. We encourage you to register now, but suggest you
+wait until then before making non-refundable travel plans.
+
+Please feel free to forward this invitation to your colleagues – the event
+is open to all interested parties (however, to ensure diverse audience, we
+may limit participation to five persons from any single organization).
+
+We look forward to seeing you in The Hague!
+
+Warm regards on behalf of KPN and ONF,
+
+-- 
+Ain Indermitte
+Senior Director, Head of Developer Relations
+Open Networking Foundation
++1-408-431-9939
+ain at opennetworking.org
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-announce/attachments/20200302/a21ccb62/attachment.html>
+
+From bocon at opennetworking.org  Fri Mar  6 22:01:35 2020
+From: bocon at opennetworking.org (Brian O'Connor)
+Date: Fri, 6 Mar 2020 14:01:35 -0800
+Subject: [stratum-announce] Upcoming Webinar and Stratum Announcements
+Message-ID: <CACKOpDmw9cx2PRFgFdsh1S9TnZhQSz7xJexgQwMbVNZYq3uLxg@mail.gmail.com>
+
+Hi everyone,
+
+In light of the cancellation of OCP, we will be hosting two webinars in the
+near future to highlight the Stratum community's progress and showcase the
+OCP demos. The content will be the same, so feel free to attend the one
+that works best for your schedule.
+
+*Webinar*: *ONF Open Source Solutions Enable Data Center Interconnect and
+Broadband Access*
+Option 1 - *March 17, 2020*: Zoom Registration URL
+<https://onf.zoom.us/webinar/register/WN_kH3HhVTsS0KPQ3OTMqcXdQ>
+
+10:00 San Francisco, 13:00 New York City, 17:00 London, 18:00 Berlin
+
+Option 2 - *March 18, 2020*: Zoom Registration URL
+<https://onf.zoom.us/webinar/register/WN_duQlUvZkStWKJpv0jBVR1Q>
+
+8:30 India, 11:00 China, 14:00 Sydney
+
+
+I am also happy to share two announcements about the work being done by the
+Stratum community:
+
+   - First, a press release from the ONF
+   <https://www.opennetworking.org/news-and-events/press-releases/onfs-stratum-open-source-switch-os-now-available-on-cassini-hardware-from-tip-2/>
+   announcing the development of Stratum for the Cassini packet optical
+   transponder.
+   - Second, a blog post from me
+   <https://www.opennetworking.org/news-and-events/blog/stratum-now-powers-trellis-and-odtn-opening-the-door-to-embedding-network-functions-into-the-fabric/>
+   on the current state of Stratum developments from the community.
+
+Please feel free to share the webinar registration details and
+announcements.
+
+Thanks!
+Brian
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-announce/attachments/20200306/889fbedb/attachment.html>
+
+From ain at opennetworking.org  Thu Mar 12 16:49:59 2020
+From: ain at opennetworking.org (Ain Indermitte)
+Date: Thu, 12 Mar 2020 09:49:59 -0700
+Subject: [stratum-announce] Cancellation of ONF Community Meetup 2020 -
+ Europe, June 2-3, The Hague, The Netherlands
+In-Reply-To: <CACZfwXseY4_EMCccEiruVEC6mL_3gNpCmiN5SXsSntYePKgURA@mail.gmail.com>
+References: <CACZfwXseY4_EMCccEiruVEC6mL_3gNpCmiN5SXsSntYePKgURA@mail.gmail.com>
+Message-ID: <CACZfwXsS1Qaa9cZs9t+Com9zN9hs9qcckjHgZOt9N6wLWEdV5Q@mail.gmail.com>
+
+Hello,
+
+Due to the worsening coronavirus situation, ONF, in consultation with KPN,
+has decided to *cancel* the in-person *ONF Community Meetup 2020 - Europe*
+at this time. We are exploring new ways to keep the community engaged and
+get the planned content to you, so stay tuned for further announcements
+down the road.
+
+With best regards,
+
+-- 
+Ain Indermitte
+Senior Director, Head of Developer Relations
+Open Networking Foundation
++1-408-431-9939
+ain at opennetworking.org
+
+
+On Mon, Mar 2, 2020 at 9:36 PM Ain Indermitte <ain at opennetworking.org>
+wrote:
+
+>
+>
+> Dear ONF supporter,
+>
+> We would like to cordially invite you to participate in the *ONF
+> Community Meetup 2020 - Europe!*
+>
+> Dates: *June 2-3, 2020 (Tuesday 10am – Wednesday 4pm)*
+> Host/Location: *KPN, Maanplein 55, The Hague, The Netherlands*
+>
+> The theme of the event is *The Status of Open Source Networking in
+> Production*.
+>
+> Building on the successful events of June 2018 in Darmstadt and June 2019
+> in Berlin, the agenda of this two-day event will cover these major areas:
+>
+>    - Operator updates
+>    - ONF project and portfolio overviews
+>    - Infrastructure and SDN projects (ONOS, Stratum, P4, etc.)
+>    - Broadband (SEBA, VOLTHA)
+>    - Mobile & Edge Cloud
+>
+> In each area, you will be hearing about operator updates (roadmaps,
+> trials, deployments, and experiences), collaborative community proceedings,
+> and supplier and technology updates.
+>
+>
+> *Please register here
+> <https://www.eventbrite.com/e/onf-community-meetup-2020-europe-tickets-96967371017?aff=EmailInvitation>
+> by May 18th, 2020*. Attendance is free of charge.
+>
+>
+> Do you have something exciting to present? Kindly let us know by *Monday,
+> April 20th* (the earlier, the better) if you are interested in
+> *presenting*. Just reply-all to this email.
+>
+> *After taking into account the latest status on the evolving COVID-19
+> situation in Europe, we will communicate a final Go/No-go for this meetup
+> by April 30th, 2020*. We encourage you to register now, but suggest you
+> wait until then before making non-refundable travel plans.
+>
+> Please feel free to forward this invitation to your colleagues – the event
+> is open to all interested parties (however, to ensure diverse audience, we
+> may limit participation to five persons from any single organization).
+>
+> We look forward to seeing you in The Hague!
+>
+> Warm regards on behalf of KPN and ONF,
+>
+> --
+> Ain Indermitte
+> Senior Director, Head of Developer Relations
+> Open Networking Foundation
+> +1-408-431-9939
+> ain at opennetworking.org
+>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-announce/attachments/20200312/7bc8bcc7/attachment.html>
+

@@ -1,0 +1,257 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [stratum-dev] Confused about how to run Stratum
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Confused%20about%20how%20to%20run%20Stratum&In-Reply-To=%3CVI1PR06MB521433B85415BCA662351E7CB5600%40VI1PR06MB5214.eurprd06.prod.outlook.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <LINK REL="Previous"  HREF="000121.html">
+   <LINK REL="Next"  HREF="000123.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[stratum-dev] Confused about how to run Stratum</H1>
+    <B>David Lake</B> 
+    <A HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Confused%20about%20how%20to%20run%20Stratum&In-Reply-To=%3CVI1PR06MB521433B85415BCA662351E7CB5600%40VI1PR06MB5214.eurprd06.prod.outlook.com%3E"
+       TITLE="[stratum-dev] Confused about how to run Stratum">d.lake at surrey.ac.uk
+       </A><BR>
+    <I>Mon Jul 13 22:23:38 UTC 2020</I>
+    <P><UL>
+        <LI>Previous message (by thread): <A HREF="000121.html">[stratum-dev] Confused about how to run Stratum
+</A></li>
+        <LI>Next message (by thread): <A HREF="000123.html">[stratum-dev] Confused about how to run Stratum
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#122">[ date ]</a>
+              <a href="thread.html#122">[ thread ]</a>
+              <a href="subject.html#122">[ subject ]</a>
+              <a href="author.html#122">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Again, perfect!  Thank you
+
+David
+
+From: David Gengenbach &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">davidgengenbach at gmx.de</A>&gt;
+Sent: 13 July 2020 23:23
+To: Lake, David (PG/R - Elec Electronic Eng) &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">d.lake at surrey.ac.uk</A>&gt;; Alireza Ghaffarkhah &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">aghaffar at google.com</A>&gt;; Brian O'Connor &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">brian at opennetworking.org</A>&gt;; Yi Tseng &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">yi at opennetworking.org</A>&gt;; Maximilian Pudelko &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">max at opennetworking.org</A>&gt;
+Cc: <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>
+Subject: Re: [stratum-dev] Confused about how to run Stratum
+
+
+As far as I know, you would use gNMI (<A HREF="https://github.com/openconfig/gnmi&lt;https://eur02.safelinks.protection.outlook.com/?url=https%3A%2F%2Fgithub.com%2Fopenconfig%2Fgnmi&amp;data=02%7C01%7Cd.lake%40surrey.ac.uk%7C29ad5786708c4d96b0fd08d8277b46f0%7C6b902693107440aa9e21d89446a2ebb5%7C0%7C1%7C637302757721801041&amp;sdata=Lw1w8Nmg5LDAnE4B0ea%2FrFwpg2R0YxjaP6BOFdxr3QE%3D&amp;reserved=0">https://github.com/openconfig/gnmi&lt;https://eur02.safelinks.protection.outlook.com/?url=https%3A%2F%2Fgithub.com%2Fopenconfig%2Fgnmi&amp;data=02%7C01%7Cd.lake%40surrey.ac.uk%7C29ad5786708c4d96b0fd08d8277b46f0%7C6b902693107440aa9e21d89446a2ebb5%7C0%7C1%7C637302757721801041&amp;sdata=Lw1w8Nmg5LDAnE4B0ea%2FrFwpg2R0YxjaP6BOFdxr3QE%3D&amp;reserved=0</A>&gt;) for this - which is also bundled/started with Stratum.
+Here is a really helpful tutorial for Stratum which also covers gNMI: <A HREF="https://github.com/stratum/tutorial/tree/master/basic#gnmi&lt;https://eur02.safelinks.protection.outlook.com/?url=https%3A%2F%2Fgithub.com%2Fstratum%2Ftutorial%2Ftree%2Fmaster%2Fbasic%23gnmi&amp;data=02%7C01%7Cd.lake%40surrey.ac.uk%7C29ad5786708c4d96b0fd08d8277b46f0%7C6b902693107440aa9e21d89446a2ebb5%7C0%7C1%7C637302757721801041&amp;sdata=3UUOZlKb8WzMb6NsmHxMw4uXMoIcfqajB7DMCvwOztA%3D&amp;reserved=0">https://github.com/stratum/tutorial/tree/master/basic#gnmi&lt;https://eur02.safelinks.protection.outlook.com/?url=https%3A%2F%2Fgithub.com%2Fstratum%2Ftutorial%2Ftree%2Fmaster%2Fbasic%23gnmi&amp;data=02%7C01%7Cd.lake%40surrey.ac.uk%7C29ad5786708c4d96b0fd08d8277b46f0%7C6b902693107440aa9e21d89446a2ebb5%7C0%7C1%7C637302757721801041&amp;sdata=3UUOZlKb8WzMb6NsmHxMw4uXMoIcfqajB7DMCvwOztA%3D&amp;reserved=0</A>&gt;
+
+The port config command would look something like: ./gnmi-cli.sh set /interfaces/interface[name=s1-eth1]/config/enabled --bool-val true
+
+(Using the gnmi-cli from the tutorial.)
+On 7/14/20 12:15 AM, David Lake wrote:
+The guide was VERY useful!
+
+I now need to understand how to configure the ports in the switch – I want to build a very simple SPGW use-case with a single switch.
+
+How do I build the switch configuration?  Is this is in the JSON file?
+
+Thanks
+
+David
+
+From: David Gengenbach &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">davidgengenbach at gmx.de</A>&gt;&lt;mailto:<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">davidgengenbach at gmx.de</A>&gt;
+Sent: 13 July 2020 23:12
+To: Lake, David (PG/R - Elec Electronic Eng) &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">d.lake at surrey.ac.uk</A>&gt;&lt;mailto:<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">d.lake at surrey.ac.uk</A>&gt;; Alireza Ghaffarkhah &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">aghaffar at google.com</A>&gt;&lt;mailto:<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">aghaffar at google.com</A>&gt;; Brian O'Connor &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">brian at opennetworking.org</A>&gt;&lt;mailto:<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">brian at opennetworking.org</A>&gt;; Yi Tseng &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">yi at opennetworking.org</A>&gt;&lt;mailto:<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">yi at opennetworking.org</A>&gt;; Maximilian Pudelko &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">max at opennetworking.org</A>&gt;&lt;mailto:<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">max at opennetworking.org</A>&gt;
+Cc: <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>&lt;mailto:<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>&gt;
+Subject: Re: [stratum-dev] Confused about how to run Stratum
+
+
+Perfect!
+Interestingly, I think I had the exact same problems you encountered :D That's why I wrote this guide - a lot of pitfalls. Restarting and starting with a clean slate, miraculously, solved a lot of my problems.
+On 7/14/20 12:01 AM, David Lake wrote:
+AHA!   Perfect – thank you.   It seems that the fabric-tofino was not empty.   I deleted and recompiled and now I see my switch!
+
+Thank you so much for your help.
+
+Kind regards
+
+David
+
+From: David Gengenbach &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">davidgengenbach at gmx.de</A>&gt;&lt;mailto:<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">davidgengenbach at gmx.de</A>&gt;
+Sent: 13 July 2020 22:50
+To: Lake, David (PG/R - Elec Electronic Eng) &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">d.lake at surrey.ac.uk</A>&gt;&lt;mailto:<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">d.lake at surrey.ac.uk</A>&gt;; Alireza Ghaffarkhah &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">aghaffar at google.com</A>&gt;&lt;mailto:<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">aghaffar at google.com</A>&gt;; Brian O'Connor &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">brian at opennetworking.org</A>&gt;&lt;mailto:<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">brian at opennetworking.org</A>&gt;; Yi Tseng &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">yi at opennetworking.org</A>&gt;&lt;mailto:<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">yi at opennetworking.org</A>&gt;; Maximilian Pudelko &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">max at opennetworking.org</A>&gt;&lt;mailto:<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">max at opennetworking.org</A>&gt;
+Cc: <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>&lt;mailto:<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>&gt;
+Subject: Re: [stratum-dev] Confused about how to run Stratum
+
+
+Unfortunately, I do not have access to the Tofino switch now, so I can not confirm your logs.
+Can you please also provide the output of running &quot;pipeconf | grep tofino&quot; in the ONOS CLI (onos <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">onos at localhost</A>    # Password is rocks).
+
+Did you start with an empty fabric-tofino repo and executed the commands?
+
+Especially this log entry is strange (but again, I can not verify whether this is normal):
+2020-07-13T22:10:57,905 | WARN  | features-3-thread-1 | FabricPipeconfLoader             | 236 - org.onosproject.onos-pipelines-fabric-impl - 2.2.3 | Unable to build pipeconf at p4c-out/fabric-mlnx/spectrum/default/ because file is missing: spectrum.bin
+
+
+On 7/13/20 11:46 PM, David Lake wrote:
+I did follow this step and was able to register the application and pipeline but I don’t see “org.opencord.fabric.tofino.montara_sde_9_0_0” anywhere?
+
+David
+
+<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">root at ONOS</A>:~/fabric-tofino# make pipeconf-install ONOS_HOST=localhost
+*** Installing and activating pipeconf app in ONOS at localhost...
+curl --fail -sSL --user onos:rocks --noproxy localhost -X POST -HContent-Type:ap                                                                                                                                                             plication/octet-stream \
+        '<A HREF="http://localhost:8181/onos/v1/applications?activate=true">http://localhost:8181/onos/v1/applications?activate=true</A>' \
+        --data-binary @/home/admin5g/fabric-tofino/target/fabric-tofino-1.1.1-SN                                                                                                                                                             APSHOT.oar
+{&quot;name&quot;:&quot;org.opencord.fabric-tofino&quot;,&quot;id&quot;:190,&quot;version&quot;:&quot;1.1.1.SNAPSHOT&quot;,&quot;catego                                                                                                                                                             ry&quot;:&quot;Pipeline&quot;,&quot;description&quot;:&quot;Provides pipeconfs based on fabric.&quot;,&quot;readme&quot;:&quot;Pro                                                                                                                                                             vides pipeconfs based on fabric.p4 to use Trellis with Barefoot\\n            To                                                                                                                                                             fino-based devices.&quot;,&quot;origin&quot;:&quot;<A HREF="http://www.opencord.org">http://www.opencord.org</A>&quot;&lt;<A HREF="https://eur02.safelinks.protection.outlook.com/?url=http%3A%2F%2Fwww.opencord.org%2F&amp;data=02%7C01%7Cd.lake%40surrey.ac.uk%7C29ad5786708c4d96b0fd08d8277b46f0%7C6b902693107440aa9e21d89446a2ebb5%7C0%7C1%7C637302757721801041&amp;sdata=XQpjfq0mlh2F7HdB5Fx12q6s1Ot%2BEJ%2BPfgNUJHYdVyQ%3D&amp;reserved=0">https://eur02.safelinks.protection.outlook.com/?url=http%3A%2F%2Fwww.opencord.org%2F&amp;data=02%7C01%7Cd.lake%40surrey.ac.uk%7C29ad5786708c4d96b0fd08d8277b46f0%7C6b902693107440aa9e21d89446a2ebb5%7C0%7C1%7C637302757721801041&amp;sdata=XQpjfq0mlh2F7HdB5Fx12q6s1Ot%2BEJ%2BPfgNUJHYdVyQ%3D&amp;reserved=0</A>&gt;,&quot;url&quot;:&quot;<A HREF="http://www.openco&lt;https://eur02.safelinks.protection.outlook.com/?url=http%3A%2F%2Fwww.openco%2F&amp;data=02%7C01%7Cd.lake%40surrey.ac.uk%7C29ad5786708c4d96b0fd08d8277b46f0%7C6b902693107440aa9e21d89446a2ebb5%7C0%7C1%7C637302757721810995&amp;sdata=chfgcSv6VQl5hPMYI6JSeBXb1LUiAl7TQP4rJAIvLTs%3D&amp;reserved=0">http://www.openco&lt;https://eur02.safelinks.protection.outlook.com/?url=http%3A%2F%2Fwww.openco%2F&amp;data=02%7C01%7Cd.lake%40surrey.ac.uk%7C29ad5786708c4d96b0fd08d8277b46f0%7C6b902693107440aa9e21d89446a2ebb5%7C0%7C1%7C637302757721810995&amp;sdata=chfgcSv6VQl5hPMYI6JSeBXb1LUiAl7TQP4rJAIvLTs%3D&amp;reserved=0</A>&gt;                                                                                                                                                             rd.org&quot;,&quot;featuresRepo&quot;:&quot;mvn:org.opencord/fabric-tofino/1.1.1-SNAPSHOT/xml/featur                                                                                                                                                             es&quot;,&quot;state&quot;:&quot;ACTIVE&quot;,&quot;features&quot;:[&quot;fabric-tofino&quot;],&quot;permissions&quot;:[],&quot;requiredApps                                                                                                                                                             &quot;:[&quot;org.onosproject.pipelines.fabric&quot;]}
+<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">root at ONOS</A>:~/fabric-tofino#
+<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">root at ONOS</A>:~/fabric-tofino#
+
+
+
+
+
+<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">root at ONOS</A>:~/fabric-tofino# tail -50 /opt/onos/log/karaf.log
+2020-07-13T22:10:55,638 | INFO  | features-3-thread-1 | FeaturesServiceImpl              | 11 - org.apache.karaf.features.core - 4.2.8 | Changes to perform:
+2020-07-13T22:10:55,647 | INFO  | features-3-thread-1 | FeaturesServiceImpl              | 11 - org.apache.karaf.features.core - 4.2.8 |   Region: root
+2020-07-13T22:10:55,647 | INFO  | features-3-thread-1 | FeaturesServiceImpl              | 11 - org.apache.karaf.features.core - 4.2.8 |     Bundles to install:
+2020-07-13T22:10:55,647 | INFO  | features-3-thread-1 | FeaturesServiceImpl              | 11 - org.apache.karaf.features.core - 4.2.8 |       mvn:org.onosproject/onos-apps-inbandtelemetry-api/2.2.3
+2020-07-13T22:10:55,648 | INFO  | features-3-thread-1 | FeaturesServiceImpl              | 11 - org.apache.karaf.features.core - 4.2.8 |       mvn:org.onosproject/onos-pipelines-basic/2.2.3
+2020-07-13T22:10:55,648 | INFO  | features-3-thread-1 | FeaturesServiceImpl              | 11 - org.apache.karaf.features.core - 4.2.8 | Installing bundles:
+2020-07-13T22:10:55,650 | INFO  | features-3-thread-1 | FeaturesServiceImpl              | 11 - org.apache.karaf.features.core - 4.2.8 |   mvn:org.onosproject/onos-apps-inbandtelemetry-api/2.2.3
+2020-07-13T22:10:55,652 | INFO  | features-3-thread-1 | FeaturesServiceImpl              | 11 - org.apache.karaf.features.core - 4.2.8 |   mvn:org.onosproject/onos-pipelines-basic/2.2.3
+2020-07-13T22:10:55,689 | INFO  | features-3-thread-1 | FeaturesServiceImpl              | 11 - org.apache.karaf.features.core - 4.2.8 | Starting bundles:
+2020-07-13T22:10:55,690 | INFO  | features-3-thread-1 | FeaturesServiceImpl              | 11 - org.apache.karaf.features.core - 4.2.8 |   org.onosproject.onos-apps-inbandtelemetry-api/2.2.3
+2020-07-13T22:10:55,696 | INFO  | features-3-thread-1 | FeaturesServiceImpl              | 11 - org.apache.karaf.features.core - 4.2.8 |   org.onosproject.onos-pipelines-basic/2.2.3
+2020-07-13T22:10:56,388 | INFO  | features-3-thread-1 | PiPipeconfManager                | 193 - org.onosproject.onos-core-net - 2.2.3 | New pipeconf registered: org.onosproject.pipelines.basic (fingerprint=1f:03:c5:4d:32:19:e4:f4)
+2020-07-13T22:10:56,391 | INFO  | features-3-thread-1 | PiPipeconfManager                | 193 - org.onosproject.onos-core-net - 2.2.3 | New pipeconf registered: org.onosproject.pipelines.int (fingerprint=cf:0e:30:28:dc:5f:97:4c)
+2020-07-13T22:10:56,396 | INFO  | features-3-thread-1 | FeaturesServiceImpl              | 11 - org.apache.karaf.features.core - 4.2.8 | Done.
+2020-07-13T22:10:56,399 | INFO  | onos-store-app-app-activation | ApplicationManager               | 193 - org.onosproject.onos-core-net - 2.2.3 | Application org.onosproject.pipelines.basic has been activated
+2020-07-13T22:10:56,402 | INFO  | onos-store-app-app-activation | FeaturesServiceImpl              | 11 - org.apache.karaf.features.core - 4.2.8 | Adding features: onos-pipelines-fabric/[2.2.3,2.2.3]
+2020-07-13T22:10:57,086 | INFO  | features-3-thread-1 | FeaturesServiceImpl              | 11 - org.apache.karaf.features.core - 4.2.8 | Changes to perform:
+2020-07-13T22:10:57,094 | INFO  | features-3-thread-1 | FeaturesServiceImpl              | 11 - org.apache.karaf.features.core - 4.2.8 |   Region: root
+2020-07-13T22:10:57,094 | INFO  | features-3-thread-1 | FeaturesServiceImpl              | 11 - org.apache.karaf.features.core - 4.2.8 |     Bundles to install:
+2020-07-13T22:10:57,095 | INFO  | features-3-thread-1 | FeaturesServiceImpl              | 11 - org.apache.karaf.features.core - 4.2.8 |       mvn:org.onosproject/onos-pipelines-fabric-api/2.2.3
+2020-07-13T22:10:57,095 | INFO  | features-3-thread-1 | FeaturesServiceImpl              | 11 - org.apache.karaf.features.core - 4.2.8 |       mvn:org.onosproject/onos-pipelines-fabric-impl/2.2.3
+2020-07-13T22:10:57,097 | INFO  | features-3-thread-1 | FeaturesServiceImpl              | 11 - org.apache.karaf.features.core - 4.2.8 | Installing bundles:
+2020-07-13T22:10:57,097 | INFO  | features-3-thread-1 | FeaturesServiceImpl              | 11 - org.apache.karaf.features.core - 4.2.8 |   mvn:org.onosproject/onos-pipelines-fabric-api/2.2.3
+2020-07-13T22:10:57,104 | INFO  | features-3-thread-1 | FeaturesServiceImpl              | 11 - org.apache.karaf.features.core - 4.2.8 |   mvn:org.onosproject/onos-pipelines-fabric-impl/2.2.3
+2020-07-13T22:10:57,178 | INFO  | features-3-thread-1 | FeaturesServiceImpl              | 11 - org.apache.karaf.features.core - 4.2.8 | Starting bundles:
+2020-07-13T22:10:57,179 | INFO  | features-3-thread-1 | FeaturesServiceImpl              | 11 - org.apache.karaf.features.core - 4.2.8 |   org.onosproject.onos-pipelines-fabric-api/2.2.3
+2020-07-13T22:10:57,183 | INFO  | features-3-thread-1 | FeaturesServiceImpl              | 11 - org.apache.karaf.features.core - 4.2.8 |   org.onosproject.onos-pipelines-fabric-impl/2.2.3
+2020-07-13T22:10:57,905 | WARN  | features-3-thread-1 | FabricPipeconfLoader             | 236 - org.onosproject.onos-pipelines-fabric-impl - 2.2.3 | Unable to build pipeconf at p4c-out/fabric-mlnx/spectrum/default/ because file is missing: spectrum.bin
+2020-07-13T22:10:58,241 | INFO  | features-3-thread-1 | PiPipeconfManager                | 193 - org.onosproject.onos-core-net - 2.2.3 | New pipeconf registered: org.onosproject.pipelines.fabric-bng (fingerprint=9e:af:91:d4:8c:8a:bc:98)
+2020-07-13T22:10:58,241 | INFO  | features-3-thread-1 | PiPipeconfManager                | 193 - org.onosproject.onos-core-net - 2.2.3 | New pipeconf registered: org.onosproject.pipelines.fabric-full (fingerprint=1a:cc:c0:b8:a6:f7:a4:7e)
+2020-07-13T22:10:58,241 | INFO  | features-3-thread-1 | PiPipeconfManager                | 193 - org.onosproject.onos-core-net - 2.2.3 | New pipeconf registered: org.onosproject.pipelines.fabric-int (fingerprint=01:39:87:22:c5:c4:e6:0a)
+2020-07-13T22:10:58,243 | INFO  | features-3-thread-1 | PiPipeconfManager                | 193 - org.onosproject.onos-core-net - 2.2.3 | New pipeconf registered: org.onosproject.pipelines.fabric-spgw-int (fingerprint=97:b3:d2:dd:9e:10:bf:ce)
+2020-07-13T22:10:58,243 | INFO  | features-3-thread-1 | PiPipeconfManager                | 193 - org.onosproject.onos-core-net - 2.2.3 | New pipeconf registered: org.onosproject.pipelines.fabric-spgw (fingerprint=ca:1c:0d:f1:f2:df:07:3f)
+2020-07-13T22:10:58,243 | INFO  | features-3-thread-1 | PiPipeconfManager                | 193 - org.onosproject.onos-core-net - 2.2.3 | New pipeconf registered: org.onosproject.pipelines.fabric (fingerprint=33:a1:c2:36:82:04:f5:0c)
+2020-07-13T22:10:58,244 | INFO  | features-3-thread-1 | FabricPipeconfLoader             | 236 - org.onosproject.onos-pipelines-fabric-impl - 2.2.3 | Started
+2020-07-13T22:10:58,252 | INFO  | features-3-thread-1 | FabricPipeconfLoader             | 236 - org.onosproject.onos-pipelines-fabric-impl - 2.2.3 | Started
+2020-07-13T22:10:58,261 | INFO  | features-3-thread-1 | FeaturesServiceImpl              | 11 - org.apache.karaf.features.core - 4.2.8 | Done.
+2020-07-13T22:10:58,263 | INFO  | onos-store-app-app-activation | ApplicationManager               | 193 - org.onosproject.onos-core-net - 2.2.3 | Application org.onosproject.pipelines.fabric has been activated
+2020-07-13T22:10:58,266 | INFO  | onos-store-app-app-activation | FeaturesServiceImpl              | 11 - org.apache.karaf.features.core - 4.2.8 | Adding features: fabric-tofino/[1.1.1.SNAPSHOT,1.1.1.SNAPSHOT]
+2020-07-13T22:10:58,960 | INFO  | features-3-thread-1 | FeaturesServiceImpl              | 11 - org.apache.karaf.features.core - 4.2.8 | Changes to perform:
+2020-07-13T22:10:58,961 | INFO  | features-3-thread-1 | FeaturesServiceImpl              | 11 - org.apache.karaf.features.core - 4.2.8 |   Region: root
+2020-07-13T22:10:58,961 | INFO  | features-3-thread-1 | FeaturesServiceImpl              | 11 - org.apache.karaf.features.core - 4.2.8 |     Bundles to install:
+2020-07-13T22:10:58,961 | INFO  | features-3-thread-1 | FeaturesServiceImpl              | 11 - org.apache.karaf.features.core - 4.2.8 |       mvn:org.opencord/fabric-tofino/1.1.1-SNAPSHOT
+2020-07-13T22:10:58,963 | INFO  | features-3-thread-1 | FeaturesServiceImpl              | 11 - org.apache.karaf.features.core - 4.2.8 | Installing bundles:
+2020-07-13T22:10:58,964 | INFO  | features-3-thread-1 | FeaturesServiceImpl              | 11 - org.apache.karaf.features.core - 4.2.8 |   mvn:org.opencord/fabric-tofino/1.1.1-SNAPSHOT
+2020-07-13T22:10:58,988 | INFO  | features-3-thread-1 | FeaturesServiceImpl              | 11 - org.apache.karaf.features.core - 4.2.8 | Starting bundles:
+2020-07-13T22:10:58,988 | INFO  | features-3-thread-1 | FeaturesServiceImpl              | 11 - org.apache.karaf.features.core - 4.2.8 |   org.opencord.fabric-tofino/1.1.1.SNAPSHOT
+2020-07-13T22:10:58,996 | INFO  | features-3-thread-1 | PipeconfLoader                   | 237 - org.opencord.fabric-tofino - 1.1.1.SNAPSHOT | Started
+2020-07-13T22:10:58,998 | INFO  | features-3-thread-1 | FeaturesServiceImpl              | 11 - org.apache.karaf.features.core - 4.2.8 | Done.
+2020-07-13T22:10:58,999 | INFO  | onos-store-app-app-activation | ApplicationManager               | 193 - org.onosproject.onos-core-net - 2.2.3 | Application org.opencord.fabric-tofino has been activated
+<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">root at ONOS</A>:~/fabric-tofino#
+
+From: David Gengenbach &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">davidgengenbach at gmx.de</A>&gt;&lt;mailto:<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">davidgengenbach at gmx.de</A>&gt;
+Sent: 13 July 2020 22:42
+To: Lake, David (PG/R - Elec Electronic Eng) &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">d.lake at surrey.ac.uk</A>&gt;&lt;mailto:<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">d.lake at surrey.ac.uk</A>&gt;; Alireza Ghaffarkhah &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">aghaffar at google.com</A>&gt;&lt;mailto:<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">aghaffar at google.com</A>&gt;; Brian O'Connor &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">brian at opennetworking.org</A>&gt;&lt;mailto:<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">brian at opennetworking.org</A>&gt;; Yi Tseng &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">yi at opennetworking.org</A>&gt;&lt;mailto:<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">yi at opennetworking.org</A>&gt;; Maximilian Pudelko &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">max at opennetworking.org</A>&gt;&lt;mailto:<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">max at opennetworking.org</A>&gt;
+Cc: <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>&lt;mailto:<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>&gt;
+Subject: Re: [stratum-dev] Confused about how to run Stratum
+
+
+It seems like you did not install/activate the fabric-tofino library?
+
+Did you follow the steps in the guide? The &quot;Compile fabric-tofino&quot; section should install the pipeconfs.
+
+Important: you do NOT have to follow the whole guide of fabric-tofino. They provide compiled switch binaries. If you follow their guide, these are automatically cleaned (= deleted) before they are compiled again - so all subsequent commands will not work unless you are able to compile them yourself (which is only needed if you want to change the underlying P4 program, I guess). So I would suggest starting with a fresh copy of fabric-tofino in case you changed to much.
+
+For troubleshooting: as described in the guide, you can connect to ONOS via the CLI and look for the pipeconf by executing:
+`onos <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">onos at localhost</A>` (or wherever ONOS is hosted)
+
+
+
+
+
+<A HREF="https://github.com/stratum/stratum/blob/b1aa4a5fae55b9971839896add66f5d9a43505bf/stratum/docs/setup_guide_barefoot_tofino_onos.md#compile-fabric-tofino&lt;https://eur02.safelinks.protection.outlook.com/?url=https%3A%2F%2Fgithub.com%2Fstratum%2Fstratum%2Fblob%2Fb1aa4a5fae55b9971839896add66f5d9a43505bf%2Fstratum%2Fdocs%2Fsetup_guide_barefoot_tofino_onos.md%23compile-fabric-tofino&amp;data=02%7C01%7Cd.lake%40surrey.ac.uk%7C29ad5786708c4d96b0fd08d8277b46f0%7C6b902693107440aa9e21d89446a2ebb5%7C0%7C1%7C637302757721810995&amp;sdata=pHQ14WNnWHGSrEcSTagk6YuPpZrH7efog8Th1HvAT9k%3D&amp;reserved=0">https://github.com/stratum/stratum/blob/b1aa4a5fae55b9971839896add66f5d9a43505bf/stratum/docs/setup_guide_barefoot_tofino_onos.md#compile-fabric-tofino&lt;https://eur02.safelinks.protection.outlook.com/?url=https%3A%2F%2Fgithub.com%2Fstratum%2Fstratum%2Fblob%2Fb1aa4a5fae55b9971839896add66f5d9a43505bf%2Fstratum%2Fdocs%2Fsetup_guide_barefoot_tofino_onos.md%23compile-fabric-tofino&amp;data=02%7C01%7Cd.lake%40surrey.ac.uk%7C29ad5786708c4d96b0fd08d8277b46f0%7C6b902693107440aa9e21d89446a2ebb5%7C0%7C1%7C637302757721810995&amp;sdata=pHQ14WNnWHGSrEcSTagk6YuPpZrH7efog8Th1HvAT9k%3D&amp;reserved=0</A>&gt;
+On 7/13/20 11:20 PM, David Lake wrote:
+OK – I followed the instructions from David Gengenbach (thank you) and I now have a Stratum agent running on the switch.
+
+I then built the pipeline in ONOS and loaded it:
+
+2020-07-13T22:10:58,999 | INFO  | onos-store-app-app-activation | ApplicationManager               | 193 - org.onosproject.onos-core-net - 2.2.3 | Application org.opencord.fabric-tofino has been activated
+<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">root at ONOS</A>:~/fabric-tofino#
+
+But when I add the netfcfg, I see this message in the ONOS log:
+
+2020-07-13T22:15:42,571 | ERROR | onos-gdp-6       | DeviceTaskExecutor               | 225 - org.onosproject.onos-providers-general-device - 2.2.3 | Unable to complete task CONNECTION_SETUP for device:my-tofino-switch: pipeconf org.opencord.fabric.tofino.montara_sde_9_0_0 not registered
+
+
+My switch is a Montara but I don’t see where the pipeconf is built?
+
+On my ONOS system I have ONOS 2.2.3 and bf-sde-9.0.0.  I have not built anything with the bf-sde.
+
+Do I need to run p4studio_build in the BF-SDE first?
+
+Thanks
+
+David
+
+From: Alireza Ghaffarkhah &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">aghaffar at google.com</A>&gt;&lt;mailto:<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">aghaffar at google.com</A>&gt;
+Sent: 13 July 2020 07:01
+To: David Gengenbach &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">davidgengenbach at gmx.de</A>&gt;&lt;mailto:<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">davidgengenbach at gmx.de</A>&gt;; Brian O'Connor &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">brian at opennetworking.org</A>&gt;&lt;mailto:<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">brian at opennetworking.org</A>&gt;; Yi Tseng &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">yi at opennetworking.org</A>&gt;&lt;mailto:<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">yi at opennetworking.org</A>&gt;; Maximilian Pudelko &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">max at opennetworking.org</A>&gt;&lt;mailto:<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">max at opennetworking.org</A>&gt;
+Cc: Lake, David (PG/R - Elec Electronic Eng) &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">d.lake at surrey.ac.uk</A>&gt;&lt;mailto:<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">d.lake at surrey.ac.uk</A>&gt;; <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>&lt;mailto:<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>&gt;
+Subject: Re: [stratum-dev] Confused about how to run Stratum
+
++Brian O'Connor&lt;mailto:<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">brian at opennetworking.org</A>&gt; +Yi Tseng&lt;mailto:<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">yi at opennetworking.org</A>&gt; +Maximilian Pudelko&lt;mailto:<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">max at opennetworking.org</A>&gt; in case they can provide more input.
+
+On Sun, Jul 12, 2020 at 5:00 PM David Gengenbach via stratum-dev &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>&lt;mailto:<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>&gt;&gt; wrote:
+I created a setup guide for this exact use-case. The PR for it has not
+been merged but should work: <A HREF="https://github.com/stratum/stratum/pull/280&lt;https://eur02.safelinks.protection.outlook.com/?url=https%3A%2F%2Fgithub.com%2Fstratum%2Fstratum%2Fpull%2F280&amp;data=02%7C01%7Cd.lake%40surrey.ac.uk%7C29ad5786708c4d96b0fd08d8277b46f0%7C6b902693107440aa9e21d89446a2ebb5%7C0%7C1%7C637302757721820949&amp;sdata=%2F5%2B6xJhoqhl%2FSX8r6f8Ox41%2ByzL2bHowQr9DpIYAb%2B8%3D&amp;reserved=0">https://github.com/stratum/stratum/pull/280&lt;https://eur02.safelinks.protection.outlook.com/?url=https%3A%2F%2Fgithub.com%2Fstratum%2Fstratum%2Fpull%2F280&amp;data=02%7C01%7Cd.lake%40surrey.ac.uk%7C29ad5786708c4d96b0fd08d8277b46f0%7C6b902693107440aa9e21d89446a2ebb5%7C0%7C1%7C637302757721820949&amp;sdata=%2F5%2B6xJhoqhl%2FSX8r6f8Ox41%2ByzL2bHowQr9DpIYAb%2B8%3D&amp;reserved=0</A>&gt;
+
+_______________________________________________
+stratum-dev mailing list
+<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>&lt;mailto:<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>&gt;
+<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev&lt;https://eur02.safelinks.protection.outlook.com/?url=https%3A%2F%2Flists.stratumproject.org%2Flistinfo%2Fstratum-dev&amp;data=02%7C01%7Cd.lake%40surrey.ac.uk%7C29ad5786708c4d96b0fd08d8277b46f0%7C6b902693107440aa9e21d89446a2ebb5%7C0%7C1%7C637302757721820949&amp;sdata=Ai8qiLFZ%2BgfF0ReaPLCcKbdKDWwZ8xToxUqAYUyVTlI%3D&amp;reserved=0">https://lists.stratumproject.org/listinfo/stratum-dev&lt;https://eur02.safelinks.protection.outlook.com/?url=https%3A%2F%2Flists.stratumproject.org%2Flistinfo%2Fstratum-dev&amp;data=02%7C01%7Cd.lake%40surrey.ac.uk%7C29ad5786708c4d96b0fd08d8277b46f0%7C6b902693107440aa9e21d89446a2ebb5%7C0%7C1%7C637302757721820949&amp;sdata=Ai8qiLFZ%2BgfF0ReaPLCcKbdKDWwZ8xToxUqAYUyVTlI%3D&amp;reserved=0</A>&gt;
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.stratumproject.org/archives/stratum-dev/attachments/20200713/c11baaed/attachment-0001.html">https://lists.stratumproject.org/archives/stratum-dev/attachments/20200713/c11baaed/attachment-0001.html</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message (by thread): <A HREF="000121.html">[stratum-dev] Confused about how to run Stratum
+</A></li>
+	<LI>Next message (by thread): <A HREF="000123.html">[stratum-dev] Confused about how to run Stratum
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#122">[ date ]</a>
+              <a href="thread.html#122">[ thread ]</a>
+              <a href="subject.html#122">[ subject ]</a>
+              <a href="author.html#122">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.stratumproject.org/listinfo/stratum-dev">More information about the stratum-dev
+mailing list</a><br>
+</body></html>

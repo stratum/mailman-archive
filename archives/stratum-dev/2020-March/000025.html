@@ -1,0 +1,335 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [stratum-dev] [brigade-p4] Stratum pre-built container
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20%5Bbrigade-p4%5D%20Stratum%20pre-built%20container&In-Reply-To=%3CCAOyFVR2Zzcw%3DK0D9%3DcdyCq-dhAOcEObFDRmV4fXQ4hDf1T6iPg%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+   
+   <LINK REL="Next"  HREF="000029.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[stratum-dev] [brigade-p4] Stratum pre-built container</H1>
+    <B>Yi Tseng</B> 
+    <A HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20%5Bbrigade-p4%5D%20Stratum%20pre-built%20container&In-Reply-To=%3CCAOyFVR2Zzcw%3DK0D9%3DcdyCq-dhAOcEObFDRmV4fXQ4hDf1T6iPg%40mail.gmail.com%3E"
+       TITLE="[stratum-dev] [brigade-p4] Stratum pre-built container">yi at opennetworking.org
+       </A><BR>
+    <I>Mon Mar  2 19:43:29 UTC 2020</I>
+    <P><UL>
+        
+        <LI>Next message (by thread): <A HREF="000029.html">[stratum-dev] [brigade-p4] Stratum pre-built container
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#25">[ date ]</a>
+              <a href="thread.html#25">[ thread ]</a>
+              <a href="subject.html#25">[ subject ]</a>
+              <a href="author.html#25">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Deval,
+
+You need to set up *BF_SDE_INSTALL* environment variable before you build
+the Stratum
+<A HREF="https://github.com/stratum/stratum/blob/master/stratum/hal/bin/barefoot/README.md#building-stratum-from-scratch">https://github.com/stratum/stratum/blob/master/stratum/hal/bin/barefoot/README.md#building-stratum-from-scratch</A>
+
+The *switchd* binary is provided by Barefoot, which supports P4Runtime and
+some private protocols.
+The *Stratum* binary implements P4Runtime, gNMI, and gNOI protocols and use
+switch SDK to control the switch ASIC.
+You can find the overview of Stratum architecture here:
+<A HREF="https://github.com/stratum/stratum#component-overview">https://github.com/stratum/stratum#component-overview</A>
+
+Yi
+
+On Sun, Mar 1, 2020 at 6:21 AM Deval Bhamare &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">Deval.Bhamare at kau.se</A>&gt; wrote:
+
+&gt;<i> Hello Yi,
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> I tried stratum build in dev environment, however, now I am getting error
+</I>&gt;<i> like below (Complete screenshot attached).
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> *ERROR: */stratum/stratum/hal/lib/barefoot/BUILD:124:1: no such target
+</I>&gt;<i> '@local_barefoot_bin//:bf_headers': target 'bf_headers' not declared in
+</I>&gt;<i> package '' defined by
+</I>&gt;<i> /home/tofino/.cache/bazel/_bazel_tofino/1b07b1db06ec9ee22c71eac6f0bd4549/external/local_barefoot_bin/BUILD
+</I>&gt;<i> and referenced by '//stratum/hal/lib/barefoot:bf_pal_wrapper'
+</I>&gt;<i>
+</I>&gt;<i> *ERROR: */stratum/stratum/hal/lib/barefoot/BUILD:124:1: no such target
+</I>&gt;<i> '@local_barefoot_bin//:bf_drivers': target 'bf_drivers' not declared in
+</I>&gt;<i> package '' defined by
+</I>&gt;<i> /home/tofino/.cache/bazel/_bazel_tofino/1b07b1db06ec9ee22c71eac6f0bd4549/external/local_barefoot_bin/BUILD
+</I>&gt;<i> and referenced by '//stratum/hal/lib/barefoot:bf_pal_wrapper'
+</I>&gt;<i>
+</I>&gt;<i> ...
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Any suggestions?
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Also, I wanted to ask, what is the exact difference between using stratum
+</I>&gt;<i> and communicating with tofino by enabling the grpc server (something like *
+</I>&gt;<i> ./run_switchd.sh -c $SDE_INSTALL/share/p4/targets/tofino/skip_p4.conf
+</I>&gt;<i> --skip-p4 --p4rt-server 0.0.0.0:50051 &lt;<A HREF="http://0.0.0.0:50051">http://0.0.0.0:50051</A>&gt;*)? Can you
+</I>&gt;<i> please explain?
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Thanks,
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Deval.
+</I>&gt;<i> ------------------------------
+</I>&gt;<i> *From:* Yi Tseng &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">yi at opennetworking.org</A>&gt;
+</I>&gt;<i> *Sent:* Thursday, February 27, 2020 8:57:41 PM
+</I>&gt;<i> *To:* Deval Bhamare
+</I>&gt;<i> *Cc:* <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>; <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">devalb at gmail.com</A>
+</I>&gt;<i> *Subject:* Re: [brigade-p4] Stratum pre-built container
+</I>&gt;<i>
+</I>&gt;<i> Hello, please see my reply *inline*
+</I>&gt;<i>
+</I>&gt;<i> On Tue, Feb 25, 2020 at 1:21 AM Deval Bhamare &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">Deval.Bhamare at kau.se</A>&gt;
+</I>&gt;<i> wrote:
+</I>&gt;<i>
+</I>&gt;&gt;<i> Dear Yi,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I appreciate your valuable input. I tried to build the  Stratum directly
+</I>&gt;&gt;<i> on the machine as well. It gave me an error. Details are below:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> *1. Build Stratum from scratch*: I have BF SDE 8.9.0 and I execute the
+</I>&gt;&gt;<i> command (first I executed it without
+</I>&gt;&gt;<i> incompatible_bzl_disallow_load_after_statement=false and it asked me to
+</I>&gt;&gt;<i> include that option in command):
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> bazel build //stratum/hal/bin/barefoot:stratum_bf --define
+</I>&gt;&gt;<i> phal_with_onlp=false --define sde_ver=8.9.0
+</I>&gt;&gt;<i> --incompatible_bzl_disallow_load_after_statement=false
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;<i> *Please use the stratum build development environment to build the
+</I>&gt;<i> Stratum. We only support Bazel 0.23.2 now. And will move to 2.0 in the
+</I>&gt;<i> future.*
+</I>&gt;<i> *<A HREF="https://github.com/stratum/stratum#development-environment">https://github.com/stratum/stratum#development-environment</A>
+</I>&gt;<i> &lt;<A HREF="https://github.com/stratum/stratum#development-environment">https://github.com/stratum/stratum#development-environment</A>&gt;*
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> It gave me the error:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> *ERROR:* /home/tofino/.cache/bazel/_bazel_tofino/f6d313d4f595c91e594b2a1b1a2579ea/external/io_bazel_rules_python/python/pip.bzl:39:25:
+</I>&gt;&gt;<i> Traceback (most recent call last):
+</I>&gt;&gt;<i> File
+</I>&gt;&gt;<i> &quot;/home/tofino/.cache/bazel/_bazel_tofino/f6d313d4f595c91e594b2a1b1a2579ea/external/io_bazel_rules_python/python/pip.bzl&quot;,
+</I>&gt;&gt;<i> line 37
+</I>&gt;&gt;<i> repository_rule(&lt;2 more arguments&gt;)
+</I>&gt;&gt;<i> File
+</I>&gt;&gt;<i> &quot;/home/tofino/.cache/bazel/_bazel_tofino/f6d313d4f595c91e594b2a1b1a2579ea/external/io_bazel_rules_python/python/pip.bzl&quot;,
+</I>&gt;&gt;<i> line 39, in repository_rule
+</I>&gt;&gt;<i> attr.label(allow_files = True, &lt;2 more arguments&gt;)
+</I>&gt;&gt;<i> 'single_file' is no longer supported. use allow_single_file instead. You
+</I>&gt;&gt;<i> can use --incompatible_disable_deprecated_attr_params=false to temporarily
+</I>&gt;&gt;<i> disable this check.
+</I>&gt;&gt;<i> *ERROR:* error loading package '': Extension file 'python/pip.bzl' has
+</I>&gt;&gt;<i> errors
+</I>&gt;&gt;<i> *ERROR:* error loading package '': Extension file 'python/pip.bzl' has
+</I>&gt;&gt;<i> errors
+</I>&gt;&gt;<i> INFO: Elapsed time: 0.101s
+</I>&gt;&gt;<i> INFO: 0 processes.
+</I>&gt;&gt;<i> *FAILED:* Build did NOT complete successfully (0 packages loaded)
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I also tried to build the Docker Image manually.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> *3. Build the docker image manually*: I tried to execute the command
+</I>&gt;&gt;<i> below, as per my kernel and SDE
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> ./build-stratum-bf-container.sh bf-sde-8.9.0.tar linux-4.4.173.tar.gz
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> However, it failed with error below. Where can I find *Linux ONL tar* for
+</I>&gt;&gt;<i> my linux kernel?
+</I>&gt;&gt;<i> Error:
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> *You should be able to find it from /usr/src/linux-headers-[your linux
+</I>&gt;<i> kernel version]. *
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;&gt;<i> make: Entering directory '/usr/src/kernel-headers'
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>   ERROR: Kernel configuration is invalid.
+</I>&gt;&gt;<i>          include/generated/autoconf.h or include/config/auto.conf are
+</I>&gt;&gt;<i> missing.
+</I>&gt;&gt;<i>          Run 'make oldconfig &amp;&amp; make prepare' on kernel src to fix it.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>   WARNING: Symbol version dump ./Module.symvers
+</I>&gt;&gt;<i>            is missing; modules will have no dependencies and modversions.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>   Building modules, stage 2.
+</I>&gt;&gt;<i> scripts/Makefile.modpost:42: include/config/auto.conf: No such file or
+</I>&gt;&gt;<i> directory
+</I>&gt;&gt;<i> make[1]: *** No rule to make target 'include/config/auto.conf'.  Stop.
+</I>&gt;&gt;<i> Makefile:1439: recipe for target 'modules' failed
+</I>&gt;&gt;<i> make: Leaving directory '/usr/src/kernel-headers'
+</I>&gt;&gt;<i> make: *** [modules] Error 2
+</I>&gt;&gt;<i> The command '/bin/sh -c make -C /usr/src/kernel-headers M=$KDRV_DIR
+</I>&gt;&gt;<i> src=$KDRV_DIR modules &amp;&amp;     mv $KDRV_DIR/bf_kdrv.ko
+</I>&gt;&gt;<i> $SDE_INSTALL/lib/modules/bf_kdrv.ko' returned a non-zero code: 2
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Thanks,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Deval.
+</I>&gt;&gt;<i> ------------------------------
+</I>&gt;&gt;<i> *From:* Yi Tseng &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">yi at opennetworking.org</A>&gt;
+</I>&gt;&gt;<i> *Sent:* Tuesday, February 25, 2020 2:07:35 AM
+</I>&gt;&gt;<i> *To:* Deval Bhamare
+</I>&gt;&gt;<i> *Cc:* <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>
+</I>&gt;&gt;<i> *Subject:* Re: [brigade-p4] Stratum pre-built container
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> [<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">+stratum-dev at lists.stratumproject.org</A>
+</I>&gt;&gt;<i> &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>&gt;, remove p4-brigade list]
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Hi Deval,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> The public container images include a specific Barefoot Linux kernel
+</I>&gt;&gt;<i> module.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Now we only compile the module for kernels from OpenNetworkLiunx (3.16,
+</I>&gt;&gt;<i> 4.9, and 4.14)
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> If you want to run Stratum on different kernel (4.4.0-173-generic), you
+</I>&gt;&gt;<i> need to compile the Barefoot SDE with the kernel header and run Stratum
+</I>&gt;&gt;<i> directly on the OS
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I've created a GitHub issue to support this request. And will make a PR
+</I>&gt;&gt;<i> to support this case.
+</I>&gt;&gt;<i> <A HREF="https://github.com/stratum/stratum/issues/140">https://github.com/stratum/stratum/issues/140</A>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Yi
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> On Mon, Feb 24, 2020 at 3:25 PM Carmelo Cascone &lt;
+</I>&gt;&gt;<i> <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">carmelo at opennetworking.org</A>&gt; wrote:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Hi Deval,
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> I suggest you ask on the stratum-dev mailing list or Slack channel:
+</I>&gt;&gt;&gt;<i> <A HREF="https://wiki.opennetworking.org/display/COM/Stratum">https://wiki.opennetworking.org/display/COM/Stratum</A>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> This mailing list is for discussions related to P4/P4Runtime support in
+</I>&gt;&gt;&gt;<i> ONOS.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Thanks
+</I>&gt;&gt;&gt;<i> Carmelo
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> On Feb 24, 2020, at 6:53 AM, Deval Bhamare &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">Deval.Bhamare at kau.se</A>&gt; wrote:
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Hi,
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> I am trying to find Stratum pre-built docker image for Linux
+</I>&gt;&gt;&gt;<i> 4.4.0-173-generic x86_64 , however couldn't find it. Can you please tell me
+</I>&gt;&gt;&gt;<i> whether Stratum is not supported on Generic and only runs on ONL version?
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> I tried *stratumproject/stratum-bf:8.9.1-4.14.49-OpenNetworkLinux* ,
+</I>&gt;&gt;&gt;<i> but it failed with error:
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> cat: /etc/onl/platform: No such file or directory
+</I>&gt;&gt;&gt;<i> Use default flag file
+</I>&gt;&gt;&gt;<i> Cannot find /usr/local/share/stratum/.json
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Maybe because the Linux doesn't support ONL? What may be the solution?
+</I>&gt;&gt;&gt;<i> Please let me know.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Thanks,
+</I>&gt;&gt;&gt;<i> Deval
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> --
+</I>&gt;&gt;&gt;<i> You received this message because you are subscribed to the Google
+</I>&gt;&gt;&gt;<i> Groups &quot;P4 brigade&quot; group.
+</I>&gt;&gt;&gt;<i> To unsubscribe from this group and stop receiving emails from it, send
+</I>&gt;&gt;&gt;<i> an email to <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">brigade-p4+unsubscribe at onosproject.org.</A>
+</I>&gt;&gt;&gt;<i> To view this discussion on the web visit
+</I>&gt;&gt;&gt;<i> <A HREF="https://groups.google.com/a/onosproject.org/d/msgid/brigade-p4/3219e60081e54a23950b45fb513ca36e%40kau.se">https://groups.google.com/a/onosproject.org/d/msgid/brigade-p4/3219e60081e54a23950b45fb513ca36e%40kau.se</A>
+</I>&gt;&gt;&gt;<i> &lt;<A HREF="https://groups.google.com/a/onosproject.org/d/msgid/brigade-p4/3219e60081e54a23950b45fb513ca36e%40kau.se?utm_medium=email&amp;utm_source=footer">https://groups.google.com/a/onosproject.org/d/msgid/brigade-p4/3219e60081e54a23950b45fb513ca36e%40kau.se?utm_medium=email&amp;utm_source=footer</A>&gt;
+</I>&gt;&gt;&gt;<i> .
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> --
+</I>&gt;&gt;&gt;<i> You received this message because you are subscribed to the Google
+</I>&gt;&gt;&gt;<i> Groups &quot;P4 brigade&quot; group.
+</I>&gt;&gt;&gt;<i> To unsubscribe from this group and stop receiving emails from it, send
+</I>&gt;&gt;&gt;<i> an email to <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">brigade-p4+unsubscribe at onosproject.org.</A>
+</I>&gt;&gt;&gt;<i> To view this discussion on the web visit
+</I>&gt;&gt;&gt;<i> <A HREF="https://groups.google.com/a/onosproject.org/d/msgid/brigade-p4/C51D008B-728A-4591-8CA7-EFD77B8FBB2A%40opennetworking.org">https://groups.google.com/a/onosproject.org/d/msgid/brigade-p4/C51D008B-728A-4591-8CA7-EFD77B8FBB2A%40opennetworking.org</A>
+</I>&gt;&gt;&gt;<i> &lt;<A HREF="https://groups.google.com/a/onosproject.org/d/msgid/brigade-p4/C51D008B-728A-4591-8CA7-EFD77B8FBB2A%40opennetworking.org?utm_medium=email&amp;utm_source=footer">https://groups.google.com/a/onosproject.org/d/msgid/brigade-p4/C51D008B-728A-4591-8CA7-EFD77B8FBB2A%40opennetworking.org?utm_medium=email&amp;utm_source=footer</A>&gt;
+</I>&gt;&gt;&gt;<i> .
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> --
+</I>&gt;&gt;<i> Yi Tseng
+</I>&gt;&gt;<i> Member of Technical Staff
+</I>&gt;&gt;<i> Open Networking Foundation
+</I>&gt;&gt;<i> <A HREF="https://www.opennetworking.org/">https://www.opennetworking.org/</A>
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i> Yi Tseng
+</I>&gt;<i> Member of Technical Staff
+</I>&gt;<i> Open Networking Foundation
+</I>&gt;<i> <A HREF="https://www.opennetworking.org/">https://www.opennetworking.org/</A>
+</I>&gt;<i>
+</I>
+
+-- 
+Yi Tseng
+Member of Technical Staff
+Open Networking Foundation
+<A HREF="https://www.opennetworking.org/">https://www.opennetworking.org/</A>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.stratumproject.org/archives/stratum-dev/attachments/20200302/8350e8c8/attachment-0001.html">https://lists.stratumproject.org/archives/stratum-dev/attachments/20200302/8350e8c8/attachment-0001.html</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message (by thread): <A HREF="000029.html">[stratum-dev] [brigade-p4] Stratum pre-built container
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#25">[ date ]</a>
+              <a href="thread.html#25">[ thread ]</a>
+              <a href="subject.html#25">[ subject ]</a>
+              <a href="author.html#25">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.stratumproject.org/listinfo/stratum-dev">More information about the stratum-dev
+mailing list</a><br>
+</body></html>

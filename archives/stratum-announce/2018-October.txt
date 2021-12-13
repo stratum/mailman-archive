@@ -1,0 +1,112 @@
+From bocon at opennetworking.org  Wed Oct 17 18:56:01 2018
+From: bocon at opennetworking.org (Brian O'Connor)
+Date: Wed, 17 Oct 2018 11:56:01 -0700
+Subject: [stratum-announce] ONF Connect - Dec. 4-6
+Message-ID: <CACKOpDk33j5nz2jyYGpmCwTbF7=N61tdD8S3b3UQnObVaJbADQ@mail.gmail.com>
+
+Dear Stratum Community!
+
+As you know, ONF Connect 2018 <https://www.opennetworking.org/onf-connect/>
+will take place on Tuesday, December 4 - Thursday, December 6 at the
+Marriott Santa Clara, Marriott.
+
+Purpose of this "get together" is to look at all ONF projects globally in
+the morning sessions and have very targeted Stratum-related content in the
+afternoon(s). A high level agenda can be found here
+<https://www.opennetworking.org/onf-connect/agenda/>.
+
+
+Our goal is to bring all members of the Stratum community together to
+network, socialize, as well as discuss topics such as:
+
+
+   -
+
+   New data plane capabilities enabled by Stratum (led by Barefoot and
+   Juniper)
+   -
+
+   ODM supplier experiences to date integrating Stratum (led by Delta)
+   -
+
+   Testing of Stratum-enabled devices (led by Google)
+
+
+   -
+
+   P4 pipelines and programs (led by Cisco, Mellanox, and DT)
+
+
+   -
+
+   Strategy and use cases for deployment (from NTT, DT, and Google)
+
+
+We are hoping you will register
+<https://www.eiseverywhere.com/ereg/newreg.php?eventid=356349> for this
+community get together and show your support of our project. On another
+note, if you will be attending from out of town, the hotel rate of
+$279/night will go up after Nov 20, 2018 (travel sites show the nightly
+rate at $533/night!!!) and rooms are limited. You can reserve your room
+here.
+<https://www.marriott.com/meeting-event-hotels/group-corporate-travel/groupCorp.mi?resLinkData=ONF%20Connect%5ESJCGA%60ONGONGA%60279%60USD%60false%604%6012/3/18%6012/7/18%6011/20/18&app=resvlink&stop_mobi=yes>
+
+We hope to see you there!
+
+
+Brian
+
+
+P.S. If you have any suggestions about other topics for informal
+discussions, let me know, and I can see if we can fit them in somewhere.
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-announce/attachments/20181017/260a7fca/attachment.html>
+
+From bocon at opennetworking.org  Thu Oct 18 05:08:57 2018
+From: bocon at opennetworking.org (Brian O'Connor)
+Date: Wed, 17 Oct 2018 22:08:57 -0700
+Subject: [stratum-announce] Stratum Project Welcomes 3 New Members!
+Message-ID: <CACKOpDk1V-mt_-SKGYWUi=wOQ86m86CZAL8jMq_cm_sPA+hz4Q@mail.gmail.com>
+
+Hi everyone,
+
+The Stratum project has recently added 3 new Stratum members:
+[image: image.png][image: image.png][image: image.png]
+
+These members along with our 20 existing member companies are working
+towards two major milestones for 2018: (1) a demo of Stratum at ONF Connect
+<https://www.opennetworking.org/onf-connect/>, and (2) an alpha release of
+Stratum to the Stratum membership that will support both hardware and
+software reference targets (i.e. exiting the pioneering phase).
+
+If you are interested in joining the project, you can reach out to me or
+Bill Snow (cc'ed).
+
+Thanks,
+Brian
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-announce/attachments/20181017/962c94bc/attachment.html>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: image.png
+Type: image/png
+Size: 30653 bytes
+Desc: not available
+URL: <https://lists.stratumproject.org/archives/stratum-announce/attachments/20181017/962c94bc/attachment.png>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: image.png
+Type: image/png
+Size: 18322 bytes
+Desc: not available
+URL: <https://lists.stratumproject.org/archives/stratum-announce/attachments/20181017/962c94bc/attachment-0001.png>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: image.png
+Type: image/png
+Size: 31170 bytes
+Desc: not available
+URL: <https://lists.stratumproject.org/archives/stratum-announce/attachments/20181017/962c94bc/attachment-0002.png>
+

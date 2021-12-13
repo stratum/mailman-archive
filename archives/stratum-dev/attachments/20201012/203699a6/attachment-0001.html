@@ -1,0 +1,34 @@
+<tt>
+&lt;div&nbsp;dir=&quot;ltr&quot;&gt;&lt;div&gt;&lt;div&gt;Hi&nbsp;&lt;span&nbsp;class=&quot;&quot;&nbsp;style=&quot;&quot;&nbsp;id=&quot;:1m2.1&quot;&nbsp;tabindex=&quot;-1&quot;&gt;Narada&lt;/span&gt;,&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span&nbsp;class=&quot;&quot;&nbsp;style=&quot;&quot;&nbsp;id=&quot;:1m2.2&quot;&nbsp;tabindex=&quot;-1&quot;&gt;Bazel&lt;/span&gt;&nbsp;heavily&nbsp;favors&nbsp;static&nbsp;linking,&nbsp;but&nbsp;there&nbsp;are&nbsp;some&nbsp;options&nbsp;around&nbsp;that:&nbsp;&lt;a&nbsp;href=&quot;https://docs.bazel.build/versions/master/be/c-cpp.html#cc_binary.linkstatic&quot;&gt;https://docs.bazel.build/versions/master/be/c-cpp.html#cc_binary.linkstatic&lt;/a&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Try&nbsp;adding&nbsp;this&nbsp;label&nbsp;on&nbsp;the&nbsp;stratum_bf&nbsp;target&nbsp;and&nbsp;rebuild.&lt;br&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Another&nbsp;potential&nbsp;source&nbsp;of&nbsp;problems&nbsp;could&nbsp;be&nbsp;the&nbsp;different&nbsp;versions&nbsp;of&nbsp;gRPC&nbsp;and&nbsp;Protobuf&nbsp;between&nbsp;Stratum&nbsp;and&nbsp;the&nbsp;SDE.&nbsp;Adjusting&nbsp;it&nbsp;in&nbsp;Stratum&nbsp;is&nbsp;as&lt;/div&gt;&lt;div&gt;easy&nbsp;as&nbsp;swapping&nbsp;the&nbsp;urls&nbsp;in&nbsp;the&nbsp;deps.bzl&nbsp;file.&lt;br&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;/div&gt;Max&lt;br&gt;&lt;/div&gt;&lt;br&gt;&lt;div&nbsp;class=&quot;gmail_quote&quot;&gt;&lt;div&nbsp;dir=&quot;ltr&quot;&nbsp;class=&quot;gmail_attr&quot;&gt;On&nbsp;Sun,&nbsp;Oct&nbsp;11,&nbsp;2020&nbsp;at&nbsp;8:35&nbsp;AM&nbsp;Narada&nbsp;Hess&nbsp;via&nbsp;stratum-dev&nbsp;&lt;&lt;a&nbsp;href=&quot;mailto:stratum-dev@lists.stratumproject.org&quot;&gt;stratum-dev@lists.stratumproject.org&lt;/a&gt;&gt;&nbsp;wrote:&lt;br&gt;&lt;/div&gt;&lt;blockquote&nbsp;class=&quot;gmail_quote&quot;&nbsp;style=&quot;margin:0px&nbsp;0px&nbsp;0px&nbsp;0.8ex;border-left:1px&nbsp;solid&nbsp;rgb(204,204,204);padding-left:1ex&quot;&gt;<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+&lt;div&nbsp;lang=&quot;EN-US&quot;&gt;<br>
+&lt;div&nbsp;class=&quot;gmail-m_-4602590349157854574WordSection1&quot;&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;Hi,&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;I’m&nbsp;trying&nbsp;to&nbsp;build&nbsp;stratum_bf&nbsp;with&nbsp;the&nbsp;BF&nbsp;SDE&nbsp;BF-Runtime&nbsp;server&nbsp;enabled.&nbsp;That&nbsp;requires&nbsp;building&nbsp;the&nbsp;SDE&nbsp;with&nbsp;gRPC.&nbsp;Of&nbsp;course,&nbsp;when&nbsp;I&nbsp;try&nbsp;to&nbsp;run&nbsp;stratum_bf,&nbsp;it&nbsp;crashes&nbsp;because&nbsp;of&nbsp;the&nbsp;two&nbsp;instances&nbsp;of&nbsp;the&nbsp;gRPC&nbsp;library&nbsp;(see&nbsp;below).&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;u&gt;&lt;/u&gt; &lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;Is&nbsp;there&nbsp;any&nbsp;way&nbsp;to&nbsp;build&nbsp;stratum_bf&nbsp;with&nbsp;dynamic&nbsp;linking&nbsp;of&nbsp;the&nbsp;gRPC&nbsp;(and&nbsp;protobuf&nbsp;too,&nbsp;I’m&nbsp;guessing)&nbsp;library?&nbsp;I&nbsp;saw&nbsp;half&nbsp;a&nbsp;dozen&nbsp;files&nbsp;in&nbsp;the&nbsp;bazel&nbsp;directory&nbsp;referencing&nbsp;gRPC.&nbsp;Just&nbsp;removing&nbsp;the&nbsp;references&nbsp;of&nbsp;course&nbsp;did&nbsp;not&nbsp;work.&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;u&gt;&lt;/u&gt; &lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;Thanks&nbsp;for&nbsp;any&nbsp;suggestions&nbsp;on&nbsp;how&nbsp;to&nbsp;proceed.&nbsp;N&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;u&gt;&lt;/u&gt; &lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;gmail-m_-4602590349157854574MsoPlainText&quot;&gt;&lt;span&nbsp;style=&quot;font-family:&quot;Courier&nbsp;New&quot;&quot;&gt;/usr/local/bin/stratum_bf&nbsp;-flagfile=/etc/service/stratum/stratum-tofino-model.flags&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;gmail-m_-4602590349157854574MsoPlainText&quot;&gt;&lt;span&nbsp;style=&quot;font-family:&quot;Courier&nbsp;New&quot;&quot;&gt;[libprotobuf&nbsp;ERROR&nbsp;external/com_google_protobuf/src/google/protobuf/descriptor_database.cc:120]&nbsp;File&nbsp;already&nbsp;exists&nbsp;in&nbsp;database:&nbsp;google/protobuf/descriptor.proto&nbsp;[libprotobuf&nbsp;FATAL&nbsp;external/com_google_protobuf/src/google/protobuf/descriptor.cc:1382]<br>
+&nbsp;CHECK&nbsp;failed:&nbsp;GeneratedDatabase()-\u003eAdd(encoded_file_descriptor,&nbsp;size):&nbsp;&lt;u&gt;&lt;/u&gt;<br>
+&lt;u&gt;&lt;/u&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;gmail-m_-4602590349157854574MsoPlainText&quot;&gt;&lt;span&nbsp;style=&quot;font-family:&quot;Courier&nbsp;New&quot;&quot;&gt;terminate&nbsp;called&nbsp;after&nbsp;throwing&nbsp;an&nbsp;instance&nbsp;of&nbsp;&#39;google::protobuf::FatalException&#39;&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;gmail-m_-4602590349157854574MsoPlainText&quot;&gt;&lt;span&nbsp;style=&quot;font-family:&quot;Courier&nbsp;New&quot;&quot;&gt; &nbsp;what(): &nbsp;CHECK&nbsp;failed:&nbsp;GeneratedDatabase()-\u003eAdd(encoded_file_descriptor,&nbsp;size):<br>
+&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;gmail-m_-4602590349157854574MsoPlainText&quot;&gt;&lt;span&nbsp;style=&quot;font-family:&quot;Courier&nbsp;New&quot;&quot;&gt;Aborted&nbsp;(core&nbsp;dumped)&lt;u&gt;&lt;/u&gt;&lt;u&gt;&lt;/u&gt;&lt;/span&gt;&lt;/p&gt;<br>
+&lt;p&nbsp;class=&quot;MsoNormal&quot;&gt;&lt;u&gt;&lt;/u&gt; &lt;u&gt;&lt;/u&gt;&lt;/p&gt;<br>
+&lt;/div&gt;<br>
+&lt;/div&gt;<br>
+<br>
+_______________________________________________&lt;br&gt;<br>
+stratum-dev&nbsp;mailing&nbsp;list&lt;br&gt;<br>
+&lt;a&nbsp;href=&quot;mailto:stratum-dev@lists.stratumproject.org&quot;&nbsp;target=&quot;_blank&quot;&gt;stratum-dev@lists.stratumproject.org&lt;/a&gt;&lt;br&gt;<br>
+&lt;a&nbsp;href=&quot;https://lists.stratumproject.org/listinfo/stratum-dev&quot;&nbsp;rel=&quot;noreferrer&quot;&nbsp;target=&quot;_blank&quot;&gt;https://lists.stratumproject.org/listinfo/stratum-dev&lt;/a&gt;&lt;/blockquote&gt;&lt;/div&gt;<br>
+
+</tt>

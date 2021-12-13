@@ -1,0 +1,147 @@
+From max at opennetworking.org  Thu Jun  3 19:23:48 2021
+From: max at opennetworking.org (Maximilian Pudelko)
+Date: Thu, 3 Jun 2021 12:23:48 -0700
+Subject: [stratum-dev] Stratum on Wedge100BF-32X
+In-Reply-To: <01010179ce1ec96a-7863cbbb-2545-4448-b5ea-7897e7c90932-000000@us-west-2.amazonses.com>
+References: <01010179ce1ec96a-7863cbbb-2545-4448-b5ea-7897e7c90932-000000@us-west-2.amazonses.com>
+Message-ID: <CAFh9Y_Mdq13FxteQL72Z_m7EO703biJKNhMKUwoanRCq=NwLnQ@mail.gmail.com>
+
+Hi Kevin,
+
+> Q1
+No, Stratum is unrelated to OFAGENT.
+
+> Q2
+Yes, completely normal. Stratum started successfully and is now waiting for
+a controller to connect.
+
+> Q3
+I'm not sure what you mean by BDE packages. Can you elaborate?
+
+
+Best
+Max
+
+
+On Wed, Jun 2, 2021 at 12:06 PM Kevin Kwon via stratum-dev <
+stratum-dev at lists.stratumproject.org> wrote:
+
+> Hi..
+>
+> I am installing the Stratum on Wedge100BF-32X Switch with the guide (
+> https://github.com/stratum/stratum/blob/main/stratum/docs/setup_guide_barefoot_tofino_onos.md
+> )
+>
+> 1. Download the Pre-Built ONL from
+> https://github.com/opennetworkinglab/OpenNetworkLinux/releases/download/v1.4.2/ONL-OS_2021-02-19.2136-9338f84_AMD64_INSTALLED_INSTALLER
+>
+> 2. Install it on my Wedge100BF-32X switch
+>
+> 3. Download Stratum by below Command
+>   git clone https://github.com/stratum/stratum.git
+>
+> 4. Start Stratum by below command
+>      root at localhost:~/stratum#
+> ./stratum/hal/bin/barefoot/docker/start-stratum-container.sh
+>  -enable_onlp=false
+>
+> 5. Result
+>   [image: image.png]
+>
+>
+> Question #1)
+>   Does "STRATUM" is the same with "OFAGENT" on Broadcom based Switch?
+>
+> Question #2)
+>   Above status is normal to wait for connection by ONOS Controller?
+>
+> Question #3)
+>   Do the below containers have included the BDE packages by default?
+> [image: image.png]
+>
+> Thank you!
+> KevinKwon
+>
+> _______________________________________________
+> stratum-dev mailing list
+> stratum-dev at lists.stratumproject.org
+> https://lists.stratumproject.org/listinfo/stratum-dev
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20210603/3c3e0071/attachment-0001.html>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: image.png
+Type: image/png
+Size: 304487 bytes
+Desc: not available
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20210603/3c3e0071/attachment-0002.png>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: image.png
+Type: image/png
+Size: 143517 bytes
+Desc: not available
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20210603/3c3e0071/attachment-0003.png>
+
+From jacopo.barcellesi at gmail.com  Sun Jun 27 14:40:45 2021
+From: jacopo.barcellesi at gmail.com (jacopo barcellesi)
+Date: Sun, 27 Jun 2021 16:40:45 +0200
+Subject: [stratum-dev] network topology with stratum switches
+Message-ID: <CADbAsDgYdFyWBSPpMVANpckU93VE-VrmWjTPSHzRB0SpBminvg@mail.gmail.com>
+
+Good afternoon,
+
+I have to deploy a network topology for an ONOS controller and use P4 as
+the language to create and send to the switches the flow rules. Since that,
+I need to deploy a topology with stratum/bmv2. Hence I was wondering how to
+deploy the topology with those switches. Does it exist an API for python
+through which writing a script that mininet can use to create the topology?
+(So I am looking to something similar to this
+http://mininet.org/api/annotated.html but for stratum/bmv2 switches).
+
+Thankyou for your time and help,
+
+Jacopo
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20210627/a46abbcb/attachment.html>
+
+From asydney007 at gmail.com  Mon Jun 28 17:45:36 2021
+From: asydney007 at gmail.com (A Sydney)
+Date: Mon, 28 Jun 2021 13:45:36 -0400
+Subject: [stratum-dev] network topology with stratum switches
+In-Reply-To: <0101017a4de6c717-7fd73304-51b3-4553-aa55-6cdbd766d3ca-000000@us-west-2.amazonses.com>
+References: <0101017a4de6c717-7fd73304-51b3-4553-aa55-6cdbd766d3ca-000000@us-west-2.amazonses.com>
+Message-ID: <CAM-ym_cWn6DO42c04qD+Aki2UAf9sLU4prM7GU8170ESKLA0sw@mail.gmail.com>
+
+Below is a tutorial which may help:
+https://github.com/opennetworkinglab/ngsdn-tutorial
+
+Cheers!
+-Syd
+
+On Sun, Jun 27, 2021 at 10:36 AM jacopo barcellesi via stratum-dev <
+stratum-dev at lists.stratumproject.org> wrote:
+
+> Good afternoon,
+>
+> I have to deploy a network topology for an ONOS controller and use P4 as
+> the language to create and send to the switches the flow rules. Since that,
+> I need to deploy a topology with stratum/bmv2. Hence I was wondering how to
+> deploy the topology with those switches. Does it exist an API for python
+> through which writing a script that mininet can use to create the topology?
+> (So I am looking to something similar to this
+> http://mininet.org/api/annotated.html but for stratum/bmv2 switches).
+>
+> Thankyou for your time and help,
+>
+> Jacopo
+> _______________________________________________
+> stratum-dev mailing list
+> stratum-dev at lists.stratumproject.org
+> https://lists.stratumproject.org/listinfo/stratum-dev
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20210628/0e60b4fb/attachment.html>
+

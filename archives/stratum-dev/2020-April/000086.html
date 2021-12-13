@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [stratum-dev] [onos-dev] How to make one bmv2 switch send a packet_in to multiple controllers at the same time?
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20%5Bonos-dev%5D%20How%20to%20make%20one%20bmv2%20switch%20send%20a%0A%20packet_in%20to%20multiple%20controllers%20at%20the%20same%20time%3F&In-Reply-To=%3CCAG85rJkxO6H09bEsejicKBj2F7bO931Zm9ynQeMqPdbpvj64HA%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <LINK REL="Previous"  HREF="000084.html">
+   <LINK REL="Next"  HREF="000085.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[stratum-dev] [onos-dev] How to make one bmv2 switch send a packet_in to multiple controllers at the same time?</H1>
+    <B>陳宜謙</B> 
+    <A HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20%5Bonos-dev%5D%20How%20to%20make%20one%20bmv2%20switch%20send%20a%0A%20packet_in%20to%20multiple%20controllers%20at%20the%20same%20time%3F&In-Reply-To=%3CCAG85rJkxO6H09bEsejicKBj2F7bO931Zm9ynQeMqPdbpvj64HA%40mail.gmail.com%3E"
+       TITLE="[stratum-dev] [onos-dev] How to make one bmv2 switch send a packet_in to multiple controllers at the same time?">chenyichientw at gmail.com
+       </A><BR>
+    <I>Sun Apr 26 08:26:14 UTC 2020</I>
+    <P><UL>
+        <LI>Previous message (by thread): <A HREF="000084.html">[stratum-dev] [onos-dev] How to make one bmv2 switch send a packet_in to multiple controllers at the same time?
+</A></li>
+        <LI>Next message (by thread): <A HREF="000085.html">[stratum-dev] 2020 elections process for Stratum
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#86">[ date ]</a>
+              <a href="thread.html#86">[ thread ]</a>
+              <a href="subject.html#86">[ subject ]</a>
+              <a href="author.html#86">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Thank you for your reply. I will look into it!
+
+Carmelo Cascone &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">carmelo at opennetworking.org</A>&gt; 於 2020年4月23日 週四 上午4:10寫道：
+
+&gt;<i> Hi,
+</I>&gt;<i>
+</I>&gt;<i> Hopefully this is not too late.
+</I>&gt;<i>
+</I>&gt;<i> From the P4Runtime spec (section 5):
+</I>&gt;<i> 5. Master-Slave Arbitration and Controller Replication
+</I>&gt;<i> &lt;<A HREF="https://p4.org/p4runtime/spec/master/P4Runtime-Spec.html#sec-master-slave-arbitration-and-controller-replication">https://p4.org/p4runtime/spec/master/P4Runtime-Spec.html#sec-master-slave-arbitration-and-controller-replication</A>&gt;
+</I>&gt;<i>
+</I>&gt;<i> *Streaming of notifications (e.g. digests) and packet I/O: The same
+</I>&gt;<i> streaming channel will be used for streaming notifications, as well as for
+</I>&gt;<i> packet-in and packet-out messages. Note that unless specified otherwise by
+</I>&gt;<i> the role definitions, only the master controller can participate in packet
+</I>&gt;<i> I/O. This feature is explained in more details in the Packet I/O section.*
+</I>&gt;<i>
+</I>&gt;<i> In other words, the spec doesn’t limit the possibility of sending
+</I>&gt;<i> packet-ins to multiple controllers, but you would have to define a “role”
+</I>&gt;<i> for that (see section 5.2. Role Config). However, none of the existing
+</I>&gt;<i> P4Runtime implementations that I’m aware of support any role other than the
+</I>&gt;<i> default one.
+</I>&gt;<i>
+</I>&gt;<i> If you want to prototype this capability, your best option is to look at
+</I>&gt;<i> stratum_bmv2, specifically this part of p4_service.cc:
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="https://github.com/stratum/stratum/blob/e0f8b1fcc5d226cd7aef1837e673276721e9d6ba/stratum/hal/lib/common/p4_service.cc#L821">https://github.com/stratum/stratum/blob/e0f8b1fcc5d226cd7aef1837e673276721e9d6ba/stratum/hal/lib/common/p4_service.cc#L821</A>
+</I>&gt;<i>
+</I>&gt;<i> I might be wrong, but I think the P4Runtime southbound in ONOS doesn't
+</I>&gt;<i> enforce any mastership check on packet-ins, i.e., any switch could be
+</I>&gt;<i> sending paket-in messages to any controller instance, including slaves.
+</I>&gt;<i>
+</I>&gt;<i> Carmelo
+</I>&gt;<i>
+</I>&gt;<i> On Apr 12, 2020, at 7:37 AM, <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">chenyichientw at gmail.com</A> wrote:
+</I>&gt;<i>
+</I>&gt;<i> Hi all,
+</I>&gt;<i>
+</I>&gt;<i> I am using ONOS 1.13 with P4Runtime and onos.py to create a cluster. I
+</I>&gt;<i> wonder how can I change ONOS code so that one bmv2 switch sends a packet_in
+</I>&gt;<i> message to two different controllers at the same time? I understand that
+</I>&gt;<i> the standard is a switch can have only one master controller. But, I am
+</I>&gt;<i> studying the case for a switch to have multiple controllers. I have already
+</I>&gt;<i> spent a lot of time tracing the code. I found that the doPacketIn() method
+</I>&gt;<i> inside P4RuntimeClientImpl.java is processed by the controller. However, it
+</I>&gt;<i> seems that at the time doPacketIn() is called, it is too late to make the
+</I>&gt;<i> switch sending the control message to a second (another) controller. So, I
+</I>&gt;<i> am wondering when and where the switch code sends a control message to its
+</I>&gt;<i> controller. I would like to change the code. Which java classes, methods,
+</I>&gt;<i> or maybe bmv2 code should I look into? Can anyone help?
+</I>&gt;<i>
+</I>&gt;<i> Thanks!
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i> You received this message because you are subscribed to the Google Groups
+</I>&gt;<i> &quot;ONOS Developers&quot; group.
+</I>&gt;<i> To unsubscribe from this group and stop receiving emails from it, send an
+</I>&gt;<i> email to <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">onos-dev+unsubscribe at onosproject.org.</A>
+</I>&gt;<i> To view this discussion on the web visit
+</I>&gt;<i> <A HREF="https://groups.google.com/a/onosproject.org/d/msgid/onos-dev/81f428f8-9dc0-4ff9-8b16-4517cdc0fb14%40onosproject.org">https://groups.google.com/a/onosproject.org/d/msgid/onos-dev/81f428f8-9dc0-4ff9-8b16-4517cdc0fb14%40onosproject.org</A>
+</I>&gt;<i> &lt;<A HREF="https://groups.google.com/a/onosproject.org/d/msgid/onos-dev/81f428f8-9dc0-4ff9-8b16-4517cdc0fb14%40onosproject.org?utm_medium=email&amp;utm_source=footer">https://groups.google.com/a/onosproject.org/d/msgid/onos-dev/81f428f8-9dc0-4ff9-8b16-4517cdc0fb14%40onosproject.org?utm_medium=email&amp;utm_source=footer</A>&gt;
+</I>&gt;<i> .
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.stratumproject.org/archives/stratum-dev/attachments/20200426/d99c5a2f/attachment.html">https://lists.stratumproject.org/archives/stratum-dev/attachments/20200426/d99c5a2f/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message (by thread): <A HREF="000084.html">[stratum-dev] [onos-dev] How to make one bmv2 switch send a packet_in to multiple controllers at the same time?
+</A></li>
+	<LI>Next message (by thread): <A HREF="000085.html">[stratum-dev] 2020 elections process for Stratum
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#86">[ date ]</a>
+              <a href="thread.html#86">[ thread ]</a>
+              <a href="subject.html#86">[ subject ]</a>
+              <a href="author.html#86">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.stratumproject.org/listinfo/stratum-dev">More information about the stratum-dev
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [stratum-dev] Is there a limit on the # of ECMP groups stratum_bmv2	can handle?
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Is%20there%20a%20limit%20on%20the%20%23%20of%20ECMP%20groups%20stratum_bmv2%0A%09can%20handle%3F&In-Reply-To=%3CCAM-ym_dwKqvp%3Dks8-39s07cCLY-_aJAbWgz2GSR0b4PjH%2Bjcpw%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <LINK REL="Previous"  HREF="000217.html">
+   <LINK REL="Next"  HREF="000216.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[stratum-dev] Is there a limit on the # of ECMP groups stratum_bmv2	can handle?</H1>
+    <B>A Sydney</B> 
+    <A HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Is%20there%20a%20limit%20on%20the%20%23%20of%20ECMP%20groups%20stratum_bmv2%0A%09can%20handle%3F&In-Reply-To=%3CCAM-ym_dwKqvp%3Dks8-39s07cCLY-_aJAbWgz2GSR0b4PjH%2Bjcpw%40mail.gmail.com%3E"
+       TITLE="[stratum-dev] Is there a limit on the # of ECMP groups stratum_bmv2	can handle?">asydney007 at gmail.com
+       </A><BR>
+    <I>Mon May 10 20:46:51 UTC 2021</I>
+    <P><UL>
+        <LI>Previous message (by thread): <A HREF="000217.html">[stratum-dev] BMv2 standalone instances unable to forward	traffic
+</A></li>
+        <LI>Next message (by thread): <A HREF="000216.html">[stratum-dev] Is there a limit on the # of ECMP groups stratum_bmv2 can handle?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#214">[ date ]</a>
+              <a href="thread.html#214">[ thread ]</a>
+              <a href="subject.html#214">[ subject ]</a>
+              <a href="author.html#214">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Stratum folks,
+
+# Context:
+I have created a pipeline that enables IPv4-ECMP (P4 snippet shown in
+attached file action_selector*) and I am able to build and push p4info.txt
+and bmv2.json to the switches.
+
+# Issue:
+When I attempt to add groups, the first one moves to the &quot;ADDED&quot; state.
+When I attempt to add a second, the first group and the second both move to
+the &quot;PENDING_ADD_RETRY&quot; state.
+
+# ONOS logs:
+At the same time, P4RuntimeClientImpl throws the error &quot;Error while
+performing READ on device:spine2...Unexpected error in RPC handling&quot;. Then
+ONOS spirals into this cycle of attempting to reinstall all flows on the
+switch (See debug.log for details.).
+
+# Logs on one of the bmv2 switches:
+I then see the following error on the switch:
+[libprotobuf FATAL
+external/com_google_protobuf/src/google/protobuf/repeated_field.h:1694]
+CHECK failed: (index) &lt; (current_size_):
+
+# Question:
+Have you ever come across this one?  Are there any obvious mistakes that
+I'm running into (Perhaps my P4 ECMP definition attached is incorrect?)?
+Any suggestions on how to debug further?
+
+Thanks!
+-Syd
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.stratumproject.org/archives/stratum-dev/attachments/20210510/c1b25dcd/attachment.html">https://lists.stratumproject.org/archives/stratum-dev/attachments/20210510/c1b25dcd/attachment.html</A>&gt;
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: debug.log
+Type: text/x-log
+Size: 13780 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.stratumproject.org/archives/stratum-dev/attachments/20210510/c1b25dcd/attachment.bin">https://lists.stratumproject.org/archives/stratum-dev/attachments/20210510/c1b25dcd/attachment.bin</A>&gt;
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: action_selector_snippet
+Type: application/octet-stream
+Size: 665 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.stratumproject.org/archives/stratum-dev/attachments/20210510/c1b25dcd/attachment.obj">https://lists.stratumproject.org/archives/stratum-dev/attachments/20210510/c1b25dcd/attachment.obj</A>&gt;
+</PRE>
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message (by thread): <A HREF="000217.html">[stratum-dev] BMv2 standalone instances unable to forward	traffic
+</A></li>
+	<LI>Next message (by thread): <A HREF="000216.html">[stratum-dev] Is there a limit on the # of ECMP groups stratum_bmv2 can handle?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#214">[ date ]</a>
+              <a href="thread.html#214">[ thread ]</a>
+              <a href="subject.html#214">[ subject ]</a>
+              <a href="author.html#214">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.stratumproject.org/listinfo/stratum-dev">More information about the stratum-dev
+mailing list</a><br>
+</body></html>

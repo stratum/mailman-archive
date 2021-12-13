@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [stratum-dev] PINS: STRATUM vs SONiC(SAI)
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20PINS%3A%20STRATUM%20vs%20SONiC%28SAI%29&In-Reply-To=%3CCACKOpDnLw5ZG1VBzx9aHbUURKP-NhegoSOPXZgg3swDWX4tjnA%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <LINK REL="Previous"  HREF="000186.html">
+   <LINK REL="Next"  HREF="000188.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[stratum-dev] PINS: STRATUM vs SONiC(SAI)</H1>
+    <B>Brian O'Connor</B> 
+    <A HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20PINS%3A%20STRATUM%20vs%20SONiC%28SAI%29&In-Reply-To=%3CCACKOpDnLw5ZG1VBzx9aHbUURKP-NhegoSOPXZgg3swDWX4tjnA%40mail.gmail.com%3E"
+       TITLE="[stratum-dev] PINS: STRATUM vs SONiC(SAI)">bocon at opennetworking.org
+       </A><BR>
+    <I>Thu Feb  4 23:37:07 UTC 2021</I>
+    <P><UL>
+        <LI>Previous message (by thread): <A HREF="000186.html">[stratum-dev] PINS: STRATUM vs SONiC(SAI)
+</A></li>
+        <LI>Next message (by thread): <A HREF="000188.html">[stratum-dev] Stratum Branch Rename -- &quot;main&quot; is the new &quot;master&quot;
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#187">[ date ]</a>
+              <a href="thread.html#187">[ thread ]</a>
+              <a href="subject.html#187">[ subject ]</a>
+              <a href="author.html#187">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Syd,
+
+Some answers inline below.
+
+Thanks!
+Brian
+
+On Thu, Feb 4, 2021 at 11:22 AM A Sydney via stratum-dev &lt;
+<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>&gt; wrote:
+
+&gt;<i> Hi Stratum folks,
+</I>&gt;<i>                           Can you kindly provide feedback on the following:
+</I>&gt;<i>
+</I>&gt;<i> 1. From Brian's Techinar last Wednesday (Jan 27th), there was a nice
+</I>&gt;<i> comparison between STRATUM and SONiC's dataplane (Ref (near minute 35):
+</I>&gt;<i> <A HREF="https://youtu.be/_XtOUHU55EE">https://youtu.be/_XtOUHU55EE</A>). Now SONiC has a software switch that runs
+</I>&gt;<i> over OVS (REF:
+</I>&gt;<i> <A HREF="https://github.com/Azure/SONiC/wiki/SONiC-P4-Software-Switch">https://github.com/Azure/SONiC/wiki/SONiC-P4-Software-Switch</A>).  Given
+</I>&gt;<i> that OVS is a production virtual switch, will one of the results of the
+</I>&gt;<i> PINS initiative be a production virtual switch?
+</I>&gt;<i>
+</I>
+I have a different understanding of sonic-p4; it is built on BMv2 as far as
+I know which is not production grade. OVS is used to bridge these SONiC
+switches together out of band for testing, and OVS can probably be replaced
+with Linux veth pairs. This target is also quite out of date. As far as I
+am aware, there is no real P4 support at head in SONiC today (there might
+be with flexsai on some hardware targets, but I haven't used them), and
+SONiC doesn't support a production virtual switch target. But I also could
+be missing something, so please provide pointers if you find something.
+
+&gt;<i>
+</I>&gt;<i> 2. Is there any documentation on the PINS effort (I didn't come across any
+</I>&gt;<i> under the ONF's infra projects)?
+</I>&gt;<i>
+</I>
+Bringing Stratum capabilities to SONiC as well as running Stratum as an app
+on SONiC are two things we are privately exploring at ONF. We might have
+more to say about them in the future, but I don't really have anything else
+to share at this point.
+
+&gt;<i>
+</I>&gt;<i> 3. With P4 in &quot;Traditional SDN&quot; (i.e. dataplane communication with
+</I>&gt;<i> external controller), a user programs the dataplane and leverages P4Runtime
+</I>&gt;<i> from an external controller to control the forwarding behavior in the
+</I>&gt;<i> switch. It's a bit unclear how this translates to the SONiC paradigm given
+</I>&gt;<i> that SONiC does support P4. In particular, assuming a user compiled a *.p4
+</I>&gt;<i> dataplane, how do you create applications to control the forwarding
+</I>&gt;<i> behavior of this dataplane? Is there a controller (e.g. Trellis+ONOS)
+</I>&gt;<i> running inside the switch on top of SONIC?
+</I>&gt;<i>
+</I>
+ There's a lot to unpack here, and I'm not sure I can do this question
+justice here. These are definitely some ideas worth exploring.
+
+&gt;<i>
+</I>&gt;<i> Thanks,
+</I>&gt;<i> -Syd
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> stratum-dev mailing list
+</I>&gt;<i> <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>
+</I>&gt;<i> <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">https://lists.stratumproject.org/listinfo/stratum-dev</A>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.stratumproject.org/archives/stratum-dev/attachments/20210204/f16f5f83/attachment.html">https://lists.stratumproject.org/archives/stratum-dev/attachments/20210204/f16f5f83/attachment.html</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message (by thread): <A HREF="000186.html">[stratum-dev] PINS: STRATUM vs SONiC(SAI)
+</A></li>
+	<LI>Next message (by thread): <A HREF="000188.html">[stratum-dev] Stratum Branch Rename -- &quot;main&quot; is the new &quot;master&quot;
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#187">[ date ]</a>
+              <a href="thread.html#187">[ thread ]</a>
+              <a href="subject.html#187">[ subject ]</a>
+              <a href="author.html#187">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.stratumproject.org/listinfo/stratum-dev">More information about the stratum-dev
+mailing list</a><br>
+</body></html>

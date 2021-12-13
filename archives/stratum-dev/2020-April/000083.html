@@ -1,0 +1,1468 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [stratum-dev] Update Bazel version to 2.2.0
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Update%20Bazel%20version%20to%202.2.0&In-Reply-To=%3CCAOyFVR2y9KcaP7rsDcmur8pFFqdV0o9YK%2B1OtGpomknMXnZo%3DA%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <LINK REL="Previous"  HREF="000082.html">
+   <LINK REL="Next"  HREF="000078.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[stratum-dev] Update Bazel version to 2.2.0</H1>
+    <B>Yi Tseng</B> 
+    <A HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Update%20Bazel%20version%20to%202.2.0&In-Reply-To=%3CCAOyFVR2y9KcaP7rsDcmur8pFFqdV0o9YK%2B1OtGpomknMXnZo%3DA%40mail.gmail.com%3E"
+       TITLE="[stratum-dev] Update Bazel version to 2.2.0">yi at opennetworking.org
+       </A><BR>
+    <I>Mon Apr 20 17:06:48 UTC 2020</I>
+    <P><UL>
+        <LI>Previous message (by thread): <A HREF="000082.html">[stratum-dev] Update Bazel version to 2.2.0
+</A></li>
+        <LI>Next message (by thread): <A HREF="000078.html">[stratum-dev] Stratum Logs - table entries population.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#83">[ date ]</a>
+              <a href="thread.html#83">[ thread ]</a>
+              <a href="subject.html#83">[ subject ]</a>
+              <a href="author.html#83">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Deval,
+
+Please check my comment *inline*
+
+On Mon, Apr 20, 2020 at 5:27 PM Deval Bhamare &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">Deval.Bhamare at kau.se</A>&gt; wrote:
+
+&gt;<i> Hello Team,
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> We are waiting for your reply. We need to know *where we put updated JSON
+</I>&gt;<i> and CONFIG files on the local *machine, so that we get them in the docker
+</I>&gt;<i> container?
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> (As I mentioned earlier, I have put updated json in *
+</I>&gt;<i> stratum/stratum/hal/bin/barefoot/platforms/x86-64-stordis-bf2556x-1t-r0.json*
+</I>&gt;<i> , but the docker container still shoes the old json)
+</I>&gt;<i>
+</I>We can't see any port, neither we get any traffic on the ports.
+&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Thanks,
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Deval.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> ------------------------------
+</I>&gt;<i> *From:* Deval Bhamare
+</I>&gt;<i> *Sent:* Friday, April 17, 2020 9:29 PM
+</I>&gt;<i> *To:* Yi Tseng
+</I>&gt;<i> *Subject:* Re: [stratum-dev] Update Bazel version to 2.2.0
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Hi Yi,
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> One more follow-up question:
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> I can see in Dockerfile.runtime, the following command:
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> cp $STRATUM_BF_BASE/platforms/*.json $OUTPUT_BASE/share/stratum/
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> I assume it copies all needed json files to the* /usr/local/*
+</I>&gt;<i> *share/stratum/* directory *of container* from *local *
+</I>&gt;<i> *stratum/hal/bin/barefoot/**platforms directory*. Is it correct?
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> because if I make any changes to the concerned json file, they are
+</I>&gt;<i> not getting reflected in docker container, nor in the stratum.  I still see
+</I>&gt;<i> the old original json in the container (using docker exec -ti command)
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Can you please explain how this docker runfile works? where should I place
+</I>&gt;<i> the modified exactly?
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> *The docker file describes how the docker engine build the docker
+</I>container image.*
+
+*To update the json file, not only place the new file to
+stratum/hal/bin/barefoot/platforms, but also rebuild the container image so
+the new json file will be placed into the container image.*
+
+
+&gt;<i> Thanks,
+</I>&gt;<i>
+</I>&gt;<i> Deval.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> ------------------------------
+</I>&gt;<i> *From:* stratum-dev &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev-bounces at lists.stratumproject.org</A>&gt; on
+</I>&gt;<i> behalf of Deval Bhamare via stratum-dev &lt;
+</I>&gt;<i> <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>&gt;
+</I>&gt;<i> *Sent:* Friday, April 17, 2020 1:54:33 PM
+</I>&gt;<i> *To:* Yi Tseng
+</I>&gt;<i> *Cc:* <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>
+</I>&gt;<i> *Subject:* Re: [stratum-dev] Update Bazel version to 2.2.0
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Ok, so it means standard pre-built container without ONL (with
+</I>&gt;<i> WITH_ONLP=false),  refers to
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> *stratum/stratum/hal/bin/barefoot/platforms/x86-64-stordis-bf2556x-1t-r0.json*
+</I>&gt;<i> ???
+</I>&gt;<i>
+</I>
+*If you set environment variable &quot;PLATFORM=x86-64-stordis-bf2556x-1t-r0&quot;.
+The start-stratum-container.sh script will pass the platform name and
+&quot;WITH_ONLP=false&quot; to the container. And the container entry point will pick
+up x86-64-stordis-bf2556x-1t-r0.json file as the port map file.*
+
+
+&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Also, does it make use of *chasis_config.pb.txt* in /stratum/stratum/hal/config/x86-64-stordis-bf2556x-1t-r0
+</I>&gt;<i> as well?
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>*If you are using non-ONL system, you may also need to modify some
+environment variables*
+*<A HREF="https://github.com/stratum/stratum/tree/master/stratum/hal/bin/barefoot/docker#environment-variables-for-start-stratum-containersh">https://github.com/stratum/stratum/tree/master/stratum/hal/bin/barefoot/docker#environment-variables-for-start-stratum-containersh</A>
+&lt;<A HREF="https://github.com/stratum/stratum/tree/master/stratum/hal/bin/barefoot/docker#environment-variables-for-start-stratum-containersh">https://github.com/stratum/stratum/tree/master/stratum/hal/bin/barefoot/docker#environment-variables-for-start-stratum-containersh</A>&gt;*
+
+
+*For example, you need to tell where you want to place config files like
+chassis config or phal config *
+*<A HREF="https://github.com/stratum/stratum/tree/master/stratum/hal/bin/barefoot/docker#custom-configurations*">https://github.com/stratum/stratum/tree/master/stratum/hal/bin/barefoot/docker#custom-configurations*</A>
+&lt;<A HREF="https://github.com/stratum/stratum/tree/master/stratum/hal/bin/barefoot/docker#custom-configurations">https://github.com/stratum/stratum/tree/master/stratum/hal/bin/barefoot/docker#custom-configurations</A>&gt;
+
+*By default, if the stratum entry point cannot find the chassis config
+file, it will use a default empty chassis config*
+&lt;<A HREF="https://github.com/stratum/stratum/tree/master/stratum/hal/bin/barefoot/docker#custom-configurations">https://github.com/stratum/stratum/tree/master/stratum/hal/bin/barefoot/docker#custom-configurations</A>&gt;
+
+&gt;<i>
+</I>&gt;<i> Because when Strarum starts and we try to check the port status with *bf-sde.pm
+</I>&gt;<i> &lt;<A HREF="http://bf-sde.pm">http://bf-sde.pm</A>&gt;&gt; show*, we don't see any port.  we tried modifying the
+</I>&gt;<i> chasis_config for the below options as stated in the git.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> autoneg: TRI_STATE_TRUE
+</I>&gt;<i>     fec_mode: FEC_MODE_ON
+</I>&gt;<i>
+</I>&gt;<i> But it didn't work either.
+</I>&gt;<i>
+</I>&gt;<i> ------------------------------
+</I>&gt;<i> *From:* Yi Tseng &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">yi at opennetworking.org</A>&gt;
+</I>&gt;<i> *Sent:* Friday, April 17, 2020 9:51:35 AM
+</I>&gt;<i> *To:* Deval Bhamare
+</I>&gt;<i> *Cc:* <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">max at opennetworking.org</A>; <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>
+</I>&gt;<i> *Subject:* Re: [stratum-dev] Update Bazel version to 2.2.0
+</I>&gt;<i>
+</I>&gt;<i> Hi Deval,
+</I>&gt;<i>
+</I>&gt;<i> The container script tells the container entry point to use the Stratum
+</I>&gt;<i> binary which doesn't link to ONLP library and uses a specific port map for
+</I>&gt;<i> the platform.
+</I>&gt;<i>
+</I>&gt;<i> To include the BSP to current container, you can modify the build script
+</I>&gt;<i> &lt;<A HREF="https://github.com/stratum/stratum/blob/master/stratum/hal/bin/barefoot/docker/build-stratum-bf-container.sh">https://github.com/stratum/stratum/blob/master/stratum/hal/bin/barefoot/docker/build-stratum-bf-container.sh</A>&gt;
+</I>&gt;<i> and the Dockerfile
+</I>&gt;<i> &lt;<A HREF="https://github.com/stratum/stratum/blob/master/stratum/hal/bin/barefoot/docker/Dockerfile.builder#L39">https://github.com/stratum/stratum/blob/master/stratum/hal/bin/barefoot/docker/Dockerfile.builder#L39</A>&gt;
+</I>&gt;<i> to include the BSP option when it invokes the p4studio script.
+</I>&gt;<i>
+</I>&gt;<i> Yi
+</I>&gt;<i>
+</I>&gt;<i> On Thu, Apr 16, 2020 at 8:50 PM Deval Bhamare &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">Deval.Bhamare at kau.se</A>&gt;
+</I>&gt;<i> wrote:
+</I>&gt;<i>
+</I>&gt;&gt;<i> Hello Yi and team,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> With reference to your email below:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> The current way to support Stratum + BSP is to build the SDE, BSP, and
+</I>&gt;&gt;<i> Stratum on the switch
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> &gt;&gt; Does it mean, pre-built Stratum container cannot be used with BSP?
+</I>&gt;&gt;<i> Then what is the meaning of below flag in the container start script?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> ONLP_ARG=&quot;--env WITH_ONLP=false \ -
+</I>&gt;&gt;<i> -env PLATFORM=x86-64-accton-wedge100bf-32x-r0&quot;
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Isn't the above option mean stratum will use BSP?  If not, then with ONLP
+</I>&gt;&gt;<i> false and without BSP, how will switch work? Is it by reading the JSON for
+</I>&gt;&gt;<i> the specified platform above (x86-64-accton-wedge100bf-32x-r0)?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> can you please explain?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Note: We still are facing errors when we tr yo build stratum with BSP.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Thanks,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Deval.
+</I>&gt;&gt;<i> ------------------------------
+</I>&gt;&gt;<i> *From:* Yi Tseng &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">yi at opennetworking.org</A>&gt;
+</I>&gt;&gt;<i> *Sent:* Thursday, April 2, 2020 2:02:40 PM
+</I>&gt;&gt;<i> *To:* Deval Bhamare
+</I>&gt;&gt;<i> *Cc:* <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">max at opennetworking.org</A>; <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>
+</I>&gt;&gt;<i> *Subject:* Re: [stratum-dev] Update Bazel version to 2.2.0
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Hi Deval,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> The Stratum container image does not include the BSP library from each
+</I>&gt;&gt;<i> vendor since the origin goal is to use a general open-source platform
+</I>&gt;&gt;<i> library from ONL.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> The current way to support Stratum + BSP is to build the SDE, BSP, and
+</I>&gt;&gt;<i> Stratum on the switch (you can also build it on the server and copy every
+</I>&gt;&gt;<i> necessary libraries and files to the switch). Also, I believed that you can
+</I>&gt;&gt;<i> build everything(SDE, BSP, Stratum) on a Ubuntu-based switch and run it.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I've tested to build SDE, BSP, and Stratum on out BF2556X and I can
+</I>&gt;&gt;<i> confirm that ONOS can connect to the Stratum.
+</I>&gt;&gt;<i> Currently, we are using ONL-based OS in our lab. I can try re-installed
+</I>&gt;&gt;<i> the switch to Ubuntu-based once I can access the hardware.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Yi
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> On Mon, Mar 30, 2020 at 8:25 PM Deval Bhamare &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">Deval.Bhamare at kau.se</A>&gt;
+</I>&gt;&gt;<i> wrote:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Hello again,
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> So as per my understanding, when we use pre-built docker version of the
+</I>&gt;&gt;&gt;<i> Stratum, it doesn't refer to local locally built BSP and BF-SDE. Instead it
+</I>&gt;&gt;&gt;<i> uses its own pre-build BF-SDE and BSP. Is it correct?
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> In that case, with reference to the email from Stordis-support below, I
+</I>&gt;&gt;&gt;<i> would like to confirm that below point have been taken care of while
+</I>&gt;&gt;&gt;<i> building the updated docker image.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Stordis_support message:
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> &quot;*It is important that you build the BSP with the --with-tof-brgup-plat
+</I>&gt;&gt;&gt;<i> option that you can also pass through the p4studio_build script (see
+</I>&gt;&gt;&gt;<i> installation guide). Be sure to spell it correctly, or else p4studio_build
+</I>&gt;&gt;&gt;<i> will silently ignore the option and build the BSP incorrectly… (there will
+</I>&gt;&gt;&gt;<i> be just a log entry in the installation log saying that the option was
+</I>&gt;&gt;&gt;<i> unknown)*
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> *Note too that there was a problem in the BSP zip file that is available
+</I>&gt;&gt;&gt;<i> on our FTP server – the bf-platforms.tgz in the packages directory was
+</I>&gt;&gt;&gt;<i> actually the reference BSP version. If you had used this tgz (instead of
+</I>&gt;&gt;&gt;<i> the bf-platforms directory that is present in the directory above), the BSP
+</I>&gt;&gt;&gt;<i> would have been built incorrectly too. In the meantime I have uploaded a
+</I>&gt;&gt;&gt;<i> corrected version of the zip file to our FTP server.*&quot;
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Can you please confirm?
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Thanks,
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Deval.
+</I>&gt;&gt;&gt;<i> ------------------------------
+</I>&gt;&gt;&gt;<i> *From:* Yi Tseng &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">yi at opennetworking.org</A>&gt;
+</I>&gt;&gt;&gt;<i> *Sent:* Monday, March 30, 2020 7:32:05 AM
+</I>&gt;&gt;&gt;<i> *To:* Deval Bhamare
+</I>&gt;&gt;&gt;<i> *Cc:* <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">max at opennetworking.org</A>; <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>
+</I>&gt;&gt;&gt;<i> *Subject:* Re: [stratum-dev] Update Bazel version to 2.2.0
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Hi Deval,
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> We've updated the container image and the script to start the container:
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> <A HREF="https://github.com/stratum/stratum/blob/master/stratum/hal/bin/barefoot/docker/start-stratum-container.sh">https://github.com/stratum/stratum/blob/master/stratum/hal/bin/barefoot/docker/start-stratum-container.sh</A>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> You can now try the following command to start the Stratum container
+</I>&gt;&gt;&gt;<i> with no ONLP support:
+</I>&gt;&gt;&gt;<i> *PLATFORM=x86-64-stordis-bf2556x-1t-r0 SDE_VERSION=8.9.2
+</I>&gt;&gt;&gt;<i> ./start-stratum-container.sh*
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> For the &quot;unimplemented&quot; message you saw, the SDE 8.9.2 uses old version
+</I>&gt;&gt;&gt;<i> PI library which doesn't implement some features (reading default entry
+</I>&gt;&gt;&gt;<i> from a table).
+</I>&gt;&gt;&gt;<i> You can ignore that warning or use a newer version of Stratum (with SDE
+</I>&gt;&gt;&gt;<i> &gt;= 9.0.0)
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Yi
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> On Sun, Mar 29, 2020 at 8:31 PM Deval Bhamare &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">Deval.Bhamare at kau.se</A>&gt;
+</I>&gt;&gt;&gt;<i> wrote:
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> Hello again,
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> Just don't want to overload with the information, but I wanted to
+</I>&gt;&gt;&gt;&gt;<i> mention that, with the *pre-built docker image option*, I had a look a
+</I>&gt;&gt;&gt;&gt;<i> the ./start-stratum-container.sh
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> Since I want to run Stratum with BSP, I made a change as:
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> ONLP_ARG=&quot;--env WITH_ONLP=false&quot;
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> Then I started the container 8.9.2-3.16.56-OpenNetworkLinux and it
+</I>&gt;&gt;&gt;&gt;<i> executed the Stratum successfully. Stratum open bf-sde prompt.
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> *Also ss ouptput is: *
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> State      Recv-Q Send-Q          Local Address:Port
+</I>&gt;&gt;&gt;&gt;<i>       Peer Address:Port
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> LISTEN     0      128                         *:28000
+</I>&gt;&gt;&gt;&gt;<i>                   *:*
+</I>&gt;&gt;&gt;&gt;<i> users:((&quot;stratum_bf_no_o&quot;,pid=10,fd=36))
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> LISTEN     0      128                 127.0.0.1:28000
+</I>&gt;&gt;&gt;&gt;<i>                   *:*
+</I>&gt;&gt;&gt;&gt;<i> users:((&quot;stratum_bf_no_o&quot;,pid=10,fd=35))
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> LISTEN     0      128                 127.0.0.1:28003
+</I>&gt;&gt;&gt;&gt;<i>                   *:*
+</I>&gt;&gt;&gt;&gt;<i> users:((&quot;stratum_bf_no_o&quot;,pid=10,fd=32))
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> LISTEN     0      5                           *:9999
+</I>&gt;&gt;&gt;&gt;<i>                   *:*
+</I>&gt;&gt;&gt;&gt;<i> users:((&quot;stratum_bf_no_o&quot;,pid=10,fd=27))
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> I am getting following messages now:
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>  ONOS-CLI logs for the confirmation below:
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">tofino at root</A> &gt; devices
+</I>&gt;&gt;&gt;&gt;<i>                                 22:02:35
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> id=device:tofino, *available=true*, local-status=connected 4m52s ago,
+</I>&gt;&gt;&gt;&gt;<i> role=MASTER, type=SWITCH, mfr=Barefoot Networks, hw=Tofino, sw=Stratum,
+</I>&gt;&gt;&gt;&gt;<i> serial=unknown, chassis=0, driver=stratum-tofino:vepg-pipeconf,
+</I>&gt;&gt;&gt;&gt;<i> locType=none, managementAddress=<A HREF="grpc://127.0.0.1:28000?device_id=1,">grpc://127.0.0.1:28000?device_id=1,</A>
+</I>&gt;&gt;&gt;&gt;<i> name=device:tofino, p4DeviceId=1, protocol=P4Runtime, gNMI, gNOI
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> Logs on stratum bf-sde are:
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> bf-sde.lld&gt; E0329 22:01:52.649449   249 PI-device_mgr.cpp:0] Reading
+</I>&gt;&gt;&gt;&gt;<i> default entry not supported yet
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> E0329 22:01:52.649509   249 pi_node.cc:187] Return Error:
+</I>&gt;&gt;&gt;&gt;<i> toUtilStatus(status, details) failed with generic::unimplemented:
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> E0329 22:01:52.649549   249 p4_service.cc:307] Failed to read
+</I>&gt;&gt;&gt;&gt;<i> forwarding entries from node 1:
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> ONOS Logs:
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> 2020-03-29T22:08:22,649 | WARN  | grpc-default-executor-4 |
+</I>&gt;&gt;&gt;&gt;<i> P4RuntimeClientImpl              | 230 -
+</I>&gt;&gt;&gt;&gt;<i> org.onosproject.onos-protocols-grpc-ctl - 2.4.0.SNAPSHOT | Error while
+</I>&gt;&gt;&gt;&gt;<i> performing READ on device:tofino: UNIMPLEMENTED
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> So, now ONOS can talk to Tofino through Stratum, but there are a few
+</I>&gt;&gt;&gt;&gt;<i> errors. First of all, is it OK to explicitly use this option: &quot;--env
+</I>&gt;&gt;&gt;&gt;<i> WITH_ONLP=false&quot; If yes, am I missing some steps here?  Any suggestion?
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> (Note: If I use default value of ONLP_ARG as per the original script,
+</I>&gt;&gt;&gt;&gt;<i> I get error as:
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> Use default flag file
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> Cannot find /usr/local/lib/modules/bf_kdrv.ko, skip installing the
+</I>&gt;&gt;&gt;&gt;<i> Kernel module
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> /usr/local/bin/stratum_bf: symbol lookup error:
+</I>&gt;&gt;&gt;&gt;<i> /usr/local/bin/stratum_bf: undefined symbol: onlp_sw_init
+</I>&gt;&gt;&gt;&gt;<i> )
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> Thank you,
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> Deval.
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> ------------------------------
+</I>&gt;&gt;&gt;&gt;<i> *From:* Deval Bhamare
+</I>&gt;&gt;&gt;&gt;<i> *Sent:* Sunday, March 29, 2020 12:20:10 PM
+</I>&gt;&gt;&gt;&gt;<i> *To:* Maximilian Pudelko
+</I>&gt;&gt;&gt;&gt;<i> *Cc:* Yi Tseng; <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>
+</I>&gt;&gt;&gt;&gt;<i> *Subject:* Re: [stratum-dev] Update Bazel version to 2.2.0
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> Hello Maximilian,
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> There is a littler confusion here. I am *not using pre-built
+</I>&gt;&gt;&gt;&gt;<i> containerized version of Stratum*.
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> However, I am locally *building it by starting a development container*
+</I>&gt;&gt;&gt;&gt;<i> with command &quot;*./setup_dev_env.sh  --pull -- -p 28000:28000*&quot; (I have
+</I>&gt;&gt;&gt;&gt;<i> mentioned it in the earlier image as well) as mentioned here:
+</I>&gt;&gt;&gt;&gt;<i> <A HREF="https://github.com/stratum/stratum">https://github.com/stratum/stratum</A>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> and then I try to build and run stratum as mentioned here:
+</I>&gt;&gt;&gt;&gt;<i> <A HREF="https://github.com/stratum/stratum/blob/master/stratum/hal/bin/barefoot/README.md">https://github.com/stratum/stratum/blob/master/stratum/hal/bin/barefoot/README.md</A>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> Now with the build-from-scratch using development container approach, I
+</I>&gt;&gt;&gt;&gt;<i> followed your steps, however, when I run *ss -tnlp* from the container
+</I>&gt;&gt;&gt;&gt;<i> (afterdocker exec -ti bash), I get below and listen on  127.0.0.1:28000
+</I>&gt;&gt;&gt;&gt;<i> is *missing*. I get only below.
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">tofino at 39e19c57ea27</A>:/stratum$ ss -tlnp
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> State       Recv-Q Send-Q     Local Address:Port                    Peer
+</I>&gt;&gt;&gt;&gt;<i> Address:Port
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> LISTEN      0      128            127.0.0.1:56929
+</I>&gt;&gt;&gt;&gt;<i>         *:*                   users:((&quot;java&quot;,pid=21,fd=110))
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> LISTEN      0      1                      *:8008
+</I>&gt;&gt;&gt;&gt;<i>         *:*                   users:((&quot;stratum_bf&quot;,pid=310,fd=26))
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> *Command to build Stratum is*: bazel build
+</I>&gt;&gt;&gt;&gt;<i> //stratum/hal/bin/barefoot:stratum_bf --define phal_with_onlp=false
+</I>&gt;&gt;&gt;&gt;<i> --define sde_ver=8.9.2
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> *Command to run Stratum is*:
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>      ./bazel-bin/stratum/hal/bin/barefoot/stratum_bf \
+</I>&gt;&gt;&gt;&gt;<i>        --external_stratum_urls=0.0.0.0:28000 \
+</I>&gt;&gt;&gt;&gt;<i>        --grpc_max_recv_msg_size=256 \
+</I>&gt;&gt;&gt;&gt;<i>        --bf_sde_install=$BF_SDE_INSTALL \
+</I>&gt;&gt;&gt;&gt;<i>        --persistent_config_dir=/stratum/config/ \
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>  --forwarding_pipeline_configs_file=/stratum/config/p4_pipeline.pb.txt \
+</I>&gt;&gt;&gt;&gt;<i>        --chassis_config_file=/stratum/config/chassis_config.pb.txt \
+</I>&gt;&gt;&gt;&gt;<i>        --write_req_log_file=/stratum/config/p4_writes.pb.txt \
+</I>&gt;&gt;&gt;&gt;<i>        --bf_sim
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> [*Note*: I had also tried the option of using pre-built docker
+</I>&gt;&gt;&gt;&gt;<i> container, with 8.9.1-3.16.56-OpenNetworkLinux, however, in this case I get
+</I>&gt;&gt;&gt;&gt;<i> error:
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> Cannot find /usr/local/share/stratum/x86-64-stordis-bf2556x-1t-r0.json
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> I had reported that also and tried new container but didn't work]
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> Thanks,
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> Deval.
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> ------------------------------
+</I>&gt;&gt;&gt;&gt;<i> *From:* Maximilian Pudelko &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">max at opennetworking.org</A>&gt;
+</I>&gt;&gt;&gt;&gt;<i> *Sent:* Sunday, March 29, 2020 1:46:04 AM
+</I>&gt;&gt;&gt;&gt;<i> *To:* Deval Bhamare
+</I>&gt;&gt;&gt;&gt;<i> *Cc:* Yi Tseng; <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>; Andreas Kassler
+</I>&gt;&gt;&gt;&gt;<i> *Subject:* Re: [stratum-dev] Update Bazel version to 2.2.0
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> Hi Deval,
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> There are many things going on in your setup, let's do this step by
+</I>&gt;&gt;&gt;&gt;<i> step:
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> 1. Port 8008 is NOT what you want for ONOS. I'm no Tofino expert, but
+</I>&gt;&gt;&gt;&gt;<i> this seems to be a separate endpoint for something else (debugging?). We
+</I>&gt;&gt;&gt;&gt;<i> always use port 28000.
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> 2. *2020-03-28 13:06:53.584190 BF_PLTFM ERROR - pltfm_mgr: platform
+</I>&gt;&gt;&gt;&gt;<i> init failed  #&lt;&lt;&lt; CAN IT BE THE ISSUE?*
+</I>&gt;&gt;&gt;&gt;<i> Depends. It's probably not good, but as long as you see this line in
+</I>&gt;&gt;&gt;&gt;<i> the Stratum logs, ONOS should be able to connect:
+</I>&gt;&gt;&gt;&gt;<i> E0328 23:08:15.903065    13 hal.cc:234] Stratum external facing
+</I>&gt;&gt;&gt;&gt;<i> services are listening to 0.0.0.0:28000, localhost:28000...
+</I>&gt;&gt;&gt;&gt;<i> Judging from the missing listening port, I'd say this could be the
+</I>&gt;&gt;&gt;&gt;<i> issue.
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> 3. If you run ONOS in a container too, they have to reside in the same
+</I>&gt;&gt;&gt;&gt;<i> network and you have to figure out the docker-internal IP for the Stratum
+</I>&gt;&gt;&gt;&gt;<i> container:
+</I>&gt;&gt;&gt;&gt;<i> # docker network ls
+</I>&gt;&gt;&gt;&gt;<i> NETWORK ID          NAME                DRIVER              SCOPE
+</I>&gt;&gt;&gt;&gt;<i> e737dd0dd90f        bridge              bridge              local
+</I>&gt;&gt;&gt;&gt;<i> d2783152be24        host                host                local
+</I>&gt;&gt;&gt;&gt;<i> 7028e832e130        none                null                local
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> # docker network inspect bridge
+</I>&gt;&gt;&gt;&gt;<i> [...]
+</I>&gt;&gt;&gt;&gt;<i> &quot;Containers&quot;: {
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> &quot;518c901167919d34205959f1105aedebbb99a9452d191409ccf71a3908e14e56&quot;: {
+</I>&gt;&gt;&gt;&gt;<i>                 &quot;Name&quot;: &quot;zen_jennings&quot;,
+</I>&gt;&gt;&gt;&gt;<i>                 &quot;EndpointID&quot;:
+</I>&gt;&gt;&gt;&gt;<i> &quot;a52025a671c9968372c52c7ed6b61df5a3168493466bd4b831c4728089b77163&quot;,
+</I>&gt;&gt;&gt;&gt;<i>                 &quot;MacAddress&quot;: &quot;02:42:ac:11:00:02&quot;,
+</I>&gt;&gt;&gt;&gt;<i>                 &quot;IPv4Address&quot;: &quot;172.17.0.2/16&quot;,
+</I>&gt;&gt;&gt;&gt;<i>                 &quot;IPv6Address&quot;: &quot;&quot;
+</I>&gt;&gt;&gt;&gt;<i>             }
+</I>&gt;&gt;&gt;&gt;<i>         },
+</I>&gt;&gt;&gt;&gt;<i> [...]
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> You could also try running them in the host network (--network=host),
+</I>&gt;&gt;&gt;&gt;<i> that should make them behave like native processes with fully exposed
+</I>&gt;&gt;&gt;&gt;<i> networking.
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> 4. I used a wrong switch in my previous post, here's how it looks on a
+</I>&gt;&gt;&gt;&gt;<i> Tofino:
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>    -  ./start-stratum-container.sh (let it run and open new terminal
+</I>&gt;&gt;&gt;&gt;<i>    tab)
+</I>&gt;&gt;&gt;&gt;<i>    - docker container ls
+</I>&gt;&gt;&gt;&gt;<i>    CONTAINER ID        IMAGE
+</I>&gt;&gt;&gt;&gt;<i>               COMMAND                  CREATED             STATUS
+</I>&gt;&gt;&gt;&gt;<i>     PORTS                      NAMES
+</I>&gt;&gt;&gt;&gt;<i>    518c90116791
+</I>&gt;&gt;&gt;&gt;<i>     stratumproject/stratum-bf:9.1.0-4.14.49-OpenNetworkLinux   &quot;/bin/sh -c
+</I>&gt;&gt;&gt;&gt;<i>    /stratum…&quot;   12 minutes ago      Up 12 minutes       0.0.0.0:28000
+</I>&gt;&gt;&gt;&gt;<i>    -&gt;28000/tcp   zen_jennings
+</I>&gt;&gt;&gt;&gt;<i>    - ss -ltnp
+</I>&gt;&gt;&gt;&gt;<i>    LISTEN      0      128                    :::28000
+</I>&gt;&gt;&gt;&gt;<i>                 :::*                   users:((&quot;docker-proxy&quot;,pid=1179,fd=4))
+</I>&gt;&gt;&gt;&gt;<i>    - docker exec -ti 518c90116791 bash (switch into the Stratum
+</I>&gt;&gt;&gt;&gt;<i>    container)
+</I>&gt;&gt;&gt;&gt;<i>    - apt update &amp;&amp; apt install iproute
+</I>&gt;&gt;&gt;&gt;<i>    - ss -tlnp
+</I>&gt;&gt;&gt;&gt;<i>    State       Recv-Q Send-Q      Local Address:Port
+</I>&gt;&gt;&gt;&gt;<i>      Peer Address:Port
+</I>&gt;&gt;&gt;&gt;<i>    LISTEN      0      5                       *:9999
+</I>&gt;&gt;&gt;&gt;<i>                 *:*                   users:((&quot;stratum_bf&quot;,pid=13,fd=27))
+</I>&gt;&gt;&gt;&gt;<i>    LISTEN      0      128                     *:28000
+</I>&gt;&gt;&gt;&gt;<i>                  *:*                   users:((&quot;stratum_bf
+</I>&gt;&gt;&gt;&gt;<i>    &quot;,pid=13,fd=40))
+</I>&gt;&gt;&gt;&gt;<i>    LISTEN      0      128             127.0.0.1:28000
+</I>&gt;&gt;&gt;&gt;<i>                  *:*                   users:((&quot;stratum_bf&quot;,pid=13,fd=39))
+</I>&gt;&gt;&gt;&gt;<i>    LISTEN      0      1                       *:9001
+</I>&gt;&gt;&gt;&gt;<i>                 *:*                   users:((&quot;stratum_bf&quot;,pid=13,fd=28))
+</I>&gt;&gt;&gt;&gt;<i>    - exit (leave container)
+</I>&gt;&gt;&gt;&gt;<i>    - docker run -ti debian:9 bash (Start new container to simulate
+</I>&gt;&gt;&gt;&gt;<i>    ONOS)
+</I>&gt;&gt;&gt;&gt;<i>    - apt update &amp;&amp; apt install netcat
+</I>&gt;&gt;&gt;&gt;<i>    - nc -v 172.17.0.2 28000
+</I>&gt;&gt;&gt;&gt;<i>    172.17.0.2: inverse host lookup failed: Unknown host
+</I>&gt;&gt;&gt;&gt;<i>    (UNKNOWN) [172.17.0.2] 28000 (?) open
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> For reference, the used versions:
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> # docker images
+</I>&gt;&gt;&gt;&gt;<i> REPOSITORY                  TAG                              IMAGE ID
+</I>&gt;&gt;&gt;&gt;<i>          CREATED             SIZE
+</I>&gt;&gt;&gt;&gt;<i> stratumproject/stratum-bf   9.1.0-4.14.49-OpenNetworkLinux
+</I>&gt;&gt;&gt;&gt;<i> e4615d64018f        2 weeks ago         214MB
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> For reference, these are the versions we use:
+</I>&gt;&gt;&gt;&gt;<i> # docker version
+</I>&gt;&gt;&gt;&gt;<i> Client: Docker Engine - Community
+</I>&gt;&gt;&gt;&gt;<i>  Version:           19.03.2
+</I>&gt;&gt;&gt;&gt;<i>  API version:       1.40
+</I>&gt;&gt;&gt;&gt;<i>  Go version:        go1.12.8
+</I>&gt;&gt;&gt;&gt;<i>  Git commit:        6a30dfca03
+</I>&gt;&gt;&gt;&gt;<i>  Built:             Thu Aug 29 05:29:49 2019
+</I>&gt;&gt;&gt;&gt;<i>  OS/Arch:           linux/amd64
+</I>&gt;&gt;&gt;&gt;<i>  Experimental:      false
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> Server: Docker Engine - Community
+</I>&gt;&gt;&gt;&gt;<i>  Engine:
+</I>&gt;&gt;&gt;&gt;<i>   Version:          19.03.2
+</I>&gt;&gt;&gt;&gt;<i>   API version:      1.40 (minimum version 1.12)
+</I>&gt;&gt;&gt;&gt;<i>   Go version:       go1.12.8
+</I>&gt;&gt;&gt;&gt;<i>   Git commit:       6a30dfca03
+</I>&gt;&gt;&gt;&gt;<i>   Built:            Thu Aug 29 05:28:23 2019
+</I>&gt;&gt;&gt;&gt;<i>   OS/Arch:          linux/amd64
+</I>&gt;&gt;&gt;&gt;<i>   Experimental:     false
+</I>&gt;&gt;&gt;&gt;<i>  containerd:
+</I>&gt;&gt;&gt;&gt;<i>   Version:          1.2.6
+</I>&gt;&gt;&gt;&gt;<i>   GitCommit:        894b81a4b802e4eb2a91d1ce216b8817763c29fb
+</I>&gt;&gt;&gt;&gt;<i>  runc:
+</I>&gt;&gt;&gt;&gt;<i>   Version:          1.0.0-rc8
+</I>&gt;&gt;&gt;&gt;<i>   GitCommit:        425e105d5a03fabd737a126ad93d62a9eeede87f
+</I>&gt;&gt;&gt;&gt;<i>  docker-init:
+</I>&gt;&gt;&gt;&gt;<i>   Version:          0.18.0
+</I>&gt;&gt;&gt;&gt;<i>   GitCommit:        fec3683
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> # uname -a
+</I>&gt;&gt;&gt;&gt;<i> Linux Stordis 4.14.49-OpenNetworkLinux #1 SMP Thu Jul 18 08:52:25 UTC
+</I>&gt;&gt;&gt;&gt;<i> 2019 x86_64 GNU/Linux
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> Max
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> On Sat, Mar 28, 2020 at 7:31 AM Deval Bhamare &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">Deval.Bhamare at kau.se</A>&gt;
+</I>&gt;&gt;&gt;&gt;<i> wrote:
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> Hello again,
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> Since I could not any port activity on 28000 inside stratum and
+</I>&gt;&gt;&gt;&gt;&gt;<i> stratum logs shown only listen activity on *8008*, I used following
+</I>&gt;&gt;&gt;&gt;&gt;<i> command to do explicitly map the IP/ports to host:
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> *./setup_dev_env.sh  --pull --  -p 192.168.60.131:28008
+</I>&gt;&gt;&gt;&gt;&gt;<i> &lt;<A HREF="http://192.168.60.131:28008">http://192.168.60.131:28008</A>&gt;:8008*
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> Then I tried to push the netcfg.json with following URL and this time
+</I>&gt;&gt;&gt;&gt;&gt;<i> the communication channel is established. Logs from ONOS and stratum are
+</I>&gt;&gt;&gt;&gt;&gt;<i> below (BOLD RED).
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> *URL*:
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> *&quot;managementAddress&quot;: &quot;<A HREF="grpc://192.168.60.131:28008?device_id=0">grpc://192.168.60.131:28008?device_id=0</A>
+</I>&gt;&gt;&gt;&gt;&gt;<i> &lt;<A HREF="http://192.168.60.131:28008?device_id=0">http://192.168.60.131:28008?device_id=0</A>&gt;&quot;,*
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> (I tired both deviceID 0 and 1, but it must be 0 as bf_shell and
+</I>&gt;&gt;&gt;&gt;&gt;<i> stratum Log both confirm: )
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> *ONOS*:
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> 2020-03-28T13:49:46,158 | WARN  | onos-gdp-0       | PiPipeconfManager
+</I>&gt;&gt;&gt;&gt;&gt;<i>               | 193 - org.onosproject.onos-core-net - 2.4.0.SNAPSHOT
+</I>&gt;&gt;&gt;&gt;&gt;<i> | Ignoring PortStatisticsDiscovery behaviour from pipeconf vepg-pipeconf,
+</I>&gt;&gt;&gt;&gt;&gt;<i> but using the one provided by stratum-tofino driver...
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> 2020-03-28T13:49:46,184 | INFO  | onos-gdp-0       |
+</I>&gt;&gt;&gt;&gt;&gt;<i> GrpcChannelControllerImpl        | 230 -
+</I>&gt;&gt;&gt;&gt;&gt;<i> org.onosproject.onos-protocols-grpc-ctl - 2.4.0.SNAPSHOT | *Creating
+</I>&gt;&gt;&gt;&gt;&gt;<i> new gRPC channel <A HREF="grpc://192.168.60.131:28008?device_id=0.">grpc://192.168.60.131:28008?device_id=0.</A>
+</I>&gt;&gt;&gt;&gt;&gt;<i> &lt;<A HREF="http://192.168.60.131:28008?device_id=0.">http://192.168.60.131:28008?device_id=0.</A>&gt;.. &lt;&lt; #THERE IS SUCCESS HERE THIS
+</I>&gt;&gt;&gt;&gt;&gt;<i> TIME AS COMPARED TO PREVIOUS TIME *
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> *Stratum*:
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> *Tcl server: connection accepted on port 8008*
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> *Partial recv: 30 of 40 so far..  &lt;&lt;#STRATUM CONFIRMS IT*
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> However, I am not sure, it is the correct entry point? The reason is
+</I>&gt;&gt;&gt;&gt;&gt;<i> ONOS still cannot find the device:tofino (highlighted Yellow RED)
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> 2020-03-28T13:49:46,306 | INFO  | onos-gdp-0       | DeviceManager
+</I>&gt;&gt;&gt;&gt;&gt;<i>                 | 193 - org.onosproject.onos-core-net -
+</I>&gt;&gt;&gt;&gt;&gt;<i> 2.4.0.SNAPSHOT | Local role is MASTER for device:tofino
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> 2020-03-28T13:49:46,311 | WARN  | onos-event-dispatch-default0 |
+</I>&gt;&gt;&gt;&gt;&gt;<i> ModelCache                       | 211 -
+</I>&gt;&gt;&gt;&gt;&gt;<i> org.onosproject._onos-gui2-base-jar - 2.4.0.SNAPSHOT | DeviceID
+</I>&gt;&gt;&gt;&gt;&gt;<i> device:tofino not found as a UiDevice
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> 2020-03-28T13:49:46,313 | INFO  | onos-gdp-0       |
+</I>&gt;&gt;&gt;&gt;&gt;<i> GeneralDeviceProvider            | 235 -
+</I>&gt;&gt;&gt;&gt;&gt;<i> org.onosproject.onos-providers-general-device - 2.4.0.SNAPSHOT | Notifying
+</I>&gt;&gt;&gt;&gt;&gt;<i> role MASTER (preference 0) for term 1 to device:tofino
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> 2020-03-28T13:49:46,315 | WARN  | onos-event-dispatch-default0 |
+</I>&gt;&gt;&gt;&gt;&gt;<i> ModelCache                       | 211 -
+</I>&gt;&gt;&gt;&gt;&gt;<i> org.onosproject._onos-gui2-base-jar - 2.4.0.SNAPSHOT | *DeviceID
+</I>&gt;&gt;&gt;&gt;&gt;<i> device:tofino not found as a UiDevice*
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> 2020-03-28T13:49:46,316 | WARN  | onos-device-manager-background |
+</I>&gt;&gt;&gt;&gt;&gt;<i> DeviceManager                    | 193 -
+</I>&gt;&gt;&gt;&gt;&gt;<i> org.onosproject.onos-core-net - 2.4.0.SNAPSHOT | *Node was instructed
+</I>&gt;&gt;&gt;&gt;&gt;<i> to be MASTER role for device:tofino, but this node cannot reach the device.*
+</I>&gt;&gt;&gt;&gt;&gt;<i> Relinquishing role.    *&lt;&lt;#STILL NO DEVICE FOUND. I TRIED BOTH ID 0
+</I>&gt;&gt;&gt;&gt;&gt;<i> and 1 in the URL *
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> 2020-03-28T13:49:46,317 | INFO  | onos-gdp-0       | StreamClientImpl
+</I>&gt;&gt;&gt;&gt;&gt;<i>               | 237 - org.onosproject.onos-protocols-p4runtime-ctl -
+</I>&gt;&gt;&gt;&gt;&gt;<i> 2.4.0.SNAPSHOT | Setting mastership on device:tofino... master=true,
+</I>&gt;&gt;&gt;&gt;&gt;<i> newElectionId=20, masterElectionId=null, sessionOpen=false
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> 2020-03-28T13:49:46,320 | WARN  | onos-event-dispatch-default0 |
+</I>&gt;&gt;&gt;&gt;&gt;<i> ModelCache                       | 211 -
+</I>&gt;&gt;&gt;&gt;&gt;<i> org.onosproject._onos-gui2-base-jar - 2.4.0.SNAPSHOT | DeviceID
+</I>&gt;&gt;&gt;&gt;&gt;<i> device:tofino not found as a UiDevice
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> 2020-03-28T13:49:46,321 | WARN  | onos-event-dispatch-default0 |
+</I>&gt;&gt;&gt;&gt;&gt;<i> ModelCache                       | 211 -
+</I>&gt;&gt;&gt;&gt;&gt;<i> org.onosproject._onos-gui2-base-jar - 2.4.0.SNAPSHOT | DeviceID
+</I>&gt;&gt;&gt;&gt;&gt;<i> device:tofino not found as a UiDevice
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> 2020-03-28T13:49:46,321 | WARN  | onos-event-dispatch-default0 |
+</I>&gt;&gt;&gt;&gt;&gt;<i> ModelCache                       | 211 -
+</I>&gt;&gt;&gt;&gt;&gt;<i> org.onosproject._onos-gui2-base-jar - 2.4.0.SNAPSHOT | DeviceID
+</I>&gt;&gt;&gt;&gt;&gt;<i> device:tofino not found as a UiDevice
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> 2020-03-28T13:49:46,336 | INFO  | onos-topo-build-1 | TopologyManager
+</I>&gt;&gt;&gt;&gt;&gt;<i>                 | 193 - org.onosproject.onos-core-net -
+</I>&gt;&gt;&gt;&gt;&gt;<i> 2.4.0.SNAPSHOT | Topology DefaultTopology{time=12233603415182,
+</I>&gt;&gt;&gt;&gt;&gt;<i> creationTime=1585403386336, computeCost=124274, clusters=0, devices=0,
+</I>&gt;&gt;&gt;&gt;&gt;<i> links=0} changed
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> 2020-03-28T13:49:46,365 | INFO  | onos-gdp-0       | DeviceManager
+</I>&gt;&gt;&gt;&gt;&gt;<i>                 | 193 - org.onosproject.onos-core-net -
+</I>&gt;&gt;&gt;&gt;&gt;<i> 2.4.0.SNAPSHOT | Device device:tofino registered
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> Please confirm, is it in the right direction or port 8008 is
+</I>&gt;&gt;&gt;&gt;&gt;<i> completely different? What can be the reason for device:tofino not able to
+</I>&gt;&gt;&gt;&gt;&gt;<i> find?
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> Thank you,
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> Deval.
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> ------------------------------
+</I>&gt;&gt;&gt;&gt;&gt;<i> *From:* stratum-dev &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev-bounces at lists.stratumproject.org</A>&gt; on
+</I>&gt;&gt;&gt;&gt;&gt;<i> behalf of Deval Bhamare via stratum-dev &lt;
+</I>&gt;&gt;&gt;&gt;&gt;<i> <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>&gt;
+</I>&gt;&gt;&gt;&gt;&gt;<i> *Sent:* Saturday, March 28, 2020 3:22:16 PM
+</I>&gt;&gt;&gt;&gt;&gt;<i> *To:* Maximilian Pudelko
+</I>&gt;&gt;&gt;&gt;&gt;<i> *Cc:* <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>
+</I>&gt;&gt;&gt;&gt;&gt;<i> *Subject:* Re: [stratum-dev] Update Bazel version to 2.2.0
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> Hello Maximilian,
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> Thank you for your reply and the useful suggestions. So as a first
+</I>&gt;&gt;&gt;&gt;&gt;<i> step I executed on switch ss -tnlp and below is the output. Surprisingly,
+</I>&gt;&gt;&gt;&gt;&gt;<i> there is *no Stratum anywhere there, however statrum is also running
+</I>&gt;&gt;&gt;&gt;&gt;<i> in a container* and the short logs are displayed below. I also
+</I>&gt;&gt;&gt;&gt;&gt;<i> executed ss command inside the container and those are also pasted below,
+</I>&gt;&gt;&gt;&gt;&gt;<i> if that may help.
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> ss -tnlp outputs in different times are as follows:
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> *- from tofino, before anything is started:*
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">tofino at localhost</A>:~$ ss -tnlp
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> State      Recv-Q Send-Q                        Local Address:Port
+</I>&gt;&gt;&gt;&gt;&gt;<i>                       Peer Address:Port
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> LISTEN     0      128                                       *:17
+</I>&gt;&gt;&gt;&gt;&gt;<i>                                   *:*
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> LISTEN     0      128                                       *:22
+</I>&gt;&gt;&gt;&gt;&gt;<i>                                   *:*
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> LISTEN     0      128                                       *:23
+</I>&gt;&gt;&gt;&gt;&gt;<i>                                   *:*
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> LISTEN     0      128                          192.168.60.131:10010
+</I>&gt;&gt;&gt;&gt;&gt;<i>                                   *:*
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> LISTEN     0      128                                      :::22
+</I>&gt;&gt;&gt;&gt;&gt;<i>                                 :::*
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> *- from tofino after stratum container is started*
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">tofino at localhost</A>:~$ ss -tnlp
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> State      Recv-Q Send-Q                        Local Address:Port
+</I>&gt;&gt;&gt;&gt;&gt;<i>                       Peer Address:Port
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> LISTEN     0      128                                       *:17
+</I>&gt;&gt;&gt;&gt;&gt;<i>                                   *:*
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> LISTEN     0      128                                       *:22
+</I>&gt;&gt;&gt;&gt;&gt;<i>                                   *:*
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> LISTEN     0      128                                       *:23
+</I>&gt;&gt;&gt;&gt;&gt;<i>                                   *:*
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> LISTEN     0      128                          192.168.60.131:10010
+</I>&gt;&gt;&gt;&gt;&gt;<i>                                   *:*
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> LISTEN     0      128                                      :::22
+</I>&gt;&gt;&gt;&gt;&gt;<i>                                 :::*
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> LISTEN     0      *128                                      :::28000 *
+</I>&gt;&gt;&gt;&gt;&gt;<i>                                 :::*
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> *- from tofino after stratum is running *
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">tofino at localhost</A>:~$ ss -tnlp
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> State      Recv-Q Send-Q                        Local Address:Port
+</I>&gt;&gt;&gt;&gt;&gt;<i>                       Peer Address:Port
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> LISTEN     0      128                                       *:17
+</I>&gt;&gt;&gt;&gt;&gt;<i>                                   *:*
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> LISTEN     0      128                                       *:22
+</I>&gt;&gt;&gt;&gt;&gt;<i>                                   *:*
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> LISTEN     0      128                                       *:23
+</I>&gt;&gt;&gt;&gt;&gt;<i>                                   *:*
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> LISTEN     0      128                          192.168.60.131:10010
+</I>&gt;&gt;&gt;&gt;&gt;<i>                                   *:*
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> LISTEN     0      128                                      :::22
+</I>&gt;&gt;&gt;&gt;&gt;<i>                                 :::*
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> LISTEN     0      128                                      :::28000
+</I>&gt;&gt;&gt;&gt;&gt;<i>                                 :::*
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> *- from stratum container, after running it in background *
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">tofino at ced0c4d7ef8f</A>:/stratum$ ss -tnlp
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> State      Recv-Q Send-Q Local Address:Port                Peer
+</I>&gt;&gt;&gt;&gt;&gt;<i> Address:Port
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> LISTEN     *0      1                  *:8008
+</I>&gt;&gt;&gt;&gt;&gt;<i>   *:*                   users:((&quot;stratum_bf&quot;,pid=323,fd=26)) &lt;&lt; #IS this
+</I>&gt;&gt;&gt;&gt;&gt;<i> useful? *
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> LISTEN     0      128        127.0.0.1:41418                          *:*
+</I>&gt;&gt;&gt;&gt;&gt;<i>                   users:((&quot;java&quot;,pid=21,fd=110))
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> Why there is no 28000 port here in Stratum container SS output. Or
+</I>&gt;&gt;&gt;&gt;&gt;<i> should I bind 8008 to 28000 on switch?
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> As you have mentioned, I have already taken care of port mapping. So I
+</I>&gt;&gt;&gt;&gt;&gt;<i> run the container with -p28000:2000. It is verified in the outputs above as
+</I>&gt;&gt;&gt;&gt;&gt;<i> well.
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> *- Docker output on switch *
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">tofino at localhost</A>:~$ docker ps
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> CONTAINER ID        IMAGE               COMMAND             CREATED
+</I>&gt;&gt;&gt;&gt;&gt;<i>           STATUS              PORTS                      NAMES
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> ced0c4d7ef8f        stratum-dev         &quot;bash&quot;              16
+</I>&gt;&gt;&gt;&gt;&gt;<i> minutes ago      Up 16 minutes       *0.0.0.0:28000-&gt;28000/tcp*
+</I>&gt;&gt;&gt;&gt;&gt;<i> goofy_hamilton
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> *- Stratum log output after it started. *
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> bf_sysfs_fname /sys/class/bf/bf0/device/dev_add
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> Install dir: /stratum/bf-sde-8.9.0/install (0x7f876b794b60)
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> bf_switchd: system services initialized
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> bf_switchd: loading conf_file
+</I>&gt;&gt;&gt;&gt;&gt;<i> stratum/hal/bin/barefoot/tofino_skip_p4.conf...
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> bf_switchd: processing device configuration...
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> Configuration for dev_id 0
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>   Family        : Tofino
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>   pci_sysfs_str : /sys/devices/pci0000:00/0000:00:03.0/0000:05:00.0
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>   pci_domain    : 0
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>   pci_bus       : 5
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>   pci_fn        : 0
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>   pci_dev       : 0
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>   pci_int_mode  : 1
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>   sbus_master_fw: /stratum/bf-sde-8.9.0/install/
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>   pcie_fw       : /stratum/bf-sde-8.9.0/install/
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>   serdes_fw     : /stratum/bf-sde-8.9.0/install/
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>   sds_fw_path   : /stratum/bf-sde-8.9.0/install/
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>   microp_fw_path:
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> bf_switchd: processing P4 configuration...
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> P4 profile for dev_id 0
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>   p4_name: dummy
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>     libpd:
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>     libpdthrift:
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>     context:
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>     config:
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>   Agent[0]: /stratum/bf-sde-8.9.0/install/lib/libpltfm_mgr.so
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>   diag:
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>   mavericks diag:
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>   non_default_port_ppgs: 0
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>   SAI default initialize: 1
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> bf_switchd: library /stratum/bf-sde-8.9.0/install/lib/libpltfm_mgr.so
+</I>&gt;&gt;&gt;&gt;&gt;<i> loaded
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> bf_switchd: agent[0] initialized
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> Tcl server started..
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> Tcl server: listen socket created
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> Tcl server: bind done on port 8008, listening...
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> Tcl server: waiting for incoming connections...
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> sh: 1: onie-syseeprom: not found
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> *2020-03-28 13:06:53.584090 BF_PLTFM ERROR - Error in cp2112
+</I>&gt;&gt;&gt;&gt;&gt;<i> initialization*
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> *2020-03-28 13:06:53.584190 BF_PLTFM ERROR - pltfm_mgr: platform init
+</I>&gt;&gt;&gt;&gt;&gt;<i> failed  #&lt;&lt;&lt; CAN IT BE THE ISSUE?*
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> Thank you.
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> Deval
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> ------------------------------
+</I>&gt;&gt;&gt;&gt;&gt;<i> *From:* Maximilian Pudelko &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">max at opennetworking.org</A>&gt;
+</I>&gt;&gt;&gt;&gt;&gt;<i> *Sent:* Saturday, March 28, 2020 3:43:29 AM
+</I>&gt;&gt;&gt;&gt;&gt;<i> *To:* Deval Bhamare
+</I>&gt;&gt;&gt;&gt;&gt;<i> *Cc:* Yi Tseng; <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>
+</I>&gt;&gt;&gt;&gt;&gt;<i> *Subject:* Re: [stratum-dev] Update Bazel version to 2.2.0
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> Hi Deval,
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> can you run this command on the switch: ss -tlnp
+</I>&gt;&gt;&gt;&gt;&gt;<i> Should output something like this:
+</I>&gt;&gt;&gt;&gt;&gt;<i> State      Recv-Q Send-Q      Local Address:Port
+</I>&gt;&gt;&gt;&gt;&gt;<i> Peer Address:Port
+</I>&gt;&gt;&gt;&gt;&gt;<i> LISTEN     0      128                     *:22
+</I>&gt;&gt;&gt;&gt;&gt;<i>          *:*                   users:((&quot;sshd&quot;,pid=4116,fd=3))
+</I>&gt;&gt;&gt;&gt;&gt;<i> LISTEN     0      128                    :::22
+</I>&gt;&gt;&gt;&gt;&gt;<i>         :::*                   users:((&quot;sshd&quot;,pid=4116,fd=4))
+</I>&gt;&gt;&gt;&gt;&gt;<i> LISTEN     0      128      ::ffff:127.0.0.1:28000
+</I>&gt;&gt;&gt;&gt;&gt;<i>          :::*                   users:((&quot;stratum_bcm&quot;,pid=26872,fd=19))
+</I>&gt;&gt;&gt;&gt;&gt;<i> LISTEN     0      128                    :::28001
+</I>&gt;&gt;&gt;&gt;&gt;<i>          :::*                   users:((&quot;stratum_bcm&quot;,pid=26872,fd=20))
+</I>&gt;&gt;&gt;&gt;&gt;<i> LISTEN     0      128      ::ffff:127.0.0.1:28003
+</I>&gt;&gt;&gt;&gt;&gt;<i>          :::*                   users:((&quot;stratum_bcm&quot;,pid=26872,fd=6))
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> Also, do you have any logs from Stratum? Run with -v=1
+</I>&gt;&gt;&gt;&gt;&gt;<i> -stderrthreshold=0
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> Since you're using docker, I assume there is some issue with port
+</I>&gt;&gt;&gt;&gt;&gt;<i> forwarding/mapping. Follow these steps to check the port mapping:
+</I>&gt;&gt;&gt;&gt;&gt;<i> <A HREF="https://docs.docker.com/engine/reference/commandline/port/">https://docs.docker.com/engine/reference/commandline/port/</A>
+</I>&gt;&gt;&gt;&gt;&gt;<i> And these steps to fix it:
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> <A HREF="https://stackoverflow.com/questions/22111060/what-is-the-difference-between-expose-and-publish-in-docker">https://stackoverflow.com/questions/22111060/what-is-the-difference-between-expose-and-publish-in-docker</A>
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> <A HREF="https://docs.docker.com/config/containers/container-networking/#published-ports">https://docs.docker.com/config/containers/container-networking/#published-ports</A>
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> Max
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> On Thu, Mar 26, 2020 at 3:53 PM Deval Bhamare via stratum-dev &lt;
+</I>&gt;&gt;&gt;&gt;&gt;<i> <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>&gt; wrote:
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> Hello Yi,
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> I am running both ONOS and stratum container on the same machine,
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> that is the tofino switch with public IP 192.168.60.131.
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> So I tried with <A HREF="grpc://192.168.60.131:28000?device_id=1">grpc://192.168.60.131:28000?device_id=1</A>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> &lt;<A HREF="http://192.168.0.101:28000/?device_id=1">http://192.168.0.101:28000/?device_id=1</A>&gt;&quot;, as well now. This time
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> message is connection refused and still no connectivity.
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> 2020-03-26T22:41:19,713 | WARN  | onos-device-manager-background |
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> DeviceManager                    | 193 -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> org.onosproject.onos-core-net - 2.4.0.SNAPSHOT | Node was instructed to be
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> MASTER role for device:tofino, but this node cannot reach the device.
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> Relinquishing role.
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> 2020-03-26T22:41:19,716 | INFO  | onos-gdp-0       |
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> StreamClientImpl                 | 237 -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> org.onosproject.onos-protocols-p4runtime-ctl - 2.4.0.SNAPSHOT | Setting
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> mastership on device:tofino... master=true, newElectionId=20,
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> masterElectionId=null, sessionOpen=false
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> 2020-03-26T22:41:19,718 | WARN  | onos-event-dispatch-default0 |
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> ModelCache                       | 211 -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> org.onosproject._onos-gui2-base-jar - 2.4.0.SNAPSHOT | DeviceID
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> device:tofino not found as a UiDevice
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> 2020-03-26T22:41:19,718 | WARN  | onos-event-dispatch-default0 |
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> ModelCache                       | 211 -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> org.onosproject._onos-gui2-base-jar - 2.4.0.SNAPSHOT | DeviceID
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> device:tofino not found as a UiDevice
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> 2020-03-26T22:41:19,718 | WARN  | onos-event-dispatch-default0 |
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> ModelCache                       | 211 -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> org.onosproject._onos-gui2-base-jar - 2.4.0.SNAPSHOT | DeviceID
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> device:tofino not found as a UiDevice
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> 2020-03-26T22:41:19,737 | INFO  | onos-topo-build-1 | TopologyManager
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>                 | 193 - org.onosproject.onos-core-net -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> 2.4.0.SNAPSHOT | Topology DefaultTopology{time=2264511977012,
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> creationTime=1585262479736, computeCost=117691, clusters=0, devices=0,
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> links=0} changed
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> 2020-03-26T22:41:19,763 | INFO  | onos-gdp-0       | DeviceManager
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>                   | 193 - org.onosproject.onos-core-net -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> 2.4.0.SNAPSHOT | Device device:tofino registered
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> 2020-03-26T22:41:19,764 | WARN  | grpc-default-executor-0 |
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> StreamClientImpl                 | 237 -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> org.onosproject.onos-protocols-p4runtime-ctl - 2.4.0.SNAPSHOT | *device:tofino
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> is unreachable (Connection refused: /192.168.60.131:28000
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> &lt;<A HREF="http://192.168.60.131:28000">http://192.168.60.131:28000</A>&gt;)*
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> 2020-03-26T22:41:19,774 | INFO  | onos-topo-build-2 | TopologyManager
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>                 | 193 - org.onosproject.onos-core-net -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> 2.4.0.SNAPSHOT | Topology DefaultTopology{time=2264549921343,
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> creationTime=1585262479774, computeCost=101378, clusters=0, devices=0,
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> links=0} changed
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> With <A HREF="grpc://127.0.0.1:28000?device_id=1">grpc://127.0.0.1:28000?device_id=1</A>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> &lt;<A HREF="http://192.168.0.101:28000/?device_id=1">http://192.168.0.101:28000/?device_id=1</A>&gt;&quot;, the error is
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> *onosproject.onos-protocols-p4runtime-ctl - 2.4.0.SNAPSHOT | Error on
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> StreamChannel RPC for device:tofino: UNAVAILABLE: Network closed for
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> unknown reason*
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> Also Stratum logs say
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> bf_switchd: processing P4 configuration...
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> *P4 profile for dev_id 0*
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> while starting, so I doubt device ID maybe 0 and hence tried with
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> both device_id=1 &lt;<A HREF="http://192.168.0.101:28000/?device_id=1">http://192.168.0.101:28000/?device_id=1</A>&gt; and
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> device_id= &lt;<A HREF="http://192.168.0.101:28000/?device_id=1">http://192.168.0.101:28000/?device_id=1</A>&gt;0 but no luck.
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> Thanks,
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> Deval.
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> ------------------------------
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> *From:* Yi Tseng &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">yi at opennetworking.org</A>&gt;
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> *Sent:* Thursday, March 26, 2020 9:10:49 PM
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> *To:* Deval Bhamare
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> *Cc:* <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> *Subject:* Re: [stratum-dev] Update Bazel version to 2.2.0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> Hi Deval,
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> Where you are running the ONOS controller? If you are running the
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> ONOS controller on a server, you need to set the management address to your
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> switch IP address.
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> For example, you run the ONOS on a server with IP address
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> 192.168.0.100 and running the Stratum on a switch with IP address
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> 192.168.0.101. (And I assume that you have connectivity between the server
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> and the switch)
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> The netcfg.json will look like:
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> {
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>   &quot;devices&quot;: {
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>     &quot;device:tofino&quot;: {
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>       &quot;basic&quot;: {
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>         &quot;managementAddress&quot;: &quot;<A HREF="grpc://192.168.0.101:28000?device_id=1">grpc://192.168.0.101:28000?device_id=1</A>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> &quot;,
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>         &quot;driver&quot;: &quot;stratum-tofino&quot;,
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>         &quot;pipeconf&quot;: &quot;[your pipeconf name]&quot;
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>        }
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>     }
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>    }
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> }
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> Please also note that the device ID is 1 in the Stratum
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> Yi
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> On Thu, Mar 26, 2020 at 6:13 AM Deval Bhamare &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">Deval.Bhamare at kau.se</A>&gt;
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> wrote:
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Hello Yi,
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> We have received a reply from Stordis and as per their suggestion,
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> we can ignore the syseeprom error
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> *You see only syseeprom errorr please ignore that :*
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> *Tcl server: listen socket created*
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> *Tcl server: bind done on port 8008, listening...*
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> *Tcl server: waiting for incoming connections...*
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> *sh: 1: onie-syseeprom: not found &lt;Ignore this error&gt;*
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> *Health monitor started *
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> *Operational mode set to ASIC*
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> So, now when I try to push the netcfg.json for our device to Onos, I
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> get following message:
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2020-03-25T21:59:01,255 | INFO  | onos-gdp-0       |
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> StreamClientImpl                 | 237 -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> org.onosproject.onos-protocols-p4runtime-ctl - 2.4.0.SNAPSHOT | Setting
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> mastership on device:tofino... master=true, newElectionId=20,
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> masterElectionId=null, sessionOpen=false
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2020-03-25T21:59:01,258 | WARN  | onos-event-dispatch-default0 |
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> ModelCache                       | 211 -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> org.onosproject._onos-gui2-base-jar - 2.4.0.SNAPSHOT | DeviceID
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> device:tofino not found as a UiDevice
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2020-03-25T21:59:01,258 | WARN  | onos-event-dispatch-default0 |
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> ModelCache                       | 211 -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> org.onosproject._onos-gui2-base-jar - 2.4.0.SNAPSHOT | DeviceID
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> device:tofino not found as a UiDevice
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2020-03-25T21:59:01,263 | WARN  | onos-event-dispatch-default0 |
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> ModelCache                       | 211 -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> org.onosproject._onos-gui2-base-jar - 2.4.0.SNAPSHOT | DeviceID
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> device:tofino not found as a UiDevice
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2020-03-25T21:59:01,276 | INFO  | onos-topo-build-1 |
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> TopologyManager                  | 193 -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> org.onosproject.onos-core-net - 2.4.0.SNAPSHOT | Topology
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> DefaultTopology{time=20452353961040, creationTime=1585173541276,
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> computeCost=427068, clusters=0, devices=0, links=0} changed
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2020-03-25T21:59:01,308 | INFO  | onos-gdp-0       | DeviceManager
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>                   | 193 - org.onosproject.onos-core-net -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2.4.0.SNAPSHOT |* Device device:tofino registered*
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2020-03-25T21:59:01,317 | WARN  | grpc-default-executor-1 |
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> StreamClientImpl                 | 237 -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> org.onosproject.onos-protocols-p4runtime-ctl - 2.4.0.SNAPSHOT |*
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Error on StreamChannel RPC for device:tofino: UNAVAILABLE: Network closed
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> for unknown reason*
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 2020-03-25T21:59:01,319 | INFO  | onos-topo-build-2 |
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> TopologyManager                  | 193 -
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> org.onosproject.onos-core-net - 2.4.0.SNAPSHOT | Topology
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> DefaultTopology{time=20452397561034, creationTime=1585173541319,
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> computeCost=112832, clusters=0, devices=0, links=0} changed
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> ONOS CLI show, device available=false.
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">tofino at root</A> &gt; devices
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>           21:58:49
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> id=device:tofino, *available=false*, local-status=disconnected 37s
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> ago, role=NONE, type=SWITCH, mfr=Barefoot Networks, hw=Tofino, sw=Stratum,
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> serial=unknown, chassis=0, driver=stratum-tofino:vepg-pipeconf,
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> locType=none, managementAddress=<A HREF="grpc://127.0.0.1:28000?device_id=0,">grpc://127.0.0.1:28000?device_id=0,</A>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> name=device:tofino, p4DeviceId=0, protocol=P4Runtime, gNMI, gNOI
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Netcfg.json contents are:
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> {
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> &quot;devices&quot;: {
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> &quot;device:tofino&quot;: {
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> &quot;basic&quot;: {
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> &quot;managementAddress&quot;: &quot;<A HREF="grpc://127.0.0.1?device_id=0">grpc://127.0.0.1?device_id=0</A>&quot;,
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> &quot;driver&quot;: &quot;stratum-tofino&quot;,
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> &quot;pipeconf&quot;: &quot;vepg-pipeconf&quot;
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> }
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> }
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> }
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> }
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Command is:
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> curl --fail -sSL --user onos:rocks --noproxy localhost -v -X POST -H
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 'Content-Type:application/json' '
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> <A HREF="http://localhost:8181/onos/v1/network/configuration">http://localhost:8181/onos/v1/network/configuration</A>' -d@
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> ./netcfg.json
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Any idea what may be the issue?
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Thanks,
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Deval.
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> ------------------------------
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> *From:* Yi Tseng &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">yi at opennetworking.org</A>&gt;
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> *Sent:* Tuesday, March 24, 2020 3:25:06 PM
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> *To:* Deval Bhamare
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> *Cc:* <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> *Subject:* Re: [stratum-dev] Update Bazel version to 2.2.0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Hi Deval,
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> I am now working on updating the script to support the custom platform
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> parameter &lt;<A HREF="https://github.com/stratum/stratum/pull/150">https://github.com/stratum/stratum/pull/150</A>&gt; since the
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Stratum cannot detect the platform without the ONLP.
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Should be merged soon.
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> On Sat, Mar 21, 2020 at 1:28 AM Deval Bhamare &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">Deval.Bhamare at kau.se</A>&gt;
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> wrote:
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Hello Yi,
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> I tried with the new image stratum-bf:8.9.1-3.16.56-OpenNetworkLinux,
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> however, the error still persists:
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> + KERNEL_VERSION=3.16.64-OpenNetworkLinux
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> + DOCKER_IMAGE=stratumproject/stratum-bf
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> + DOCKER_IMAGE_TAG=9.0.0-3.16.64-OpenNetworkLinux
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> ++ uname -r
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> ++ uname -r
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> + docker run -it --privileged -v /dev:/dev -v /sys:/sys -v
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> /lib/modules/3.16.64-OpenNetworkLinux:/lib/modules/3.16.64-OpenNetworkLinux
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> -v
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> /lib/x86_64-linux-gnu/libonlp-platform-defaults.so:/lib/x86_64-linux-gnu/libonlp-platform-defaults.so
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> -v
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> /lib/x86_64-linux-gnu/libonlp-platform-defaults.so.1:/lib/x86_64-linux-gnu/libonlp-platform-defaults.so.1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> -v
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> /lib/x86_64-linux-gnu/libonlp-platform.so:/lib/x86_64-linux-gnu/libonlp-platform.so
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> -v
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> /lib/x86_64-linux-gnu/libonlp-platform.so.1:/lib/x86_64-linux-gnu/libonlp-platform.so.1
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> -v /lib/x86_64-linux-gnu/libonlp.so:/lib/x86_64-linux-gnu/libonlp.so -v
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> /lib/x86_64-linux-gnu/libonlp.so.1:/lib/x86_64-linux-gnu/libonlp.so.1 -v
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> /lib/platform-config:/lib/platform-config -v /etc/onl:/etc/onl -p
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 28000:28000 -v /root:/stratum_configs -v /var/log:/stratum_logs
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> stratumproject/stratum-bf:8.9.1-3.16.56-OpenNetworkLinux
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> *Use default flag file*
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> *Cannot find
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> /usr/local/share/stratum/x86-64-stordis-bf2556x-1t-r0.json*
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> I also had peek at the script *start-stratum-container.sh* and
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> found an option of *ONLP_ARG=&quot;--env WITH_ONLP=false&quot;*
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> . So I wanted to ask whether I can set this option with Docker to
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> force BSP usage, let us say, by hard-coding it in the script itself (also
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> similar approach to set PORT_MAP in *stratume_entrypoint.sh*). I
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> tried this and the error message in this case is:
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> *Use default flag file*
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> *Cannot find /usr/local/share/stratum/.json *
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Please suggest.
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Thanks,
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Deval.
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> ------------------------------
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> *From:* Yi Tseng &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">yi at opennetworking.org</A>&gt;
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> *Sent:* Thursday, March 12, 2020 6:57 AM
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> *To:* Deval Bhamare
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> *Cc:* Narada Hess; <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> *Subject:* Re: [stratum-dev] Update Bazel version to 2.2.0
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Hi Deval,
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> We don't support Barefoot thrift APIs in Stratum. We support some
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Barefoot API like port API via gNMI and the chassis config.
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> For missing JSON file, I can confirm that our internal CI did not
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> include the latest Stratum with kernel 3.16.56
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> I just rebuild it and uploaded the new container image to the Docker
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> hub
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> &lt;<A HREF="https://hub.docker.com/layers/stratumproject/stratum-bf/8.9.2-3.16.56-OpenNetworkLinux/images/sha256-c9d64c1a7c2853150532a5d3e14dac94aa79b63a4dffba16018322d971d65300?context=explore">https://hub.docker.com/layers/stratumproject/stratum-bf/8.9.2-3.16.56-OpenNetworkLinux/images/sha256-c9d64c1a7c2853150532a5d3e14dac94aa79b63a4dffba16018322d971d65300?context=explore</A>&gt;,
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> feel free to let me know if the issue still exists.
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> About the missing library, can you run this command in your shell?
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> *LD_LIBRARY_PATH=$BF_SDE_INSTALL/lib ldd
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> ./bazel-bin/stratum/hal/bin/barefoot/stratum_bf*
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> I think the system linker may have some issue to find the library.
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> The *libavago.so.0 *is a symbolic link to *libavago.so*. the
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> libavago.so must also exists.
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> *ls -al $BF_SDE_INSTALL/lib/libavago* -rwxr-xr-x 1 root root
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 1185264 Mar 12 04:19 libavago.so lrwxrwxrwx 1 root root      11 Mar 12
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 04:19 libavago.so.0 -&gt; libavago.so lrwxrwxrwx 1 root root      11 Mar 12
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> 04:19 libavago.so.0.0.0 -&gt; libavago.so*
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> --
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Yi Tseng
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Member of Technical Staff
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Open Networking Foundation
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> <A HREF="https://www.opennetworking.org/">https://www.opennetworking.org/</A>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> --
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> Yi Tseng
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> Member of Technical Staff
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> Open Networking Foundation
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> <A HREF="https://www.opennetworking.org/">https://www.opennetworking.org/</A>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> stratum-dev mailing list
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">https://lists.stratumproject.org/listinfo/stratum-dev</A>
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> --
+</I>&gt;&gt;&gt;<i> Yi Tseng
+</I>&gt;&gt;&gt;<i> Member of Technical Staff
+</I>&gt;&gt;&gt;<i> Open Networking Foundation
+</I>&gt;&gt;&gt;<i> <A HREF="https://www.opennetworking.org/">https://www.opennetworking.org/</A>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> --
+</I>&gt;&gt;<i> Yi Tseng
+</I>&gt;&gt;<i> Member of Technical Staff
+</I>&gt;&gt;<i> Open Networking Foundation
+</I>&gt;&gt;<i> <A HREF="https://www.opennetworking.org/">https://www.opennetworking.org/</A>
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i> Yi Tseng
+</I>&gt;<i> Member of Technical Staff
+</I>&gt;<i> Open Networking Foundation
+</I>&gt;<i> <A HREF="https://www.opennetworking.org/">https://www.opennetworking.org/</A>
+</I>&gt;<i>
+</I>
+
+-- 
+Yi Tseng
+Member of Technical Staff
+Open Networking Foundation
+<A HREF="https://www.opennetworking.org/">https://www.opennetworking.org/</A>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.stratumproject.org/archives/stratum-dev/attachments/20200421/3cff888b/attachment-0001.html">https://lists.stratumproject.org/archives/stratum-dev/attachments/20200421/3cff888b/attachment-0001.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message (by thread): <A HREF="000082.html">[stratum-dev] Update Bazel version to 2.2.0
+</A></li>
+	<LI>Next message (by thread): <A HREF="000078.html">[stratum-dev] Stratum Logs - table entries population.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#83">[ date ]</a>
+              <a href="thread.html#83">[ thread ]</a>
+              <a href="subject.html#83">[ subject ]</a>
+              <a href="author.html#83">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.stratumproject.org/listinfo/stratum-dev">More information about the stratum-dev
+mailing list</a><br>
+</body></html>

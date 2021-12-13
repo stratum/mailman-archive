@@ -1,0 +1,228 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [stratum-dev] Docker image 8.9.2-3.16.56-OpenNetworkLinux older	version for stratum
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Docker%20image%208.9.2-3.16.56-OpenNetworkLinux%20older%0A%09version%20for%20stratum&In-Reply-To=%3CCAOyFVR14YxdeWRTObrgmK_pzBGDJ1hXhadddxnL%2BZi7OjdgSTA%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <LINK REL="Previous"  HREF="000089.html">
+   <LINK REL="Next"  HREF="000092.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[stratum-dev] Docker image 8.9.2-3.16.56-OpenNetworkLinux older	version for stratum</H1>
+    <B>Yi Tseng</B> 
+    <A HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Docker%20image%208.9.2-3.16.56-OpenNetworkLinux%20older%0A%09version%20for%20stratum&In-Reply-To=%3CCAOyFVR14YxdeWRTObrgmK_pzBGDJ1hXhadddxnL%2BZi7OjdgSTA%40mail.gmail.com%3E"
+       TITLE="[stratum-dev] Docker image 8.9.2-3.16.56-OpenNetworkLinux older	version for stratum">yi at opennetworking.org
+       </A><BR>
+    <I>Fri May 15 18:37:09 UTC 2020</I>
+    <P><UL>
+        <LI>Previous message (by thread): <A HREF="000089.html">[stratum-dev] Docker image 8.9.2-3.16.56-OpenNetworkLinux older version for stratum
+</A></li>
+        <LI>Next message (by thread): <A HREF="000092.html">[stratum-dev] Docker image 8.9.2-3.16.56-OpenNetworkLinux older version for stratum
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#90">[ date ]</a>
+              <a href="thread.html#90">[ thread ]</a>
+              <a href="subject.html#90">[ subject ]</a>
+              <a href="author.html#90">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Deval,
+
+According to the log, you are trying to run the container on the system
+which is not OpenNetworkingLinux with Linux kernel 3.16.56
+
+The docker image with &quot;-OpenNetworkingLinux&quot; tag postfix is now only built
+for OpenNetworkLinux (which requires ONLP library). If you want to use
+other systems like Ubuntu or Fedora, you can use images without
+&quot;-OpenNetworkingLinux&quot; postfix. For example
+&quot;stratumproject/stratum-bf:8.9.2&quot;
+
+Yi
+
+On Thu, May 14, 2020 at 10:56 PM Deval Bhamare &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">Deval.Bhamare at kau.se</A>&gt; wrote:
+
+&gt;<i> Hello Yi,
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Sending a reminder.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Please let me know the cause of the error below in the newly updated
+</I>&gt;<i> container image  8.9.2-3.16.56-OpenNetworkLinux
+</I>&gt;<i> &lt;<A HREF="https://hub.docker.com/layers/stratumproject/stratum-bf/8.9.2-3.16.56-OpenNetworkLinux/images/sha256-3a52ec68005041b4d69b676c9584133a34652910514272165f09f443fb2975d8?context=explore">https://hub.docker.com/layers/stratumproject/stratum-bf/8.9.2-3.16.56-OpenNetworkLinux/images/sha256-3a52ec68005041b4d69b676c9584133a34652910514272165f09f443fb2975d8?context=explore</A>&gt;
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> */usr/bin/stratum_bf: error while loading shared libraries: libonlp.so.1:
+</I>&gt;<i> cannot open shared object file: No such file or directory*
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Note: I am using below values in the start_container script (which was
+</I>&gt;<i> working earlier)
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> --env WITH_ONLP=false \
+</I>&gt;<i> --env PLATFORM=x86-64-stordis-bf2556x-1t-r0 \
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>  With original  start_container script, however, I get error of
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> *Cannot find flag file /etc/stratum/stratum.flags*
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Is it possible to get access to the earlier version of the container
+</I>&gt;<i> image? Also, I tried to build the container locally with old
+</I>&gt;<i> Docker.runtime, but it fails as well, with error log below.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> PLease suggest.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> ERROR: /stratum/stratum/hal/bin/barefoot/BUILD:26:1: Linking of rule
+</I>&gt;<i> '//stratum/hal/bin/barefoot:stratum_bf' failed (Exit 1) gcc failed: error
+</I>&gt;<i> executing command /usr/bin/gcc
+</I>&gt;<i> @bazel-out/k8-fastbuild/bin/stratum/hal/bin/barefoot/stratum_bf-2.params
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Use --sandbox_debug to see verbose messages from the sandbox
+</I>&gt;<i>
+</I>&gt;<i> bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi.pic.o:pi.c:function
+</I>&gt;<i> pi_port_status_get: error: undefined reference to '_pi_port_status_get'
+</I>&gt;<i>
+</I>&gt;<i> bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_act_prof.pic.o:pi_act_prof.c:function
+</I>&gt;<i> pi_act_prof_grp_activate_mbr: error: undefined reference to
+</I>&gt;<i> '_pi_act_prof_grp_activate_mbr'
+</I>&gt;<i>
+</I>&gt;<i> bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_act_prof.pic.o:pi_act_prof.c:function
+</I>&gt;<i> pi_act_prof_grp_deactivate_mbr: error: undefined reference to
+</I>&gt;<i> '_pi_act_prof_grp_deactivate_mbr'
+</I>&gt;<i>
+</I>&gt;<i> bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_act_prof.pic.o:pi_act_prof.c:function
+</I>&gt;<i> pi_act_prof_mbr_fetch: error: undefined reference to
+</I>&gt;<i> '_pi_act_prof_mbr_fetch'
+</I>&gt;<i>
+</I>&gt;<i> bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_act_prof.pic.o:pi_act_prof.c:function
+</I>&gt;<i> pi_act_prof_grp_fetch: error: undefined reference to
+</I>&gt;<i> '_pi_act_prof_grp_fetch'
+</I>&gt;<i>
+</I>&gt;<i> bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_tables.pic.o:pi_tables.c:function
+</I>&gt;<i> pi_table_default_action_get_handle: error: undefined reference to
+</I>&gt;<i> '_pi_table_default_action_get_handle'
+</I>&gt;<i>
+</I>&gt;<i> bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_tables.pic.o:pi_tables.c:function
+</I>&gt;<i> pi_table_entries_fetch_one: error: undefined reference to
+</I>&gt;<i> '_pi_table_entries_fetch_one'
+</I>&gt;<i>
+</I>&gt;<i> bazel-out/k8-fastbuild/bin/external/com_github_p4lang_PI_bf_9_1_0/_objs/pi/pi_tables.pic.o:pi_tables.c:function
+</I>&gt;<i> pi_table_entries_fetch_wkey: error: undefined reference to
+</I>&gt;<i> '_pi_table_entries_fetch_wkey'
+</I>&gt;<i>
+</I>&gt;<i> collect2: error: ld returned 1 exit status
+</I>&gt;<i>
+</I>&gt;<i> Target //stratum/hal/bin/barefoot:stratum_bf failed to build
+</I>&gt;<i>
+</I>&gt;<i> Use --verbose_failures to see the command lines of failed build steps.
+</I>&gt;<i>
+</I>&gt;<i> INFO: Elapsed time: 281.155s, Critical Path: 81.05s
+</I>&gt;<i>
+</I>&gt;<i> INFO: 1513 processes: 1513 processwrapper-sandbox.
+</I>&gt;<i>
+</I>&gt;<i> FAILED: Build did NOT complete successfully
+</I>&gt;<i>
+</I>&gt;<i> FAILED: Build did NOT complete successfully
+</I>&gt;<i>
+</I>&gt;<i> The command '/bin/sh -c bazel build //stratum/hal/bin/barefoot:stratum_bf
+</I>&gt;<i>   --define sde_ver=$(cat $SDE_INSTALL/share/VERSION)     --define
+</I>&gt;<i> phal_with_onlp=false &amp;&amp;     cp
+</I>&gt;<i> bazel-bin/stratum/hal/bin/barefoot/stratum_bf /tmp/stratum_bf_no_onlp'
+</I>&gt;<i> returned a non-zero code: 1
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Thanks,
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Deval
+</I>&gt;<i> ------------------------------
+</I>&gt;<i> *From:* Deval Bhamare
+</I>&gt;<i> *Sent:* Wednesday, May 13, 2020 8:49:24 PM
+</I>&gt;<i> *To:* Yi Tseng
+</I>&gt;<i> *Subject:* Docker image older version for stratum
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Hello Yi,
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> As I have mentioned earlier, the docker container image
+</I>&gt;<i> 8.9.2-3.16.56-OpenNetworkLinux
+</I>&gt;<i> &lt;<A HREF="https://hub.docker.com/layers/stratumproject/stratum-bf/8.9.2-3.16.56-OpenNetworkLinux/images/sha256-3a52ec68005041b4d69b676c9584133a34652910514272165f09f443fb2975d8?context=explore">https://hub.docker.com/layers/stratumproject/stratum-bf/8.9.2-3.16.56-OpenNetworkLinux/images/sha256-3a52ec68005041b4d69b676c9584133a34652910514272165f09f443fb2975d8?context=explore</A>&gt; was
+</I>&gt;<i> working for our tofino switch, until I had to pull the image again, due to
+</I>&gt;<i> some crash. However, after pulling the new image, things have stopped
+</I>&gt;<i> working. I now get the error:
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> *loading bf_kdrv_mod...*
+</I>&gt;<i> *insmod: ERROR: could not insert module /usr/lib/modules/bf_kdrv.ko:
+</I>&gt;<i> Invalid module format*
+</I>&gt;<i> */usr/bin/stratum_bf: error while loading shared libraries: libonlp.so.1:
+</I>&gt;<i> cannot open shared object file: No such file or directory*
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> As I can see the docker image is build very recently and I doubt it may
+</I>&gt;<i> have changed something. Is it possible for you to provide the older version
+</I>&gt;<i> of this image (approx 2 months old, when the missing json issue was
+</I>&gt;<i> solved). Else, how can I fix the above problem?
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Thanks,
+</I>&gt;<i>
+</I>&gt;<i> Deval.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>
+
+-- 
+Yi Tseng
+Member of Technical Staff
+Open Networking Foundation
+<A HREF="https://www.opennetworking.org/">https://www.opennetworking.org/</A>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.stratumproject.org/archives/stratum-dev/attachments/20200516/8a9f0f58/attachment.html">https://lists.stratumproject.org/archives/stratum-dev/attachments/20200516/8a9f0f58/attachment.html</A>&gt;
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message (by thread): <A HREF="000089.html">[stratum-dev] Docker image 8.9.2-3.16.56-OpenNetworkLinux older version for stratum
+</A></li>
+	<LI>Next message (by thread): <A HREF="000092.html">[stratum-dev] Docker image 8.9.2-3.16.56-OpenNetworkLinux older version for stratum
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#90">[ date ]</a>
+              <a href="thread.html#90">[ thread ]</a>
+              <a href="subject.html#90">[ subject ]</a>
+              <a href="author.html#90">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.stratumproject.org/listinfo/stratum-dev">More information about the stratum-dev
+mailing list</a><br>
+</body></html>

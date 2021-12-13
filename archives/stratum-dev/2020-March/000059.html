@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [stratum-dev] Update Bazel version to 2.2.0
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Update%20Bazel%20version%20to%202.2.0&In-Reply-To=%3C08df48cbcfc3462fa41128f05c60db07%40kau.se%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <LINK REL="Previous"  HREF="000057.html">
+   <LINK REL="Next"  HREF="000060.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[stratum-dev] Update Bazel version to 2.2.0</H1>
+    <B>Deval Bhamare</B> 
+    <A HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Update%20Bazel%20version%20to%202.2.0&In-Reply-To=%3C08df48cbcfc3462fa41128f05c60db07%40kau.se%3E"
+       TITLE="[stratum-dev] Update Bazel version to 2.2.0">Deval.Bhamare at kau.se
+       </A><BR>
+    <I>Fri Mar 20 17:28:54 UTC 2020</I>
+    <P><UL>
+        <LI>Previous message (by thread): <A HREF="000057.html">[stratum-dev] Update Bazel version to 2.2.0
+</A></li>
+        <LI>Next message (by thread): <A HREF="000060.html">[stratum-dev] Update Bazel version to 2.2.0
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#59">[ date ]</a>
+              <a href="thread.html#59">[ thread ]</a>
+              <a href="subject.html#59">[ subject ]</a>
+              <a href="author.html#59">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello Yi,
+
+
+I tried with the new image stratum-bf:8.9.1-3.16.56-OpenNetworkLinux, however, the error still persists:
+
+
++ KERNEL_VERSION=3.16.64-OpenNetworkLinux
+
++ DOCKER_IMAGE=stratumproject/stratum-bf
+
++ DOCKER_IMAGE_TAG=9.0.0-3.16.64-OpenNetworkLinux
+
+++ uname -r
+
+++ uname -r
+
++ docker run -it --privileged -v /dev:/dev -v /sys:/sys -v /lib/modules/3.16.64-OpenNetworkLinux:/lib/modules/3.16.64-OpenNetworkLinux -v /lib/x86_64-linux-gnu/libonlp-platform-defaults.so:/lib/x86_64-linux-gnu/libonlp-platform-defaults.so -v /lib/x86_64-linux-gnu/libonlp-platform-defaults.so.1:/lib/x86_64-linux-gnu/libonlp-platform-defaults.so.1 -v /lib/x86_64-linux-gnu/libonlp-platform.so:/lib/x86_64-linux-gnu/libonlp-platform.so -v /lib/x86_64-linux-gnu/libonlp-platform.so.1:/lib/x86_64-linux-gnu/libonlp-platform.so.1 -v /lib/x86_64-linux-gnu/libonlp.so:/lib/x86_64-linux-gnu/libonlp.so -v /lib/x86_64-linux-gnu/libonlp.so.1:/lib/x86_64-linux-gnu/libonlp.so.1 -v /lib/platform-config:/lib/platform-config -v /etc/onl:/etc/onl -p 28000:28000 -v /root:/stratum_configs -v /var/log:/stratum_logs stratumproject/stratum-bf:8.9.1-3.16.56-OpenNetworkLinux
+
+Use default flag file
+
+Cannot find /usr/local/share/stratum/x86-64-stordis-bf2556x-1t-r0.json
+
+
+
+I also had peek at the script start-stratum-container.sh and found an option of ONLP_ARG=&quot;--env WITH_ONLP=false&quot;
+. So I wanted to ask whether I can set this option with Docker to force BSP usage, let us say, by hard-coding it in the script itself (also similar approach to set PORT_MAP in stratume_entrypoint.sh). I tried this and the error message in this case is:
+
+
+Use default flag file
+
+Cannot find /usr/local/share/stratum/.json
+
+Please suggest.
+
+Thanks,
+Deval.
+
+________________________________
+From: Yi Tseng &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">yi at opennetworking.org</A>&gt;
+Sent: Thursday, March 12, 2020 6:57 AM
+To: Deval Bhamare
+Cc: Narada Hess; <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>
+Subject: Re: [stratum-dev] Update Bazel version to 2.2.0
+
+Hi Deval,
+
+We don't support Barefoot thrift APIs in Stratum. We support some Barefoot API like port API via gNMI and the chassis config.
+
+For missing JSON file, I can confirm that our internal CI did not include the latest Stratum with kernel 3.16.56
+
+I just rebuild it and uploaded the new container image to the Docker hub&lt;<A HREF="https://hub.docker.com/layers/stratumproject/stratum-bf/8.9.2-3.16.56-OpenNetworkLinux/images/sha256-c9d64c1a7c2853150532a5d3e14dac94aa79b63a4dffba16018322d971d65300?context=explore">https://hub.docker.com/layers/stratumproject/stratum-bf/8.9.2-3.16.56-OpenNetworkLinux/images/sha256-c9d64c1a7c2853150532a5d3e14dac94aa79b63a4dffba16018322d971d65300?context=explore</A>&gt;, feel free to let me know if the issue still exists.
+
+About the missing library, can you run this command in your shell?
+
+LD_LIBRARY_PATH=$BF_SDE_INSTALL/lib ldd ./bazel-bin/stratum/hal/bin/barefoot/stratum_bf
+
+I think the system linker may have some issue to find the library.
+
+The libavago.so.0 is a symbolic link to libavago.so. the libavago.so must also exists.
+ls -al $BF_SDE_INSTALL/lib/libavago*
+-rwxr-xr-x 1 root root 1185264 Mar 12 04:19 libavago.so
+lrwxrwxrwx 1 root root      11 Mar 12 04:19 libavago.so.0 -&gt; libavago.so
+lrwxrwxrwx 1 root root      11 Mar 12 04:19 libavago.so.0.0.0 -&gt; libavago.so
+
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.stratumproject.org/archives/stratum-dev/attachments/20200320/5bdfbdfb/attachment.html">https://lists.stratumproject.org/archives/stratum-dev/attachments/20200320/5bdfbdfb/attachment.html</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message (by thread): <A HREF="000057.html">[stratum-dev] Update Bazel version to 2.2.0
+</A></li>
+	<LI>Next message (by thread): <A HREF="000060.html">[stratum-dev] Update Bazel version to 2.2.0
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#59">[ date ]</a>
+              <a href="thread.html#59">[ thread ]</a>
+              <a href="subject.html#59">[ subject ]</a>
+              <a href="author.html#59">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.stratumproject.org/listinfo/stratum-dev">More information about the stratum-dev
+mailing list</a><br>
+</body></html>

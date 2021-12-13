@@ -1,0 +1,1087 @@
+From asydney007 at gmail.com  Thu Mar 18 17:10:02 2021
+From: asydney007 at gmail.com (A Sydney)
+Date: Thu, 18 Mar 2021 13:10:02 -0400
+Subject: [stratum-dev] Question about building stratum standalone
+Message-ID: <CAM-ym_fcy29zhXXiBMvqWDFOJAnDnc56H0g87NpRufw5Eivhig@mail.gmail.com>
+
+Hi Stratum folks,
+                          I'm attempting to use the stratum standalone
+instance (
+https://github.com/stratum/stratum/blob/main/stratum/hal/bin/bmv2/README.md)
+to setup a topology on a baremetal server. Can you kindly provide feedback
+to the following:
+
+1. Where can I find "p4_pipeline.pb.txt" to run the binary? In particular,
+as a simple test, I'm attempting to use the main.p4 file shipped with the
+ngsdn-tutorial (https://github.com/opennetworkinglab/ngsdn-tutorial). On
+the tutorial VM, generated the corresponding bmv2.json and p4info.txt (i.e.
+using make p4-build). Was there some other "p4_pipeline.pb.txt" file
+generated that I can use on the bare metal setup? Or perhaps, I have to run
+bmv2.json through some postprocess to get "p4_pipeline.pb.txt"?
+
+2. Assuming I've got a running binary with all the arguments sorted, how
+can I go about creating a topology of switches? Can I simply create
+containers/VMs (i.e. with an linux OS), clone the stratum repo on each
+device, add container/VM interfaces in "chassis_config.pb.txt", and run the
+bmv2 executable from each device?
+
+Thanks!
+-Syd
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20210318/aeb7e8a7/attachment.html>
+
+From max at opennetworking.org  Fri Mar 19 02:12:25 2021
+From: max at opennetworking.org (Maximilian Pudelko)
+Date: Thu, 18 Mar 2021 19:12:25 -0700
+Subject: [stratum-dev] Question about building stratum standalone
+In-Reply-To: <0101017846510186-df698baa-9c59-436a-adf3-9be3ab4749c8-000000@us-west-2.amazonses.com>
+References: <0101017846510186-df698baa-9c59-436a-adf3-9be3ab4749c8-000000@us-west-2.amazonses.com>
+Message-ID: <CAFh9Y_PyygrZfytwOd-OO+ExFz5aOdWyXAgGTnuqJ6cef28G=g@mail.gmail.com>
+
+Hi Syd,
+
+> 1. Where can I find "p4_pipeline.pb.txt" to run the binary?
+That file is the place where Stratum will store a pushed pipeline. It can
+only be set via the P4Runtime SetForwardingPipelineConfig RPC call.
+The Running the stratum_bmv2 binary section
+<https://github.com/stratum/stratum/blob/main/stratum/hal/bin/bmv2/README.md#running-the-stratum_bmv2-binary>
+of the README gives an example:
+
+# run P4Runtime client
+cp stratum/hal/bin/bmv2/update_config.py /tmp/ && \
+[sudo] docker run -v /tmp:/tmp -w /tmp p4lang/pi ./update_config.py \
+    --grpc-addr <YOUR_HOST_IP_ADDRESS>:9559 --json <prog>.json
+--p4info <prog>.proto.txt
+You could also use the p4runtime-shell
+<https://github.com/p4lang/p4runtime-shell>.
+
+> 2 .
+Yes, the bmv2 binary should bind to all interfaces given in the
+chassis_config.pb.txt.
+With some wiring it should be possible to build a web of software switches.
+But instead of building Stratum many times, check if the Debian
+package might not be more convenient:
+https://github.com/stratum/stratum/blob/main/stratum/hal/bin/bmv2/BUILD#L81-L98
+
+There is also a Stratum-enabled Mininet version, which takes care of a lot
+of these setup tasks. The
+NGSDN tutorial you linked uses it, too.
+
+
+Best,
+Max
+
+
+On Thu, Mar 18, 2021 at 10:10 AM A Sydney via stratum-dev <
+stratum-dev at lists.stratumproject.org> wrote:
+
+> Hi Stratum folks,
+>                           I'm attempting to use the stratum standalone
+> instance (
+> https://github.com/stratum/stratum/blob/main/stratum/hal/bin/bmv2/README.md)
+> to setup a topology on a baremetal server. Can you kindly provide feedback
+> to the following:
+>
+> 1. Where can I find "p4_pipeline.pb.txt" to run the binary? In particular,
+> as a simple test, I'm attempting to use the main.p4 file shipped with the
+> ngsdn-tutorial (https://github.com/opennetworkinglab/ngsdn-tutorial). On
+> the tutorial VM, generated the corresponding bmv2.json and p4info.txt (i.e.
+> using make p4-build). Was there some other "p4_pipeline.pb.txt" file
+> generated that I can use on the bare metal setup? Or perhaps, I have to run
+> bmv2.json through some postprocess to get "p4_pipeline.pb.txt"?
+>
+> 2. Assuming I've got a running binary with all the arguments sorted, how
+> can I go about creating a topology of switches? Can I simply create
+> containers/VMs (i.e. with an linux OS), clone the stratum repo on each
+> device, add container/VM interfaces in "chassis_config.pb.txt", and run the
+> bmv2 executable from each device?
+>
+> Thanks!
+> -Syd
+> _______________________________________________
+> stratum-dev mailing list
+> stratum-dev at lists.stratumproject.org
+> https://lists.stratumproject.org/listinfo/stratum-dev
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20210318/66fa1554/attachment.html>
+
+From asydney007 at gmail.com  Mon Mar 22 19:58:05 2021
+From: asydney007 at gmail.com (A Sydney)
+Date: Mon, 22 Mar 2021 15:58:05 -0400
+Subject: [stratum-dev] Question about building stratum standalone
+In-Reply-To: <CAFh9Y_PyygrZfytwOd-OO+ExFz5aOdWyXAgGTnuqJ6cef28G=g@mail.gmail.com>
+References: <0101017846510186-df698baa-9c59-436a-adf3-9be3ab4749c8-000000@us-west-2.amazonses.com>
+ <CAFh9Y_PyygrZfytwOd-OO+ExFz5aOdWyXAgGTnuqJ6cef28G=g@mail.gmail.com>
+Message-ID: <CAM-ym_dPVgc3RRmXuZE0kaEOO19bGUpL=QR+syi+mj-s2_DxRA@mail.gmail.com>
+
+I'm still having a few issues:
+
+1. Please take note of the following:
+ a) On my host, I've created ~/stratum/bmv2_config (i.e. in the top level
+stratum directory) where I've added bmv2.json and p4info.txt for
+loopback.p4. I've also added config.txt which contains the ports I would
+like stratum to use.
+ b) In the stratum container (/stratum), I run the following:
+stratum> sudo ./bazel-bin/stratum/hal/bin/bmv2/stratum_bmv2 \
+    --persistent_config_dir=/stratum/bmv2_config \
+    --chassis_config_file=/stratum/bmv2_config/config.txt  \
+    --bmv2_log_level=debug
+
+And see the following expected error (i.e. "expected", since we will
+generate this file subsequently):
+"""
+/var/run/stratum/pipeline_cfg.pb.txt not found..
+"""
+c) Now back on my host system, I do the following:
+'"""
+host> cp stratum/hal/bin/bmv2/update_config.py /tmp/ && \
+docker run -v /tmp:/tmp -w /tmp p4lang/pi ./update_config.py \
+--grpc-addr 52.117.10.174:9559 --json bmv2_config/bmv2.json --p4info
+bmv2_config/p4info.txt
+"""
+And get the following error:
+
+"""
+Traceback (most recent call last):
+  File "./update_config.py", line 10, in <module>
+    from p4.v1 import p4runtime_pb2
+ImportError: No module named p4.v1
+"""
+I Googled this error and looks like folks have come across this (
+https://github.com/p4lang/tutorials/issues/178) and it appears that perhaps
+P4Runtime is not installed properly?
+
+Questions:
+* Is my workflow for starting the bmv2 switch and
+generating pipeline_cfg.pb.txt correct?
+* Should I hop onto the container and run the install? Or is there an
+easier way around this issue?
+* If "c" was correct, then "pipeline_cfg.pb.txt" would automatically be
+generated and inserted in the switch. Would I also have to perform c) for
+all switches?
+
+Thanks,
+-Syd
+
+On Thu, Mar 18, 2021 at 10:12 PM Maximilian Pudelko <max at opennetworking.org>
+wrote:
+
+> Hi Syd,
+>
+> > 1. Where can I find "p4_pipeline.pb.txt" to run the binary?
+> That file is the place where Stratum will store a pushed pipeline. It can
+> only be set via the P4Runtime SetForwardingPipelineConfig RPC call.
+> The Running the stratum_bmv2 binary section
+> <https://github.com/stratum/stratum/blob/main/stratum/hal/bin/bmv2/README.md#running-the-stratum_bmv2-binary>
+> of the README gives an example:
+>
+> # run P4Runtime client
+> cp stratum/hal/bin/bmv2/update_config.py /tmp/ && \
+> [sudo] docker run -v /tmp:/tmp -w /tmp p4lang/pi ./update_config.py \
+>     --grpc-addr <YOUR_HOST_IP_ADDRESS>:9559 --json <prog>.json --p4info <prog>.proto.txt
+> You could also use the p4runtime-shell <https://github.com/p4lang/p4runtime-shell>.
+>
+> > 2 .
+> Yes, the bmv2 binary should bind to all interfaces given in the chassis_config.pb.txt.
+> With some wiring it should be possible to build a web of software switches.
+> But instead of building Stratum many times, check if the Debian package might not be more convenient:
+> https://github.com/stratum/stratum/blob/main/stratum/hal/bin/bmv2/BUILD#L81-L98
+>
+> There is also a Stratum-enabled Mininet version, which takes care of a lot
+> of these setup tasks. The
+> NGSDN tutorial you linked uses it, too.
+>
+>
+> Best,
+> Max
+>
+>
+> On Thu, Mar 18, 2021 at 10:10 AM A Sydney via stratum-dev <
+> stratum-dev at lists.stratumproject.org> wrote:
+>
+>> Hi Stratum folks,
+>>                           I'm attempting to use the stratum standalone
+>> instance (
+>> https://github.com/stratum/stratum/blob/main/stratum/hal/bin/bmv2/README.md)
+>> to setup a topology on a baremetal server. Can you kindly provide feedback
+>> to the following:
+>>
+>> 1. Where can I find "p4_pipeline.pb.txt" to run the binary? In
+>> particular, as a simple test, I'm attempting to use the main.p4 file
+>> shipped with the ngsdn-tutorial (
+>> https://github.com/opennetworkinglab/ngsdn-tutorial). On the tutorial
+>> VM, generated the corresponding bmv2.json and p4info.txt (i.e. using make
+>> p4-build). Was there some other "p4_pipeline.pb.txt" file generated that I
+>> can use on the bare metal setup? Or perhaps, I have to run bmv2.json
+>> through some postprocess to get "p4_pipeline.pb.txt"?
+>>
+>> 2. Assuming I've got a running binary with all the arguments sorted, how
+>> can I go about creating a topology of switches? Can I simply create
+>> containers/VMs (i.e. with an linux OS), clone the stratum repo on each
+>> device, add container/VM interfaces in "chassis_config.pb.txt", and run the
+>> bmv2 executable from each device?
+>>
+>> Thanks!
+>> -Syd
+>> _______________________________________________
+>> stratum-dev mailing list
+>> stratum-dev at lists.stratumproject.org
+>> https://lists.stratumproject.org/listinfo/stratum-dev
+>
+>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20210322/732810db/attachment.html>
+
+From max at opennetworking.org  Mon Mar 22 21:04:34 2021
+From: max at opennetworking.org (Maximilian Pudelko)
+Date: Mon, 22 Mar 2021 14:04:34 -0700
+Subject: [stratum-dev] Question about building stratum standalone
+In-Reply-To: <CAM-ym_dPVgc3RRmXuZE0kaEOO19bGUpL=QR+syi+mj-s2_DxRA@mail.gmail.com>
+References: <0101017846510186-df698baa-9c59-436a-adf3-9be3ab4749c8-000000@us-west-2.amazonses.com>
+ <CAFh9Y_PyygrZfytwOd-OO+ExFz5aOdWyXAgGTnuqJ6cef28G=g@mail.gmail.com>
+ <CAM-ym_dPVgc3RRmXuZE0kaEOO19bGUpL=QR+syi+mj-s2_DxRA@mail.gmail.com>
+Message-ID: <CAFh9Y_MxE0DgtXW1kW_n5SscuxL7wYtQZKab=A_VhOnrWveLkQ@mail.gmail.com>
+
+> Is my workflow for starting the bmv2 switch and
+generating pipeline_cfg.pb.txt correct?
+looks ok to me. You might still want to set the
+--forwarding_pipeline_configs_file to somewhere
+writable by Stratum.
+
+> Should I hop onto the container and run the install? Or is there an
+easier way around this issue?
+The update_config.py scripts are pretty old, unmaintained and broken as you
+just found out. I'd recommend
+using the P4Runtime-shell instead.
+
+> If "c" was correct, then "pipeline_cfg.pb.txt" would automatically be
+generated and inserted in the switch. Would I also have to perform c) for
+all switches?
+Yes, each switch needs to have a pipeline.
+
+Max
+
+On Mon, Mar 22, 2021 at 12:58 PM A Sydney <asydney007 at gmail.com> wrote:
+
+> I'm still having a few issues:
+>
+> 1. Please take note of the following:
+>  a) On my host, I've created ~/stratum/bmv2_config (i.e. in the top level
+> stratum directory) where I've added bmv2.json and p4info.txt for
+> loopback.p4. I've also added config.txt which contains the ports I would
+> like stratum to use.
+>  b) In the stratum container (/stratum), I run the following:
+> stratum> sudo ./bazel-bin/stratum/hal/bin/bmv2/stratum_bmv2 \
+>     --persistent_config_dir=/stratum/bmv2_config \
+>     --chassis_config_file=/stratum/bmv2_config/config.txt  \
+>     --bmv2_log_level=debug
+>
+> And see the following expected error (i.e. "expected", since we will
+> generate this file subsequently):
+> """
+> /var/run/stratum/pipeline_cfg.pb.txt not found..
+> """
+> c) Now back on my host system, I do the following:
+> '"""
+> host> cp stratum/hal/bin/bmv2/update_config.py /tmp/ && \
+> docker run -v /tmp:/tmp -w /tmp p4lang/pi ./update_config.py \
+> --grpc-addr 52.117.10.174:9559 --json bmv2_config/bmv2.json --p4info
+> bmv2_config/p4info.txt
+> """
+> And get the following error:
+>
+> """
+> Traceback (most recent call last):
+>   File "./update_config.py", line 10, in <module>
+>     from p4.v1 import p4runtime_pb2
+> ImportError: No module named p4.v1
+> """
+> I Googled this error and looks like folks have come across this (
+> https://github.com/p4lang/tutorials/issues/178) and it appears that
+> perhaps P4Runtime is not installed properly?
+>
+> Questions:
+> * Is my workflow for starting the bmv2 switch and
+> generating pipeline_cfg.pb.txt correct?
+> * Should I hop onto the container and run the install? Or is there an
+> easier way around this issue?
+> * If "c" was correct, then "pipeline_cfg.pb.txt" would automatically be
+> generated and inserted in the switch. Would I also have to perform c) for
+> all switches?
+>
+> Thanks,
+> -Syd
+>
+> On Thu, Mar 18, 2021 at 10:12 PM Maximilian Pudelko <
+> max at opennetworking.org> wrote:
+>
+>> Hi Syd,
+>>
+>> > 1. Where can I find "p4_pipeline.pb.txt" to run the binary?
+>> That file is the place where Stratum will store a pushed pipeline. It can
+>> only be set via the P4Runtime SetForwardingPipelineConfig RPC call.
+>> The Running the stratum_bmv2 binary section
+>> <https://github.com/stratum/stratum/blob/main/stratum/hal/bin/bmv2/README.md#running-the-stratum_bmv2-binary>
+>> of the README gives an example:
+>>
+>> # run P4Runtime client
+>> cp stratum/hal/bin/bmv2/update_config.py /tmp/ && \
+>> [sudo] docker run -v /tmp:/tmp -w /tmp p4lang/pi ./update_config.py \
+>>     --grpc-addr <YOUR_HOST_IP_ADDRESS>:9559 --json <prog>.json --p4info <prog>.proto.txt
+>> You could also use the p4runtime-shell <https://github.com/p4lang/p4runtime-shell>.
+>>
+>> > 2 .
+>> Yes, the bmv2 binary should bind to all interfaces given in the chassis_config.pb.txt.
+>> With some wiring it should be possible to build a web of software switches.
+>> But instead of building Stratum many times, check if the Debian package might not be more convenient:
+>> https://github.com/stratum/stratum/blob/main/stratum/hal/bin/bmv2/BUILD#L81-L98
+>>
+>> There is also a Stratum-enabled Mininet version, which takes care of a
+>> lot of these setup tasks. The
+>> NGSDN tutorial you linked uses it, too.
+>>
+>>
+>> Best,
+>> Max
+>>
+>>
+>> On Thu, Mar 18, 2021 at 10:10 AM A Sydney via stratum-dev <
+>> stratum-dev at lists.stratumproject.org> wrote:
+>>
+>>> Hi Stratum folks,
+>>>                           I'm attempting to use the stratum standalone
+>>> instance (
+>>> https://github.com/stratum/stratum/blob/main/stratum/hal/bin/bmv2/README.md)
+>>> to setup a topology on a baremetal server. Can you kindly provide feedback
+>>> to the following:
+>>>
+>>> 1. Where can I find "p4_pipeline.pb.txt" to run the binary? In
+>>> particular, as a simple test, I'm attempting to use the main.p4 file
+>>> shipped with the ngsdn-tutorial (
+>>> https://github.com/opennetworkinglab/ngsdn-tutorial). On the tutorial
+>>> VM, generated the corresponding bmv2.json and p4info.txt (i.e. using make
+>>> p4-build). Was there some other "p4_pipeline.pb.txt" file generated that I
+>>> can use on the bare metal setup? Or perhaps, I have to run bmv2.json
+>>> through some postprocess to get "p4_pipeline.pb.txt"?
+>>>
+>>> 2. Assuming I've got a running binary with all the arguments sorted, how
+>>> can I go about creating a topology of switches? Can I simply create
+>>> containers/VMs (i.e. with an linux OS), clone the stratum repo on each
+>>> device, add container/VM interfaces in "chassis_config.pb.txt", and run the
+>>> bmv2 executable from each device?
+>>>
+>>> Thanks!
+>>> -Syd
+>>> _______________________________________________
+>>> stratum-dev mailing list
+>>> stratum-dev at lists.stratumproject.org
+>>> https://lists.stratumproject.org/listinfo/stratum-dev
+>>
+>>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20210322/8d78a91c/attachment-0001.html>
+
+From asydney007 at gmail.com  Wed Mar 24 18:19:41 2021
+From: asydney007 at gmail.com (A Sydney)
+Date: Wed, 24 Mar 2021 14:19:41 -0400
+Subject: [stratum-dev] Question about building stratum standalone
+In-Reply-To: <CAFh9Y_MxE0DgtXW1kW_n5SscuxL7wYtQZKab=A_VhOnrWveLkQ@mail.gmail.com>
+References: <0101017846510186-df698baa-9c59-436a-adf3-9be3ab4749c8-000000@us-west-2.amazonses.com>
+ <CAFh9Y_PyygrZfytwOd-OO+ExFz5aOdWyXAgGTnuqJ6cef28G=g@mail.gmail.com>
+ <CAM-ym_dPVgc3RRmXuZE0kaEOO19bGUpL=QR+syi+mj-s2_DxRA@mail.gmail.com>
+ <CAFh9Y_MxE0DgtXW1kW_n5SscuxL7wYtQZKab=A_VhOnrWveLkQ@mail.gmail.com>
+Message-ID: <CAM-ym_dTgq9cU6v7HYAyYj1tKpevXjU2Vi4-OhYVnD1DMrr6xA@mail.gmail.com>
+
+So I grabbed the P4R shell from ngsdn-tutorial, and I've got progress.
+However, I can't connect to the grpc server on the switch. In particular,
+when I fire-up the switch in the container, I see the following:
+"""
+E20210322 21:51:44.785127   762 hal.cc:221] Stratum external facing
+services are listening to 0.0.0.0:28000, 0.0.0.0:9339, 0.0.0.0:9559,
+localhost:28000...
+"""
+
+I then attempt to connect to from my host system and get the following
+error:
+
+"""
+CRITICAL:root:Failed to establish session with server
+CRITICAL:root:StreamChannel error, closing stream
+CRITICAL:root:P4Runtime RPC error (UNAVAILABLE): failed to connect to all
+addresses
+"""
+
+which makes a bit of sense since I can't see any of the stratum external
+ports from my host (i.e. for example "netstat -an | grep 9339" has no
+results). Thoughts?
+
+Thanks!
+-Syd
+
+On Mon, Mar 22, 2021 at 5:05 PM Maximilian Pudelko <max at opennetworking.org>
+wrote:
+
+> > Is my workflow for starting the bmv2 switch and
+> generating pipeline_cfg.pb.txt correct?
+> looks ok to me. You might still want to set the
+> --forwarding_pipeline_configs_file to somewhere
+> writable by Stratum.
+>
+> > Should I hop onto the container and run the install? Or is there an
+> easier way around this issue?
+> The update_config.py scripts are pretty old, unmaintained and broken as
+> you just found out. I'd recommend
+> using the P4Runtime-shell instead.
+>
+> > If "c" was correct, then "pipeline_cfg.pb.txt" would automatically be
+> generated and inserted in the switch. Would I also have to perform c) for
+> all switches?
+> Yes, each switch needs to have a pipeline.
+>
+> Max
+>
+> On Mon, Mar 22, 2021 at 12:58 PM A Sydney <asydney007 at gmail.com> wrote:
+>
+>> I'm still having a few issues:
+>>
+>> 1. Please take note of the following:
+>>  a) On my host, I've created ~/stratum/bmv2_config (i.e. in the top level
+>> stratum directory) where I've added bmv2.json and p4info.txt for
+>> loopback.p4. I've also added config.txt which contains the ports I would
+>> like stratum to use.
+>>  b) In the stratum container (/stratum), I run the following:
+>> stratum> sudo ./bazel-bin/stratum/hal/bin/bmv2/stratum_bmv2 \
+>>     --persistent_config_dir=/stratum/bmv2_config \
+>>     --chassis_config_file=/stratum/bmv2_config/config.txt  \
+>>     --bmv2_log_level=debug
+>>
+>> And see the following expected error (i.e. "expected", since we will
+>> generate this file subsequently):
+>> """
+>> /var/run/stratum/pipeline_cfg.pb.txt not found..
+>> """
+>> c) Now back on my host system, I do the following:
+>> '"""
+>> host> cp stratum/hal/bin/bmv2/update_config.py /tmp/ && \
+>> docker run -v /tmp:/tmp -w /tmp p4lang/pi ./update_config.py \
+>> --grpc-addr 52.117.10.174:9559 --json bmv2_config/bmv2.json --p4info
+>> bmv2_config/p4info.txt
+>> """
+>> And get the following error:
+>>
+>> """
+>> Traceback (most recent call last):
+>>   File "./update_config.py", line 10, in <module>
+>>     from p4.v1 import p4runtime_pb2
+>> ImportError: No module named p4.v1
+>> """
+>> I Googled this error and looks like folks have come across this (
+>> https://github.com/p4lang/tutorials/issues/178) and it appears that
+>> perhaps P4Runtime is not installed properly?
+>>
+>> Questions:
+>> * Is my workflow for starting the bmv2 switch and
+>> generating pipeline_cfg.pb.txt correct?
+>> * Should I hop onto the container and run the install? Or is there an
+>> easier way around this issue?
+>> * If "c" was correct, then "pipeline_cfg.pb.txt" would automatically be
+>> generated and inserted in the switch. Would I also have to perform c) for
+>> all switches?
+>>
+>> Thanks,
+>> -Syd
+>>
+>> On Thu, Mar 18, 2021 at 10:12 PM Maximilian Pudelko <
+>> max at opennetworking.org> wrote:
+>>
+>>> Hi Syd,
+>>>
+>>> > 1. Where can I find "p4_pipeline.pb.txt" to run the binary?
+>>> That file is the place where Stratum will store a pushed pipeline. It
+>>> can only be set via the P4Runtime SetForwardingPipelineConfig RPC call.
+>>> The Running the stratum_bmv2 binary section
+>>> <https://github.com/stratum/stratum/blob/main/stratum/hal/bin/bmv2/README.md#running-the-stratum_bmv2-binary>
+>>> of the README gives an example:
+>>>
+>>> # run P4Runtime client
+>>> cp stratum/hal/bin/bmv2/update_config.py /tmp/ && \
+>>> [sudo] docker run -v /tmp:/tmp -w /tmp p4lang/pi ./update_config.py \
+>>>     --grpc-addr <YOUR_HOST_IP_ADDRESS>:9559 --json <prog>.json --p4info <prog>.proto.txt
+>>> You could also use the p4runtime-shell <https://github.com/p4lang/p4runtime-shell>.
+>>>
+>>> > 2 .
+>>> Yes, the bmv2 binary should bind to all interfaces given in the chassis_config.pb.txt.
+>>> With some wiring it should be possible to build a web of software switches.
+>>> But instead of building Stratum many times, check if the Debian package might not be more convenient:
+>>> https://github.com/stratum/stratum/blob/main/stratum/hal/bin/bmv2/BUILD#L81-L98
+>>>
+>>> There is also a Stratum-enabled Mininet version, which takes care of a
+>>> lot of these setup tasks. The
+>>> NGSDN tutorial you linked uses it, too.
+>>>
+>>>
+>>> Best,
+>>> Max
+>>>
+>>>
+>>> On Thu, Mar 18, 2021 at 10:10 AM A Sydney via stratum-dev <
+>>> stratum-dev at lists.stratumproject.org> wrote:
+>>>
+>>>> Hi Stratum folks,
+>>>>                           I'm attempting to use the stratum standalone
+>>>> instance (
+>>>> https://github.com/stratum/stratum/blob/main/stratum/hal/bin/bmv2/README.md)
+>>>> to setup a topology on a baremetal server. Can you kindly provide feedback
+>>>> to the following:
+>>>>
+>>>> 1. Where can I find "p4_pipeline.pb.txt" to run the binary? In
+>>>> particular, as a simple test, I'm attempting to use the main.p4 file
+>>>> shipped with the ngsdn-tutorial (
+>>>> https://github.com/opennetworkinglab/ngsdn-tutorial). On the tutorial
+>>>> VM, generated the corresponding bmv2.json and p4info.txt (i.e. using make
+>>>> p4-build). Was there some other "p4_pipeline.pb.txt" file generated that I
+>>>> can use on the bare metal setup? Or perhaps, I have to run bmv2.json
+>>>> through some postprocess to get "p4_pipeline.pb.txt"?
+>>>>
+>>>> 2. Assuming I've got a running binary with all the arguments sorted,
+>>>> how can I go about creating a topology of switches? Can I simply create
+>>>> containers/VMs (i.e. with an linux OS), clone the stratum repo on each
+>>>> device, add container/VM interfaces in "chassis_config.pb.txt", and run the
+>>>> bmv2 executable from each device?
+>>>>
+>>>> Thanks!
+>>>> -Syd
+>>>> _______________________________________________
+>>>> stratum-dev mailing list
+>>>> stratum-dev at lists.stratumproject.org
+>>>> https://lists.stratumproject.org/listinfo/stratum-dev
+>>>
+>>>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20210324/1b145a76/attachment.html>
+
+From asydney007 at gmail.com  Thu Mar 25 16:07:53 2021
+From: asydney007 at gmail.com (A Sydney)
+Date: Thu, 25 Mar 2021 12:07:53 -0400
+Subject: [stratum-dev] Question about building stratum standalone
+In-Reply-To: <010101786576f15c-3984f626-f36d-4020-8179-ea0d5636d1da-000000@us-west-2.amazonses.com>
+References: <0101017846510186-df698baa-9c59-436a-adf3-9be3ab4749c8-000000@us-west-2.amazonses.com>
+ <CAFh9Y_PyygrZfytwOd-OO+ExFz5aOdWyXAgGTnuqJ6cef28G=g@mail.gmail.com>
+ <CAM-ym_dPVgc3RRmXuZE0kaEOO19bGUpL=QR+syi+mj-s2_DxRA@mail.gmail.com>
+ <CAFh9Y_MxE0DgtXW1kW_n5SscuxL7wYtQZKab=A_VhOnrWveLkQ@mail.gmail.com>
+ <010101786576f15c-3984f626-f36d-4020-8179-ea0d5636d1da-000000@us-west-2.amazonses.com>
+Message-ID: <CAM-ym_djTf5abKjcH0SSZpVQ4gc8sze4VKcoYOquUBtbbvb+Sg@mail.gmail.com>
+
+Update:
+Summary: I used the "-p" argument for "docker run" to connect a host port
+to that of a port on the container, and everything works so far.  Below are
+a few details for other folks who may have this same issue:
+
+* As a quick test, I updated the last line of ~/stratum/setup_dev_env.sh as
+follows to use port 50001 of the host and docker container:
+host> vim setup_dev_env.sh
+...
+docker run $DOCKER_RUN_OPTIONS  -p 0.0.0.0:50001:50001/tcp
+--cap-add=NET_ADMIN -w /stratum --user $USER -ti $IMAGE_NAME bash
+
+* After setting up the container, I run the switch as follows:
+
+stratum> ./bazel-bin/stratum/hal/bin/bmv2/stratum_bmv2 \
+    --persistent_config_dir=/stratum/bmv2_config \
+
+--forwarding_pipeline_configs_file=/stratum/bmv2_config/p4_pipeline_leaf1.pb.txt
+\
+    --chassis_config_file=/stratum/bmv2_config/config.txt \
+    --external_stratum_urls="0.0.0.0:50001" \
+    --bmv2_log_level=debug
+
+* From my host, I can now see port 50001 available (i.e. using "netstat -an
+| grep 50001"). I can also connect to the switch as follows:
+host> cd ~/ngsdn-tutorial
+host> util/p4rt-sh  --grpc-addr 0.0.0.0:50001 --config
+../stratum/bmv2_config/p4info.txt,../stratum/bmv2_config/bmv2.json
+--election-id 0,1
+
+Note: I'm running P4Runtime from the ngsdn-tutorial repo.
+
+PS. If there is some other elegant way of doing this, please provide
+feedback.
+
+Cheers!
+-Syd
+
+On Wed, Mar 24, 2021 at 2:19 PM A Sydney via stratum-dev <
+stratum-dev at lists.stratumproject.org> wrote:
+
+> So I grabbed the P4R shell from ngsdn-tutorial, and I've got progress.
+> However, I can't connect to the grpc server on the switch. In particular,
+> when I fire-up the switch in the container, I see the following:
+> """
+> E20210322 21:51:44.785127   762 hal.cc:221] Stratum external facing
+> services are listening to 0.0.0.0:28000, 0.0.0.0:9339, 0.0.0.0:9559,
+> localhost:28000...
+> """
+>
+> I then attempt to connect to from my host system and get the following
+> error:
+>
+> """
+> CRITICAL:root:Failed to establish session with server
+> CRITICAL:root:StreamChannel error, closing stream
+> CRITICAL:root:P4Runtime RPC error (UNAVAILABLE): failed to connect to all
+> addresses
+> """
+>
+> which makes a bit of sense since I can't see any of the stratum external
+> ports from my host (i.e. for example "netstat -an | grep 9339" has no
+> results). Thoughts?
+>
+> Thanks!
+> -Syd
+>
+> On Mon, Mar 22, 2021 at 5:05 PM Maximilian Pudelko <max at opennetworking.org>
+> wrote:
+>
+>> > Is my workflow for starting the bmv2 switch and
+>> generating pipeline_cfg.pb.txt correct?
+>> looks ok to me. You might still want to set the
+>> --forwarding_pipeline_configs_file to somewhere
+>> writable by Stratum.
+>>
+>> > Should I hop onto the container and run the install? Or is there an
+>> easier way around this issue?
+>> The update_config.py scripts are pretty old, unmaintained and broken as
+>> you just found out. I'd recommend
+>> using the P4Runtime-shell instead.
+>>
+>> > If "c" was correct, then "pipeline_cfg.pb.txt" would automatically be
+>> generated and inserted in the switch. Would I also have to perform c) for
+>> all switches?
+>> Yes, each switch needs to have a pipeline.
+>>
+>> Max
+>>
+>> On Mon, Mar 22, 2021 at 12:58 PM A Sydney <asydney007 at gmail.com> wrote:
+>>
+>>> I'm still having a few issues:
+>>>
+>>> 1. Please take note of the following:
+>>>  a) On my host, I've created ~/stratum/bmv2_config (i.e. in the top
+>>> level stratum directory) where I've added bmv2.json and p4info.txt for
+>>> loopback.p4. I've also added config.txt which contains the ports I would
+>>> like stratum to use.
+>>>  b) In the stratum container (/stratum), I run the following:
+>>> stratum> sudo ./bazel-bin/stratum/hal/bin/bmv2/stratum_bmv2 \
+>>>     --persistent_config_dir=/stratum/bmv2_config \
+>>>     --chassis_config_file=/stratum/bmv2_config/config.txt  \
+>>>     --bmv2_log_level=debug
+>>>
+>>> And see the following expected error (i.e. "expected", since we will
+>>> generate this file subsequently):
+>>> """
+>>> /var/run/stratum/pipeline_cfg.pb.txt not found..
+>>> """
+>>> c) Now back on my host system, I do the following:
+>>> '"""
+>>> host> cp stratum/hal/bin/bmv2/update_config.py /tmp/ && \
+>>> docker run -v /tmp:/tmp -w /tmp p4lang/pi ./update_config.py \
+>>> --grpc-addr 52.117.10.174:9559 --json bmv2_config/bmv2.json --p4info
+>>> bmv2_config/p4info.txt
+>>> """
+>>> And get the following error:
+>>>
+>>> """
+>>> Traceback (most recent call last):
+>>>   File "./update_config.py", line 10, in <module>
+>>>     from p4.v1 import p4runtime_pb2
+>>> ImportError: No module named p4.v1
+>>> """
+>>> I Googled this error and looks like folks have come across this (
+>>> https://github.com/p4lang/tutorials/issues/178) and it appears that
+>>> perhaps P4Runtime is not installed properly?
+>>>
+>>> Questions:
+>>> * Is my workflow for starting the bmv2 switch and
+>>> generating pipeline_cfg.pb.txt correct?
+>>> * Should I hop onto the container and run the install? Or is there an
+>>> easier way around this issue?
+>>> * If "c" was correct, then "pipeline_cfg.pb.txt" would automatically be
+>>> generated and inserted in the switch. Would I also have to perform c) for
+>>> all switches?
+>>>
+>>> Thanks,
+>>> -Syd
+>>>
+>>> On Thu, Mar 18, 2021 at 10:12 PM Maximilian Pudelko <
+>>> max at opennetworking.org> wrote:
+>>>
+>>>> Hi Syd,
+>>>>
+>>>> > 1. Where can I find "p4_pipeline.pb.txt" to run the binary?
+>>>> That file is the place where Stratum will store a pushed pipeline. It
+>>>> can only be set via the P4Runtime SetForwardingPipelineConfig RPC call.
+>>>> The Running the stratum_bmv2 binary section
+>>>> <https://github.com/stratum/stratum/blob/main/stratum/hal/bin/bmv2/README.md#running-the-stratum_bmv2-binary>
+>>>> of the README gives an example:
+>>>>
+>>>> # run P4Runtime client
+>>>> cp stratum/hal/bin/bmv2/update_config.py /tmp/ && \
+>>>> [sudo] docker run -v /tmp:/tmp -w /tmp p4lang/pi ./update_config.py \
+>>>>     --grpc-addr <YOUR_HOST_IP_ADDRESS>:9559 --json <prog>.json --p4info <prog>.proto.txt
+>>>> You could also use the p4runtime-shell <https://github.com/p4lang/p4runtime-shell>.
+>>>>
+>>>> > 2 .
+>>>> Yes, the bmv2 binary should bind to all interfaces given in the chassis_config.pb.txt.
+>>>> With some wiring it should be possible to build a web of software switches.
+>>>> But instead of building Stratum many times, check if the Debian package might not be more convenient:
+>>>> https://github.com/stratum/stratum/blob/main/stratum/hal/bin/bmv2/BUILD#L81-L98
+>>>>
+>>>> There is also a Stratum-enabled Mininet version, which takes care of a
+>>>> lot of these setup tasks. The
+>>>> NGSDN tutorial you linked uses it, too.
+>>>>
+>>>>
+>>>> Best,
+>>>> Max
+>>>>
+>>>>
+>>>> On Thu, Mar 18, 2021 at 10:10 AM A Sydney via stratum-dev <
+>>>> stratum-dev at lists.stratumproject.org> wrote:
+>>>>
+>>>>> Hi Stratum folks,
+>>>>>                           I'm attempting to use the stratum standalone
+>>>>> instance (
+>>>>> https://github.com/stratum/stratum/blob/main/stratum/hal/bin/bmv2/README.md)
+>>>>> to setup a topology on a baremetal server. Can you kindly provide feedback
+>>>>> to the following:
+>>>>>
+>>>>> 1. Where can I find "p4_pipeline.pb.txt" to run the binary? In
+>>>>> particular, as a simple test, I'm attempting to use the main.p4 file
+>>>>> shipped with the ngsdn-tutorial (
+>>>>> https://github.com/opennetworkinglab/ngsdn-tutorial). On the tutorial
+>>>>> VM, generated the corresponding bmv2.json and p4info.txt (i.e. using make
+>>>>> p4-build). Was there some other "p4_pipeline.pb.txt" file generated that I
+>>>>> can use on the bare metal setup? Or perhaps, I have to run bmv2.json
+>>>>> through some postprocess to get "p4_pipeline.pb.txt"?
+>>>>>
+>>>>> 2. Assuming I've got a running binary with all the arguments sorted,
+>>>>> how can I go about creating a topology of switches? Can I simply create
+>>>>> containers/VMs (i.e. with an linux OS), clone the stratum repo on each
+>>>>> device, add container/VM interfaces in "chassis_config.pb.txt", and run the
+>>>>> bmv2 executable from each device?
+>>>>>
+>>>>> Thanks!
+>>>>> -Syd
+>>>>> _______________________________________________
+>>>>> stratum-dev mailing list
+>>>>> stratum-dev at lists.stratumproject.org
+>>>>> https://lists.stratumproject.org/listinfo/stratum-dev
+>>>>
+>>>> _______________________________________________
+> stratum-dev mailing list
+> stratum-dev at lists.stratumproject.org
+> https://lists.stratumproject.org/listinfo/stratum-dev
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20210325/77db77e9/attachment.html>
+
+From asydney007 at gmail.com  Thu Mar 25 19:06:39 2021
+From: asydney007 at gmail.com (A Sydney)
+Date: Thu, 25 Mar 2021 15:06:39 -0400
+Subject: [stratum-dev] Question about building stratum standalone
+In-Reply-To: <CAFh9Y_PyygrZfytwOd-OO+ExFz5aOdWyXAgGTnuqJ6cef28G=g@mail.gmail.com>
+References: <0101017846510186-df698baa-9c59-436a-adf3-9be3ab4749c8-000000@us-west-2.amazonses.com>
+ <CAFh9Y_PyygrZfytwOd-OO+ExFz5aOdWyXAgGTnuqJ6cef28G=g@mail.gmail.com>
+Message-ID: <CAM-ym_efgnQE39ocxG_D3xYXE9_nGv1aRUmZrGR5dVrRKAeq6g@mail.gmail.com>
+
+>
+> But instead of building Stratum many times, check if the Debian package might not be more convenient:
+> https://github.com/stratum/stratum/blob/main/stratum/hal/bin/bmv2/BUILD#L81-L98
+>
+>
+I didn't quite get this one. Where can I get the associated *.deb package
+for the install?
+
+Thanks,
+-Syd
+
+>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20210325/5d013efd/attachment.html>
+
+From max at opennetworking.org  Thu Mar 25 20:17:05 2021
+From: max at opennetworking.org (Maximilian Pudelko)
+Date: Thu, 25 Mar 2021 13:17:05 -0700
+Subject: [stratum-dev] Question about building stratum standalone
+In-Reply-To: <CAM-ym_efgnQE39ocxG_D3xYXE9_nGv1aRUmZrGR5dVrRKAeq6g@mail.gmail.com>
+References: <0101017846510186-df698baa-9c59-436a-adf3-9be3ab4749c8-000000@us-west-2.amazonses.com>
+ <CAFh9Y_PyygrZfytwOd-OO+ExFz5aOdWyXAgGTnuqJ6cef28G=g@mail.gmail.com>
+ <CAM-ym_efgnQE39ocxG_D3xYXE9_nGv1aRUmZrGR5dVrRKAeq6g@mail.gmail.com>
+Message-ID: <CAFh9Y_MyN7x3g4zjfYTox4CcmtD3ND-==v_sHdbzwT8nvPQ6Dg@mail.gmail.com>
+
+Hi Syd,
+
+As you have found out, the P4Runtime/gNMI ports have to be exposed from
+inside the container
+to be reachable from outside.
+We have a start-stratum-container.sh script that takes care of that, or you
+map them manually with -p,
+like you did.
+
+> I didn't quite get this one. Where can I get the associated *.deb package
+for the install?
+
+What I linked is the Bazel target that *builds* the .deb package. Build it
+with
+`bazel build --stamp //stratum/hal/bin/bmv2:stratum_bmv2_debian`.
+The resulting file will be under
+`bazel-bin/stratum/hal/bin/bmv2/stratum_bmv2_debian.deb`
+and can be installed on most Ubuntu and Debian systems:
+`apt-get install --reinstall ./stratum_bmv2_debian.deb`
+
+
+Best,
+Max
+
+
+On Thu, Mar 25, 2021 at 12:06 PM A Sydney <asydney007 at gmail.com> wrote:
+
+> But instead of building Stratum many times, check if the Debian package might not be more convenient:
+>> https://github.com/stratum/stratum/blob/main/stratum/hal/bin/bmv2/BUILD#L81-L98
+>>
+>>
+> I didn't quite get this one. Where can I get the associated *.deb package
+> for the install?
+>
+> Thanks,
+> -Syd
+>
+>>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20210325/2025219c/attachment-0001.html>
+
+From asydney007 at gmail.com  Fri Mar 26 01:48:43 2021
+From: asydney007 at gmail.com (A Sydney)
+Date: Thu, 25 Mar 2021 21:48:43 -0400
+Subject: [stratum-dev] Question about building stratum standalone
+In-Reply-To: <CAFh9Y_MyN7x3g4zjfYTox4CcmtD3ND-==v_sHdbzwT8nvPQ6Dg@mail.gmail.com>
+References: <0101017846510186-df698baa-9c59-436a-adf3-9be3ab4749c8-000000@us-west-2.amazonses.com>
+ <CAFh9Y_PyygrZfytwOd-OO+ExFz5aOdWyXAgGTnuqJ6cef28G=g@mail.gmail.com>
+ <CAM-ym_efgnQE39ocxG_D3xYXE9_nGv1aRUmZrGR5dVrRKAeq6g@mail.gmail.com>
+ <CAFh9Y_MyN7x3g4zjfYTox4CcmtD3ND-==v_sHdbzwT8nvPQ6Dg@mail.gmail.com>
+Message-ID: <CAM-ym_exfRah=+T85sM1TrSKJscvcYLoL-z4uX-Za82keX6TeQ@mail.gmail.com>
+
+Ah great! I was able to build the package, yay! But I'm having a few
+dependency issues:
+
+On the vm which hosts the stratum switch, I'm running Debian 10.
+Unfortunately, I could not find "libboost1.55-all-dev.
+However, libboost1.67-all-dev did exist, so I attempted to install this
+version but no success. It appears that "libboost1.55-all-dev" is a hard
+requirement?
+
+"""
+sudo apt-get install --reinstall ./stratum_bmv2_debian.deb
+...
+Note, selecting 'stratum_bmv2' instead of './stratum_bmv2_debian.deb'
+...
+stratum_bmv2 : Depends: libboost1.55-all-dev but it is not installable
+...
+"""
+
+Any suggestions on how to work around this one? If this version is truly a
+hard requirement, what linux distributions would you suggest (e.g. what
+distributions have you tried the install)?
+
+Thanks,
+-Syd
+
+On Thu, Mar 25, 2021 at 4:17 PM Maximilian Pudelko <max at opennetworking.org>
+wrote:
+
+> Hi Syd,
+>
+> As you have found out, the P4Runtime/gNMI ports have to be exposed from
+> inside the container
+> to be reachable from outside.
+> We have a start-stratum-container.sh script that takes care of that, or
+> you map them manually with -p,
+> like you did.
+>
+> > I didn't quite get this one. Where can I get the associated *.deb
+> package for the install?
+>
+> What I linked is the Bazel target that *builds* the .deb package. Build
+> it with
+> `bazel build --stamp //stratum/hal/bin/bmv2:stratum_bmv2_debian`.
+> The resulting file will be under
+> `bazel-bin/stratum/hal/bin/bmv2/stratum_bmv2_debian.deb`
+> and can be installed on most Ubuntu and Debian systems:
+> `apt-get install --reinstall ./stratum_bmv2_debian.deb`
+>
+>
+> Best,
+> Max
+>
+>
+> On Thu, Mar 25, 2021 at 12:06 PM A Sydney <asydney007 at gmail.com> wrote:
+>
+>> But instead of building Stratum many times, check if the Debian package might not be more convenient:
+>>> https://github.com/stratum/stratum/blob/main/stratum/hal/bin/bmv2/BUILD#L81-L98
+>>>
+>>>
+>> I didn't quite get this one. Where can I get the associated *.deb package
+>> for the install?
+>>
+>> Thanks,
+>> -Syd
+>>
+>>>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20210325/5d9ccf0d/attachment.html>
+
+From max at opennetworking.org  Fri Mar 26 18:33:55 2021
+From: max at opennetworking.org (Maximilian Pudelko)
+Date: Fri, 26 Mar 2021 11:33:55 -0700
+Subject: [stratum-dev] Question about building stratum standalone
+In-Reply-To: <CAM-ym_exfRah=+T85sM1TrSKJscvcYLoL-z4uX-Za82keX6TeQ@mail.gmail.com>
+References: <0101017846510186-df698baa-9c59-436a-adf3-9be3ab4749c8-000000@us-west-2.amazonses.com>
+ <CAFh9Y_PyygrZfytwOd-OO+ExFz5aOdWyXAgGTnuqJ6cef28G=g@mail.gmail.com>
+ <CAM-ym_efgnQE39ocxG_D3xYXE9_nGv1aRUmZrGR5dVrRKAeq6g@mail.gmail.com>
+ <CAFh9Y_MyN7x3g4zjfYTox4CcmtD3ND-==v_sHdbzwT8nvPQ6Dg@mail.gmail.com>
+ <CAM-ym_exfRah=+T85sM1TrSKJscvcYLoL-z4uX-Za82keX6TeQ@mail.gmail.com>
+Message-ID: <CAFh9Y_MVYDJucTy=ZKSwAm5X=oJ8MTmwyEvPMHvVWkQNP0DQGg@mail.gmail.com>
+
+We're using Debian 9 in many parts of the stack. You could either use that
+or
+replace the dependency with `libboost1.67-all-dev`in the Bazel build rule.
+
+
+Max
+
+On Thu, Mar 25, 2021 at 6:48 PM A Sydney <asydney007 at gmail.com> wrote:
+
+> Ah great! I was able to build the package, yay! But I'm having a few
+> dependency issues:
+>
+> On the vm which hosts the stratum switch, I'm running Debian 10.
+> Unfortunately, I could not find "libboost1.55-all-dev.
+> However, libboost1.67-all-dev did exist, so I attempted to install this
+> version but no success. It appears that "libboost1.55-all-dev" is a hard
+> requirement?
+>
+> """
+> sudo apt-get install --reinstall ./stratum_bmv2_debian.deb
+> ...
+> Note, selecting 'stratum_bmv2' instead of './stratum_bmv2_debian.deb'
+> ...
+> stratum_bmv2 : Depends: libboost1.55-all-dev but it is not installable
+> ...
+> """
+>
+> Any suggestions on how to work around this one? If this version is truly a
+> hard requirement, what linux distributions would you suggest (e.g. what
+> distributions have you tried the install)?
+>
+> Thanks,
+> -Syd
+>
+> On Thu, Mar 25, 2021 at 4:17 PM Maximilian Pudelko <max at opennetworking.org>
+> wrote:
+>
+>> Hi Syd,
+>>
+>> As you have found out, the P4Runtime/gNMI ports have to be exposed from
+>> inside the container
+>> to be reachable from outside.
+>> We have a start-stratum-container.sh script that takes care of that, or
+>> you map them manually with -p,
+>> like you did.
+>>
+>> > I didn't quite get this one. Where can I get the associated *.deb
+>> package for the install?
+>>
+>> What I linked is the Bazel target that *builds* the .deb package. Build
+>> it with
+>> `bazel build --stamp //stratum/hal/bin/bmv2:stratum_bmv2_debian`.
+>> The resulting file will be under
+>> `bazel-bin/stratum/hal/bin/bmv2/stratum_bmv2_debian.deb`
+>> and can be installed on most Ubuntu and Debian systems:
+>> `apt-get install --reinstall ./stratum_bmv2_debian.deb`
+>>
+>>
+>> Best,
+>> Max
+>>
+>>
+>> On Thu, Mar 25, 2021 at 12:06 PM A Sydney <asydney007 at gmail.com> wrote:
+>>
+>>> But instead of building Stratum many times, check if the Debian package might not be more convenient:
+>>>> https://github.com/stratum/stratum/blob/main/stratum/hal/bin/bmv2/BUILD#L81-L98
+>>>>
+>>>>
+>>> I didn't quite get this one. Where can I get the associated *.deb
+>>> package for the install?
+>>>
+>>> Thanks,
+>>> -Syd
+>>>
+>>>>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20210326/da64991c/attachment.html>
+
+From fabio at land.ufrj.br  Thu Mar 18 19:25:52 2021
+From: fabio at land.ufrj.br (Fabio David)
+Date: Thu, 18 Mar 2021 16:25:52 -0300
+Subject: [stratum-dev] Help with Stratum Cassini Scenario
+Message-ID: <CAEnXUd5KNm5+Est0OALC-M5AQE3O19cL8Y0W6a+BMVwLSn0UqA@mail.gmail.com>
+
+Hi,
+
+My name is Fabio David, and I am a PhD student at UFRJ (Federal University
+of Rio de Janeiro). Marcos Schwarz, copied in this email, is R&D manager at
+RNP (Brazilian Research and Education Network).
+
+We are currently building a Stratum lab with P4 Stordis switches
+(BF2556X-1T-A1F) and Edgecore Casssini transponders, using ONOS
+(Trellis/ODTN) as control plane, inspired by the DCI scenario presented at
+ONF Connect 2019 (
+https://onfconnect2019.sched.com/event/RwPf/stratums-new-capabilities-optical-transport-support-for-cassini-chassis
+)
+
+Unfortunately, we did not find any specific documentation on how to compile
+and run Stratum pipelines for Cassini, as well as configuration examples.
+Could you please provide us with links to this information?
+
+At this moment, we are trying to replicate the code obtained at
+https://github.com/Yi-Tseng/onos-ocp-demo, which we believe contains the
+pipeline specific for Broadcom Cassini. We added Tofino pipeline available
+at https://github.com/opencord/fabric-tofino for the Stordis switches.
+
+Currently, our tests are failing to install the MPLS rules in the Cassini.
+Also, we couldn't find out how to configure optical connectivity via
+Stratum APIs.
+
+We managed to replicate these rules errors with main.p4 pipeline using BMV2
+in Stratum Mininet.
+
+We believe that there should be some additional configuration used in the
+demo scenario.
+
+Could you please help us?
+
+Thanks in advance,
+Fabio David
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.stratumproject.org/archives/stratum-dev/attachments/20210318/823e504e/attachment.html>
+

@@ -1,0 +1,1206 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [stratum-dev] Stratum on Cassini Edgecore AS7716-24SC
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Stratum%20on%20Cassini%20Edgecore%20AS7716-24SC&In-Reply-To=%3Cadaa256f-ff8d-1cd4-af4e-4a79eec63207%40cttc.es%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <LINK REL="Previous"  HREF="000257.html">
+   <LINK REL="Next"  HREF="000259.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[stratum-dev] Stratum on Cassini Edgecore AS7716-24SC</H1>
+    <B>Andy Nazario Quispe</B> 
+    <A HREF="mailto:stratum-dev%40lists.stratumproject.org?Subject=Re%3A%20%5Bstratum-dev%5D%20Stratum%20on%20Cassini%20Edgecore%20AS7716-24SC&In-Reply-To=%3Cadaa256f-ff8d-1cd4-af4e-4a79eec63207%40cttc.es%3E"
+       TITLE="[stratum-dev] Stratum on Cassini Edgecore AS7716-24SC">aquispe at cttc.es
+       </A><BR>
+    <I>Tue Nov  9 09:34:00 UTC 2021</I>
+    <P><UL>
+        <LI>Previous message (by thread): <A HREF="000257.html">[stratum-dev] Canceled event with note: Stratum TST Meeting @ Thu Nov 11, 2021 1:30pm - 2pm (PST) (stratum-dev at lists.stratumproject.org)
+</A></li>
+        <LI>Next message (by thread): <A HREF="000259.html">[stratum-dev] Problems regarding the installation of stratum &amp; SDE 9.4.0 on Tofino switch
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#258">[ date ]</a>
+              <a href="thread.html#258">[ thread ]</a>
+              <a href="subject.html#258">[ subject ]</a>
+              <a href="author.html#258">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Helo team,
+
+Ive just installed stratum from the edgecore customer page as suggested, 
+i just want to know if the log that im having is expected, because i 
+have a transceiver connected o the switch but is not comming up. Since i 
+am able to interact with the stratum command line maybe its necessary to 
+activate it somehow.
+
+also i can see some stratum services
+
+stratum_b 30547        root    7u  IPv6 547185      0t0  TCP 
+localhost:28003 (LISTEN)
+stratum_b 30547        root   18u  IPv6 560340      0t0  TCP 
+localhost:28000 (LISTEN)
+stratum_b 30547        root   19u  IPv6 560341      0t0  TCP *:28000 
+(LISTEN)
+stratum_b 30547        root   20u  IPv6 560342      0t0  TCP *:9339 (LISTEN)
+stratum_b 30547        root   21u  IPv6 560343      0t0  TCP *:9559 (LISTEN)
+
+
+start-stratum.shstratum_bcm_sdk6
+
+---------------------------------------
+
+<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">root at localhost</A>:/usr/bin# ./start-stratum.sh
+
++ rmmod linux_ngknet
+
+rmmod: ERROR: Module linux_ngknet is not currently loaded
+
++ true
+
++ rmmod linux_ngbde
+
+rmmod: ERROR: Module linux_ngbde is not currently loaded
+
++ true
+
++ rmmod linux_bcm_knet
+
+rmmod: ERROR: Module linux_bcm_knet is not currently loaded
+
++ true
+
++ rmmod linux_user_bde
+
+rmmod: ERROR: Module linux_user_bde is not currently loaded
+
++ true
+
++ rmmod linux_kernel_bde
+
+rmmod: ERROR: Module linux_kernel_bde is not currently loaded
+
++ true
+
++ pushd /usr/lib/stratum/
+
+/usr/lib/stratum /usr/bin
+
++ insmod linux-kernel-bde.ko
+
++ insmod linux-user-bde.ko
+
++ insmod linux-bcm-knet.ko default_mtu=3000
+
++ popd
+
+/usr/bin
+
++ mknod /dev/linux-bcm-knet c 122 0
+
++ mknod /dev/linux-bcm-net c 123 0
+
++ mknod /dev/linux-bcm-diag c 124 0
+
++ ln -sf /dev/linux-bcm-diag /dev/linux-bcm-diag-full
+
++ mknod /dev/linux-uk-proxy c 125 0
+
++ mknod /dev/linux-bcm-core c 126 0
+
++ mknod /dev/linux-kernel-bde c 127 0
+
++ ln -sf /dev/linux-bcm-core /dev/linux-user-bde
+
++ sleep 1
+
++ mkdir -p /var/run/stratum /var/log/stratum
+
+++ cat /etc/onl/platform
+
++ PLATFORM=x86-64-accton-as7716-24sc-r0
+
++ exec stratum_bcm_sdk6 
+-base_bcm_chassis_map_file=/etc/stratum/x86-64-accton-as7716-24sc-r0/base_bcm_chassis_map.pb.txt 
+-chassis_config_file=/etc/stratum/x86-64-accton-as7716-24sc-r0/chassis_config.pb.txt 
+-bcm_sdk_config_file=/etc/stratum/x86-64-accton-as7716-24sc-r0/config.bcm 
+-phal_config_file=/etc/stratum/x86-64-accton-as7716-24sc-r0/phal_config.pb.txt 
+-bcm_sdk_checkpoint_dir=/tmp/bcm_chkpt -log_dir=/var/log/stratum -v=0
+
+I20211108 10:04:59.012786 12329 main.cc:75] Starting Stratum in 
+STANDALONE mode for a Broadcom-based switch...
+
+W20211108 10:04:59.012897 12329 credentials_manager.cc:45] Using 
+insecure server credentials
+
+I20211108 10:04:59.013089 12329 hal.cc:122] HAL sanity checks all passed.
+
+I20211108 10:04:59.013103 12329 hal.cc:128] Setting up HAL in COLDBOOT 
+mode...
+
+I20211108 10:04:59.013156 12329 config_monitoring_service.cc:94] Pushing 
+the saved chassis config read from 
+/etc/stratum/x86-64-accton-as7716-24sc-r0/chassis_config.pb.txt...
+
+I20211108 10:04:59.018501 12329 bcm_switch.cc:548] Chassis config 
+verified successfully.
+
+I20211108 10:04:59.019773 12329 onlp_wrapper.cc:99] Initializing ONLP.
+
+I20211108 10:05:00.619822 12329 attribute_database.cc:213] PhalDB 
+service is listening to localhost:28003...
+
+I20211108 10:05:00.625010 12329 bcm_chassis_manager.cc:1082] Portmap:
+
+Panel, logical (PORT_ID), physical (PC_PHYS_PORT_ID)
+
+1,68,65
+
+2,72,69
+
+3,76,73
+
+4,80,77
+
+5,96,93
+
+6, 106, 101
+
+7, 110, 105
+
+8, 114, 109
+
+9, 118, 113
+
+10, 122, 117
+
+11, 126, 121
+
+12, 130, 125
+
+13,84,81
+
+14,88,85
+
+15,92,89
+
+16, 102,97
+
+17,38,37
+
+18,34,33
+
+19,46,45
+
+20,42,41
+
+21,54,53
+
+22,50,49
+
+23,62,61
+
+24,58,57
+
+25,5,5
+
+26,1,1
+
+27,13,13
+
+28,9,9
+
+29,21,21
+
+30,17,17
+
+31,25,25
+
+32,29,29
+
+Broadcom Command Monitor: Copyright (c) 1998-2020 Broadcom
+
+Release: sdk-6.5.17 built 20200212 (Wed Feb 12 11:25:25 2020)
+
+&gt;<i>From <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">onlbuilder at buildsrv</A>:/home/onlbuilder/bcm6/sdk-all-6.5.17
+</I>
+Platform: X86
+
+OS: Unix (Posix)
+
+DMA pool size: 33554432
+
+Broadcom Command Monitor: Copyright (c) 1998-2020 Broadcom
+
+Release: sdk-6.5.17 built 20200212 (Wed Feb 12 11:25:25 2020)
+
+&gt;<i>From <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">onlbuilder at buildsrv</A>:/home/onlbuilder/bcm6/sdk-all-6.5.17
+</I>
+Platform: X86
+
+OS: Unix (Posix)
+
+I20211108 10:05:00.713551 12329 bcm_sdk_wrapper.cc:1152] Unit 0 is 
+assigned to SOC device BCM56965_A1 found on PCI bus 1, PCI slot 0.
+
+SOC unit 0 attached to PCI device BCM56965_A1
+
+0:bcmi_xgs5_bfd_init: uKernel BFD application not available
+
+0:bcmi_xgs5_bfd_init: uKernel BFD application not available
+
+I20211108 10:05:02.680828 12329 bcm_sdk_wrapper.cc:1249] Unit 0 
+initialized successfully (warm_boot: NO).
+
+BCM.0&gt; I20211108 10:05:02.795511 12404 bcm_sdk_wrapper.cc:446] Unit: 0 
+Port: 1 Link: changed.
+
+I20211108 10:05:02.796408 12404 bcm_sdk_wrapper.cc:446] Unit: 0 Port: 5 
+Link: changed.
+
+I20211108 10:05:02.797266 12404 bcm_sdk_wrapper.cc:446] Unit: 0 Port: 9 
+Link: changed.
+
+I20211108 10:05:02.798141 12404 bcm_sdk_wrapper.cc:446] Unit: 0 Port: 13 
+Link: changed.
+
+I20211108 10:05:02.799026 12404 bcm_sdk_wrapper.cc:446] Unit: 0 Port: 17 
+Link: changed.
+
+I20211108 10:05:02.799875 12404 bcm_sdk_wrapper.cc:446] Unit: 0 Port: 21 
+Link: changed.
+
+I20211108 10:05:02.800729 12404 bcm_sdk_wrapper.cc:446] Unit: 0 Port: 25 
+Link: changed.
+
+I20211108 10:05:02.801584 12404 bcm_sdk_wrapper.cc:446] Unit: 0 Port: 29 
+Link: changed.
+
+I20211108 10:05:02.802441 12404 bcm_sdk_wrapper.cc:446] Unit: 0 Port: 34 
+Link: changed.
+
+I20211108 10:05:02.803309 12404 bcm_sdk_wrapper.cc:446] Unit: 0 Port: 38 
+Link: changed.
+
+I20211108 10:05:02.804167 12404 bcm_sdk_wrapper.cc:446] Unit: 0 Port: 42 
+Link: changed.
+
+I20211108 10:05:02.805011 12404 bcm_sdk_wrapper.cc:446] Unit: 0 Port: 46 
+Link: changed.
+
+I20211108 10:05:02.805864 12404 bcm_sdk_wrapper.cc:446] Unit: 0 Port: 50 
+Link: changed.
+
+I20211108 10:05:02.806718 12404 bcm_sdk_wrapper.cc:446] Unit: 0 Port: 54 
+Link: changed.
+
+I20211108 10:05:02.807564 12404 bcm_sdk_wrapper.cc:446] Unit: 0 Port: 58 
+Link: changed.
+
+I20211108 10:05:02.808248 12404 bcm_sdk_wrapper.cc:446] Unit: 0 Port: 62 
+Link: changed.
+
+I20211108 10:05:02.808933 12404 bcm_sdk_wrapper.cc:446] Unit: 0 Port: 68 
+Link: changed.
+
+I20211108 10:05:02.809625 12404 bcm_sdk_wrapper.cc:446] Unit: 0 Port: 72 
+Link: changed.
+
+I20211108 10:05:02.810310 12404 bcm_sdk_wrapper.cc:446] Unit: 0 Port: 76 
+Link: changed.
+
+I20211108 10:05:02.810999 12404 bcm_sdk_wrapper.cc:446] Unit: 0 Port: 80 
+Link: changed.
+
+I20211108 10:05:02.811687 12404 bcm_sdk_wrapper.cc:446] Unit: 0 Port: 84 
+Link: changed.
+
+I20211108 10:05:02.812368 12404 bcm_sdk_wrapper.cc:446] Unit: 0 Port: 88 
+Link: changed.
+
+I20211108 10:05:02.813050 12404 bcm_sdk_wrapper.cc:446] Unit: 0 Port: 92 
+Link: changed.
+
+I20211108 10:05:02.813736 12404 bcm_sdk_wrapper.cc:446] Unit: 0 Port: 96 
+Link: changed.
+
+I20211108 10:05:02.814421 12404 bcm_sdk_wrapper.cc:446] Unit: 0 Port: 
+102 Link: changed.
+
+I20211108 10:05:02.815111 12404 bcm_sdk_wrapper.cc:446] Unit: 0 Port: 
+106 Link: changed.
+
+I20211108 10:05:02.815794 12404 bcm_sdk_wrapper.cc:446] Unit: 0 Port: 
+110 Link: changed.
+
+I20211108 10:05:02.816483 12404 bcm_sdk_wrapper.cc:446] Unit: 0 Port: 
+114 Link: changed.
+
+I20211108 10:05:02.817173 12404 bcm_sdk_wrapper.cc:446] Unit: 0 Port: 
+118 Link: changed.
+
+I20211108 10:05:02.817863 12404 bcm_sdk_wrapper.cc:446] Unit: 0 Port: 
+122 Link: changed.
+
+I20211108 10:05:02.818547 12404 bcm_sdk_wrapper.cc:446] Unit: 0 Port: 
+126 Link: changed.
+
+I20211108 10:05:02.819236 12404 bcm_sdk_wrapper.cc:446] Unit: 0 Port: 
+130 Link: changed.
+
+W20211108 10:05:02.859207 12329 bcm_sdk_wrapper.cc:2750] Currently not 
+explicitly enabling/disabling ACL stages for packets ingressing on 
+internal and external ports.
+
+I20211108 10:05:02.859934 12329 bcm_acl_manager.cc:370] ACL manager 
+successfully configured ACLs for node with ID 1 mapped to unit 0.
+
+I20211108 10:05:02.861675 12329 bcm_packetio_manager.cc:751] KNET 
+interface knet-0-0 created for node with ID 1 (unit: 0, purpose: 
+BCM_KNET_INTF_PURPOSE_CONTROLLER, vlan: 1, cpu_queue: 0, netif_id: 1, 
+netif_index: 14, rx_thread_id: 140360019224320).
+
+I20211108 10:05:02.861709 12329 bcm_switch.cc:64] Chassis config pushed 
+successfully.
+
+I20211108 10:05:02.861920 12403 bcm_chassis_manager.cc:1865] State of 
+SingletonPort (node_id: 1, port_id: 1, slot: 1, port: 26, unit: 0, 
+logical_port: 1, speed: 100G): DOWN
+
+I20211108 10:05:02.862005 12403 bcm_chassis_manager.cc:1865] State of 
+SingletonPort (node_id: 1, port_id: 5, slot: 1, port: 25, unit: 0, 
+logical_port: 5, speed: 100G): DOWN
+
+I20211108 10:05:02.862049 12403 bcm_chassis_manager.cc:1865] State of 
+SingletonPort (node_id: 1, port_id: 9, slot: 1, port: 28, unit: 0, 
+logical_port: 9, speed: 100G): DOWN
+
+I20211108 10:05:02.862088 12403 bcm_chassis_manager.cc:1865] State of 
+SingletonPort (node_id: 1, port_id: 13, slot: 1, port: 27, unit: 0, 
+logical_port: 13, speed: 100G): DOWN
+
+I20211108 10:05:02.862128 12403 bcm_chassis_manager.cc:1865] State of 
+SingletonPort (node_id: 1, port_id: 17, slot: 1, port: 30, unit: 0, 
+logical_port: 17, speed: 100G): DOWN
+
+I20211108 10:05:02.862165 12403 bcm_chassis_manager.cc:1865] State of 
+SingletonPort (node_id: 1, port_id: 21, slot: 1, port: 29, unit: 0, 
+logical_port: 21, speed: 100G): DOWN
+
+I20211108 10:05:02.862205 12403 bcm_chassis_manager.cc:1865] State of 
+SingletonPort (node_id: 1, port_id: 25, slot: 1, port: 31, unit: 0, 
+logical_port: 25, speed: 100G): DOWN
+
+I20211108 10:05:02.862243 12403 bcm_chassis_manager.cc:1865] State of 
+SingletonPort (node_id: 1, port_id: 29, slot: 1, port: 32, unit: 0, 
+logical_port: 29, speed: 100G): DOWN
+
+I20211108 10:05:02.862280 12403 bcm_chassis_manager.cc:1865] State of 
+SingletonPort (node_id: 1, port_id: 34, slot: 1, port: 18, unit: 0, 
+logical_port: 34, speed: 100G): DOWN
+
+I20211108 10:05:02.862318 12403 bcm_chassis_manager.cc:1865] State of 
+SingletonPort (node_id: 1, port_id: 38, slot: 1, port: 17, unit: 0, 
+logical_port: 38, speed: 100G): DOWN
+
+I20211108 10:05:02.862354 12403 bcm_chassis_manager.cc:1865] State of 
+SingletonPort (node_id: 1, port_id: 42, slot: 1, port: 20, unit: 0, 
+logical_port: 42, speed: 100G): DOWN
+
+I20211108 10:05:02.862390 12403 bcm_chassis_manager.cc:1865] State of 
+SingletonPort (node_id: 1, port_id: 46, slot: 1, port: 19, unit: 0, 
+logical_port: 46, speed: 100G): DOWN
+
+I20211108 10:05:02.862427 12403 bcm_chassis_manager.cc:1865] State of 
+SingletonPort (node_id: 1, port_id: 50, slot: 1, port: 22, unit: 0, 
+logical_port: 50, speed: 100G): DOWN
+
+I20211108 10:05:02.862464 12403 bcm_chassis_manager.cc:1865] State of 
+SingletonPort (node_id: 1, port_id: 54, slot: 1, port: 21, unit: 0, 
+logical_port: 54, speed: 100G): DOWN
+
+I20211108 10:05:02.862504 12403 bcm_chassis_manager.cc:1865] State of 
+SingletonPort (node_id: 1, port_id: 58, slot: 1, port: 24, unit: 0, 
+logical_port: 58, speed: 100G): DOWN
+
+I20211108 10:05:02.862542 12403 bcm_chassis_manager.cc:1865] State of 
+SingletonPort (node_id: 1, port_id: 62, slot: 1, port: 23, unit: 0, 
+logical_port: 62, speed: 100G): DOWN
+
+I20211108 10:05:02.862581 12403 bcm_chassis_manager.cc:1865] State of 
+SingletonPort (node_id: 1, port_id: 68, slot: 1, port: 1, unit: 0, 
+logical_port: 68, speed: 100G): DOWN
+
+I20211108 10:05:02.862619 12403 bcm_chassis_manager.cc:1865] State of 
+SingletonPort (node_id: 1, port_id: 72, slot: 1, port: 2, unit: 0, 
+logical_port: 72, speed: 100G): DOWN
+
+I20211108 10:05:02.862655 12403 bcm_chassis_manager.cc:1865] State of 
+SingletonPort (node_id: 1, port_id: 76, slot: 1, port: 3, unit: 0, 
+logical_port: 76, speed: 100G): DOWN
+
+I20211108 10:05:02.862692 12403 bcm_chassis_manager.cc:1865] State of 
+SingletonPort (node_id: 1, port_id: 80, slot: 1, port: 4, unit: 0, 
+logical_port: 80, speed: 100G): DOWN
+
+I20211108 10:05:02.862731 12403 bcm_chassis_manager.cc:1865] State of 
+SingletonPort (node_id: 1, port_id: 84, slot: 1, port: 13, unit: 0, 
+logical_port: 84, speed: 100G): DOWN
+
+I20211108 10:05:02.862771 12403 bcm_chassis_manager.cc:1865] State of 
+SingletonPort (node_id: 1, port_id: 88, slot: 1, port: 14, unit: 0, 
+logical_port: 88, speed: 100G): DOWN
+
+I20211108 10:05:02.862808 12403 bcm_chassis_manager.cc:1865] State of 
+SingletonPort (node_id: 1, port_id: 92, slot: 1, port: 15, unit: 0, 
+logical_port: 92, speed: 100G): DOWN
+
+I20211108 10:05:02.862845 12403 bcm_chassis_manager.cc:1865] State of 
+SingletonPort (node_id: 1, port_id: 96, slot: 1, port: 5, unit: 0, 
+logical_port: 96, speed: 100G): DOWN
+
+I20211108 10:05:02.862916 12403 bcm_chassis_manager.cc:1865] State of 
+SingletonPort (node_id: 1, port_id: 102, slot: 1, port: 16, unit: 0, 
+logical_port: 102, speed: 100G): DOWN
+
+I20211108 10:05:02.862951 12403 bcm_chassis_manager.cc:1865] State of 
+SingletonPort (node_id: 1, port_id: 106, slot: 1, port: 6, unit: 0, 
+logical_port: 106, speed: 100G): DOWN
+
+I20211108 10:05:02.862975 12403 bcm_chassis_manager.cc:1865] State of 
+SingletonPort (node_id: 1, port_id: 110, slot: 1, port: 7, unit: 0, 
+logical_port: 110, speed: 100G): DOWN
+
+I20211108 10:05:02.863004 12403 bcm_chassis_manager.cc:1865] State of 
+SingletonPort (node_id: 1, port_id: 114, slot: 1, port: 8, unit: 0, 
+logical_port: 114, speed: 100G): DOWN
+
+I20211108 10:05:02.863029 12403 bcm_chassis_manager.cc:1865] State of 
+SingletonPort (node_id: 1, port_id: 118, slot: 1, port: 9, unit: 0, 
+logical_port: 118, speed: 100G): DOWN
+
+I20211108 10:05:02.863051 12403 bcm_chassis_manager.cc:1865] State of 
+SingletonPort (node_id: 1, port_id: 122, slot: 1, port: 10, unit: 0, 
+logical_port: 122, speed: 100G): DOWN
+
+I20211108 10:05:02.863075 12403 bcm_chassis_manager.cc:1865] State of 
+SingletonPort (node_id: 1, port_id: 126, slot: 1, port: 11, unit: 0, 
+logical_port: 126, speed: 100G): DOWN
+
+I20211108 10:05:02.863098 12403 bcm_chassis_manager.cc:1865] State of 
+SingletonPort (node_id: 1, port_id: 130, slot: 1, port: 12, unit: 0, 
+logical_port: 130, speed: 100G): DOWN
+
+I20211108 10:05:02.876415 12329 p4_service.cc:121] Pushing the saved 
+forwarding pipeline configs read from 
+/var/run/stratum/pipeline_cfg.pb.txt...
+
+E20211108 10:05:02.876453 12329 utils.cc:110] 
+StratumErrorSpace::ERR_FILE_NOT_FOUND: 
+/var/run/stratum/pipeline_cfg.pb.txt not found.
+
+E20211108 10:05:02.876721 12329 utils.cc:66] Return Error: 
+ReadFileToString(filename, &amp;text) failed with 
+StratumErrorSpace::ERR_FILE_NOT_FOUND: 
+/var/run/stratum/pipeline_cfg.pb.txt not found.
+
+W20211108 10:05:02.876734 12329 p4_service.cc:130] No saved forwarding 
+pipeline config found at /var/run/stratum/pipeline_cfg.pb.txt. This is 
+normal when the switch is just installed and no master controller is 
+connected yet.
+
+E20211108 10:05:02.877027 12329 hal.cc:221] Stratum external facing 
+services are listening to 0.0.0.0:28000, 0.0.0.0:9339, 0.0.0.0:9559, 
+localhost:28000...
+
+E20211108 10:05:02.890136 12329 hal.cc:363] 
+StratumErrorSpace::ERR_INTERNAL: Failed to check in with procmon: failed 
+to connect to all addresses
+
+E20211108 10:05:02.890266 12329 hal.cc:231] Error when checking in with 
+procmon: Failed to check in with procmon: failed to connect to all 
+addresses.
+
+Thank you for your help.
+
+On 23/09/2021 12:23, Andy Nazario Quispe wrote:
+&gt;<i>
+</I>&gt;<i> Thank you for your help Brian, we are going to analyze what is the 
+</I>&gt;<i> best way to make it work.
+</I>&gt;<i>
+</I>&gt;<i> i will try to submit a PR as you suggested.
+</I>&gt;<i>
+</I>&gt;<i> Andy
+</I>&gt;<i>
+</I>&gt;<i> On 21/09/2021 18:00, Brian O'Connor wrote:
+</I>&gt;&gt;<i> Hi Andy,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Thanks for reaching out. Most of our testing was done on the first 
+</I>&gt;&gt;<i> version of Cassini (AS7716-24*XC*) which has a Broadcom Tomahawk 
+</I>&gt;&gt;<i> ASIC, so it works with both SDKLT and OpenNSA. However, I understand 
+</I>&gt;&gt;<i> that all of the boxes shipping now are the -24*SC*, which has a 
+</I>&gt;&gt;<i> Tomahawk+ ASIC. As I understand it, it's basically the same ASIC but 
+</I>&gt;&gt;<i> with some minor differences (e.g. buffer size). Unfortunately, SDKLT 
+</I>&gt;&gt;<i> and OpenNSA are not compiled with support for Tomahawk+. At least for 
+</I>&gt;&gt;<i> OpenNSA, this is just a compiler flag when the binary is built by 
+</I>&gt;&gt;<i> Broadcom that isn't enabled.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> We have a few options:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> 1) If you have access to the Broadcom SDK 6.5.x, you can compile the 
+</I>&gt;&gt;<i> SDK with support for Tomahawk+ and use that instead of OpenNSA when 
+</I>&gt;&gt;<i> you build Stratum. We have some instructions that could help you with 
+</I>&gt;&gt;<i> this part if you need them. This is a good option if you plan to make 
+</I>&gt;&gt;<i> modifications to Stratum or the SDE, and you already have an SDK 
+</I>&gt;&gt;<i> agreement with Broadcom.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> 2) We have worked with Edgecore to create a Stratum container that 
+</I>&gt;&gt;<i> supports Cassini for Stratum release. It can be downloaded from the 
+</I>&gt;&gt;<i> Edgecore customer portal. This is probably the easiest approach to 
+</I>&gt;&gt;<i> get started, but will make it somewhat difficult to build new 
+</I>&gt;&gt;<i> versions of Stratum yourself (if you want to do that).
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> 3) OpenBCM 
+</I>&gt;&gt;<i> (<A HREF="https://github.com/Broadcom-Network-Switching-Software/OpenBCM">https://github.com/Broadcom-Network-Switching-Software/OpenBCM</A>) 
+</I>&gt;&gt;<i> seems to contain the SDK sources (not just binary libraries), and we 
+</I>&gt;&gt;<i> may be able to compile it with Tomahawk+ support. We haven't tried 
+</I>&gt;&gt;<i> this yet, but it appears to share the same API as OpenNSA. This 
+</I>&gt;&gt;<i> option would be good for making modifications to Stratum and the SDE, 
+</I>&gt;&gt;<i> and it would not require an SDK agreement. It could be an interesting 
+</I>&gt;&gt;<i> project if you want to try to tackle it.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Either way, could you create an issue in the Stratum Github with the 
+</I>&gt;&gt;<i> error? At a minimum, we should probably update the documentation to 
+</I>&gt;&gt;<i> reflect this, and please feel free to submit a PR to that effect. :)
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Regarding the procmon log entries, these can be ignored. We already 
+</I>&gt;&gt;<i> have an issue open to suppress these: 
+</I>&gt;&gt;<i> <A HREF="https://github.com/stratum/stratum/issues/492">https://github.com/stratum/stratum/issues/492</A>
+</I>&gt;&gt;<i> Procmon is a custom service that lets the Stratum process report its 
+</I>&gt;&gt;<i> status and health; we don't run the service by default, so Stratum 
+</I>&gt;&gt;<i> cannot connect to check in.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Thanks!
+</I>&gt;&gt;<i> Brian
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> On Tue, Sep 21, 2021 at 11:30 AM Andy Nazario Quispe via stratum-dev 
+</I>&gt;&gt;<i> &lt;<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>&gt; wrote:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>     Good day team.,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>     I am trying to install stratum on a Edgecore AS7716-24SC Cassini,
+</I>&gt;&gt;<i>     i've installed ONLv2
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>     <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">root at localhost</A>:/stratum/stratum/hal/bin/bcm/standalone/docker#
+</I>&gt;&gt;<i>     uname -a
+</I>&gt;&gt;<i>     Linux localhost 4.14.49-OpenNetworkLinux #1 SMP Fri Jul 16
+</I>&gt;&gt;<i>     22:03:27 UTC 2021 x86_64 GNU/Linux
+</I>&gt;&gt;<i>     <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">root at localhost</A>:/stratum/stratum/hal/bin/bcm/standalone/docker#
+</I>&gt;&gt;<i>     cat /etc/onl/SWI
+</I>&gt;&gt;<i>     images:ONL-onf-ONLPv2_ONL-OS_2021-07-16.2159-5195444_AMD64.swi
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>     from the (<A HREF="https://github.com/stratum/stratum">https://github.com/stratum/stratum</A>) it supports using
+</I>&gt;&gt;<i>     SDKLT and OpenNSA
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>           * Edgecore AS7716-24SC Cassini
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>     <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">root at localhost</A>:/stratum/stratum/hal/bin/bcm/standalone/docker#
+</I>&gt;&gt;<i>     cat /etc/onl/platform
+</I>&gt;&gt;<i>     x86-64-accton-as7716-24sc-r0
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>     /But when running Stratum using docker it appears that only
+</I>&gt;&gt;<i>     support openNSA but still having problems, i attach below some logs:/
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>     //////////////////////    LOG ///////////////////////////////////
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>     /<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">root at localhost</A>:/stratum/stratum/hal/bin/bcm/standalone/docker#
+</I>&gt;&gt;<i>     DOCKER_IMAGE_TAG=20.12-sdklt ./start-stratum-container.sh
+</I>&gt;&gt;<i>     ++ awk '{print &quot;-v &quot; $1 &quot;:&quot; $1 &quot; &quot; }'
+</I>&gt;&gt;<i>     ++ ls /lib/x86_64-linux-gnu/libonlp-platform-defaults.so
+</I>&gt;&gt;<i>     /lib/x86_64-linux-gnu/libonlp-platform-defaults.so.1
+</I>&gt;&gt;<i>     /lib/x86_64-linux-gnu/libonlp-platform.so
+</I>&gt;&gt;<i>     /lib/x86_64-linux-gnu/libonlp-platform.so.1
+</I>&gt;&gt;<i>     /lib/x86_64-linux-gnu/libonlp.so /lib/x86_64-linux-gnu/libonlp.so.1
+</I>&gt;&gt;<i>     + ONLP_MOUNT='-v
+</I>&gt;&gt;<i>     /lib/x86_64-linux-gnu/libonlp-platform-defaults.so:/lib/x86_64-linux-gnu/libonlp-platform-defaults.so
+</I>&gt;&gt;<i>     -v
+</I>&gt;&gt;<i>     /lib/x86_64-linux-gnu/libonlp-platform-defaults.so.1:/lib/x86_64-linux-gnu/libonlp-platform-defaults.so.1
+</I>&gt;&gt;<i>     -v
+</I>&gt;&gt;<i>     /lib/x86_64-linux-gnu/libonlp-platform.so:/lib/x86_64-linux-gnu/libonlp-platform.so
+</I>&gt;&gt;<i>     -v
+</I>&gt;&gt;<i>     /lib/x86_64-linux-gnu/libonlp-platform.so.1:/lib/x86_64-linux-gnu/libonlp-platform.so.1
+</I>&gt;&gt;<i>     -v /lib/x86_64-linux-gnu/libonlp.so:/lib/x86_64-linux-gnu/libonlp.so
+</I>&gt;&gt;<i>     -v
+</I>&gt;&gt;<i>     /lib/x86_64-linux-gnu/libonlp.so.1:/lib/x86_64-linux-gnu/libonlp.so.1
+</I>&gt;&gt;<i>     '
+</I>&gt;&gt;<i>     + LOG_DIR=/var/log/stratum
+</I>&gt;&gt;<i>     ++ uname -r
+</I>&gt;&gt;<i>     + KERNEL_VERSION=4.14.49-OpenNetworkLinux
+</I>&gt;&gt;<i>     + DOCKER_IMAGE=stratumproject/stratum-bcm
+</I>&gt;&gt;<i>     + DOCKER_IMAGE_TAG=20.12-sdklt
+</I>&gt;&gt;<i>     ++ cat /etc/onl/platform
+</I>&gt;&gt;<i>     + PLATFORM=x86-64-accton-as7716-24sc-r0
+</I>&gt;&gt;<i>     + '[' -n '' ']'
+</I>&gt;&gt;<i>     ++ uname -r
+</I>&gt;&gt;<i>     ++ uname -r
+</I>&gt;&gt;<i>     + docker run -it --rm --privileged --cap-add ALL --shm-size=512m
+</I>&gt;&gt;<i>     --network host -v /dev:/dev -v /sys:/sys -v /run:/run -v
+</I>&gt;&gt;<i>     /lib/modules/4.14.49-OpenNetworkLinux:/lib/modules/4.14.49-OpenNetworkLinux
+</I>&gt;&gt;<i>     -v
+</I>&gt;&gt;<i>     /lib/x86_64-linux-gnu/libonlp-platform-defaults.so:/lib/x86_64-linux-gnu/libonlp-platform-defaults.so
+</I>&gt;&gt;<i>     -v
+</I>&gt;&gt;<i>     /lib/x86_64-linux-gnu/libonlp-platform-defaults.so.1:/lib/x86_64-linux-gnu/libonlp-platform-defaults.so.1
+</I>&gt;&gt;<i>     -v
+</I>&gt;&gt;<i>     /lib/x86_64-linux-gnu/libonlp-platform.so:/lib/x86_64-linux-gnu/libonlp-platform.so
+</I>&gt;&gt;<i>     -v
+</I>&gt;&gt;<i>     /lib/x86_64-linux-gnu/libonlp-platform.so.1:/lib/x86_64-linux-gnu/libonlp-platform.so.1
+</I>&gt;&gt;<i>     -v
+</I>&gt;&gt;<i>     /lib/x86_64-linux-gnu/libonlp.so:/lib/x86_64-linux-gnu/libonlp.so
+</I>&gt;&gt;<i>     -v
+</I>&gt;&gt;<i>     /lib/x86_64-linux-gnu/libonlp.so.1:/lib/x86_64-linux-gnu/libonlp.so.1
+</I>&gt;&gt;<i>     -v /lib/platform-config:/lib/platform-config -v /etc/onl:/etc/onl
+</I>&gt;&gt;<i>     -v /var/log/stratum:/var/log/stratum
+</I>&gt;&gt;<i>     stratumproject/stratum-bcm:20.12-sdklt
+</I>&gt;&gt;<i>     + rmmod linux_bcm_knet
+</I>&gt;&gt;<i>     + rmmod linux_user_bde
+</I>&gt;&gt;<i>     + rmmod linux_kernel_bde
+</I>&gt;&gt;<i>     + rmmod linux_ngknet
+</I>&gt;&gt;<i>     rmmod: ERROR: Module linux_ngknet is not currently loaded
+</I>&gt;&gt;<i>     + true
+</I>&gt;&gt;<i>     + rmmod linux_ngbde
+</I>&gt;&gt;<i>     rmmod: ERROR: Module linux_ngbde is not currently loaded
+</I>&gt;&gt;<i>     + true
+</I>&gt;&gt;<i>     + pushd /usr/lib/stratum/
+</I>&gt;&gt;<i>     /usr/lib/stratum /
+</I>&gt;&gt;<i>     + insmod linux_ngbde.ko
+</I>&gt;&gt;<i>     + insmod linux_ngknet.ko default_mtu=3000
+</I>&gt;&gt;<i>     + popd
+</I>&gt;&gt;<i>     /
+</I>&gt;&gt;<i>     + sleep 1
+</I>&gt;&gt;<i>     + mkdir -p /var/run/stratum /var/log/stratum
+</I>&gt;&gt;<i>     ++ cat /etc/onl/platform
+</I>&gt;&gt;<i>     + PLATFORM=x86-64-accton-as7716-24sc-r0
+</I>&gt;&gt;<i>     + exec stratum_bcm_sdklt
+</I>&gt;&gt;<i>     -base_bcm_chassis_map_file=/etc/stratum/x86-64-accton-as7716-24sc-r0/base_bcm_chassis_map.pb.txt
+</I>&gt;&gt;<i>     -chassis_config_file=/etc/stratum/x86-64-accton-as7716-24sc-r0/chassis_config.pb.txt
+</I>&gt;&gt;<i>     -bcm_sdk_config_file=/etc/stratum/x86-64-accton-as7716-24sc-r0/SDKLT.yml
+</I>&gt;&gt;<i>     -phal_config_file=/etc/stratum/x86-64-accton-as7716-24sc-r0/phal_config.pb.txt
+</I>&gt;&gt;<i>     -bcm_sdk_checkpoint_dir=/tmp/bcm_chkpt -log_dir=/var/log/stratum -v=0
+</I>&gt;&gt;<i>     I20210921 10:56:45.051519     1 main.cc:75] Starting Stratum in
+</I>&gt;&gt;<i>     STANDALONE mode for a Broadcom-based switch...
+</I>&gt;&gt;<i>     W20210921 10:56:45.051666     1 credentials_manager.cc:45] Using
+</I>&gt;&gt;<i>     insecure server credentials
+</I>&gt;&gt;<i>     I20210921 10:56:45.051842     1 hal.cc:122] HAL sanity checks all
+</I>&gt;&gt;<i>     passed.
+</I>&gt;&gt;<i>     I20210921 10:56:45.051857     1 hal.cc:128] Setting up HAL in
+</I>&gt;&gt;<i>     COLDBOOT mode...
+</I>&gt;&gt;<i>     I20210921 10:56:45.051929     1 config_monitoring_service.cc:94]
+</I>&gt;&gt;<i>     Pushing the saved chassis config read from
+</I>&gt;&gt;<i>     /etc/stratum/x86-64-accton-as7716-24sc-r0/chassis_config.pb.txt...
+</I>&gt;&gt;<i>     I20210921 10:56:45.055892     1 bcm_switch.cc:548] Chassis config
+</I>&gt;&gt;<i>     verified successfully.
+</I>&gt;&gt;<i>     I20210921 10:56:45.056475     1 onlp_wrapper.cc:99] Initializing
+</I>&gt;&gt;<i>     ONLP.
+</I>&gt;&gt;<i>     I20210921 10:56:47.094169     1 attribute_database.cc:213] PhalDB
+</I>&gt;&gt;<i>     service is listening to localhost:28003...
+</I>&gt;&gt;<i>     I20210921 10:56:47.100003     1 bcm_chassis_manager.cc:1080] Portmap:
+</I>&gt;&gt;<i>     Panel, logical (PORT_ID), physical (PC_PHYS_PORT_ID)
+</I>&gt;&gt;<i>       1,  68,  65
+</I>&gt;&gt;<i>       2,  72,  69
+</I>&gt;&gt;<i>       3,  76,  73
+</I>&gt;&gt;<i>       4,  80,  77
+</I>&gt;&gt;<i>       5,  96,  93
+</I>&gt;&gt;<i>       6, 106, 101
+</I>&gt;&gt;<i>       7, 110, 105
+</I>&gt;&gt;<i>       8, 114, 109
+</I>&gt;&gt;<i>       9, 118, 113
+</I>&gt;&gt;<i>      10, 122, 117
+</I>&gt;&gt;<i>      11, 126, 121
+</I>&gt;&gt;<i>      12, 130, 125
+</I>&gt;&gt;<i>      13,  84,  81
+</I>&gt;&gt;<i>      14,  88,  85
+</I>&gt;&gt;<i>      15,  92,  89
+</I>&gt;&gt;<i>      16, 102,  97
+</I>&gt;&gt;<i>      17,  38,  37
+</I>&gt;&gt;<i>      18,  34,  33
+</I>&gt;&gt;<i>      19,  46,  45
+</I>&gt;&gt;<i>      20,  42,  41
+</I>&gt;&gt;<i>      21,  54,  53
+</I>&gt;&gt;<i>      22,  50,  49
+</I>&gt;&gt;<i>      23,  62,  61
+</I>&gt;&gt;<i>      24,  58,  57
+</I>&gt;&gt;<i>      25,   5,   5
+</I>&gt;&gt;<i>      26,   1,   1
+</I>&gt;&gt;<i>      27,  13,  13
+</I>&gt;&gt;<i>      28,   9,   9
+</I>&gt;&gt;<i>      29,  21,  21
+</I>&gt;&gt;<i>      30,  17,  17
+</I>&gt;&gt;<i>      31,  25,  25
+</I>&gt;&gt;<i>      32,  29,  29
+</I>&gt;&gt;<i>     [&lt;nounit&gt;] bcma/sys/probe/ngbde/bcma_sys_probe.c:721
+</I>&gt;&gt;<i>     bcma_sys_probe(): Warn: No devices found.
+</I>&gt;&gt;<i>     E20210921 10:56:47.106837     1 bcm_sdk_wrapper.cc:985]
+</I>&gt;&gt;<i>     StratumErrorSpace::ERR_INTERNAL: Could not find any supported device.
+</I>&gt;&gt;<i>     E20210921 10:56:47.107417     1 bcm_chassis_manager.cc:1093]
+</I>&gt;&gt;<i>     Return Error: bcm_sdk_interface_-&gt;InitializeSdk(
+</I>&gt;&gt;<i>     FLAGS_bcm_sdk_config_file, FLAGS_bcm_sdk_config_flush_file,
+</I>&gt;&gt;<i>     FLAGS_bcm_sdk_shell_log_file) failed with
+</I>&gt;&gt;<i>     StratumErrorSpace::ERR_INTERNAL: Could not find any supported device.
+</I>&gt;&gt;<i>     E20210921 10:56:47.107460     1 bcm_chassis_manager.cc:163]
+</I>&gt;&gt;<i>     Return Error: InitializeBcmChips(base_bcm_chassis_map,
+</I>&gt;&gt;<i>     target_bcm_chassis_map) failed with
+</I>&gt;&gt;<i>     StratumErrorSpace::ERR_INTERNAL: Could not find any supported device.
+</I>&gt;&gt;<i>     E20210921 10:56:47.107530     1 bcm_switch.cc:52] Return Error:
+</I>&gt;&gt;<i>     bcm_chassis_manager_-&gt;PushChassisConfig(config) failed with
+</I>&gt;&gt;<i>     StratumErrorSpace::ERR_INTERNAL: Could not find any supported device.
+</I>&gt;&gt;<i>     E20210921 10:56:47.107575     1 error_buffer.cc:30]
+</I>&gt;&gt;<i>     (config_monitoring_service.cc:124): Pushing saved chassis config
+</I>&gt;&gt;<i>     failed: Could not find any supported device.
+</I>&gt;&gt;<i>     E20210921 10:56:47.107643     1 hal.cc:136] Return Error:
+</I>&gt;&gt;<i>     config_monitoring_service_-&gt;Setup(FLAGS_warmboot) failed with
+</I>&gt;&gt;<i>     StratumErrorSpace::ERR_INTERNAL: Could not find any supported device.
+</I>&gt;&gt;<i>     E20210921 10:56:47.107697     1 main.cc:115] Error when setting
+</I>&gt;&gt;<i>     up Stratum HAL (but we will continue running): Could not find any
+</I>&gt;&gt;<i>     supported device.
+</I>&gt;&gt;<i>     E20210921 10:56:47.108387     1 hal.cc:221] Stratum external
+</I>&gt;&gt;<i>     facing services are listening to 0.0.0.0:28000
+</I>&gt;&gt;<i>     &lt;<A HREF="http://0.0.0.0:28000">http://0.0.0.0:28000</A>&gt;, 0.0.0.0:9339 &lt;<A HREF="http://0.0.0.0:9339">http://0.0.0.0:9339</A>&gt;,
+</I>&gt;&gt;<i>     0.0.0.0:9559 &lt;<A HREF="http://0.0.0.0:9559">http://0.0.0.0:9559</A>&gt;, localhost:28000...
+</I>&gt;&gt;<i>     E20210921 10:56:47.121865     1 hal.cc:363]
+</I>&gt;&gt;<i>     StratumErrorSpace::ERR_INTERNAL: Failed to check in with procmon:
+</I>&gt;&gt;<i>     failed to connect to all addresses
+</I>&gt;&gt;<i>     E20210921 10:56:47.122002     1 hal.cc:231] Error when checking
+</I>&gt;&gt;<i>     in with procmon: Failed to check in with procmon: failed to
+</I>&gt;&gt;<i>     connect to all addresses.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>     /////////////////////////////////////////////////////////////////////////////////////////
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>     <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">root at localhost</A>:/stratum/stratum/hal/bin/bcm/standalone/docker#
+</I>&gt;&gt;<i>     docker ps
+</I>&gt;&gt;<i>     CONTAINER ID IMAGE COMMAND              CREATED
+</I>&gt;&gt;<i>     STATUS              PORTS               NAMES
+</I>&gt;&gt;<i>     749ea4456822 stratumproject/stratum-bcm:opennsa
+</I>&gt;&gt;<i>     &quot;start-stratum.sh&quot;   45 seconds ago      Up 44
+</I>&gt;&gt;<i>     seconds                           wizardly_mclean
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>     <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">root at localhost</A>:/stratum/stratum/hal/bin/bcm/standalone/docker#
+</I>&gt;&gt;<i>     DOCKER_IMAGE_TAG=opennsa ./start-stratum-container.sh
+</I>&gt;&gt;<i>     ++ awk '{print &quot;-v &quot; $1 &quot;:&quot; $1 &quot; &quot; }'
+</I>&gt;&gt;<i>     ++ ls /lib/x86_64-linux-gnu/libonlp-platform-defaults.so
+</I>&gt;&gt;<i>     /lib/x86_64-linux-gnu/libonlp-platform-defaults.so.1
+</I>&gt;&gt;<i>     /lib/x86_64-linux-gnu/libonlp-platform.so
+</I>&gt;&gt;<i>     /lib/x86_64-linux-gnu/libonlp-platform.so.1
+</I>&gt;&gt;<i>     /lib/x86_64-linux-gnu/libonlp.so /lib/x86_64-linux-gnu/libonlp.so.1
+</I>&gt;&gt;<i>     + ONLP_MOUNT='-v
+</I>&gt;&gt;<i>     /lib/x86_64-linux-gnu/libonlp-platform-defaults.so:/lib/x86_64-linux-gnu/libonlp-platform-defaults.so
+</I>&gt;&gt;<i>     -v
+</I>&gt;&gt;<i>     /lib/x86_64-linux-gnu/libonlp-platform-defaults.so.1:/lib/x86_64-linux-gnu/libonlp-platform-defaults.so.1
+</I>&gt;&gt;<i>     -v
+</I>&gt;&gt;<i>     /lib/x86_64-linux-gnu/libonlp-platform.so:/lib/x86_64-linux-gnu/libonlp-platform.so
+</I>&gt;&gt;<i>     -v
+</I>&gt;&gt;<i>     /lib/x86_64-linux-gnu/libonlp-platform.so.1:/lib/x86_64-linux-gnu/libonlp-platform.so.1
+</I>&gt;&gt;<i>     -v /lib/x86_64-linux-gnu/libonlp.so:/lib/x86_64-linux-gnu/libonlp.so
+</I>&gt;&gt;<i>     -v
+</I>&gt;&gt;<i>     /lib/x86_64-linux-gnu/libonlp.so.1:/lib/x86_64-linux-gnu/libonlp.so.1
+</I>&gt;&gt;<i>     '
+</I>&gt;&gt;<i>     + LOG_DIR=/var/log/stratum
+</I>&gt;&gt;<i>     ++ uname -r
+</I>&gt;&gt;<i>     + KERNEL_VERSION=4.14.49-OpenNetworkLinux
+</I>&gt;&gt;<i>     + DOCKER_IMAGE=stratumproject/stratum-bcm
+</I>&gt;&gt;<i>     + DOCKER_IMAGE_TAG=opennsa
+</I>&gt;&gt;<i>     ++ cat /etc/onl/platform
+</I>&gt;&gt;<i>     + PLATFORM=x86-64-accton-as7716-24sc-r0
+</I>&gt;&gt;<i>     + '[' -n '' ']'
+</I>&gt;&gt;<i>     ++ uname -r
+</I>&gt;&gt;<i>     ++ uname -r
+</I>&gt;&gt;<i>     + docker run -it --rm --privileged --cap-add ALL --shm-size=512m
+</I>&gt;&gt;<i>     --network host -v /dev:/dev -v /sys:/sys -v /run:/run -v
+</I>&gt;&gt;<i>     /lib/modules/4.14.49-OpenNetworkLinux:/lib/modules/4.14.49-OpenNetworkLinux
+</I>&gt;&gt;<i>     -v
+</I>&gt;&gt;<i>     /lib/x86_64-linux-gnu/libonlp-platform-defaults.so:/lib/x86_64-linux-gnu/libonlp-platform-defaults.so
+</I>&gt;&gt;<i>     -v
+</I>&gt;&gt;<i>     /lib/x86_64-linux-gnu/libonlp-platform-defaults.so.1:/lib/x86_64-linux-gnu/libonlp-platform-defaults.so.1
+</I>&gt;&gt;<i>     -v
+</I>&gt;&gt;<i>     /lib/x86_64-linux-gnu/libonlp-platform.so:/lib/x86_64-linux-gnu/libonlp-platform.so
+</I>&gt;&gt;<i>     -v
+</I>&gt;&gt;<i>     /lib/x86_64-linux-gnu/libonlp-platform.so.1:/lib/x86_64-linux-gnu/libonlp-platform.so.1
+</I>&gt;&gt;<i>     -v
+</I>&gt;&gt;<i>     /lib/x86_64-linux-gnu/libonlp.so:/lib/x86_64-linux-gnu/libonlp.so
+</I>&gt;&gt;<i>     -v
+</I>&gt;&gt;<i>     /lib/x86_64-linux-gnu/libonlp.so.1:/lib/x86_64-linux-gnu/libonlp.so.1
+</I>&gt;&gt;<i>     -v /lib/platform-config:/lib/platform-config -v /etc/onl:/etc/onl
+</I>&gt;&gt;<i>     -v /var/log/stratum:/var/log/stratum
+</I>&gt;&gt;<i>     stratumproject/stratum-bcm:opennsa
+</I>&gt;&gt;<i>     + rmmod linux_ngknet
+</I>&gt;&gt;<i>     rmmod: ERROR: Module linux_ngknet is not currently loaded
+</I>&gt;&gt;<i>     + true
+</I>&gt;&gt;<i>     + rmmod linux_ngbde
+</I>&gt;&gt;<i>     rmmod: ERROR: Module linux_ngbde is not currently loaded
+</I>&gt;&gt;<i>     + true
+</I>&gt;&gt;<i>     + rmmod linux_bcm_knet
+</I>&gt;&gt;<i>     + rmmod linux_user_bde
+</I>&gt;&gt;<i>     + rmmod linux_kernel_bde
+</I>&gt;&gt;<i>     + pushd /usr/lib/stratum/
+</I>&gt;&gt;<i>     /usr/lib/stratum /
+</I>&gt;&gt;<i>     + insmod linux-kernel-bde.ko
+</I>&gt;&gt;<i>     + insmod linux-user-bde.ko
+</I>&gt;&gt;<i>     + insmod linux-bcm-knet.ko default_mtu=3000
+</I>&gt;&gt;<i>     + popd
+</I>&gt;&gt;<i>     /
+</I>&gt;&gt;<i>     + mknod /dev/linux-bcm-knet c 122 0
+</I>&gt;&gt;<i>     mknod: /dev/linux-bcm-knet: File exists
+</I>&gt;&gt;<i>     + true
+</I>&gt;&gt;<i>     + mknod /dev/linux-bcm-net c 123 0
+</I>&gt;&gt;<i>     mknod: /dev/linux-bcm-net: File exists
+</I>&gt;&gt;<i>     + true
+</I>&gt;&gt;<i>     + mknod /dev/linux-bcm-diag c 124 0
+</I>&gt;&gt;<i>     mknod: /dev/linux-bcm-diag: File exists
+</I>&gt;&gt;<i>     + true
+</I>&gt;&gt;<i>     + ln -sf /dev/linux-bcm-diag /dev/linux-bcm-diag-full
+</I>&gt;&gt;<i>     + mknod /dev/linux-uk-proxy c 125 0
+</I>&gt;&gt;<i>     mknod: /dev/linux-uk-proxy: File exists
+</I>&gt;&gt;<i>     + true
+</I>&gt;&gt;<i>     + mknod /dev/linux-bcm-core c 126 0
+</I>&gt;&gt;<i>     mknod: /dev/linux-bcm-core: File exists
+</I>&gt;&gt;<i>     + true
+</I>&gt;&gt;<i>     + mknod /dev/linux-kernel-bde c 127 0
+</I>&gt;&gt;<i>     mknod: /dev/linux-kernel-bde: File exists
+</I>&gt;&gt;<i>     + true
+</I>&gt;&gt;<i>     + ln -sf /dev/linux-bcm-core /dev/linux-user-bde
+</I>&gt;&gt;<i>     + sleep 1
+</I>&gt;&gt;<i>     + mkdir -p /var/run/stratum /var/log/stratum
+</I>&gt;&gt;<i>     ++ cat /etc/onl/platform
+</I>&gt;&gt;<i>     + PLATFORM=x86-64-accton-as7716-24sc-r0
+</I>&gt;&gt;<i>     + exec stratum_bcm_opennsa
+</I>&gt;&gt;<i>     -base_bcm_chassis_map_file=/etc/stratum/x86-64-accton-as7716-24sc-r0/base_bcm_chassis_map.pb.txt
+</I>&gt;&gt;<i>     -chassis_config_file=/etc/stratum/x86-64-accton-as7716-24sc-r0/chassis_config.pb.txt
+</I>&gt;&gt;<i>     -bcm_sdk_config_file=/etc/stratum/x86-64-accton-as7716-24sc-r0/SDKLT.yml
+</I>&gt;&gt;<i>     -phal_config_file=/etc/stratum/x86-64-accton-as7716-24sc-r0/phal_config.pb.txt
+</I>&gt;&gt;<i>     -bcm_sdk_checkpoint_dir=/tmp/bcm_chkpt -log_dir=/var/log/stratum -v=0
+</I>&gt;&gt;<i>     I20210921 10:51:41.514292     1 logging.cc:63] Stratum version 0
+</I>&gt;&gt;<i>     built at 1970-01-01T00:00:00+00:00 on host redacted by user redacted.
+</I>&gt;&gt;<i>     I20210921 10:51:41.514493     1 main.cc:75] Starting Stratum in
+</I>&gt;&gt;<i>     STANDALONE mode for a Broadcom-based switch...
+</I>&gt;&gt;<i>     W20210921 10:51:41.514609     1 credentials_manager.cc:44] Using
+</I>&gt;&gt;<i>     insecure server credentials
+</I>&gt;&gt;<i>     I20210921 10:51:41.515112     1 hal.cc:132] HAL sanity checks all
+</I>&gt;&gt;<i>     passed.
+</I>&gt;&gt;<i>     I20210921 10:51:41.515130     1 hal.cc:138] Setting up HAL in
+</I>&gt;&gt;<i>     COLDBOOT mode...
+</I>&gt;&gt;<i>     I20210921 10:51:41.515214     1 config_monitoring_service.cc:94]
+</I>&gt;&gt;<i>     Pushing the saved chassis config read from
+</I>&gt;&gt;<i>     /etc/stratum/x86-64-accton-as7716-24sc-r0/chassis_config.pb.txt...
+</I>&gt;&gt;<i>     I20210921 10:51:41.529116     1 bcm_switch.cc:550] Chassis config
+</I>&gt;&gt;<i>     verified successfully.
+</I>&gt;&gt;<i>     I20210921 10:51:41.531240     1 onlp_wrapper.cc:99] Initializing
+</I>&gt;&gt;<i>     ONLP.
+</I>&gt;&gt;<i>     I20210921 10:51:43.126675     1 attribute_database.cc:210] PhalDB
+</I>&gt;&gt;<i>     service is listening to localhost:28003...
+</I>&gt;&gt;<i>     I20210921 10:51:43.144853     1 bcm_chassis_manager.cc:1080] Portmap:
+</I>&gt;&gt;<i>     Panel, logical (PORT_ID), physical (PC_PHYS_PORT_ID)
+</I>&gt;&gt;<i>       1,  68,  65
+</I>&gt;&gt;<i>       2,  72,  69
+</I>&gt;&gt;<i>       3,  76,  73
+</I>&gt;&gt;<i>       4,  80,  77
+</I>&gt;&gt;<i>       5,  96,  93
+</I>&gt;&gt;<i>       6, 106, 101
+</I>&gt;&gt;<i>       7, 110, 105
+</I>&gt;&gt;<i>       8, 114, 109
+</I>&gt;&gt;<i>       9, 118, 113
+</I>&gt;&gt;<i>      10, 122, 117
+</I>&gt;&gt;<i>      11, 126, 121
+</I>&gt;&gt;<i>      12, 130, 125
+</I>&gt;&gt;<i>      13,  84,  81
+</I>&gt;&gt;<i>      14,  88,  85
+</I>&gt;&gt;<i>      15,  92,  89
+</I>&gt;&gt;<i>      16, 102,  97
+</I>&gt;&gt;<i>      17,  38,  37
+</I>&gt;&gt;<i>      18,  34,  33
+</I>&gt;&gt;<i>      19,  46,  45
+</I>&gt;&gt;<i>      20,  42,  41
+</I>&gt;&gt;<i>      21,  54,  53
+</I>&gt;&gt;<i>      22,  50,  49
+</I>&gt;&gt;<i>      23,  62,  61
+</I>&gt;&gt;<i>      24,  58,  57
+</I>&gt;&gt;<i>      25,   5,   5
+</I>&gt;&gt;<i>      26,   1,   1
+</I>&gt;&gt;<i>      27,  13,  13
+</I>&gt;&gt;<i>      28,   9,   9
+</I>&gt;&gt;<i>      29,  21,  21
+</I>&gt;&gt;<i>      30,  17,  17
+</I>&gt;&gt;<i>      31,  25,  25
+</I>&gt;&gt;<i>      32,  29,  29
+</I>&gt;&gt;<i>     DMA pool size: 16777216
+</I>&gt;&gt;<i>     Broadcom Command Monitor: Copyright (c) 1998-2020 Broadcom
+</I>&gt;&gt;<i>     Release: opennsa-6.5.19 built 20200910 (Thu Sep 10 18:16:19 2020)
+</I>&gt;&gt;<i>     From <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">root at lc-sj1-5908</A>:/projects/ntsw_sw18_scratch/sdkrel/openbcm/sdk
+</I>&gt;&gt;<i>     Platform: X86
+</I>&gt;&gt;<i>     OS: Unix (Posix)
+</I>&gt;&gt;<i>     E20210921 10:51:43.176681     1 bcm_sdk_wrapper.cc:1152]
+</I>&gt;&gt;<i>     StratumErrorSpace::ERR_FEATURE_UNAVAILABLE:
+</I>&gt;&gt;<i>     'soc_cm_device_supported(dev-&gt;device, dev-&gt;rev)' failed with
+</I>&gt;&gt;<i>     error message: Feature unavailable.
+</I>&gt;&gt;<i>     E20210921 10:51:43.177083     1 bcm_chassis_manager.cc:1100]
+</I>&gt;&gt;<i>     Return Error: bcm_sdk_interface_-&gt;FindUnit(bcm_chip.unit(),
+</I>&gt;&gt;<i>     bcm_chip.pci_bus(), bcm_chip.pci_slot(), bcm_chip.type()) failed
+</I>&gt;&gt;<i>     with StratumErrorSpace::ERR_FEATURE_UNAVAILABLE:
+</I>&gt;&gt;<i>     'soc_cm_device_supported(dev-&gt;device, dev-&gt;rev)' failed with
+</I>&gt;&gt;<i>     error message: Feature unavailable.
+</I>&gt;&gt;<i>     E20210921 10:51:43.177101     1 bcm_chassis_manager.cc:163]
+</I>&gt;&gt;<i>     Return Error: InitializeBcmChips(base_bcm_chassis_map,
+</I>&gt;&gt;<i>     target_bcm_chassis_map) failed with
+</I>&gt;&gt;<i>     StratumErrorSpace::ERR_FEATURE_UNAVAILABLE:
+</I>&gt;&gt;<i>     'soc_cm_device_supported(dev-&gt;device, dev-&gt;rev)' failed with
+</I>&gt;&gt;<i>     error message: Feature unavailable.
+</I>&gt;&gt;<i>     E20210921 10:51:43.177136     1 bcm_switch.cc:52] Return Error:
+</I>&gt;&gt;<i>     bcm_chassis_manager_-&gt;PushChassisConfig(config) failed with
+</I>&gt;&gt;<i>     StratumErrorSpace::ERR_FEATURE_UNAVAILABLE:
+</I>&gt;&gt;<i>     'soc_cm_device_supported(dev-&gt;device, dev-&gt;rev)' failed with
+</I>&gt;&gt;<i>     error message: Feature unavailable.
+</I>&gt;&gt;<i>     E20210921 10:51:43.177158     1 error_buffer.cc:30]
+</I>&gt;&gt;<i>     (config_monitoring_service.cc:124): Pushing saved chassis config
+</I>&gt;&gt;<i>     failed: 'soc_cm_device_supported(dev-&gt;device, dev-&gt;rev)' failed
+</I>&gt;&gt;<i>     with error message: Feature unavailable.
+</I>&gt;&gt;<i>     E20210921 10:51:43.177199     1 hal.cc:146] Return Error:
+</I>&gt;&gt;<i>     config_monitoring_service_-&gt;Setup(FLAGS_warmboot) failed with
+</I>&gt;&gt;<i>     StratumErrorSpace::ERR_FEATURE_UNAVAILABLE:
+</I>&gt;&gt;<i>     'soc_cm_device_supported(dev-&gt;device, dev-&gt;rev)' failed with
+</I>&gt;&gt;<i>     error message: Feature unavailable.
+</I>&gt;&gt;<i>     E20210921 10:51:43.177212     1 main.cc:115] Error when setting
+</I>&gt;&gt;<i>     up Stratum HAL (but we will continue running):
+</I>&gt;&gt;<i>     'soc_cm_device_supported(dev-&gt;device, dev-&gt;rev)' failed with
+</I>&gt;&gt;<i>     error message: Feature unavailable.
+</I>&gt;&gt;<i>     E20210921 10:51:43.177973     1 hal.cc:231] Stratum external
+</I>&gt;&gt;<i>     facing services are listening to 0.0.0.0:9339
+</I>&gt;&gt;<i>     &lt;<A HREF="http://0.0.0.0:9339">http://0.0.0.0:9339</A>&gt;, 0.0.0.0:9559 &lt;<A HREF="http://0.0.0.0:9559">http://0.0.0.0:9559</A>&gt;,
+</I>&gt;&gt;<i>     localhost:9559...
+</I>&gt;&gt;<i>     E20210921 10:51:43.192323     1 hal.cc:386]
+</I>&gt;&gt;<i>     StratumErrorSpace::ERR_INTERNAL: Failed to check in with procmon:
+</I>&gt;&gt;<i>     failed to connect to all addresses
+</I>&gt;&gt;<i>     E20210921 10:51:43.192685     1 hal.cc:241] Error when checking
+</I>&gt;&gt;<i>     in with procmon: Failed to check in with procmon: failed to
+</I>&gt;&gt;<i>     connect to all addresses.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>     <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">root at localhost</A>:/stratum/stratum/hal/bin/bcm/standalone/docker#
+</I>&gt;&gt;<i>     docker ps
+</I>&gt;&gt;<i>     CONTAINER ID IMAGE COMMAND              CREATED
+</I>&gt;&gt;<i>     STATUS              PORTS               NAMES
+</I>&gt;&gt;<i>     33acae8744da stratumproject/stratum-bcm:21.06-opennsa
+</I>&gt;&gt;<i>     &quot;start-stratum.sh&quot;   8 minutes ago       Up 8
+</I>&gt;&gt;<i>     minutes                            nifty_keller
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>     <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">root at localhost</A>:/stratum/stratum/hal/bin/bcm/standalone/docker#
+</I>&gt;&gt;<i>     docker logs 33acae8744da
+</I>&gt;&gt;<i>     + rmmod linux_ngknet
+</I>&gt;&gt;<i>     rmmod: ERROR: Module linux_ngknet is not currently loaded
+</I>&gt;&gt;<i>     + true
+</I>&gt;&gt;<i>     + rmmod linux_ngbde
+</I>&gt;&gt;<i>     rmmod: ERROR: Module linux_ngbde is not currently loaded
+</I>&gt;&gt;<i>     + true
+</I>&gt;&gt;<i>     + rmmod linux_bcm_knet
+</I>&gt;&gt;<i>     + rmmod linux_user_bde
+</I>&gt;&gt;<i>     + rmmod linux_kernel_bde
+</I>&gt;&gt;<i>     + pushd /usr/lib/stratum/
+</I>&gt;&gt;<i>     /usr/lib/stratum /
+</I>&gt;&gt;<i>     + insmod linux-kernel-bde.ko
+</I>&gt;&gt;<i>     + insmod linux-user-bde.ko
+</I>&gt;&gt;<i>     + insmod linux-bcm-knet.ko default_mtu=3000
+</I>&gt;&gt;<i>     + popd
+</I>&gt;&gt;<i>     /
+</I>&gt;&gt;<i>     + mknod /dev/linux-bcm-knet c 122 0
+</I>&gt;&gt;<i>     mknod: /dev/linux-bcm-knet: File exists
+</I>&gt;&gt;<i>     + true
+</I>&gt;&gt;<i>     + mknod /dev/linux-bcm-net c 123 0
+</I>&gt;&gt;<i>     mknod: /dev/linux-bcm-net: File exists
+</I>&gt;&gt;<i>     + true
+</I>&gt;&gt;<i>     + mknod /dev/linux-bcm-diag c 124 0
+</I>&gt;&gt;<i>     mknod: /dev/linux-bcm-diag: File exists
+</I>&gt;&gt;<i>     + true
+</I>&gt;&gt;<i>     + ln -sf /dev/linux-bcm-diag /dev/linux-bcm-diag-full
+</I>&gt;&gt;<i>     + mknod /dev/linux-uk-proxy c 125 0
+</I>&gt;&gt;<i>     mknod: /dev/linux-uk-proxy: File exists
+</I>&gt;&gt;<i>     + true
+</I>&gt;&gt;<i>     + mknod /dev/linux-bcm-core c 126 0
+</I>&gt;&gt;<i>     mknod: /dev/linux-bcm-core: File exists
+</I>&gt;&gt;<i>     + true
+</I>&gt;&gt;<i>     + mknod /dev/linux-kernel-bde c 127 0
+</I>&gt;&gt;<i>     mknod: /dev/linux-kernel-bde: File exists
+</I>&gt;&gt;<i>     + true
+</I>&gt;&gt;<i>     + ln -sf /dev/linux-bcm-core /dev/linux-user-bde
+</I>&gt;&gt;<i>     + sleep 1
+</I>&gt;&gt;<i>     + mkdir -p /var/run/stratum /var/log/stratum
+</I>&gt;&gt;<i>     ++ cat /etc/onl/platform
+</I>&gt;&gt;<i>     + PLATFORM=x86-64-accton-as7716-24sc-r0
+</I>&gt;&gt;<i>     + exec stratum_bcm_opennsa
+</I>&gt;&gt;<i>     -base_bcm_chassis_map_file=/etc/stratum/x86-64-accton-as7716-24sc-r0/base_bcm_chassis_map.pb.txt
+</I>&gt;&gt;<i>     -chassis_config_file=/etc/stratum/x86-64-accton-as7716-24sc-r0/chassis_config.pb.txt
+</I>&gt;&gt;<i>     -bcm_sdk_config_file=/etc/stratum/x86-64-accton-as7716-24sc-r0/SDKLT.yml
+</I>&gt;&gt;<i>     -phal_config_file=/etc/stratum/x86-64-accton-as7716-24sc-r0/phal_config.pb.txt
+</I>&gt;&gt;<i>     -bcm_sdk_checkpoint_dir=/tmp/bcm_chkpt -log_dir=/var/log/stratum -v=0
+</I>&gt;&gt;<i>     I20210921 10:38:53.986915     1 main.cc:75] Starting Stratum in
+</I>&gt;&gt;<i>     STANDALONE mode for a Broadcom-based switch...
+</I>&gt;&gt;<i>     W20210921 10:38:53.987057     1 credentials_manager.cc:45] Using
+</I>&gt;&gt;<i>     insecure server credentials
+</I>&gt;&gt;<i>     I20210921 10:38:53.987232     1 hal.cc:122] HAL sanity checks all
+</I>&gt;&gt;<i>     passed.
+</I>&gt;&gt;<i>     I20210921 10:38:53.987246     1 hal.cc:128] Setting up HAL in
+</I>&gt;&gt;<i>     COLDBOOT mode...
+</I>&gt;&gt;<i>     I20210921 10:38:53.987311     1 config_monitoring_service.cc:94]
+</I>&gt;&gt;<i>     Pushing the saved chassis config read from
+</I>&gt;&gt;<i>     /etc/stratum/x86-64-accton-as7716-24sc-r0/chassis_config.pb.txt...
+</I>&gt;&gt;<i>     I20210921 10:38:53.991032     1 bcm_switch.cc:548] Chassis config
+</I>&gt;&gt;<i>     verified successfully.
+</I>&gt;&gt;<i>     I20210921 10:38:53.991549     1 onlp_wrapper.cc:99] Initializing
+</I>&gt;&gt;<i>     ONLP.
+</I>&gt;&gt;<i>     I20210921 10:38:56.135704     1 attribute_database.cc:213] PhalDB
+</I>&gt;&gt;<i>     service is listening to localhost:28003...
+</I>&gt;&gt;<i>     I20210921 10:38:56.141291     1 bcm_chassis_manager.cc:1080] Portmap:
+</I>&gt;&gt;<i>     Panel, logical (PORT_ID), physical (PC_PHYS_PORT_ID)
+</I>&gt;&gt;<i>       1,  68,  65
+</I>&gt;&gt;<i>       2,  72,  69
+</I>&gt;&gt;<i>       3,  76,  73
+</I>&gt;&gt;<i>       4,  80,  77
+</I>&gt;&gt;<i>       5,  96,  93
+</I>&gt;&gt;<i>       6, 106, 101
+</I>&gt;&gt;<i>       7, 110, 105
+</I>&gt;&gt;<i>       8, 114, 109
+</I>&gt;&gt;<i>       9, 118, 113
+</I>&gt;&gt;<i>      10, 122, 117
+</I>&gt;&gt;<i>      11, 126, 121
+</I>&gt;&gt;<i>      12, 130, 125
+</I>&gt;&gt;<i>      13,  84,  81
+</I>&gt;&gt;<i>      14,  88,  85
+</I>&gt;&gt;<i>      15,  92,  89
+</I>&gt;&gt;<i>      16, 102,  97
+</I>&gt;&gt;<i>      17,  38,  37
+</I>&gt;&gt;<i>      18,  34,  33
+</I>&gt;&gt;<i>      19,  46,  45
+</I>&gt;&gt;<i>      20,  42,  41
+</I>&gt;&gt;<i>      21,  54,  53
+</I>&gt;&gt;<i>      22,  50,  49
+</I>&gt;&gt;<i>      23,  62,  61
+</I>&gt;&gt;<i>      24,  58,  57
+</I>&gt;&gt;<i>      25,   5,   5
+</I>&gt;&gt;<i>      26,   1,   1
+</I>&gt;&gt;<i>      27,  13,  13
+</I>&gt;&gt;<i>      28,   9,   9
+</I>&gt;&gt;<i>      29,  21,  21
+</I>&gt;&gt;<i>      30,  17,  17
+</I>&gt;&gt;<i>      31,  25,  25
+</I>&gt;&gt;<i>      32,  29,  29
+</I>&gt;&gt;<i>     DMA pool size: 16777216
+</I>&gt;&gt;<i>     Broadcom Command Monitor: Copyright (c) 1998-2020 Broadcom
+</I>&gt;&gt;<i>     Release: opennsa-6.5.19 built 20200910 (Thu Sep 10 18:16:19 2020)
+</I>&gt;&gt;<i>     From <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">root at lc-sj1-5908</A>:/projects/ntsw_sw18_scratch/sdkrel/openbcm/sdk
+</I>&gt;&gt;<i>     Platform: X86
+</I>&gt;&gt;<i>     OS: Unix (Posix)
+</I>&gt;&gt;<i>     E20210921 10:38:56.175861     1 bcm_sdk_wrapper.cc:1151]
+</I>&gt;&gt;<i>     StratumErrorSpace::ERR_FEATURE_UNAVAILABLE:
+</I>&gt;&gt;<i>     'soc_cm_device_supported(dev-&gt;device, dev-&gt;rev)' failed with
+</I>&gt;&gt;<i>     error message: Feature unavailable.
+</I>&gt;&gt;<i>     E20210921 10:38:56.176177     1 bcm_chassis_manager.cc:1100]
+</I>&gt;&gt;<i>     Return Error: bcm_sdk_interface_-&gt;FindUnit(bcm_chip.unit(),
+</I>&gt;&gt;<i>     bcm_chip.pci_bus(), bcm_chip.pci_slot(), bcm_chip.type()) failed
+</I>&gt;&gt;<i>     with StratumErrorSpace::ERR_FEATURE_UNAVAILABLE:
+</I>&gt;&gt;<i>     'soc_cm_device_supported(dev-&gt;device, dev-&gt;rev)' failed with
+</I>&gt;&gt;<i>     error message: Feature unavailable.
+</I>&gt;&gt;<i>     E20210921 10:38:56.176189     1 bcm_chassis_manager.cc:163]
+</I>&gt;&gt;<i>     Return Error: InitializeBcmChips(base_bcm_chassis_map,
+</I>&gt;&gt;<i>     target_bcm_chassis_map) failed with
+</I>&gt;&gt;<i>     StratumErrorSpace::ERR_FEATURE_UNAVAILABLE:
+</I>&gt;&gt;<i>     'soc_cm_device_supported(dev-&gt;device, dev-&gt;rev)' failed with
+</I>&gt;&gt;<i>     error message: Feature unavailable.
+</I>&gt;&gt;<i>     E20210921 10:38:56.176213     1 bcm_switch.cc:52] Return Error:
+</I>&gt;&gt;<i>     bcm_chassis_manager_-&gt;PushChassisConfig(config) failed with
+</I>&gt;&gt;<i>     StratumErrorSpace::ERR_FEATURE_UNAVAILABLE:
+</I>&gt;&gt;<i>     'soc_cm_device_supported(dev-&gt;device, dev-&gt;rev)' failed with
+</I>&gt;&gt;<i>     error message: Feature unavailable.
+</I>&gt;&gt;<i>     E20210921 10:38:56.176230     1 error_buffer.cc:30]
+</I>&gt;&gt;<i>     (config_monitoring_service.cc:124): Pushing saved chassis config
+</I>&gt;&gt;<i>     failed: 'soc_cm_device_supported(dev-&gt;device, dev-&gt;rev)' failed
+</I>&gt;&gt;<i>     with error message: Feature unavailable.
+</I>&gt;&gt;<i>     E20210921 10:38:56.176254     1 hal.cc:136] Return Error:
+</I>&gt;&gt;<i>     config_monitoring_service_-&gt;Setup(FLAGS_warmboot) failed with
+</I>&gt;&gt;<i>     StratumErrorSpace::ERR_FEATURE_UNAVAILABLE:
+</I>&gt;&gt;<i>     'soc_cm_device_supported(dev-&gt;device, dev-&gt;rev)' failed with
+</I>&gt;&gt;<i>     error message: Feature unavailable.
+</I>&gt;&gt;<i>     E20210921 10:38:56.176263     1 main.cc:115] Error when setting
+</I>&gt;&gt;<i>     up Stratum HAL (but we will continue running):
+</I>&gt;&gt;<i>     'soc_cm_device_supported(dev-&gt;device, dev-&gt;rev)' failed with
+</I>&gt;&gt;<i>     error message: Feature unavailable.
+</I>&gt;&gt;<i>     E20210921 10:38:56.176653     1 hal.cc:221] Stratum external
+</I>&gt;&gt;<i>     facing services are listening to 0.0.0.0:28000
+</I>&gt;&gt;<i>     &lt;<A HREF="http://0.0.0.0:28000">http://0.0.0.0:28000</A>&gt;, 0.0.0.0:9339 &lt;<A HREF="http://0.0.0.0:9339">http://0.0.0.0:9339</A>&gt;,
+</I>&gt;&gt;<i>     0.0.0.0:9559 &lt;<A HREF="http://0.0.0.0:9559">http://0.0.0.0:9559</A>&gt;, localhost:28000...
+</I>&gt;&gt;<i>     E20210921 10:38:56.190089     1 hal.cc:363]
+</I>&gt;&gt;<i>     StratumErrorSpace::ERR_INTERNAL: Failed to check in with procmon:
+</I>&gt;&gt;<i>     failed to connect to all addresses
+</I>&gt;&gt;<i>     E20210921 10:38:56.190270     1 hal.cc:231] Error when checking
+</I>&gt;&gt;<i>     in with procmon: Failed to check in with procmon: failed to
+</I>&gt;&gt;<i>     connect to all addresses.
+</I>&gt;&gt;<i>     /
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>     ////////////////////////////////////////////////////////
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>     /also all the modules are added in the kermel :
+</I>&gt;&gt;<i>     /
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>     /<A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">root at localhost</A>:/stratum/stratum/hal/bin/bcm/standalone/docker# lsmod
+</I>&gt;&gt;<i>     Module                  Size  Used by
+</I>&gt;&gt;<i>     linux_ngknet          356352  0
+</I>&gt;&gt;<i>     linux_ngbde            36864  1 linux_ngknet
+</I>&gt;&gt;<i>     /
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>     /If you guys can help me why is it not running properly in any
+</I>&gt;&gt;<i>     case it will be helpfull, from the logs i can tell that opoenNSA
+</I>&gt;&gt;<i>     recgnizases the shipset at least but still having problems when
+</I>&gt;&gt;<i>     running the code./
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>     /Thanks in advance guys.
+</I>&gt;&gt;<i>     /
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>     /Andy/
+</I>&gt;&gt;<i>     _______________________________________________
+</I>&gt;&gt;<i>     stratum-dev mailing list
+</I>&gt;&gt;<i>     <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">stratum-dev at lists.stratumproject.org</A>
+</I>&gt;&gt;<i>     <A HREF="https://lists.stratumproject.org/listinfo/stratum-dev">https://lists.stratumproject.org/listinfo/stratum-dev</A>
+</I>&gt;&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.stratumproject.org/archives/stratum-dev/attachments/20211109/e013ed92/attachment-0001.html">https://lists.stratumproject.org/archives/stratum-dev/attachments/20211109/e013ed92/attachment-0001.html</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message (by thread): <A HREF="000257.html">[stratum-dev] Canceled event with note: Stratum TST Meeting @ Thu Nov 11, 2021 1:30pm - 2pm (PST) (stratum-dev at lists.stratumproject.org)
+</A></li>
+	<LI>Next message (by thread): <A HREF="000259.html">[stratum-dev] Problems regarding the installation of stratum &amp; SDE 9.4.0 on Tofino switch
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#258">[ date ]</a>
+              <a href="thread.html#258">[ thread ]</a>
+              <a href="subject.html#258">[ subject ]</a>
+              <a href="author.html#258">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.stratumproject.org/listinfo/stratum-dev">More information about the stratum-dev
+mailing list</a><br>
+</body></html>
